@@ -1,21 +1,21 @@
 {
-  "name": "@suryaravikumar/mdx-ui",
+  "name": "@ravikumarsurya/mdx-ui",
   "version": "0.0.6",
   "description": "Add MDX components to your project",
   "license": "MIT",
   "type": "module",
   "author": {
-    "name": "ida02pingala06",
-    "url": "https://github.com/ida02pingala06"
+    "name": "suryaravikumar-space",
+    "url": "https://github.com/suryaravikumar-space"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ida02pingala06/mdx-ui.git",
+    "url": "https://github.com/suryaravikumar-space/mdx-ui.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://github.com/ida02pingala06/mdx-ui#readme",
+  "homepage": "https://github.com/suryaravikumar-space/mdx-ui#readme",
   "bugs": {
-    "url": "https://github.com/ida02pingala06/mdx-ui/issues"
+    "url": "https://github.com/suryaravikumar-space/mdx-ui/issues"
   },
   "exports": "./dist/index.js",
   "bin": {

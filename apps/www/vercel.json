@@ -1,5 +1,0 @@
-{
-  "buildCommand": "cd ../.. && pnpm --filter=@mdx-ui/www build",
-  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
-  "framework": "nextjs"
-}

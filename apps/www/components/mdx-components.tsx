@@ -8,6 +8,9 @@ import { FileTree } from "@/components/mdx/file-tree";
 import { Headings } from "@/components/mdx/headings";
 import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx/heading";
 import { Paragraph, Lead, Intro, Large, Small, Muted } from "@/components/mdx/paragraph";
+import { Math, BlockMath, InlineMath } from "@/components/mdx/math";
+import { Mermaid } from "@/components/mdx/mermaid";
+import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/mdx/table";
 
 const components = {
   Blockquote,
@@ -28,6 +31,18 @@ const components = {
   Large,
   Small,
   Muted,
+  Math,
+  BlockMath,
+  InlineMath,
+  Mermaid,
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
   h1: H1,
   h2: H2,
   h3: H3,

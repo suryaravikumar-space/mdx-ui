@@ -1,8 +1,10 @@
 import { defineDocumentType, makeSource, ComputedFields } from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeKatex from "rehype-katex";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 
 const computedFields: ComputedFields = {
   slug: {
@@ -75,9 +77,10 @@ export default makeSource({
   contentDirPath: "./content",
   documentTypes: [Component, Doc],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [
       rehypeSlug,
+      rehypeKatex,
       [
         rehypePrettyCode,
         {

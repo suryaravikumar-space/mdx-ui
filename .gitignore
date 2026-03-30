@@ -41,3 +41,13 @@ next-env.d.ts
 # SSH keys
 key
 key.pub
+
+# Claude Code
+.claude.md
+
+# Personal notes
+code_git_npmjs_flow.txt
+TwoRegistryLocationsExplained.txt
+
+# Markdown files
+*.md

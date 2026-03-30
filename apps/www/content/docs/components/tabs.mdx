@@ -1,41 +1,30 @@
 ---
 title: Tabs
 description: Interactive tabbed content panels
+component: tabs
 published: true
 ---
 
 ## Installation
 
 ```bash
-npx @suryaravikumar/mdx-ui add tabs
+npx @ravikumarsurya/mdx-ui add tabs
 ```
 
 ## Usage
 
 Create tabbed content with the Tabs component:
 
-```mdx
+```jsx
 <Tabs defaultValue="npm">
   <TabsList>
     <TabsTrigger value="npm">npm</TabsTrigger>
     <TabsTrigger value="pnpm">pnpm</TabsTrigger>
     <TabsTrigger value="yarn">yarn</TabsTrigger>
   </TabsList>
-  <TabsContent value="npm">
-    ```bash
-    npm install package-name
-    ```
-  </TabsContent>
-  <TabsContent value="pnpm">
-    ```bash
-    pnpm add package-name
-    ```
-  </TabsContent>
-  <TabsContent value="yarn">
-    ```bash
-    yarn add package-name
-    ```
-  </TabsContent>
+  <TabsContent value="npm">npm install package-name</TabsContent>
+  <TabsContent value="pnpm">pnpm add package-name</TabsContent>
+  <TabsContent value="yarn">yarn add package-name</TabsContent>
 </Tabs>
 ```
 
@@ -78,17 +67,17 @@ Create tabbed content with the Tabs component:
   </TabsList>
   <TabsContent value="npm">
     \`\`\`bash
-    npm install @suryaravikumar/mdx-ui
+    npm install @ravikumarsurya/mdx-ui
     \`\`\`
   </TabsContent>
   <TabsContent value="pnpm">
     \`\`\`bash
-    pnpm add @suryaravikumar/mdx-ui
+    pnpm add @ravikumarsurya/mdx-ui
     \`\`\`
   </TabsContent>
   <TabsContent value="yarn">
     \`\`\`bash
-    yarn add @suryaravikumar/mdx-ui
+    yarn add @ravikumarsurya/mdx-ui
     \`\`\`
   </TabsContent>
 </Tabs>

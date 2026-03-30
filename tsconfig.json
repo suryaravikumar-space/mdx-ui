@@ -13,5 +13,5 @@
     "forceConsistentCasingInFileNames": true,
     "ignoreDeprecations": "5.0"
   },
-  "exclude": ["node_modules", "apps", "dist", ".next", ".contentlayer"]
+  "exclude": ["node_modules", "apps", "packages", "dist", ".next", ".contentlayer"]
 }

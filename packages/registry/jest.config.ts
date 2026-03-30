@@ -3,7 +3,7 @@ import type { Config } from "jest"
 const config: Config = {
   testEnvironment: "jest-environment-jsdom",
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", { tsconfig: "./tsconfig.json" }],
+    "^.+\\.tsx?$": ["ts-jest", { tsconfig: "./tsconfig.test.json" }],
   },
   moduleNameMapper: {
     "^@/lib/utils$": "<rootDir>/src/lib/utils.ts",

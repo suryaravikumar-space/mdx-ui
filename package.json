@@ -5,12 +5,12 @@
   "license": "MIT",
   "type": "module",
   "author": {
-    "name": "ida02pingala06",
-    "url": "https://github.com/ida02pingala06"
+    "name": "suryaravikumar-space",
+    "url": "https://github.com/suryaravikumar-space"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ida02pingala06/mdx-ui.git"
+    "url": "https://github.com/suryaravikumar-space/mdx-ui.git"
   },
   "workspaces": [
     "apps/*",

@@ -1,0 +1,18 @@
+{
+  "name": "table",
+  "type": "component",
+  "description": "Styled responsive table with header, body, footer and caption",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "table.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport function Table({ className, children, ...props }: React.HTMLAttributes<HTMLTableElement>) {\n  return (\n    <div className=\"my-6 w-full overflow-x-auto rounded-lg border\">\n      <table className={cn(\"w-full caption-bottom text-sm\", className)} {...props}>\n        {children}\n      </table>\n    </div>\n  )\n}\n\nexport function TableHeader({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <thead className={cn(\"border-b bg-muted/50\", className)} {...props} />\n}\n\nexport function TableBody({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <tbody className={cn(\"[&_tr:last-child]:border-0\", className)} {...props} />\n}\n\nexport function TableFooter({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) {\n  return <tfoot className={cn(\"border-t bg-muted/50 font-medium\", className)} {...props} />\n}\n\nexport function TableRow({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) {\n  return (\n    <tr className={cn(\"border-b transition-colors hover:bg-muted/50\", className)} {...props} />\n  )\n}\n\nexport function TableHead({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {\n  return (\n    <th className={cn(\"h-12 px-4 text-left align-middle font-medium text-muted-foreground\", className)} {...props} />\n  )\n}\n\nexport function TableCell({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {\n  return <td className={cn(\"px-4 py-3 align-middle\", className)} {...props} />\n}\n\nexport function TableCaption({ className, ...props }: React.HTMLAttributes<HTMLTableCaptionElement>) {\n  return <caption className={cn(\"mt-4 text-sm text-muted-foreground\", className)} {...props} />\n}\n"
+    }
+  ]
+}

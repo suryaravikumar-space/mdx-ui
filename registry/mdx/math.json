@@ -1,0 +1,19 @@
+{
+  "name": "math",
+  "type": "component",
+  "description": "KaTeX math rendering — inline, block, and chemistry formulas",
+  "dependencies": [
+    "katex",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "math.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport katex from \"katex\"\nimport { cn } from \"@/lib/utils\"\n\ninterface MathProps {\n  children: string\n  block?: boolean\n  className?: string\n}\n\nexport function Math({ children, block = false, className }: MathProps) {\n  const html = React.useMemo(() => {\n    try {\n      return katex.renderToString(children, {\n        displayMode: block,\n        throwOnError: false,\n        trust: false,\n        macros: {\n          \"\\\\R\": \"\\\\mathbb{R}\",\n          \"\\\\N\": \"\\\\mathbb{N}\",\n          \"\\\\Z\": \"\\\\mathbb{Z}\",\n          \"\\\\C\": \"\\\\mathbb{C}\",\n        },\n      })\n    } catch {\n      return `<span style=\"color:red\">Invalid math: ${children}</span>`\n    }\n  }, [children, block])\n\n  if (block) {\n    return (\n      <div\n        className={cn(\"my-4 overflow-x-auto py-2 text-center\", className)}\n        dangerouslySetInnerHTML={{ __html: html }}\n      />\n    )\n  }\n\n  return (\n    <span\n      className={cn(\"inline-block align-middle\", className)}\n      dangerouslySetInnerHTML={{ __html: html }}\n    />\n  )\n}\n\nexport function BlockMath({ children, className }: { children: string; className?: string }) {\n  return <Math block className={className}>{children}</Math>\n}\n\nexport function InlineMath({ children, className }: { children: string; className?: string }) {\n  return <Math className={className}>{children}</Math>\n}\n"
+    }
+  ]
+}

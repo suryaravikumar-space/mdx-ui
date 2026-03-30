@@ -1,0 +1,19 @@
+{
+  "name": "mermaid",
+  "type": "component",
+  "description": "Mermaid diagram renderer — flowcharts, sequence diagrams, ER diagrams",
+  "dependencies": [
+    "mermaid",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "mermaid.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\ninterface MermaidProps {\n  children: string\n  className?: string\n}\n\nexport function Mermaid({ children, className }: MermaidProps) {\n  const ref = React.useRef<HTMLDivElement>(null)\n  const [svg, setSvg] = React.useState<string>(\"\")\n  const [error, setError] = React.useState<string>(\"\")\n  const id = React.useId().replace(/:/g, \"\")\n\n  React.useEffect(() => {\n    let cancelled = false\n    async function render() {\n      try {\n        const mermaid = (await import(\"mermaid\")).default\n        mermaid.initialize({ startOnLoad: false, theme: \"neutral\", securityLevel: \"strict\" })\n        const { svg } = await mermaid.render(`mermaid-${id}`, children.trim())\n        if (!cancelled) setSvg(svg)\n      } catch (e) {\n        if (!cancelled) setError(e instanceof Error ? e.message : \"Render failed\")\n      }\n    }\n    render()\n    return () => { cancelled = true }\n  }, [children, id])\n\n  if (error) {\n    return (\n      <div className=\"my-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-600\">\n        Diagram error: {error}\n      </div>\n    )\n  }\n\n  if (!svg) {\n    return (\n      <div className={cn(\"my-4 flex h-32 items-center justify-center rounded-lg border bg-muted/30\", className)}>\n        <span className=\"text-sm text-muted-foreground\">Rendering diagram\u2026</span>\n      </div>\n    )\n  }\n\n  return (\n    <div\n      ref={ref}\n      className={cn(\"my-4 overflow-x-auto rounded-lg border bg-white p-4 dark:bg-gray-950\", className)}\n      dangerouslySetInnerHTML={{ __html: svg }}\n    />\n  )\n}\n"
+    }
+  ]
+}

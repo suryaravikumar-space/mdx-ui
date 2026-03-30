@@ -39,8 +39,48 @@
       "path": "/docs/components/paragraph"
     },
     {
+      "title": "Code Block",
+      "path": "/docs/components/code-block"
+    },
+    {
+      "title": "Emphasis",
+      "path": "/docs/components/emphasis"
+    },
+    {
+      "title": "Horizontal Rule",
+      "path": "/docs/components/horizontal-rule"
+    },
+    {
+      "title": "Image",
+      "path": "/docs/components/image"
+    },
+    {
+      "title": "Inline Code",
+      "path": "/docs/components/inline-code"
+    },
+    {
+      "title": "List",
+      "path": "/docs/components/list"
+    },
+    {
+      "title": "Math",
+      "path": "/docs/components/math"
+    },
+    {
+      "title": "Mermaid",
+      "path": "/docs/components/mermaid"
+    },
+    {
       "title": "Steps",
       "path": "/docs/components/steps"
+    },
+    {
+      "title": "Table",
+      "path": "/docs/components/table"
+    },
+    {
+      "title": "Tabs",
+      "path": "/docs/components/tabs"
     },
     {
       "title": "Tree",

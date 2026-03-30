@@ -1,0 +1,74 @@
+---
+title: Table
+description: Styled responsive table with header, body, footer and caption
+component: table
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add table
+```
+
+## Usage
+
+```jsx
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Type</TableHead>
+      <TableHead>Default</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>variant</TableCell>
+      <TableCell>string</TableCell>
+      <TableCell>default</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+## Example
+
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Framework</TableHead>
+      <TableHead>Language</TableHead>
+      <TableHead>Stars</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Next.js</TableCell>
+      <TableCell>TypeScript</TableCell>
+      <TableCell>120k+</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Astro</TableCell>
+      <TableCell>TypeScript</TableCell>
+      <TableCell>45k+</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Remix</TableCell>
+      <TableCell>TypeScript</TableCell>
+      <TableCell>29k+</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableCaption>Popular React-based frameworks</TableCaption>
+</Table>
+
+## Components
+
+- `Table` — wrapper with overflow scroll
+- `TableHeader` — `thead` with muted background
+- `TableBody` — `tbody`
+- `TableFooter` — `tfoot` with muted background
+- `TableRow` — `tr` with hover state
+- `TableHead` — `th` styled header cell
+- `TableCell` — `td` body cell
+- `TableCaption` — caption below the table

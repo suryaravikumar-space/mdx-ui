@@ -1,0 +1,56 @@
+---
+title: Math
+description: KaTeX math rendering — inline, block, physics, chemistry formulas
+component: math
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add math
+```
+
+Add KaTeX CSS to your root layout:
+
+```tsx
+import "katex/dist/katex.min.css"
+```
+
+## Usage
+
+```jsx
+// Inline math
+<InlineMath>E = mc^2</InlineMath>
+
+// Block (display) math
+<BlockMath>
+  \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+</BlockMath>
+```
+
+## Examples
+
+### Physics
+
+<BlockMath>{"F = G\\frac{m_1 m_2}{r^2}"}</BlockMath>
+
+<BlockMath>{"i\\hbar\\frac{\\partial}{\\partial t}\\Psi = \\hat{H}\\Psi"}</BlockMath>
+
+### Algebra
+
+<BlockMath>{"x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}"}</BlockMath>
+
+### Inline
+
+The energy <InlineMath>{"E = mc^2"}</InlineMath> describes mass-energy equivalence.
+
+## Props
+
+### Math / InlineMath / BlockMath
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| children | string | — | LaTeX expression |
+| block | boolean | false | Display mode (Math only) |
+| className | string | — | Additional CSS classes |

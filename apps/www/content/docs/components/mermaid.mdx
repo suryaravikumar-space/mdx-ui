@@ -1,0 +1,48 @@
+---
+title: Mermaid
+description: Mermaid diagram renderer — flowcharts, sequence diagrams, ER diagrams
+component: mermaid
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add mermaid
+```
+
+## Usage
+
+```jsx
+<Mermaid>
+  {`flowchart TD
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Do it]
+    B -->|No| D[Skip]`}
+</Mermaid>
+```
+
+## Examples
+
+### Flowchart
+
+<Mermaid>{`flowchart TD
+  A[User Request] --> B{Auth?}
+  B -->|Yes| C[Process]
+  B -->|No| D[401 Error]
+  C --> E[Response]`}</Mermaid>
+
+### Sequence Diagram
+
+<Mermaid>{`sequenceDiagram
+  Client->>Server: POST /api/chat
+  Server->>AI: streamText()
+  AI-->>Server: token stream
+  Server-->>Client: SSE response`}</Mermaid>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| children | string | — | Mermaid diagram syntax |
+| className | string | — | Additional CSS classes |

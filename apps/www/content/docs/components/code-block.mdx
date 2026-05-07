@@ -1,8 +1,10 @@
 ---
 title: Code Block
-description: Syntax-highlighted code blocks with language support
+description: Syntax-highlighted code blocks powered by rehype-pretty-code and Shiki
 component: code-block
 published: true
+registryDependencies: ["utils"]
+dependencies: []
 ---
 
 ## Installation
@@ -11,96 +13,182 @@ published: true
 npx @ravikumarsurya/mdx-ui add code-block
 ```
 
+Then set up syntax highlighting with `rehype-pretty-code`:
+
+```bash
+npm install rehype-pretty-code shiki
+```
+
+## Setup
+
+### Next.js (`next.config.ts`)
+
+```ts
+import createMDX from "@next/mdx"
+import rehypePrettyCode from "rehype-pretty-code"
+
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: { light: "github-light-default", dark: "github-dark-default" },
+          defaultColor: false,
+        },
+      ],
+    ],
+  },
+})
+
+export default withMDX({ pageExtensions: ["ts", "tsx", "md", "mdx"] })
+```
+
+### next-mdx-remote
+
+```ts
+import { compileMDX } from "next-mdx-remote/rsc"
+import rehypePrettyCode from "rehype-pretty-code"
+
+const { content } = await compileMDX({
+  source,
+  options: {
+    mdxOptions: {
+      rehypePlugins: [
+        [
+          rehypePrettyCode,
+          {
+            theme: { light: "github-light-default", dark: "github-dark-default" },
+            defaultColor: false,
+          },
+        ],
+      ],
+    },
+  },
+})
+```
+
+### Contentlayer / Contentlayer2
+
+```ts
+// contentlayer.config.ts
+import rehypePrettyCode from "rehype-pretty-code"
+
+export default makeSource({
+  mdxOptions: {
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: { light: "github-light-default", dark: "github-dark-default" },
+          defaultColor: false,
+        },
+      ],
+    ],
+  },
+})
+```
+
+### Map `pre` to `CodeBlock`
+
+In your MDX components file, map the `pre` element to `CodeBlock`:
+
+```tsx
+import { CodeBlock } from "@/components/mdx/code-block"
+
+const components = {
+  pre: CodeBlock,
+  // ... other components
+}
+```
+
 ## Usage
 
-Code blocks are automatically rendered with syntax highlighting:
+Once configured, fenced code blocks in MDX get full syntax highlighting automatically:
 
 ````mdx
-```javascript
-function hello() {
-  console.log("Hello, world!");
+```tsx title="button.tsx"
+export function Button({ children }: { children: React.ReactNode }) {
+  return (
+    <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md">
+      {children}
+    </button>
+  )
 }
 ```
 ````
 
-## Features
+### With a title
 
-- Syntax highlighting for multiple languages
-- Line numbers (optional)
-- Copy button
-- Language label
-- Responsive design
+Annotate the code fence with `title="..."`:
+
+````mdx
+```bash title="Install dependencies"
+npm install rehype-pretty-code shiki
+```
+````
+
+### Line highlighting
+
+rehype-pretty-code supports line and word highlighting out of the box:
+
+````mdx
+```tsx {2,4-6}
+function greet(name: string) {
+  const greeting = `Hello, ${name}!`  // highlighted
+  console.log(greeting)
+  return {                              // highlighted
+    message: greeting,                 // highlighted
+    timestamp: Date.now(),             // highlighted
+  }
+}
+```
+````
+
+### Word highlighting
+
+````mdx
+```tsx /useState/
+const [count, setCount] = useState(0)
+const [name, setName] = useState("")
+```
+````
+
+## How it works
+
+The `CodeBlock` component renders as the `<pre>` element in MDX. When `rehype-pretty-code` processes your MDX:
+
+1. It reads the language and title from your code fence annotation
+2. Runs Shiki to tokenize and highlight the code
+3. Passes `data-language` and `data-title` to the `<pre>` element
+4. `CodeBlock` reads those attributes to show the language badge and title
+
+The CSS for Shiki token colors is automatically injected into your `globals.css` by `npx @ravikumarsurya/mdx-ui init`:
+
+```css
+/* Shiki dual-theme — injected by mdx-ui init */
+[data-code-block] code span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+}
+.dark [data-code-block] code span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+}
+```
 
 ## Props
 
-The code block component uses standard MDX fenced code blocks.
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` | - | Override the title shown in the header |
+| `showLineNumbers` | `boolean` | `false` | Enable CSS counter-based line numbers |
+| `data-language` | `string` | - | Set by rehype-pretty-code; shown as language badge |
+| `data-title` | `string` | - | Set by rehype-pretty-code from title annotation |
+| `className` | `string` | - | Additional classes on the `<pre>` element |
 
-### Language Support
+## Without rehype-pretty-code
 
-Supports all common programming languages:
-
-- JavaScript/TypeScript
-- Python
-- Rust
-- Go
-- Java
-- HTML/CSS
-- Bash
-- And many more...
-
-## Examples
-
-### JavaScript
-
-````mdx
-```javascript
-const greeting = "Hello, MDX!";
-console.log(greeting);
-```
-````
-
-### TypeScript
-
-````mdx
-```typescript
-interface User {
-  name: string;
-  age: number;
-}
-
-const user: User = {
-  name: "Alice",
-  age: 30
-};
-```
-````
-
-### Python
-
-````mdx
-```python
-def greet(name):
-    return f"Hello, {name}!"
-
-print(greet("World"))
-```
-````
-
-### Bash
-
-````mdx
-```bash
-npm install @ravikumarsurya/mdx-ui
-npx mdx-ui init
-```
-````
-
-## Customization
-
-The code block component can be customized through your Tailwind configuration and MDX setup.
-
-## Notes
-
-- Uses Shiki for syntax highlighting (if configured)
-- Supports both light and dark themes
-- Automatically detects language from code fence
+The component still works without a syntax highlighting plugin — code renders with the correct monospace font and copy button, just without token colors.

@@ -6,6 +6,10 @@ import { cn } from "@/lib/utils"
 export interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   title?: string
   showLineNumbers?: boolean
+  /** Set by rehype-pretty-code: the fenced code language (e.g. "tsx") */
+  "data-language"?: string
+  /** Set by rehype-pretty-code when a title annotation is present */
+  "data-title"?: string
 }
 
 export function CodeBlock({
@@ -13,10 +17,15 @@ export function CodeBlock({
   title,
   showLineNumbers = false,
   children,
+  "data-language": dataLanguage,
+  "data-title": dataTitle,
   ...props
 }: CodeBlockProps) {
   const [copied, setCopied] = React.useState(false)
   const preRef = React.useRef<HTMLPreElement>(null)
+
+  const displayTitle = title ?? dataTitle
+  const language = dataLanguage
 
   const handleCopy = async () => {
     const text = preRef.current?.innerText ?? ""
@@ -30,9 +39,20 @@ export function CodeBlock({
   }
 
   return (
-    <div className="my-6 overflow-hidden rounded-lg border border-border bg-muted">
+    <figure
+      className="my-6 overflow-hidden rounded-lg border border-border bg-muted"
+      data-code-block
+    >
       <div className="flex items-center justify-between border-b border-border bg-muted/80 px-4 py-2 min-h-[36px]">
-        <span className="text-sm font-medium text-foreground">{title}</span>
+        <div className="flex items-center gap-2">
+          {displayTitle ? (
+            <span className="text-sm font-medium text-foreground">{displayTitle}</span>
+          ) : language ? (
+            <span className="text-xs text-muted-foreground font-mono uppercase tracking-wide">
+              {language}
+            </span>
+          ) : null}
+        </div>
         <button
           onClick={handleCopy}
           className="text-xs text-muted-foreground hover:text-foreground transition-colors select-none"
@@ -44,14 +64,15 @@ export function CodeBlock({
       <pre
         ref={preRef}
         className={cn(
-          "overflow-x-auto p-4",
+          "overflow-x-auto p-4 text-sm",
+          "[&_code]:bg-transparent [&_code]:p-0 [&_code]:border-0 [&_code]:text-inherit",
           showLineNumbers && "[counter-reset:line]",
           className
         )}
         {...props}
       >
-        <code className="text-sm text-muted-foreground">{children}</code>
+        {children}
       </pre>
-    </div>
+    </figure>
   )
 }

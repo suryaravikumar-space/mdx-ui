@@ -264,6 +264,21 @@ const CSS_VARS_ROOT = `
     --ring: 212.7 26.8% 83.9%;
   }`
 
+// Shiki dual-theme CSS — works with rehype-pretty-code defaultColor:false
+const SHIKI_CSS = `
+/* Shiki syntax highlighting — light/dark dual theme */
+[data-code-block] code span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+}
+.dark [data-code-block] code span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+}
+`
+
 // Tailwind v3 — uses @layer base + @apply
 const CSS_VARS_BLOCK_V3 = `
 @layer base {${CSS_VARS_ROOT}
@@ -274,7 +289,7 @@ const CSS_VARS_BLOCK_V3 = `
     @apply bg-background text-foreground;
   }
 }
-`
+${SHIKI_CSS}`
 
 // Tailwind v4 — @layer base and @apply not required; use @theme inline for token mapping
 const CSS_VARS_BLOCK_V4 = `
@@ -311,7 +326,7 @@ body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
 }
-`
+${SHIKI_CSS}`
 
 // Tailwind v3 tailwind.config theme.extend patch
 const TAILWIND_V3_THEME_EXTENSIONS = `

@@ -23,6 +23,9 @@ importers:
       fs-extra:
         specifier: ^11.2.0
         version: 11.3.3
+      next:
+        specifier: ^15.1.6
+        version: 15.5.9(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       prettier:
         specifier: ^3.2.5
         version: 3.7.4

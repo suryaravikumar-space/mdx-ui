@@ -15,6 +15,14 @@
       "sectionHeader": "Components"
     },
     {
+      "title": "Accordion",
+      "path": "/docs/components/accordion"
+    },
+    {
+      "title": "Badge",
+      "path": "/docs/components/badge"
+    },
+    {
       "title": "Blockquote",
       "path": "/docs/components/blockquote"
     },

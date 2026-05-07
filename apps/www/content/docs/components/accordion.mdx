@@ -1,0 +1,137 @@
+---
+title: Accordion
+description: Collapsible sections for showing and hiding content
+component: accordion
+published: true
+registryDependencies: ["utils"]
+dependencies: []
+---
+
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/mdx/accordion"
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add accordion
+```
+
+## Usage
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/mdx/accordion"
+
+<Accordion defaultValue="item-1">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>What is mdx-ui?</AccordionTrigger>
+    <AccordionContent>
+      mdx-ui is a collection of MDX components you can add to your project.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Examples
+
+### Single (default)
+
+Only one item open at a time. Clicking an open item closes it.
+
+<div className="preview">
+  <Accordion defaultValue="item-1">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>What is mdx-ui?</AccordionTrigger>
+      <AccordionContent>
+        mdx-ui is a collection of copy-paste MDX components built with Tailwind CSS. Add only what you need.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Does it work with Next.js?</AccordionTrigger>
+      <AccordionContent>
+        Yes. mdx-ui works with Next.js, Astro, Vite React, and any framework that supports MDX.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>
+        Yes. The accordion uses proper ARIA attributes — aria-expanded on the trigger and keyboard focus management.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
+
+```tsx
+<Accordion defaultValue="item-1">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>What is mdx-ui?</AccordionTrigger>
+    <AccordionContent>
+      mdx-ui is a collection of copy-paste MDX components built with Tailwind CSS.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Does it work with Next.js?</AccordionTrigger>
+    <AccordionContent>
+      Yes. mdx-ui works with Next.js, Astro, Vite React, and any framework that supports MDX.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Multiple open items
+
+Set `type="multiple"` to allow several items open simultaneously.
+
+```tsx
+<Accordion type="multiple" defaultValue={["item-1", "item-2"]}>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Section One</AccordionTrigger>
+    <AccordionContent>Content for section one.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Section Two</AccordionTrigger>
+    <AccordionContent>Content for section two.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Non-collapsible
+
+Set `collapsible={false}` so one item is always open.
+
+```tsx
+<Accordion defaultValue="item-1" collapsible={false}>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Always one open</AccordionTrigger>
+    <AccordionContent>This section cannot be closed.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Another section</AccordionTrigger>
+    <AccordionContent>Clicking here closes the previous one.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Props
+
+### Accordion
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `type` | `"single" \| "multiple"` | `"single"` | Allow one or multiple items open at once |
+| `defaultValue` | `string \| string[]` | - | Initially open item(s) |
+| `collapsible` | `boolean` | `true` | Whether the active item can be closed (single mode only) |
+| `className` | `string` | - | Additional CSS classes |
+
+### AccordionItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string` | - | Unique identifier for this item (required) |
+| `className` | `string` | - | Additional CSS classes |
+
+### AccordionTrigger
+
+Extends `React.ButtonHTMLAttributes<HTMLButtonElement>`.
+
+### AccordionContent
+
+Extends `React.HTMLAttributes<HTMLDivElement>`.

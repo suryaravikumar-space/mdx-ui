@@ -1,0 +1,79 @@
+---
+title: Badge
+description: Status labels and category tags with multiple variants
+component: badge
+published: true
+registryDependencies: ["utils"]
+dependencies: ["class-variance-authority", "clsx", "tailwind-merge"]
+---
+
+import { Badge } from "@/components/mdx/badge"
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add badge
+```
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/mdx/badge"
+
+<Badge>Default</Badge>
+<Badge variant="success">Published</Badge>
+```
+
+## Examples
+
+### All variants
+
+<div className="preview flex flex-wrap gap-2">
+  <Badge>Default</Badge>
+  <Badge variant="secondary">Secondary</Badge>
+  <Badge variant="outline">Outline</Badge>
+  <Badge variant="destructive">Destructive</Badge>
+  <Badge variant="success">Success</Badge>
+  <Badge variant="warning">Warning</Badge>
+  <Badge variant="info">Info</Badge>
+</div>
+
+```tsx
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="info">Info</Badge>
+```
+
+### In content
+
+Use badges inline to label status, categories, or version numbers.
+
+```mdx
+This feature is <Badge variant="info">Beta</Badge> and subject to change.
+
+Release <Badge variant="success">v1.0.0</Badge> is now stable.
+
+This API is <Badge variant="destructive">Deprecated</Badge>.
+```
+
+### Version tags
+
+```mdx
+## API Reference <Badge variant="outline">v2</Badge>
+
+### createUser() <Badge variant="success">Stable</Badge>
+
+### legacyAuth() <Badge variant="warning">Deprecated</Badge>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `"default" \| "secondary" \| "outline" \| "destructive" \| "success" \| "warning" \| "info"` | `"default"` | Visual style of the badge |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `React.ReactNode` | - | Badge label content |

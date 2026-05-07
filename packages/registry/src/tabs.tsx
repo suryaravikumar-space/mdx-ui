@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils"
 interface TabsContextValue {
   value: string
   onValueChange: (value: string) => void
+  registerTab: (value: string) => void
+  unregisterTab: (value: string) => void
+  tabs: React.MutableRefObject<string[]>
 }
 
 const TabsContext = React.createContext<TabsContextValue | undefined>(undefined)
@@ -33,6 +36,7 @@ export function Tabs({
 }: TabsProps) {
   const [internalValue, setInternalValue] = React.useState(defaultValue || "")
   const value = controlledValue ?? internalValue
+  const tabsRef = React.useRef<string[]>([])
 
   const handleValueChange = React.useCallback(
     (newValue: string) => {
@@ -42,8 +46,20 @@ export function Tabs({
     [onValueChange]
   )
 
+  const registerTab = React.useCallback((tabValue: string) => {
+    if (!tabsRef.current.includes(tabValue)) {
+      tabsRef.current = [...tabsRef.current, tabValue]
+    }
+  }, [])
+
+  const unregisterTab = React.useCallback((tabValue: string) => {
+    tabsRef.current = tabsRef.current.filter(t => t !== tabValue)
+  }, [])
+
   return (
-    <TabsContext.Provider value={{ value, onValueChange: handleValueChange }}>
+    <TabsContext.Provider
+      value={{ value, onValueChange: handleValueChange, registerTab, unregisterTab, tabs: tabsRef }}
+    >
       <div {...props}>{children}</div>
     </TabsContext.Provider>
   )
@@ -52,13 +68,35 @@ export function Tabs({
 export interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function TabsList({ className, children, ...props }: TabsListProps) {
+  const { value, onValueChange, tabs } = useTabsContext()
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const allTabs = tabs.current
+    if (!allTabs.length) return
+    const idx = allTabs.indexOf(value)
+    if (e.key === "ArrowLeft") {
+      e.preventDefault()
+      onValueChange(allTabs[Math.max(0, idx - 1)])
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault()
+      onValueChange(allTabs[Math.min(allTabs.length - 1, idx + 1)])
+    } else if (e.key === "Home") {
+      e.preventDefault()
+      onValueChange(allTabs[0])
+    } else if (e.key === "End") {
+      e.preventDefault()
+      onValueChange(allTabs[allTabs.length - 1])
+    }
+  }
+
   return (
     <div
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md bg-gray-900 p-1 text-gray-400",
+        "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground",
         className
       )}
       role="tablist"
+      onKeyDown={handleKeyDown}
       {...props}
     >
       {children}
@@ -77,19 +115,25 @@ export function TabsTrigger({
   children,
   ...props
 }: TabsTriggerProps) {
-  const { value, onValueChange } = useTabsContext()
+  const { value, onValueChange, registerTab, unregisterTab } = useTabsContext()
   const isActive = value === triggerValue
+
+  React.useEffect(() => {
+    registerTab(triggerValue)
+    return () => unregisterTab(triggerValue)
+  }, [triggerValue, registerTab, unregisterTab])
 
   return (
     <button
       type="button"
       role="tab"
       aria-selected={isActive}
+      tabIndex={isActive ? 0 : -1}
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950 disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
         isActive
-          ? "bg-gray-950 text-white shadow-sm"
-          : "hover:bg-gray-800 hover:text-gray-200",
+          ? "bg-background text-foreground shadow-sm"
+          : "hover:bg-muted/80 hover:text-foreground",
         className
       )}
       onClick={() => onValueChange(triggerValue)}
@@ -119,7 +163,7 @@ export function TabsContent({
     <div
       role="tabpanel"
       className={cn(
-        "mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+        "mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className
       )}
       {...props}

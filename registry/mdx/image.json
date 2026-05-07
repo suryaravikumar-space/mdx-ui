@@ -2,13 +2,8 @@
   "name": "image",
   "type": "component",
   "description": "Images with optional captions",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": [],
+  "registryDependencies": [],
   "files": [
     {
       "path": "image.tsx",

@@ -1,7 +1,7 @@
 {
   "name": "math",
   "type": "component",
-  "description": "KaTeX math rendering — inline, block, and chemistry formulas",
+  "description": "LaTeX math rendering with block and inline support",
   "dependencies": [
     "katex",
     "clsx",

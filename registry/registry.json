@@ -133,11 +133,33 @@
       ]
     },
     {
+      "name": "math",
+      "type": "mdx",
+      "description": "LaTeX math rendering with block and inline support",
+      "files": [
+        "mdx/math.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "mdx-components",
       "type": "mdx",
       "description": "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
       "files": [
         "mdx/mdx-components.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "mermaid",
+      "type": "mdx",
+      "description": "Mermaid diagram rendering for flowcharts, sequences, and more",
+      "files": [
+        "mdx/mermaid.json"
       ],
       "registryDependencies": [
         "utils"
@@ -166,9 +188,20 @@
       ]
     },
     {
+      "name": "table",
+      "type": "mdx",
+      "description": "Styled table components with header, body, footer, and caption",
+      "files": [
+        "mdx/table.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "tabs",
       "type": "mdx",
-      "description": "Tabbed content sections with state management",
+      "description": "Tabbed content sections with state management and keyboard navigation",
       "files": [
         "mdx/tabs.json"
       ],

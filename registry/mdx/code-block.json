@@ -1,7 +1,7 @@
 {
   "name": "code-block",
   "type": "component",
-  "description": "Syntax highlighted code blocks with title, copy button, and line numbers",
+  "description": "Syntax highlighted code blocks with title and line numbers",
   "dependencies": [],
   "registryDependencies": [
     "utils"

@@ -1,7 +1,7 @@
 {
   "name": "mdx-components",
   "type": "component",
-  "description": "MDX component mapper — maps HTML elements to mdx-ui components. CLI auto-patches imports when you add components.",
+  "description": "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
   "dependencies": [
     "@types/mdx"
   ],

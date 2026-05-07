@@ -2,13 +2,8 @@
   "name": "list",
   "type": "component",
   "description": "Styled ordered and unordered lists with list items",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": [],
+  "registryDependencies": [],
   "files": [
     {
       "path": "list.tsx",

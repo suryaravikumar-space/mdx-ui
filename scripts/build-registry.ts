@@ -13,6 +13,11 @@ const componentsMetadata: Record<string, {
   dependencies?: string[]
   registryDependencies?: string[]
 }> = {
+  "accordion": {
+    description: "Collapsible accordion sections with single or multiple open items",
+    dependencies: [],
+    registryDependencies: ["utils"]
+  },
   "badge": {
     description: "Status badges with multiple variants (default, success, warning, info, destructive)",
     dependencies: ["class-variance-authority", "clsx", "tailwind-merge"],
@@ -44,7 +49,7 @@ const componentsMetadata: Record<string, {
   },
   "heading": {
     description: "Flexible and reusable heading component with variant support",
-    dependencies: [],
+    dependencies: ["class-variance-authority"],
     registryDependencies: ["utils"]
   },
   "headings": {
@@ -69,6 +74,21 @@ const componentsMetadata: Record<string, {
     description: "Styled ordered and unordered lists with list items",
     dependencies: []
   },
+  "math": {
+    description: "LaTeX math rendering with block and inline support",
+    dependencies: ["katex", "clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
+  "mdx-components": {
+    description: "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
+    dependencies: ["@types/mdx"],
+    registryDependencies: ["utils"]
+  },
+  "mermaid": {
+    description: "Mermaid diagram rendering for flowcharts, sequences, and more",
+    dependencies: ["mermaid", "clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
   "paragraph": {
     description: "Standard text paragraph component with proper spacing and typography",
     dependencies: [],
@@ -79,19 +99,19 @@ const componentsMetadata: Record<string, {
     dependencies: [],
     registryDependencies: ["utils"]
   },
+  "table": {
+    description: "Styled table components with header, body, footer, and caption",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
   "tabs": {
-    description: "Tabbed content sections with state management",
+    description: "Tabbed content sections with state management and keyboard navigation",
     dependencies: [],
     registryDependencies: ["utils"]
   },
   "tree": {
     description: "Interactive file/folder tree structure for displaying project organization",
     dependencies: [],
-    registryDependencies: ["utils"]
-  },
-  "mdx-components": {
-    description: "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
-    dependencies: ["@types/mdx"],
     registryDependencies: ["utils"]
   },
   "utils": {

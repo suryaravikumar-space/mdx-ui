@@ -2,13 +2,8 @@
   "name": "horizontal-rule",
   "type": "component",
   "description": "Divider lines with multiple styles (default, dashed, dotted, gradient)",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": [],
+  "registryDependencies": [],
   "files": [
     {
       "path": "horizontal-rule.tsx",

@@ -1,4 +1,5 @@
 import * as React from "react"
+import { cn } from "@/lib/utils"
 
 export interface ImageProps {
   src: string
@@ -13,21 +14,21 @@ export function Image({
   src,
   alt,
   caption,
-  className = "",
+  className,
   width,
   height
 }: ImageProps) {
   return (
-    <figure className={`my-6 ${className}`}>
+    <figure className={cn("my-6", className)}>
       <img
         src={src}
         alt={alt}
         width={width}
         height={height}
-        className="rounded-lg border border-gray-200 dark:border-gray-800 w-full"
+        className="rounded-lg border border-border w-full"
       />
       {caption && (
-        <figcaption className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400 italic">
+        <figcaption className="mt-2 text-center text-sm text-muted-foreground italic">
           {caption}
         </figcaption>
       )}

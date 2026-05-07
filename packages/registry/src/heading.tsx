@@ -1,16 +1,16 @@
 import * as React from "react";
-import { cn } from "./lib/utils";
+import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const headingVariants = cva("scroll-m-28 tracking-tight", {
+const headingVariants = cva("scroll-m-20 tracking-tight", {
   variants: {
     level: {
       h1: "text-4xl font-bold lg:text-5xl",
-      h2: "text-2xl font-semibold mt-12 first:mt-0",
-      h3: "text-xl font-semibold mt-8",
-      h4: "text-base font-medium mt-6",
-      h5: "text-base font-medium mt-6",
-      h6: "text-sm font-medium mt-6",
+      h2: "text-3xl font-semibold mt-10 first:mt-0",
+      h3: "text-2xl font-semibold mt-8",
+      h4: "text-xl font-semibold mt-6",
+      h5: "text-lg font-semibold mt-6",
+      h6: "text-base font-semibold mt-6",
     },
   },
   defaultVariants: {
@@ -24,10 +24,28 @@ export interface HeadingProps
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
+function slugify(text: string): string {
+  return String(text)
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-");
+}
+
+function getTextContent(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (typeof children === "number") return String(children);
+  if (Array.isArray(children)) return children.map(getTextContent).join("");
+  if (React.isValidElement(children)) {
+    return getTextContent((children.props as any).children ?? "");
+  }
+  return "";
+}
+
 export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ as, level, className, ...props }, ref) => {
     const Comp = as || level || "h2";
-
     return (
       <Comp
         ref={ref}
@@ -37,36 +55,64 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     );
   }
 );
-
 Heading.displayName = "Heading";
 
-// Convenience components for each heading level
+function HeadingWithAnchor({
+  as,
+  level,
+  children,
+  id,
+  className,
+  ...props
+}: HeadingProps) {
+  const slug = id ?? slugify(getTextContent(children));
+  return (
+    <Heading
+      as={as}
+      level={level}
+      id={slug}
+      className={cn("group relative", className)}
+      {...props}
+    >
+      {children}
+      <a
+        href={`#${slug}`}
+        className="ml-2 opacity-0 group-hover:opacity-60 transition-opacity text-muted-foreground no-underline font-normal"
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        #
+      </a>
+    </Heading>
+  );
+}
+
 export const H1 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <Heading ref={ref} as="h1" level="h1" {...props} />
+  (props, ref) => <HeadingWithAnchor ref={ref} as="h1" level="h1" {...props} />
 );
 H1.displayName = "H1";
 
 export const H2 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <Heading ref={ref} as="h2" level="h2" {...props} />
+  (props, ref) => <HeadingWithAnchor ref={ref} as="h2" level="h2" {...props} />
 );
 H2.displayName = "H2";
 
 export const H3 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <Heading ref={ref} as="h3" level="h3" {...props} />
+  (props, ref) => <HeadingWithAnchor ref={ref} as="h3" level="h3" {...props} />
 );
 H3.displayName = "H3";
 
 export const H4 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <Heading ref={ref} as="h4" level="h4" {...props} />
+  (props, ref) => <HeadingWithAnchor ref={ref} as="h4" level="h4" {...props} />
 );
 H4.displayName = "H4";
 
 export const H5 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <Heading ref={ref} as="h5" level="h5" {...props} />
+  (props, ref) => <HeadingWithAnchor ref={ref} as="h5" level="h5" {...props} />
 );
 H5.displayName = "H5";
 
 export const H6 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <Heading ref={ref} as="h6" level="h6" {...props} />
+  (props, ref) => <HeadingWithAnchor ref={ref} as="h6" level="h6" {...props} />
 );
 H6.displayName = "H6";

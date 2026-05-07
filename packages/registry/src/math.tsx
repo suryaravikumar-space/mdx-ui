@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import katex from "katex"
-import { cn } from "./lib/utils"
+import { cn } from "@/lib/utils"
 
 interface MathProps {
   children: string
@@ -17,7 +17,6 @@ export function Math({ children, block = false, className }: MathProps) {
         displayMode: block,
         throwOnError: false,
         trust: false,
-        // chemistry support via mhchem macro pattern
         macros: {
           "\\R": "\\mathbb{R}",
           "\\N": "\\mathbb{N}",

@@ -1,4 +1,5 @@
 import * as React from "react"
+import { cn } from "@/lib/utils"
 
 export interface HorizontalRuleProps {
   className?: string
@@ -6,17 +7,17 @@ export interface HorizontalRuleProps {
 }
 
 export function HorizontalRule({
-  className = "",
+  className,
   variant = "default"
 }: HorizontalRuleProps) {
   const variantStyles = {
-    default: "border-t border-gray-300 dark:border-gray-700",
-    dashed: "border-t border-dashed border-gray-300 dark:border-gray-700",
-    dotted: "border-t border-dotted border-gray-300 dark:border-gray-700",
-    gradient: "h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent border-0"
+    default: "border-t border-border",
+    dashed: "border-t border-dashed border-border",
+    dotted: "border-t border-dotted border-border",
+    gradient: "h-px bg-gradient-to-r from-transparent via-border to-transparent border-0"
   }
 
   return (
-    <hr className={`my-8 ${variantStyles[variant]} ${className}`} />
+    <hr className={cn("my-8", variantStyles[variant], className)} />
   )
 }

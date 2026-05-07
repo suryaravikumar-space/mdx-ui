@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { cn } from "./lib/utils"
+import { cn } from "@/lib/utils"
 
 interface TreeProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
@@ -64,12 +64,12 @@ export function TreeItem({
   const Icon = () => {
     if (isFolder) {
       return (
-        <span className="mr-1 text-blue-500">
+        <span className="mr-1 text-primary">
           {isOpen ? "📂" : "📁"}
         </span>
       )
     }
-    return <span className="mr-1 text-gray-400">📄</span>
+    return <span className="mr-1 text-muted-foreground">📄</span>
   }
 
   // Tree line characters

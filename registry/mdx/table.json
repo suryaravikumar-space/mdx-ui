@@ -1,7 +1,7 @@
 {
   "name": "table",
   "type": "component",
-  "description": "Styled responsive table with header, body, footer and caption",
+  "description": "Styled table components with header, body, footer, and caption",
   "dependencies": [
     "clsx",
     "tailwind-merge"

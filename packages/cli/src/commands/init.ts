@@ -312,7 +312,7 @@ const TAILWIND_THEME_EXTENSIONS = `
         sm: "calc(var(--radius) - 4px)",
       },`
 
-async function setupGlobalCSS(_framework: Framework, hasSrc: boolean, cwd: string, spinner: ReturnType<typeof ora>) {
+async function setupGlobalCSS(framework: Framework, hasSrc: boolean, cwd: string, spinner: ReturnType<typeof ora>) {
   const candidatePaths = hasSrc
     ? [
         path.join(cwd, "src/app/globals.css"),
@@ -334,14 +334,40 @@ async function setupGlobalCSS(_framework: Framework, hasSrc: boolean, cwd: strin
     }
   }
 
-  if (!cssPath) return
+  // No CSS file found — create one for React/Vite projects
+  if (!cssPath) {
+    if (framework === "react" || framework === "nextjs") {
+      cssPath = hasSrc
+        ? path.join(cwd, "src/index.css")
+        : path.join(cwd, "index.css")
+      const tailwindDirectives = `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n`
+      await fs.writeFile(cssPath, tailwindDirectives + CSS_VARS_BLOCK)
+      spinner.text = `Created ${path.relative(cwd, cssPath)} with CSS variable tokens`
+
+      // Check if main entry already imports a CSS file
+      const mainFiles = ["src/main.tsx", "src/main.ts", "src/index.tsx", "src/index.ts", "main.tsx", "main.ts"]
+      for (const mainFile of mainFiles) {
+        const mainPath = path.join(cwd, mainFile)
+        if (!(await fs.pathExists(mainPath))) continue
+        const mainContent = await fs.readFile(mainPath, "utf-8")
+        const cssRelative = path.relative(path.dirname(mainPath), cssPath).replace(/\\/g, "/")
+        const importLine = `./${cssRelative}`
+        if (!mainContent.includes(".css")) {
+          await fs.writeFile(mainPath, `import "${importLine}"\n` + mainContent)
+          spinner.text = `Added CSS import to ${mainFile}`
+        }
+        break
+      }
+    }
+    return
+  }
 
   try {
     const content = await fs.readFile(cssPath, "utf-8")
     // Skip if CSS variables already defined
     if (content.includes("--background:") || content.includes("--foreground:")) return
     await fs.appendFile(cssPath, CSS_VARS_BLOCK)
-    spinner.text = "Added CSS variable tokens to globals.css"
+    spinner.text = `Added CSS variable tokens to ${path.relative(cwd, cssPath)}`
   } catch {
     // non-fatal
   }

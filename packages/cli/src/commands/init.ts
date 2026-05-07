@@ -63,6 +63,11 @@ export const init = new Command()
       // Framework-specific setup
       await setupFramework(structure.framework, cwd, spinner)
 
+      // Set up @/ path alias
+      if (config.typescript) {
+        await setupPathAlias(structure.framework, structure.hasSrc, cwd, spinner)
+      }
+
       await fs.writeJSON(
         path.join(cwd, "mdx-ui.json"),
         {
@@ -80,6 +85,9 @@ export const init = new Command()
       console.log(chalk.green("\n✓ Created mdx-ui.json"))
       console.log(chalk.green(`✓ Created ${config.componentsDir}/`))
       console.log(chalk.green(`✓ Created ${structure.libDir}/utils.${ext}`))
+      if (config.typescript && structure.framework !== "nextjs") {
+        console.log(chalk.green("✓ Configured @/ path alias in tsconfig and vite.config"))
+      }
 
       printNextSteps(structure.framework)
     } catch (error) {
@@ -119,6 +127,84 @@ async function setupFramework(framework: Framework, cwd: string, spinner: Return
       content = content.replace(/integrations:\s*\[/, "integrations: [\n    react(),")
       await fs.writeFile(astroConfig, content)
     }
+  }
+}
+
+async function setupPathAlias(framework: Framework, hasSrc: boolean, cwd: string, spinner: ReturnType<typeof ora>) {
+  // Next.js already configures @/ alias — skip
+  if (framework === "nextjs") return
+
+  const aliasTarget = hasSrc ? "./src" : "."
+  const aliasTargetTs = hasSrc ? ["./src/*"] : ["./*"]
+
+  // Patch tsconfig.json
+  const tsconfigPaths = [
+    path.join(cwd, "tsconfig.app.json"), // Vite generates this
+    path.join(cwd, "tsconfig.json"),
+  ]
+
+  for (const tsconfigPath of tsconfigPaths) {
+    if (!(await fs.pathExists(tsconfigPath))) continue
+    try {
+      const tsconfig = await fs.readJSON(tsconfigPath)
+      tsconfig.compilerOptions = tsconfig.compilerOptions ?? {}
+      tsconfig.compilerOptions.baseUrl = "."
+      tsconfig.compilerOptions.paths = {
+        ...(tsconfig.compilerOptions.paths ?? {}),
+        "@/*": aliasTargetTs,
+      }
+      await fs.writeJSON(tsconfigPath, tsconfig, { spaces: 2 })
+      spinner.text = `Patched ${path.basename(tsconfigPath)} with @/ alias`
+    } catch {
+      // non-fatal
+    }
+  }
+
+  // Patch vite.config.ts / vite.config.js
+  const viteConfigPaths = [
+    path.join(cwd, "vite.config.ts"),
+    path.join(cwd, "vite.config.js"),
+    path.join(cwd, "vite.config.mts"),
+  ]
+
+  for (const viteConfigPath of viteConfigPaths) {
+    if (!(await fs.pathExists(viteConfigPath))) continue
+    try {
+      let content = await fs.readFile(viteConfigPath, "utf-8")
+
+      // Add path import if missing
+      if (!content.includes("import path from")) {
+        content = `import path from "path"\n` + content
+      }
+
+      // Add resolve.alias if missing
+      if (!content.includes("resolve:") && !content.includes("alias:")) {
+        content = content.replace(
+          /defineConfig\s*\(\s*\{/,
+          `defineConfig({\n  resolve: {\n    alias: {\n      "@": path.resolve(__dirname, "${aliasTarget}"),\n    },\n  },`
+        )
+      }
+
+      await fs.writeFile(viteConfigPath, content)
+      spinner.text = `Patched ${path.basename(viteConfigPath)} with @/ alias`
+
+      // Ensure @types/node is installed for path module
+      const pkg = await fs.readJSON(path.join(cwd, "package.json"))
+      const deps = { ...pkg.dependencies, ...pkg.devDependencies }
+      if (!("@types/node" in deps)) {
+        spinner.text = "Installing @types/node..."
+        const pm = (await fs.pathExists(path.join(cwd, "pnpm-lock.yaml")))
+          ? "pnpm"
+          : (await fs.pathExists(path.join(cwd, "yarn.lock")))
+          ? "yarn"
+          : "npm"
+        const addCmd = pm === "npm" ? "install" : "add"
+        await execa(pm, [addCmd, "-D", "@types/node"], { cwd })
+      }
+    } catch {
+      // non-fatal
+    }
+    break // only patch the first vite config found
   }
 }
 

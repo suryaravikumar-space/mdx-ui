@@ -1,6 +1,0 @@
-{
-  "framework": "nextjs",
-  "buildCommand": "pnpm --filter=@mdx-ui/www build",
-  "outputDirectory": "apps/www/.next",
-  "installCommand": "pnpm install --frozen-lockfile"
-}

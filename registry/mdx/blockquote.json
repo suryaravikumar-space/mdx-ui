@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "blockquote.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface BlockquoteProps {\n  children: React.ReactNode\n  className?: string\n  cite?: string\n}\n\nexport function Blockquote({ children, className, cite }: BlockquoteProps) {\n  return (\n    <blockquote\n      className={cn(\n        \"border-l-4 border-blue-500 pl-4 py-2 my-4 italic text-gray-700 dark:text-gray-300 bg-blue-50 dark:bg-blue-950/30\",\n        className\n      )}\n    >\n      {children}\n      {cite && (\n        <footer className=\"text-sm text-gray-600 dark:text-gray-400 mt-2 not-italic\">\n          \u2014 {cite}\n        </footer>\n      )}\n    </blockquote>\n  )\n}\n"
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface BlockquoteProps {\n  children: React.ReactNode\n  className?: string\n  cite?: string\n}\n\nexport function Blockquote({ children, className, cite }: BlockquoteProps) {\n  return (\n    <blockquote\n      className={cn(\n        \"border-l-4 border-primary pl-4 py-2 my-4 italic text-foreground bg-primary/5\",\n        className\n      )}\n    >\n      {children}\n      {cite && (\n        <footer className=\"text-sm text-muted-foreground mt-2 not-italic\">\n          \u2014 {cite}\n        </footer>\n      )}\n    </blockquote>\n  )\n}\n"
     }
   ]
 }

@@ -10,6 +10,32 @@ import { fetchComponent, type ComponentData } from "../utils/fetch-component.js"
 import { installDependencies } from "../utils/install-deps.js"
 import { writeComponent } from "../utils/write-component.js"
 
+// Maps component names to their imports and MDX element overrides
+const COMPONENT_MDX_MAP: Record<string, {
+  importFile: string
+  imports: string[]
+  elementMappings: Record<string, string>
+}> = {
+  "heading":        { importFile: "./heading",        imports: ["H1","H2","H3","H4","H5","H6"],                                                              elementMappings: { h1:"H1", h2:"H2", h3:"H3", h4:"H4", h5:"H5", h6:"H6" } },
+  "paragraph":      { importFile: "./paragraph",      imports: ["Paragraph"],                                                                                elementMappings: { p:"Paragraph" } },
+  "blockquote":     { importFile: "./blockquote",     imports: ["Blockquote"],                                                                               elementMappings: { blockquote:"Blockquote" } },
+  "list":           { importFile: "./list",           imports: ["UnorderedList","OrderedList","ListItem"],                                                    elementMappings: { ul:"UnorderedList", ol:"OrderedList", li:"ListItem" } },
+  "inline-code":    { importFile: "./inline-code",    imports: ["Code"],                                                                                     elementMappings: { code:"Code" } },
+  "image":          { importFile: "./image",          imports: ["Image"],                                                                                    elementMappings: { img:"Image" } },
+  "horizontal-rule":{ importFile: "./horizontal-rule",imports: ["HorizontalRule"],                                                                           elementMappings: { hr:"HorizontalRule" } },
+  "emphasis":       { importFile: "./emphasis",       imports: ["Strong","Em"],                                                                              elementMappings: { strong:"Strong", em:"Em" } },
+  "table":          { importFile: "./table",          imports: ["Table","TableHeader","TableBody","TableFooter","TableRow","TableHead","TableCell","TableCaption"], elementMappings: { table:"Table", thead:"TableHeader", tbody:"TableBody", tfoot:"TableFooter", tr:"TableRow", th:"TableHead", td:"TableCell" } },
+  "callout":        { importFile: "./callout",        imports: ["Callout"],                                                                                  elementMappings: {} },
+  "tabs":           { importFile: "./tabs",           imports: ["Tabs","TabsList","TabsTrigger","TabsContent"],                                               elementMappings: {} },
+  "steps":          { importFile: "./steps",          imports: ["Steps","Step"],                                                                             elementMappings: {} },
+  "tree":           { importFile: "./tree",           imports: ["Tree","TreeItem"],                                                                          elementMappings: {} },
+  "file-tree":      { importFile: "./file-tree",      imports: ["FileTree"],                                                                                 elementMappings: {} },
+  "badge":          { importFile: "./badge",          imports: ["Badge"],                                                                                    elementMappings: {} },
+  "math":           { importFile: "./math",           imports: ["Math","BlockMath","InlineMath"],                                                            elementMappings: {} },
+  "mermaid":        { importFile: "./mermaid",        imports: ["Mermaid"],                                                                                  elementMappings: {} },
+  "code-block":     { importFile: "./code-block",     imports: ["CodeBlock"],                                                                                elementMappings: {} },
+}
+
 interface RegistryComponent {
   name: string
   type: string
@@ -20,6 +46,71 @@ interface RegistryComponent {
 
 interface Registry {
   components: RegistryComponent[]
+}
+
+async function patchMdxComponents(
+  componentName: string,
+  componentsDir: string,
+  cwd: string
+): Promise<void> {
+  const mapping = COMPONENT_MDX_MAP[componentName]
+  if (!mapping) return
+
+  const mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx")
+  if (!(await fs.pathExists(mdxPath))) return
+
+  let content = await fs.readFile(mdxPath, "utf-8")
+
+  const IMPORTS_START = "// @mdx-ui-imports-start"
+  const IMPORTS_END   = "// @mdx-ui-imports-end"
+  const MAP_START     = "// @mdx-ui-mappings-start"
+  const MAP_END       = "// @mdx-ui-mappings-end"
+
+  // --- patch imports block ---
+  const iStart = content.indexOf(IMPORTS_START)
+  const iEnd   = content.indexOf(IMPORTS_END)
+  if (iStart !== -1 && iEnd !== -1) {
+    const block = content.slice(iStart + IMPORTS_START.length, iEnd)
+    if (!block.includes(mapping.importFile)) {
+      const line = `\nimport { ${mapping.imports.join(", ")} } from "${mapping.importFile}"`
+      content =
+        content.slice(0, iStart + IMPORTS_START.length) +
+        block + line + "\n" +
+        content.slice(iEnd)
+    }
+  }
+
+  // --- patch mappings block ---
+  const mStart = content.indexOf(MAP_START)
+  const mEnd   = content.indexOf(MAP_END)
+  if (mStart !== -1 && mEnd !== -1) {
+    const block = content.slice(mStart + MAP_START.length, mEnd)
+    let additions = ""
+
+    // Element mappings (h1: H1, ul: UnorderedList, etc.)
+    for (const [element, component] of Object.entries(mapping.elementMappings)) {
+      if (!block.includes(`${element}:`)) {
+        additions += `\n    ${element}: ${component},`
+      }
+    }
+
+    // Standalone named exports (Callout, Tabs, etc.)
+    for (const exportName of mapping.imports) {
+      const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName)
+      if (!alreadyMapped && !block.includes(`${exportName},`) && !block.includes(`${exportName}:`)) {
+        additions += `\n    ${exportName},`
+      }
+    }
+
+    if (additions) {
+      content =
+        content.slice(0, mStart + MAP_START.length) +
+        block + additions + "\n    " +
+        content.slice(mEnd)
+    }
+  }
+
+  await fs.writeFile(mdxPath, content)
 }
 
 async function loadRegistry(): Promise<Registry> {
@@ -152,6 +243,11 @@ export const add = new Command()
       // Write components to disk
       for (const data of componentsData) {
         await writeComponent(data, config)
+      }
+
+      // Patch mdx-components.tsx with static imports for each added component
+      for (const component of components) {
+        await patchMdxComponents(component, config.componentsDir, process.cwd())
       }
 
       spinner.succeed("Components added successfully!")

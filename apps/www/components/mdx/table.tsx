@@ -25,19 +25,13 @@ export function TableFooter({ className, ...props }: React.HTMLAttributes<HTMLTa
 
 export function TableRow({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) {
   return (
-    <tr
-      className={cn("border-b transition-colors hover:bg-muted/50", className)}
-      {...props}
-    />
+    <tr className={cn("border-b transition-colors hover:bg-muted/50", className)} {...props} />
   )
 }
 
 export function TableHead({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
   return (
-    <th
-      className={cn("h-12 px-4 text-left align-middle font-medium text-muted-foreground", className)}
-      {...props}
-    />
+    <th className={cn("h-12 px-4 text-left align-middle font-medium text-muted-foreground", className)} {...props} />
   )
 }
 

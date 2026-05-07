@@ -1,4 +1,6 @@
 import { useMDXComponent } from "next-contentlayer2/hooks";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/mdx/accordion";
+import { Badge } from "@/components/mdx/badge";
 import { Blockquote } from "@/components/mdx/blockquote";
 import { Callout } from "@/components/mdx/callout";
 import { Steps, Step } from "@/components/mdx/steps";
@@ -13,6 +15,11 @@ import { Mermaid } from "@/components/mdx/mermaid";
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/mdx/table";
 
 const components = {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  Badge,
   Blockquote,
   Callout,
   Steps,

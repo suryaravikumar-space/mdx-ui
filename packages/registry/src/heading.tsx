@@ -57,35 +57,31 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
 );
 Heading.displayName = "Heading";
 
-function HeadingWithAnchor({
-  as,
-  level,
-  children,
-  id,
-  className,
-  ...props
-}: HeadingProps) {
-  const slug = id ?? slugify(getTextContent(children));
-  return (
-    <Heading
-      as={as}
-      level={level}
-      id={slug}
-      className={cn("group relative", className)}
-      {...props}
-    >
-      {children}
-      <a
-        href={`#${slug}`}
-        className="ml-2 opacity-0 group-hover:opacity-60 transition-opacity text-muted-foreground no-underline font-normal"
-        aria-hidden="true"
-        tabIndex={-1}
+const HeadingWithAnchor = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+  function HeadingWithAnchor({ as, level, children, id, className, ...props }, ref) {
+    const slug = id ?? slugify(getTextContent(children));
+    return (
+      <Heading
+        ref={ref}
+        as={as}
+        level={level}
+        id={slug}
+        className={cn("group relative", className)}
+        {...props}
       >
-        #
-      </a>
-    </Heading>
-  );
-}
+        {children}
+        <a
+          href={`#${slug}`}
+          className="ml-2 opacity-0 group-hover:opacity-60 transition-opacity text-muted-foreground no-underline font-normal"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          #
+        </a>
+      </Heading>
+    );
+  }
+);
 
 export const H1 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
   (props, ref) => <HeadingWithAnchor ref={ref} as="h1" level="h1" {...props} />

@@ -60,12 +60,12 @@ function TreeItemInternal({ node, children, level }: TreeItemInternalProps) {
   const Icon = () => {
     if (node.isFolder) {
       return (
-        <span className="mr-1 text-blue-500">
+        <span className="mr-1 text-primary">
           {isOpen ? "📂" : "📁"}
         </span>
       )
     }
-    return <span className="mr-1 text-gray-400">📄</span>
+    return <span className="mr-1 text-muted-foreground">📄</span>
   }
 
   // Tree line characters

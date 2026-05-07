@@ -3,6 +3,7 @@ import chalk from "chalk"
 import fs from "fs-extra"
 import path from "path"
 import { fileURLToPath } from "url"
+import { getConfig } from "../utils/get-config.js"
 
 interface RegistryComponent {
   name: string
@@ -38,6 +39,7 @@ async function loadRegistry(): Promise<Registry> {
   // Fallback if registry.json not found
   return {
     components: [
+      { name: "accordion", type: "mdx", description: "Collapsible accordion sections", files: [], registryDependencies: ["utils"] },
       { name: "blockquote", type: "mdx", description: "Styled quote blocks with optional citation", files: [] },
       { name: "callout", type: "mdx", description: "Alert boxes for important information", files: [], registryDependencies: ["utils"] },
       { name: "code-block", type: "mdx", description: "Syntax highlighted code blocks", files: [], registryDependencies: ["utils"] },
@@ -61,8 +63,46 @@ async function loadRegistry(): Promise<Registry> {
 export const list = new Command()
   .name("list")
   .description("List all available components")
-  .action(async () => {
+  .option("-i, --installed", "show only installed components")
+  .action(async (opts: { installed?: boolean }) => {
     console.log()
+
+    if (opts.installed) {
+      const config = await getConfig()
+      if (!config) {
+        console.log(chalk.red("✗ No mdx-ui.json found."))
+        console.log(chalk.yellow("  Run: npx @ravikumarsurya/mdx-ui init\n"))
+        process.exit(1)
+      }
+
+      const cwd = process.cwd()
+      const dir = path.join(cwd, config.componentsDir)
+
+      if (!(await fs.pathExists(dir))) {
+        console.log(chalk.yellow("No components installed yet."))
+        console.log(chalk.dim("  Run: npx @ravikumarsurya/mdx-ui add\n"))
+        process.exit(0)
+      }
+
+      const files = await fs.readdir(dir)
+      const installed = files
+        .filter(f => f.endsWith(".tsx") && f !== "mdx-components.tsx")
+        .map(f => f.replace(".tsx", ""))
+
+      if (installed.length === 0) {
+        console.log(chalk.yellow("No components installed yet."))
+        console.log(chalk.dim("  Run: npx @ravikumarsurya/mdx-ui add\n"))
+        process.exit(0)
+      }
+
+      console.log(chalk.bold(`Installed components (${installed.length}):\n`))
+      for (const name of installed.sort()) {
+        console.log(chalk.green(`  ✓ ${name}`))
+      }
+      console.log()
+      return
+    }
+
     console.log(chalk.bold("Available components:\n"))
 
     const registry = await loadRegistry()

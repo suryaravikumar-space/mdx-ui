@@ -43,8 +43,8 @@ export async function fetchComponent(name: string): Promise<ComponentData> {
     return response.data
   } catch (error: any) {
     if (error.response?.status === 404) {
-      throw new Error(`Component "${name}" not found`)
+      throw new Error(`Component "${name}" not found. Run: npx @ravikumarsurya/mdx-ui list`)
     }
-    throw new Error(`Failed to fetch component: ${error.message}`)
+    throw new Error(`Could not fetch "${name}" — check your internet connection`)
   }
 }

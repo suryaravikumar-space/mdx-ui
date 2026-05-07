@@ -16,6 +16,7 @@ const COMPONENT_MDX_MAP: Record<string, {
   imports: string[]
   elementMappings: Record<string, string>
 }> = {
+  "accordion":      { importFile: "./accordion",      imports: ["Accordion","AccordionItem","AccordionTrigger","AccordionContent"],                           elementMappings: {} },
   "heading":        { importFile: "./heading",        imports: ["H1","H2","H3","H4","H5","H6"],                                                              elementMappings: { h1:"H1", h2:"H2", h3:"H3", h4:"H4", h5:"H5", h6:"H6" } },
   "paragraph":      { importFile: "./paragraph",      imports: ["Paragraph"],                                                                                elementMappings: { p:"Paragraph" } },
   "blockquote":     { importFile: "./blockquote",     imports: ["Blockquote"],                                                                               elementMappings: { blockquote:"Blockquote" } },
@@ -133,6 +134,7 @@ async function loadRegistry(): Promise<Registry> {
 
   return {
     components: [
+      { name: "accordion", type: "mdx", description: "Collapsible accordion sections", files: [] },
       { name: "blockquote", type: "mdx", description: "Styled quote blocks", files: [] },
       { name: "callout", type: "mdx", description: "Alert boxes", files: [] },
       { name: "code-block", type: "mdx", description: "Code blocks", files: [] },

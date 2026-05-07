@@ -2,6 +2,17 @@
   "$schema": "./schema.json",
   "components": [
     {
+      "name": "accordion",
+      "type": "mdx",
+      "description": "Collapsible accordion sections with single or multiple open items",
+      "files": [
+        "mdx/accordion.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "badge",
       "type": "mdx",
       "description": "Status badges with multiple variants (default, success, warning, info, destructive)",

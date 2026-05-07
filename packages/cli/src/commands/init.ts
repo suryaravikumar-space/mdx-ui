@@ -70,8 +70,9 @@ export const init = new Command()
 
       // Set up CSS variable tokens
       if (config.tailwind) {
-        await setupGlobalCSS(structure.framework, structure.hasSrc, cwd, spinner)
-        await setupTailwindConfig(cwd, spinner)
+        const twVersion = await detectTailwindVersion(cwd)
+        await setupGlobalCSS(structure.framework, structure.hasSrc, cwd, twVersion, spinner)
+        await setupTailwindConfig(cwd, twVersion, spinner)
       }
 
       await fs.writeJSON(
@@ -217,8 +218,8 @@ async function setupPathAlias(framework: Framework, hasSrc: boolean, cwd: string
   }
 }
 
-const CSS_VARS_BLOCK = `
-@layer base {
+// Raw CSS variable values (framework/version agnostic)
+const CSS_VARS_ROOT = `
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
@@ -241,7 +242,6 @@ const CSS_VARS_BLOCK = `
     --ring: 222.2 47.4% 11.2%;
     --radius: 0.5rem;
   }
-
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -262,19 +262,59 @@ const CSS_VARS_BLOCK = `
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-  }
+  }`
 
+// Tailwind v3 — uses @layer base + @apply
+const CSS_VARS_BLOCK_V3 = `
+@layer base {${CSS_VARS_ROOT}
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
 }
 `
 
-const TAILWIND_THEME_EXTENSIONS = `
+// Tailwind v4 — @layer base and @apply not required; use @theme inline for token mapping
+const CSS_VARS_BLOCK_V4 = `
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+${CSS_VARS_ROOT}
+
+*, *::before, *::after {
+  border-color: hsl(var(--border));
+}
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+`
+
+// Tailwind v3 tailwind.config theme.extend patch
+const TAILWIND_V3_THEME_EXTENSIONS = `
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -312,19 +352,35 @@ const TAILWIND_THEME_EXTENSIONS = `
         sm: "calc(var(--radius) - 4px)",
       },`
 
-async function setupGlobalCSS(framework: Framework, hasSrc: boolean, cwd: string, spinner: ReturnType<typeof ora>) {
-  const candidatePaths = hasSrc
-    ? [
-        path.join(cwd, "src/app/globals.css"),
-        path.join(cwd, "src/index.css"),
-        path.join(cwd, "src/globals.css"),
-      ]
-    : [
-        path.join(cwd, "app/globals.css"),
-        path.join(cwd, "src/app/globals.css"),
-        path.join(cwd, "index.css"),
-        path.join(cwd, "globals.css"),
-      ]
+async function detectTailwindVersion(cwd: string): Promise<4 | 3> {
+  try {
+    const pkg = await fs.readJSON(path.join(cwd, "package.json"))
+    const deps = { ...pkg.dependencies, ...pkg.devDependencies }
+    const version: string = deps["tailwindcss"] ?? ""
+    return version.match(/^\^?4/) ? 4 : 3
+  } catch {
+    return 3
+  }
+}
+
+async function setupGlobalCSS(
+  _framework: Framework,
+  hasSrc: boolean,
+  cwd: string,
+  twVersion: 4 | 3,
+  spinner: ReturnType<typeof ora>
+) {
+  // All known CSS entry-point paths across all frameworks
+  const candidatePaths = [
+    path.join(cwd, "src/app/globals.css"),    // Next.js App Router (src)
+    path.join(cwd, "app/globals.css"),         // Next.js App Router (root)
+    path.join(cwd, "src/styles/globals.css"),  // Astro / custom
+    path.join(cwd, "src/styles/global.css"),   // Astro / custom
+    path.join(cwd, "src/index.css"),           // Vite React
+    path.join(cwd, "src/globals.css"),         // custom
+    path.join(cwd, "index.css"),               // root-level
+    path.join(cwd, "globals.css"),             // root-level
+  ]
 
   let cssPath: string | null = null
   for (const p of candidatePaths) {
@@ -334,46 +390,53 @@ async function setupGlobalCSS(framework: Framework, hasSrc: boolean, cwd: string
     }
   }
 
-  // No CSS file found — create one for React/Vite projects
-  if (!cssPath) {
-    if (framework === "react" || framework === "nextjs") {
-      cssPath = hasSrc
-        ? path.join(cwd, "src/index.css")
-        : path.join(cwd, "index.css")
-      const tailwindDirectives = `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n`
-      await fs.writeFile(cssPath, tailwindDirectives + CSS_VARS_BLOCK)
-      spinner.text = `Created ${path.relative(cwd, cssPath)} with CSS variable tokens`
+  const cssVarsBlock = twVersion === 4 ? CSS_VARS_BLOCK_V4 : CSS_VARS_BLOCK_V3
+  const twDirectives = twVersion === 4
+    ? `@import "tailwindcss";\n`
+    : `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n`
 
-      // Check if main entry already imports a CSS file
-      const mainFiles = ["src/main.tsx", "src/main.ts", "src/index.tsx", "src/index.ts", "main.tsx", "main.ts"]
-      for (const mainFile of mainFiles) {
-        const mainPath = path.join(cwd, mainFile)
-        if (!(await fs.pathExists(mainPath))) continue
-        const mainContent = await fs.readFile(mainPath, "utf-8")
-        const cssRelative = path.relative(path.dirname(mainPath), cssPath).replace(/\\/g, "/")
-        const importLine = `./${cssRelative}`
-        if (!mainContent.includes(".css")) {
-          await fs.writeFile(mainPath, `import "${importLine}"\n` + mainContent)
-          spinner.text = `Added CSS import to ${mainFile}`
-        }
-        break
+  // No CSS file found — create one
+  if (!cssPath) {
+    cssPath = hasSrc
+      ? path.join(cwd, "src/index.css")
+      : path.join(cwd, "index.css")
+    await fs.ensureDir(path.dirname(cssPath))
+    await fs.writeFile(cssPath, twDirectives + cssVarsBlock)
+    spinner.text = `Created ${path.relative(cwd, cssPath)} with CSS variable tokens`
+
+    // Auto-inject import into JS/TS entry files
+    const entryFiles = [
+      "src/main.tsx", "src/main.ts", "src/index.tsx", "src/index.ts",
+      "main.tsx", "main.ts", "src/entry.ts", "src/entry.tsx",
+    ]
+    for (const entry of entryFiles) {
+      const entryPath = path.join(cwd, entry)
+      if (!(await fs.pathExists(entryPath))) continue
+      const entryContent = await fs.readFile(entryPath, "utf-8")
+      if (!entryContent.includes(".css")) {
+        const rel = path.relative(path.dirname(entryPath), cssPath).replace(/\\/g, "/")
+        await fs.writeFile(entryPath, `import "./${rel}"\n` + entryContent)
+        spinner.text = `Added CSS import to ${entry}`
       }
+      break
     }
     return
   }
 
   try {
     const content = await fs.readFile(cssPath, "utf-8")
-    // Skip if CSS variables already defined
     if (content.includes("--background:") || content.includes("--foreground:")) return
-    await fs.appendFile(cssPath, CSS_VARS_BLOCK)
+    await fs.appendFile(cssPath, cssVarsBlock)
     spinner.text = `Added CSS variable tokens to ${path.relative(cwd, cssPath)}`
   } catch {
     // non-fatal
   }
 }
 
-async function setupTailwindConfig(cwd: string, spinner: ReturnType<typeof ora>) {
+async function setupTailwindConfig(cwd: string, twVersion: 4 | 3, spinner: ReturnType<typeof ora>) {
+  // Tailwind v4 stores all config in CSS — no tailwind.config file to patch
+  if (twVersion === 4) return
+
   const configPaths = [
     path.join(cwd, "tailwind.config.ts"),
     path.join(cwd, "tailwind.config.js"),
@@ -393,19 +456,17 @@ async function setupTailwindConfig(cwd: string, spinner: ReturnType<typeof ora>)
 
   try {
     let content = await fs.readFile(configPath, "utf-8")
-    // Skip if already configured
     if (content.includes("hsl(var(--background))") || content.includes("--background")) return
 
-    // Patch theme.extend with CSS variable colors
     if (content.includes("extend:")) {
       content = content.replace(
         /extend:\s*\{/,
-        `extend: {\n${TAILWIND_THEME_EXTENSIONS}`
+        `extend: {\n${TAILWIND_V3_THEME_EXTENSIONS}`
       )
     } else if (content.includes("theme:")) {
       content = content.replace(
         /theme:\s*\{/,
-        `theme: {\n    extend: {\n${TAILWIND_THEME_EXTENSIONS}\n    },`
+        `theme: {\n    extend: {\n${TAILWIND_V3_THEME_EXTENSIONS}\n    },`
       )
     }
 

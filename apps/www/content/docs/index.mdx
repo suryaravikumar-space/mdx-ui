@@ -1,64 +1,94 @@
 ---
 title: Introduction
-description: Beautiful MDX components for your documentation
+description: Copy-paste MDX components for documentation sites
 published: true
 ---
 
-## Overview
+## What is mdx-ui?
 
-mdx-ui is a collection of beautifully designed, accessible, and customizable MDX components that you can copy and paste into your apps.
+mdx-ui is a collection of 22 ready-to-use MDX components for documentation sites. Components are copied directly into your project — not installed as a dependency — so you own the code and can modify it freely.
 
-Built with React, TypeScript, and Tailwind CSS. Following the shadcn/ui philosophy of copy & paste components rather than installing as dependencies.
-
-## Features
-
-- **13 Production-Ready Components** - From blockquotes to interactive tabs
-- **Fully Customizable** - Built with Tailwind CSS for easy styling
-- **TypeScript Support** - Full type safety out of the box
-- **Dark Mode Ready** - All components support dark mode
-- **Accessible** - Built with accessibility in mind
-- **CLI Tool** - Easy installation with automatic dependency resolution
+Built with React, TypeScript, and Tailwind CSS. Inspired by [shadcn/ui](https://ui.shadcn.com).
 
 ## Quick Start
 
-Get started by installing the CLI:
+**1. Initialize your project**
 
 ```bash
-npm install -g mdx-ui
+npx @ravikumarsurya/mdx-ui init
 ```
 
-Then add components to your project:
+This creates `mdx-ui.json`, injects CSS variables into your `globals.css`, and patches `tailwind.config` if needed. Works with Tailwind v3 and v4.
+
+**2. Add components**
 
 ```bash
-npx mdx-ui add blockquote callout
+npx @ravikumarsurya/mdx-ui add callout tabs code-block accordion
 ```
 
-The CLI will automatically:
-- Copy component files to your project
-- Install required npm dependencies
-- Resolve registry dependencies (like the `utils` helper)
+Or run with no arguments for an interactive picker:
 
-## Philosophy
+```bash
+npx @ravikumarsurya/mdx-ui
+```
 
-This project follows the [shadcn/ui](https://ui.shadcn.com) approach:
+**3. Use in MDX**
 
-- **Copy & Paste** - Components are added to your project, not installed as dependencies
-- **Own Your Code** - Modify components however you need
-- **Composable** - Build complex UIs by combining simple components
-- **Accessible** - Components follow accessibility best practices
+Components are written to your `componentsDir` and wired into `mdx-components.tsx` automatically:
+
+```mdx
+<Callout variant="info">
+  This is wired up automatically after running add.
+</Callout>
+
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">npm install my-package</TabsContent>
+  <TabsContent value="pnpm">pnpm add my-package</TabsContent>
+</Tabs>
+```
+
+## CLI Commands
+
+| Command | Description |
+| --- | --- |
+| `init` | Set up mdx-ui in your project |
+| `add [components...]` | Add components to your project |
+| `update [components...]` | Update installed components to latest |
+| `list` | Show all available components |
+| `list --installed` | Show only installed components |
 
 ## Components
 
-Browse our collection of MDX components designed for documentation:
+### Typography
+[Heading](/docs/components/heading) · [Headings](/docs/components/headings) · [Paragraph](/docs/components/paragraph) · [Emphasis](/docs/components/emphasis) · [List](/docs/components/list) · [Blockquote](/docs/components/blockquote) · [Horizontal Rule](/docs/components/horizontal-rule) · [Image](/docs/components/image)
 
-- **[Blockquote](/docs/components/blockquote)** - Styled quote blocks
-- **[Callout](/docs/components/callout)** - Alert boxes with variants
-- **[Steps](/docs/components/steps)** - Step-by-step guides
-- **[Tabs](/docs/components/tabs)** - Tabbed content sections
-- And 9 more components...
+### Interactive
+[Accordion](/docs/components/accordion) · [Tabs](/docs/components/tabs) · [Steps](/docs/components/steps) · [Tree](/docs/components/tree) · [File Tree](/docs/components/file-tree)
 
-## Next Steps
+### Code & Math
+[Code Block](/docs/components/code-block) · [Inline Code](/docs/components/inline-code) · [Math](/docs/components/math) · [Mermaid](/docs/components/mermaid)
 
-- [Installation Guide](/docs/installation) - Set up your project
-- [CLI Documentation](/docs/cli) - Learn about the CLI tool
-- [Browse Components](/docs/components/blockquote) - Explore all components
+### Callouts & Data
+[Callout](/docs/components/callout) · [Badge](/docs/components/badge) · [Table](/docs/components/table)
+
+## Philosophy
+
+**Copy & paste, not install.** Components live in your project. Run `npx @ravikumarsurya/mdx-ui add callout` and `callout.tsx` appears in your `componentsDir`. Change whatever you want.
+
+**CSS variables, not hardcoded colors.** Every component uses `bg-muted`, `border-border`, `text-foreground`, etc. They follow your Tailwind theme and work in light and dark mode without extra config.
+
+**Zero runtime dependencies.** The CLI is a dev tool. The components themselves have no shared runtime — each is a standalone `.tsx` file.
+
+## Framework Support
+
+Works with any framework that supports MDX and React:
+
+- **Next.js** (App Router and Pages Router)
+- **Vite React**
+- **Astro**
+
+`init` auto-detects your framework and configures CSS accordingly.

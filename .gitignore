@@ -49,5 +49,5 @@ key.pub
 code_git_npmjs_flow.txt
 TwoRegistryLocationsExplained.txt
 
-# Markdown files
-*.md
+# Personal notes (keep actual README and docs tracked)
+*.txt

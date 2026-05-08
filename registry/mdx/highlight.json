@@ -1,0 +1,19 @@
+{
+  "name": "highlight",
+  "type": "component",
+  "description": "Marker-style inline text highlight — simulates a real highlighter pen with yellow, blue, green, pink, or purple colours",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "highlight.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\n// Marker-style highlight: transparent top 45%, colour bottom 55%\n// Uses Tailwind arbitrary bg values so dark: variant works correctly.\nconst colorClasses: Record<string, string> = {\n  yellow: [\n    \"bg-[linear-gradient(transparent_45%,rgba(253,224,71,0.55)_45%)]\",\n    \"dark:bg-[linear-gradient(transparent_45%,rgba(253,224,71,0.22)_45%)]\",\n  ].join(\" \"),\n  blue: [\n    \"bg-[linear-gradient(transparent_45%,rgba(147,197,253,0.65)_45%)]\",\n    \"dark:bg-[linear-gradient(transparent_45%,rgba(96,165,250,0.25)_45%)]\",\n  ].join(\" \"),\n  green: [\n    \"bg-[linear-gradient(transparent_45%,rgba(134,239,172,0.65)_45%)]\",\n    \"dark:bg-[linear-gradient(transparent_45%,rgba(74,222,128,0.25)_45%)]\",\n  ].join(\" \"),\n  pink: [\n    \"bg-[linear-gradient(transparent_45%,rgba(249,168,212,0.65)_45%)]\",\n    \"dark:bg-[linear-gradient(transparent_45%,rgba(244,114,182,0.25)_45%)]\",\n  ].join(\" \"),\n  purple: [\n    \"bg-[linear-gradient(transparent_45%,rgba(216,180,254,0.65)_45%)]\",\n    \"dark:bg-[linear-gradient(transparent_45%,rgba(192,132,252,0.25)_45%)]\",\n  ].join(\" \"),\n}\n\nexport interface HighlightProps extends React.HTMLAttributes<HTMLElement> {\n  /**\n   * Highlight colour — simulates a real marker pen.\n   * @default \"yellow\"\n   */\n  color?: \"yellow\" | \"blue\" | \"green\" | \"pink\" | \"purple\"\n  children: React.ReactNode\n}\n\nexport const Highlight = React.forwardRef<HTMLElement, HighlightProps>(\n  ({ color = \"yellow\", className, children, ...props }, ref) => (\n    <mark\n      ref={ref}\n      className={cn(\n        \"rounded-sm bg-none [background-size:100%_100%] [background-repeat:no-repeat]\",\n        colorClasses[color] ?? colorClasses.yellow,\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </mark>\n  )\n)\nHighlight.displayName = \"Highlight\"\n",
+      "integrity": "sha256-HNAscMNdKAD0j5lNXTWtjJ264NBXN4BSowtaAdztuUs="
+    }
+  ]
+}

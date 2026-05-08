@@ -22,6 +22,7 @@ import { Spoiler } from "@/components/mdx/spoiler";
 import { Video } from "@/components/mdx/video";
 import { Image, ImageGlossary } from "@/components/mdx/image";
 import { DataTable } from "@/components/mdx/data-table";
+import { Highlight } from "@/components/mdx/highlight";
 import { DiffBlock } from "@/components/mdx/diff-block";
 import { Terminal, TerminalLine } from "@/components/mdx/terminal";
 import { Changelog, ChangelogEntry, ChangelogItem } from "@/components/mdx/changelog";
@@ -73,6 +74,7 @@ const components = {
   Image,
   ImageGlossary,
   DataTable,
+  Highlight,
   DiffBlock,
   Terminal,
   TerminalLine,

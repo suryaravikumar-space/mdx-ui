@@ -164,6 +164,17 @@
       ]
     },
     {
+      "name": "highlight",
+      "type": "mdx",
+      "description": "Marker-style inline text highlight — simulates a real highlighter pen with yellow, blue, green, pink, or purple colours",
+      "files": [
+        "mdx/highlight.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "horizontal-rule",
       "type": "mdx",
       "description": "Divider lines with multiple styles (default, dashed, dotted, gradient)",

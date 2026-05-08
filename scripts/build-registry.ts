@@ -92,6 +92,11 @@ const componentsMetadata: Record<string, {
     dependencies: [],
     registryDependencies: ["utils"]
   },
+  "highlight": {
+    description: "Marker-style inline text highlight — simulates a real highlighter pen with yellow, blue, green, pink, or purple colours",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
   "horizontal-rule": {
     description: "Divider lines with multiple styles (default, dashed, dotted, gradient)",
     dependencies: []

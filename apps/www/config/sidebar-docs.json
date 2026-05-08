@@ -79,6 +79,10 @@
       "path": "/docs/components/emphasis"
     },
     {
+      "title": "Highlight",
+      "path": "/docs/components/highlight"
+    },
+    {
       "title": "Horizontal Rule",
       "path": "/docs/components/horizontal-rule"
     },

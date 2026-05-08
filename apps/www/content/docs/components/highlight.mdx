@@ -1,0 +1,54 @@
+---
+title: Highlight
+description: Marker-style inline text highlight — simulates a real highlighter pen with yellow, blue, green, pink, or purple colours
+component: highlight
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add highlight
+```
+
+## Usage
+
+Wrap any inline text with `<Highlight>`. Default colour is yellow.
+
+```mdx
+React uses a <Highlight>unidirectional data flow</Highlight> model.
+
+State updates are <Highlight color="blue">asynchronous</Highlight> by default.
+```
+
+## Examples
+
+### All colours
+
+React uses a <Highlight>unidirectional data flow</Highlight> model.
+
+State updates are <Highlight color="blue">asynchronous</Highlight> by default.
+
+Never mutate state <Highlight color="green">directly</Highlight> — always use setState.
+
+Effects run <Highlight color="pink">after every render</Highlight> unless you pass a dependency array.
+
+Use <Highlight color="purple">useMemo</Highlight> to avoid expensive recalculations.
+
+### Inside a paragraph
+
+```mdx
+The <Highlight>virtual DOM</Highlight> is a lightweight copy of the real DOM.
+React uses it to compute the <Highlight color="blue">minimal set of changes</Highlight> needed before updating the browser.
+```
+
+The <Highlight>virtual DOM</Highlight> is a lightweight copy of the real DOM.
+React uses it to compute the <Highlight color="blue">minimal set of changes</Highlight> needed before updating the browser.
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `color` | `"yellow" \| "blue" \| "green" \| "pink" \| "purple"` | `"yellow"` | Highlight colour |
+| `children` | `ReactNode` | — | Content to highlight |
+| `className` | `string` | — | Extra classes |

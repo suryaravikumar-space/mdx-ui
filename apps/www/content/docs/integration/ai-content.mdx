@@ -1,0 +1,288 @@
+---
+title: AI Content Generation
+description: Generate MDX content with any LLM and have mdx-ui components render automatically — no manual editing required
+published: true
+---
+
+When an LLM generates MDX that includes mdx-ui component tags (`<Callout>`, `<Steps>`, `<DataTable>`, etc.), and you render that output with `next-mdx-remote` or contentlayer with the right component map registered, **the UI appears automatically** — no extra processing needed.
+
+This page shows you how to wire the full pipeline.
+
+---
+
+## How it works
+
+```
+LLM API call
+    │
+    │  MDX string with component tags
+    ▼
+next-mdx-remote / compileMDX
+    │
+    │  looks up components={} map
+    ▼
+React renders <Callout>, <Steps>, <DataTable>…
+    │
+    ▼
+Styled UI components appear on screen
+```
+
+The LLM generates text. Your renderer already knows about the components. Nothing extra needed in between.
+
+---
+
+## Step 1 — Register your components
+
+After running `npx @ravikumarsurya/mdx-ui add callout steps datatable highlight`, register them in your component map:
+
+```tsx
+// components/mdx-components.tsx
+import { Callout } from "@/components/mdx/callout"
+import { Steps, Step } from "@/components/mdx/steps"
+import { DataTable } from "@/components/mdx/data-table"
+import { Highlight } from "@/components/mdx/highlight"
+import { CodeBlock } from "@/components/mdx/code-block"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
+
+export const mdxComponents = {
+  Callout,
+  Steps,
+  Step,
+  DataTable,
+  Highlight,
+  CodeBlock,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  pre: CodeBlock,
+}
+```
+
+---
+
+## Step 2 — Give the LLM the component catalog
+
+Include this system prompt in your API call. The model will use our syntax instead of plain markdown.
+
+```ts
+const SYSTEM_PROMPT = `
+You are a technical writer. Output MDX — Markdown with JSX components.
+Use the following components instead of plain markdown equivalents:
+
+CALLOUTS (instead of blockquotes):
+<Callout type="info">Informational note</Callout>
+<Callout type="warning">Caution message</Callout>
+<Callout type="error">Error or danger</Callout>
+<Callout type="success">Tip or success</Callout>
+
+STEPS (instead of numbered lists for procedures):
+<Steps>
+  <Step>First action to take</Step>
+  <Step>Second action to take</Step>
+</Steps>
+
+TABLES (instead of markdown tables):
+<DataTable
+  headers={["Column A", "Column B", "Column C"]}
+  rows={[
+    ["value 1", "value 2", "value 3"],
+    ["value 4", "value 5", "value 6"],
+  ]}
+/>
+
+HIGHLIGHT (instead of bold for key terms):
+<Highlight>key term</Highlight>
+<Highlight color="blue">another term</Highlight>
+
+TABS (for showing alternatives):
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">\`\`\`bash
+npm install example
+\`\`\`</TabsContent>
+  <TabsContent value="pnpm">\`\`\`bash
+pnpm add example
+\`\`\`</TabsContent>
+</Tabs>
+
+Always use fenced code blocks with language tags for code.
+Output only the MDX content — no frontmatter, no explanation.
+`
+```
+
+---
+
+## Step 3 — Call the LLM and render the output
+
+### With OpenAI
+
+```ts
+// app/api/generate/route.ts
+import OpenAI from "openai"
+
+const openai = new OpenAI()
+
+export async function POST(req: Request) {
+  const { topic } = await req.json()
+
+  const completion = await openai.chat.completions.create({
+    model: "gpt-4o",
+    messages: [
+      { role: "system", content: SYSTEM_PROMPT },
+      { role: "user",   content: `Write a technical guide about: ${topic}` },
+    ],
+  })
+
+  const mdx = completion.choices[0].message.content ?? ""
+  return Response.json({ mdx })
+}
+```
+
+### Render the MDX output
+
+```tsx
+// app/generate/page.tsx
+import { MDXRemote } from "next-mdx-remote/rsc"
+import { mdxComponents } from "@/components/mdx-components"
+
+export default async function GeneratePage() {
+  const res = await fetch("/api/generate", {
+    method: "POST",
+    body: JSON.stringify({ topic: "React Server Components" }),
+  })
+  const { mdx } = await res.json()
+
+  return (
+    <article className="prose max-w-3xl mx-auto py-10">
+      <MDXRemote source={mdx} components={mdxComponents} />
+    </article>
+  )
+}
+```
+
+When `MDXRemote` encounters `<Callout>`, `<Steps>`, or `<DataTable>` in the LLM output, it looks them up in `mdxComponents` and renders the full UI — automatically.
+
+---
+
+## Automatic upgrade: plain markdown → components
+
+If you don't control the LLM output (third-party API, user-pasted content), use the `@ravikumarsurya/remark-mdx-ui` plugin. It upgrades standard markdown patterns to components at render time — no prompt changes needed.
+
+```bash
+npm install @ravikumarsurya/remark-mdx-ui
+```
+
+```tsx
+import { MDXRemote } from "next-mdx-remote/rsc"
+import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+import { mdxComponents } from "@/components/mdx-components"
+
+<MDXRemote
+  source={aiGeneratedMarkdown}
+  components={mdxComponents}
+  options={{
+    mdxOptions: {
+      remarkPlugins: [
+        [remarkMdxUi, { steps: true, highlight: true }]
+      ],
+    },
+  }}
+/>
+```
+
+What the plugin upgrades automatically:
+
+| AI generates | Renders as |
+| --- | --- |
+| `> [!NOTE]` / `> [!WARNING]` | `<Callout type="info/warning">` |
+| `> **Note:**` legacy syntax | `<Callout type="info">` |
+| Markdown table `\| col \|` | `<DataTable headers rows />` |
+| Numbered list | `<Steps><Step>` *(opt-in)* |
+| `==text==` | `<Highlight>` *(opt-in)* |
+
+---
+
+## With contentlayer (static MDX files)
+
+If you store AI-generated content as `.mdx` files and process them with contentlayer, add the plugin in `contentlayer.config.ts`:
+
+```ts
+import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+
+export default makeSource({
+  mdx: {
+    remarkPlugins: [
+      [remarkMdxUi, { steps: true }]
+    ],
+  },
+})
+```
+
+---
+
+## With any other LLM
+
+The system prompt and rendering pipeline work with any model:
+
+```ts
+// Anthropic Claude
+import Anthropic from "@anthropic-ai/sdk"
+const client = new Anthropic()
+const message = await client.messages.create({
+  model: "claude-opus-4-5",
+  system: SYSTEM_PROMPT,
+  messages: [{ role: "user", content: topic }],
+})
+const mdx = message.content[0].type === "text" ? message.content[0].text : ""
+```
+
+```ts
+// Google Gemini
+import { GoogleGenerativeAI } from "@google/generative-ai"
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro",
+  systemInstruction: SYSTEM_PROMPT })
+const result = await model.generateContent(topic)
+const mdx = result.response.text()
+```
+
+---
+
+## Example: what the LLM generates
+
+Given the prompt _"How to deploy a Next.js app to Vercel"_, the model outputs:
+
+````mdx
+## Deploy Next.js to Vercel
+
+<Callout type="info">
+  Vercel is the easiest way to deploy Next.js — it's built by the same team.
+</Callout>
+
+<Steps>
+  <Step>Push your project to a GitHub repository</Step>
+  <Step>Go to [vercel.com](https://vercel.com) and click **Add New Project**</Step>
+  <Step>Import your GitHub repo and click **Deploy**</Step>
+</Steps>
+
+### Environment variables
+
+<DataTable
+  headers={["Variable", "Where to get it", "Required"]}
+  rows={[
+    ["DATABASE_URL", "Your database provider dashboard", "Yes"],
+    ["NEXTAUTH_SECRET", "Run: openssl rand -base64 32", "Yes"],
+    ["NEXTAUTH_URL", "Your production domain", "Yes"],
+  ]}
+/>
+
+<Callout type="warning">
+  Never commit `.env.local` to git. Add it to `.gitignore` before your first push.
+</Callout>
+````
+
+And `<MDXRemote>` renders every component with full styling — no post-processing, no manual editing.

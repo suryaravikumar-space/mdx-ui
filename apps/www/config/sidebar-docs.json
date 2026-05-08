@@ -155,6 +155,10 @@
       "path": "/docs/integration"
     },
     {
+      "title": "AI Content Generation",
+      "path": "/docs/integration/ai-content"
+    },
+    {
       "title": "Component Mappings",
       "path": "/docs/integration/component-mappings"
     },

@@ -8,38 +8,7 @@ import { getConfig, type Config } from "../utils/get-config.js"
 import { fetchComponent, type ComponentData } from "../utils/fetch-component.js"
 import { installDependencies } from "../utils/install-deps.js"
 import { writeComponent } from "../utils/write-component.js"
-
-// Map component filenames → registry component names
-const FILE_TO_COMPONENT: Record<string, string> = {
-  "alert.tsx":          "alert",
-  "accordion.tsx":      "accordion",
-  "badge.tsx":          "badge",
-  "blockquote.tsx":     "blockquote",
-  "card.tsx":           "card",
-  "callout.tsx":        "callout",
-  "code-block.tsx":     "code-block",
-  "code-group.tsx":     "code-group",
-  "emphasis.tsx":       "emphasis",
-  "file-tree.tsx":      "file-tree",
-  "heading.tsx":        "heading",
-  "headings.tsx":       "headings",
-  "horizontal-rule.tsx":"horizontal-rule",
-  "kbd.tsx":            "kbd",
-  "link.tsx":           "link",
-  "image.tsx":          "image",
-  "inline-code.tsx":    "inline-code",
-  "list.tsx":           "list",
-  "math.tsx":           "math",
-  "mdx-components.tsx": "mdx-components",
-  "video.tsx":          "video",
-  "mermaid.tsx":        "mermaid",
-  "paragraph.tsx":      "paragraph",
-  "spoiler.tsx":        "spoiler",
-  "steps.tsx":          "steps",
-  "table.tsx":          "table",
-  "tabs.tsx":           "tabs",
-  "tree.tsx":           "tree",
-}
+import { FILE_TO_COMPONENT } from "../lib/component-registry.js"
 
 interface DiffResult {
   name: string
@@ -87,7 +56,6 @@ async function discoverInstalled(componentsDir: string, cwd: string): Promise<st
     .map(f => FILE_TO_COMPONENT[f])
     .filter((n): n is string => !!n)
 
-  // Check for utils
   const libDir = componentsDir.startsWith("src/") ? "src/lib" : "lib"
   if (await fs.pathExists(path.join(cwd, libDir, "utils.ts"))) {
     found.unshift("utils")
@@ -127,7 +95,6 @@ export const update = new Command()
     const spinner = ora("Checking for updates...").start()
 
     try {
-      // Fetch all components (including registry deps)
       const componentsData: ComponentData[] = []
       const processed = new Set<string>()
 
@@ -147,7 +114,6 @@ export const update = new Command()
         await fetchRecursive(name)
       }
 
-      // Diff each component against disk
       const diffs = await Promise.all(
         componentsData.map(data => diffComponent(data, config, cwd))
       )
@@ -155,13 +121,11 @@ export const update = new Command()
       spinner.stop()
       console.log()
 
-      // Print summary table
       const maxLen = Math.max(...diffs.map(d => d.name.length))
       for (const diff of diffs) {
         const name = diff.name.padEnd(maxLen)
         if (diff.hasChanges) {
-          const files = diff.changedFiles.join(", ")
-          console.log(`  ${chalk.yellow("~")}  ${name}  ${chalk.dim(files)}`)
+          console.log(`  ${chalk.yellow("~")}  ${name}  ${chalk.dim(diff.changedFiles.join(", "))}`)
         } else {
           console.log(`  ${chalk.green("✓")}  ${name}  ${chalk.dim("up to date")}`)
         }
@@ -179,24 +143,14 @@ export const update = new Command()
       console.log(chalk.bold(`${changed.length} component${changed.length !== 1 ? "s have" : " has"} updates.`))
       console.log()
 
-      // Ask how to proceed
       const { strategy } = await prompts({
         type: "select",
         name: "strategy",
         message: "How would you like to proceed?",
         choices: [
-          {
-            title: `Overwrite all  ${chalk.dim(`(${changed.length} component${changed.length !== 1 ? "s" : ""})`)}`,
-            value: "all",
-          },
-          {
-            title: "Skip all",
-            value: "skip",
-          },
-          {
-            title: "Choose which to update",
-            value: "pick",
-          },
+          { title: `Overwrite all  ${chalk.dim(`(${changed.length} component${changed.length !== 1 ? "s" : ""})`)}`, value: "all" },
+          { title: "Skip all", value: "skip" },
+          { title: "Choose which to update", value: "pick" },
         ],
       })
 
@@ -210,7 +164,6 @@ export const update = new Command()
       if (strategy === "all") {
         toWrite = changed
       } else {
-        // "pick" — multiselect from changed components
         const { selected } = await prompts({
           type: "multiselect",
           name: "selected",
@@ -234,14 +187,11 @@ export const update = new Command()
       console.log()
       const writeSpinner = ora("Installing dependencies...").start()
 
-      // Install deps for selected components
       const allDeps = new Set<string>()
       for (const diff of toWrite) {
         diff.data.dependencies?.forEach(d => allDeps.add(d))
       }
-      if (allDeps.size > 0) {
-        await installDependencies(Array.from(allDeps))
-      }
+      if (allDeps.size > 0) await installDependencies(Array.from(allDeps))
 
       writeSpinner.text = "Writing updated components..."
       for (const diff of toWrite) {

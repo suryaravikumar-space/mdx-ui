@@ -1,0 +1,14 @@
+{
+  "name": "json-ld",
+  "type": "component",
+  "description": "JSON-LD structured data — renders a <script type='application/ld+json'> tag for SEO (Article, BreadcrumbList, FAQPage, etc.)",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "json-ld.tsx",
+      "content": "import * as React from \"react\"\n\nexport interface JsonLdProps {\n  /** JSON-LD structured data object */\n  data: Record<string, unknown>\n}\n\n/**\n * Renders a <script type=\"application/ld+json\"> tag for structured data (SEO).\n *\n * Usage:\n *   <JsonLd data={{ \"@context\": \"https://schema.org\", \"@type\": \"Article\", \"headline\": \"...\" }} />\n */\nexport function JsonLd({ data }: JsonLdProps) {\n  return (\n    <script\n      type=\"application/ld+json\"\n      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}\n    />\n  )\n}\n",
+      "integrity": "sha256-uhwGOFxNJZZT15Gi93+2I0Ta4MLRr2PWoqYUw/xHOCM="
+    }
+  ]
+}

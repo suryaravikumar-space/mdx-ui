@@ -65,6 +65,17 @@
       ]
     },
     {
+      "name": "changelog",
+      "type": "mdx",
+      "description": "Changelog component — versioned entries with a timeline and typed change badges (added/fixed/changed/removed/security)",
+      "files": [
+        "mdx/changelog.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "code-block",
       "type": "mdx",
       "description": "Syntax highlighted code blocks with title and line numbers",
@@ -81,6 +92,17 @@
       "description": "Tabbed code block group — show npm/pnpm/yarn or multi-language examples side by side",
       "files": [
         "mdx/code-group.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "diff-block",
+      "type": "mdx",
+      "description": "Code diff block — highlights + additions and - removals with green/red backgrounds",
+      "files": [
+        "mdx/diff-block.json"
       ],
       "registryDependencies": [
         "utils"
@@ -158,6 +180,14 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "json-ld",
+      "type": "mdx",
+      "description": "JSON-LD structured data — renders a <script type='application/ld+json'> tag for SEO (Article, BreadcrumbList, FAQPage, etc.)",
+      "files": [
+        "mdx/json-ld.json"
       ]
     },
     {
@@ -273,6 +303,17 @@
       "description": "Tabbed content sections with state management and keyboard navigation",
       "files": [
         "mdx/tabs.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "mdx",
+      "description": "Terminal window component — macOS-style title bar with traffic lights, TerminalLine for input/output lines",
+      "files": [
+        "mdx/terminal.json"
       ],
       "registryDependencies": [
         "utils"

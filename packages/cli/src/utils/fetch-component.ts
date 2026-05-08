@@ -2,6 +2,7 @@ import axios from "axios"
 import fs from "fs-extra"
 import path from "path"
 import { readFileSync } from "fs"
+import { createHash } from "crypto"
 import { fileURLToPath } from "url"
 
 const REGISTRY_BASE = "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui"
@@ -24,9 +25,25 @@ export interface ComponentData {
   files: Array<{
     path: string
     content: string
+    integrity?: string
   }>
   dependencies?: string[]
   registryDependencies?: string[]
+}
+
+function verifyIntegrity(data: ComponentData): void {
+  for (const file of data.files) {
+    if (!file.integrity) continue
+    const [algo, expected] = file.integrity.split("-")
+    if (algo !== "sha256") continue
+    const actual = createHash("sha256").update(file.content).digest("base64")
+    if (actual !== expected) {
+      throw new Error(
+        `Integrity check failed for "${file.path}" in component "${data.name}". ` +
+        `The registry may be compromised. Aborting.`
+      )
+    }
+  }
 }
 
 export async function fetchComponent(name: string): Promise<ComponentData> {
@@ -62,7 +79,9 @@ export async function fetchComponent(name: string): Promise<ComponentData> {
 
     try {
       const response = await axios.get(url)
-      return response.data
+      const data: ComponentData = response.data
+      verifyIntegrity(data)
+      return data
     } catch (error: any) {
       if (error.response?.status === 404) {
         if (!isLast) continue // tag doesn't exist yet — try main

@@ -4,72 +4,7 @@ import chalk from "chalk"
 import fs from "fs-extra"
 import path from "path"
 import { getConfig } from "../utils/get-config.js"
-
-// Same map as add.ts — drives import/mapping cleanup
-const COMPONENT_MDX_MAP: Record<string, {
-  importFile: string
-  imports: string[]
-  elementMappings: Record<string, string>
-}> = {
-  "alert":          { importFile: "./alert",          imports: ["Alert","AlertTitle","AlertDescription"],                                                      elementMappings: {} },
-  "accordion":      { importFile: "./accordion",      imports: ["Accordion","AccordionItem","AccordionTrigger","AccordionContent"],                                elementMappings: {} },
-  "heading":        { importFile: "./heading",        imports: ["H1","H2","H3","H4","H5","H6"],                                                                   elementMappings: { h1:"H1", h2:"H2", h3:"H3", h4:"H4", h5:"H5", h6:"H6" } },
-  "paragraph":      { importFile: "./paragraph",      imports: ["Paragraph"],                                                                                     elementMappings: { p:"Paragraph" } },
-  "blockquote":     { importFile: "./blockquote",     imports: ["Blockquote"],                                                                                    elementMappings: { blockquote:"Blockquote" } },
-  "list":           { importFile: "./list",           imports: ["UnorderedList","OrderedList","ListItem"],                                                         elementMappings: { ul:"UnorderedList", ol:"OrderedList", li:"ListItem" } },
-  "inline-code":    { importFile: "./inline-code",    imports: ["Code"],                                                                                          elementMappings: { code:"Code" } },
-  "kbd":            { importFile: "./kbd",            imports: ["Kbd"],                                                                                       elementMappings: {} },
-  "link":           { importFile: "./link",           imports: ["Link"],                                                                                      elementMappings: { a: "Link" } },
-  "image":          { importFile: "./image",          imports: ["Image","ImageGlossary"],                                                                         elementMappings: { img:"Image" } },
-  "horizontal-rule":{ importFile: "./horizontal-rule",imports: ["HorizontalRule"],                                                                                elementMappings: { hr:"HorizontalRule" } },
-  "emphasis":       { importFile: "./emphasis",       imports: ["Strong","Em"],                                                                                   elementMappings: { strong:"Strong", em:"Em" } },
-  "table":          { importFile: "./table",          imports: ["Table","TableHeader","TableBody","TableFooter","TableRow","TableHead","TableCell","TableCaption"], elementMappings: { table:"Table", thead:"TableHeader", tbody:"TableBody", tfoot:"TableFooter", tr:"TableRow", th:"TableHead", td:"TableCell" } },
-  "card":           { importFile: "./card",           imports: ["Card","CardHeader","CardTitle","CardDescription","CardContent","CardFooter","LinkCard"], elementMappings: {} },
-  "callout":        { importFile: "./callout",        imports: ["Callout"],                                                                                       elementMappings: {} },
-  "tabs":           { importFile: "./tabs",           imports: ["Tabs","TabsList","TabsTrigger","TabsContent"],                                                    elementMappings: {} },
-  "spoiler":        { importFile: "./spoiler",         imports: ["Spoiler"],                                                                               elementMappings: {} },
-  "steps":          { importFile: "./steps",          imports: ["Steps","Step"],                                                                                  elementMappings: {} },
-  "tree":           { importFile: "./tree",           imports: ["Tree","TreeItem"],                                                                               elementMappings: {} },
-  "file-tree":      { importFile: "./file-tree",      imports: ["FileTree"],                                                                                      elementMappings: {} },
-  "badge":          { importFile: "./badge",          imports: ["Badge"],                                                                                         elementMappings: {} },
-  "math":           { importFile: "./math",           imports: ["Math","BlockMath","InlineMath"],                                                                 elementMappings: {} },
-  "video":          { importFile: "./video",          imports: ["Video"],                                                                                        elementMappings: {} },
-  "mermaid":        { importFile: "./mermaid",        imports: ["Mermaid"],                                                                                       elementMappings: {} },
-  "code-block":     { importFile: "./code-block",     imports: ["CodeBlock"],                                                                                     elementMappings: { pre:"CodeBlock" } },
-  "code-group":     { importFile: "./code-group",     imports: ["CodeGroup"],                                                                                     elementMappings: {} },
-}
-
-// Component name → files to delete (relative to componentsDir)
-const COMPONENT_FILES: Record<string, string[]> = {
-  "alert":          ["alert.tsx"],
-  "accordion":      ["accordion.tsx"],
-  "badge":          ["badge.tsx"],
-  "blockquote":     ["blockquote.tsx"],
-  "card":           ["card.tsx"],
-  "callout":        ["callout.tsx"],
-  "code-block":     ["code-block.tsx"],
-  "code-group":     ["code-group.tsx"],
-  "emphasis":       ["emphasis.tsx"],
-  "file-tree":      ["file-tree.tsx"],
-  "heading":        ["heading.tsx"],
-  "headings":       ["headings.tsx"],
-  "horizontal-rule":["horizontal-rule.tsx"],
-  "kbd":            ["kbd.tsx"],
-  "link":           ["link.tsx"],
-  "image":          ["image.tsx"],
-  "inline-code":    ["inline-code.tsx"],
-  "list":           ["list.tsx"],
-  "math":           ["math.tsx"],
-  "mdx-components": ["mdx-components.tsx"],
-  "video":          ["video.tsx"],
-  "mermaid":        ["mermaid.tsx"],
-  "paragraph":      ["paragraph.tsx"],
-  "spoiler":        ["spoiler.tsx"],
-  "steps":          ["steps.tsx"],
-  "table":          ["table.tsx"],
-  "tabs":           ["tabs.tsx"],
-  "tree":           ["tree.tsx"],
-}
+import { COMPONENT_MDX_MAP, COMPONENT_FILES } from "../lib/component-registry.js"
 
 async function unpatchMdxComponents(
   componentName: string,
@@ -86,27 +21,18 @@ async function unpatchMdxComponents(
 
   // Remove the import line
   const lines = content.split("\n")
-  const filteredLines = lines.filter(
-    line => !line.includes(`from "${mapping.importFile}"`)
-  )
-  content = filteredLines.join("\n")
+  content = lines.filter(line => !line.includes(`from "${mapping.importFile}"`)).join("\n")
 
   // Remove element mappings (e.g. `    h1: H1,`)
   for (const [element, component] of Object.entries(mapping.elementMappings)) {
-    content = content.replace(
-      new RegExp(`\n[ \t]+${element}:\\s*${component},`, "g"),
-      ""
-    )
+    content = content.replace(new RegExp(`\n[ \t]+${element}:\\s*${component},`, "g"), "")
   }
 
   // Remove named export mappings (e.g. `    Accordion,`)
   for (const exportName of mapping.imports) {
     const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName)
     if (!alreadyMapped) {
-      content = content.replace(
-        new RegExp(`\n[ \t]+${exportName},`, "g"),
-        ""
-      )
+      content = content.replace(new RegExp(`\n[ \t]+${exportName},`, "g"), "")
     }
   }
 
@@ -121,16 +47,14 @@ async function discoverInstalled(componentsDir: string, cwd: string): Promise<st
   const installed: string[] = []
 
   for (const [name, componentFiles] of Object.entries(COMPONENT_FILES)) {
-    if (componentFiles.every(f => files.includes(f))) {
-      installed.push(name)
-    }
+    if (componentFiles.every(f => files.includes(f))) installed.push(name)
   }
 
-  // Check utils separately
+  // mdx-components.tsx is special — listed separately
+  if (files.includes("mdx-components.tsx")) installed.push("mdx-components")
+
   const libDir = componentsDir.startsWith("src/") ? "src/lib" : "lib"
-  if (await fs.pathExists(path.join(cwd, libDir, "utils.ts"))) {
-    installed.push("utils")
-  }
+  if (await fs.pathExists(path.join(cwd, libDir, "utils.ts"))) installed.push("utils")
 
   return [...new Set(installed)]
 }
@@ -173,7 +97,6 @@ export const remove = new Command()
       components = selected
     }
 
-    // Confirm before deleting
     const { confirmed } = await prompts({
       type: "confirm",
       name: "confirmed",
@@ -191,7 +114,9 @@ export const remove = new Command()
     const notFound: string[] = []
 
     for (const name of components) {
-      const files = COMPONENT_FILES[name]
+      const files = name === "mdx-components"
+        ? ["mdx-components.tsx"]
+        : COMPONENT_FILES[name]
 
       if (!files) {
         notFound.push(name)
@@ -207,7 +132,6 @@ export const remove = new Command()
         }
       }
 
-      // Clean up mdx-components.tsx
       await unpatchMdxComponents(name, config.componentsDir, cwd)
 
       if (deleted) {

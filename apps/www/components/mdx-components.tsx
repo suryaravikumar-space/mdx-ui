@@ -21,6 +21,10 @@ import { Link } from "@/components/mdx/link";
 import { Spoiler } from "@/components/mdx/spoiler";
 import { Video } from "@/components/mdx/video";
 import { Image, ImageGlossary } from "@/components/mdx/image";
+import { DiffBlock } from "@/components/mdx/diff-block";
+import { Terminal, TerminalLine } from "@/components/mdx/terminal";
+import { Changelog, ChangelogEntry, ChangelogItem } from "@/components/mdx/changelog";
+import { JsonLd } from "@/components/mdx/json-ld";
 
 const components = {
   Accordion,
@@ -67,6 +71,13 @@ const components = {
   Video,
   Image,
   ImageGlossary,
+  DiffBlock,
+  Terminal,
+  TerminalLine,
+  Changelog,
+  ChangelogEntry,
+  ChangelogItem,
+  JsonLd,
   Table,
   TableHeader,
   TableBody,

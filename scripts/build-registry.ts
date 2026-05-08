@@ -3,6 +3,11 @@
 import fs from "fs-extra"
 import path from "path"
 import { fileURLToPath } from "url"
+import crypto from "crypto"
+
+function integrity(content: string): string {
+  return `sha256-${crypto.createHash("sha256").update(content).digest("base64")}`
+}
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -47,9 +52,19 @@ const componentsMetadata: Record<string, {
     dependencies: [],
     registryDependencies: ["utils"]
   },
+  "changelog": {
+    description: "Changelog component — versioned entries with a timeline and typed change badges (added/fixed/changed/removed/security)",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
   "code-group": {
     description: "Tabbed code block group — show npm/pnpm/yarn or multi-language examples side by side",
     dependencies: [],
+    registryDependencies: ["utils"]
+  },
+  "diff-block": {
+    description: "Code diff block — highlights + additions and - removals with green/red backgrounds",
+    dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
   },
   "emphasis": {
@@ -85,6 +100,10 @@ const componentsMetadata: Record<string, {
     description: "Styled anchor — auto-detects external URLs, adds open-in-new-tab icon and rel='noopener noreferrer'",
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
+  },
+  "json-ld": {
+    description: "JSON-LD structured data — renders a <script type='application/ld+json'> tag for SEO (Article, BreadcrumbList, FAQPage, etc.)",
+    dependencies: []
   },
   "image": {
     description: "Image with optional caption, plus ImageGlossary — responsive 1–3 column grid of images as seen in react.dev",
@@ -122,6 +141,11 @@ const componentsMetadata: Record<string, {
   },
   "spoiler": {
     description: "Collapsible <details>/<summary> disclosure — lightweight alternative to Accordion for single items",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
+  "terminal": {
+    description: "Terminal window component — macOS-style title bar with traffic lights, TerminalLine for input/output lines",
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
   },
@@ -193,7 +217,8 @@ async function buildRegistry() {
       files: [
         {
           path: file,
-          content: content
+          content: content,
+          integrity: integrity(content),
         }
       ]
     }
@@ -228,7 +253,8 @@ async function buildRegistry() {
       files: [
         {
           path: "lib/utils.ts",
-          content: content
+          content: content,
+          integrity: integrity(content),
         }
       ]
     }

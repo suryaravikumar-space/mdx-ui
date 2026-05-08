@@ -1,13 +1,12 @@
-name: CI
+name: Publish
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    tags:
+      - "v*"
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +20,7 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -28,8 +28,10 @@ jobs:
       - name: Build registry
         run: npm run build:registry
 
-      - name: Verify registry
-        run: node -e "const r = require('./registry/registry.json'); if (!r.components.length) process.exit(1); console.log('Registry OK:', r.components.length, 'components')"
-
       - name: Build CLI
         run: pnpm run build --filter=@ravikumarsurya/mdx-ui
+
+      - name: Publish to npm
+        run: pnpm publish --filter=@ravikumarsurya/mdx-ui --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

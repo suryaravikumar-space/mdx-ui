@@ -12,7 +12,8 @@
   "files": [
     {
       "path": "kbd.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface KbdProps extends React.HTMLAttributes<HTMLElement> {}\n\nexport const Kbd = React.forwardRef<HTMLElement, KbdProps>(\n  ({ className, children, ...props }, ref) => (\n    <kbd\n      ref={ref}\n      className={cn(\n        \"inline-flex items-center justify-center rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-xs font-medium text-muted-foreground shadow-sm\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </kbd>\n  )\n)\nKbd.displayName = \"Kbd\"\n"
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface KbdProps extends React.HTMLAttributes<HTMLElement> {}\n\nexport const Kbd = React.forwardRef<HTMLElement, KbdProps>(\n  ({ className, children, ...props }, ref) => (\n    <kbd\n      ref={ref}\n      className={cn(\n        \"inline-flex items-center justify-center rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-xs font-medium text-muted-foreground shadow-sm\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </kbd>\n  )\n)\nKbd.displayName = \"Kbd\"\n",
+      "integrity": "sha256-OA18aTvurf1tUOimXoonA6bSKo8nJz9kkB0xv37D2MI="
     }
   ]
 }

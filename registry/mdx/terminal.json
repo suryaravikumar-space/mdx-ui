@@ -1,0 +1,19 @@
+{
+  "name": "terminal",
+  "type": "component",
+  "description": "Terminal window component — macOS-style title bar with traffic lights, TerminalLine for input/output lines",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "terminal.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\n// ─── TerminalLine ─────────────────────────────────────────────────────────────\n\nexport interface TerminalLineProps {\n  /** Render as a command input line (adds $ prompt, white text) */\n  cmd?: boolean\n  children: React.ReactNode\n}\n\nexport const TerminalLine = React.forwardRef<HTMLDivElement, TerminalLineProps>(\n  ({ cmd = false, children }, ref) => (\n    <div ref={ref} className=\"flex gap-2 font-mono text-sm leading-6\">\n      {cmd && (\n        <span className=\"select-none text-green-400\" aria-hidden=\"true\">\n          $\n        </span>\n      )}\n      <span className={cn(cmd ? \"text-zinc-100\" : \"text-zinc-400\")}>\n        {children}\n      </span>\n    </div>\n  )\n)\nTerminalLine.displayName = \"TerminalLine\"\n\n// ─── Terminal ─────────────────────────────────────────────────────────────────\n\nexport interface TerminalProps extends React.HTMLAttributes<HTMLElement> {\n  title?: string\n}\n\nexport const Terminal = React.forwardRef<HTMLElement, TerminalProps>(\n  ({ title = \"Terminal\", children, className, ...props }, ref) => (\n    <figure\n      ref={ref}\n      className={cn(\"my-6 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900\", className)}\n      {...props}\n    >\n      {/* Title bar */}\n      <div className=\"flex items-center gap-3 border-b border-zinc-700 bg-zinc-800 px-4 py-2\">\n        <div className=\"flex gap-1.5\" aria-hidden=\"true\">\n          <div className=\"h-3 w-3 rounded-full bg-red-500/80\" />\n          <div className=\"h-3 w-3 rounded-full bg-yellow-500/80\" />\n          <div className=\"h-3 w-3 rounded-full bg-green-500/80\" />\n        </div>\n        {title && (\n          <span className=\"flex-1 text-center text-xs text-zinc-400\">{title}</span>\n        )}\n      </div>\n      {/* Content */}\n      <div className=\"space-y-0.5 p-4\">\n        {children}\n      </div>\n    </figure>\n  )\n)\nTerminal.displayName = \"Terminal\"\n",
+      "integrity": "sha256-HYy9EPA8Cdlq8t05+jI9qkdyy+aqKN1vvX5NsiN6c6c="
+    }
+  ]
+}

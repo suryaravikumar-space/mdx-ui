@@ -9,7 +9,8 @@
   "files": [
     {
       "path": "emphasis.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface EmphasisProps extends React.HTMLAttributes<HTMLElement> {}\n\nexport const Strong = React.forwardRef<HTMLElement, EmphasisProps>(\n  ({ children, className, ...props }, ref) => (\n    <strong\n      ref={ref}\n      className={cn(\"font-semibold text-foreground\", className)}\n      {...props}\n    >\n      {children}\n    </strong>\n  )\n)\nStrong.displayName = \"Strong\"\n\nexport const Em = React.forwardRef<HTMLElement, EmphasisProps>(\n  ({ children, className, ...props }, ref) => (\n    <em\n      ref={ref}\n      className={cn(\"italic text-foreground\", className)}\n      {...props}\n    >\n      {children}\n    </em>\n  )\n)\nEm.displayName = \"Em\"\n"
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface EmphasisProps extends React.HTMLAttributes<HTMLElement> {}\n\nexport const Strong = React.forwardRef<HTMLElement, EmphasisProps>(\n  ({ children, className, ...props }, ref) => (\n    <strong\n      ref={ref}\n      className={cn(\"font-semibold text-foreground\", className)}\n      {...props}\n    >\n      {children}\n    </strong>\n  )\n)\nStrong.displayName = \"Strong\"\n\nexport const Em = React.forwardRef<HTMLElement, EmphasisProps>(\n  ({ children, className, ...props }, ref) => (\n    <em\n      ref={ref}\n      className={cn(\"italic text-foreground\", className)}\n      {...props}\n    >\n      {children}\n    </em>\n  )\n)\nEm.displayName = \"Em\"\n",
+      "integrity": "sha256-DL6SCDWyB6r6OxRl8dcdqdP2BSEQ/RshN7f5k7X6+8E="
     }
   ]
 }

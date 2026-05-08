@@ -1,0 +1,68 @@
+---
+title: Terminal
+description: macOS-style terminal window with traffic lights, input lines ($ prompt), and output lines
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add terminal
+```
+
+## Usage
+
+```mdx
+<Terminal title="Installation">
+  <TerminalLine cmd>npm install @ravikumarsurya/mdx-ui</TerminalLine>
+  <TerminalLine>added 5 packages in 1.2s</TerminalLine>
+</Terminal>
+```
+
+## Examples
+
+### Installation steps
+
+<Terminal title="Getting started">
+  <TerminalLine cmd>npx @ravikumarsurya/mdx-ui init</TerminalLine>
+  <TerminalLine>✔ Created mdx-ui.json</TerminalLine>
+  <TerminalLine cmd>npx @ravikumarsurya/mdx-ui add callout tabs</TerminalLine>
+  <TerminalLine>✔ callout</TerminalLine>
+  <TerminalLine>✔ tabs</TerminalLine>
+</Terminal>
+
+### Build output
+
+<Terminal title="npm run build">
+  <TerminalLine cmd>npm run build</TerminalLine>
+  <TerminalLine>▲ Next.js 14.2.0</TerminalLine>
+  <TerminalLine> </TerminalLine>
+  <TerminalLine>✓ Compiled successfully</TerminalLine>
+  <TerminalLine>✓ Collecting page data</TerminalLine>
+  <TerminalLine>✓ Generating static pages (12/12)</TerminalLine>
+</Terminal>
+
+### No title
+
+```mdx
+<Terminal>
+  <TerminalLine cmd>git status</TerminalLine>
+  <TerminalLine>nothing to commit, working tree clean</TerminalLine>
+</Terminal>
+```
+
+## Props
+
+### Terminal
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` | `"Terminal"` | Text shown in the title bar |
+| `className` | `string` | — | Extra classes on the outer `<figure>` |
+
+### TerminalLine
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `cmd` | `boolean` | `false` | Show `$` prompt; renders text in white instead of grey |
+| `children` | `ReactNode` | — | Line content |

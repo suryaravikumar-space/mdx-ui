@@ -9,40 +9,7 @@ import { getConfig } from "../utils/get-config.js"
 import { fetchComponent, type ComponentData } from "../utils/fetch-component.js"
 import { installDependencies } from "../utils/install-deps.js"
 import { writeComponent } from "../utils/write-component.js"
-
-// Maps component names to their imports and MDX element overrides
-const COMPONENT_MDX_MAP: Record<string, {
-  importFile: string
-  imports: string[]
-  elementMappings: Record<string, string>
-}> = {
-  "alert":          { importFile: "./alert",          imports: ["Alert","AlertTitle","AlertDescription"],                                                      elementMappings: {} },
-  "accordion":      { importFile: "./accordion",      imports: ["Accordion","AccordionItem","AccordionTrigger","AccordionContent"],                           elementMappings: {} },
-  "heading":        { importFile: "./heading",        imports: ["H1","H2","H3","H4","H5","H6"],                                                              elementMappings: { h1:"H1", h2:"H2", h3:"H3", h4:"H4", h5:"H5", h6:"H6" } },
-  "paragraph":      { importFile: "./paragraph",      imports: ["Paragraph"],                                                                                elementMappings: { p:"Paragraph" } },
-  "blockquote":     { importFile: "./blockquote",     imports: ["Blockquote"],                                                                               elementMappings: { blockquote:"Blockquote" } },
-  "list":           { importFile: "./list",           imports: ["UnorderedList","OrderedList","ListItem"],                                                    elementMappings: { ul:"UnorderedList", ol:"OrderedList", li:"ListItem" } },
-  "inline-code":    { importFile: "./inline-code",    imports: ["Code"],                                                                                     elementMappings: { code:"Code" } },
-  "kbd":            { importFile: "./kbd",            imports: ["Kbd"],                                                                                       elementMappings: {} },
-  "link":           { importFile: "./link",           imports: ["Link"],                                                                                      elementMappings: { a: "Link" } },
-  "image":          { importFile: "./image",          imports: ["Image","ImageGlossary"],                                                                    elementMappings: { img:"Image" } },
-  "horizontal-rule":{ importFile: "./horizontal-rule",imports: ["HorizontalRule"],                                                                           elementMappings: { hr:"HorizontalRule" } },
-  "emphasis":       { importFile: "./emphasis",       imports: ["Strong","Em"],                                                                              elementMappings: { strong:"Strong", em:"Em" } },
-  "table":          { importFile: "./table",          imports: ["Table","TableHeader","TableBody","TableFooter","TableRow","TableHead","TableCell","TableCaption"], elementMappings: { table:"Table", thead:"TableHeader", tbody:"TableBody", tfoot:"TableFooter", tr:"TableRow", th:"TableHead", td:"TableCell" } },
-  "card":           { importFile: "./card",           imports: ["Card","CardHeader","CardTitle","CardDescription","CardContent","CardFooter","LinkCard"], elementMappings: {} },
-  "callout":        { importFile: "./callout",        imports: ["Callout"],                                                                                  elementMappings: {} },
-  "tabs":           { importFile: "./tabs",           imports: ["Tabs","TabsList","TabsTrigger","TabsContent"],                                               elementMappings: {} },
-  "spoiler":        { importFile: "./spoiler",         imports: ["Spoiler"],                                                                               elementMappings: {} },
-  "steps":          { importFile: "./steps",          imports: ["Steps","Step"],                                                                             elementMappings: {} },
-  "tree":           { importFile: "./tree",           imports: ["Tree","TreeItem"],                                                                          elementMappings: {} },
-  "file-tree":      { importFile: "./file-tree",      imports: ["FileTree"],                                                                                 elementMappings: {} },
-  "badge":          { importFile: "./badge",          imports: ["Badge"],                                                                                    elementMappings: {} },
-  "math":           { importFile: "./math",           imports: ["Math","BlockMath","InlineMath"],                                                            elementMappings: {} },
-  "video":          { importFile: "./video",          imports: ["Video"],                                                                                        elementMappings: {} },
-  "mermaid":        { importFile: "./mermaid",        imports: ["Mermaid"],                                                                                  elementMappings: {} },
-  "code-block":     { importFile: "./code-block",     imports: ["CodeBlock"],                                                                                elementMappings: {} },
-  "code-group":     { importFile: "./code-group",     imports: ["CodeGroup"],                                                                                elementMappings: {} },
-}
+import { COMPONENT_MDX_MAP } from "../lib/component-registry.js"
 
 interface RegistryComponent {
   name: string
@@ -95,14 +62,12 @@ async function patchMdxComponents(
     const block = content.slice(mStart + MAP_START.length, mEnd)
     let additions = ""
 
-    // Element mappings (h1: H1, ul: UnorderedList, etc.)
     for (const [element, component] of Object.entries(mapping.elementMappings)) {
       if (!block.includes(`${element}:`)) {
         additions += `\n    ${element}: ${component},`
       }
     }
 
-    // Standalone named exports (Callout, Tabs, etc.)
     for (const exportName of mapping.imports) {
       const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName)
       if (!alreadyMapped && !block.includes(`${exportName},`) && !block.includes(`${exportName}:`)) {
@@ -135,30 +100,11 @@ async function loadRegistry(): Promise<Registry> {
         return await fs.readJSON(registryPath)
       }
     }
-  } catch (error) {
+  } catch {
     // Fallback
   }
 
-  return {
-    components: [
-      { name: "accordion", type: "mdx", description: "Collapsible accordion sections", files: [] },
-      { name: "blockquote", type: "mdx", description: "Styled quote blocks", files: [] },
-      { name: "callout", type: "mdx", description: "Alert boxes", files: [] },
-      { name: "code-block", type: "mdx", description: "Code blocks", files: [] },
-      { name: "emphasis", type: "mdx", description: "Bold/italic", files: [] },
-      { name: "file-tree", type: "mdx", description: "File tree structure", files: [] },
-      { name: "heading", type: "mdx", description: "Reusable heading", files: [] },
-      { name: "headings", type: "mdx", description: "H1-H6 headings", files: [] },
-      { name: "horizontal-rule", type: "mdx", description: "Dividers", files: [] },
-      { name: "image", type: "mdx", description: "Images", files: [] },
-      { name: "inline-code", type: "mdx", description: "Inline code", files: [] },
-      { name: "list", type: "mdx", description: "Lists", files: [] },
-      { name: "paragraph", type: "mdx", description: "Paragraphs", files: [] },
-      { name: "steps", type: "mdx", description: "Step guides", files: [] },
-      { name: "tabs", type: "mdx", description: "Tabs", files: [] },
-      { name: "tree", type: "mdx", description: "Interactive tree", files: [] },
-    ],
-  }
+  return { components: [] }
 }
 
 export const add = new Command()
@@ -168,7 +114,6 @@ export const add = new Command()
   .action(async (components: string[]) => {
     console.log()
 
-    // Get project config
     const config = await getConfig()
 
     if (!config) {
@@ -177,9 +122,7 @@ export const add = new Command()
       process.exit(1)
     }
 
-    // If no components specified, show selection
     if (components.length === 0) {
-      // Load registry to get available components
       const registry = await loadRegistry()
       const mdxComponents = registry.components.filter((c: RegistryComponent) => c.type === "mdx")
 
@@ -208,19 +151,14 @@ export const add = new Command()
     const spinner = ora("Fetching components...").start()
 
     try {
-      // Fetch components and their registry dependencies recursively
       const componentsData: ComponentData[] = []
       const processedComponents = new Set<string>()
 
       async function fetchComponentRecursive(componentName: string) {
-        if (processedComponents.has(componentName)) {
-          return
-        }
-
+        if (processedComponents.has(componentName)) return
         processedComponents.add(componentName)
         const data = await fetchComponent(componentName)
 
-        // Fetch registry dependencies first
         if (data.registryDependencies && data.registryDependencies.length > 0) {
           for (const depName of data.registryDependencies) {
             await fetchComponentRecursive(depName)
@@ -236,25 +174,21 @@ export const add = new Command()
 
       spinner.text = "Installing dependencies..."
 
-      // Collect all dependencies
       const allDeps = new Set<string>()
       for (const data of componentsData) {
         data.dependencies?.forEach((dep: string) => allDeps.add(dep))
       }
 
-      // Install dependencies
       if (allDeps.size > 0) {
         await installDependencies(Array.from(allDeps))
       }
 
       spinner.text = "Writing components..."
 
-      // Write components to disk
       for (const data of componentsData) {
         await writeComponent(data, config)
       }
 
-      // Patch mdx-components.tsx with static imports for each added component
       for (const component of components) {
         await patchMdxComponents(component, config.componentsDir, process.cwd())
       }

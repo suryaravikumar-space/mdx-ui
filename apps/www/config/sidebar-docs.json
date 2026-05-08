@@ -39,6 +39,10 @@
       "path": "/docs/components/callout"
     },
     {
+      "title": "Changelog",
+      "path": "/docs/components/changelog"
+    },
+    {
       "title": "File Tree",
       "path": "/docs/components/file-tree"
     },
@@ -63,6 +67,10 @@
       "path": "/docs/components/code-group"
     },
     {
+      "title": "Diff Block",
+      "path": "/docs/components/diff-block"
+    },
+    {
       "title": "Emphasis",
       "path": "/docs/components/emphasis"
     },
@@ -73,6 +81,10 @@
     {
       "title": "Image",
       "path": "/docs/components/image"
+    },
+    {
+      "title": "JSON-LD",
+      "path": "/docs/components/json-ld"
     },
     {
       "title": "Video",
@@ -113,6 +125,10 @@
     {
       "title": "Table",
       "path": "/docs/components/table"
+    },
+    {
+      "title": "Terminal",
+      "path": "/docs/components/terminal"
     },
     {
       "title": "Tabs",

@@ -1,0 +1,54 @@
+---
+title: Diff Block
+description: Code diff viewer — highlights + additions in green and - removals in red
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add diff-block
+```
+
+## Usage
+
+Lines starting with `+` are additions (green), `-` are removals (red), and lines with a leading space or no prefix are unchanged context.
+
+```mdx
+<DiffBlock title="Rename prop">
+{`- function Button({ onClick }) {
++ function Button({ onPress }) {
+-   return <button onClick={onClick}>Click</button>
++   return <button onClick={onPress}>Click</button>
+  }`}
+</DiffBlock>
+```
+
+## Examples
+
+### Migration guide
+
+<DiffBlock title="v1 → v2 migration">
+{`- import { Callout } from "mdx-ui"
++ import { Callout } from "@/components/mdx/callout"
+
+- <Callout type="warning">
++ <Callout variant="warning">`}
+</DiffBlock>
+
+### Config change
+
+<DiffBlock title="next.config.ts">
+{`  const config = {
+-   experimental: { appDir: true },
++   // appDir is stable in Next.js 13.4+, no flag needed
+  }`}
+</DiffBlock>
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `children` | `string` | Diff content — lines prefixed with `+`, `-`, or space |
+| `title` | `string` | Optional title bar above the diff |
+| `className` | `string` | Extra classes on the outer `<figure>` |

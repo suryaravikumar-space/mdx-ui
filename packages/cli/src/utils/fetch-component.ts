@@ -1,9 +1,23 @@
 import axios from "axios"
 import fs from "fs-extra"
 import path from "path"
+import { readFileSync } from "fs"
 import { fileURLToPath } from "url"
 
-const REGISTRY_URL = "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui/main/registry/mdx"
+const REGISTRY_BASE = "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui"
+
+// Read CLI version at module load — used to pin registry fetches to a git tag
+function getCliVersion(): string | null {
+  try {
+    const __dirname = path.dirname(fileURLToPath(import.meta.url))
+    const pkg = JSON.parse(readFileSync(path.join(__dirname, "../../package.json"), "utf-8"))
+    return typeof pkg.version === "string" ? pkg.version : null
+  } catch {
+    return null
+  }
+}
+
+const CLI_VERSION = getCliVersion()
 
 export interface ComponentData {
   name: string
@@ -16,35 +30,48 @@ export interface ComponentData {
 }
 
 export async function fetchComponent(name: string): Promise<ComponentData> {
-  // Try local registry first (for development)
+  // 1. Try local registry first (development / monorepo)
   try {
     const __dirname = path.dirname(fileURLToPath(import.meta.url))
-    // Try multiple possible paths for the registry
     const possiblePaths = [
       path.join(__dirname, "../../../../registry/mdx", `${name}.json`),
       path.join(__dirname, "../../../registry/mdx", `${name}.json`),
       path.join(__dirname, "../../registry/mdx", `${name}.json`),
     ]
-
     for (const registryPath of possiblePaths) {
       if (await fs.pathExists(registryPath)) {
-        const data = await fs.readJSON(registryPath)
-        return data
+        return await fs.readJSON(registryPath)
       }
     }
-  } catch (error) {
-    // Continue to remote fetch
+  } catch {
+    // fall through to remote
   }
 
-  // Fetch from remote registry
-  try {
-    const url = `${REGISTRY_URL}/${name}.json`
-    const response = await axios.get(url)
-    return response.data
-  } catch (error: any) {
-    if (error.response?.status === 404) {
-      throw new Error(`Component "${name}" not found. Run: npx @ravikumarsurya/mdx-ui list`)
-    }
-    throw new Error(`Could not fetch "${name}" — check your internet connection`)
+  // 2. Remote: try versioned tag first, then fall back to main.
+  //    If the tag doesn't exist yet (new publish before git tag is pushed),
+  //    the versioned URL returns 404 and we transparently use main.
+  const candidates: string[] = []
+  if (CLI_VERSION) {
+    candidates.push(`${REGISTRY_BASE}/v${CLI_VERSION}/registry/mdx/${name}.json`)
   }
+  candidates.push(`${REGISTRY_BASE}/main/registry/mdx/${name}.json`)
+
+  for (let i = 0; i < candidates.length; i++) {
+    const url = candidates[i]
+    const isLast = i === candidates.length - 1
+
+    try {
+      const response = await axios.get(url)
+      return response.data
+    } catch (error: any) {
+      if (error.response?.status === 404) {
+        if (!isLast) continue // tag doesn't exist yet — try main
+        throw new Error(`Component "${name}" not found. Run: npx @ravikumarsurya/mdx-ui list`)
+      }
+      throw new Error(`Could not fetch "${name}" — check your internet connection`)
+    }
+  }
+
+  // unreachable, but satisfies TypeScript
+  throw new Error(`Could not fetch "${name}" — check your internet connection`)
 }

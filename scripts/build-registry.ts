@@ -81,14 +81,10 @@ const componentsMetadata: Record<string, {
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
   },
-  "illustration": {
-    description: "Illustration and IllustrationBlock — single diagram or responsive 1–3 column grid of images, as seen in react.dev",
+  "image": {
+    description: "Image with optional caption, plus ImageGlossary — responsive 1–3 column grid of images as seen in react.dev",
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
-  },
-  "image": {
-    description: "Images with optional captions",
-    dependencies: []
   },
   "inline-code": {
     description: "Inline code component for displaying code snippets within text",

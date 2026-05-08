@@ -18,7 +18,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/mdx/alert";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, LinkCard } from "@/components/mdx/card";
 import { Kbd } from "@/components/mdx/kbd";
 import { Video } from "@/components/mdx/video";
-import { Illustration, IllustrationBlock } from "@/components/mdx/illustration";
+import { Image, ImageGlossary } from "@/components/mdx/image";
 
 const components = {
   Accordion,
@@ -61,8 +61,8 @@ const components = {
   LinkCard,
   Kbd,
   Video,
-  Illustration,
-  IllustrationBlock,
+  Image,
+  ImageGlossary,
   Table,
   TableHeader,
   TableBody,

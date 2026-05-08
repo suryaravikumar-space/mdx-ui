@@ -139,22 +139,14 @@
       ]
     },
     {
-      "name": "illustration",
+      "name": "image",
       "type": "mdx",
-      "description": "Illustration and IllustrationBlock — single diagram or responsive 1–3 column grid of images, as seen in react.dev",
+      "description": "Image with optional caption, plus ImageGlossary — responsive 1–3 column grid of images as seen in react.dev",
       "files": [
-        "mdx/illustration.json"
+        "mdx/image.json"
       ],
       "registryDependencies": [
         "utils"
-      ]
-    },
-    {
-      "name": "image",
-      "type": "mdx",
-      "description": "Images with optional captions",
-      "files": [
-        "mdx/image.json"
       ]
     },
     {

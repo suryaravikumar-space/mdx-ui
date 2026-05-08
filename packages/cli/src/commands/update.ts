@@ -25,7 +25,6 @@ const FILE_TO_COMPONENT: Record<string, string> = {
   "headings.tsx":       "headings",
   "horizontal-rule.tsx":"horizontal-rule",
   "kbd.tsx":            "kbd",
-  "illustration.tsx":   "illustration",
   "image.tsx":          "image",
   "inline-code.tsx":    "inline-code",
   "list.tsx":           "list",

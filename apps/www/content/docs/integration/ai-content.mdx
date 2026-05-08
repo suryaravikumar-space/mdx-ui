@@ -252,37 +252,198 @@ const mdx = result.response.text()
 
 ---
 
-## Example: what the LLM generates
+## Live examples
 
-Given the prompt _"How to deploy a Next.js app to Vercel"_, the model outputs:
+The sections below show exactly what an LLM outputs (left — code) and what your users see after `MDXRemote` renders it (right — live component).
+
+---
+
+### Example 1 — Deployment guide
+
+**LLM output:**
 
 ````mdx
-## Deploy Next.js to Vercel
-
 <Callout type="info">
-  Vercel is the easiest way to deploy Next.js — it's built by the same team.
+  Vercel is the easiest way to deploy Next.js — built by the same team.
 </Callout>
 
 <Steps>
   <Step>Push your project to a GitHub repository</Step>
-  <Step>Go to [vercel.com](https://vercel.com) and click **Add New Project**</Step>
+  <Step>Go to vercel.com and click **Add New Project**</Step>
   <Step>Import your GitHub repo and click **Deploy**</Step>
 </Steps>
-
-### Environment variables
-
-<DataTable
-  headers={["Variable", "Where to get it", "Required"]}
-  rows={[
-    ["DATABASE_URL", "Your database provider dashboard", "Yes"],
-    ["NEXTAUTH_SECRET", "Run: openssl rand -base64 32", "Yes"],
-    ["NEXTAUTH_URL", "Your production domain", "Yes"],
-  ]}
-/>
 
 <Callout type="warning">
   Never commit `.env.local` to git. Add it to `.gitignore` before your first push.
 </Callout>
 ````
 
-And `<MDXRemote>` renders every component with full styling — no post-processing, no manual editing.
+**Rendered:**
+
+<Callout type="info">
+  Vercel is the easiest way to deploy Next.js — built by the same team.
+</Callout>
+
+<Steps>
+  <Step>Push your project to a GitHub repository</Step>
+  <Step>Go to vercel.com and click **Add New Project**</Step>
+  <Step>Import your GitHub repo and click **Deploy**</Step>
+</Steps>
+
+<Callout type="warning">
+  Never commit `.env.local` to git. Add it to `.gitignore` before your first push.
+</Callout>
+
+---
+
+### Example 2 — API reference with table
+
+**LLM output:**
+
+```mdx
+<Callout type="info">
+  All endpoints require an `Authorization: Bearer <token>` header.
+</Callout>
+
+<DataTable
+  headers={["Endpoint", "Method", "Auth", "Description"]}
+  rows={[
+    ["/api/users",       "GET",    "Yes", "List all users"],
+    ["/api/users/:id",   "GET",    "Yes", "Get user by ID"],
+    ["/api/users",       "POST",   "Yes", "Create a new user"],
+    ["/api/users/:id",   "DELETE", "Yes", "Delete a user"],
+  ]}
+  searchable
+/>
+```
+
+**Rendered:**
+
+<Callout type="info">
+  All endpoints require an `Authorization: Bearer <token>` header.
+</Callout>
+
+<DataTable
+  headers={["Endpoint", "Method", "Auth", "Description"]}
+  rows={[
+    ["/api/users",       "GET",    "Yes", "List all users"],
+    ["/api/users/:id",   "GET",    "Yes", "Get user by ID"],
+    ["/api/users",       "POST",   "Yes", "Create a new user"],
+    ["/api/users/:id",   "DELETE", "Yes", "Delete a user"],
+  ]}
+  searchable
+/>
+
+---
+
+### Example 3 — Multi-framework install guide
+
+**LLM output:**
+
+````mdx
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+  ```bash
+  npm install @ravikumarsurya/mdx-ui
+  ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+  ```bash
+  pnpm add @ravikumarsurya/mdx-ui
+  ```
+  </TabsContent>
+  <TabsContent value="yarn">
+  ```bash
+  yarn add @ravikumarsurya/mdx-ui
+  ```
+  </TabsContent>
+</Tabs>
+````
+
+**Rendered:**
+
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+  ```bash
+  npm install @ravikumarsurya/mdx-ui
+  ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+  ```bash
+  pnpm add @ravikumarsurya/mdx-ui
+  ```
+  </TabsContent>
+  <TabsContent value="yarn">
+  ```bash
+  yarn add @ravikumarsurya/mdx-ui
+  ```
+  </TabsContent>
+</Tabs>
+
+---
+
+### Example 4 — Highlighted key terms
+
+**LLM output:**
+
+```mdx
+React uses a <Highlight>unidirectional data flow</Highlight> model.
+Components are <Highlight color="blue">pure functions</Highlight> of their props and state.
+Never mutate state <Highlight color="green">directly</Highlight> — always call setState.
+```
+
+**Rendered:**
+
+React uses a <Highlight>unidirectional data flow</Highlight> model.
+Components are <Highlight color="blue">pure functions</Highlight> of their props and state.
+Never mutate state <Highlight color="green">directly</Highlight> — always call setState.
+
+---
+
+### Example 5 — Error handling guide
+
+**LLM output:**
+
+```mdx
+<Callout type="error">
+  Never expose raw error messages to users in production — they may leak sensitive paths or stack traces.
+</Callout>
+
+<Steps>
+  <Step>Wrap your API handlers in a try/catch block</Step>
+  <Step>Log the full error server-side with a request ID</Step>
+  <Step>Return only a generic message and status code to the client</Step>
+  <Step>Set up alerts for error rate spikes</Step>
+</Steps>
+
+<Callout type="success">
+  Use a structured logging library like Pino or Winston to make errors searchable in your log dashboard.
+</Callout>
+```
+
+**Rendered:**
+
+<Callout type="error">
+  Never expose raw error messages to users in production — they may leak sensitive paths or stack traces.
+</Callout>
+
+<Steps>
+  <Step>Wrap your API handlers in a try/catch block</Step>
+  <Step>Log the full error server-side with a request ID</Step>
+  <Step>Return only a generic message and status code to the client</Step>
+  <Step>Set up alerts for error rate spikes</Step>
+</Steps>
+
+<Callout type="success">
+  Use a structured logging library like Pino or Winston to make errors searchable in your log dashboard.
+</Callout>

@@ -26,7 +26,7 @@ export function SiteHeader() {
             Components
           </Link>
           <Link
-            href="https://github.com/yourusername/mdx-ui"
+            href="https://github.com/suryaravikumar-space/mdx-ui"
             className="transition-colors hover:text-foreground/80"
             target="_blank"
             rel="noreferrer"

@@ -27,7 +27,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "GitHub",
-      href: "https://github.com/yourusername/mdx-ui",
+      href: "https://github.com/suryaravikumar-space/mdx-ui",
       external: true,
     },
   ],

@@ -1,0 +1,50 @@
+{
+  "name": "@ravikumarsurya/remark-mdx-ui",
+  "version": "0.0.1",
+  "description": "Remark plugin — upgrades AI-generated markdown to mdx-ui components (Callout, DataTable, Steps, Highlight)",
+  "license": "MIT",
+  "type": "module",
+  "author": {
+    "name": "suryaravikumar-space",
+    "url": "https://github.com/suryaravikumar-space"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suryaravikumar-space/mdx-ui.git",
+    "directory": "packages/remark-plugin"
+  },
+  "homepage": "https://github.com/suryaravikumar-space/mdx-ui#readme",
+  "keywords": [
+    "remark",
+    "mdx",
+    "plugin",
+    "mdx-ui",
+    "ai",
+    "markdown",
+    "callout",
+    "datatable",
+    "steps",
+    "highlight"
+  ],
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "unified": ">=10"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/unist": "^3.0.3",
+    "tsup": "^8.0.2",
+    "typescript": "^5.5.3",
+    "unified": "^11.0.0",
+    "unist-util-visit": "^5.1.0"
+  }
+}

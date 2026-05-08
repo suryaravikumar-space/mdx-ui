@@ -1,0 +1,98 @@
+---
+title: Card
+description: Card layout components for grouping content, plus LinkCard for navigation grids
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add card
+```
+
+## Usage
+
+```mdx
+<Card>
+  <CardHeader>
+    <CardTitle>Getting started</CardTitle>
+    <CardDescription>Install and configure mdx-ui in minutes.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    Run the CLI and pick your components.
+  </CardContent>
+</Card>
+```
+
+## Examples
+
+### Basic card
+
+<Card>
+  <CardHeader>
+    <CardTitle>Getting started</CardTitle>
+    <CardDescription>Install and configure mdx-ui in your project.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    Run the CLI, pick your components, and start writing MDX.
+  </CardContent>
+</Card>
+
+### Card with footer
+
+<Card>
+  <CardHeader>
+    <CardTitle>Tabs</CardTitle>
+    <CardDescription>Tabbed content with keyboard navigation.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    Supports ArrowLeft, ArrowRight, Home, and End for accessibility.
+  </CardContent>
+  <CardFooter>
+    <a href="/docs/components/tabs" className="text-sm text-muted-foreground underline">View docs →</a>
+  </CardFooter>
+</Card>
+
+### Navigation grid with LinkCard
+
+Common pattern for docs homepages — link cards in a grid:
+
+```mdx
+<div className="grid grid-cols-2 gap-4">
+  <LinkCard href="/docs/components/callout" title="Callout" description="Alert boxes for important information" />
+  <LinkCard href="/docs/components/tabs" title="Tabs" description="Tabbed content sections" />
+  <LinkCard href="/docs/components/accordion" title="Accordion" description="Collapsible sections" />
+  <LinkCard href="/docs/components/code-block" title="Code Block" description="Syntax highlighted code" />
+</div>
+```
+
+<div className="grid grid-cols-2 gap-4 my-6">
+  <LinkCard href="/docs/components/callout" title="Callout" description="Alert boxes for important information" />
+  <LinkCard href="/docs/components/tabs" title="Tabs" description="Tabbed content sections" />
+  <LinkCard href="/docs/components/accordion" title="Accordion" description="Collapsible sections" />
+  <LinkCard href="/docs/components/code-block" title="Code Block" description="Syntax highlighted code" />
+</div>
+
+## Props
+
+### Card, CardHeader, CardContent, CardFooter
+
+Standard `div` props plus `className`.
+
+### CardTitle
+
+Standard heading props plus `className`. Renders an `<h3>`.
+
+### CardDescription
+
+Standard paragraph props plus `className`.
+
+### LinkCard
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `title` | `string` | Card heading (required) |
+| `description` | `string` | Optional subtitle below the title |
+| `href` | `string` | Link destination |
+| `className` | `string` | Extra classes on the `<a>` element |
+| `children` | `ReactNode` | Additional content below description |

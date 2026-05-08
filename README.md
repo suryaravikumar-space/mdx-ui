@@ -25,7 +25,7 @@ npx @ravikumarsurya/mdx-ui
 | `list` | Show all available components |
 | `list --installed` | Show only installed components |
 
-## Components (23)
+## Components (26)
 
 ### Layout & Typography
 | Component | Description |
@@ -47,6 +47,13 @@ npx @ravikumarsurya/mdx-ui
 | `steps` | Numbered step-by-step guide |
 | `tree` | Interactive file/folder tree |
 | `file-tree` | Simple string-based file tree |
+
+### Feedback & Layout
+| Component | Description |
+| --- | --- |
+| `alert` | Semantic `role="alert"` boxes — info, warning, destructive, success |
+| `card` | Card + CardHeader/Title/Description/Content/Footer + LinkCard for nav grids |
+| `kbd` | Keyboard shortcut display (`Ctrl+K`, `⌘+S`) |
 
 ### Code
 | Component | Description |

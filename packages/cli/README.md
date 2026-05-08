@@ -72,13 +72,15 @@ npx @ravikumarsurya/mdx-ui list
 npx @ravikumarsurya/mdx-ui list --installed
 ```
 
-## Available Components (23)
+## Available Components (26)
 
 | Component | Description |
 | --- | --- |
+| `alert` | Semantic `role="alert"` boxes — info, warning, destructive, success |
 | `accordion` | Collapsible sections — single or multiple open |
 | `badge` | Status labels with 7 variants |
 | `blockquote` | Styled blockquote |
+| `card` | Card + header/title/description/content/footer + LinkCard |
 | `callout` | Alert boxes — info, warning, danger, success |
 | `code-block` | Syntax-highlighted code blocks via rehype-pretty-code |
 | `code-group` | Tabbed code blocks — npm/pnpm/yarn or multi-language examples |
@@ -88,6 +90,7 @@ npx @ravikumarsurya/mdx-ui list --installed
 | `headings` | Markdown h1–h6 overrides with anchor links |
 | `horizontal-rule` | Divider — default, dashed, dotted, gradient |
 | `image` | Image with optional caption |
+| `kbd` | Keyboard shortcut display (`Ctrl+K`, `⌘+S`) |
 | `inline-code` | Inline code snippets |
 | `list` | Ordered and unordered lists |
 | `math` | LaTeX math via KaTeX (block and inline) |

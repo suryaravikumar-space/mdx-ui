@@ -1,0 +1,52 @@
+---
+title: Kbd
+description: Keyboard shortcut display — styled <kbd> element for showing key combinations
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add kbd
+```
+
+## Usage
+
+```mdx
+Press <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd> to open the search.
+```
+
+## Examples
+
+### Single key
+
+Press <Kbd>Esc</Kbd> to close the dialog.
+
+### Key combinations
+
+Press <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd> to open search.
+
+Press <Kbd>⌘</Kbd> + <Kbd>Shift</Kbd> + <Kbd>P</Kbd> to open the command palette.
+
+### In a sentence
+
+Use <Kbd>Tab</Kbd> to move between fields, and <Kbd>Enter</Kbd> to submit.
+
+Hold <Kbd>Shift</Kbd> and click to select a range.
+
+### Common shortcuts
+
+| Action | Shortcut |
+| --- | --- |
+| Save | <Kbd>⌘</Kbd> + <Kbd>S</Kbd> |
+| Undo | <Kbd>⌘</Kbd> + <Kbd>Z</Kbd> |
+| Copy | <Kbd>⌘</Kbd> + <Kbd>C</Kbd> |
+| Find | <Kbd>⌘</Kbd> + <Kbd>F</Kbd> |
+| Command palette | <Kbd>⌘</Kbd> + <Kbd>Shift</Kbd> + <Kbd>P</Kbd> |
+
+## Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `children` | `ReactNode` | The key label |
+| `className` | `string` | Extra classes on the `<kbd>` element |

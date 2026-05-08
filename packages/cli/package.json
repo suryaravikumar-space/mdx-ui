@@ -1,6 +1,6 @@
 {
   "name": "@ravikumarsurya/mdx-ui",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Copy-paste MDX components for documentation sites — callout, tabs, accordion, code-block, code-group, and more",
   "license": "MIT",
   "type": "module",

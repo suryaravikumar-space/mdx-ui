@@ -1,0 +1,96 @@
+---
+title: Alert
+description: Semantic alert boxes with role="alert" for info, warning, destructive, and success states
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add alert
+```
+
+## Usage
+
+```mdx
+<Alert variant="info">
+  <AlertTitle>Heads up</AlertTitle>
+  <AlertDescription>You can customise this component in your project.</AlertDescription>
+</Alert>
+```
+
+## Examples
+
+### Default
+
+<Alert>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>This is a default alert with no variant set.</AlertDescription>
+</Alert>
+
+### Info
+
+<Alert variant="info">
+  <AlertTitle>New version available</AlertTitle>
+  <AlertDescription>Run <code>npm update</code> to get the latest features and fixes.</AlertDescription>
+</Alert>
+
+### Warning
+
+<Alert variant="warning">
+  <AlertTitle>Deprecation notice</AlertTitle>
+  <AlertDescription>This API will be removed in the next major version. Please migrate to the new one.</AlertDescription>
+</Alert>
+
+### Destructive
+
+<Alert variant="destructive">
+  <AlertTitle>Build failed</AlertTitle>
+  <AlertDescription>There were 3 errors during compilation. Check the logs for details.</AlertDescription>
+</Alert>
+
+### Success
+
+<Alert variant="success">
+  <AlertTitle>Deployed successfully</AlertTitle>
+  <AlertDescription>Your changes are live at production.</AlertDescription>
+</Alert>
+
+### Without title
+
+<Alert variant="info">
+  <AlertDescription>You can omit AlertTitle and use AlertDescription on its own.</AlertDescription>
+</Alert>
+
+## Difference from Callout
+
+| | Alert | Callout |
+| --- | --- | --- |
+| Semantic role | `role="alert"` (live region) | none |
+| Screen readers | Announced immediately | Not announced |
+| Use for | Status changes, errors, confirmations | Tips, notes, documentation callouts |
+
+Use `Alert` when something has happened or changed (form errors, success messages, warnings about an action). Use `Callout` for static informational notes in documentation.
+
+## Props
+
+### Alert
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `variant` | `"default" \| "info" \| "warning" \| "destructive" \| "success"` | `"default"` | Visual style |
+| `className` | `string` | — | Extra classes |
+
+### AlertTitle
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `children` | `ReactNode` | Title text |
+| `className` | `string` | Extra classes |
+
+### AlertDescription
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `children` | `ReactNode` | Description content |
+| `className` | `string` | Extra classes |

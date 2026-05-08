@@ -9,6 +9,7 @@ import { add } from "./commands/add.js"
 import { init } from "./commands/init.js"
 import { list } from "./commands/list.js"
 import { update } from "./commands/update.js"
+import { remove } from "./commands/remove.js"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -29,7 +30,7 @@ async function main() {
       "display the version number"
     )
 
-  program.addCommand(init).addCommand(add).addCommand(list).addCommand(update)
+  program.addCommand(init).addCommand(add).addCommand(list).addCommand(update).addCommand(remove)
 
   // Interactive menu when run with no subcommand
   if (process.argv.length <= 2) {
@@ -42,6 +43,7 @@ async function main() {
         { title: "Add components", value: "add", description: "Add MDX components to your project" },
         { title: "Update components", value: "update", description: "Update installed components to latest" },
         { title: "Initialize project", value: "init", description: "Set up mdx-ui in your project" },
+        { title: "Remove components", value: "remove", description: "Remove installed components from your project" },
         { title: "List components", value: "list", description: "Show all available components" },
       ],
     })

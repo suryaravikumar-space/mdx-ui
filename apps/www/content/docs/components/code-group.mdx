@@ -1,6 +1,7 @@
 ---
 title: Code Group
 description: Tabbed code block group for showing the same content across package managers, languages, or frameworks
+component: code-group
 published: true
 ---
 
@@ -20,7 +21,7 @@ npx @ravikumarsurya/mdx-ui add code-block
 
 Wrap multiple fenced code blocks inside `<CodeGroup>`. Add a `title` annotation to each fence to set the tab label. Without a title, the language name is used.
 
-```mdx
+````mdx
 <CodeGroup>
   ```bash title="npm"
   npm install my-package
@@ -32,7 +33,7 @@ Wrap multiple fenced code blocks inside `<CodeGroup>`. Add a `title` annotation 
   yarn add my-package
   ```
 </CodeGroup>
-```
+````
 
 ## Examples
 

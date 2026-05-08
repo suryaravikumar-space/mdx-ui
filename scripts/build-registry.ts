@@ -81,6 +81,11 @@ const componentsMetadata: Record<string, {
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
   },
+  "link": {
+    description: "Styled anchor — auto-detects external URLs, adds open-in-new-tab icon and rel='noopener noreferrer'",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
   "image": {
     description: "Image with optional caption, plus ImageGlossary — responsive 1–3 column grid of images as seen in react.dev",
     dependencies: ["clsx", "tailwind-merge"],
@@ -113,6 +118,11 @@ const componentsMetadata: Record<string, {
   "paragraph": {
     description: "Standard text paragraph component with proper spacing and typography",
     dependencies: [],
+    registryDependencies: ["utils"]
+  },
+  "spoiler": {
+    description: "Collapsible <details>/<summary> disclosure — lightweight alternative to Accordion for single items",
+    dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
   },
   "steps": {

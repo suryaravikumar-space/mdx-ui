@@ -17,6 +17,8 @@ import { CodeGroup } from "@/components/mdx/code-group";
 import { Alert, AlertTitle, AlertDescription } from "@/components/mdx/alert";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, LinkCard } from "@/components/mdx/card";
 import { Kbd } from "@/components/mdx/kbd";
+import { Link } from "@/components/mdx/link";
+import { Spoiler } from "@/components/mdx/spoiler";
 import { Video } from "@/components/mdx/video";
 import { Image, ImageGlossary } from "@/components/mdx/image";
 
@@ -60,6 +62,8 @@ const components = {
   CardFooter,
   LinkCard,
   Kbd,
+  Link,
+  Spoiler,
   Video,
   Image,
   ImageGlossary,
@@ -77,12 +81,7 @@ const components = {
   h4: H4,
   h5: H5,
   h6: H6,
-  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a
-      className="font-medium underline underline-offset-4 hover:text-foreground"
-      {...props}
-    />
-  ),
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <Link {...props} />,
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className="text-base leading-7 [&:not(:first-child)]:mt-6"

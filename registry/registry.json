@@ -172,6 +172,17 @@
       ]
     },
     {
+      "name": "link",
+      "type": "mdx",
+      "description": "Styled anchor — auto-detects external URLs, adds open-in-new-tab icon and rel='noopener noreferrer'",
+      "files": [
+        "mdx/link.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "list",
       "type": "mdx",
       "description": "Styled ordered and unordered lists with list items",
@@ -218,6 +229,17 @@
       "description": "Standard text paragraph component with proper spacing and typography",
       "files": [
         "mdx/paragraph.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "spoiler",
+      "type": "mdx",
+      "description": "Collapsible <details>/<summary> disclosure — lightweight alternative to Accordion for single items",
+      "files": [
+        "mdx/spoiler.json"
       ],
       "registryDependencies": [
         "utils"

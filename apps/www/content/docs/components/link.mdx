@@ -1,0 +1,67 @@
+---
+title: Link
+description: Styled anchor with automatic external link detection — adds open-in-new-tab icon and rel="noopener noreferrer" for external URLs
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add link
+```
+
+Installing `link` automatically maps it to the `a` element, so all markdown links get the upgrade.
+
+## Usage
+
+### Markdown links (automatic)
+
+Once installed, standard markdown link syntax uses the `Link` component automatically:
+
+```mdx
+[Internal page](/docs/components/callout)
+
+[External site](https://react.dev)
+```
+
+External links get `target="_blank"`, `rel="noopener noreferrer"`, and the external icon. Internal links render as normal anchors.
+
+### Explicit JSX usage
+
+```mdx
+<Link href="https://github.com">GitHub</Link>
+
+<Link href="/docs">Back to docs</Link>
+```
+
+### Force external / internal
+
+```mdx
+<Link href="/api/proxy" external>Opens in new tab</Link>
+
+<Link href="https://cdn.example.com/file.pdf" external={false}>
+  Same tab
+</Link>
+```
+
+## How external detection works
+
+A URL is treated as external if it starts with `http://` or `https://`. Everything else — relative paths (`/docs`), hash links (`#section`), mailto, etc. — is treated as internal.
+
+| URL | Detected as |
+| --- | --- |
+| `https://example.com` | External — icon + new tab |
+| `http://example.com` | External — icon + new tab |
+| `/docs/intro` | Internal |
+| `#section` | Internal |
+| `mailto:hi@example.com` | Internal |
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `href` | `string` | `""` | Link destination |
+| `external` | `boolean` | auto-detected | Override external detection |
+| `target` | `string` | `"_blank"` for external | HTML target attribute |
+| `rel` | `string` | `"noopener noreferrer"` for external | HTML rel attribute |
+| `className` | `string` | — | Extra classes |

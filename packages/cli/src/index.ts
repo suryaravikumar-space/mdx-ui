@@ -10,6 +10,7 @@ import { init } from "./commands/init.js"
 import { list } from "./commands/list.js"
 import { update } from "./commands/update.js"
 import { remove } from "./commands/remove.js"
+import { doctor } from "./commands/doctor.js"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -30,7 +31,7 @@ async function main() {
       "display the version number"
     )
 
-  program.addCommand(init).addCommand(add).addCommand(list).addCommand(update).addCommand(remove)
+  program.addCommand(init).addCommand(add).addCommand(list).addCommand(update).addCommand(remove).addCommand(doctor)
 
   // Interactive menu when run with no subcommand
   if (process.argv.length <= 2) {
@@ -45,6 +46,7 @@ async function main() {
         { title: "Initialize project", value: "init", description: "Set up mdx-ui in your project" },
         { title: "Remove components", value: "remove", description: "Remove installed components from your project" },
         { title: "List components", value: "list", description: "Show all available components" },
+        { title: "Doctor", value: "doctor", description: "Check project health — missing deps, broken imports" },
       ],
     })
     if (!action) process.exit(0)

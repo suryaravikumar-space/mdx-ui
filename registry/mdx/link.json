@@ -1,0 +1,18 @@
+{
+  "name": "link",
+  "type": "component",
+  "description": "Styled anchor — auto-detects external URLs, adds open-in-new-tab icon and rel='noopener noreferrer'",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "link.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nfunction isExternalUrl(href: string): boolean {\n  try {\n    const url = new URL(href)\n    return url.protocol === \"http:\" || url.protocol === \"https:\"\n  } catch {\n    return false\n  }\n}\n\nexport interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {\n  /** Override auto-detection of external URLs */\n  external?: boolean\n}\n\nexport const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(\n  ({ href = \"\", children, className, external, target, rel, ...props }, ref) => {\n    const isExternal = external ?? isExternalUrl(href)\n\n    return (\n      <a\n        ref={ref}\n        href={href}\n        target={isExternal ? (target ?? \"_blank\") : target}\n        rel={isExternal ? (rel ?? \"noopener noreferrer\") : rel}\n        className={cn(\n          \"font-medium underline underline-offset-4 hover:text-foreground transition-colors\",\n          \"inline-flex items-center gap-0.5\",\n          className\n        )}\n        {...props}\n      >\n        {children}\n        {isExternal && (\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width=\"12\"\n            height=\"12\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth=\"2\"\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            aria-hidden=\"true\"\n            className=\"shrink-0\"\n          >\n            <path d=\"M15 3h6v6\" />\n            <path d=\"M10 14 21 3\" />\n            <path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\" />\n          </svg>\n        )}\n      </a>\n    )\n  }\n)\nLink.displayName = \"Link\"\n"
+    }
+  ]
+}

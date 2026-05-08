@@ -1,0 +1,61 @@
+---
+title: Spoiler
+description: Collapsible disclosure using native <details>/<summary> — lightweight alternative to Accordion for single items
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add spoiler
+```
+
+## Usage
+
+### Basic
+
+```mdx
+<Spoiler summary="Show answer">
+  The answer is 42.
+</Spoiler>
+```
+
+### Open by default
+
+```mdx
+<Spoiler summary="Implementation details" open>
+  This section is expanded on load.
+</Spoiler>
+```
+
+### With rich content
+
+```mdx
+<Spoiler summary="View full code example">
+  ```tsx
+  export function Hello() {
+    return <h1>Hello world</h1>
+  }
+  ```
+</Spoiler>
+```
+
+## Spoiler vs Accordion
+
+| | Spoiler | Accordion |
+| --- | --- | --- |
+| Element | Native `<details>` | `<div>` with state |
+| JS required | No | Yes |
+| Multiple items | No (use Accordion) | Yes |
+| Animations | CSS only | CSS only |
+| Keyboard | Browser native | Custom |
+
+Use `Spoiler` for a single collapsible item. Use `Accordion` when you need multiple items or single-open behavior.
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `summary` | `string` | — | Text for the toggle button (required) |
+| `open` | `boolean` | `false` | Start expanded |
+| `className` | `string` | — | Extra classes on the `<details>` element |

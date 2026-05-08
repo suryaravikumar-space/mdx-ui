@@ -87,6 +87,10 @@
       "path": "/docs/components/kbd"
     },
     {
+      "title": "Link",
+      "path": "/docs/components/link"
+    },
+    {
       "title": "List",
       "path": "/docs/components/list"
     },
@@ -97,6 +101,10 @@
     {
       "title": "Mermaid",
       "path": "/docs/components/mermaid"
+    },
+    {
+      "title": "Spoiler",
+      "path": "/docs/components/spoiler"
     },
     {
       "title": "Steps",

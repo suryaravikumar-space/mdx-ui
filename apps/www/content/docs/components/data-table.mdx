@@ -1,6 +1,6 @@
 ---
 title: Data Table
-description: Dynamic table with client-side sorting and filtering — accepts columns and data as props from any source
+description: Dynamic table with sorting, search, and pagination — write plain arrays in MDX or pass fetched data programmatically
 component: data-table
 published: true
 ---
@@ -13,81 +13,99 @@ npx @ravikumarsurya/mdx-ui add data-table
 
 ## Usage
 
-Pass `columns` and `data` as props. Add `searchable` to enable filtering, and `sortable: true` on any column to enable click-to-sort.
+Two APIs — pick what fits your context:
+
+### Simple (MDX-native)
+
+Just pass `headers` and `rows` as plain arrays. No JavaScript objects needed.
 
 ```mdx
-export const columns = [
-  { key: "name",    header: "Component", sortable: true },
-  { key: "version", header: "Since",     sortable: true },
-  { key: "status",  header: "Status" },
-]
-
-export const data = [
-  { name: "Accordion", version: "0.0.1",  status: "stable" },
-  { name: "DataTable", version: "0.0.27", status: "stable" },
-  { name: "Mermaid",   version: "0.0.17", status: "stable" },
-]
-
-<DataTable columns={columns} data={data} searchable />
+<DataTable
+  headers={["Prop", "Type", "Required", "Description"]}
+  rows={[
+    ["src",    "string", "Yes", "Image URL or path"],
+    ["alt",    "string", "Yes", "Alt text"],
+    ["width",  "number", "No",  "Width in px"],
+    ["height", "number", "No",  "Height in px"],
+  ]}
+/>
 ```
 
-## Examples
+### Programmatic (dynamic data)
 
-### Sortable + searchable
-
-export const componentColumns = [
-  { key: "name",    header: "Component", sortable: true },
-  { key: "version", header: "Since",     sortable: true },
-  { key: "status",  header: "Status",    sortable: true },
-]
-
-export const componentData = [
-  { name: "Accordion",  version: "0.0.1",  status: "stable" },
-  { name: "Alert",      version: "0.0.20", status: "stable" },
-  { name: "Badge",      version: "0.0.1",  status: "stable" },
-  { name: "Callout",    version: "0.0.1",  status: "stable" },
-  { name: "Card",       version: "0.0.20", status: "stable" },
-  { name: "Changelog",  version: "0.0.26", status: "stable" },
-  { name: "DataTable",  version: "0.0.27", status: "stable" },
-  { name: "DiffBlock",  version: "0.0.26", status: "stable" },
-  { name: "Mermaid",    version: "0.0.17", status: "stable" },
-  { name: "Terminal",   version: "0.0.26", status: "stable" },
-]
-
-<DataTable columns={componentColumns} data={componentData} searchable searchPlaceholder="Search components…" />
-
-### Custom cell renderer
-
-```mdx
-export const columns = [
-  { key: "name",   header: "Name", sortable: true },
-  { key: "status", header: "Status", render: (value) => (
-    <span className={value === "stable" ? "text-green-600 font-medium" : "text-yellow-600"}>
-      {String(value)}
-    </span>
-  )},
-]
-```
-
-### From imported JSON
+Use when data comes from a file, fetch, or database.
 
 ```mdx
 import data from "./props.json"
 
 export const columns = [
-  { key: "prop",        header: "Prop",        sortable: true },
-  { key: "type",        header: "Type" },
-  { key: "required",    header: "Required",    sortable: true },
-  { key: "description", header: "Description", searchable: false },
+  { key: "prop",     header: "Prop",     sortable: true },
+  { key: "type",     header: "Type" },
+  { key: "required", header: "Required", sortable: true },
 ]
 
-<DataTable columns={columns} data={data} searchable />
+<DataTable columns={columns} data={data} searchable pagination />
 ```
 
-### Empty state
+## Examples
+
+### With search and sort
+
+Add `searchable` to show a search input. Add `sortable` to enable click-to-sort on every column — sort type is auto-detected (A→Z for text, 1→9 for numbers, Newest for dates).
+
+<DataTable
+  headers={["Component", "Version", "Size (KB)", "Released"]}
+  rows={[
+    ["Accordion",  "0.0.1",  3.2,  "2024-11-01"],
+    ["Mermaid",    "0.0.17", 8.7,  "2025-01-10"],
+    ["DataTable",  "0.0.29", 5.1,  "2025-05-08"],
+    ["Changelog",  "0.0.26", 2.9,  "2025-04-22"],
+    ["Terminal",   "0.0.26", 3.4,  "2025-04-22"],
+    ["DiffBlock",  "0.0.26", 2.1,  "2025-04-22"],
+    ["Badge",      "0.0.1",  1.4,  "2024-11-01"],
+    ["Callout",    "0.0.1",  2.8,  "2024-11-01"],
+  ]}
+  sortable
+  searchable
+  searchPlaceholder="Search components…"
+/>
+
+### With pagination
+
+<DataTable
+  headers={["Component", "Version", "Size (KB)", "Released"]}
+  rows={[
+    ["Accordion",  "0.0.1",  3.2,  "2024-11-01"],
+    ["Mermaid",    "0.0.17", 8.7,  "2025-01-10"],
+    ["DataTable",  "0.0.29", 5.1,  "2025-05-08"],
+    ["Changelog",  "0.0.26", 2.9,  "2025-04-22"],
+    ["Terminal",   "0.0.26", 3.4,  "2025-04-22"],
+    ["DiffBlock",  "0.0.26", 2.1,  "2025-04-22"],
+    ["Badge",      "0.0.1",  1.4,  "2024-11-01"],
+    ["Callout",    "0.0.1",  2.8,  "2024-11-01"],
+  ]}
+  sortable
+  searchable
+  pagination
+  defaultPageSize={5}
+/>
+
+### Per-column sort type (override auto-detection)
 
 ```mdx
-<DataTable columns={columns} data={[]} emptyText="No results found." />
+<DataTable
+  headers={[
+    "Name",
+    { label: "Price", sortType: "number" },
+    { label: "Published", sortType: "date" },
+  ]}
+  rows={[
+    ["Alpha", "9.99",  "2024-01-15"],
+    ["Beta",  "19.99", "2023-06-01"],
+    ["Gamma", "4.99",  "2025-03-22"],
+  ]}
+  sortable
+/>
 ```
 
 ## Props
@@ -96,21 +114,37 @@ export const columns = [
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `columns` | `DataTableColumn[]` | — | Column definitions (required) |
-| `data` | `T[]` | — | Array of row objects (required) |
+| `headers` | `string[] \| Header[]` | — | Column headers for the simple API |
+| `rows` | `Array<Array<string \| number>>` | — | Row data for the simple API |
+| `columns` | `DataTableColumn[]` | — | Column definitions for the programmatic API |
+| `data` | `T[]` | — | Row objects for the programmatic API |
 | `searchable` | `boolean` | `false` | Show a search input above the table |
-| `searchPlaceholder` | `string` | `"Search…"` | Placeholder text for the search input |
-| `caption` | `string` | — | Caption rendered below the table |
-| `emptyText` | `string` | `"No data available."` | Text shown when data is empty |
+| `searchPlaceholder` | `string` | `"Search…"` | Placeholder for the search input |
+| `sortable` | `boolean` | `false` | Enable sorting on all columns (simple API). For programmatic API, set per column |
+| `pagination` | `boolean` | `false` | Enable pagination with rows-per-page selector |
+| `defaultPageSize` | `number` | `10` | Initial rows per page |
+| `pageSizeOptions` | `number[]` | `[10,25,50,100]` | Rows-per-page dropdown options |
+| `caption` | `string` | — | Caption below the table |
+| `emptyText` | `string` | `"No data available."` | Text shown when no rows match |
 | `className` | `string` | — | Extra classes on the outer wrapper |
 
-### DataTableColumn
+### Header object (simple API)
+
+Instead of a plain string, a header can be an object to set sort type explicitly:
+
+```mdx
+{ label: "Price", sortType: "number" }
+{ label: "Date",  sortType: "date" }
+```
+
+### DataTableColumn (programmatic API)
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `string` | — | Key to read from each row object (required) |
+| `key` | `string` | — | Key read from each row object (required) |
 | `header` | `string` | — | Column header label (required) |
-| `sortable` | `boolean` | `false` | Click header to sort asc → desc → off |
-| `searchable` | `boolean` | `true` | Include column in search filtering |
+| `sortable` | `boolean` | `false` | Enable sort on this column |
+| `sortType` | `"string" \| "number" \| "date"` | auto | Sort strategy; auto-detected if omitted |
+| `searchable` | `boolean` | `true` | Include in search |
 | `render` | `(value, row, index) => ReactNode` | — | Custom cell renderer |
 | `className` | `string` | — | Extra classes on `<th>` and `<td>` |

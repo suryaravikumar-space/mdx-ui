@@ -11,9 +11,11 @@ import { writeComponent } from "../utils/write-component.js"
 
 // Map component filenames → registry component names
 const FILE_TO_COMPONENT: Record<string, string> = {
+  "alert.tsx":          "alert",
   "accordion.tsx":      "accordion",
   "badge.tsx":          "badge",
   "blockquote.tsx":     "blockquote",
+  "card.tsx":           "card",
   "callout.tsx":        "callout",
   "code-block.tsx":     "code-block",
   "code-group.tsx":     "code-group",
@@ -22,11 +24,14 @@ const FILE_TO_COMPONENT: Record<string, string> = {
   "heading.tsx":        "heading",
   "headings.tsx":       "headings",
   "horizontal-rule.tsx":"horizontal-rule",
+  "kbd.tsx":            "kbd",
+  "illustration.tsx":   "illustration",
   "image.tsx":          "image",
   "inline-code.tsx":    "inline-code",
   "list.tsx":           "list",
   "math.tsx":           "math",
   "mdx-components.tsx": "mdx-components",
+  "video.tsx":          "video",
   "mermaid.tsx":        "mermaid",
   "paragraph.tsx":      "paragraph",
   "steps.tsx":          "steps",

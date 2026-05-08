@@ -19,12 +19,20 @@
       "path": "/docs/components/accordion"
     },
     {
+      "title": "Alert",
+      "path": "/docs/components/alert"
+    },
+    {
       "title": "Badge",
       "path": "/docs/components/badge"
     },
     {
       "title": "Blockquote",
       "path": "/docs/components/blockquote"
+    },
+    {
+      "title": "Card",
+      "path": "/docs/components/card"
     },
     {
       "title": "Callout",
@@ -63,12 +71,24 @@
       "path": "/docs/components/horizontal-rule"
     },
     {
+      "title": "Illustration",
+      "path": "/docs/components/illustration"
+    },
+    {
       "title": "Image",
       "path": "/docs/components/image"
     },
     {
+      "title": "Video",
+      "path": "/docs/components/video"
+    },
+    {
       "title": "Inline Code",
       "path": "/docs/components/inline-code"
+    },
+    {
+      "title": "Kbd",
+      "path": "/docs/components/kbd"
     },
     {
       "title": "List",

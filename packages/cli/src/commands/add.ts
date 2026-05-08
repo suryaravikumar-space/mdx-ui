@@ -16,16 +16,20 @@ const COMPONENT_MDX_MAP: Record<string, {
   imports: string[]
   elementMappings: Record<string, string>
 }> = {
+  "alert":          { importFile: "./alert",          imports: ["Alert","AlertTitle","AlertDescription"],                                                      elementMappings: {} },
   "accordion":      { importFile: "./accordion",      imports: ["Accordion","AccordionItem","AccordionTrigger","AccordionContent"],                           elementMappings: {} },
   "heading":        { importFile: "./heading",        imports: ["H1","H2","H3","H4","H5","H6"],                                                              elementMappings: { h1:"H1", h2:"H2", h3:"H3", h4:"H4", h5:"H5", h6:"H6" } },
   "paragraph":      { importFile: "./paragraph",      imports: ["Paragraph"],                                                                                elementMappings: { p:"Paragraph" } },
   "blockquote":     { importFile: "./blockquote",     imports: ["Blockquote"],                                                                               elementMappings: { blockquote:"Blockquote" } },
   "list":           { importFile: "./list",           imports: ["UnorderedList","OrderedList","ListItem"],                                                    elementMappings: { ul:"UnorderedList", ol:"OrderedList", li:"ListItem" } },
   "inline-code":    { importFile: "./inline-code",    imports: ["Code"],                                                                                     elementMappings: { code:"Code" } },
+  "kbd":            { importFile: "./kbd",            imports: ["Kbd"],                                                                                       elementMappings: {} },
+  "illustration":   { importFile: "./illustration", imports: ["Illustration","IllustrationBlock"],                                                                elementMappings: {} },
   "image":          { importFile: "./image",          imports: ["Image"],                                                                                    elementMappings: { img:"Image" } },
   "horizontal-rule":{ importFile: "./horizontal-rule",imports: ["HorizontalRule"],                                                                           elementMappings: { hr:"HorizontalRule" } },
   "emphasis":       { importFile: "./emphasis",       imports: ["Strong","Em"],                                                                              elementMappings: { strong:"Strong", em:"Em" } },
   "table":          { importFile: "./table",          imports: ["Table","TableHeader","TableBody","TableFooter","TableRow","TableHead","TableCell","TableCaption"], elementMappings: { table:"Table", thead:"TableHeader", tbody:"TableBody", tfoot:"TableFooter", tr:"TableRow", th:"TableHead", td:"TableCell" } },
+  "card":           { importFile: "./card",           imports: ["Card","CardHeader","CardTitle","CardDescription","CardContent","CardFooter","LinkCard"], elementMappings: {} },
   "callout":        { importFile: "./callout",        imports: ["Callout"],                                                                                  elementMappings: {} },
   "tabs":           { importFile: "./tabs",           imports: ["Tabs","TabsList","TabsTrigger","TabsContent"],                                               elementMappings: {} },
   "steps":          { importFile: "./steps",          imports: ["Steps","Step"],                                                                             elementMappings: {} },
@@ -33,6 +37,7 @@ const COMPONENT_MDX_MAP: Record<string, {
   "file-tree":      { importFile: "./file-tree",      imports: ["FileTree"],                                                                                 elementMappings: {} },
   "badge":          { importFile: "./badge",          imports: ["Badge"],                                                                                    elementMappings: {} },
   "math":           { importFile: "./math",           imports: ["Math","BlockMath","InlineMath"],                                                            elementMappings: {} },
+  "video":          { importFile: "./video",          imports: ["Video"],                                                                                        elementMappings: {} },
   "mermaid":        { importFile: "./mermaid",        imports: ["Mermaid"],                                                                                  elementMappings: {} },
   "code-block":     { importFile: "./code-block",     imports: ["CodeBlock"],                                                                                elementMappings: {} },
   "code-group":     { importFile: "./code-group",     imports: ["CodeGroup"],                                                                                elementMappings: {} },

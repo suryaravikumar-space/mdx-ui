@@ -14,6 +14,11 @@ import { Math, BlockMath, InlineMath } from "@/components/mdx/math";
 import { Mermaid } from "@/components/mdx/mermaid";
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/mdx/table";
 import { CodeGroup } from "@/components/mdx/code-group";
+import { Alert, AlertTitle, AlertDescription } from "@/components/mdx/alert";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, LinkCard } from "@/components/mdx/card";
+import { Kbd } from "@/components/mdx/kbd";
+import { Video } from "@/components/mdx/video";
+import { Illustration, IllustrationBlock } from "@/components/mdx/illustration";
 
 const components = {
   Accordion,
@@ -44,6 +49,20 @@ const components = {
   InlineMath,
   Mermaid,
   CodeGroup,
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+  LinkCard,
+  Kbd,
+  Video,
+  Illustration,
+  IllustrationBlock,
   Table,
   TableHeader,
   TableBody,

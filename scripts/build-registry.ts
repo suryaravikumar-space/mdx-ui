@@ -13,6 +13,11 @@ const componentsMetadata: Record<string, {
   dependencies?: string[]
   registryDependencies?: string[]
 }> = {
+  "alert": {
+    description: "Semantic alert boxes with role='alert' and info/warning/destructive/success variants",
+    dependencies: ["class-variance-authority", "clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
   "accordion": {
     description: "Collapsible accordion sections with single or multiple open items",
     dependencies: [],
@@ -26,6 +31,11 @@ const componentsMetadata: Record<string, {
   "blockquote": {
     description: "Styled quote blocks with optional citation",
     dependencies: []
+  },
+  "card": {
+    description: "Card layout components (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter) plus LinkCard for navigation grids",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
   },
   "callout": {
     description: "Alert boxes for important information with variants",
@@ -65,6 +75,16 @@ const componentsMetadata: Record<string, {
   "horizontal-rule": {
     description: "Divider lines with multiple styles (default, dashed, dotted, gradient)",
     dependencies: []
+  },
+  "kbd": {
+    description: "Keyboard shortcut display — styled <kbd> element for showing key combinations like Ctrl+K",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
+  "illustration": {
+    description: "Illustration and IllustrationBlock — single diagram or responsive 1–3 column grid of images, as seen in react.dev",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
   },
   "image": {
     description: "Images with optional captions",
@@ -117,6 +137,11 @@ const componentsMetadata: Record<string, {
   "tree": {
     description: "Interactive file/folder tree structure for displaying project organization",
     dependencies: [],
+    registryDependencies: ["utils"]
+  },
+  "video": {
+    description: "Video embed — auto-detects YouTube, Vimeo, and HTML5 video sources with aspect-ratio container and optional caption",
+    dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
   },
   "utils": {

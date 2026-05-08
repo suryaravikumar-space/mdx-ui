@@ -1,0 +1,81 @@
+---
+title: Illustration
+description: Single diagram or responsive 1–3 column grid of illustrations, as seen in react.dev
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add illustration
+```
+
+## Usage
+
+### Single illustration
+
+```mdx
+<Illustration
+  src="/diagrams/state-flow.png"
+  alt="State flows down through the component tree"
+  caption="State flows down"
+/>
+```
+
+### Side-by-side (auto-detects 2 children → 2 columns)
+
+```mdx
+<IllustrationBlock>
+  <Illustration src="/before.png" alt="Before" caption="Before refactoring" />
+  <Illustration src="/after.png"  alt="After"  caption="After refactoring"  />
+</IllustrationBlock>
+```
+
+### Three columns
+
+```mdx
+<IllustrationBlock cols={3}>
+  <Illustration src="/step1.png" alt="Step 1" caption="Mount" />
+  <Illustration src="/step2.png" alt="Step 2" caption="Update" />
+  <Illustration src="/step3.png" alt="Step 3" caption="Unmount" />
+</IllustrationBlock>
+```
+
+### Block-level caption
+
+```mdx
+<IllustrationBlock caption="React renders in two phases">
+  <Illustration src="/render.png"  alt="Render phase"  caption="Render" />
+  <Illustration src="/commit.png"  alt="Commit phase"  caption="Commit" />
+</IllustrationBlock>
+```
+
+## How cols is resolved
+
+If `cols` is not set, `IllustrationBlock` counts its children and picks automatically:
+
+| Children | Default cols |
+| --- | --- |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 3 |
+| 4+ | 2 |
+
+## Props
+
+### Illustration
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `src` | `string` | Image source URL (required) |
+| `alt` | `string` | Alt text for accessibility (required) |
+| `caption` | `string` | Optional caption below the image |
+| `className` | `string` | Extra classes on the outer `<figure>` |
+
+### IllustrationBlock
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `cols` | `1 \| 2 \| 3` | auto | Number of columns |
+| `caption` | `string` | — | Caption below the entire grid |
+| `className` | `string` | — | Extra classes on the wrapper |

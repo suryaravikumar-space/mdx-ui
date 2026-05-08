@@ -1,0 +1,79 @@
+---
+title: Video
+description: Video embed with auto-detection for YouTube, Vimeo, and HTML5 video sources
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add video
+```
+
+## Usage
+
+Pass any video URL — the component auto-detects the source type.
+
+```mdx
+<Video src="https://www.youtube.com/watch?v=Tn6-PIqc4UM" caption="React in 100 seconds" />
+```
+
+## Examples
+
+### YouTube
+
+```mdx
+<Video
+  src="https://www.youtube.com/watch?v=Tn6-PIqc4UM"
+  title="React in 100 seconds"
+  caption="A quick overview of React"
+/>
+```
+
+Supports all YouTube URL formats:
+- `https://www.youtube.com/watch?v=VIDEO_ID`
+- `https://youtu.be/VIDEO_ID`
+- `https://www.youtube.com/embed/VIDEO_ID`
+
+### Vimeo
+
+```mdx
+<Video src="https://vimeo.com/123456789" caption="Demo walkthrough" />
+```
+
+### HTML5 video (self-hosted)
+
+```mdx
+<Video src="/demos/feature-demo.mp4" caption="Feature demo" />
+```
+
+Supports `.mp4`, `.webm`, `.ogg`. Renders a native `<video controls>` element.
+
+### Autoplay (silent loop, common for demos)
+
+```mdx
+<Video src="/demos/animation.mp4" autoPlay loop muted />
+```
+
+Note: browsers require `muted` for autoplay to work. When `autoPlay` is set, `muted` defaults to `true` automatically.
+
+## How source detection works
+
+| URL pattern | Renders |
+| --- | --- |
+| `youtube.com/watch?v=...` | YouTube iframe embed |
+| `youtu.be/...` | YouTube iframe embed |
+| `vimeo.com/123...` | Vimeo iframe embed |
+| `.mp4`, `.webm`, `.ogg` | HTML5 `<video>` |
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `src` | `string` | — | Video URL or file path (required) |
+| `title` | `string` | — | Title for iframes (accessibility) |
+| `caption` | `string` | — | Caption below the video |
+| `autoPlay` | `boolean` | `false` | Autoplay (HTML5 and YouTube/Vimeo) |
+| `loop` | `boolean` | `false` | Loop (HTML5 only) |
+| `muted` | `boolean` | `true` when autoPlay | Mute audio (HTML5 only) |
+| `className` | `string` | — | Extra classes on the outer `<figure>` |

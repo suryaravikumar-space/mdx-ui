@@ -1,0 +1,18 @@
+{
+  "name": "illustration",
+  "type": "component",
+  "description": "Illustration and IllustrationBlock — single diagram or responsive 1–3 column grid of images, as seen in react.dev",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "illustration.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\n// ─── Illustration ────────────────────────────────────────────────────────────\n// Single diagram or screenshot with an optional caption.\n// Designed to be used standalone or inside IllustrationBlock.\n\nexport interface IllustrationProps extends React.HTMLAttributes<HTMLElement> {\n  src: string\n  alt: string\n  caption?: string\n}\n\nexport const Illustration = React.forwardRef<HTMLElement, IllustrationProps>(\n  ({ src, alt, caption, className, ...props }, ref) => (\n    <figure ref={ref} className={cn(\"flex flex-col\", className)} {...props}>\n      <div className=\"overflow-hidden rounded-lg border border-border bg-card\">\n        <img\n          src={src}\n          alt={alt}\n          className=\"w-full\"\n        />\n      </div>\n      {caption && (\n        <figcaption className=\"mt-2 text-center text-sm text-muted-foreground italic\">\n          {caption}\n        </figcaption>\n      )}\n    </figure>\n  )\n)\nIllustration.displayName = \"Illustration\"\n\n// ─── IllustrationBlock ───────────────────────────────────────────────────────\n// Responsive grid of 1–3 illustrations, as seen in react.dev.\n//\n// Usage:\n//   <IllustrationBlock>\n//     <Illustration src=\"/before.png\" alt=\"Before\" caption=\"Before\" />\n//     <Illustration src=\"/after.png\"  alt=\"After\"  caption=\"After\"  />\n//   </IllustrationBlock>\n\nconst colClasses: Record<number, string> = {\n  1: \"grid-cols-1\",\n  2: \"grid-cols-1 sm:grid-cols-2\",\n  3: \"grid-cols-1 sm:grid-cols-3\",\n}\n\nexport interface IllustrationBlockProps extends React.HTMLAttributes<HTMLDivElement> {\n  cols?: 1 | 2 | 3\n  caption?: string\n}\n\nexport const IllustrationBlock = React.forwardRef<HTMLDivElement, IllustrationBlockProps>(\n  ({ cols, children, caption, className, ...props }, ref) => {\n    // Auto-detect column count from number of children if not specified\n    const count = React.Children.count(children)\n    const resolvedCols = cols ?? ((count <= 3 ? count : 2) as 1 | 2 | 3)\n\n    return (\n      <div ref={ref} className={cn(\"my-6\", className)} {...props}>\n        <div className={cn(\"grid gap-4\", colClasses[resolvedCols])}>\n          {children}\n        </div>\n        {caption && (\n          <p className=\"mt-3 text-center text-sm text-muted-foreground italic\">\n            {caption}\n          </p>\n        )}\n      </div>\n    )\n  }\n)\nIllustrationBlock.displayName = \"IllustrationBlock\"\n"
+    }
+  ]
+}

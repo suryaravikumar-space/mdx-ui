@@ -82,6 +82,33 @@ STEPS (instead of numbered lists for procedures):
   <Step>Second action to take</Step>
 </Steps>
 
+Steps can contain rich content including code blocks:
+<Steps>
+  <Step>
+    **Clone the repository**
+    \`\`\`bash
+    git clone https://github.com/your-org/your-repo.git
+    cd your-repo
+    \`\`\`
+  </Step>
+  <Step>
+    **Install dependencies**
+    \`\`\`bash
+    npm install
+    \`\`\`
+  </Step>
+  <Step>
+    **Start the development server**
+    \`\`\`bash
+    npm run dev
+    \`\`\`
+  </Step>
+</Steps>
+
+IMPORTANT: Never use numbered markdown lists (1. 2. 3.) when steps contain
+code blocks — the markdown parser will break the list. Always use <Steps><Step>
+for any procedure that includes commands or code examples.
+
 TABLES (instead of markdown tables):
 <DataTable
   headers={["Column A", "Column B", "Column C"]}
@@ -168,13 +195,137 @@ When `MDXRemote` encounters `<Callout>`, `<Steps>`, or `<DataTable>` in the LLM 
 
 ---
 
-## Automatic upgrade: plain markdown → components
+## Chatbot responses (fully dynamic)
 
-If you don't control the LLM output (third-party API, user-pasted content), use the `@ravikumarsurya/remark-mdx-ui` plugin. It upgrades standard markdown patterns to components at render time — no prompt changes needed.
+Chatbot APIs (GPT, Claude, Gemini, etc.) return **plain markdown**, not MDX component tags. They also generate numbered lists with code blocks that are not correctly indented under their list items — which causes the CommonMark parser to break the list at the first code fence. Everything from item 2 onward renders as raw monospace text inside a broken code block.
+
+### Why the standard parser breaks
+
+```markdown
+1. **Clone the repository**:
+   ```bash
+git clone https://github.com/your-org/app.git
+```
+
+2. **Install dependencies**:
+   ```bash
+npm install
+```
+```
+
+The closing ` ``` ` at column 0 does not satisfy CommonMark's list continuation rules. The list terminates, items 2 and 3 are never parsed as list items, and the remark plugin's `transformSteps` never sees a complete `list` node to convert.
+
+### The fix: `preprocessMarkdown`
+
+`preprocessMarkdown` is a **string pre-processor** that runs before the MDX parser. It uses a line-by-line state machine to collect numbered items and their associated code blocks regardless of indentation, then emits them as `<Steps><Step>` MDX.
 
 ```bash
 npm install @ravikumarsurya/remark-mdx-ui
 ```
+
+```tsx
+// app/chat/page.tsx
+import { MDXRemote } from "next-mdx-remote/rsc"
+import remarkMdxUi, { preprocessMarkdown } from "@ravikumarsurya/remark-mdx-ui"
+import { mdxComponents } from "@/components/mdx-components"
+
+interface Props {
+  chatbotResponse: string // raw markdown from any chatbot API
+}
+
+export default function ChatResponse({ chatbotResponse }: Props) {
+  // Step 1 — Fix broken numbered lists before the parser sees the string
+  const fixed = preprocessMarkdown(chatbotResponse)
+
+  // Step 2 — Let the remark plugin upgrade blockquotes, tables, ==highlights==
+  return (
+    <MDXRemote
+      source={fixed}
+      components={mdxComponents}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [
+            [remarkMdxUi, { callout: true, table: true, highlight: true }],
+          ],
+        },
+      }}
+    />
+  )
+}
+```
+
+### What `preprocessMarkdown` handles
+
+| AI chatbot generates | Rendered as |
+| --- | --- |
+| `1. **step** + code block (not indented)` | `<Steps><Step>` with code inside |
+| `1. **step** + multiple code blocks` | single `<Step>` containing all blocks |
+| `1. Step\n2. Step\n3. Step` (text only) | `<Steps><Step>` (no code needed) |
+| Non-numbered content | passed through unchanged |
+
+<Callout type="info">
+  `preprocessMarkdown` only converts sequences of **2 or more** numbered items. A lone `1.` item is left as-is.
+</Callout>
+
+### Full chatbot pipeline
+
+```
+Chatbot API response (plain markdown)
+    │
+    │  preprocessMarkdown(response)
+    ▼
+Fixed MDX string — numbered lists → <Steps><Step>
+    │
+    │  MDXRemote + remarkMdxUi plugin
+    ▼
+Remark upgrades blockquotes → <Callout>, tables → <DataTable>
+    │
+    ▼
+React renders all components with full UI
+```
+
+### Using with a streaming chatbot
+
+```tsx
+// app/api/chat/route.ts
+import { preprocessMarkdown } from "@ravikumarsurya/remark-mdx-ui"
+
+export async function POST(req: Request) {
+  const { message } = await req.json()
+
+  // Call your chatbot API (OpenAI, Anthropic, etc.)
+  const response = await callChatbot(message)
+  const rawMarkdown = response.content
+
+  // Pre-process before sending to the client
+  const processedMdx = preprocessMarkdown(rawMarkdown)
+
+  return Response.json({ mdx: processedMdx })
+}
+```
+
+```tsx
+// app/chat/ChatMessage.tsx
+"use client"
+import { MDXRemote } from "next-mdx-remote"
+import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+import { mdxComponents } from "@/components/mdx-components"
+
+export function ChatMessage({ mdx }: { mdx: string }) {
+  return (
+    <MDXRemote
+      compiledSource={mdx}
+      components={mdxComponents}
+    />
+  )
+}
+```
+
+---
+
+## Automatic upgrade: plain markdown → components
+
+For **static files or controlled LLM output** (where you own the system prompt), the `@ravikumarsurya/remark-mdx-ui` remark plugin upgrades standard markdown patterns to components at AST level — no string preprocessing needed.
 
 ```tsx
 import { MDXRemote } from "next-mdx-remote/rsc"
@@ -201,8 +352,12 @@ What the plugin upgrades automatically:
 | `> [!NOTE]` / `> [!WARNING]` | `<Callout type="info/warning">` |
 | `> **Note:**` legacy syntax | `<Callout type="info">` |
 | Markdown table `\| col \|` | `<DataTable headers rows />` |
-| Numbered list | `<Steps><Step>` *(opt-in)* |
+| Numbered list (well-formed) | `<Steps><Step>` *(opt-in)* |
 | `==text==` | `<Highlight>` *(opt-in)* |
+
+<Callout type="warning">
+  The remark plugin's `steps` transform only works on **well-formed** ordered lists — where code blocks are correctly indented under their list items. For chatbot output where code blocks escape the list, use `preprocessMarkdown` instead (see above).
+</Callout>
 
 ---
 
@@ -446,4 +601,90 @@ Never mutate state <Highlight color="green">directly</Highlight> — always call
 
 <Callout type="success">
   Use a structured logging library like Pino or Winston to make errors searchable in your log dashboard.
+</Callout>
+
+---
+
+### Example 6 — Steps with code blocks
+
+This is the pattern to use whenever a step contains commands. Numbered markdown lists break when code fences appear inside them — `<Steps><Step>` handles rich content correctly.
+
+**LLM output:**
+
+````mdx
+<Callout type="info">
+  Run these commands in order. Each step must complete successfully before the next.
+</Callout>
+
+<Steps>
+  <Step>
+    **Clone the repository**
+    ```bash
+    git clone https://github.com/your-org/your-app.git
+    cd your-app
+    ```
+  </Step>
+  <Step>
+    **Install dependencies**
+    ```bash
+    npm install
+    ```
+  </Step>
+  <Step>
+    **Copy the environment file and add your keys**
+    ```bash
+    cp .env.example .env.local
+    ```
+  </Step>
+  <Step>
+    **Start the development server**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to verify it works.
+  </Step>
+</Steps>
+
+<Callout type="warning">
+  Never commit `.env.local` to version control — it contains secrets.
+</Callout>
+````
+
+**Rendered:**
+
+<Callout type="info">
+  Run these commands in order. Each step must complete successfully before the next.
+</Callout>
+
+<Steps>
+  <Step>
+    **Clone the repository**
+    ```bash
+    git clone https://github.com/your-org/your-app.git
+    cd your-app
+    ```
+  </Step>
+  <Step>
+    **Install dependencies**
+    ```bash
+    npm install
+    ```
+  </Step>
+  <Step>
+    **Copy the environment file and add your keys**
+    ```bash
+    cp .env.example .env.local
+    ```
+  </Step>
+  <Step>
+    **Start the development server**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to verify it works.
+  </Step>
+</Steps>
+
+<Callout type="warning">
+  Never commit `.env.local` to version control — it contains secrets.
 </Callout>

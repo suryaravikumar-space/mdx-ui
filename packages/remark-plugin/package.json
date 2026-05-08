@@ -1,7 +1,7 @@
 {
   "name": "@ravikumarsurya/remark-mdx-ui",
-  "version": "0.0.1",
-  "description": "Remark plugin — upgrades AI-generated markdown to mdx-ui components (Callout, DataTable, Steps, Highlight)",
+  "version": "0.0.2",
+  "description": "Remark plugin + string pre-processor — converts AI-generated markdown (numbered lists, blockquotes, tables) to mdx-ui components automatically",
   "license": "MIT",
   "type": "module",
   "author": {

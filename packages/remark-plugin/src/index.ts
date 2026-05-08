@@ -299,3 +299,6 @@ const remarkMdxUi: Plugin<[RemarkMdxUiOptions?], Root> = (options = {}) => {
 }
 
 export default remarkMdxUi
+
+// ─── String pre-processor (run before MDX compiler) ──────────────────────────
+export { preprocessMarkdown } from "./preprocess"

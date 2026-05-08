@@ -31,6 +31,16 @@ Just pass `headers` and `rows` as plain arrays. No JavaScript objects needed.
 />
 ```
 
+<DataTable
+  headers={["Prop", "Type", "Required", "Description"]}
+  rows={[
+    ["src",    "string", "Yes", "Image URL or path"],
+    ["alt",    "string", "Yes", "Alt text"],
+    ["width",  "number", "No",  "Width in px"],
+    ["height", "number", "No",  "Height in px"],
+  ]}
+/>
+
 ### Programmatic (dynamic data)
 
 Use when data comes from a file, fetch, or database.
@@ -46,6 +56,22 @@ export const columns = [
 
 <DataTable columns={columns} data={data} searchable pagination />
 ```
+
+export const progColumns = [
+  { key: "prop",     header: "Prop",     sortable: true },
+  { key: "type",     header: "Type" },
+  { key: "required", header: "Required", sortable: true },
+  { key: "description", header: "Description" },
+]
+
+export const progData = [
+  { prop: "src",    type: "string",  required: "Yes", description: "Image URL or path" },
+  { prop: "alt",    type: "string",  required: "Yes", description: "Alt text" },
+  { prop: "width",  type: "number",  required: "No",  description: "Width in px" },
+  { prop: "height", type: "number",  required: "No",  description: "Height in px" },
+]
+
+<DataTable columns={progColumns} data={progData} searchable pagination />
 
 ## Examples
 

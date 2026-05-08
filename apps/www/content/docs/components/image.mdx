@@ -1,6 +1,6 @@
 ---
 title: Image
-description: Styled image with optional caption, plus ImageGlossary for responsive 1–3 column grids
+description: Styled image with optional caption, plus ImageGlossary for responsive 1–3 column grids. Swappable renderer for next/image and other framework optimizers.
 published: true
 ---
 
@@ -50,6 +50,78 @@ npx @ravikumarsurya/mdx-ui add image
 </ImageGlossary>
 ```
 
+## Image optimization
+
+By default the component renders a native `<img>` with `loading="lazy"` and `decoding="async"` — free performance wins that work in every framework.
+
+For framework-level optimization (CDN, WebP/AVIF conversion, responsive srcset), wrap your layout once with `ImageRendererProvider`. Every `<Image>` in your MDX content will automatically use the renderer you provide — no changes to individual MDX files.
+
+### Next.js (`next/image`)
+
+```tsx
+// app/layout.tsx  (or pages/_app.tsx)
+import NextImage from "next/image"
+import { ImageRendererProvider } from "@/components/mdx/image"
+
+export default function Layout({ children }) {
+  return (
+    <ImageRendererProvider
+      renderer={(props) => (
+        <NextImage
+          {...props}
+          // next/image requires explicit dimensions or fill
+          width={props.width ?? 800}
+          height={props.height ?? 450}
+        />
+      )}
+    >
+      {children}
+    </ImageRendererProvider>
+  )
+}
+```
+
+### Astro
+
+```tsx
+// src/components/ImageRenderer.tsx
+import AstroImage from "astro:assets"
+import { ImageRendererProvider } from "./mdx/image"
+
+export function AstroImageProvider({ children }) {
+  return (
+    <ImageRendererProvider
+      renderer={(props) => <AstroImage {...props} />}
+    >
+      {children}
+    </ImageRendererProvider>
+  )
+}
+```
+
+### Remix (`@remix-run/react`)
+
+```tsx
+// app/root.tsx
+import { ImageRendererProvider } from "~/components/mdx/image"
+
+export default function App() {
+  return (
+    <ImageRendererProvider
+      renderer={(props) => (
+        <img {...props} loading="lazy" decoding="async" fetchpriority="auto" />
+      )}
+    >
+      <Outlet />
+    </ImageRendererProvider>
+  )
+}
+```
+
+### Plain React / Vite (no framework)
+
+No setup needed — the default renderer already applies `loading="lazy"` and `decoding="async"`.
+
 ## How cols is resolved
 
 If `cols` is not set, `ImageGlossary` counts its children and picks automatically:
@@ -70,8 +142,8 @@ If `cols` is not set, `ImageGlossary` counts its children and picks automaticall
 | `src` | `string` | Image source URL (required) |
 | `alt` | `string` | Alt text for accessibility (required) |
 | `caption` | `string` | Optional caption below the image |
-| `width` | `number` | Optional width |
-| `height` | `number` | Optional height |
+| `width` | `number` | Passed through to the renderer |
+| `height` | `number` | Passed through to the renderer |
 | `className` | `string` | Extra classes on the outer `<figure>` |
 
 ### ImageGlossary
@@ -81,3 +153,10 @@ If `cols` is not set, `ImageGlossary` counts its children and picks automaticall
 | `cols` | `1 \| 2 \| 3` | auto | Number of columns |
 | `caption` | `string` | — | Caption below the entire grid |
 | `className` | `string` | — | Extra classes on the wrapper |
+
+### ImageRendererProvider
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `renderer` | `(props: ImgHTMLAttributes) => ReactNode` | Custom image renderer function |
+| `children` | `ReactNode` | Your app or layout subtree |

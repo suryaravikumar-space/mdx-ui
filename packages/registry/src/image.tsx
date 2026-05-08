@@ -1,6 +1,39 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
+// ─── ImageRenderer context ────────────────────────────────────────────────────
+// Holds the underlying <img> renderer so consumers can swap in next/image,
+// Remix's Image, Astro's image helper, etc. — once at the layout level.
+
+type ImageRenderer = (
+  props: React.ImgHTMLAttributes<HTMLImageElement>
+) => React.ReactNode
+
+const defaultRenderer: ImageRenderer = (props) => (
+  // sensible defaults that work in every framework
+  <img loading="lazy" decoding="async" {...props} />
+)
+
+const ImageRendererContext =
+  React.createContext<ImageRenderer>(defaultRenderer)
+
+export interface ImageRendererProviderProps {
+  /** Custom image renderer — e.g. Next.js: `(p) => <NextImage {...p} />` */
+  renderer: ImageRenderer
+  children: React.ReactNode
+}
+
+export function ImageRendererProvider({
+  renderer,
+  children,
+}: ImageRendererProviderProps) {
+  return (
+    <ImageRendererContext.Provider value={renderer}>
+      {children}
+    </ImageRendererContext.Provider>
+  )
+}
+
 // ─── Image ───────────────────────────────────────────────────────────────────
 
 export interface ImageProps extends React.HTMLAttributes<HTMLElement> {
@@ -12,18 +45,21 @@ export interface ImageProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const Image = React.forwardRef<HTMLElement, ImageProps>(
-  ({ src, alt, caption, className, width, height, ...props }, ref) => (
-    <figure ref={ref} className={cn("my-6 flex flex-col", className)} {...props}>
-      <div className="overflow-hidden rounded-lg border border-border bg-card">
-        <img src={src} alt={alt} width={width} height={height} className="w-full" />
-      </div>
-      {caption && (
-        <figcaption className="mt-2 text-center text-sm text-muted-foreground italic">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  )
+  ({ src, alt, caption, className, width, height, ...props }, ref) => {
+    const renderImage = React.useContext(ImageRendererContext)
+    return (
+      <figure ref={ref} className={cn("my-6 flex flex-col", className)} {...props}>
+        <div className="overflow-hidden rounded-lg border border-border bg-card">
+          {renderImage({ src, alt, width, height, className: "w-full" })}
+        </div>
+        {caption && (
+          <figcaption className="mt-2 text-center text-sm text-muted-foreground italic">
+            {caption}
+          </figcaption>
+        )}
+      </figure>
+    )
+  }
 )
 Image.displayName = "Image"
 

@@ -1,6 +1,6 @@
 ---
 title: Data Table
-description: Dynamic table that accepts columns and data as props — pass static arrays, imported JSON, database results, or API responses
+description: Dynamic table with client-side sorting and filtering — accepts columns and data as props from any source
 component: data-table
 published: true
 ---
@@ -13,93 +13,81 @@ npx @ravikumarsurya/mdx-ui add data-table
 
 ## Usage
 
-Pass `columns` (array of column definitions) and `data` (array of row objects). Data can come from anywhere — inline, a JSON file, a database query, or a fetch call.
+Pass `columns` and `data` as props. Add `searchable` to enable filtering, and `sortable: true` on any column to enable click-to-sort.
 
 ```mdx
 export const columns = [
-  { key: "prop", header: "Prop" },
-  { key: "type", header: "Type" },
-  { key: "required", header: "Required" },
-  { key: "description", header: "Description" },
+  { key: "name",    header: "Component", sortable: true },
+  { key: "version", header: "Since",     sortable: true },
+  { key: "status",  header: "Status" },
 ]
 
 export const data = [
-  { prop: "src", type: "string", required: "Yes", description: "Image URL or path" },
-  { prop: "alt", type: "string", required: "Yes", description: "Alt text" },
-  { prop: "caption", type: "string", required: "No", description: "Caption below image" },
+  { name: "Accordion", version: "0.0.1",  status: "stable" },
+  { name: "DataTable", version: "0.0.27", status: "stable" },
+  { name: "Mermaid",   version: "0.0.17", status: "stable" },
 ]
 
-<DataTable columns={columns} data={data} />
+<DataTable columns={columns} data={data} searchable />
 ```
 
 ## Examples
 
-### Props table (static inline)
+### Sortable + searchable
 
-export const propsColumns = [
-  { key: "prop", header: "Prop" },
-  { key: "type", header: "Type" },
-  { key: "required", header: "Required" },
-  { key: "description", header: "Description" },
+export const componentColumns = [
+  { key: "name",    header: "Component", sortable: true },
+  { key: "version", header: "Since",     sortable: true },
+  { key: "status",  header: "Status",    sortable: true },
 ]
 
-export const propsData = [
-  { prop: "src", type: "string", required: "Yes", description: "Image URL or local path" },
-  { prop: "alt", type: "string", required: "Yes", description: "Alt text for accessibility" },
-  { prop: "caption", type: "string", required: "No", description: "Caption shown below the image" },
-  { prop: "width", type: "number", required: "No", description: "Native width attribute" },
-  { prop: "height", type: "number", required: "No", description: "Native height attribute" },
+export const componentData = [
+  { name: "Accordion",  version: "0.0.1",  status: "stable" },
+  { name: "Alert",      version: "0.0.20", status: "stable" },
+  { name: "Badge",      version: "0.0.1",  status: "stable" },
+  { name: "Callout",    version: "0.0.1",  status: "stable" },
+  { name: "Card",       version: "0.0.20", status: "stable" },
+  { name: "Changelog",  version: "0.0.26", status: "stable" },
+  { name: "DataTable",  version: "0.0.27", status: "stable" },
+  { name: "DiffBlock",  version: "0.0.26", status: "stable" },
+  { name: "Mermaid",    version: "0.0.17", status: "stable" },
+  { name: "Terminal",   version: "0.0.26", status: "stable" },
 ]
 
-<DataTable columns={propsColumns} data={propsData} />
+<DataTable columns={componentColumns} data={componentData} searchable searchPlaceholder="Search components…" />
 
 ### Custom cell renderer
 
-Use the `render` function on a column to return custom JSX — badges, links, formatted values, etc.
-
 ```mdx
 export const columns = [
-  { key: "name", header: "Component" },
+  { key: "name",   header: "Name", sortable: true },
   { key: "status", header: "Status", render: (value) => (
-    <span className={value === "stable" ? "text-green-600" : "text-yellow-600"}>
+    <span className={value === "stable" ? "text-green-600 font-medium" : "text-yellow-600"}>
       {String(value)}
     </span>
   )},
-  { key: "version", header: "Since" },
 ]
-
-export const data = [
-  { name: "Accordion", status: "stable", version: "0.0.1" },
-  { name: "DataTable", status: "stable", version: "0.0.27" },
-  { name: "Mermaid",   status: "beta",   version: "0.0.17" },
-]
-
-<DataTable columns={columns} data={data} />
 ```
 
 ### From imported JSON
 
 ```mdx
-import tableData from "./data.json"
+import data from "./props.json"
 
 export const columns = [
-  { key: "id",   header: "ID" },
-  { key: "name", header: "Name" },
-  { key: "role", header: "Role" },
+  { key: "prop",        header: "Prop",        sortable: true },
+  { key: "type",        header: "Type" },
+  { key: "required",    header: "Required",    sortable: true },
+  { key: "description", header: "Description", searchable: false },
 ]
 
-<DataTable columns={columns} data={tableData} />
+<DataTable columns={columns} data={data} searchable />
 ```
 
-### With caption and empty state
+### Empty state
 
 ```mdx
-<DataTable
-  columns={columns}
-  data={[]}
-  caption="No results matched your query."
-  emptyText="Nothing here yet."
-/>
+<DataTable columns={columns} data={[]} emptyText="No results found." />
 ```
 
 ## Props
@@ -110,15 +98,19 @@ export const columns = [
 | --- | --- | --- | --- |
 | `columns` | `DataTableColumn[]` | — | Column definitions (required) |
 | `data` | `T[]` | — | Array of row objects (required) |
+| `searchable` | `boolean` | `false` | Show a search input above the table |
+| `searchPlaceholder` | `string` | `"Search…"` | Placeholder text for the search input |
 | `caption` | `string` | — | Caption rendered below the table |
 | `emptyText` | `string` | `"No data available."` | Text shown when data is empty |
 | `className` | `string` | — | Extra classes on the outer wrapper |
 
 ### DataTableColumn
 
-| Prop | Type | Required | Description |
+| Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `key` | `string` | Yes | Key to read from each row object |
-| `header` | `string` | Yes | Column header label |
-| `render` | `(value, row, index) => ReactNode` | No | Custom cell renderer |
-| `className` | `string` | No | Extra classes on `<th>` and `<td>` |
+| `key` | `string` | — | Key to read from each row object (required) |
+| `header` | `string` | — | Column header label (required) |
+| `sortable` | `boolean` | `false` | Click header to sort asc → desc → off |
+| `searchable` | `boolean` | `true` | Include column in search filtering |
+| `render` | `(value, row, index) => ReactNode` | — | Custom cell renderer |
+| `className` | `string` | — | Extra classes on `<th>` and `<td>` |

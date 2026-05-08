@@ -1,19 +1,19 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-export interface BlockquoteProps {
-  children: React.ReactNode
-  className?: string
+export interface BlockquoteProps extends React.HTMLAttributes<HTMLQuoteElement> {
   cite?: string
 }
 
-export function Blockquote({ children, className, cite }: BlockquoteProps) {
-  return (
+export const Blockquote = React.forwardRef<HTMLQuoteElement, BlockquoteProps>(
+  ({ children, className, cite, ...props }, ref) => (
     <blockquote
+      ref={ref}
       className={cn(
         "border-l-4 border-primary pl-4 py-2 my-4 italic text-foreground bg-primary/5",
         className
       )}
+      {...props}
     >
       {children}
       {cite && (
@@ -23,4 +23,5 @@ export function Blockquote({ children, className, cite }: BlockquoteProps) {
       )}
     </blockquote>
   )
-}
+)
+Blockquote.displayName = "Blockquote"

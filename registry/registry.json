@@ -13,6 +13,17 @@
       ]
     },
     {
+      "name": "alert",
+      "type": "mdx",
+      "description": "Semantic alert boxes with role='alert' and info/warning/destructive/success variants",
+      "files": [
+        "mdx/alert.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "badge",
       "type": "mdx",
       "description": "Status badges with multiple variants (default, success, warning, info, destructive)",
@@ -37,6 +48,17 @@
       "description": "Alert boxes for important information with variants",
       "files": [
         "mdx/callout.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "mdx",
+      "description": "Card layout components (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter) plus LinkCard for navigation grids",
+      "files": [
+        "mdx/card.json"
       ],
       "registryDependencies": [
         "utils"
@@ -130,6 +152,17 @@
       "description": "Inline code component for displaying code snippets within text",
       "files": [
         "mdx/inline-code.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "mdx",
+      "description": "Keyboard shortcut display — styled <kbd> element for showing key combinations like Ctrl+K",
+      "files": [
+        "mdx/kbd.json"
       ],
       "registryDependencies": [
         "utils"

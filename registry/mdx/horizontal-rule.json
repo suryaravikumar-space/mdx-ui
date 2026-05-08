@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "horizontal-rule.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HorizontalRuleProps {\n  className?: string\n  variant?: \"default\" | \"dashed\" | \"dotted\" | \"gradient\"\n}\n\nexport function HorizontalRule({\n  className,\n  variant = \"default\"\n}: HorizontalRuleProps) {\n  const variantStyles = {\n    default: \"border-t border-border\",\n    dashed: \"border-t border-dashed border-border\",\n    dotted: \"border-t border-dotted border-border\",\n    gradient: \"h-px bg-gradient-to-r from-transparent via-border to-transparent border-0\"\n  }\n\n  return (\n    <hr className={cn(\"my-8\", variantStyles[variant], className)} />\n  )\n}\n"
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HorizontalRuleProps extends React.HTMLAttributes<HTMLHRElement> {\n  variant?: \"default\" | \"dashed\" | \"dotted\" | \"gradient\"\n}\n\nexport const HorizontalRule = React.forwardRef<HTMLHRElement, HorizontalRuleProps>(\n  ({ className, variant = \"default\", ...props }, ref) => {\n    const variantStyles = {\n      default: \"border-t border-border\",\n      dashed: \"border-t border-dashed border-border\",\n      dotted: \"border-t border-dotted border-border\",\n      gradient: \"h-px bg-gradient-to-r from-transparent via-border to-transparent border-0\",\n    }\n\n    return (\n      <hr\n        ref={ref}\n        className={cn(\"my-8\", variantStyles[variant], className)}\n        {...props}\n      />\n    )\n  }\n)\nHorizontalRule.displayName = \"HorizontalRule\"\n"
     }
   ]
 }

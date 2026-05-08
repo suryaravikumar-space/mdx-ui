@@ -13,7 +13,7 @@ export interface CodeGroupProps {
   className?: string
 }
 
-export function CodeGroup({ children, className }: CodeGroupProps) {
+export const CodeGroup = React.forwardRef<HTMLElement, CodeGroupProps>(function CodeGroup({ children, className }, ref) {
   const [activeIndex, setActiveIndex] = React.useState(0)
   const [copied, setCopied] = React.useState(false)
   const preRef = React.useRef<HTMLPreElement>(null)
@@ -64,6 +64,7 @@ export function CodeGroup({ children, className }: CodeGroupProps) {
 
   return (
     <figure
+      ref={ref}
       className={cn(
         "my-6 overflow-hidden rounded-lg border border-border bg-muted",
         className
@@ -111,4 +112,5 @@ export function CodeGroup({ children, className }: CodeGroupProps) {
       </pre>
     </figure>
   )
-}
+})
+CodeGroup.displayName = "CodeGroup"

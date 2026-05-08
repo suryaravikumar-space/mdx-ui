@@ -1,28 +1,30 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-interface EmphasisProps extends React.HTMLAttributes<HTMLElement> {
-  children: React.ReactNode
-}
+export interface EmphasisProps extends React.HTMLAttributes<HTMLElement> {}
 
-export function Strong({ children, className, ...props }: EmphasisProps) {
-  return (
+export const Strong = React.forwardRef<HTMLElement, EmphasisProps>(
+  ({ children, className, ...props }, ref) => (
     <strong
+      ref={ref}
       className={cn("font-semibold text-foreground", className)}
       {...props}
     >
       {children}
     </strong>
   )
-}
+)
+Strong.displayName = "Strong"
 
-export function Em({ children, className, ...props }: EmphasisProps) {
-  return (
+export const Em = React.forwardRef<HTMLElement, EmphasisProps>(
+  ({ children, className, ...props }, ref) => (
     <em
+      ref={ref}
       className={cn("italic text-foreground", className)}
       {...props}
     >
       {children}
     </em>
   )
-}
+)
+Em.displayName = "Em"

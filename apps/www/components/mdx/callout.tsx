@@ -27,16 +27,10 @@ export interface CalloutProps
   title?: string
 }
 
-export function Callout({
-  className,
-  variant,
-  icon,
-  title,
-  children,
-  ...props
-}: CalloutProps) {
-  return (
+export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
+  ({ className, variant, icon, title, children, ...props }, ref) => (
     <div
+      ref={ref}
       className={cn(calloutVariants({ variant }), className)}
       {...props}
     >
@@ -49,4 +43,5 @@ export function Callout({
       </div>
     </div>
   )
-}
+)
+Callout.displayName = "Callout"

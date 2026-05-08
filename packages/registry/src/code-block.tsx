@@ -12,7 +12,7 @@ export interface CodeBlockProps extends React.HTMLAttributes<HTMLPreElement> {
   "data-title"?: string
 }
 
-export function CodeBlock({
+export const CodeBlock = React.forwardRef<HTMLElement, CodeBlockProps>(function CodeBlock({
   className,
   title,
   showLineNumbers = false,
@@ -20,7 +20,7 @@ export function CodeBlock({
   "data-language": dataLanguage,
   "data-title": dataTitle,
   ...props
-}: CodeBlockProps) {
+}, ref) {
   const [copied, setCopied] = React.useState(false)
   const preRef = React.useRef<HTMLPreElement>(null)
 
@@ -40,6 +40,7 @@ export function CodeBlock({
 
   return (
     <figure
+      ref={ref}
       className="my-6 overflow-hidden rounded-lg border border-border bg-muted"
       data-code-block
     >
@@ -75,4 +76,5 @@ export function CodeBlock({
       </pre>
     </figure>
   )
-}
+})
+CodeBlock.displayName = "CodeBlock"

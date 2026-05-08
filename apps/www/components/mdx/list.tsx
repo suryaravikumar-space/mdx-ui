@@ -1,36 +1,40 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-export interface ListProps {
-  children: React.ReactNode
-  className?: string
-}
+export interface ListProps extends React.HTMLAttributes<HTMLUListElement | HTMLOListElement> {}
+export interface ListItemProps extends React.HTMLAttributes<HTMLLIElement> {}
 
-export function UnorderedList({ children, className }: ListProps) {
-  return (
-    <ul className={cn("list-disc list-outside ml-6 my-4 space-y-2 text-foreground", className)}>
+export const UnorderedList = React.forwardRef<HTMLUListElement, React.HTMLAttributes<HTMLUListElement>>(
+  ({ children, className, ...props }, ref) => (
+    <ul
+      ref={ref}
+      className={cn("list-disc list-outside ml-6 my-4 space-y-2 text-foreground", className)}
+      {...props}
+    >
       {children}
     </ul>
   )
-}
+)
+UnorderedList.displayName = "UnorderedList"
 
-export function OrderedList({ children, className }: ListProps) {
-  return (
-    <ol className={cn("list-decimal list-outside ml-6 my-4 space-y-2 text-foreground", className)}>
+export const OrderedList = React.forwardRef<HTMLOListElement, React.HTMLAttributes<HTMLOListElement>>(
+  ({ children, className, ...props }, ref) => (
+    <ol
+      ref={ref}
+      className={cn("list-decimal list-outside ml-6 my-4 space-y-2 text-foreground", className)}
+      {...props}
+    >
       {children}
     </ol>
   )
-}
+)
+OrderedList.displayName = "OrderedList"
 
-export interface ListItemProps {
-  children: React.ReactNode
-  className?: string
-}
-
-export function ListItem({ children, className }: ListItemProps) {
-  return (
-    <li className={cn("leading-relaxed", className)}>
+export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(
+  ({ children, className, ...props }, ref) => (
+    <li ref={ref} className={cn("leading-relaxed", className)} {...props}>
       {children}
     </li>
   )
-}
+)
+ListItem.displayName = "ListItem"

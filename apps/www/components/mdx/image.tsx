@@ -1,25 +1,17 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-export interface ImageProps {
+export interface ImageProps extends React.HTMLAttributes<HTMLElement> {
   src: string
   alt: string
   caption?: string
-  className?: string
   width?: number
   height?: number
 }
 
-export function Image({
-  src,
-  alt,
-  caption,
-  className,
-  width,
-  height
-}: ImageProps) {
-  return (
-    <figure className={cn("my-6", className)}>
+export const Image = React.forwardRef<HTMLElement, ImageProps>(
+  ({ src, alt, caption, className, width, height, ...props }, ref) => (
+    <figure ref={ref} className={cn("my-6", className)} {...props}>
       <img
         src={src}
         alt={alt}
@@ -34,4 +26,5 @@ export function Image({
       )}
     </figure>
   )
-}
+)
+Image.displayName = "Image"

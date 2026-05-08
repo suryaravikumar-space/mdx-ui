@@ -35,6 +35,7 @@ const COMPONENT_MDX_MAP: Record<string, {
   "math":           { importFile: "./math",           imports: ["Math","BlockMath","InlineMath"],                                                            elementMappings: {} },
   "mermaid":        { importFile: "./mermaid",        imports: ["Mermaid"],                                                                                  elementMappings: {} },
   "code-block":     { importFile: "./code-block",     imports: ["CodeBlock"],                                                                                elementMappings: {} },
+  "code-group":     { importFile: "./code-group",     imports: ["CodeGroup"],                                                                                elementMappings: {} },
 }
 
 interface RegistryComponent {

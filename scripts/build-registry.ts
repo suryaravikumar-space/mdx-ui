@@ -37,6 +37,11 @@ const componentsMetadata: Record<string, {
     dependencies: [],
     registryDependencies: ["utils"]
   },
+  "code-group": {
+    description: "Tabbed code block group — show npm/pnpm/yarn or multi-language examples side by side",
+    dependencies: [],
+    registryDependencies: ["utils"]
+  },
   "emphasis": {
     description: "Text emphasis components for bold (strong) and italic (em) styling",
     dependencies: [],

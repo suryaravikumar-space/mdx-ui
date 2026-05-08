@@ -15,6 +15,7 @@ const FILE_TO_COMPONENT: Record<string, string> = {
   "blockquote.tsx":     "blockquote",
   "callout.tsx":        "callout",
   "code-block.tsx":     "code-block",
+  "code-group.tsx":     "code-group",
   "emphasis.tsx":       "emphasis",
   "file-tree.tsx":      "file-tree",
   "heading.tsx":        "heading",

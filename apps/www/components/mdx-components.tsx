@@ -13,6 +13,7 @@ import { Paragraph, Lead, Intro, Large, Small, Muted } from "@/components/mdx/pa
 import { Math, BlockMath, InlineMath } from "@/components/mdx/math";
 import { Mermaid } from "@/components/mdx/mermaid";
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/mdx/table";
+import { CodeGroup } from "@/components/mdx/code-group";
 
 const components = {
   Accordion,
@@ -42,6 +43,7 @@ const components = {
   BlockMath,
   InlineMath,
   Mermaid,
+  CodeGroup,
   Table,
   TableHeader,
   TableBody,

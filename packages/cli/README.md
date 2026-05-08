@@ -72,7 +72,7 @@ npx @ravikumarsurya/mdx-ui list
 npx @ravikumarsurya/mdx-ui list --installed
 ```
 
-## Available Components (22)
+## Available Components (23)
 
 | Component | Description |
 | --- | --- |
@@ -81,6 +81,7 @@ npx @ravikumarsurya/mdx-ui list --installed
 | `blockquote` | Styled blockquote |
 | `callout` | Alert boxes — info, warning, danger, success |
 | `code-block` | Syntax-highlighted code blocks via rehype-pretty-code |
+| `code-group` | Tabbed code blocks — npm/pnpm/yarn or multi-language examples |
 | `emphasis` | Bold (`<strong>`) and italic (`<em>`) |
 | `file-tree` | Simple string-based file/folder tree |
 | `heading` | H1–H6 with auto-generated anchor links |

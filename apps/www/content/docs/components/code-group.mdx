@@ -1,0 +1,113 @@
+---
+title: Code Group
+description: Tabbed code block group for showing the same content across package managers, languages, or frameworks
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add code-group
+```
+
+Also install `code-block` if you haven't already — CodeGroup is designed to wrap CodeBlock children:
+
+```bash
+npx @ravikumarsurya/mdx-ui add code-block
+```
+
+## Usage
+
+Wrap multiple fenced code blocks inside `<CodeGroup>`. Add a `title` annotation to each fence to set the tab label. Without a title, the language name is used.
+
+```mdx
+<CodeGroup>
+  ```bash title="npm"
+  npm install my-package
+  ```
+  ```bash title="pnpm"
+  pnpm add my-package
+  ```
+  ```bash title="yarn"
+  yarn add my-package
+  ```
+</CodeGroup>
+```
+
+## Examples
+
+### Package manager install
+
+<CodeGroup>
+  ```bash title="npm"
+  npm install my-package
+  ```
+  ```bash title="pnpm"
+  pnpm add my-package
+  ```
+  ```bash title="yarn"
+  yarn add my-package
+  ```
+  ```bash title="bun"
+  bun add my-package
+  ```
+</CodeGroup>
+
+### Multiple languages
+
+<CodeGroup>
+  ```ts title="TypeScript"
+  const greeting = (name: string): string => {
+    return `Hello, ${name}!`
+  }
+  ```
+  ```js title="JavaScript"
+  const greeting = (name) => {
+    return `Hello, ${name}!`
+  }
+  ```
+  ```py title="Python"
+  def greeting(name: str) -> str:
+      return f"Hello, {name}!"
+  ```
+</CodeGroup>
+
+### Framework config
+
+<CodeGroup>
+  ```ts title="next.config.ts"
+  import createMDX from "@next/mdx"
+
+  const withMDX = createMDX({})
+  export default withMDX({ pageExtensions: ["mdx", "tsx"] })
+  ```
+  ```ts title="astro.config.ts"
+  import { defineConfig } from "astro/config"
+  import mdx from "@astrojs/mdx"
+
+  export default defineConfig({
+    integrations: [mdx()],
+  })
+  ```
+</CodeGroup>
+
+## How it works
+
+CodeGroup reads `data-title` and `data-language` from each child's props — attributes set by `rehype-pretty-code` on `<pre>` elements. These become the tab labels. The active tab's `<code>` content is rendered inside a single `<pre>`, so Shiki CSS variables apply correctly.
+
+Without rehype-pretty-code, code fences still work — tabs fall back to the language name, and code is shown without syntax highlighting.
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Code block children (fenced code blocks) |
+| `className` | `string` | — | Extra classes on the outer `<figure>` |
+
+## Tab labels
+
+| Source | Example | Label shown |
+| --- | --- | --- |
+| ` ```bash title="npm" ` | title annotation | `npm` |
+| ` ```typescript ` | language (no title) | `typescript` |
+| ` ``` ` | neither | `Code` |

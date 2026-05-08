@@ -25,7 +25,7 @@ npx @ravikumarsurya/mdx-ui
 | `list` | Show all available components |
 | `list --installed` | Show only installed components |
 
-## Components (22)
+## Components (23)
 
 ### Layout & Typography
 | Component | Description |
@@ -52,6 +52,7 @@ npx @ravikumarsurya/mdx-ui
 | Component | Description |
 | --- | --- |
 | `code-block` | Syntax-highlighted code blocks via `rehype-pretty-code` + Shiki |
+| `code-group` | Tabbed code blocks — npm/pnpm/yarn or multi-language examples |
 | `inline-code` | Inline code snippets |
 | `math` | LaTeX math via KaTeX (block and inline) |
 | `mermaid` | Mermaid diagrams (flowcharts, sequences, etc.) |

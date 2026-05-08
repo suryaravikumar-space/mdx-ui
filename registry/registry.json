@@ -54,6 +54,17 @@
       ]
     },
     {
+      "name": "code-group",
+      "type": "mdx",
+      "description": "Tabbed code block group — show npm/pnpm/yarn or multi-language examples side by side",
+      "files": [
+        "mdx/code-group.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "emphasis",
       "type": "mdx",
       "description": "Text emphasis components for bold (strong) and italic (em) styling",

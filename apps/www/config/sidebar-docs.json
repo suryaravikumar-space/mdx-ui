@@ -67,6 +67,10 @@
       "path": "/docs/components/code-group"
     },
     {
+      "title": "Data Table",
+      "path": "/docs/components/data-table"
+    },
+    {
       "title": "Diff Block",
       "path": "/docs/components/diff-block"
     },

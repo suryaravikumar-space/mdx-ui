@@ -62,6 +62,11 @@ const componentsMetadata: Record<string, {
     dependencies: [],
     registryDependencies: ["utils"]
   },
+  "data-table": {
+    description: "Dynamic data table — accepts columns and data as props so you can pass static arrays, imported JSON, or API responses",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"]
+  },
   "diff-block": {
     description: "Code diff block — highlights + additions and - removals with green/red backgrounds",
     dependencies: ["clsx", "tailwind-merge"],

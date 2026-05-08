@@ -1,0 +1,124 @@
+---
+title: Data Table
+description: Dynamic table that accepts columns and data as props — pass static arrays, imported JSON, database results, or API responses
+component: data-table
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add data-table
+```
+
+## Usage
+
+Pass `columns` (array of column definitions) and `data` (array of row objects). Data can come from anywhere — inline, a JSON file, a database query, or a fetch call.
+
+```mdx
+export const columns = [
+  { key: "prop", header: "Prop" },
+  { key: "type", header: "Type" },
+  { key: "required", header: "Required" },
+  { key: "description", header: "Description" },
+]
+
+export const data = [
+  { prop: "src", type: "string", required: "Yes", description: "Image URL or path" },
+  { prop: "alt", type: "string", required: "Yes", description: "Alt text" },
+  { prop: "caption", type: "string", required: "No", description: "Caption below image" },
+]
+
+<DataTable columns={columns} data={data} />
+```
+
+## Examples
+
+### Props table (static inline)
+
+export const propsColumns = [
+  { key: "prop", header: "Prop" },
+  { key: "type", header: "Type" },
+  { key: "required", header: "Required" },
+  { key: "description", header: "Description" },
+]
+
+export const propsData = [
+  { prop: "src", type: "string", required: "Yes", description: "Image URL or local path" },
+  { prop: "alt", type: "string", required: "Yes", description: "Alt text for accessibility" },
+  { prop: "caption", type: "string", required: "No", description: "Caption shown below the image" },
+  { prop: "width", type: "number", required: "No", description: "Native width attribute" },
+  { prop: "height", type: "number", required: "No", description: "Native height attribute" },
+]
+
+<DataTable columns={propsColumns} data={propsData} />
+
+### Custom cell renderer
+
+Use the `render` function on a column to return custom JSX — badges, links, formatted values, etc.
+
+```mdx
+export const columns = [
+  { key: "name", header: "Component" },
+  { key: "status", header: "Status", render: (value) => (
+    <span className={value === "stable" ? "text-green-600" : "text-yellow-600"}>
+      {String(value)}
+    </span>
+  )},
+  { key: "version", header: "Since" },
+]
+
+export const data = [
+  { name: "Accordion", status: "stable", version: "0.0.1" },
+  { name: "DataTable", status: "stable", version: "0.0.27" },
+  { name: "Mermaid",   status: "beta",   version: "0.0.17" },
+]
+
+<DataTable columns={columns} data={data} />
+```
+
+### From imported JSON
+
+```mdx
+import tableData from "./data.json"
+
+export const columns = [
+  { key: "id",   header: "ID" },
+  { key: "name", header: "Name" },
+  { key: "role", header: "Role" },
+]
+
+<DataTable columns={columns} data={tableData} />
+```
+
+### With caption and empty state
+
+```mdx
+<DataTable
+  columns={columns}
+  data={[]}
+  caption="No results matched your query."
+  emptyText="Nothing here yet."
+/>
+```
+
+## Props
+
+### DataTable
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `columns` | `DataTableColumn[]` | — | Column definitions (required) |
+| `data` | `T[]` | — | Array of row objects (required) |
+| `caption` | `string` | — | Caption rendered below the table |
+| `emptyText` | `string` | `"No data available."` | Text shown when data is empty |
+| `className` | `string` | — | Extra classes on the outer wrapper |
+
+### DataTableColumn
+
+| Prop | Type | Required | Description |
+| --- | --- | --- | --- |
+| `key` | `string` | Yes | Key to read from each row object |
+| `header` | `string` | Yes | Column header label |
+| `render` | `(value, row, index) => ReactNode` | No | Custom cell renderer |
+| `className` | `string` | No | Extra classes on `<th>` and `<td>` |

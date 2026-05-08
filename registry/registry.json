@@ -98,6 +98,17 @@
       ]
     },
     {
+      "name": "data-table",
+      "type": "mdx",
+      "description": "Dynamic data table — accepts columns and data as props so you can pass static arrays, imported JSON, or API responses",
+      "files": [
+        "mdx/data-table.json"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "diff-block",
       "type": "mdx",
       "description": "Code diff block — highlights + additions and - removals with green/red backgrounds",

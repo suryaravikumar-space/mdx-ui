@@ -267,7 +267,7 @@
     {
       "name": "mermaid",
       "type": "mdx",
-      "description": "Mermaid diagram rendering for flowcharts, sequences, and more",
+      "description": "Mermaid diagram renderer with auto type-detection, per-type label headers, and data structure components — MermaidBST, MermaidTree, MermaidBFS, MermaidDFS",
       "files": [
         "mdx/mermaid.json"
       ],

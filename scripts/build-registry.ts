@@ -140,7 +140,7 @@ const componentsMetadata: Record<string, {
     registryDependencies: ["utils"]
   },
   "mermaid": {
-    description: "Mermaid diagram rendering for flowcharts, sequences, and more",
+    description: "Mermaid diagram renderer with auto type-detection, per-type label headers, and data structure components — MermaidBST, MermaidTree, MermaidBFS, MermaidDFS",
     dependencies: ["mermaid", "clsx", "tailwind-merge"],
     registryDependencies: ["utils"]
   },

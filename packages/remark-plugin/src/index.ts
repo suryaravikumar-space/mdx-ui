@@ -10,11 +10,12 @@
  *  table       →  <DataTable>        (markdown tables)
  *  ordered list→  <Steps><Step>      (opt-in, numbered lists)
  *  ==text==    →  <Highlight>        (opt-in, ==marked== syntax)
+ *  ```mermaid  →  <Mermaid chart={…} /> (mermaid diagrams)
  */
 
 import { visit } from "unist-util-visit"
 import type { Plugin } from "unified"
-import type { Root, Blockquote, Table, List, Paragraph, Text } from "mdast"
+import type { Root, Blockquote, Table, List, Paragraph, Text, Code } from "mdast"
 
 // ─── Options ──────────────────────────────────────────────────────────────────
 
@@ -45,6 +46,14 @@ export interface RemarkMdxUiOptions {
    * @default false
    */
   highlight?: boolean
+
+  /**
+   * Transform ```mermaid code blocks to <Mermaid chart={…} />.
+   * Auto-detects the diagram type (flowchart, sequenceDiagram, etc.)
+   * and passes the raw diagram source as the `chart` prop.
+   * @default true
+   */
+  mermaid?: boolean
 }
 
 // ─── Helpers: MDX JSX node builders ──────────────────────────────────────────
@@ -280,6 +289,35 @@ function transformHighlight(tree: Root) {
   })
 }
 
+// ─── Transform 5: ```mermaid → <Mermaid chart={…} /> ─────────────────────────
+
+function estreLiteral(value: string) {
+  return {
+    type: "Program",
+    sourceType: "module",
+    body: [
+      {
+        type: "ExpressionStatement",
+        expression: { type: "Literal", value, raw: JSON.stringify(value) },
+      },
+    ],
+    comments: [],
+  }
+}
+
+function transformMermaid(tree: Root) {
+  visit(tree, "code", (node: Code, index, parent) => {
+    if (!parent || index == null) return
+    if (node.lang !== "mermaid") return
+
+    parent.children[index] = jsxBlock(
+      "Mermaid",
+      [exprAttr("chart", JSON.stringify(node.value), estreLiteral(node.value))],
+      []
+    ) as any
+  })
+}
+
 // ─── Plugin ───────────────────────────────────────────────────────────────────
 
 const remarkMdxUi: Plugin<[RemarkMdxUiOptions?], Root> = (options = {}) => {
@@ -288,9 +326,11 @@ const remarkMdxUi: Plugin<[RemarkMdxUiOptions?], Root> = (options = {}) => {
     table     = true,
     steps     = false,
     highlight = false,
+    mermaid   = true,
   } = options
 
   return (tree) => {
+    if (mermaid)   transformMermaid(tree)
     if (callout)   transformCallouts(tree)
     if (table)     transformTables(tree)
     if (steps)     transformSteps(tree)
@@ -302,3 +342,6 @@ export default remarkMdxUi
 
 // ─── String pre-processor (run before MDX compiler) ──────────────────────────
 export { preprocessMarkdown } from "./preprocess"
+
+// ─── LLM response content extractor ──────────────────────────────────────────
+export { extractContent } from "./extract"

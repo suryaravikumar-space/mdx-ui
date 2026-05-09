@@ -33,7 +33,7 @@ The LLM generates text. Your renderer already knows about the components. Nothin
 
 ## Step 1 — Register your components
 
-After running `npx @ravikumarsurya/mdx-ui add callout steps datatable highlight`, register them in your component map:
+After running `npx @ravikumarsurya/mdx-ui add callout steps datatable highlight mermaid`, register them in your component map:
 
 ```tsx
 // components/mdx-components.tsx
@@ -41,6 +41,7 @@ import { Callout } from "@/components/mdx/callout"
 import { Steps, Step } from "@/components/mdx/steps"
 import { DataTable } from "@/components/mdx/data-table"
 import { Highlight } from "@/components/mdx/highlight"
+import { Mermaid } from "@/components/mdx/mermaid"
 import { CodeBlock } from "@/components/mdx/code-block"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
 
@@ -50,6 +51,7 @@ export const mdxComponents = {
   Step,
   DataTable,
   Highlight,
+  Mermaid,
   CodeBlock,
   Tabs,
   TabsList,
@@ -352,6 +354,7 @@ What the plugin upgrades automatically:
 | `> [!NOTE]` / `> [!WARNING]` | `<Callout type="info/warning">` |
 | `> **Note:**` legacy syntax | `<Callout type="info">` |
 | Markdown table `\| col \|` | `<DataTable headers rows />` |
+| ` ```mermaid ` code block | `<Mermaid chart={…} />` (auto-detects type) |
 | Numbered list (well-formed) | `<Steps><Step>` *(opt-in)* |
 | `==text==` | `<Highlight>` *(opt-in)* |
 

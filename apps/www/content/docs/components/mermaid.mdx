@@ -1,6 +1,6 @@
 ---
 title: Mermaid
-description: Mermaid diagram renderer — flowcharts, sequence diagrams, ER diagrams
+description: Mermaid diagram renderer — auto-detects flowcharts, sequence diagrams, ER diagrams, Gantt charts, and more
 component: mermaid
 published: true
 ---
@@ -13,6 +13,8 @@ npx @ravikumarsurya/mdx-ui add mermaid
 
 ## Usage
 
+Pass the diagram source as `children` in manual MDX:
+
 ```jsx
 <Mermaid>
   {`flowchart TD
@@ -20,6 +22,49 @@ npx @ravikumarsurya/mdx-ui add mermaid
     B -->|Yes| C[Do it]
     B -->|No| D[Skip]`}
 </Mermaid>
+```
+
+Or use the `chart` prop (emitted automatically by the remark plugin):
+
+```jsx
+<Mermaid chart={`sequenceDiagram\n  A->>B: Hello`} />
+```
+
+The component auto-detects the diagram type from the first line and shows a label badge (e.g. "Flowchart", "Sequence Diagram", "Gantt Chart").
+
+## Remark plugin — auto-transform from markdown
+
+When using `@ravikumarsurya/remark-mdx-ui`, fenced ` ```mermaid ` code blocks are automatically converted to `<Mermaid>` components. This is **on by default**.
+
+````md
+```mermaid
+sequenceDiagram
+  Client->>Server: POST /api/chat
+  Server-->>Client: 200 OK
+```
+````
+
+Renders as `<Mermaid chart={"sequenceDiagram\n  Client->>Server: ..."} />` — no manual wrapping needed.
+
+To disable: `[remarkMdxUi, { mermaid: false }]`
+
+## Per-type components
+
+Named exports are available for each diagram type. They all delegate to `<Mermaid>` and display the appropriate label badge automatically:
+
+```jsx
+import {
+  MermaidFlowchart,
+  MermaidSequence,
+  MermaidClass,
+  MermaidState,
+  MermaidER,
+  MermaidGantt,
+  MermaidPie,
+  MermaidGitGraph,
+  MermaidMindmap,
+  MermaidTimeline,
+} from "@/components/mdx/mermaid"
 ```
 
 ## Examples
@@ -40,9 +85,44 @@ npx @ravikumarsurya/mdx-ui add mermaid
   AI-->>Server: token stream
   Server-->>Client: SSE response`}</Mermaid>
 
+### ER Diagram
+
+<Mermaid>{`erDiagram
+  USER ||--o{ ORDER : places
+  ORDER ||--|{ LINE_ITEM : contains
+  PRODUCT ||--o{ LINE_ITEM : listed_in`}</Mermaid>
+
+### Gantt Chart
+
+<Mermaid>{`gantt
+  title Project Timeline
+  dateFormat YYYY-MM-DD
+  section Design
+    Wireframes :done, 2024-01-01, 7d
+    UI review  :active, 2024-01-08, 3d
+  section Dev
+    Frontend   :2024-01-11, 14d
+    Backend    :2024-01-11, 10d`}</Mermaid>
+
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| children | string | — | Mermaid diagram syntax |
+| children | string | — | Diagram source (manual MDX usage) |
+| chart | string | — | Diagram source (remark plugin / prop usage) |
 | className | string | — | Additional CSS classes |
+
+## Supported diagram types
+
+| First line keyword | Detected as | Label shown |
+|--------------------|-------------|-------------|
+| `flowchart` / `graph` | `flowchart` | Flowchart |
+| `sequenceDiagram` | `sequenceDiagram` | Sequence Diagram |
+| `classDiagram` | `classDiagram` | Class Diagram |
+| `stateDiagram` | `stateDiagram` | State Diagram |
+| `erDiagram` | `erDiagram` | ER Diagram |
+| `gantt` | `gantt` | Gantt Chart |
+| `pie` | `pie` | Pie Chart |
+| `gitGraph` | `gitGraph` | Git Graph |
+| `mindmap` | `mindmap` | Mind Map |
+| `timeline` | `timeline` | Timeline |

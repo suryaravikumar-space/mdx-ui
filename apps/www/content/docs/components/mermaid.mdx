@@ -104,15 +104,121 @@ import {
     Frontend   :2024-01-11, 14d
     Backend    :2024-01-11, 10d`}</Mermaid>
 
+## Data structure components
+
+For algorithm and CS visualizations, use the dedicated data structure components. They accept typed data props, generate the mermaid diagram automatically, and show the correct label in the header.
+
+### Binary Search Tree — `<MermaidBST>`
+
+Pass an array of numbers. Values are inserted in order; duplicates are ignored.
+
+```jsx
+<MermaidBST values={[5, 3, 7, 1, 4, 6, 8]} />
+```
+
+<MermaidBST values={[5, 3, 7, 1, 4, 6, 8]} />
+
+### Generic Tree — `<MermaidTree>`
+
+Pass a nested `{ label, children }` structure.
+
+```jsx
+<MermaidTree
+  data={{
+    label: "root",
+    children: [
+      { label: "A", children: [{ label: "C" }, { label: "D" }] },
+      { label: "B", children: [{ label: "E" }, { label: "F" }] },
+    ],
+  }}
+/>
+```
+
+<MermaidTree
+  data={{
+    label: "root",
+    children: [
+      { label: "A", children: [{ label: "C" }, { label: "D" }] },
+      { label: "B", children: [{ label: "E" }, { label: "F" }] },
+    ],
+  }}
+/>
+
+Use `direction="LR"` for a left-to-right layout.
+
+### BFS Traversal — `<MermaidBFS>`
+
+Nodes are annotated with their visit order (①②③…) in breadth-first order from `start`.
+
+```jsx
+<MermaidBFS
+  nodes={["A", "B", "C", "D", "E", "F"]}
+  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  start="A"
+/>
+```
+
+<MermaidBFS
+  nodes={["A", "B", "C", "D", "E", "F"]}
+  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  start="A"
+/>
+
+### DFS Traversal — `<MermaidDFS>`
+
+Same API as `<MermaidBFS>`, but numbers reflect depth-first visit order.
+
+```jsx
+<MermaidDFS
+  nodes={["A", "B", "C", "D", "E", "F"]}
+  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  start="A"
+/>
+```
+
+<MermaidDFS
+  nodes={["A", "B", "C", "D", "E", "F"]}
+  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  start="A"
+/>
+
 ## Props
+
+### `<Mermaid>`
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | children | string | — | Diagram source (manual MDX usage) |
 | chart | string | — | Diagram source (remark plugin / prop usage) |
+| label | string | auto-detected | Override the header label |
 | className | string | — | Additional CSS classes |
 
-## Supported diagram types
+### `<MermaidBST>`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| values | number[] | — | Values to insert into the BST |
+| className | string | — | Additional CSS classes |
+
+### `<MermaidTree>`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| data | TreeNode | — | `{ label: string, children?: TreeNode[] }` |
+| direction | `"TD"` \| `"LR"` | `"TD"` | Layout direction |
+| className | string | — | Additional CSS classes |
+
+### `<MermaidBFS>` / `<MermaidDFS>`
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| nodes | string[] | — | All node names |
+| edges | [string, string][] | — | Edge pairs `[from, to]` |
+| start | string | — | Starting node for traversal |
+| directed | boolean | `false` | Treat edges as directed |
+| className | string | — | Additional CSS classes |
+
+## Supported diagram types (raw mermaid)
 
 | First line keyword | Detected as | Label shown |
 |--------------------|-------------|-------------|

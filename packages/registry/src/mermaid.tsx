@@ -16,14 +16,12 @@ function useDarkMode(): boolean {
 
     setIsDark(check())
 
-    // Watch Tailwind dark class on <html>
     const observer = new MutationObserver(() => setIsDark(check()))
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     })
 
-    // Watch system preference
     const mq = window.matchMedia("(prefers-color-scheme: dark)")
     const onMqChange = () => setIsDark(check())
     mq.addEventListener("change", onMqChange)
@@ -81,17 +79,19 @@ export function detectDiagramType(diagram: string): MermaidDiagramType {
   return "unknown"
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Base component ───────────────────────────────────────────────────────────
 
 interface MermaidProps {
-  /** Diagram source passed as a string prop (used by the remark plugin). */
+  /** Diagram source as a prop (used by the remark plugin and data-structure components). */
   chart?: string
-  /** Diagram source passed as children (manual MDX usage). */
+  /** Diagram source as children (manual MDX usage). */
   children?: string
+  /** Override the auto-detected type label shown in the header. */
+  label?: string
   className?: string
 }
 
-export function Mermaid({ chart, children, className }: MermaidProps) {
+export function Mermaid({ chart, children, label: labelOverride, className }: MermaidProps) {
   const ref = React.useRef<HTMLDivElement>(null)
   const [svg, setSvg] = React.useState<string>("")
   const [error, setError] = React.useState<string>("")
@@ -100,14 +100,13 @@ export function Mermaid({ chart, children, className }: MermaidProps) {
 
   const diagram = (chart ?? children ?? "").trim()
   const diagramType = detectDiagramType(diagram)
-  const label = TYPE_LABELS[diagramType]
+  const label = labelOverride ?? TYPE_LABELS[diagramType]
 
   React.useEffect(() => {
     if (!diagram) return
     let cancelled = false
     const cacheKey = `${diagram}:${isDark}`
 
-    // Return cached SVG immediately — avoids flicker on re-mount / theme toggle
     if (svgCache.has(cacheKey)) {
       setSvg(svgCache.get(cacheKey)!)
       return
@@ -169,13 +168,245 @@ export function Mermaid({ chart, children, className }: MermaidProps) {
 
 type DiagramProps = Omit<MermaidProps, "chart"> & { chart?: string }
 
-export const MermaidFlowchart    = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidSequence     = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidClass        = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidState        = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidER           = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidGantt        = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidPie          = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidGitGraph     = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidMindmap      = (props: DiagramProps) => <Mermaid {...props} />
-export const MermaidTimeline     = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidFlowchart = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidSequence  = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidClass     = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidState     = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidER        = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidGantt     = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidPie       = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidGitGraph  = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidMindmap   = (props: DiagramProps) => <Mermaid {...props} />
+export const MermaidTimeline  = (props: DiagramProps) => <Mermaid {...props} />
+
+// ─── Data-structure utilities ─────────────────────────────────────────────────
+
+// ── BST ──────────────────────────────────────────────────────────────────────
+
+interface BSTNode {
+  value: number
+  left?: BSTNode
+  right?: BSTNode
+}
+
+function bstInsert(root: BSTNode | null, v: number): BSTNode {
+  if (!root) return { value: v }
+  if (v < root.value) return { ...root, left: bstInsert(root.left ?? null, v) }
+  if (v > root.value) return { ...root, right: bstInsert(root.right ?? null, v) }
+  return root // duplicates ignored
+}
+
+function buildBST(values: number[]): BSTNode | null {
+  return values.reduce<BSTNode | null>((r, v) => bstInsert(r, v), null)
+}
+
+function bstToMermaid(root: BSTNode | null): string {
+  if (!root) return "flowchart TD\n  empty([empty])"
+  const nodeDefs: string[] = []
+  const edgeDefs: string[] = []
+  let c = 0
+
+  function traverse(node: BSTNode): string {
+    const id = `N${c++}`
+    nodeDefs.push(`  ${id}((${node.value}))`)
+    if (node.left) {
+      const lid = traverse(node.left)
+      edgeDefs.push(`  ${id} --> ${lid}`)
+    }
+    if (node.right) {
+      const rid = traverse(node.right)
+      edgeDefs.push(`  ${id} --> ${rid}`)
+    }
+    return id
+  }
+
+  traverse(root)
+  return ["flowchart TD", ...nodeDefs, ...edgeDefs].join("\n")
+}
+
+// ── General tree ──────────────────────────────────────────────────────────────
+
+export interface TreeNode {
+  label: string
+  children?: TreeNode[]
+}
+
+function treeToMermaid(root: TreeNode, direction: "TD" | "LR"): string {
+  const nodeDefs: string[] = []
+  const edgeDefs: string[] = []
+  let c = 0
+
+  function traverse(node: TreeNode): string {
+    const id = `T${c++}`
+    nodeDefs.push(`  ${id}["${node.label.replace(/"/g, "'")}"]`)
+    for (const child of node.children ?? []) {
+      const cid = traverse(child)
+      edgeDefs.push(`  ${id} --> ${cid}`)
+    }
+    return id
+  }
+
+  traverse(root)
+  return [`flowchart ${direction}`, ...nodeDefs, ...edgeDefs].join("\n")
+}
+
+// ── BFS / DFS ─────────────────────────────────────────────────────────────────
+
+type AdjMap = Map<string, string[]>
+
+function buildAdj(nodes: string[], edges: [string, string][], directed: boolean): AdjMap {
+  const adj: AdjMap = new Map(nodes.map((n) => [n, []]))
+  for (const [a, b] of edges) {
+    if (!adj.has(a)) adj.set(a, [])
+    if (!adj.has(b)) adj.set(b, [])
+    adj.get(a)!.push(b)
+    if (!directed) adj.get(b)!.push(a)
+  }
+  return adj
+}
+
+function computeBFS(nodes: string[], edges: [string, string][], start: string, directed: boolean): string[] {
+  const adj = buildAdj(nodes, edges, directed)
+  const order: string[] = []
+  const queue = [start]
+  const seen = new Set([start])
+  while (queue.length > 0) {
+    const n = queue.shift()!
+    order.push(n)
+    for (const nb of adj.get(n) ?? []) {
+      if (!seen.has(nb)) { seen.add(nb); queue.push(nb) }
+    }
+  }
+  return order
+}
+
+function computeDFS(nodes: string[], edges: [string, string][], start: string, directed: boolean): string[] {
+  const adj = buildAdj(nodes, edges, directed)
+  const order: string[] = []
+  const seen = new Set<string>()
+  function dfs(n: string) {
+    seen.add(n)
+    order.push(n)
+    for (const nb of adj.get(n) ?? []) {
+      if (!seen.has(nb)) dfs(nb)
+    }
+  }
+  dfs(start)
+  return order
+}
+
+// ① ② ③ … ⑳  — used to annotate visit order on nodes
+const CIRCLED = ["①","②","③","④","⑤","⑥","⑦","⑧","⑨","⑩",
+                 "⑪","⑫","⑬","⑭","⑮","⑯","⑰","⑱","⑲","⑳"]
+
+function graphToMermaid(
+  nodes: string[],
+  edges: [string, string][],
+  order: string[],
+  directed: boolean,
+): string {
+  const orderMap = new Map(order.map((n, i) => [n, i + 1]))
+  const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9_]/g, "_")
+
+  const nodeDefs = nodes.map((n) => {
+    const idx = orderMap.get(n)
+    const badge = idx != null ? (CIRCLED[idx - 1] ?? String(idx)) + " " : ""
+    return `  ${sanitize(n)}["${badge}${n}"]`
+  })
+
+  const arrow = directed ? "-->" : "---"
+  const seen = new Set<string>()
+  const edgeDefs: string[] = []
+  for (const [a, b] of edges) {
+    const key = directed ? `${a}→${b}` : [a, b].sort().join("—")
+    if (!seen.has(key)) {
+      seen.add(key)
+      edgeDefs.push(`  ${sanitize(a)} ${arrow} ${sanitize(b)}`)
+    }
+  }
+
+  return ["flowchart TD", ...nodeDefs, ...edgeDefs].join("\n")
+}
+
+// ─── Data-structure components ────────────────────────────────────────────────
+
+export interface MermaidBSTProps {
+  /** Values to insert into the BST in the order given. */
+  values: number[]
+  className?: string
+}
+
+/**
+ * Renders a Binary Search Tree from a list of values.
+ * Values are inserted left-to-right; duplicates are ignored.
+ *
+ * @example
+ * <MermaidBST values={[5, 3, 7, 1, 4, 6, 8]} />
+ */
+export function MermaidBST({ values, className }: MermaidBSTProps) {
+  const chart = bstToMermaid(buildBST(values))
+  return <Mermaid chart={chart} label="Binary Search Tree" className={className} />
+}
+
+export interface MermaidTreeProps {
+  /** Nested tree structure to render. */
+  data: TreeNode
+  /** Layout direction. @default "TD" */
+  direction?: "TD" | "LR"
+  className?: string
+}
+
+/**
+ * Renders a generic tree from a nested { label, children } structure.
+ *
+ * @example
+ * <MermaidTree data={{ label: "root", children: [{ label: "A" }, { label: "B" }] }} />
+ */
+export function MermaidTree({ data, direction = "TD", className }: MermaidTreeProps) {
+  const chart = treeToMermaid(data, direction)
+  return <Mermaid chart={chart} label="Tree" className={className} />
+}
+
+export interface MermaidTraversalProps {
+  /** All node names in the graph. */
+  nodes: string[]
+  /** Undirected or directed edges as [from, to] pairs. */
+  edges: [string, string][]
+  /** Starting node for the traversal. */
+  start: string
+  /** Treat edges as directed. @default false */
+  directed?: boolean
+  className?: string
+}
+
+/**
+ * Renders a graph with BFS traversal order annotated on each node (① ② ③ …).
+ *
+ * @example
+ * <MermaidBFS
+ *   nodes={["A","B","C","D","E"]}
+ *   edges={[["A","B"],["A","C"],["B","D"],["B","E"]]}
+ *   start="A"
+ * />
+ */
+export function MermaidBFS({ nodes, edges, start, directed = false, className }: MermaidTraversalProps) {
+  const order = computeBFS(nodes, edges, start, directed)
+  const chart = graphToMermaid(nodes, edges, order, directed)
+  return <Mermaid chart={chart} label="BFS Traversal" className={className} />
+}
+
+/**
+ * Renders a graph with DFS traversal order annotated on each node (① ② ③ …).
+ *
+ * @example
+ * <MermaidDFS
+ *   nodes={["A","B","C","D","E"]}
+ *   edges={[["A","B"],["A","C"],["B","D"],["B","E"]]}
+ *   start="A"
+ * />
+ */
+export function MermaidDFS({ nodes, edges, start, directed = false, className }: MermaidTraversalProps) {
+  const order = computeDFS(nodes, edges, start, directed)
+  const chart = graphToMermaid(nodes, edges, order, directed)
+  return <Mermaid chart={chart} label="DFS Traversal" className={className} />
+}

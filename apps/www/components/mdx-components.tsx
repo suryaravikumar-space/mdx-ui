@@ -11,7 +11,7 @@ import { Headings } from "@/components/mdx/headings";
 import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx/heading";
 import { Paragraph, Lead, Intro, Large, Small, Muted } from "@/components/mdx/paragraph";
 import { Math, BlockMath, InlineMath } from "@/components/mdx/math";
-import { Mermaid } from "@/components/mdx/mermaid";
+import { Mermaid, MermaidBST, MermaidTree, MermaidBFS, MermaidDFS } from "@/components/mdx/mermaid";
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/mdx/table";
 import { CodeGroup } from "@/components/mdx/code-group";
 import { Alert, AlertTitle, AlertDescription } from "@/components/mdx/alert";
@@ -56,6 +56,10 @@ const components = {
   BlockMath,
   InlineMath,
   Mermaid,
+  MermaidBST,
+  MermaidTree,
+  MermaidBFS,
+  MermaidDFS,
   CodeGroup,
   Alert,
   AlertTitle,

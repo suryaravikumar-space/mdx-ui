@@ -88,10 +88,12 @@ interface MermaidProps {
   children?: string
   /** Override the auto-detected type label shown in the header. */
   label?: string
+  /** Show a "Beta" badge in the header. */
+  beta?: boolean
   className?: string
 }
 
-export function Mermaid({ chart, children, label: labelOverride, className }: MermaidProps) {
+export function Mermaid({ chart, children, label: labelOverride, beta, className }: MermaidProps) {
   const ref = React.useRef<HTMLDivElement>(null)
   const [svg, setSvg] = React.useState<string>("")
   const [error, setError] = React.useState<string>("")
@@ -152,8 +154,13 @@ export function Mermaid({ chart, children, label: labelOverride, className }: Me
 
   return (
     <div className={cn("my-4 overflow-hidden rounded-lg border bg-background", className)}>
-      <div className="flex items-center border-b bg-muted/40 px-3 py-1.5">
+      <div className="flex items-center gap-2 border-b bg-muted/40 px-3 py-1.5">
         <span className="text-xs font-medium text-muted-foreground">{label}</span>
+        {beta && (
+          <span className="rounded-full border border-amber-400/50 bg-amber-100/60 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-700 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-400">
+            Beta
+          </span>
+        )}
       </div>
       <div
         ref={ref}
@@ -345,7 +352,7 @@ export interface MermaidBSTProps {
  */
 export function MermaidBST({ values, className }: MermaidBSTProps) {
   const chart = bstToMermaid(buildBST(values))
-  return <Mermaid chart={chart} label="Binary Search Tree" className={className} />
+  return <Mermaid chart={chart} label="Binary Search Tree" beta className={className} />
 }
 
 export interface MermaidTreeProps {
@@ -364,7 +371,7 @@ export interface MermaidTreeProps {
  */
 export function MermaidTree({ data, direction = "TD", className }: MermaidTreeProps) {
   const chart = treeToMermaid(data, direction)
-  return <Mermaid chart={chart} label="Tree" className={className} />
+  return <Mermaid chart={chart} label="Tree" beta className={className} />
 }
 
 export interface MermaidTraversalProps {
@@ -392,7 +399,7 @@ export interface MermaidTraversalProps {
 export function MermaidBFS({ nodes, edges, start, directed = false, className }: MermaidTraversalProps) {
   const order = computeBFS(nodes, edges, start, directed)
   const chart = graphToMermaid(nodes, edges, order, directed)
-  return <Mermaid chart={chart} label="BFS Traversal" className={className} />
+  return <Mermaid chart={chart} label="BFS Traversal" beta className={className} />
 }
 
 /**
@@ -408,5 +415,5 @@ export function MermaidBFS({ nodes, edges, start, directed = false, className }:
 export function MermaidDFS({ nodes, edges, start, directed = false, className }: MermaidTraversalProps) {
   const order = computeDFS(nodes, edges, start, directed)
   const chart = graphToMermaid(nodes, edges, order, directed)
-  return <Mermaid chart={chart} label="DFS Traversal" className={className} />
+  return <Mermaid chart={chart} label="DFS Traversal" beta className={className} />
 }

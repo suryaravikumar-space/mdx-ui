@@ -211,11 +211,11 @@ function bstToMermaid(root: BSTNode | null): string {
     nodeDefs.push(`  ${id}((${node.value}))`)
     if (node.left) {
       const lid = traverse(node.left)
-      edgeDefs.push(`  ${id} --> ${lid}`)
+      edgeDefs.push(`  ${id} --- ${lid}`)
     }
     if (node.right) {
       const rid = traverse(node.right)
-      edgeDefs.push(`  ${id} --> ${rid}`)
+      edgeDefs.push(`  ${id} --- ${rid}`)
     }
     return id
   }
@@ -238,10 +238,10 @@ function treeToMermaid(root: TreeNode, direction: "TD" | "LR"): string {
 
   function traverse(node: TreeNode): string {
     const id = `T${c++}`
-    nodeDefs.push(`  ${id}["${node.label.replace(/"/g, "'")}"]`)
+    nodeDefs.push(`  ${id}(("${node.label.replace(/"/g, "'")}"))`)
     for (const child of node.children ?? []) {
       const cid = traverse(child)
-      edgeDefs.push(`  ${id} --> ${cid}`)
+      edgeDefs.push(`  ${id} --- ${cid}`)
     }
     return id
   }
@@ -311,7 +311,7 @@ function graphToMermaid(
   const nodeDefs = nodes.map((n) => {
     const idx = orderMap.get(n)
     const badge = idx != null ? (CIRCLED[idx - 1] ?? String(idx)) + " " : ""
-    return `  ${sanitize(n)}["${badge}${n}"]`
+    return `  ${sanitize(n)}(("${badge}${n}"))`
   })
 
   const arrow = directed ? "-->" : "---"

@@ -40,7 +40,9 @@ export function Pow({ exp, base, children, className }: PowProps) {
   return (
     <span className={cn("inline-flex items-start", className)}>
       <span>{children ?? base}</span>
-      <span className="relative -top-[0.45em] text-[0.72em] leading-none">{exp}</span>
+      <span className="relative -top-[0.45em] text-[0.72em] leading-none">
+        {exp}
+      </span>
     </span>
   );
 }
@@ -57,7 +59,9 @@ export function Sub({ sub, base, children, className }: SubProps) {
   return (
     <span className={cn("inline-flex items-end", className)}>
       <span>{children ?? base}</span>
-      <span className="relative top-[0.3em] text-[0.72em] leading-none">{sub}</span>
+      <span className="relative top-[0.3em] text-[0.72em] leading-none">
+        {sub}
+      </span>
     </span>
   );
 }
@@ -81,8 +85,12 @@ export function Sqrt({ children, n, className }: SqrtProps) {
           {n}
         </span>
       )}
-      <span className="select-none text-[1.25em] leading-none font-light">√</span>
-      <span className="border-t border-current px-0.5 leading-snug">{children}</span>
+      <span className="select-none text-[1.25em] leading-none font-light">
+        √
+      </span>
+      <span className="border-t border-current px-0.5 leading-snug">
+        {children}
+      </span>
     </span>
   );
 }
@@ -102,9 +110,13 @@ export function Abs({
       aria-label="absolute value"
       className={cn("mx-0.5 inline-flex items-center gap-px", className)}
     >
-      <span className="select-none text-[1.2em] font-light leading-none">|</span>
+      <span className="select-none text-[1.2em] font-light leading-none">
+        |
+      </span>
       <span>{children}</span>
-      <span className="select-none text-[1.2em] font-light leading-none">|</span>
+      <span className="select-none text-[1.2em] font-light leading-none">
+        |
+      </span>
     </span>
   );
 }
@@ -120,9 +132,13 @@ export function Paren({
 }) {
   return (
     <span className={cn("mx-px inline-flex items-center", className)}>
-      <span className="select-none text-[1.3em] font-light leading-none">(</span>
+      <span className="select-none text-[1.3em] font-light leading-none">
+        (
+      </span>
       <span>{children}</span>
-      <span className="select-none text-[1.3em] font-light leading-none">)</span>
+      <span className="select-none text-[1.3em] font-light leading-none">
+        )
+      </span>
     </span>
   );
 }
@@ -139,7 +155,9 @@ export function Deg({
   return (
     <span className={cn("inline-flex items-start", className)}>
       {children}
-      <span className="relative -top-[0.3em] select-none text-[0.7em] leading-none">°</span>
+      <span className="relative -top-[0.3em] select-none text-[0.7em] leading-none">
+        °
+      </span>
     </span>
   );
 }
@@ -170,12 +188,16 @@ interface BoundedProps {
 /** Integral ∫ with optional lower/upper bounds. Nest for double/triple integrals. */
 export function Integral({ from, to, children, className }: BoundedProps) {
   return (
-    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
       <span className="inline-flex flex-col items-end">
         {to !== undefined && (
           <span className="text-[0.62em] leading-none">{to}</span>
         )}
-        <span className="select-none text-[1.9em] font-light leading-none">∫</span>
+        <span className="select-none text-[1.9em] font-light leading-none">
+          ∫
+        </span>
         {from !== undefined && (
           <span className="text-[0.62em] leading-none">{from}</span>
         )}
@@ -189,7 +211,9 @@ Integral.displayName = "Integral";
 /** Summation Σ with optional index bounds. */
 export function Sum({ from, to, children, className }: BoundedProps) {
   return (
-    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
       <span className="inline-flex flex-col items-center">
         {to !== undefined && (
           <span className="text-[0.62em] leading-none">{to}</span>
@@ -208,7 +232,9 @@ Sum.displayName = "Sum";
 /** Product Π with optional index bounds. */
 export function Prod({ from, to, children, className }: BoundedProps) {
   return (
-    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
       <span className="inline-flex flex-col items-center">
         {to !== undefined && (
           <span className="text-[0.62em] leading-none">{to}</span>
@@ -235,7 +261,9 @@ export function Lim({
   className?: string;
 }) {
   return (
-    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
       <span className="inline-flex flex-col items-center">
         <span className="font-serif text-sm leading-none">lim</span>
         <span className="text-[0.6em] leading-none">{sub}</span>
@@ -263,8 +291,18 @@ export function Deriv({
       <span className="relative -top-1 text-[0.72em]">{n}</span>
     ) : null;
   return (
-    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
-      <Frac num={<>d{sup}</>} den={<>d{variable}{sup}</>} />
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
+      <Frac
+        num={<>d{sup}</>}
+        den={
+          <>
+            d{variable}
+            {sup}
+          </>
+        }
+      />
       {children && <span className="ml-0.5">{children}</span>}
     </span>
   );
@@ -288,8 +326,18 @@ export function PDeriv({
       <span className="relative -top-1 text-[0.72em]">{n}</span>
     ) : null;
   return (
-    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
-      <Frac num={<>∂{sup}</>} den={<>∂{variable}{sup}</>} />
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
+      <Frac
+        num={<>∂{sup}</>}
+        den={
+          <>
+            ∂{variable}
+            {sup}
+          </>
+        }
+      />
       {children && <span className="ml-0.5">{children}</span>}
     </span>
   );
@@ -336,26 +384,25 @@ function mkTrig(name: string) {
       {children !== undefined && <Paren>{children}</Paren>}
     </span>
   );
-  TrigFn.displayName =
-    name.charAt(0).toUpperCase() + name.slice(1);
+  TrigFn.displayName = name.charAt(0).toUpperCase() + name.slice(1);
   return TrigFn;
 }
 
-export const Sin    = mkTrig("sin");
-export const Cos    = mkTrig("cos");
-export const Tan    = mkTrig("tan");
-export const Cot    = mkTrig("cot");
-export const Sec    = mkTrig("sec");
-export const Csc    = mkTrig("csc");
+export const Sin = mkTrig("sin");
+export const Cos = mkTrig("cos");
+export const Tan = mkTrig("tan");
+export const Cot = mkTrig("cot");
+export const Sec = mkTrig("sec");
+export const Csc = mkTrig("csc");
 export const ArcSin = mkTrig("arcsin");
 export const ArcCos = mkTrig("arccos");
 export const ArcTan = mkTrig("arctan");
-export const Sinh   = mkTrig("sinh");
-export const Cosh   = mkTrig("cosh");
-export const Tanh   = mkTrig("tanh");
-export const Log    = mkTrig("log");
-export const Ln     = mkTrig("ln");
-export const Exp    = mkTrig("exp");
+export const Sinh = mkTrig("sinh");
+export const Cosh = mkTrig("cosh");
+export const Tanh = mkTrig("tanh");
+export const Log = mkTrig("log");
+export const Ln = mkTrig("ln");
+export const Exp = mkTrig("exp");
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SECTION 4 — ALGEBRA & COMBINATORICS
@@ -395,12 +442,16 @@ export function Choose({
       aria-label={`${n} choose ${k}`}
       className={cn("mx-1 inline-flex items-center align-middle", className)}
     >
-      <span className="select-none font-serif text-[1.4em] font-light leading-none">(</span>
+      <span className="select-none font-serif text-[1.4em] font-light leading-none">
+        (
+      </span>
       <span className="inline-flex flex-col items-center text-[0.88em]">
         <span className="px-1 leading-tight">{n}</span>
         <span className="px-1 leading-tight">{k}</span>
       </span>
-      <span className="select-none font-serif text-[1.4em] font-light leading-none">)</span>
+      <span className="select-none font-serif text-[1.4em] font-light leading-none">
+        )
+      </span>
     </span>
   );
 }
@@ -617,16 +668,16 @@ const mkSym = (sym: string, label: string, extraCls = "") => {
 };
 
 // Set relations
-export const In        = mkSym("∈", "element of");
-export const NotIn     = mkSym("∉", "not element of");
-export const Subset    = mkSym("⊂", "subset");
-export const SubsetEq  = mkSym("⊆", "subset or equal");
-export const Supset    = mkSym("⊃", "superset");
-export const SupsetEq  = mkSym("⊇", "superset or equal");
-export const Union     = mkSym("∪", "union");
+export const In = mkSym("∈", "element of");
+export const NotIn = mkSym("∉", "not element of");
+export const Subset = mkSym("⊂", "subset");
+export const SubsetEq = mkSym("⊆", "subset or equal");
+export const Supset = mkSym("⊃", "superset");
+export const SupsetEq = mkSym("⊇", "superset or equal");
+export const Union = mkSym("∪", "union");
 export const Intersect = mkSym("∩", "intersection");
-export const Empty     = mkSym("∅", "empty set");
-export const SetMinus  = mkSym("∖", "set minus");
+export const Empty = mkSym("∅", "empty set");
+export const SetMinus = mkSym("∖", "set minus");
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SECTION 6 — NUMBER SYSTEMS
@@ -685,7 +736,9 @@ export function Conj({
       className={cn("inline-flex flex-col items-center", className)}
       aria-label="conjugate"
     >
-      <span className="border-t border-current px-0.5 leading-snug">{children}</span>
+      <span className="border-t border-current px-0.5 leading-snug">
+        {children}
+      </span>
     </span>
   );
 }
@@ -698,24 +751,27 @@ Conj.displayName = "Conj";
 // Implies · Iff · Therefore · Because · Turnstile · QED
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export const And       = mkSym("∧", "and");
-export const Or        = mkSym("∨", "or");
-export const Not       = mkSym("¬", "not", "mr-px");
-export const Xor       = mkSym("⊕", "xor");
-export const Nand      = mkSym("↑", "nand");
-export const Nor       = mkSym("↓", "nor");
-export const ForAll    = mkSym("∀", "for all", "mr-px");
-export const Exists    = mkSym("∃", "there exists", "mr-px");
+export const And = mkSym("∧", "and");
+export const Or = mkSym("∨", "or");
+export const Not = mkSym("¬", "not", "mr-px");
+export const Xor = mkSym("⊕", "xor");
+export const Nand = mkSym("↑", "nand");
+export const Nor = mkSym("↓", "nor");
+export const ForAll = mkSym("∀", "for all", "mr-px");
+export const Exists = mkSym("∃", "there exists", "mr-px");
 export const NotExists = mkSym("∄", "there does not exist", "mr-px");
 export const Therefore = mkSym("∴", "therefore");
-export const Because   = mkSym("∵", "because");
+export const Because = mkSym("∵", "because");
 export const Turnstile = mkSym("⊢", "proves");
 
 /** QED end-of-proof square □. */
 export function QED({ className }: { className?: string }) {
   return (
     <span
-      className={cn("ml-auto inline-block h-3 w-3 border border-current", className)}
+      className={cn(
+        "ml-auto inline-block h-3 w-3 border border-current",
+        className,
+      )}
       aria-label="QED"
     />
   );
@@ -738,7 +794,10 @@ export function Vec({
 }) {
   return (
     <span
-      className={cn("inline-flex flex-col items-center align-middle", className)}
+      className={cn(
+        "inline-flex flex-col items-center align-middle",
+        className,
+      )}
       aria-label="vector"
     >
       <span className="select-none text-[0.55em] leading-none">→</span>
@@ -769,7 +828,7 @@ export function Norm({
 }
 Norm.displayName = "Norm";
 
-export const Dot   = mkSym("·", "dot product",  "mx-1");
+export const Dot = mkSym("·", "dot product", "mx-1");
 export const Cross = mkSym("×", "cross product", "mx-1");
 
 /** Transpose: A^T. */
@@ -890,11 +949,11 @@ function mkOp(name: string) {
 }
 
 export const SpanOp = mkOp("span");
-export const Rank   = mkOp("rank");
-export const Dim    = mkOp("dim");
+export const Rank = mkOp("rank");
+export const Dim = mkOp("dim");
 export const NullOp = mkOp("null");
-export const Img    = mkOp("img");
-export const Trace  = mkOp("tr");
+export const Img = mkOp("img");
+export const Trace = mkOp("tr");
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SECTION 9 — STATISTICS & PROBABILITY
@@ -1083,15 +1142,39 @@ Dist.displayName = "Dist";
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const GREEK_MAP = {
-  alpha: "α",   beta: "β",    gamma: "γ",   delta: "δ",
-  epsilon: "ε", zeta: "ζ",   eta: "η",     theta: "θ",
-  iota: "ι",    kappa: "κ",  lambda: "λ",  mu: "μ",
-  nu: "ν",      xi: "ξ",     pi: "π",      rho: "ρ",
-  sigma: "σ",   tau: "τ",    upsilon: "υ", phi: "φ",
-  chi: "χ",     psi: "ψ",    omega: "ω",
-  Gamma: "Γ",   Delta: "Δ",  Theta: "Θ",  Lambda: "Λ",
-  Xi: "Ξ",      Pi: "Π",     Sigma: "Σ",  Phi: "Φ",
-  Psi: "Ψ",     Omega: "Ω",
+  alpha: "α",
+  beta: "β",
+  gamma: "γ",
+  delta: "δ",
+  epsilon: "ε",
+  zeta: "ζ",
+  eta: "η",
+  theta: "θ",
+  iota: "ι",
+  kappa: "κ",
+  lambda: "λ",
+  mu: "μ",
+  nu: "ν",
+  xi: "ξ",
+  pi: "π",
+  rho: "ρ",
+  sigma: "σ",
+  tau: "τ",
+  upsilon: "υ",
+  phi: "φ",
+  chi: "χ",
+  psi: "ψ",
+  omega: "ω",
+  Gamma: "Γ",
+  Delta: "Δ",
+  Theta: "Θ",
+  Lambda: "Λ",
+  Xi: "Ξ",
+  Pi: "Π",
+  Sigma: "Σ",
+  Phi: "Φ",
+  Psi: "Ψ",
+  Omega: "Ω",
 } as const;
 
 type GreekLetter = keyof typeof GREEK_MAP;
@@ -1116,43 +1199,42 @@ function mkGreek(letter: GreekLetter) {
   const Comp = ({ className }: { className?: string }) => (
     <Greek letter={letter} className={className} />
   );
-  Comp.displayName =
-    letter.charAt(0).toUpperCase() + letter.slice(1);
+  Comp.displayName = letter.charAt(0).toUpperCase() + letter.slice(1);
   return Comp;
 }
 
 // lowercase shortcuts
-export const Alpha    = mkGreek("alpha");
-export const Beta     = mkGreek("beta");
-export const Gamma    = mkGreek("gamma");
-export const GDelta   = mkGreek("delta");
-export const Epsilon  = mkGreek("epsilon");
-export const Zeta     = mkGreek("zeta");
-export const Eta      = mkGreek("eta");
-export const Theta    = mkGreek("theta");
-export const Iota     = mkGreek("iota");
-export const Kappa    = mkGreek("kappa");
-export const Lambda   = mkGreek("lambda");
-export const Mu       = mkGreek("mu");
-export const Nu       = mkGreek("nu");
-export const Xi       = mkGreek("xi");
-export const PiSym    = mkGreek("pi");
-export const Rho      = mkGreek("rho");
+export const Alpha = mkGreek("alpha");
+export const Beta = mkGreek("beta");
+export const Gamma = mkGreek("gamma");
+export const GDelta = mkGreek("delta");
+export const Epsilon = mkGreek("epsilon");
+export const Zeta = mkGreek("zeta");
+export const Eta = mkGreek("eta");
+export const Theta = mkGreek("theta");
+export const Iota = mkGreek("iota");
+export const Kappa = mkGreek("kappa");
+export const Lambda = mkGreek("lambda");
+export const Mu = mkGreek("mu");
+export const Nu = mkGreek("nu");
+export const Xi = mkGreek("xi");
+export const PiSym = mkGreek("pi");
+export const Rho = mkGreek("rho");
 export const SigmaSym = mkGreek("sigma");
-export const Tau      = mkGreek("tau");
-export const Upsilon  = mkGreek("upsilon");
-export const Phi      = mkGreek("phi");
-export const Chi      = mkGreek("chi");
-export const Psi      = mkGreek("psi");
-export const Omega    = mkGreek("omega");
+export const Tau = mkGreek("tau");
+export const Upsilon = mkGreek("upsilon");
+export const Phi = mkGreek("phi");
+export const Chi = mkGreek("chi");
+export const Psi = mkGreek("psi");
+export const Omega = mkGreek("omega");
 // uppercase shortcuts
-export const GammaU   = mkGreek("Gamma");
-export const DeltaU   = mkGreek("Delta");
-export const ThetaU   = mkGreek("Theta");
-export const LambdaU  = mkGreek("Lambda");
-export const XiU      = mkGreek("Xi");
-export const PiU      = mkGreek("Pi");
-export const SigmaU   = mkGreek("Sigma");
-export const PhiU     = mkGreek("Phi");
-export const PsiU     = mkGreek("Psi");
-export const OmegaU   = mkGreek("Omega");
+export const GammaU = mkGreek("Gamma");
+export const DeltaU = mkGreek("Delta");
+export const ThetaU = mkGreek("Theta");
+export const LambdaU = mkGreek("Lambda");
+export const XiU = mkGreek("Xi");
+export const PiU = mkGreek("Pi");
+export const SigmaU = mkGreek("Sigma");
+export const PhiU = mkGreek("Phi");
+export const PsiU = mkGreek("Psi");
+export const OmegaU = mkGreek("Omega");

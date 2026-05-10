@@ -11,6 +11,7 @@ import { list } from "./commands/list.js"
 import { update } from "./commands/update.js"
 import { remove } from "./commands/remove.js"
 import { doctor } from "./commands/doctor.js"
+import { save } from "./commands/save.js"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -31,7 +32,7 @@ async function main() {
       "display the version number"
     )
 
-  program.addCommand(init).addCommand(add).addCommand(list).addCommand(update).addCommand(remove).addCommand(doctor)
+  program.addCommand(init).addCommand(add).addCommand(list).addCommand(update).addCommand(remove).addCommand(doctor).addCommand(save)
 
   // Interactive menu when run with no subcommand
   if (process.argv.length <= 2) {
@@ -47,6 +48,7 @@ async function main() {
         { title: "Remove components", value: "remove", description: "Remove installed components from your project" },
         { title: "List components", value: "list", description: "Show all available components" },
         { title: "Doctor", value: "doctor", description: "Check project health — missing deps, broken imports" },
+        { title: "Save MDX", value: "save", description: "Save an MDX string to a structured .ai.mdx file" },
       ],
     })
     if (!action) process.exit(0)

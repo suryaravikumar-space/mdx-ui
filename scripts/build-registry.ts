@@ -592,6 +592,42 @@ const componentsMetadata: Record<
     dependencies: ["mermaid", "clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
+  "math-primitives": {
+    description:
+      "Semantic math primitive atoms: Frac (fraction), Pow (exponent), Sub (subscript), Sqrt (radical), Abs (absolute value), Deg (degree), Inf (infinity), Greek letter components",
+    whenToUse:
+      "Use to compose mathematical expressions inline in JSX without raw Unicode or LaTeX. Compose with Equation and Solution for full semantic math.",
+    whenNotToUse:
+      "Do not use for complex display equations — use BlockMath with KaTeX for heavy LaTeX. These primitives are for structural, composable math.",
+    example:
+      "<Frac num=\"1\" den=\"2\" />  <Pow exp=\"2\">x</Pow>  <Sqrt>x+1</Sqrt>  <Deg>30</Deg>  <Theta />",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "math-equation": {
+    description:
+      "Semantic equation display blocks: Equation (centered labeled formula), EqSystem (system of equations with brace), relation symbols (Approx, Neq, Leq, Geq, Arrow, Implies, Iff)",
+    whenToUse:
+      "Use Equation to display a formula prominently with an optional reference number. Use EqSystem for simultaneous equations. Use relation symbols inline between expressions.",
+    whenNotToUse:
+      "Do not use for prose paragraphs that mention variables — use InlineMath. Do not use for code listings.",
+    example:
+      "<Equation label=\"1\">E = mc<Pow exp=\"2\" /></Equation>\n<EqSystem><div>x + y = 5</div><div>2x − y = 1</div></EqSystem>",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "math-solution": {
+    description:
+      "Step-by-step mathematical solution blocks: Solution (wrapper with title), SolutionStep (one transformation step with reason), SolutionAnswer (final result with ∴ badge), SolutionNote (commentary annotation)",
+    whenToUse:
+      "Use to walk through algebraic derivations, equation solving, or proofs step by step. Each step shows the expression and an optional reason.",
+    whenNotToUse:
+      "Do not use for general procedure guides — use Steps/Step for non-math workflows. Do not use for code walkthroughs.",
+    example:
+      "<Solution title=\"Solve: 2x + 4 = 10\">\n  <SolutionStep reason=\"Given\">2x + 4 = 10</SolutionStep>\n  <SolutionStep reason=\"Subtract 4\">2x = 6</SolutionStep>\n  <SolutionAnswer>x = 3</SolutionAnswer>\n</Solution>",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
   utils: {
     description: "Utility functions for className merging (cn)",
     whenToUse:

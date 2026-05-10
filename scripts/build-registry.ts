@@ -639,6 +639,16 @@ const componentsMetadata: Record<
   },
 };
 
+// Components that bundle lib/* files alongside their own source.
+// These lib files are internal — not shown in list, not directly addable.
+const libDependencies: Record<string, string[]> = {
+  accordion: ["lib/primitives.ts", "lib/motion.tsx"],
+  annotation: ["lib/primitives.ts"],
+  glossary: ["lib/primitives.ts"],
+  preview: ["lib/primitives.ts"],
+  reveal: ["lib/primitives.ts", "lib/motion.tsx"],
+};
+
 async function buildRegistry() {
   console.log("🔨 Building registry from packages/registry/src...\n");
 
@@ -666,6 +676,16 @@ async function buildRegistry() {
       continue;
     }
 
+    // Bundle any lib/* dependencies directly into this component's JSON
+    const libFiles: Array<{ path: string; content: string; integrity: string }> = [];
+    for (const libPath of libDependencies[componentName] ?? []) {
+      const libFilePath = path.join(srcDir, libPath);
+      if (await fs.pathExists(libFilePath)) {
+        const libContent = await fs.readFile(libFilePath, "utf-8");
+        libFiles.push({ path: libPath, content: libContent, integrity: integrity(libContent) });
+      }
+    }
+
     // Create component JSON
     const componentJson = {
       name: componentName,
@@ -682,6 +702,7 @@ async function buildRegistry() {
           content: content,
           integrity: integrity(content),
         },
+        ...libFiles,
       ],
     };
 

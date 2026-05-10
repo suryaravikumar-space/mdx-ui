@@ -25,35 +25,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     deps: ["clsx", "tailwind-merge"],
     description: "Utility function cn() for merging Tailwind classes",
   },
-  primitives: {
-    importFile: "./lib/primitives",
-    imports: [
-      "focusRing",
-      "focusRingInset",
-      "surface",
-      "cardSurface",
-      "popoverSurface",
-      "mutedText",
-      "blockSpacing",
-      "transitions",
-      "chevronPath",
-    ],
-    elementMappings: {},
-    files: ["lib/primitives.ts"],
-    deps: [],
-    description:
-      "Shared Tailwind class string constants for consistent styling across components",
-  },
-  motion: {
-    importFile: "./lib/motion",
-    imports: ["Collapse"],
-    elementMappings: {},
-    files: ["lib/motion.tsx"],
-    deps: [],
-    description:
-      "Animated Collapse component using CSS grid-template-rows (no JS height measurement)",
-  },
-  "ds-tree": {
+"ds-tree": {
     importFile: "./ds-tree",
     imports: [
       "DSTree",

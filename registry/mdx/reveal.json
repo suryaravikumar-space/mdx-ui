@@ -1,0 +1,22 @@
+{
+  "name": "reveal",
+  "type": "component",
+  "description": "Animated click-to-reveal panel for answers, hints, and spoilers — uses smooth Collapse animation",
+  "whenToUse": "Use to hide a single answer, solution, or hint the reader must actively choose to reveal. Common in tutorials and exercises.",
+  "whenNotToUse": "Do not use for navigation or multi-section disclosure — use Accordion. Do not use when content should always be visible.",
+  "example": "<Reveal label=\"Show solution\">\n  Use a hash map keyed on the complement: `target - nums[i]`.\n</Reveal>",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "reveal.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\nimport { focusRingInset, transitions } from \"@/lib/primitives\"\nimport { Collapse } from \"@/lib/motion\"\n\nexport interface RevealProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Label text shown on the toggle button */\n  label?: string\n  /** Start in the open state */\n  defaultOpen?: boolean\n}\n\n/**\n * Reveal — animated click-to-reveal panel for answers, hints, and spoilers.\n *\n * Unlike the native <details>-based Spoiler, Reveal uses the Collapse\n * primitive so the open/close transition is smooth.\n *\n * @example\n * <Reveal label=\"Show solution\">\n *   The answer is to use a hash map for O(1) lookups.\n * </Reveal>\n */\nexport const Reveal = React.forwardRef<HTMLDivElement, RevealProps>(\n  ({ label = \"Show answer\", defaultOpen = false, children, className, ...props }, ref) => {\n    const [open, setOpen] = React.useState(defaultOpen)\n\n    return (\n      <div\n        ref={ref}\n        className={cn(\"my-4 overflow-hidden rounded-lg border border-border bg-card\", className)}\n        {...props}\n      >\n        <button\n          type=\"button\"\n          onClick={() => setOpen(v => !v)}\n          aria-expanded={open}\n          className={cn(\n            \"flex w-full items-center justify-between px-4 py-3\",\n            \"text-sm font-medium text-foreground\",\n            transitions.colors,\n            \"hover:bg-muted/50\",\n            focusRingInset\n          )}\n        >\n          <span>{label}</span>\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width=\"16\"\n            height=\"16\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth=\"2\"\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            aria-hidden=\"true\"\n            className={cn(\n              \"shrink-0 text-muted-foreground\",\n              transitions.transform,\n              open && \"rotate-180\"\n            )}\n          >\n            <path d=\"m6 9 6 6 6-6\" />\n          </svg>\n        </button>\n\n        <Collapse open={open}>\n          <div className=\"border-t border-border px-4 py-3 text-sm text-muted-foreground\">\n            {children}\n          </div>\n        </Collapse>\n      </div>\n    )\n  }\n)\nReveal.displayName = \"Reveal\"\n",
+      "integrity": "sha256-KskoAHhPcylAODrm2XlS0SXXR3blv65a6dIYwjX6sZo="
+    }
+  ]
+}

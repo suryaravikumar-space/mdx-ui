@@ -1,0 +1,27 @@
+# CODEOWNERS
+# Each line is a file pattern followed by one or more owners.
+# The last matching pattern takes the most precedence.
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: repo owner reviews everything
+*                           @suryaravikumar-space
+
+# CI/CD pipelines
+.github/                    @suryaravikumar-space
+
+# Registry components (React)
+packages/registry/          @suryaravikumar-space
+
+# CLI package
+packages/cli/               @suryaravikumar-space
+
+# Remark plugin
+packages/remark-plugin/     @suryaravikumar-space
+
+# Documentation site
+apps/www/                   @suryaravikumar-space
+
+# Build scripts
+scripts/                    @suryaravikumar-space
+turbo.json                  @suryaravikumar-space
+pnpm-workspace.yaml         @suryaravikumar-space

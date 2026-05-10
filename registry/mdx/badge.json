@@ -2,6 +2,9 @@
   "name": "badge",
   "type": "component",
   "description": "Status badges with multiple variants (default, success, warning, info, destructive)",
+  "whenToUse": "Use for status labels, version tags, or category markers that appear inline or in lists.",
+  "whenNotToUse": "Do not use for interactive or clickable labels — use a button. Do not rely on badge alone for critical information.",
+  "example": "<Badge variant=\"success\">Stable</Badge>",
   "dependencies": [
     "class-variance-authority",
     "clsx",

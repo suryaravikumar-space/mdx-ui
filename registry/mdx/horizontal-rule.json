@@ -2,6 +2,9 @@
   "name": "horizontal-rule",
   "type": "component",
   "description": "Divider lines with multiple styles (default, dashed, dotted, gradient)",
+  "whenToUse": "Use to visually separate major sections within a page when a heading would be too heavy.",
+  "whenNotToUse": "Do not use between every paragraph. Do not use as a substitute for proper heading structure.",
+  "example": "<HorizontalRule variant=\"gradient\" />",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

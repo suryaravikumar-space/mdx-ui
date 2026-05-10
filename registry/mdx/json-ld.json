@@ -2,6 +2,9 @@
   "name": "json-ld",
   "type": "component",
   "description": "JSON-LD structured data — renders a <script type='application/ld+json'> tag for SEO (Article, BreadcrumbList, FAQPage, etc.)",
+  "whenToUse": "Use to embed structured data for SEO — Article, BreadcrumbList, FAQPage schemas.",
+  "whenNotToUse": "Do not use for visible content. This component renders no visible output.",
+  "example": "<JsonLd schema={{ '@context': 'https://schema.org', '@type': 'Article', headline: 'Binary Search Trees' }} />",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

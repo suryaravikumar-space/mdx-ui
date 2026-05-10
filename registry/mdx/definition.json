@@ -1,0 +1,22 @@
+{
+  "name": "definition",
+  "type": "component",
+  "description": "Formal term definition component — displays a term with its definition in a structured format",
+  "whenToUse": "Use to formally define a term the reader may not know. Place at first use of a specialized term in the document.",
+  "whenNotToUse": "Do not use for general explanations — use Callout. Do not define terms the target reader already knows.",
+  "example": "<Definition term=\"Invariant\">\n  A condition that holds true before and after every operation on a data structure.\n</Definition>",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "definition.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface DefinitionProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** The word or phrase being defined */\n  term: string\n  children: React.ReactNode\n}\n\n/**\n * Definition — a formal definition block.\n *\n * Renders the term as a small-caps label above the definition body.\n * Use at the first occurrence of a specialised term in a document.\n *\n * @example\n * <Definition term=\"Invariant\">\n *   A condition that holds true before and after every operation on a data structure.\n * </Definition>\n */\nexport const Definition = React.forwardRef<HTMLDivElement, DefinitionProps>(\n  ({ term, children, className, ...props }, ref) => (\n    <div\n      ref={ref}\n      data-definition\n      className={cn(\"my-6 border-l-4 border-primary py-2 pl-4\", className)}\n      {...props}\n    >\n      <div className=\"mb-1 text-sm font-semibold uppercase tracking-wide text-foreground\">\n        {term}\n      </div>\n      <div className=\"text-sm text-muted-foreground\">{children}</div>\n    </div>\n  )\n)\nDefinition.displayName = \"Definition\"\n",
+      "integrity": "sha256-CKfn+dywbko1OkiKLnsK3bYFPyyUr4FK5qADqe9MtU8="
+    }
+  ]
+}

@@ -2,6 +2,9 @@
   "name": "spoiler",
   "type": "component",
   "description": "Collapsible <details>/<summary> disclosure — lightweight alternative to Accordion for single items",
+  "whenToUse": "Use for lightweight single-item disclosure using native HTML details/summary when animation is not needed.",
+  "whenNotToUse": "Use Reveal instead when animation matters. Do not use for multiple related items — use Accordion.",
+  "example": "<Spoiler summary=\"What is the time complexity?\">\n  O(log n) for a balanced BST.\n</Spoiler>",
   "dependencies": [
     "clsx",
     "tailwind-merge"

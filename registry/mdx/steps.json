@@ -2,6 +2,9 @@
   "name": "steps",
   "type": "component",
   "description": "Numbered step-by-step guides with visual indicators",
+  "whenToUse": "Use for sequential procedures where order matters — installation, configuration, tutorials.",
+  "whenNotToUse": "Do not use for unordered tips — use a list. Do not use when steps can be performed in any order.",
+  "example": "<Steps>\n  <Step title=\"Install\">`pnpm add @mdx-ui/cli`</Step>\n  <Step title=\"Run\">`npx mdx-ui add callout`</Step>\n</Steps>",
   "dependencies": [],
   "registryDependencies": [
     "utils"

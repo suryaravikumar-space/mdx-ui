@@ -27,19 +27,40 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "apps/www/**/*.{ts,tsx}": [
+      "eslint --max-warnings=0 --fix",
+      "prettier --write"
+    ],
+    "packages/**/*.{ts,tsx}": [
+      "prettier --write"
+    ],
+    "scripts/**/*.{ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.{js,mjs,cjs,json,md,mdx,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "packageManager": "pnpm@9.0.6",
   "devDependencies": {
-    "next": "^15.1.6",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
     "fs-extra": "^11.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.3",
+    "next": "^15.1.6",
     "prettier": "^3.2.5",
     "tsx": "^4.7.0",
     "turbo": "^1.12.5",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "vitest": "^4.1.5"
   }
 }

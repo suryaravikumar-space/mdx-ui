@@ -2,6 +2,9 @@
   "name": "blockquote",
   "type": "component",
   "description": "Styled quote blocks with optional citation",
+  "whenToUse": "Use for direct quotations from external sources, books, papers, or people.",
+  "whenNotToUse": "Do not use for callouts, tips, or notes — use Callout instead. Not for code output.",
+  "example": "<Blockquote cite=\"Dijkstra, EWD 1036\">Simplicity is prerequisite for reliability.</Blockquote>",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

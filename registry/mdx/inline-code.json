@@ -2,6 +2,9 @@
   "name": "inline-code",
   "type": "component",
   "description": "Inline code component for displaying code snippets within text",
+  "whenToUse": "Use for inline code mentions — variable names, function names, short snippets within prose.",
+  "whenNotToUse": "Do not use for multi-line code — use CodeBlock. Do not use for keyboard shortcuts — use Kbd.",
+  "example": "Call <InlineCode>Array.prototype.reduce</InlineCode> with an initial accumulator.",
   "dependencies": [],
   "registryDependencies": [
     "utils"

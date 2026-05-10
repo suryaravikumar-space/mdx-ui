@@ -18,7 +18,11 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/mdx/alert";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, LinkCard } from "@/components/mdx/card";
 import { Kbd } from "@/components/mdx/kbd";
 import { Link } from "@/components/mdx/link";
-import { Spoiler } from "@/components/mdx/spoiler";
+import { Spoiler } from "@/components/mdx/spoiler"
+import { Annotation } from "@/components/mdx/annotation"
+import { Reveal } from "@/components/mdx/reveal"
+import { Preview } from "@/components/mdx/preview"
+import { GlossaryProvider, Term } from "@/components/mdx/glossary";
 import { Video } from "@/components/mdx/video";
 import { Image, ImageGlossary } from "@/components/mdx/image";
 import { DataTable } from "@/components/mdx/data-table";
@@ -27,6 +31,18 @@ import { DiffBlock } from "@/components/mdx/diff-block";
 import { Terminal, TerminalLine } from "@/components/mdx/terminal";
 import { Changelog, ChangelogEntry, ChangelogItem } from "@/components/mdx/changelog";
 import { JsonLd } from "@/components/mdx/json-ld";
+import { Definition } from "@/components/mdx/definition";
+import { Invariant } from "@/components/mdx/invariant";
+import { ComplexityTable } from "@/components/mdx/complexity-table";
+import {
+  DSArray, DSMatrix,
+  DSLinkedList, DSDoublyLinkedList, DSCircularLinkedList,
+  DSStack, DSQueue, DSDeque, DSPriorityQueue,
+  DSBinaryTree, DSBST, DSMinHeap, DSMaxHeap,
+  DSTrie, DSGraph, DSDigraph, DSWeightedGraph, DSDAG,
+  DSHashMap, DSHashSet, DSNaryTree, DSSegmentTree,
+  DSBFS, DSDFS, DSAgentFlow,
+} from "@/components/mdx/ds";
 
 const components = {
   Accordion,
@@ -74,6 +90,11 @@ const components = {
   Kbd,
   Link,
   Spoiler,
+  Annotation,
+  Reveal,
+  Preview,
+  GlossaryProvider,
+  Term,
   Video,
   Image,
   ImageGlossary,
@@ -86,6 +107,16 @@ const components = {
   ChangelogEntry,
   ChangelogItem,
   JsonLd,
+  Definition,
+  Invariant,
+  ComplexityTable,
+  DSArray, DSMatrix,
+  DSLinkedList, DSDoublyLinkedList, DSCircularLinkedList,
+  DSStack, DSQueue, DSDeque, DSPriorityQueue,
+  DSBinaryTree, DSBST, DSMinHeap, DSMaxHeap,
+  DSTrie, DSGraph, DSDigraph, DSWeightedGraph, DSDAG,
+  DSHashMap, DSHashSet, DSNaryTree, DSSegmentTree,
+  DSBFS, DSDFS, DSAgentFlow,
   Table,
   TableHeader,
   TableBody,

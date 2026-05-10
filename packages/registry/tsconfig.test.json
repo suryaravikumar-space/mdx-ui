@@ -3,8 +3,8 @@
   "compilerOptions": {
     "module": "CommonJS",
     "moduleResolution": "node10",
-    "types": ["jest", "@testing-library/jest-dom"],
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "5.0",
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

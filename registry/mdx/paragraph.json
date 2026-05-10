@@ -2,6 +2,9 @@
   "name": "paragraph",
   "type": "component",
   "description": "Standard text paragraph component with proper spacing and typography",
+  "whenToUse": "Use as the MDX mapping for standard prose paragraphs.",
+  "whenNotToUse": "Do not use directly in MDX — configure as the p override in your MDX components map.",
+  "example": "// In mdx-components.tsx\n{ p: Paragraph }",
   "dependencies": [],
   "registryDependencies": [
     "utils"

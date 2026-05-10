@@ -9,9 +9,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "@/lib/utils": ["./src/lib/utils"]
+      "@/lib/utils": ["./src/lib/utils"],
+      "@/lib/primitives": ["./src/lib/primitives"],
+      "@/lib/motion": ["./src/lib/motion"]
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "src/__tests__"]
+  "exclude": ["node_modules", "src/__tests__", "src/__mocks__"]
 }

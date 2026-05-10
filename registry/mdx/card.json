@@ -2,6 +2,9 @@
   "name": "card",
   "type": "component",
   "description": "Card layout components (Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter) plus LinkCard for navigation grids",
+  "whenToUse": "Use Card for structured content blocks with a clear header, body, and optional footer. Use LinkCard for navigation grids — next steps, related topics.",
+  "whenNotToUse": "Do not use cards for flowing prose content. Do not use LinkCard without a meaningful title and description.",
+  "example": "<LinkCard title=\"Binary Search Tree\" href=\"/docs/bst\" description=\"Self-balancing search with O(log n) operations.\" />",
   "dependencies": [
     "clsx",
     "tailwind-merge"

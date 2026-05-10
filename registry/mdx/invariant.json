@@ -1,0 +1,22 @@
+{
+  "name": "invariant",
+  "type": "component",
+  "description": "Formal invariant statement — highlights a condition that must always hold, with optional complexity annotation",
+  "whenToUse": "Use to state a formal invariant — a condition that must always hold. Particularly valuable in algorithm and data structure documentation.",
+  "whenNotToUse": "Do not use for general facts or notes — use Callout. Reserve for formal correctness claims with optional complexity annotation.",
+  "example": "<Invariant complexity=\"O(log n)\">\n  An AVL tree remains height-balanced after every insertion and deletion.\n</Invariant>",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "invariant.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface InvariantProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** Optional complexity annotation, e.g. \"O(log n)\" */\n  complexity?: string\n  children: React.ReactNode\n}\n\n/**\n * Invariant — a formal invariant statement.\n *\n * Highlights a condition that must always hold, with an optional\n * complexity annotation badge. Use for correctness claims in algorithm\n * and data structure documentation.\n *\n * @example\n * <Invariant complexity=\"O(log n)\">\n *   An AVL tree remains height-balanced after every insertion and deletion.\n * </Invariant>\n */\nexport const Invariant = React.forwardRef<HTMLDivElement, InvariantProps>(\n  ({ complexity, children, className, ...props }, ref) => (\n    <div\n      ref={ref}\n      data-invariant\n      className={cn(\n        \"my-6 flex gap-3 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3\",\n        className\n      )}\n      {...props}\n    >\n      <svg\n        aria-hidden=\"true\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n        width=\"18\"\n        height=\"18\"\n        viewBox=\"0 0 24 24\"\n        fill=\"none\"\n        stroke=\"currentColor\"\n        strokeWidth=\"2\"\n        strokeLinecap=\"round\"\n        strokeLinejoin=\"round\"\n        className=\"mt-0.5 shrink-0 text-primary\"\n      >\n        <path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\" />\n        <polyline points=\"9 12 11 14 15 10\" />\n      </svg>\n      <div className=\"flex flex-1 flex-wrap items-start justify-between gap-2\">\n        <p className=\"text-sm text-foreground\">{children}</p>\n        {complexity && (\n          <span className=\"shrink-0 rounded border border-primary/30 bg-primary/10 px-2 py-0.5 font-mono text-xs text-primary\">\n            {complexity}\n          </span>\n        )}\n      </div>\n    </div>\n  )\n)\nInvariant.displayName = \"Invariant\"\n",
+      "integrity": "sha256-w2dZ/4BSm27Dy8w1Rk1rND3b0/BbDPHMICRRU52rZiE="
+    }
+  ]
+}

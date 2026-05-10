@@ -2,6 +2,9 @@
   "name": "video",
   "type": "component",
   "description": "Video embed — auto-detects YouTube, Vimeo, and HTML5 video sources with aspect-ratio container and optional caption",
+  "whenToUse": "Use to embed YouTube, Vimeo, or HTML5 video with an aspect-ratio container and optional caption.",
+  "whenNotToUse": "Do not use for audio-only content. Do not embed auto-playing videos.",
+  "example": "<Video src=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\" caption=\"Algorithm walkthrough\" />",
   "dependencies": [
     "clsx",
     "tailwind-merge"

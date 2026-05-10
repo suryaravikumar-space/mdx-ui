@@ -1,0 +1,79 @@
+version: 2
+
+updates:
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "ci"
+
+  # Root workspace + packages (pnpm)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+    groups:
+      typescript-ecosystem:
+        patterns:
+          - "typescript"
+          - "@types/*"
+      testing:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "jest*"
+          - "@jest/*"
+          - "@testing-library/*"
+          - "jest-environment-jsdom"
+          - "jest-junit"
+          - "ts-jest"
+      turbo:
+        patterns:
+          - "turbo"
+
+  # packages/registry
+  - package-ecosystem: "npm"
+    directory: "/packages/registry"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "registry"
+
+  # packages/cli
+  - package-ecosystem: "npm"
+    directory: "/packages/cli"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "cli"
+
+  # packages/remark-plugin
+  - package-ecosystem: "npm"
+    directory: "/packages/remark-plugin"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "remark-plugin"
+
+  # apps/www
+  - package-ecosystem: "npm"
+    directory: "/apps/www"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "www"

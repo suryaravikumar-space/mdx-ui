@@ -2,6 +2,9 @@
   "name": "link",
   "type": "component",
   "description": "Styled anchor — auto-detects external URLs, adds open-in-new-tab icon and rel='noopener noreferrer'",
+  "whenToUse": "Use for all anchor links in MDX. It auto-detects external URLs and adds rel='noopener noreferrer' and an external icon automatically.",
+  "whenNotToUse": "Do not use for navigation buttons or actions — use a button element.",
+  "example": "<Link href=\"https://en.wikipedia.org/wiki/AVL_tree\">AVL tree</Link>",
   "dependencies": [
     "clsx",
     "tailwind-merge"

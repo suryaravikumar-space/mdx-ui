@@ -2,6 +2,9 @@
   "name": "mdx-components",
   "type": "component",
   "description": "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
+  "whenToUse": "Use as the central MDX component map for your docs site. Import and register all mdx-ui components here.",
+  "whenNotToUse": "Do not import this file directly in MDX — it is a configuration file for your MDX renderer.",
+  "example": "// mdx-components.tsx\nexport const components = { Callout, Steps, Reveal, ... }",
   "dependencies": [
     "@types/mdx"
   ],

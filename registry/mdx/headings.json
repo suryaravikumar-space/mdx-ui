@@ -2,6 +2,9 @@
   "name": "headings",
   "type": "component",
   "description": "Markdown headings (H1-H6) with auto-generated anchor links for navigation",
+  "whenToUse": "Use as the MDX mapping for standard markdown headings when auto-generated anchor links are needed.",
+  "whenNotToUse": "Do not use directly in MDX — configure as the h1–h6 override in your MDX components map.",
+  "example": "// In mdx-components.tsx\n{ h1: Headings.H1, h2: Headings.H2 }",
   "dependencies": [],
   "registryDependencies": [
     "utils"

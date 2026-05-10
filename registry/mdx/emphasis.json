@@ -2,6 +2,9 @@
   "name": "emphasis",
   "type": "component",
   "description": "Text emphasis components for bold (strong) and italic (em) styling",
+  "whenToUse": "Use Strong for bold emphasis on critical words. Use Em for softer, tonal emphasis.",
+  "whenNotToUse": "Do not emphasize entire sentences. Do not use emphasis for headings or labels.",
+  "example": "This is <Strong>critically important</Strong> and <Em>subtly different</Em>.",
   "dependencies": [],
   "registryDependencies": [
     "utils"

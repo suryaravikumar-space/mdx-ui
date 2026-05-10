@@ -2,6 +2,9 @@
   "name": "highlight",
   "type": "component",
   "description": "Marker-style inline text highlight — simulates a real highlighter pen with yellow, blue, green, pink, or purple colours",
+  "whenToUse": "Use to draw attention to a specific word or phrase in prose, simulating a physical highlighter pen.",
+  "whenNotToUse": "Do not use for code — use inline-code. Do not highlight entire sentences.",
+  "example": "The key insight is the <Highlight color=\"yellow\">pivot selection strategy</Highlight>.",
   "dependencies": [
     "clsx",
     "tailwind-merge"

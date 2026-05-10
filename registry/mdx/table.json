@@ -2,6 +2,9 @@
   "name": "table",
   "type": "component",
   "description": "Styled table components with header, body, footer, and caption",
+  "whenToUse": "Use for static reference tables with fewer than 10 rows — prop reference, comparison tables, structured data.",
+  "whenNotToUse": "Use DataTable instead for dynamic data, sorting, or filtering.",
+  "example": "<Table>\n  <TableHeader><TableRow><TableHead>Operation</TableHead><TableHead>Complexity</TableHead></TableRow></TableHeader>\n  <TableBody><TableRow><TableCell>Search</TableCell><TableCell>O(log n)</TableCell></TableRow></TableBody>\n</Table>",
   "dependencies": [
     "clsx",
     "tailwind-merge"

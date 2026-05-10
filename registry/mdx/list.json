@@ -2,6 +2,9 @@
   "name": "list",
   "type": "component",
   "description": "Styled ordered and unordered lists with list items",
+  "whenToUse": "Use UnorderedList for items with no required order. Use OrderedList when sequence matters.",
+  "whenNotToUse": "Do not use for step-by-step procedures — use Steps. Do not nest more than two levels.",
+  "example": "<UnorderedList>\n  <ListItem>O(1) average case lookup</ListItem>\n  <ListItem>O(n) worst case with hash collision</ListItem>\n</UnorderedList>",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

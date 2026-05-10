@@ -4,12 +4,11 @@ import chalk from "chalk"
 import ora from "ora"
 import fs from "fs-extra"
 import path from "path"
-import { fileURLToPath } from "url"
 import { getConfig } from "../utils/get-config.js"
 import { fetchComponent, type ComponentData } from "../utils/fetch-component.js"
 import { installDependencies } from "../utils/install-deps.js"
 import { writeComponent } from "../utils/write-component.js"
-import { COMPONENT_MDX_MAP } from "../lib/component-registry.js"
+import { COMPONENT_MDX_MAP, REGISTRY } from "../lib/component-registry.js"
 
 interface RegistryComponent {
   name: string
@@ -17,10 +16,6 @@ interface RegistryComponent {
   description: string
   files: string[]
   registryDependencies?: string[]
-}
-
-interface Registry {
-  components: RegistryComponent[]
 }
 
 async function patchMdxComponents(
@@ -86,25 +81,17 @@ async function patchMdxComponents(
   await fs.writeFile(mdxPath, content)
 }
 
-async function loadRegistry(): Promise<Registry> {
-  try {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url))
-    const possiblePaths = [
-      path.join(__dirname, "../../../../registry/registry.json"),
-      path.join(__dirname, "../../../registry/registry.json"),
-      path.join(__dirname, "../../registry/registry.json"),
-    ]
-
-    for (const registryPath of possiblePaths) {
-      if (await fs.pathExists(registryPath)) {
-        return await fs.readJSON(registryPath)
-      }
-    }
-  } catch {
-    // Fallback
+function loadRegistry(): { components: RegistryComponent[] } {
+  return {
+    components: Object.entries(REGISTRY)
+      .filter(([name]) => name !== "utils")
+      .map(([name, entry]) => ({
+        name,
+        type: "mdx",
+        description: entry.description,
+        files: entry.files,
+      })),
   }
-
-  return { components: [] }
 }
 
 export const add = new Command()
@@ -123,7 +110,7 @@ export const add = new Command()
     }
 
     if (components.length === 0) {
-      const registry = await loadRegistry()
+      const registry = loadRegistry()
       const mdxComponents = registry.components.filter((c: RegistryComponent) => c.type === "mdx")
 
       const { selected } = await prompts({

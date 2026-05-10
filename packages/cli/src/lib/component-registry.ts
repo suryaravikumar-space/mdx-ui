@@ -12,9 +12,19 @@ export interface ComponentEntry {
   files: string[];
   /** npm packages required at runtime */
   deps: string[];
+  /** Short description shown in list / add picker */
+  description: string;
 }
 
 export const REGISTRY: Record<string, ComponentEntry> = {
+  utils: {
+    importFile: "./lib/utils",
+    imports: ["cn"],
+    elementMappings: {},
+    files: ["lib/utils.ts"],
+    deps: ["clsx", "tailwind-merge"],
+    description: "Utility function cn() for merging Tailwind classes",
+  },
   "ds-tree": {
     importFile: "./ds-tree",
     imports: [
@@ -34,6 +44,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["ds-tree.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Visual tree data structure diagrams (BST, AVL, heap, n-ary)",
   },
   ds: {
     importFile: "./ds",
@@ -67,6 +78,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["ds.tsx"],
     deps: ["mermaid", "clsx", "tailwind-merge"],
+    description: "Full data structures visualization suite (arrays, graphs, trees, etc.)",
   },
   annotation: {
     importFile: "./annotation",
@@ -74,6 +86,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["annotation.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Inline popover annotations for technical terms",
   },
   "certification-badge": {
     importFile: "./certification-badge",
@@ -81,6 +94,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["certification-badge.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Compliance and certification badges (ISO, SOC 2, GDPR, etc.)",
   },
   "data-type-table": {
     importFile: "./data-type-table",
@@ -88,6 +102,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["data-type-table.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "ML/hardware data type specifications table (INT8, FP16, BF16, etc.)",
   },
   "hardware-spec": {
     importFile: "./hardware-spec",
@@ -95,6 +110,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["hardware-spec.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Hardware specification comparison table",
   },
   "privacy-table": {
     importFile: "./privacy-table",
@@ -102,6 +118,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["privacy-table.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "GDPR/privacy policy data collection table",
   },
   "register-map": {
     importFile: "./register-map",
@@ -109,6 +126,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["register-map.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Hardware/firmware register address map table",
   },
   "security-note": {
     importFile: "./security-note",
@@ -116,6 +134,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["security-note.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Security warnings with severity levels (critical, high, medium, low)",
   },
   "complexity-table": {
     importFile: "./complexity-table",
@@ -123,6 +142,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["complexity-table.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Algorithm time/space complexity table with Big-O notation",
   },
   definition: {
     importFile: "./definition",
@@ -130,6 +150,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["definition.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Term definition blocks with styled layout",
   },
   glossary: {
     importFile: "./glossary",
@@ -137,6 +158,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["glossary.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Inline glossary terms with hover definitions",
   },
   invariant: {
     importFile: "./invariant",
@@ -144,6 +166,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["invariant.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Algorithm invariant callout blocks with optional complexity badge",
   },
   preview: {
     importFile: "./preview",
@@ -151,6 +174,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["preview.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Live component preview with tabbed source code view",
   },
   reveal: {
     importFile: "./reveal",
@@ -158,6 +182,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["reveal.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Expandable reveal/show-more content section",
   },
   accordion: {
     importFile: "./accordion",
@@ -170,6 +195,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["accordion.tsx"],
     deps: [],
+    description: "Collapsible accordion sections",
   },
   alert: {
     importFile: "./alert",
@@ -177,6 +203,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["alert.tsx"],
     deps: ["class-variance-authority", "clsx", "tailwind-merge"],
+    description: "Alert banners with info/warning/destructive/success variants",
   },
   badge: {
     importFile: "./badge",
@@ -184,6 +211,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["badge.tsx"],
     deps: ["class-variance-authority", "clsx", "tailwind-merge"],
+    description: "Status and label badges with multiple variants",
   },
   blockquote: {
     importFile: "./blockquote",
@@ -191,6 +219,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { blockquote: "Blockquote" },
     files: ["blockquote.tsx"],
     deps: [],
+    description: "Styled blockquote with optional citation",
   },
   callout: {
     importFile: "./callout",
@@ -198,6 +227,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["callout.tsx"],
     deps: ["class-variance-authority", "clsx", "tailwind-merge"],
+    description: "Callout boxes for notes, warnings, tips, and errors",
   },
   card: {
     importFile: "./card",
@@ -213,6 +243,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["card.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Content cards with header, body, and footer sections",
   },
   changelog: {
     importFile: "./changelog",
@@ -220,6 +251,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["changelog.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Versioned changelog with typed change entries",
   },
   "code-block": {
     importFile: "./code-block",
@@ -227,6 +259,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { pre: "CodeBlock" },
     files: ["code-block.tsx"],
     deps: [],
+    description: "Syntax-highlighted code blocks with copy button",
   },
   "code-group": {
     importFile: "./code-group",
@@ -234,6 +267,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["code-group.tsx"],
     deps: [],
+    description: "Tabbed group of code blocks (e.g. npm/pnpm/yarn)",
   },
   "data-table": {
     importFile: "./data-table",
@@ -241,6 +275,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["data-table.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Searchable and sortable data table",
   },
   "diff-block": {
     importFile: "./diff-block",
@@ -248,6 +283,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["diff-block.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Git-style diff viewer with added/removed lines",
   },
   emphasis: {
     importFile: "./emphasis",
@@ -255,6 +291,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { strong: "Strong", em: "Em" },
     files: ["emphasis.tsx"],
     deps: [],
+    description: "Styled bold and italic text emphasis",
   },
   "file-tree": {
     importFile: "./file-tree",
@@ -262,6 +299,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["file-tree.tsx"],
     deps: [],
+    description: "Simple string-based file/folder tree display",
   },
   heading: {
     importFile: "./heading",
@@ -276,6 +314,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     },
     files: ["heading.tsx"],
     deps: ["class-variance-authority"],
+    description: "Heading components H1–H6 with anchor links",
   },
   headings: {
     importFile: "./headings",
@@ -283,6 +322,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["headings.tsx"],
     deps: [],
+    description: "Typography scale reference showing all heading levels",
   },
   highlight: {
     importFile: "./highlight",
@@ -290,6 +330,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["highlight.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Inline text highlight marker",
   },
   "horizontal-rule": {
     importFile: "./horizontal-rule",
@@ -297,6 +338,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { hr: "HorizontalRule" },
     files: ["horizontal-rule.tsx"],
     deps: [],
+    description: "Styled horizontal divider lines (default, dashed, dotted, gradient)",
   },
   image: {
     importFile: "./image",
@@ -304,6 +346,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { img: "Image" },
     files: ["image.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Images with optional captions and glossary overlay",
   },
   "inline-code": {
     importFile: "./inline-code",
@@ -311,6 +354,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { code: "Code" },
     files: ["inline-code.tsx"],
     deps: [],
+    description: "Styled inline code snippets",
   },
   "json-ld": {
     importFile: "./json-ld",
@@ -318,6 +362,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["json-ld.tsx"],
     deps: [],
+    description: "JSON-LD structured data script tag for SEO",
   },
   kbd: {
     importFile: "./kbd",
@@ -325,6 +370,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["kbd.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Keyboard key badges (e.g. Ctrl+K)",
   },
   link: {
     importFile: "./link",
@@ -332,6 +378,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { a: "Link" },
     files: ["link.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Styled links with external indicator",
   },
   list: {
     importFile: "./list",
@@ -339,6 +386,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { ul: "UnorderedList", ol: "OrderedList", li: "ListItem" },
     files: ["list.tsx"],
     deps: [],
+    description: "Styled ordered and unordered lists",
   },
   math: {
     importFile: "./math",
@@ -346,6 +394,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["math.tsx"],
     deps: ["katex", "clsx", "tailwind-merge"],
+    description: "LaTeX math rendering with KaTeX (block and inline)",
   },
   mermaid: {
     importFile: "./mermaid",
@@ -359,6 +408,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["mermaid.tsx"],
     deps: ["mermaid", "clsx", "tailwind-merge"],
+    description: "Mermaid diagram renderer with BST/BFS/DFS variants",
   },
   paragraph: {
     importFile: "./paragraph",
@@ -366,6 +416,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { p: "Paragraph" },
     files: ["paragraph.tsx"],
     deps: [],
+    description: "Styled paragraph text component",
   },
   spoiler: {
     importFile: "./spoiler",
@@ -373,6 +424,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["spoiler.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Collapsible spoiler using native <details>/<summary>",
   },
   steps: {
     importFile: "./steps",
@@ -380,6 +432,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["steps.tsx"],
     deps: [],
+    description: "Numbered step-by-step procedure guide",
   },
   table: {
     importFile: "./table",
@@ -404,6 +457,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     },
     files: ["table.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Styled markdown table with full semantic elements",
   },
   tabs: {
     importFile: "./tabs",
@@ -411,6 +465,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["tabs.tsx"],
     deps: [],
+    description: "Interactive tabbed content panels",
   },
   terminal: {
     importFile: "./terminal",
@@ -418,6 +473,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["terminal.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Terminal/shell output block with prompt styling",
   },
   tree: {
     importFile: "./tree",
@@ -425,6 +481,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["tree.tsx"],
     deps: [],
+    description: "Interactive file/folder tree with expand/collapse",
   },
   video: {
     importFile: "./video",
@@ -432,6 +489,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["video.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    description: "Responsive video embed with optional caption",
   },
 };
 

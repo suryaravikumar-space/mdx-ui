@@ -2,62 +2,25 @@ import { Command } from "commander"
 import chalk from "chalk"
 import fs from "fs-extra"
 import path from "path"
-import { fileURLToPath } from "url"
 import { getConfig } from "../utils/get-config.js"
+import { REGISTRY } from "../lib/component-registry.js"
 
-interface RegistryComponent {
-  name: string
-  type: string
-  description: string
-  files: string[]
-  registryDependencies?: string[]
-}
+// Non-component entries that should be listed separately
+const UTILITY_NAMES = new Set(["utils"])
 
-interface Registry {
-  components: RegistryComponent[]
-}
-
-async function loadRegistry(): Promise<Registry> {
-  try {
-    const __dirname = path.dirname(fileURLToPath(import.meta.url))
-    // Try multiple possible paths for the registry
-    const possiblePaths = [
-      path.join(__dirname, "../../../../registry/registry.json"),
-      path.join(__dirname, "../../../registry/registry.json"),
-      path.join(__dirname, "../../registry/registry.json"),
-    ]
-
-    for (const registryPath of possiblePaths) {
-      if (await fs.pathExists(registryPath)) {
-        return await fs.readJSON(registryPath)
-      }
-    }
-  } catch (error) {
-    // Fallback to hardcoded list
-  }
-
-  // Fallback if registry.json not found
+function buildRegistryFromSource() {
   return {
-    components: [
-      { name: "accordion", type: "mdx", description: "Collapsible accordion sections", files: [], registryDependencies: ["utils"] },
-      { name: "blockquote", type: "mdx", description: "Styled quote blocks with optional citation", files: [] },
-      { name: "callout", type: "mdx", description: "Alert boxes for important information", files: [], registryDependencies: ["utils"] },
-      { name: "code-block", type: "mdx", description: "Syntax highlighted code blocks", files: [], registryDependencies: ["utils"] },
-      { name: "emphasis", type: "mdx", description: "Text emphasis (bold/italic)", files: [], registryDependencies: ["utils"] },
-      { name: "file-tree", type: "mdx", description: "Simple string-based file/folder tree", files: [], registryDependencies: ["utils"] },
-      { name: "heading", type: "mdx", description: "Flexible heading component with variant support", files: [], registryDependencies: ["utils"] },
-      { name: "headings", type: "mdx", description: "Headings with anchor links", files: [], registryDependencies: ["utils"] },
-      { name: "horizontal-rule", type: "mdx", description: "Divider lines with multiple styles", files: [] },
-      { name: "image", type: "mdx", description: "Images with optional captions", files: [] },
-      { name: "inline-code", type: "mdx", description: "Inline code snippets", files: [], registryDependencies: ["utils"] },
-      { name: "list", type: "mdx", description: "Styled ordered and unordered lists", files: [] },
-      { name: "paragraph", type: "mdx", description: "Text paragraphs", files: [], registryDependencies: ["utils"] },
-      { name: "steps", type: "mdx", description: "Numbered step-by-step guides", files: [], registryDependencies: ["utils"] },
-      { name: "tabs", type: "mdx", description: "Tabbed content sections", files: [], registryDependencies: ["utils"] },
-      { name: "tree", type: "mdx", description: "Interactive file/folder tree structure", files: [], registryDependencies: ["utils"] },
-      { name: "utils", type: "utility", description: "Utility functions (cn)", files: [] },
-    ],
+    components: Object.entries(REGISTRY).map(([name, entry]) => ({
+      name,
+      type: UTILITY_NAMES.has(name) ? "utility" : "mdx",
+      description: entry.description,
+      files: entry.files,
+    })),
   }
+}
+
+async function loadRegistry() {
+  return buildRegistryFromSource()
 }
 
 export const list = new Command()
@@ -114,10 +77,7 @@ export const list = new Command()
     if (mdxComponents.length > 0) {
       console.log(chalk.bold("  MDX Components:"))
       for (const component of mdxComponents) {
-        const deps = component.registryDependencies?.length
-          ? chalk.dim(` (requires: ${component.registryDependencies.join(", ")})`)
-          : ""
-        console.log(chalk.cyan(`    ${component.name.padEnd(18)}`), component.description + deps)
+        console.log(chalk.cyan(`    ${component.name.padEnd(18)}`), component.description)
       }
       console.log()
     }

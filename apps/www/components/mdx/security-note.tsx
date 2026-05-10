@@ -13,7 +13,13 @@ export interface SecurityNoteProps extends React.HTMLAttributes<HTMLDivElement> 
 
 const severityConfig: Record<
   SecurityNoteSeverity,
-  { border: string; bg: string; icon: string; label: string; icon_svg: React.ReactNode }
+  {
+    border: string;
+    bg: string;
+    icon: string;
+    label: string;
+    icon_svg: React.ReactNode;
+  }
 > = {
   info: {
     border: "border-blue-200 dark:border-blue-800",
@@ -132,7 +138,12 @@ export const SecurityNote = React.forwardRef<HTMLDivElement, SecurityNoteProps>(
         )}
         {...props}
       >
-        <div className={cn("flex items-center gap-2 font-semibold text-sm", cfg.icon)}>
+        <div
+          className={cn(
+            "flex items-center gap-2 font-semibold text-sm",
+            cfg.icon,
+          )}
+        >
           <span className={cn("shrink-0", cfg.icon)}>{cfg.icon_svg}</span>
           <span className={cfg.label}>{displayTitle}</span>
         </div>

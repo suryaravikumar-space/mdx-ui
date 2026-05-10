@@ -5,13 +5,8 @@
   "whenToUse": "Use at the top of a compliance, privacy, or security section to establish trust context at a glance. Good for ISO 27001, TISAX, SOC 2, GDPR, and other certifications.",
   "whenNotToUse": "Do not use for generic labels or version tags — use Badge instead. Do not misrepresent certification status.",
   "example": "<CertificationBadge\n  certs={[\n    { name: \"ISO 27001:2022\", scope: \"Information Security Management\", year: 2023, status: \"active\" },\n    { name: \"TISAX\", scope: \"Automotive Information Security\", status: \"active\" },\n  ]}\n/>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "certification-badge.tsx",

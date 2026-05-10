@@ -14,8 +14,7 @@ export interface Certification {
   status?: CertStatus;
 }
 
-export interface CertificationBadgeProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface CertificationBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   /** One or more certifications to display */
   certs: Certification[];
 }
@@ -26,12 +25,14 @@ const statusConfig: Record<
 > = {
   active: {
     dot: "bg-emerald-500",
-    badge: "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/40",
+    badge:
+      "border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/40",
     label: "Active",
   },
   pending: {
     dot: "bg-amber-400",
-    badge: "border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/40",
+    badge:
+      "border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/40",
     label: "Pending",
   },
   expired: {

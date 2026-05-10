@@ -97,10 +97,7 @@ export const HardwareSpec = React.forwardRef<HTMLDivElement, HardwareSpecProps>(
         {fields.length > 0 && (
           <dl className="grid grid-cols-2 gap-px bg-border sm:grid-cols-3">
             {fields.map(({ label, value }) => (
-              <div
-                key={label}
-                className="bg-card px-4 py-2.5"
-              >
+              <div key={label} className="bg-card px-4 py-2.5">
                 <dt className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                   {label}
                 </dt>

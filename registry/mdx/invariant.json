@@ -5,13 +5,8 @@
   "whenToUse": "Use to state a formal invariant — a condition that must always hold. Particularly valuable in algorithm and data structure documentation.",
   "whenNotToUse": "Do not use for general facts or notes — use Callout. Reserve for formal correctness claims with optional complexity annotation.",
   "example": "<Invariant complexity=\"O(log n)\">\n  An AVL tree remains height-balanced after every insertion and deletion.\n</Invariant>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "invariant.tsx",

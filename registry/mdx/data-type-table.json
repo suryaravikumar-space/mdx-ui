@@ -5,13 +5,8 @@
   "whenToUse": "Use when documenting AI runtime data types, hardware inference engines, or ML framework precision support. Ideal for QAIRT, TensorFlow Lite, or ONNX type compatibility tables.",
   "whenNotToUse": "Do not use for general comparison tables — use DataTable instead. Not for algorithm complexity — use ComplexityTable.",
   "example": "<DataTypeTable\n  rows={[\n    { type: \"INT8\",  bits: 8,  range: \"-128 to 127\", quantized: true,  description: \"Inference optimised integer\" },\n    { type: \"FP16\",  bits: 16, range: \"±65504\",       quantized: false, description: \"Half-precision float\" },\n    { type: \"FP32\",  bits: 32, range: \"±3.4e38\",      quantized: false, description: \"Full-precision float\" },\n  ]}\n  caption=\"Qualcomm AI Runtime (QAIRT) supported types\"\n/>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "data-type-table.tsx",

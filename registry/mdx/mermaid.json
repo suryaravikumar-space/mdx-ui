@@ -5,14 +5,8 @@
   "whenToUse": "Use for flowcharts, sequence diagrams, state machines, and general diagrams where relationships and flow matter.",
   "whenNotToUse": "Do not use for data structure visualization — use DS components. Do not use for complex graphs with many nodes — prefer DSGraph.",
   "example": "<Mermaid chart={`graph TD\n  A[Start] --> B{Is balanced?}\n  B -->|Yes| C[Return]\n  B -->|No| D[Rotate]\n  D --> B`} />",
-  "dependencies": [
-    "mermaid",
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["mermaid", "clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "mermaid.tsx",

@@ -1,0 +1,88 @@
+---
+title: Register Map
+description: Hardware register and OTP fuse map table for SDK and BSP documentation
+component: register-map
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add register-map
+```
+
+## Usage
+
+```tsx
+import { RegisterMap } from "@/components/mdx/register-map"
+
+<RegisterMap
+  rows={[
+    { address: "0x00780000", name: "QFPROM_CORR_RD_WR_PERM_LSB", bits: "31:0", access: "OTP", reset: "0x00000000", description: "Read/write permissions for fuse rows." },
+    { address: "0x00780008", name: "QFPROM_CORR_JTAG_ID",        bits: "31:0", access: "RO",  reset: "0x009600E1", description: "JTAG identification register." },
+  ]}
+/>
+```
+
+## Examples
+
+### QFPROM fuse map with title
+
+```tsx
+<RegisterMap
+  title="QFPROM Fuse Map — Security Control"
+  rows={[
+    { address: "0x00780000", name: "QFPROM_CORR_RD_WR_PERM_LSB", bits: "31:0", access: "OTP", reset: "0x00000000", description: "Read/write permissions for fuse rows." },
+    { address: "0x00780008", name: "QFPROM_CORR_JTAG_ID",        bits: "31:0", access: "RO",  reset: "0x009600E1", description: "JTAG identification register." },
+    { address: "0x00780018", name: "QFPROM_CORR_FEAT_CONFIG_ROW0_LSB", bits: "31:0", access: "OTP", reset: "0x00000000", description: "Feature configuration fuse row 0." },
+  ]}
+  caption="Source: Qualcomm QFPROM Interface Control Document"
+/>
+```
+
+### CSR table without addresses
+
+```tsx
+<RegisterMap
+  title="USB PHY Control Registers"
+  rows={[
+    { name: "USB_PHY_CFG0",  bits: "31:0", access: "RW", reset: "0x80000000", description: "PHY configuration register 0." },
+    { name: "USB_PHY_STATUS", bits: "31:0", access: "RO", description: "PHY status flags — read-only." },
+    { name: "USB_PHY_CTRL",  bits: "7:0",  access: "RW", reset: "0x00", description: "Enable and reset control bits." },
+  ]}
+/>
+```
+
+### Access type reference
+
+| Access | Colour | Meaning |
+|---|---|---|
+| `RO` | Sky | Read-only |
+| `WO` | Violet | Write-only |
+| `RW` | Green | Read/write |
+| `OTP` | Amber | One-time programmable (irreversible) |
+| `RC` | Rose | Read and clear |
+
+## Props
+
+### RegisterMap
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` | — | Optional section title shown in the card header |
+| `rows` | `RegisterRow[]` | — | Array of register rows (required) |
+| `caption` | `string` | — | Optional caption below the table |
+| `className` | `string` | — | Additional CSS classes |
+
+### RegisterRow
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `name` | `string` | Register or fuse name (required) |
+| `address` | `string` | Memory-mapped address in hex, e.g. `"0x00780000"` |
+| `bits` | `string` | Bit field range, e.g. `"31:0"` or `"7:0"` |
+| `access` | `"RO" \| "WO" \| "RW" \| "OTP" \| "RC"` | Access type |
+| `reset` | `string` | Reset or default value in hex |
+| `description` | `string` | Human-readable description |

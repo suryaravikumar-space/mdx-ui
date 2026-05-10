@@ -1,0 +1,74 @@
+---
+title: Glossary
+description: Page-scoped glossary with hoverable term tooltips powered by React context
+component: glossary
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add glossary
+```
+
+## Usage
+
+Wrap your page content in `GlossaryProvider` to define terms, then use `Term` anywhere in the content to reference them.
+
+```tsx
+import { GlossaryProvider, Term } from "@/components/mdx/glossary"
+
+<GlossaryProvider terms={{ BST: "Binary Search Tree — a tree where each node's left child is smaller and right child is larger." }}>
+  A <Term>BST</Term> allows O(log n) search on average.
+</GlossaryProvider>
+```
+
+## Examples
+
+### Multiple terms
+
+```tsx
+<GlossaryProvider
+  terms={{
+    BST: "Binary Search Tree — a sorted binary tree enabling O(log n) search.",
+    OTP: "One-Time Programmable fuse — a bit that can be written once and never changed.",
+    QAIRT: "Qualcomm AI Runtime — the inference engine for Qualcomm AI hardware.",
+  }}
+>
+  The <Term>QAIRT</Term> engine loads INT8 tensors from the <Term>BST</Term>
+  index stored in <Term>OTP</Term> fuses during secure boot.
+</GlossaryProvider>
+```
+
+### In MDX documents
+
+Wrap your MDX layout component with `GlossaryProvider` to make terms available across the whole page.
+
+```tsx
+// layout.tsx
+export default function Layout({ children }) {
+  return (
+    <GlossaryProvider terms={pageTerms}>
+      {children}
+    </GlossaryProvider>
+  )
+}
+```
+
+## Props
+
+### GlossaryProvider
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `terms` | `Record<string, string>` | — | Map of term → tooltip explanation (required) |
+| `children` | `React.ReactNode` | — | Page content (required) |
+
+### Term
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `string` | — | The term text — must match a key in the parent GlossaryProvider (required) |
+| `className` | `string` | — | Additional CSS classes |

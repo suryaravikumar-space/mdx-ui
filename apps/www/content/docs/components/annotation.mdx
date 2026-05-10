@@ -1,0 +1,56 @@
+---
+title: Annotation
+description: Inline text annotation with a click-to-reveal explanation popover
+component: annotation
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add annotation
+```
+
+## Usage
+
+```tsx
+import { Annotation } from "@/components/mdx/annotation"
+
+<Annotation note="Quadratic time: for each element we scan all remaining elements.">
+  O(n²)
+</Annotation>
+```
+
+## Examples
+
+### Basic annotation
+
+Click the underlined text to reveal the explanation.
+
+```tsx
+<Annotation note="A data structure that stores key-value pairs.">
+  hash map
+</Annotation>
+```
+
+### Mathematical notation
+
+```tsx
+The algorithm runs in <Annotation note="Logarithmic time — halves the search space each step.">O(log n)</Annotation> time.
+```
+
+### Technical term in prose
+
+```tsx
+The chip uses <Annotation note="One-Time Programmable: fuse bits that can be written once and never changed.">OTP</Annotation> fuses for secure key storage.
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `note` | `string` | — | The explanation shown in the popover (required) |
+| `children` | `React.ReactNode` | — | The inline text to annotate (required) |
+| `className` | `string` | — | Additional CSS classes |

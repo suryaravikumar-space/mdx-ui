@@ -1,0 +1,63 @@
+---
+title: Invariant
+description: Algorithm invariant callout with optional complexity badge
+component: invariant
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add invariant
+```
+
+## Usage
+
+```tsx
+import { Invariant } from "@/components/mdx/invariant"
+
+<Invariant>
+  After every insertion, the BST property holds: all left descendants are smaller
+  and all right descendants are larger than the current node.
+</Invariant>
+```
+
+## Examples
+
+### Basic invariant
+
+```tsx
+<Invariant>
+  At the start of each iteration, arr[0..i-1] contains the i smallest elements in sorted order.
+</Invariant>
+```
+
+### With complexity badge
+
+The `complexity` prop adds a monospace badge — useful for tying an invariant to its asymptotic cost.
+
+```tsx
+<Invariant complexity="O(log n)">
+  After each comparison, the search space is halved. The target is either found
+  or the interval is empty.
+</Invariant>
+```
+
+### Loop invariant for merge sort
+
+```tsx
+<Invariant complexity="O(n log n)">
+  After merging two sorted halves, the combined array segment is sorted.
+  This invariant holds at every level of the recursion.
+</Invariant>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `complexity` | `string` | — | Optional complexity label shown as a monospace badge (e.g. `"O(log n)"`) |
+| `children` | `React.ReactNode` | — | The invariant statement (required) |
+| `className` | `string` | — | Additional CSS classes |

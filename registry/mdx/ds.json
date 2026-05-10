@@ -5,14 +5,8 @@
   "whenToUse": "Use to visually render linear and graph data structures — Array, LinkedList, Stack, Queue, Graph, HashMap, etc. Use the specific named export matching the structure.",
   "whenNotToUse": "Do not use for tree structures — use ds-tree components. Do not use for flow diagrams — use Mermaid.",
   "example": "<DSArray data={[1, 2, 3, 4, 5]} />\n<DSLinkedList data={[10, 20, 30]} />",
-  "dependencies": [
-    "mermaid",
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["mermaid", "clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "ds.tsx",

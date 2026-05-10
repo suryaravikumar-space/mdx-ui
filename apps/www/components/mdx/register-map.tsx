@@ -87,7 +87,9 @@ export const RegisterMap = React.forwardRef<HTMLDivElement, RegisterMapProps>(
               <polyline points="16 18 22 12 16 6" />
               <polyline points="8 6 2 12 8 18" />
             </svg>
-            <span className="text-sm font-semibold text-foreground">{title}</span>
+            <span className="text-sm font-semibold text-foreground">
+              {title}
+            </span>
           </div>
         )}
 

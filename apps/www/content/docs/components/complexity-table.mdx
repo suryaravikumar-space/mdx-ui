@@ -1,0 +1,87 @@
+---
+title: Complexity Table
+description: Structured time and space complexity table for algorithm documentation
+component: complexity-table
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add complexity-table
+```
+
+## Usage
+
+```tsx
+import { ComplexityTable } from "@/components/mdx/complexity-table"
+
+<ComplexityTable
+  rows={[
+    { operation: "Search", best: "O(1)", average: "O(log n)", worst: "O(n)" },
+    { operation: "Insert", best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+  ]}
+/>
+```
+
+## Examples
+
+### BST operations
+
+```tsx
+<ComplexityTable
+  rows={[
+    { operation: "Search", best: "O(1)", average: "O(log n)", worst: "O(n)" },
+    { operation: "Insert", best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+    { operation: "Delete", best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+  ]}
+  caption="Binary Search Tree — unbalanced worst case"
+/>
+```
+
+### With space complexity
+
+```tsx
+<ComplexityTable
+  rows={[
+    { operation: "Merge Sort", best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)", space: "O(n)" },
+    { operation: "Quick Sort", best: "O(n log n)", average: "O(n log n)", worst: "O(n²)",      space: "O(log n)" },
+    { operation: "Heap Sort",  best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)", space: "O(1)" },
+  ]}
+/>
+```
+
+### Sparse columns
+
+Only columns that have data in at least one row are rendered. Missing values show as —.
+
+```tsx
+<ComplexityTable
+  rows={[
+    { operation: "Lookup", worst: "O(1)" },
+    { operation: "Resize", worst: "O(n)" },
+  ]}
+/>
+```
+
+## Props
+
+### ComplexityTable
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `rows` | `ComplexityRow[]` | — | Array of operation rows (required) |
+| `caption` | `string` | — | Optional caption below the table |
+| `className` | `string` | — | Additional CSS classes |
+
+### ComplexityRow
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `operation` | `string` | Operation name (required) |
+| `best` | `string` | Best-case complexity |
+| `average` | `string` | Average-case complexity |
+| `worst` | `string` | Worst-case complexity |
+| `space` | `string` | Space complexity |

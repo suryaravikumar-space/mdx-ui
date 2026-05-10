@@ -1,0 +1,68 @@
+---
+title: Definition
+description: Structured term-definition block for glossaries and key concept callouts
+component: definition
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add definition
+```
+
+## Usage
+
+```tsx
+import { Definition } from "@/components/mdx/definition"
+
+<Definition term="Memoization">
+  An optimization technique that stores the results of expensive function calls
+  and returns the cached result when the same inputs occur again.
+</Definition>
+```
+
+## Examples
+
+### Single definition
+
+```tsx
+<Definition term="Invariant">
+  A condition that holds true before and after every operation on a data structure.
+</Definition>
+```
+
+### With a source citation
+
+```tsx
+<Definition term="OTP Fuse" source="Qualcomm QFPROM ICD">
+  One-Time Programmable fuse bits that store configuration and cryptographic keys.
+  Once written, the value cannot be changed.
+</Definition>
+```
+
+### Multiple definitions in sequence
+
+Use consecutive Definition blocks to build a mini-glossary inline.
+
+```tsx
+<Definition term="Tensor">
+  A multi-dimensional array used to represent data in machine learning models.
+</Definition>
+
+<Definition term="Quantization">
+  Reducing numeric precision (e.g. FP32 → INT8) to decrease model size and
+  improve inference speed with minimal accuracy loss.
+</Definition>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `term` | `string` | — | The term being defined (required) |
+| `source` | `string` | — | Optional source or reference label |
+| `children` | `React.ReactNode` | — | The definition text (required) |
+| `className` | `string` | — | Additional CSS classes |

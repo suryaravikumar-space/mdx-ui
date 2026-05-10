@@ -1,0 +1,93 @@
+---
+title: Data Type Table
+description: AI/ML numeric data type and tensor specification table
+component: data-type-table
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add data-type-table
+```
+
+## Usage
+
+```tsx
+import { DataTypeTable } from "@/components/mdx/data-type-table"
+
+<DataTypeTable
+  rows={[
+    { type: "INT8",  bits: 8,  range: "-128 to 127", quantized: true,  description: "Inference optimised integer" },
+    { type: "FP16",  bits: 16, range: "±65504",       quantized: false, description: "Half-precision float" },
+    { type: "FP32",  bits: 32, range: "±3.4e38",      quantized: false, description: "Full-precision float" },
+  ]}
+/>
+```
+
+## Examples
+
+### QAIRT supported types
+
+```tsx
+<DataTypeTable
+  rows={[
+    { type: "INT4",  bits: 4,  range: "-8 to 7",      quantized: true,  description: "Ultra-low bit weight compression" },
+    { type: "INT8",  bits: 8,  range: "-128 to 127",   quantized: true,  description: "Standard inference integer" },
+    { type: "FP16",  bits: 16, range: "±65504",        quantized: false, description: "Half-precision IEEE 754" },
+    { type: "BF16",  bits: 16, range: "±3.39e38",      quantized: false, description: "Brain float — wider exponent than FP16" },
+    { type: "FP32",  bits: 32, range: "±3.4e38",       quantized: false, description: "Full-precision training format" },
+  ]}
+  caption="Qualcomm AI Runtime (QAIRT) — supported data types"
+/>
+```
+
+### With tensor shapes
+
+```tsx
+<DataTypeTable
+  rows={[
+    { type: "Scalar",  shape: "( )",             description: "Single value" },
+    { type: "Vector",  shape: "(N)",             description: "1-D tensor" },
+    { type: "Matrix",  shape: "(M, N)",          description: "2-D tensor" },
+    { type: "Tensor",  shape: "(B, C, H, W)",    description: "4-D batch of feature maps" },
+  ]}
+/>
+```
+
+### Quantization support only
+
+Columns are omitted when no row has data for them.
+
+```tsx
+<DataTypeTable
+  rows={[
+    { type: "INT8",  quantized: true  },
+    { type: "FP16",  quantized: false },
+    { type: "FP32",  quantized: false },
+  ]}
+/>
+```
+
+## Props
+
+### DataTypeTable
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `rows` | `DataTypeRow[]` | — | Array of data type rows (required) |
+| `caption` | `string` | — | Optional caption below the table |
+| `className` | `string` | — | Additional CSS classes |
+
+### DataTypeRow
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `type` | `string` | Type name, e.g. `"INT8"`, `"FP16"` (required) |
+| `bits` | `number` | Bit width |
+| `range` | `string` | Numeric range, e.g. `"-128 to 127"` |
+| `shape` | `string` | Tensor shape description |
+| `quantized` | `boolean` | Whether this type supports quantization |
+| `description` | `string` | Prose note |

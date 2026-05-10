@@ -16,8 +16,7 @@ export interface DataTypeRow {
   description?: string;
 }
 
-export interface DataTypeTableProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface DataTypeTableProps extends React.HTMLAttributes<HTMLDivElement> {
   rows: DataTypeRow[];
   /** Optional caption rendered below the table */
   caption?: string;
@@ -145,10 +144,7 @@ export const DataTypeTable = React.forwardRef<
                       ✓
                     </span>
                   ) : (
-                    <span
-                      aria-label="no"
-                      className="text-muted-foreground"
-                    >
+                    <span aria-label="no" className="text-muted-foreground">
                       ✗
                     </span>
                   )}

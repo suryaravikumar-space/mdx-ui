@@ -1,0 +1,72 @@
+---
+title: Preview
+description: Bordered preview frame for showcasing component output alongside code
+component: preview
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add preview
+```
+
+## Usage
+
+```tsx
+import { Preview } from "@/components/mdx/preview"
+
+<Preview>
+  <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
+    Click me
+  </button>
+</Preview>
+```
+
+## Examples
+
+### Component showcase
+
+Wrap any component output in `Preview` to give it a consistent bordered frame.
+
+```tsx
+<Preview>
+  <Callout variant="info">
+    This is how a Callout looks inside a Preview frame.
+  </Callout>
+</Preview>
+```
+
+### With a label
+
+```tsx
+<Preview label="Badge variants">
+  <div className="flex gap-2">
+    <Badge>Default</Badge>
+    <Badge variant="success">Success</Badge>
+    <Badge variant="warning">Warning</Badge>
+  </div>
+</Preview>
+```
+
+### Dark background
+
+```tsx
+<Preview dark>
+  <Terminal>
+    <TerminalLine>$ npm install</TerminalLine>
+    <TerminalLine prompt={false}>added 42 packages</TerminalLine>
+  </Terminal>
+</Preview>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | — | Content to preview (required) |
+| `label` | `string` | — | Optional label shown above the frame |
+| `dark` | `boolean` | `false` | Use a dark background |
+| `className` | `string` | — | Additional CSS classes |

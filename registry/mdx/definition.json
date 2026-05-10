@@ -5,13 +5,8 @@
   "whenToUse": "Use to formally define a term the reader may not know. Place at first use of a specialized term in the document.",
   "whenNotToUse": "Do not use for general explanations — use Callout. Do not define terms the target reader already knows.",
   "example": "<Definition term=\"Invariant\">\n  A condition that holds true before and after every operation on a data structure.\n</Definition>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "definition.tsx",

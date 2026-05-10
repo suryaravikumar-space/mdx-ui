@@ -5,13 +5,8 @@
   "whenToUse": "Use for documenting MMIO registers, QFPROM fuse maps, CSR tables, or any bit-addressable hardware configuration in SDK or BSP documentation.",
   "whenNotToUse": "Do not use for software API parameters — use prose or CodeBlock. Not for data privacy records — use PrivacyTable.",
   "example": "<RegisterMap\n  title=\"QFPROM Fuse Map — Security Control\"\n  rows={[\n    { address: \"0x00780000\", name: \"QFPROM_CORR_RD_WR_PERM_LSB\", bits: \"31:0\", access: \"OTP\", reset: \"0x00000000\", description: \"Read/write permissions for fuse rows.\" },\n    { address: \"0x00780008\", name: \"QFPROM_CORR_JTAG_ID\",        bits: \"31:0\", access: \"RO\",  reset: \"0x009600E1\", description: \"JTAG identification register.\" },\n  ]}\n/>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "register-map.tsx",

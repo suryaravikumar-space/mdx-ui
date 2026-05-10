@@ -5,13 +5,8 @@
   "whenToUse": "Use for security notices, OTP fuse burn caveats, key management constraints, or vulnerability disclosures. Choose severity: info for general notes, warning for important caveats, critical for irreversible or dangerous actions.",
   "whenNotToUse": "Do not use for general tips or non-security content — use Callout instead. Do not use critical severity for minor warnings.",
   "example": "<SecurityNote severity=\"warning\" title=\"OTP Fuse Burn\">\n  QFPROM fuse values are permanent once written. Ensure correct values before provisioning production devices.\n</SecurityNote>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "security-note.tsx",

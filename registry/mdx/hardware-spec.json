@@ -5,13 +5,8 @@
   "whenToUse": "Use when documenting a single hardware interface such as USB, PCIe, I2C, UART, or SPI. Ideal for ICD (Interface Control Document) style reference pages.",
   "whenNotToUse": "Do not use for comparing multiple interfaces — use a table instead. Not for software API documentation — use prose with CodeBlock.",
   "example": "<HardwareSpec\n  name=\"USB 3.1 Gen 2\"\n  type=\"Universal Serial Bus\"\n  speed=\"10 Gbps\"\n  voltage=\"3.3V / 1.8V\"\n  pins={24}\n  description=\"High-speed USB for peripheral connectivity.\"\n/>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "hardware-spec.tsx",

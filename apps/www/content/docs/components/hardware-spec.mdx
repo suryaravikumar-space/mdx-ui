@@ -1,0 +1,100 @@
+---
+title: Hardware Spec
+description: Structured hardware interface specification card for ICD-style documentation
+component: hardware-spec
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add hardware-spec
+```
+
+## Usage
+
+```tsx
+import { HardwareSpec } from "@/components/mdx/hardware-spec"
+
+<HardwareSpec
+  name="USB 3.1 Gen 2"
+  type="Universal Serial Bus"
+  speed="10 Gbps"
+  voltage="3.3V / 1.8V"
+  pins={24}
+  description="High-speed USB for peripheral connectivity."
+/>
+```
+
+## Examples
+
+### USB interface
+
+```tsx
+<HardwareSpec
+  name="USB 3.1 Gen 2"
+  type="Universal Serial Bus"
+  version="3.1 Gen 2"
+  speed="10 Gbps"
+  voltage="3.3V / 1.8V"
+  pins={24}
+  protocol="SuperSpeed+"
+  description="High-speed USB for external storage and device connectivity."
+/>
+```
+
+### PCIe interface
+
+```tsx
+<HardwareSpec
+  name="PCIe Gen 4 x4"
+  type="Peripheral Component Interconnect Express"
+  version="4.0"
+  speed="64 GT/s"
+  voltage="1.8V"
+  pins={82}
+  protocol="NVMe 1.4"
+  description="High-bandwidth interface for NVMe SSD and accelerator cards."
+/>
+```
+
+### I2C bus (minimal fields)
+
+Only provided fields are rendered — omit any that don't apply.
+
+```tsx
+<HardwareSpec
+  name="I2C Bus 0"
+  speed="400 kHz"
+  voltage="3.3V"
+  description="Fast-mode I2C for sensor and PMIC communication."
+/>
+```
+
+### UART debug port
+
+```tsx
+<HardwareSpec
+  name="UART Debug Console"
+  speed="115200 baud"
+  voltage="1.8V"
+  pins={4}
+  description="Serial console for bootloader and kernel log output."
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `string` | — | Interface name shown in the card header (required) |
+| `type` | `string` | — | Full interface type name |
+| `version` | `string` | — | Version or generation string |
+| `speed` | `string` | — | Transfer speed or clock frequency |
+| `voltage` | `string` | — | Operating voltage level(s) |
+| `pins` | `number` | — | Number of physical pins or lanes |
+| `protocol` | `string` | — | Protocol or standard (e.g. NVMe, SuperSpeed+) |
+| `description` | `string` | — | Prose description rendered below the fields |
+| `className` | `string` | — | Additional CSS classes |

@@ -1,0 +1,70 @@
+---
+title: Reveal
+description: Single collapsible section — click to show or hide content
+component: reveal
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add reveal
+```
+
+## Usage
+
+```tsx
+import { Reveal } from "@/components/mdx/reveal"
+
+<Reveal label="Show solution">
+  The answer is to use a hash map for O(1) lookups.
+</Reveal>
+```
+
+## Examples
+
+### Code solution reveal
+
+```tsx
+<Reveal label="Show solution">
+  ```tsx
+  function twoSum(nums: number[], target: number): number[] {
+    const map = new Map<number, number>()
+    for (let i = 0; i < nums.length; i++) {
+      const complement = target - nums[i]
+      if (map.has(complement)) return [map.get(complement)!, i]
+      map.set(nums[i], i)
+    }
+    return []
+  }
+  ```
+</Reveal>
+```
+
+### Hint reveal
+
+```tsx
+<Reveal label="Need a hint?">
+  Think about what data structure gives O(1) lookup by value.
+</Reveal>
+```
+
+### Expanded by default
+
+```tsx
+<Reveal label="Explanation" defaultOpen>
+  Merge sort divides the array in half recursively, then merges the sorted halves.
+  The divide step is O(log n) levels deep, and each level does O(n) work.
+</Reveal>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` | `"Show"` | Text shown on the toggle button |
+| `defaultOpen` | `boolean` | `false` | Whether the content starts expanded |
+| `children` | `React.ReactNode` | — | Content to reveal (required) |
+| `className` | `string` | — | Additional CSS classes |

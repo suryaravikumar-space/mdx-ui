@@ -62,6 +62,7 @@ import { Spoiler } from "@/components/mdx/spoiler";
 import { Annotation } from "@/components/mdx/annotation";
 import { Reveal } from "@/components/mdx/reveal";
 import { Preview } from "@/components/mdx/preview";
+import { ComponentPreview } from "@/components/component-preview";
 import { GlossaryProvider, Term } from "@/components/mdx/glossary";
 import { Video } from "@/components/mdx/video";
 import { Image, ImageGlossary } from "@/components/mdx/image";
@@ -161,6 +162,7 @@ const components = {
   Annotation,
   Reveal,
   Preview,
+  ComponentPreview,
   GlossaryProvider,
   Term,
   Video,

@@ -22,46 +22,17 @@ npx @ravikumarsurya/mdx-ui add alert
 
 ## Examples
 
-### Default
+### All variants
 
-<Alert>
-  <AlertTitle>Note</AlertTitle>
-  <AlertDescription>This is a default alert with no variant set.</AlertDescription>
-</Alert>
-
-### Info
-
-<Alert variant="info">
-  <AlertTitle>New version available</AlertTitle>
-  <AlertDescription>Run <code>npm update</code> to get the latest features and fixes.</AlertDescription>
-</Alert>
-
-### Warning
-
-<Alert variant="warning">
-  <AlertTitle>Deprecation notice</AlertTitle>
-  <AlertDescription>This API will be removed in the next major version. Please migrate to the new one.</AlertDescription>
-</Alert>
-
-### Destructive
-
-<Alert variant="destructive">
-  <AlertTitle>Build failed</AlertTitle>
-  <AlertDescription>There were 3 errors during compilation. Check the logs for details.</AlertDescription>
-</Alert>
-
-### Success
-
-<Alert variant="success">
-  <AlertTitle>Deployed successfully</AlertTitle>
-  <AlertDescription>Your changes are live at production.</AlertDescription>
-</Alert>
+<ComponentPreview name="alert-default" />
 
 ### Without title
 
+```tsx
 <Alert variant="info">
   <AlertDescription>You can omit AlertTitle and use AlertDescription on its own.</AlertDescription>
 </Alert>
+```
 
 ## Difference from Callout
 

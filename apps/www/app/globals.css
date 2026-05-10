@@ -57,3 +57,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Shiki dual-theme: activate correct var based on .dark on <html> */
+:root .shiki span,
+:root [data-rehype-pretty-code-figure] span {
+  color: var(--shiki-light);
+}
+.dark .shiki span,
+.dark [data-rehype-pretty-code-figure] span {
+  color: var(--shiki-dark);
+}
+
+/* Strip shiki inline background inside ComponentPreview code pane */
+.component-preview-code .shiki {
+  background: transparent !important;
+}

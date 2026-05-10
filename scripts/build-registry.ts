@@ -677,12 +677,20 @@ async function buildRegistry() {
     }
 
     // Bundle any lib/* dependencies directly into this component's JSON
-    const libFiles: Array<{ path: string; content: string; integrity: string }> = [];
+    const libFiles: Array<{
+      path: string;
+      content: string;
+      integrity: string;
+    }> = [];
     for (const libPath of libDependencies[componentName] ?? []) {
       const libFilePath = path.join(srcDir, libPath);
       if (await fs.pathExists(libFilePath)) {
         const libContent = await fs.readFile(libFilePath, "utf-8");
-        libFiles.push({ path: libPath, content: libContent, integrity: integrity(libContent) });
+        libFiles.push({
+          path: libPath,
+          content: libContent,
+          integrity: integrity(libContent),
+        });
       }
     }
 

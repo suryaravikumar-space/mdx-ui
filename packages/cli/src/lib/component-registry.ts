@@ -25,7 +25,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     deps: ["clsx", "tailwind-merge"],
     description: "Utility function cn() for merging Tailwind classes",
   },
-"ds-tree": {
+  "ds-tree": {
     importFile: "./ds-tree",
     imports: [
       "DSTree",

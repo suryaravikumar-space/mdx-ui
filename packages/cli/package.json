@@ -1,6 +1,6 @@
 {
   "name": "@ravikumarsurya/mdx-ui",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "Copy-paste MDX components for documentation sites — callout, tabs, accordion, code-block, code-group, and more",
   "license": "MIT",
   "type": "module",
@@ -53,6 +53,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "axios": "^1.6.7",
     "chalk": "^5.3.0",
     "commander": "^11.1.0",

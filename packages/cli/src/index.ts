@@ -13,6 +13,7 @@ import { remove } from "./commands/remove.js";
 import { doctor } from "./commands/doctor.js";
 import { save } from "./commands/save.js";
 import { newCommand } from "./commands/new.js";
+import { startMcpServer } from "./commands/mcp.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -24,6 +25,12 @@ process.on("SIGINT", () => process.exit(0));
 process.on("SIGTERM", () => process.exit(0));
 
 async function main() {
+  // MCP server mode — stdio transport, no commander parsing needed
+  if (process.argv[2] === "mcp") {
+    await startMcpServer();
+    return;
+  }
+
   const program = new Command()
     .name("mdx-ui")
     .description("Add beautiful MDX components to your project")

@@ -23,10 +23,10 @@
  * ```
  */
 
-type AnyObject = Record<string, unknown>
+type AnyObject = Record<string, unknown>;
 
 function isObject(val: unknown): val is AnyObject {
-  return val !== null && typeof val === "object" && !Array.isArray(val)
+  return val !== null && typeof val === "object" && !Array.isArray(val);
 }
 
 /**
@@ -38,12 +38,12 @@ function joinBlocks(blocks: unknown[]): string {
     .filter((b): b is AnyObject => isObject(b))
     .filter((b) => !b.type || b.type === "text")
     .map((b) => {
-      if (typeof b.text === "string") return b.text
-      if (typeof b.content === "string") return b.content
-      return ""
+      if (typeof b.text === "string") return b.text;
+      if (typeof b.content === "string") return b.content;
+      return "";
     })
     .filter(Boolean)
-    .join("\n\n")
+    .join("\n\n");
 }
 
 /**
@@ -53,46 +53,47 @@ function joinBlocks(blocks: unknown[]): string {
  */
 export function extractContent(response: unknown): string {
   // Already a string
-  if (typeof response === "string") return response
+  if (typeof response === "string") return response;
 
-  if (!isObject(response)) return ""
+  if (!isObject(response)) return "";
 
   // ── OpenAI / Groq / any OpenAI-compatible API ────────────────────────────
   // { choices: [{ message: { content: string | ContentBlock[] } }] }
   if (Array.isArray(response.choices) && response.choices.length > 0) {
-    const choice = response.choices[0]
+    const choice = response.choices[0];
     if (isObject(choice)) {
-      const message = choice.message
+      const message = choice.message;
       if (isObject(message)) {
-        if (typeof message.content === "string") return message.content
-        if (Array.isArray(message.content)) return joinBlocks(message.content)
+        if (typeof message.content === "string") return message.content;
+        if (Array.isArray(message.content)) return joinBlocks(message.content);
       }
       // Some streaming formats put delta instead of message
-      const delta = choice.delta
-      if (isObject(delta) && typeof delta.content === "string") return delta.content
+      const delta = choice.delta;
+      if (isObject(delta) && typeof delta.content === "string")
+        return delta.content;
     }
   }
 
   // ── Anthropic Claude ─────────────────────────────────────────────────────
   // { content: [{ type: "text", text: string }, { type: "tool_use", ... }] }
   if (Array.isArray(response.content)) {
-    const text = joinBlocks(response.content)
-    if (text) return text
+    const text = joinBlocks(response.content);
+    if (text) return text;
   }
 
   // ── Google Gemini ────────────────────────────────────────────────────────
   // { candidates: [{ content: { parts: [{ text: string }] } }] }
   if (Array.isArray(response.candidates) && response.candidates.length > 0) {
-    const candidate = response.candidates[0]
+    const candidate = response.candidates[0];
     if (isObject(candidate)) {
-      const content = candidate.content
+      const content = candidate.content;
       if (isObject(content) && Array.isArray(content.parts)) {
         const text = (content.parts as unknown[])
           .filter((p): p is AnyObject => isObject(p))
           .map((p) => (typeof p.text === "string" ? p.text : ""))
           .filter(Boolean)
-          .join("\n\n")
-        if (text) return text
+          .join("\n\n");
+        if (text) return text;
       }
     }
   }
@@ -100,16 +101,16 @@ export function extractContent(response: unknown): string {
   // ── Ollama ───────────────────────────────────────────────────────────────
   // { message: { content: string } }
   if (isObject(response.message)) {
-    const msg = response.message as AnyObject
-    if (typeof msg.content === "string") return msg.content
+    const msg = response.message as AnyObject;
+    if (typeof msg.content === "string") return msg.content;
   }
 
   // ── Cohere ───────────────────────────────────────────────────────────────
   // { text: string }
-  if (typeof response.text === "string") return response.text
+  if (typeof response.text === "string") return response.text;
 
   // ── Generic content string ───────────────────────────────────────────────
-  if (typeof response.content === "string") return response.content
+  if (typeof response.content === "string") return response.content;
 
-  return ""
+  return "";
 }

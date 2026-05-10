@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use directly in MDX — configure as the h1–h6 override in your MDX components map.",
   "example": "// In mdx-components.tsx\n{ h1: Headings.H1, h2: Headings.H2 }",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "headings.tsx",

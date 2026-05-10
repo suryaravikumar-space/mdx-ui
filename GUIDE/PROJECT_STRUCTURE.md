@@ -15,6 +15,7 @@ mdx-ui/
 ## Detailed Structure
 
 ### `/registry/` - Runtime Registry
+
 **Purpose**: JSON files that the CLI fetches when users run `npx mdx-ui add <component>`
 
 ```
@@ -32,6 +33,7 @@ registry/
 ```
 
 **Format**: Each JSON contains the full component code and dependencies:
+
 ```json
 {
   "name": "component-name",
@@ -41,6 +43,7 @@ registry/
 ```
 
 ### `/packages/cli/` - CLI Tool
+
 **Purpose**: Command-line tool for developers to install components
 
 ```
@@ -62,6 +65,7 @@ packages/cli/
 ```
 
 **Usage**:
+
 ```bash
 npx mdx-ui init           # Initialize project
 npx mdx-ui list           # Show all components
@@ -69,6 +73,7 @@ npx mdx-ui add callout    # Add a component
 ```
 
 ### `/packages/registry/src/` - Component Source
+
 **Purpose**: TypeScript source files for component development
 
 ```
@@ -84,62 +89,74 @@ packages/registry/src/
 ```
 
 **Workflow**:
+
 1. Develop component here
 2. Export to `/registry/mdx/component-name.json`
 3. Update CLI (`list.ts` and `add.ts`)
 4. Rebuild: `pnpm cli:build`
 
 ### `/components/` - Legacy Components
+
 **Purpose**: Example/legacy components (may be consolidated later)
 
 ## Component Lifecycle
 
 ### 1. Development
+
 Create TypeScript component in `/packages/registry/src/`:
+
 ```tsx
 // blockquote.tsx
 export function Blockquote({ children }) {
-  return <blockquote>{children}</blockquote>
+  return <blockquote>{children}</blockquote>;
 }
 ```
 
 ### 2. Registration
+
 Create JSON file in `/registry/mdx/`:
+
 ```json
 {
   "name": "blockquote",
-  "files": [{
-    "path": "components/mdx/blockquote.tsx",
-    "content": "... component code ..."
-  }],
+  "files": [
+    {
+      "path": "components/mdx/blockquote.tsx",
+      "content": "... component code ..."
+    }
+  ],
   "dependencies": []
 }
 ```
 
 ### 3. CLI Updates
+
 Update `/packages/cli/src/commands/`:
+
 - `list.ts` - Add to AVAILABLE_COMPONENTS array
 - `add.ts` - Add to prompts choices
 
 ### 4. Build & Publish
+
 ```bash
 pnpm cli:build    # Build CLI
 npm publish       # Publish to npm (when ready)
 ```
 
 ### 5. User Installation
+
 ```bash
 npx mdx-ui add blockquote
 ```
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `/registry/mdx/*.json` | Component distribution files |
-| `/packages/cli/src/commands/list.ts` | Component catalog |
-| `/packages/cli/src/utils/fetch-component.ts` | Registry loader |
-| `/packages/registry/src/*.tsx` | Component source code |
+| File                                         | Purpose                      |
+| -------------------------------------------- | ---------------------------- |
+| `/registry/mdx/*.json`                       | Component distribution files |
+| `/packages/cli/src/commands/list.ts`         | Component catalog            |
+| `/packages/cli/src/utils/fetch-component.ts` | Registry loader              |
+| `/packages/registry/src/*.tsx`               | Component source code        |
 
 ## Important Notes
 
@@ -151,18 +168,21 @@ npx mdx-ui add blockquote
 ## Available Components (12 Total)
 
 Basic Markdown:
+
 - blockquote
 - horizontal-rule
 - image
 - list
 
 Documentation Components:
+
 - callout
 - code-block
 - steps
 - tabs
 
 Text Components:
+
 - emphasis
 - headings
 - inline-code

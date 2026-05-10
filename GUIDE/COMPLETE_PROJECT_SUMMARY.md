@@ -37,6 +37,7 @@ mdx-ui/                           # Root
 ## ✅ What Works Right Now
 
 ### 1. CLI Tool (`packages/cli/`)
+
 **Status**: ✅ Fully Functional
 
 ```bash
@@ -52,6 +53,7 @@ npx mdx-ui init
 ```
 
 **Features**:
+
 - ✅ 13 components available (12 MDX + 1 utility)
 - ✅ Automatic dependency resolution
 - ✅ Registry-based component distribution
@@ -60,6 +62,7 @@ npx mdx-ui init
 - ✅ All errors fixed
 
 ### 2. Documentation Website (`apps/www/`)
+
 **Status**: ✅ Ready to Use
 
 ```bash
@@ -71,6 +74,7 @@ pnpm www:build
 ```
 
 **Features**:
+
 - ✅ Beautiful landing page
 - ✅ Dark mode support
 - ✅ Responsive design
@@ -81,6 +85,7 @@ pnpm www:build
 - ✅ Professional UI matching shadcn/ui
 
 **Homepage includes**:
+
 - Hero section with CTA buttons
 - Feature showcase
 - Navigation header
@@ -88,14 +93,17 @@ pnpm www:build
 - Responsive layout
 
 ### 3. Component Registry System
+
 **Status**: ✅ Complete
 
 **Registry Structure**:
+
 - `registry.json` - Master list of all components
 - `schema.json` - JSON schema for validation
 - `mdx/*.json` - Individual component files (13 total)
 
 **Components Available**:
+
 1. blockquote - Quote blocks with citations
 2. callout - Alert boxes (info, warning, danger, success)
 3. code-block - Code blocks with syntax highlighting
@@ -113,6 +121,7 @@ pnpm www:build
 ## 🚀 Quick Start Guide
 
 ### For CLI Development
+
 ```bash
 # Build CLI
 pnpm cli:build
@@ -122,6 +131,7 @@ node packages/cli/dist/index.js list
 ```
 
 ### For Website Development
+
 ```bash
 # Start website
 pnpm www:dev
@@ -131,6 +141,7 @@ pnpm www:dev
 ```
 
 ### For Both (Turbo)
+
 ```bash
 # Run all dev servers in parallel
 pnpm dev
@@ -139,10 +150,11 @@ pnpm dev
 ## 📦 Package Structure
 
 ### Root `package.json` Scripts
+
 ```json
 {
-  "dev": "turbo run dev",           // Run all dev servers
-  "build": "turbo run build",       // Build all packages
+  "dev": "turbo run dev", // Run all dev servers
+  "build": "turbo run build", // Build all packages
   "www:dev": "pnpm --filter=@mdx-ui/www dev",
   "www:build": "pnpm --filter=@mdx-ui/www build",
   "cli:dev": "pnpm --filter=@mdx-ui/cli dev",
@@ -155,12 +167,14 @@ pnpm dev
 ```
 
 ### Workspaces
+
 - `apps/*` - Applications (www website)
 - `packages/*` - Packages (cli, registry)
 
 ## 🔧 Technical Stack
 
 ### CLI Tool
+
 - **Commander.js** - CLI framework
 - **Prompts** - Interactive prompts
 - **Chalk** - Terminal colors
@@ -169,6 +183,7 @@ pnpm dev
 - **fs-extra** - File system utilities
 
 ### Website
+
 - **Next.js 15** - React framework
 - **React 19** - UI library
 - **TypeScript 5.7** - Type safety
@@ -179,6 +194,7 @@ pnpm dev
 - **Shiki** - Syntax highlighting
 
 ### Components
+
 - **React 19** - Component library
 - **Tailwind CSS** - Styling
 - **clsx** - Class name utility
@@ -188,12 +204,14 @@ pnpm dev
 ## 📝 Recent Achievements
 
 ### Session 1: CLI Foundation
+
 - ✅ Built complete CLI tool
 - ✅ Created 4 basic Markdown components
 - ✅ Set up component registry
 - ✅ Implemented dependency system
 
 ### Session 2: Error Fixes & Registry
+
 - ✅ Fixed missing `cn` utility issue
 - ✅ Added registry dependencies system
 - ✅ Created `registry.json` and `schema.json`
@@ -201,6 +219,7 @@ pnpm dev
 - ✅ All TypeScript errors resolved
 
 ### Session 3: Documentation Website (Just Now!)
+
 - ✅ Created Next.js 15 website
 - ✅ Set up Tailwind CSS with dark mode
 - ✅ Built beautiful landing page
@@ -211,6 +230,7 @@ pnpm dev
 ## 🎯 Next Steps (Optional Enhancements)
 
 ### High Priority
+
 1. **Add Component Documentation**
    - Create MDX files for each component
    - Show live previews
@@ -228,6 +248,7 @@ pnpm dev
    - Contributing guide
 
 ### Medium Priority
+
 4. **Set up Contentlayer**
    - Configure for MDX processing
    - Type-safe content queries
@@ -245,6 +266,7 @@ pnpm dev
    - Keyboard shortcuts
 
 ### Nice to Have
+
 7. **Testing**
    - Unit tests for CLI
    - Component tests
@@ -274,6 +296,7 @@ pnpm dev
 ## 🎨 Design Philosophy
 
 Following **shadcn/ui** principles:
+
 - Copy & paste components
 - Fully customizable
 - TypeScript first
@@ -284,6 +307,7 @@ Following **shadcn/ui** principles:
 ## 🌟 Key Features
 
 ### CLI
+
 ✅ Simple commands
 ✅ Interactive prompts
 ✅ Dependency auto-install
@@ -292,6 +316,7 @@ Following **shadcn/ui** principles:
 ✅ Colored output
 
 ### Website
+
 ✅ Dark mode
 ✅ Responsive
 ✅ Fast loading
@@ -300,6 +325,7 @@ Following **shadcn/ui** principles:
 ✅ Professional design
 
 ### Components
+
 ✅ TypeScript types
 ✅ Tailwind CSS
 ✅ Customizable
@@ -309,24 +335,29 @@ Following **shadcn/ui** principles:
 ## 🎓 Learning Resources
 
 ### Next.js
+
 - [Next.js 15 Docs](https://nextjs.org/docs)
 - [App Router Guide](https://nextjs.org/docs/app)
 
 ### MDX
+
 - [MDX Documentation](https://mdxjs.com/)
 - [Contentlayer](https://contentlayer.dev/)
 
 ### Styling
+
 - [Tailwind CSS](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
 
 ### CLI Development
+
 - [Commander.js](https://github.com/tj/commander.js)
 - [Prompts](https://github.com/terkelg/prompts)
 
 ## 🚢 Deployment Options
 
 ### Vercel (Recommended for Website)
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -337,6 +368,7 @@ vercel
 ```
 
 ### npm (For CLI)
+
 ```bash
 # Publish to npm
 cd packages/cli
@@ -344,6 +376,7 @@ npm publish
 ```
 
 ### GitHub Pages
+
 - Static export of website
 - Free hosting
 - Custom domain support
@@ -351,6 +384,7 @@ npm publish
 ## 🔐 Environment Variables
 
 ### Website (`.env.local`)
+
 ```env
 # Add if needed for future features
 NEXT_PUBLIC_API_URL=
@@ -360,23 +394,27 @@ NEXT_PUBLIC_ANALYTICS_ID=
 ## 📄 Important Files
 
 ### Configuration
+
 - `/pnpm-workspace.yaml` - Workspace configuration
 - `/package.json` - Root package config
 - `/turbo.json` - Turbo build config
 - `/tsconfig.json` - TypeScript config (root)
 
 ### CLI
+
 - `/packages/cli/package.json` - CLI package
 - `/packages/cli/tsup.config.ts` - Build config
 - `/packages/cli/src/index.ts` - CLI entry point
 
 ### Website
+
 - `/apps/www/package.json` - Website package
 - `/apps/www/next.config.ts` - Next.js config
 - `/apps/www/tailwind.config.ts` - Tailwind config
 - `/apps/www/app/page.tsx` - Homepage
 
 ### Registry
+
 - `/registry/registry.json` - Master component list
 - `/registry/schema.json` - JSON schema
 - `/registry/mdx/*.json` - Component files
@@ -395,12 +433,14 @@ NEXT_PUBLIC_ANALYTICS_ID=
 ## 💬 Support
 
 ### Getting Help
+
 1. Check documentation files
 2. Read component source code
 3. Review registry JSON files
 4. Test with CLI commands
 
 ### Common Commands
+
 ```bash
 # See all components
 npx mdx-ui list
@@ -431,6 +471,7 @@ pnpm format
 **Overall**: 🚀 **READY TO USE!**
 
 Your project now has:
+
 - A working CLI tool for component installation
 - A beautiful documentation website
 - 13 production-ready components
@@ -440,6 +481,7 @@ Your project now has:
 - All dependencies installed and working
 
 **You can now**:
+
 1. Run `pnpm www:dev` to see the website
 2. Run `npx mdx-ui list` to see all components
 3. Start building documentation pages

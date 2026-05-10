@@ -17,18 +17,22 @@ apps/www/config/
 ## 🎯 Purpose of Each File
 
 ### 1. sidebar-docs.json
+
 **Current Status:** ✅ Active (controls /docs sidebar)
 **Purpose:** Main documentation navigation
 **Sections:**
+
 - Getting Started
 - Components
 
 **Used by:** `/docs` routes
 
 ### 2. sidebar-learn.json
+
 **Current Status:** ⏳ Template created
 **Purpose:** Tutorial and learning content
 **Sections:**
+
 - Get Started
 - Learn MDX UI
 - Building Your Docs
@@ -37,9 +41,11 @@ apps/www/config/
 **Future routes:** `/learn/*`
 
 ### 3. sidebar-reference.json
+
 **Current Status:** ⏳ Template created
 **Purpose:** API reference documentation
 **Sections:**
+
 - mdx-ui CLI
 - Typography Components
 - Code Components
@@ -50,9 +56,11 @@ apps/www/config/
 **Future routes:** `/reference/*`
 
 ### 4. sidebar-blog.json
+
 **Current Status:** ⏳ Template created
 **Purpose:** Blog post navigation
 **Sections:**
+
 - 2025
 - 2024
 
@@ -61,9 +69,11 @@ apps/www/config/
 **Future routes:** `/blog/*`
 
 ### 5. sidebar-community.json
+
 **Current Status:** ⏳ Template created
 **Purpose:** Community resources
 **Sections:**
+
 - Get Involved
 - Community Resources (external links)
 - Acknowledgements
@@ -74,14 +84,14 @@ apps/www/config/
 
 ## 📊 Comparison with react.dev
 
-| File | react.dev | Your Project | Status |
-|------|-----------|--------------|--------|
-| **Home sidebar** | sidebarHome.json | - | Not needed (use homepage instead) |
-| **Learn sidebar** | sidebarLearn.json | sidebar-learn.json | ✅ Created |
-| **Reference sidebar** | sidebarReference.json | sidebar-reference.json | ✅ Created |
-| **Community sidebar** | sidebarCommunity.json | sidebar-community.json | ✅ Created |
-| **Blog sidebar** | sidebarBlog.json | sidebar-blog.json | ✅ Created |
-| **Docs sidebar** | - | sidebar-docs.json | ✅ Active |
+| File                  | react.dev             | Your Project           | Status                            |
+| --------------------- | --------------------- | ---------------------- | --------------------------------- |
+| **Home sidebar**      | sidebarHome.json      | -                      | Not needed (use homepage instead) |
+| **Learn sidebar**     | sidebarLearn.json     | sidebar-learn.json     | ✅ Created                        |
+| **Reference sidebar** | sidebarReference.json | sidebar-reference.json | ✅ Created                        |
+| **Community sidebar** | sidebarCommunity.json | sidebar-community.json | ✅ Created                        |
+| **Blog sidebar**      | sidebarBlog.json      | sidebar-blog.json      | ✅ Created                        |
+| **Docs sidebar**      | -                     | sidebar-docs.json      | ✅ Active                         |
 
 ## 🔧 How to Use
 
@@ -121,6 +131,7 @@ const sidebar = getSidebarByPath(pathname);
 ### Route Types
 
 #### 1. Section Header
+
 ```json
 {
   "hasSectionHeader": true,
@@ -129,6 +140,7 @@ const sidebar = getSidebarByPath(pathname);
 ```
 
 #### 2. Simple Page
+
 ```json
 {
   "title": "Page Title",
@@ -137,6 +149,7 @@ const sidebar = getSidebarByPath(pathname);
 ```
 
 #### 3. Page with Nested Routes
+
 ```json
 {
   "title": "Parent Page",
@@ -151,6 +164,7 @@ const sidebar = getSidebarByPath(pathname);
 ```
 
 #### 4. External Link
+
 ```json
 {
   "title": "GitHub",
@@ -160,6 +174,7 @@ const sidebar = getSidebarByPath(pathname);
 ```
 
 #### 5. Blog Post (with metadata)
+
 ```json
 {
   "title": "Blog Post Title",
@@ -267,7 +282,7 @@ export default function ExamplesLayout({ children }) {
 - **sidebar-docs.json** - Controls `/docs` navigation
   - Loaded by: `lib/docs-nav.ts`
   - Used by: `components/docs-sidebar.tsx`
-  - Routes: /docs, /docs/components/*
+  - Routes: /docs, /docs/components/\*
 
 ### ⏳ Templates (Ready to Use)
 
@@ -277,6 +292,7 @@ export default function ExamplesLayout({ children }) {
 - **sidebar-community.json** - Ready for `/community` section
 
 To activate these:
+
 1. Create corresponding MDX files
 2. Create layout pages
 3. Update navigation links
@@ -301,8 +317,12 @@ export function DocsSidebar() {
 import { sidebarDocs } from "@/config/sidebars";
 
 export const docsNav = sidebarDocs;
-export function getAllRoutes() { /* ... */ }
-export function getBreadcrumbs() { /* ... */ }
+export function getAllRoutes() {
+  /* ... */
+}
+export function getBreadcrumbs() {
+  /* ... */
+}
 ```
 
 ### Dynamic Sidebar Selection

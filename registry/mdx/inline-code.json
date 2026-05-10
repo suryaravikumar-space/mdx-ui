@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use for multi-line code — use CodeBlock. Do not use for keyboard shortcuts — use Kbd.",
   "example": "Call <InlineCode>Array.prototype.reduce</InlineCode> with an initial accumulator.",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "inline-code.tsx",

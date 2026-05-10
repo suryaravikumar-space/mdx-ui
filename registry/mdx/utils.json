@@ -5,7 +5,10 @@
   "whenToUse": "Install automatically as a dependency of any other component. Contains the cn() class merging utility.",
   "whenNotToUse": "Do not import directly in MDX files. This is an internal utility.",
   "example": "import { cn } from '@/lib/utils'",
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "files": [
     {
       "path": "lib/utils.ts",

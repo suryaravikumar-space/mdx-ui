@@ -45,6 +45,7 @@ const transformPath = (originalPath: string | undefined) => {
 ```
 
 **Example:**
+
 - Sidebar JSON has: `"/docs/components/blockquote"`
 - When viewing `/components/*`, transforms to: `"/components/blockquote"`
 - When viewing `/docs/*`, stays as: `"/docs/components/blockquote"`
@@ -52,6 +53,7 @@ const transformPath = (originalPath: string | undefined) => {
 ### 3. Dual Route Support
 
 Both routes work for the same content:
+
 - `/docs/components/blockquote` - Uses docs layout
 - `/components/blockquote` - Uses components layout
 - Both show the same MDX content, just different URL structure
@@ -97,6 +99,7 @@ apps/www/
 ### Example 1: Navigation in /components Section
 
 When user visits `/components/blockquote`:
+
 1. Layout detects pathname starts with `/components`
 2. `getSidebarByPath()` returns `sidebarDocs`
 3. `DynamicSidebar` sets `pathPrefix="/components"`
@@ -108,6 +111,7 @@ When user visits `/components/blockquote`:
 ### Example 2: Navigation in /docs Section
 
 When user visits `/docs/components/blockquote`:
+
 1. Layout detects pathname starts with `/docs`
 2. `getSidebarByPath()` returns `sidebarDocs`
 3. `DynamicSidebar` sets `pathPrefix="/docs"`
@@ -132,6 +136,7 @@ Parent items with children now support both navigation and expansion:
 ```
 
 **Behavior:**
+
 - Click on "Components" text → Navigates to `/docs/components` (or `/components` if path is transformed)
 - Click on chevron icon → Toggles expansion of child routes
 - Auto-expands when navigating to a child route
@@ -141,6 +146,7 @@ Parent items with children now support both navigation and expansion:
 ### Route Types
 
 #### 1. Section Header
+
 ```json
 {
   "hasSectionHeader": true,
@@ -149,17 +155,17 @@ Parent items with children now support both navigation and expansion:
 ```
 
 #### 2. Parent with Children (Expandable)
+
 ```json
 {
   "title": "Components",
   "path": "/docs/components",
-  "routes": [
-    { "title": "Blockquote", "path": "/docs/components/blockquote" }
-  ]
+  "routes": [{ "title": "Blockquote", "path": "/docs/components/blockquote" }]
 }
 ```
 
 #### 3. Simple Link
+
 ```json
 {
   "title": "Introduction",
@@ -168,6 +174,7 @@ Parent items with children now support both navigation and expansion:
 ```
 
 #### 4. External Link
+
 ```json
 {
   "title": "GitHub",
@@ -177,6 +184,7 @@ Parent items with children now support both navigation and expansion:
 ```
 
 #### 5. Blog Post with Metadata
+
 ```json
 {
   "title": "Announcing v1.0",
@@ -231,7 +239,11 @@ Create `apps/www/app/examples/layout.tsx`:
 ```tsx
 import { DynamicSidebar } from "@/components/dynamic-sidebar";
 
-export default function ExamplesLayout({ children }: { children: React.ReactNode }) {
+export default function ExamplesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)]">
       <aside className="fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block">

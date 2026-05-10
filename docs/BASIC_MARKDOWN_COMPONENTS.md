@@ -270,7 +270,6 @@ interface CodeBlockProps {
 
 ```md
 ---
-
 ---
 
 ---

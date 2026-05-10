@@ -65,7 +65,7 @@ component: blockquote
 published: true
 ---
 
-import { Blockquote } from "@/components/mdx/blockquote"
+import { Blockquote } from "@/components/mdx/blockquote";
 
 ## Installation
 
@@ -78,9 +78,7 @@ npx mdx-ui add blockquote
 ## Examples
 
 <div className="preview">
-  <Blockquote>
-    This is a blockquote
-  </Blockquote>
+  <Blockquote>This is a blockquote</Blockquote>
 </div>
 ```
 
@@ -92,6 +90,7 @@ npx mdx-ui add blockquote
 - **Doc** - General docs (`content/docs/**/*.mdx`)
 
 Contentlayer automatically:
+
 - Parses frontmatter
 - Compiles MDX to React components
 - Generates TypeScript types
@@ -104,7 +103,7 @@ Contentlayer automatically:
 ```tsx
 export default async function ComponentPage({ params }) {
   const component = allComponents.find(
-    (c) => c.slugAsParams === params.slug.join("/")
+    (c) => c.slugAsParams === params.slug.join("/"),
   );
 
   const toc = getTableOfContents(component.body.raw);
@@ -128,10 +127,10 @@ export function getTableOfContents(content: string): TocEntry[] {
     return line.match(/^#{2,3}\s/);
   });
 
-  return headingLines.map(heading => ({
+  return headingLines.map((heading) => ({
     id: slugify(heading),
     text: heading.replace(/^#+\s/, ""),
-    level: heading.match(/^#+/)?.[0].length || 0
+    level: heading.match(/^#+/)?.[0].length || 0,
   }));
 }
 ```
@@ -179,7 +178,7 @@ dependencies: ["some-package"]
 registryDependencies: ["utils"]
 ---
 
-import { MyComponent } from "@/components/mdx/my-component"
+import { MyComponent } from "@/components/mdx/my-component";
 
 ## Installation
 
@@ -225,6 +224,7 @@ Edit `config/docs.ts`:
 ```
 
 **That's it!** Contentlayer will:
+
 - Automatically detect the new MDX file
 - Generate types for it
 - Make it available at `/docs/components/my-component`
@@ -279,12 +279,12 @@ Rendered with TOC
 
 ```yaml
 ---
-title: string              # Component name
-description: string        # Short description
-component: string          # Component identifier
-published: boolean         # Whether to show in docs
-dependencies: string[]     # npm packages (optional)
-registryDependencies: string[]  # Other components (optional)
+title: string # Component name
+description: string # Short description
+component: string # Component identifier
+published: boolean # Whether to show in docs
+dependencies: string[] # npm packages (optional)
+registryDependencies: string[] # Other components (optional)
 ---
 ```
 
@@ -292,9 +292,9 @@ registryDependencies: string[]  # Other components (optional)
 
 ```yaml
 ---
-title: string              # Page title
-description: string        # Page description
-published: boolean         # Whether to show
+title: string # Page title
+description: string # Page description
+published: boolean # Whether to show
 ---
 ```
 
@@ -312,6 +312,7 @@ The URL structure is automatically generated:
 ### Contentlayer
 
 **contentlayer.config.ts** configures:
+
 - MDX plugins (rehype-pretty-code, rehype-slug, etc.)
 - Syntax highlighting theme
 - Document type definitions
@@ -320,6 +321,7 @@ The URL structure is automatically generated:
 ### Navigation
 
 **config/docs.ts** manages:
+
 - Main navigation
 - Sidebar structure
 - Component grouping
@@ -339,6 +341,7 @@ The URL structure is automatically generated:
 The dev server is running at **http://localhost:3000**
 
 Test URLs:
+
 - http://localhost:3000/docs
 - http://localhost:3000/docs/components/blockquote
 - http://localhost:3000/docs/components/callout
@@ -347,6 +350,7 @@ Test URLs:
 ## 📦 What's Generated
 
 Contentlayer creates `.contentlayer/generated/` with:
+
 - **Component.json** - All component documents
 - **Doc.json** - All doc documents
 - **types.ts** - TypeScript types
@@ -355,6 +359,7 @@ Contentlayer creates `.contentlayer/generated/` with:
 ## 🎉 Success!
 
 You now have a fully functional MDX-based documentation system that:
+
 - ✅ Renders MDX files
 - ✅ Auto-generates TOC
 - ✅ Has left and right sidebars

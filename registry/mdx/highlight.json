@@ -5,8 +5,13 @@
   "whenToUse": "Use to draw attention to a specific word or phrase in prose, simulating a physical highlighter pen.",
   "whenNotToUse": "Do not use for code — use inline-code. Do not highlight entire sentences.",
   "example": "The key insight is the <Highlight color=\"yellow\">pivot selection strategy</Highlight>.",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "highlight.tsx",

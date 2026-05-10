@@ -66,6 +66,7 @@ mdx-ui/
 ## 📦 Available Components (13 total)
 
 ### MDX Components (12)
+
 1. **blockquote** - Styled quote blocks with optional citation
 2. **callout** - Alert boxes with variants (info, warning, danger, success)
 3. **code-block** - Syntax highlighted code blocks with title and line numbers
@@ -80,26 +81,31 @@ mdx-ui/
 12. **tabs** - Tabbed content sections with state management
 
 ### Utilities (1)
+
 13. **utils** - The `cn` function for merging Tailwind classes
 
 ## 🔧 Key Features Implemented
 
 ### 1. Component Registry System
+
 - **registry.json**: Master file listing all components
 - **schema.json**: JSON schema for component validation
 - **Auto-dependency resolution**: Components automatically include their registry dependencies
 
 ### 2. Dependency Management
+
 - **NPM dependencies**: Automatically installed (clsx, tailwind-merge, class-variance-authority)
 - **Registry dependencies**: 8 components depend on `utils` - automatically installed together
 - **Recursive resolution**: Dependencies are fetched and installed in correct order
 
 ### 3. CLI Features
+
 - `npx mdx-ui init` - Initialize configuration
 - `npx mdx-ui list` - List all components grouped by type with dependencies shown
 - `npx mdx-ui add <component>` - Add components with automatic dependency resolution
 
 ### 4. Component System
+
 - All 12 MDX components are ready to use
 - Consistent styling with Tailwind CSS
 - TypeScript types exported
@@ -108,13 +114,16 @@ mdx-ui/
 ## ✅ Recent Fixes
 
 ### Error Resolution
+
 Fixed missing `cn` utility that affected 8 components:
+
 - Created [packages/registry/src/lib/utils.ts](packages/registry/src/lib/utils.ts)
 - Created [registry/mdx/utils.json](registry/mdx/utils.json)
 - Added `registryDependencies` field to component JSON files
 - Updated CLI to handle recursive dependency installation
 
 ### Type Safety
+
 - Added TypeScript interfaces for registry components
 - Added proper type annotations throughout CLI
 - All builds passing with no errors
@@ -122,6 +131,7 @@ Fixed missing `cn` utility that affected 8 components:
 ## 🎯 Next Steps (Optional)
 
 ### Documentation Website (apps/www)
+
 You mentioned wanting to rebuild the documentation site. Here's what that would include:
 
 ```
@@ -151,11 +161,13 @@ apps/www/                              # Documentation site
 ```
 
 ### Testing
+
 - Add tests for CLI commands
 - Add component tests with React Testing Library
 - Add E2E tests for installation workflow
 
 ### Publishing
+
 - Publish to npm as `@mdx-ui/cli`
 - Set up GitHub repository
 - Add CI/CD with GitHub Actions
@@ -174,6 +186,7 @@ apps/www/                              # Documentation site
 ## 🚀 Usage
 
 ### Installation (for users)
+
 ```bash
 # Initialize in a Next.js project
 npx mdx-ui init
@@ -187,6 +200,7 @@ npx mdx-ui list
 ```
 
 ### Development
+
 ```bash
 # Build CLI
 pnpm cli:build

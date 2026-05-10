@@ -3,11 +3,13 @@
 ## Current Status
 
 ✅ **Working Components** (have MDX files):
+
 - Blockquote - http://localhost:3001/docs/components/blockquote
 - Callout - http://localhost:3001/docs/components/callout
 - Steps - http://localhost:3001/docs/components/steps
 
 ⏳ **Components to Add** (need MDX files):
+
 - code-block
 - emphasis
 - headings
@@ -40,7 +42,12 @@ registryDependencies: ["utils"]
 dependencies: ["clsx", "tailwind-merge"]
 ---
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/mdx/tabs";
 
 ## Installation
 
@@ -58,12 +65,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
     <TabsTrigger value="preview">Preview</TabsTrigger>
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
-  <TabsContent value="preview">
-    Preview content
-  </TabsContent>
-  <TabsContent value="code">
-    Code content
-  </TabsContent>
+  <TabsContent value="preview">Preview content</TabsContent>
+  <TabsContent value="code">Code content</TabsContent>
 </Tabs>
 \`\`\`
 
@@ -77,12 +80,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
       <TabsTrigger value="tab1">Tab 1</TabsTrigger>
       <TabsTrigger value="tab2">Tab 2</TabsTrigger>
     </TabsList>
-    <TabsContent value="tab1">
-      Content for tab 1
-    </TabsContent>
-    <TabsContent value="tab2">
-      Content for tab 2
-    </TabsContent>
+    <TabsContent value="tab1">Content for tab 1</TabsContent>
+    <TabsContent value="tab2">Content for tab 2</TabsContent>
   </Tabs>
 </div>
 
@@ -90,17 +89,17 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
 
 ### Tabs
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `defaultValue` | `string` | - | The default active tab |
-| `children` | `React.ReactNode` | - | TabsList and TabsContent components |
+| Prop           | Type              | Default | Description                         |
+| -------------- | ----------------- | ------- | ----------------------------------- |
+| `defaultValue` | `string`          | -       | The default active tab              |
+| `children`     | `React.ReactNode` | -       | TabsList and TabsContent components |
 
 ### TabsTrigger
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | - | The value of this tab |
-| `children` | `React.ReactNode` | - | The tab label |
+| Prop       | Type              | Default | Description           |
+| ---------- | ----------------- | ------- | --------------------- |
+| `value`    | `string`          | -       | The value of this tab |
+| `children` | `React.ReactNode` | -       | The tab label         |
 ```
 
 ### Step 3: Add to Navigation JSON
@@ -123,7 +122,12 @@ Edit `apps/www/config/docs-nav.json`:
 Edit `apps/www/components/mdx-components.tsx`:
 
 ```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/mdx/tabs";
 
 const components = {
   // ... existing
@@ -203,11 +207,13 @@ All component docs follow this pattern:
 ```
 
 Examples:
+
 - `/docs/components/blockquote`
 - `/docs/components/callout`
 - `/docs/components/code-block` (note: kebab-case)
 
 NOT:
+
 - `/components/blockquote` ❌
 - `/docs/blockquote` ❌
 - `/blockquote` ❌

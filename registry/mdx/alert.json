@@ -5,8 +5,14 @@
   "whenToUse": "Use for system-level feedback requiring immediate attention — form errors, operation results, destructive-action warnings.",
   "whenNotToUse": "Do not use for general information or tips — use Callout instead. Alert implies the reader must act or be immediately aware.",
   "example": "<Alert variant=\"destructive\">\n  <AlertTitle>Error</AlertTitle>\n  <AlertDescription>Your session has expired. Please sign in again.</AlertDescription>\n</Alert>",
-  "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "alert.tsx",

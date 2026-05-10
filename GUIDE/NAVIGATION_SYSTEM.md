@@ -17,11 +17,11 @@ This project uses a **JSON-based navigation system** following the **react.dev p
 
 ### Comparison to Other Approaches
 
-| Approach | Maintainability | Scalability | Type Safety |
-|----------|----------------|-------------|-------------|
-| **JSON Config** ✅ | Excellent | Excellent | Yes |
-| File-based routing | Poor | Good | No |
-| Hardcoded in components | Poor | Poor | Partial |
+| Approach                | Maintainability | Scalability | Type Safety |
+| ----------------------- | --------------- | ----------- | ----------- |
+| **JSON Config** ✅      | Excellent       | Excellent   | Yes         |
+| File-based routing      | Poor            | Good        | No          |
+| Hardcoded in components | Poor            | Poor        | Partial     |
 
 ## 📁 File Structure
 
@@ -165,6 +165,7 @@ const allRoutes = getAllRoutes();
 ```
 
 **Use cases:**
+
 - Search functionality
 - Sitemap generation
 - Finding all pages
@@ -181,6 +182,7 @@ const route = findRouteByPath("/docs/components/blockquote");
 ```
 
 **Use cases:**
+
 - Getting page metadata
 - Checking if route exists
 - Dynamic route validation
@@ -201,6 +203,7 @@ const breadcrumbs = getBreadcrumbs("/docs/components/blockquote");
 ```
 
 **Use cases:**
+
 - Rendering breadcrumb navigation
 - Showing page hierarchy
 - SEO structured data
@@ -218,6 +221,7 @@ const { prev, next } = getAdjacentRoutes("/docs/components/blockquote");
 ```
 
 **Use cases:**
+
 - Prev/Next page navigation
 - Sequential reading flow
 - Documentation walkthroughs
@@ -234,6 +238,7 @@ const section = getSectionHeader("/docs/components/blockquote");
 ```
 
 **Use cases:**
+
 - Showing current section
 - Filtering routes by section
 - Section-based navigation
@@ -258,6 +263,7 @@ export default function DocsLayout({ children }) {
 ```
 
 **Features:**
+
 - Auto-generated from JSON
 - Expandable/collapsible sections
 - Active state highlighting
@@ -332,6 +338,7 @@ component: my-component
 ### 3. Done!
 
 That's it! The system automatically:
+
 - ✅ Shows page in sidebar
 - ✅ Generates breadcrumbs
 - ✅ Links prev/next pages
@@ -394,7 +401,7 @@ That's it! The system automatically:
 ```json
 {
   "title": "Typography",
-  "path": "/docs/components/typography",  // Overview page
+  "path": "/docs/components/typography", // Overview page
   "routes": [
     { "title": "Blockquote", "path": "/docs/components/blockquote" },
     { "title": "Headings", "path": "/docs/components/headings" }
@@ -444,6 +451,7 @@ That's it! The system automatically:
 ### 4. Logical Page Order
 
 Order pages by:
+
 - Importance (most important first)
 - Difficulty (basics before advanced)
 - Alphabetically (for reference docs)
@@ -463,27 +471,33 @@ if (!route) {
 
 ```typescript
 const allRoutes = getAllRoutes();
-console.log("All pages:", allRoutes.map(r => r.path));
+console.log(
+  "All pages:",
+  allRoutes.map((r) => r.path),
+);
 ```
 
 ### Test breadcrumbs
 
 ```typescript
 const breadcrumbs = getBreadcrumbs("/docs/components/blockquote");
-console.log("Breadcrumb trail:", breadcrumbs.map(b => b.title));
+console.log(
+  "Breadcrumb trail:",
+  breadcrumbs.map((b) => b.title),
+);
 ```
 
 ## 📚 Comparison to react.dev
 
 Our implementation follows react.dev's pattern:
 
-| Feature | react.dev | mdx-ui |
-|---------|-----------|---------|
-| JSON config | ✅ sidebarReference.json | ✅ docs-nav.json |
-| Section headers | ✅ hasSectionHeader | ✅ hasSectionHeader |
-| Nested routes | ✅ routes array | ✅ routes array |
-| Breadcrumbs | ✅ Auto-generated | ✅ Auto-generated |
-| Prev/Next | ✅ Auto-generated | ✅ Auto-generated |
+| Feature         | react.dev                | mdx-ui              |
+| --------------- | ------------------------ | ------------------- |
+| JSON config     | ✅ sidebarReference.json | ✅ docs-nav.json    |
+| Section headers | ✅ hasSectionHeader      | ✅ hasSectionHeader |
+| Nested routes   | ✅ routes array          | ✅ routes array     |
+| Breadcrumbs     | ✅ Auto-generated        | ✅ Auto-generated   |
+| Prev/Next       | ✅ Auto-generated        | ✅ Auto-generated   |
 
 ## 🎉 Benefits Summary
 

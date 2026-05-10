@@ -5,8 +5,13 @@
   "whenToUse": "Use for screenshots, diagrams, and illustrations with an optional caption. Use ImageGlossary for a grid of related images.",
   "whenNotToUse": "Do not use for decorative images with no informational value. Always provide meaningful alt text.",
   "example": "<Image src=\"/diagrams/avl-rotation.png\" alt=\"AVL tree left rotation\" caption=\"Left rotation restores balance when right subtree is too tall.\" />",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "image.tsx",

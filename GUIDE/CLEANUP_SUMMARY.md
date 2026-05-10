@@ -7,7 +7,7 @@
    - `/components/` - Duplicate location for components
 
 2. **Workspace references**:
-   - `pnpm-workspace.yaml` - Removed "apps/*" pattern
+   - `pnpm-workspace.yaml` - Removed "apps/\*" pattern
 
 ## Consolidated ✅
 
@@ -56,6 +56,7 @@ mdx-ui/
 ## Component Count
 
 **Source files** (`/packages/registry/src/`): 8
+
 - blockquote.tsx
 - emphasis.tsx
 - headings.tsx
@@ -66,6 +67,7 @@ mdx-ui/
 - paragraph.tsx
 
 **Registry files** (`/registry/mdx/`): 12
+
 - blockquote.json
 - callout.json
 - code-block.json

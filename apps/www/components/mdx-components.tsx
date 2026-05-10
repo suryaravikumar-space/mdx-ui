@@ -78,6 +78,12 @@ import { JsonLd } from "@/components/mdx/json-ld";
 import { Definition } from "@/components/mdx/definition";
 import { Invariant } from "@/components/mdx/invariant";
 import { ComplexityTable } from "@/components/mdx/complexity-table";
+import { HardwareSpec } from "@/components/mdx/hardware-spec";
+import { DataTypeTable } from "@/components/mdx/data-type-table";
+import { SecurityNote } from "@/components/mdx/security-note";
+import { RegisterMap } from "@/components/mdx/register-map";
+import { PrivacyTable } from "@/components/mdx/privacy-table";
+import { CertificationBadge } from "@/components/mdx/certification-badge";
 import {
   DSArray,
   DSMatrix,
@@ -172,6 +178,12 @@ const components = {
   Definition,
   Invariant,
   ComplexityTable,
+  HardwareSpec,
+  DataTypeTable,
+  SecurityNote,
+  RegisterMap,
+  PrivacyTable,
+  CertificationBadge,
   DSArray,
   DSMatrix,
   DSLinkedList,

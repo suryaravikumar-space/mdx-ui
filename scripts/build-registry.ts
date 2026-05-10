@@ -48,6 +48,78 @@ const componentsMetadata: Record<
     dependencies: [],
     registryDependencies: ["utils"],
   },
+  "certification-badge": {
+    description:
+      "Compliance certification display — renders ISO, TISAX, SOC 2, and similar certification chips with status indicators (active, pending, expired)",
+    whenToUse:
+      "Use at the top of a compliance, privacy, or security section to establish trust context at a glance. Good for ISO 27001, TISAX, SOC 2, GDPR, and other certifications.",
+    whenNotToUse:
+      "Do not use for generic labels or version tags — use Badge instead. Do not misrepresent certification status.",
+    example:
+      '<CertificationBadge\n  certs={[\n    { name: "ISO 27001:2022", scope: "Information Security Management", year: 2023, status: "active" },\n    { name: "TISAX", scope: "Automotive Information Security", status: "active" },\n  ]}\n/>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "data-type-table": {
+    description:
+      "AI/ML numeric data type and tensor specification table — documents hardware-supported types (INT8, FP16, BF16, FP32) with bits, range, shape, and quantization support",
+    whenToUse:
+      "Use when documenting AI runtime data types, hardware inference engines, or ML framework precision support. Ideal for QAIRT, TensorFlow Lite, or ONNX type compatibility tables.",
+    whenNotToUse:
+      "Do not use for general comparison tables — use DataTable instead. Not for algorithm complexity — use ComplexityTable.",
+    example:
+      '<DataTypeTable\n  rows={[\n    { type: "INT8",  bits: 8,  range: "-128 to 127", quantized: true,  description: "Inference optimised integer" },\n    { type: "FP16",  bits: 16, range: "±65504",       quantized: false, description: "Half-precision float" },\n    { type: "FP32",  bits: 32, range: "±3.4e38",      quantized: false, description: "Full-precision float" },\n  ]}\n  caption="Qualcomm AI Runtime (QAIRT) supported types"\n/>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "hardware-spec": {
+    description:
+      "Structured hardware interface specification card — displays interface parameters (type, version, speed, voltage, pins, protocol) as a compact key-value grid",
+    whenToUse:
+      "Use when documenting a single hardware interface such as USB, PCIe, I2C, UART, or SPI. Ideal for ICD (Interface Control Document) style reference pages.",
+    whenNotToUse:
+      "Do not use for comparing multiple interfaces — use a table instead. Not for software API documentation — use prose with CodeBlock.",
+    example:
+      '<HardwareSpec\n  name="USB 3.1 Gen 2"\n  type="Universal Serial Bus"\n  speed="10 Gbps"\n  voltage="3.3V / 1.8V"\n  pins={24}\n  description="High-speed USB for peripheral connectivity."\n/>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "privacy-table": {
+    description:
+      "Personal data collection documentation table — records data type, purpose, legal basis (GDPR), retention period, and third-party sharing status",
+    whenToUse:
+      "Use inside Privacy Policy pages or Records of Processing Activities (RoPA) to document what personal data is collected and why. Supports ISO 27001 and TISAX compliance documentation.",
+    whenNotToUse:
+      "Do not use for hardware or API specs — use RegisterMap or DataTable instead. Not for displaying non-privacy data.",
+    example:
+      '<PrivacyTable\n  rows={[\n    { dataType: "Email Address",       purpose: "Authentication",    legalBasis: "Consent",              retention: "Until deletion", shared: false },\n    { dataType: "Chipset Serial Number", purpose: "Device diagnostics", legalBasis: "Legitimate Interest",   retention: "5 years",        shared: true  },\n  ]}\n  caption="Per Qualcomm Privacy Policy"\n/>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "register-map": {
+    description:
+      "Hardware register or OTP fuse map table — documents memory-mapped registers with address, name, bit range, access type (RO/WO/RW/OTP/RC), reset value, and description",
+    whenToUse:
+      "Use for documenting MMIO registers, QFPROM fuse maps, CSR tables, or any bit-addressable hardware configuration in SDK or BSP documentation.",
+    whenNotToUse:
+      "Do not use for software API parameters — use prose or CodeBlock. Not for data privacy records — use PrivacyTable.",
+    example:
+      '<RegisterMap\n  title="QFPROM Fuse Map — Security Control"\n  rows={[\n    { address: "0x00780000", name: "QFPROM_CORR_RD_WR_PERM_LSB", bits: "31:0", access: "OTP", reset: "0x00000000", description: "Read/write permissions for fuse rows." },\n    { address: "0x00780008", name: "QFPROM_CORR_JTAG_ID",        bits: "31:0", access: "RO",  reset: "0x009600E1", description: "JTAG identification register." },\n  ]}\n/>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "security-note": {
+    description:
+      "Security-specific callout with severity levels (info, warning, critical) — uses a lock/shield icon and colour-coded treatment distinct from general Callout",
+    whenToUse:
+      "Use for security notices, OTP fuse burn caveats, key management constraints, or vulnerability disclosures. Choose severity: info for general notes, warning for important caveats, critical for irreversible or dangerous actions.",
+    whenNotToUse:
+      "Do not use for general tips or non-security content — use Callout instead. Do not use critical severity for minor warnings.",
+    example:
+      '<SecurityNote severity="warning" title="OTP Fuse Burn">\n  QFPROM fuse values are permanent once written. Ensure correct values before provisioning production devices.\n</SecurityNote>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
   annotation: {
     description:
       "Inline text annotation — click an annotated phrase to reveal an explanation popover, with Escape/click-outside dismissal",

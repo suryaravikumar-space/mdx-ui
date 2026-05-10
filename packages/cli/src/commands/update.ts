@@ -26,7 +26,10 @@ async function diffComponent(
   const framework = (config as any).framework ?? "unknown"
 
   for (const file of data.files) {
-    const filePath = path.join(cwd, config.componentsDir, file.path)
+    const libRoot = config.componentsDir.startsWith("src/") ? path.join(cwd, "src") : cwd
+    const filePath = file.path.startsWith("lib/")
+      ? path.join(libRoot, file.path)
+      : path.join(cwd, config.componentsDir, file.path)
 
     if (!(await fs.pathExists(filePath))) {
       changedFiles.push(file.path)

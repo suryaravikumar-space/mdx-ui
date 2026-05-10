@@ -1,0 +1,73 @@
+---
+title: Installation
+description: Get started with MDX UI in your project in three steps
+published: true
+---
+
+## Requirements
+
+- Node.js 18 or later
+- A React project using Next.js, Astro, or Remix
+- Tailwind CSS configured
+
+## Quick Start
+
+### 1. Initialize
+
+Run the CLI in your project root:
+
+```bash
+npx @ravikumarsurya/mdx-ui init
+```
+
+This creates `mdx-ui.json` with your project configuration and installs the `cn()` utility.
+
+### 2. Add Components
+
+Add the components you need:
+
+```bash
+npx @ravikumarsurya/mdx-ui add callout accordion code-block
+```
+
+Or run without arguments to pick interactively:
+
+```bash
+npx @ravikumarsurya/mdx-ui add
+```
+
+### 3. Register Components
+
+Add the installed components to your `mdx-components.tsx`:
+
+```tsx
+import { Callout } from "@/components/mdx/callout"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/mdx/accordion"
+
+export const components = {
+  Callout,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+}
+```
+
+## Framework Guides
+
+- [Next.js + @next/mdx](/docs/integration/nextjs-mdx)
+- [Next.js + Contentlayer](/docs/integration/nextjs-contentlayer)
+- [Next.js + MDX Remote](/docs/integration/nextjs-mdx-remote)
+
+## CLI Reference
+
+| Command | Description |
+|---------|-------------|
+| `mdx-ui init` | Set up mdx-ui in your project |
+| `mdx-ui add [components]` | Add components |
+| `mdx-ui update [components]` | Update to latest |
+| `mdx-ui remove [components]` | Remove components |
+| `mdx-ui list` | List all available components |
+| `mdx-ui doctor` | Check project health |
+| `mdx-ui new [title]` | Scaffold a new .mdx page |
+| `mdx-ui save` | Save MDX content to a structured path |

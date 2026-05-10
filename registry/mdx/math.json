@@ -5,8 +5,14 @@
   "whenToUse": "Use BlockMath for display equations centred on their own line. Use InlineMath for expressions embedded in prose.",
   "whenNotToUse": "Do not use for code — use CodeBlock. Do not use for simple expressions that read clearly as plain text.",
   "example": "The recurrence <InlineMath>T(n) = 2T(n/2) + O(n)</InlineMath> solves to <InlineMath>O(n \\log n)</InlineMath>.",
-  "dependencies": ["katex", "clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "katex",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "math.tsx",

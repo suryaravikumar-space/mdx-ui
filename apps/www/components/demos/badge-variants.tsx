@@ -1,4 +1,4 @@
-import { Badge } from "@/components/mdx/badge"
+import { Badge } from "@/components/mdx/badge";
 
 export default function BadgeVariants() {
   return (
@@ -11,5 +11,5 @@ export default function BadgeVariants() {
       <Badge variant="warning">Warning</Badge>
       <Badge variant="info">Info</Badge>
     </div>
-  )
+  );
 }

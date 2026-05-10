@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { transitions } from "@/lib/primitives";
@@ -33,7 +33,10 @@ export interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
  * </Preview>
  */
 export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>(
-  ({ code, lang = "tsx", children, className, highlightedCode, ...props }, ref) => {
+  (
+    { code, lang = "tsx", children, className, highlightedCode, ...props },
+    ref,
+  ) => {
     const [tab, setTab] = React.useState<"preview" | "code">("preview");
     const [copied, setCopied] = React.useState(false);
 

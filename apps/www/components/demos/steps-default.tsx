@@ -1,4 +1,4 @@
-import { Steps, Step } from "@/components/mdx/steps"
+import { Steps, Step } from "@/components/mdx/steps";
 
 export default function StepsDefault() {
   return (
@@ -8,5 +8,5 @@ export default function StepsDefault() {
       <Step>Configure your tailwind.config.ts</Step>
       <Step>Start building!</Step>
     </Steps>
-  )
+  );
 }

@@ -16,7 +16,12 @@ npx @ravikumarsurya/mdx-ui add accordion
 ## Usage
 
 ```tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/mdx/accordion"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/mdx/accordion";
 
 <Accordion defaultValue="item-1">
   <AccordionItem value="item-1">
@@ -25,7 +30,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
       mdx-ui is a collection of MDX components you can add to your project.
     </AccordionContent>
   </AccordionItem>
-</Accordion>
+</Accordion>;
 ```
 
 ## Examples
@@ -74,19 +79,19 @@ Set `collapsible={false}` so one item is always open.
 
 ### Accordion
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `"single" \| "multiple"` | `"single"` | Allow one or multiple items open at once |
-| `defaultValue` | `string \| string[]` | - | Initially open item(s) |
-| `collapsible` | `boolean` | `true` | Whether the active item can be closed (single mode only) |
-| `className` | `string` | - | Additional CSS classes |
+| Prop           | Type                     | Default    | Description                                              |
+| -------------- | ------------------------ | ---------- | -------------------------------------------------------- |
+| `type`         | `"single" \| "multiple"` | `"single"` | Allow one or multiple items open at once                 |
+| `defaultValue` | `string \| string[]`     | -          | Initially open item(s)                                   |
+| `collapsible`  | `boolean`                | `true`     | Whether the active item can be closed (single mode only) |
+| `className`    | `string`                 | -          | Additional CSS classes                                   |
 
 ### AccordionItem
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `string` | - | Unique identifier for this item (required) |
-| `className` | `string` | - | Additional CSS classes |
+| Prop        | Type     | Default | Description                                |
+| ----------- | -------- | ------- | ------------------------------------------ |
+| `value`     | `string` | -       | Unique identifier for this item (required) |
+| `className` | `string` | -       | Additional CSS classes                     |
 
 ### AccordionTrigger
 

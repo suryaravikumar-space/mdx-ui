@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use directly in MDX — configure as the p override in your MDX components map.",
   "example": "// In mdx-components.tsx\n{ p: Paragraph }",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "paragraph.tsx",

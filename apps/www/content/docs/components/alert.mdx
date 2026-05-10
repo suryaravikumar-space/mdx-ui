@@ -16,7 +16,9 @@ npx @ravikumarsurya/mdx-ui add alert
 ```mdx
 <Alert variant="info">
   <AlertTitle>Heads up</AlertTitle>
-  <AlertDescription>You can customise this component in your project.</AlertDescription>
+  <AlertDescription>
+    You can customise this component in your project.
+  </AlertDescription>
 </Alert>
 ```
 
@@ -30,17 +32,19 @@ npx @ravikumarsurya/mdx-ui add alert
 
 ```tsx
 <Alert variant="info">
-  <AlertDescription>You can omit AlertTitle and use AlertDescription on its own.</AlertDescription>
+  <AlertDescription>
+    You can omit AlertTitle and use AlertDescription on its own.
+  </AlertDescription>
 </Alert>
 ```
 
 ## Difference from Callout
 
-| | Alert | Callout |
-| --- | --- | --- |
-| Semantic role | `role="alert"` (live region) | none |
-| Screen readers | Announced immediately | Not announced |
-| Use for | Status changes, errors, confirmations | Tips, notes, documentation callouts |
+|                | Alert                                 | Callout                             |
+| -------------- | ------------------------------------- | ----------------------------------- |
+| Semantic role  | `role="alert"` (live region)          | none                                |
+| Screen readers | Announced immediately                 | Not announced                       |
+| Use for        | Status changes, errors, confirmations | Tips, notes, documentation callouts |
 
 Use `Alert` when something has happened or changed (form errors, success messages, warnings about an action). Use `Callout` for static informational notes in documentation.
 
@@ -48,21 +52,21 @@ Use `Alert` when something has happened or changed (form errors, success message
 
 ### Alert
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `variant` | `"default" \| "info" \| "warning" \| "destructive" \| "success"` | `"default"` | Visual style |
-| `className` | `string` | — | Extra classes |
+| Prop        | Type                                                             | Default     | Description   |
+| ----------- | ---------------------------------------------------------------- | ----------- | ------------- |
+| `variant`   | `"default" \| "info" \| "warning" \| "destructive" \| "success"` | `"default"` | Visual style  |
+| `className` | `string`                                                         | —           | Extra classes |
 
 ### AlertTitle
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `children` | `ReactNode` | Title text |
-| `className` | `string` | Extra classes |
+| Prop        | Type        | Description   |
+| ----------- | ----------- | ------------- |
+| `children`  | `ReactNode` | Title text    |
+| `className` | `string`    | Extra classes |
 
 ### AlertDescription
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `children` | `ReactNode` | Description content |
-| `className` | `string` | Extra classes |
+| Prop        | Type        | Description         |
+| ----------- | ----------- | ------------------- |
+| `children`  | `ReactNode` | Description content |
+| `className` | `string`    | Extra classes       |

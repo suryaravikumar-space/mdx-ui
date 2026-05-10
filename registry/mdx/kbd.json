@@ -5,8 +5,13 @@
   "whenToUse": "Use to show keyboard shortcuts and key combinations inline with instructional text.",
   "whenNotToUse": "Do not use for code — use InlineCode. Do not use for mouse actions.",
   "example": "Press <Kbd>Ctrl</Kbd>+<Kbd>K</Kbd> to open the command palette.",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "kbd.tsx",

@@ -5,8 +5,13 @@
   "whenToUse": "Use inside Privacy Policy pages or Records of Processing Activities (RoPA) to document what personal data is collected and why. Supports ISO 27001 and TISAX compliance documentation.",
   "whenNotToUse": "Do not use for hardware or API specs — use RegisterMap or DataTable instead. Not for displaying non-privacy data.",
   "example": "<PrivacyTable\n  rows={[\n    { dataType: \"Email Address\",       purpose: \"Authentication\",    legalBasis: \"Consent\",              retention: \"Until deletion\", shared: false },\n    { dataType: \"Chipset Serial Number\", purpose: \"Device diagnostics\", legalBasis: \"Legitimate Interest\",   retention: \"5 years\",        shared: true  },\n  ]}\n  caption=\"Per Qualcomm Privacy Policy\"\n/>",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "privacy-table.tsx",

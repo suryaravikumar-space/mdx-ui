@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not emphasize entire sentences. Do not use emphasis for headings or labels.",
   "example": "This is <Strong>critically important</Strong> and <Em>subtly different</Em>.",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "emphasis.tsx",

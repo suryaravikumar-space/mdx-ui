@@ -5,8 +5,13 @@
   "whenToUse": "Use to document time and space complexity for algorithm operations in a structured, scannable format. Place after the algorithm description.",
   "whenNotToUse": "Do not use for non-algorithmic content. When only one operation exists, use Invariant instead.",
   "example": "<ComplexityTable\n  rows={[\n    { operation: \"Search\", best: \"O(1)\", average: \"O(log n)\", worst: \"O(n)\" },\n    { operation: \"Insert\", best: \"O(log n)\", average: \"O(log n)\", worst: \"O(n)\" },\n    { operation: \"Delete\", best: \"O(log n)\", average: \"O(log n)\", worst: \"O(n)\" }\n  ]}\n/>",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "complexity-table.tsx",

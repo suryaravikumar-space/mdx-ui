@@ -1,5 +1,10 @@
-"use client"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
+"use client";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/mdx/tabs";
 
 export default function TabsDefault() {
   return (
@@ -25,5 +30,5 @@ export default function TabsDefault() {
         </code>
       </TabsContent>
     </Tabs>
-  )
+  );
 }

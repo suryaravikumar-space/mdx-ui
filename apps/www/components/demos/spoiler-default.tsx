@@ -1,4 +1,4 @@
-import { Spoiler } from "@/components/mdx/spoiler"
+import { Spoiler } from "@/components/mdx/spoiler";
 
 export default function SpoilerDefault() {
   return (
@@ -8,5 +8,5 @@ export default function SpoilerDefault() {
         This section is expanded on load.
       </Spoiler>
     </div>
-  )
+  );
 }

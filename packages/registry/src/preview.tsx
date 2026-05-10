@@ -1,9 +1,10 @@
+"use client";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { transitions } from "@/lib/primitives";
 
 export interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Raw source code string displayed in the Code tab */
+  /** Raw source code string displayed in the Code tab and used by the copy button */
   code: string;
   /** Language label shown in the code pane (e.g. "tsx", "html") */
   lang?: string;
@@ -12,6 +13,12 @@ export interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
    * Authors write this as JSX children; the code string is separate.
    */
   children: React.ReactNode;
+  /**
+   * Pre-highlighted HTML from shiki (dual-theme). When provided, the code
+   * pane renders this HTML instead of a plain <pre><code> block.
+   * The copy button always uses the plain `code` string.
+   */
+  highlightedCode?: string;
 }
 
 /**
@@ -26,7 +33,10 @@ export interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
  * </Preview>
  */
 export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>(
-  ({ code, lang = "tsx", children, className, ...props }, ref) => {
+  (
+    { code, lang = "tsx", children, className, highlightedCode, ...props },
+    ref,
+  ) => {
     const [tab, setTab] = React.useState<"preview" | "code">("preview");
     const [copied, setCopied] = React.useState(false);
 
@@ -99,9 +109,16 @@ export const Preview = React.forwardRef<HTMLDivElement, PreviewProps>(
             <span className="absolute right-3 top-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">
               {lang}
             </span>
-            <pre className="overflow-x-auto p-4 text-sm">
-              <code>{code}</code>
-            </pre>
+            {highlightedCode ? (
+              <div
+                className="component-preview-code [&>pre]:overflow-x-auto [&>pre]:p-4 [&>pre]:text-sm"
+                dangerouslySetInnerHTML={{ __html: highlightedCode }}
+              />
+            ) : (
+              <pre className="overflow-x-auto p-4 text-sm">
+                <code>{code}</code>
+              </pre>
+            )}
           </div>
         )}
       </div>

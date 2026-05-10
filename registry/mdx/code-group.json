@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use for unrelated code blocks — use separate CodeBlocks. Do not use for non-code content.",
   "example": "<CodeGroup>\n  <CodeBlock title=\"npm\">npm install @mdx-ui/cli</CodeBlock>\n  <CodeBlock title=\"pnpm\">pnpm add @mdx-ui/cli</CodeBlock>\n  <CodeBlock title=\"yarn\">yarn add @mdx-ui/cli</CodeBlock>\n</CodeGroup>",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "code-group.tsx",

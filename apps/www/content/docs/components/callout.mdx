@@ -7,7 +7,7 @@ registryDependencies: ["utils"]
 dependencies: ["class-variance-authority", "clsx", "tailwind-merge"]
 ---
 
-import { Callout } from "@/components/mdx/callout"
+import { Callout } from "@/components/mdx/callout";
 
 ## Installation
 
@@ -22,11 +22,9 @@ This will automatically install the `utils` dependency.
 ## Usage
 
 ```tsx
-import { Callout } from "@/components/mdx/callout"
+import { Callout } from "@/components/mdx/callout";
 
-<Callout>
-  This is a default callout
-</Callout>
+<Callout>This is a default callout</Callout>;
 ```
 
 ## Examples
@@ -46,9 +44,7 @@ import { Callout } from "@/components/mdx/callout"
 ### Warning
 
 ```tsx
-<Callout variant="warning">
-  Warning: This action cannot be undone.
-</Callout>
+<Callout variant="warning">Warning: This action cannot be undone.</Callout>
 ```
 
 ### Danger
@@ -62,15 +58,13 @@ import { Callout } from "@/components/mdx/callout"
 ### Success
 
 ```tsx
-<Callout variant="success">
-  Success! Your changes have been saved.
-</Callout>
+<Callout variant="success">Success! Your changes have been saved.</Callout>
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | The callout content |
-| `variant` | `"info" \| "warning" \| "danger" \| "success"` | `"info"` | The callout style variant |
-| `className` | `string` | - | Additional CSS classes |
+| Prop        | Type                                           | Default  | Description               |
+| ----------- | ---------------------------------------------- | -------- | ------------------------- |
+| `children`  | `React.ReactNode`                              | -        | The callout content       |
+| `variant`   | `"info" \| "warning" \| "danger" \| "success"` | `"info"` | The callout style variant |
+| `className` | `string`                                       | -        | Additional CSS classes    |

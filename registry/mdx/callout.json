@@ -5,8 +5,14 @@
   "whenToUse": "Use for tips, notes, warnings, and supplementary information. The reader can continue without acting on it immediately.",
   "whenNotToUse": "Do not use for system feedback — use Alert. Do not nest callouts. Do not use for quotations — use Blockquote.",
   "example": "<Callout variant=\"warning\" title=\"Breaking change\">\n  This API was removed in v2.0. Use the new `useCollapse` hook instead.\n</Callout>",
-  "dependencies": ["class-variance-authority", "clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "class-variance-authority",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "callout.tsx",

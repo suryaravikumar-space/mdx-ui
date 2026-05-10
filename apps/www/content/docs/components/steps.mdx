@@ -7,7 +7,7 @@ registryDependencies: ["utils"]
 dependencies: ["clsx", "tailwind-merge"]
 ---
 
-import { Steps, Step } from "@/components/mdx/steps"
+import { Steps, Step } from "@/components/mdx/steps";
 
 ## Installation
 
@@ -18,13 +18,13 @@ npx mdx-ui add steps
 ## Usage
 
 ```tsx
-import { Steps, Step } from "@/components/mdx/steps"
+import { Steps, Step } from "@/components/mdx/steps";
 
 <Steps>
   <Step>First step</Step>
   <Step>Second step</Step>
   <Step>Third step</Step>
-</Steps>
+</Steps>;
 ```
 
 ## Examples
@@ -61,6 +61,7 @@ You can include any content inside steps, including code blocks and lists.
 
       You're ready to go!
     </Step>
+
   </Steps>
 </div>
 
@@ -68,14 +69,14 @@ You can include any content inside steps, including code blocks and lists.
 
 ### Steps
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | Step components |
-| `className` | `string` | - | Additional CSS classes |
+| Prop        | Type              | Default | Description            |
+| ----------- | ----------------- | ------- | ---------------------- |
+| `children`  | `React.ReactNode` | -       | Step components        |
+| `className` | `string`          | -       | Additional CSS classes |
 
 ### Step
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `React.ReactNode` | - | The step content |
-| `className` | `string` | - | Additional CSS classes |
+| Prop        | Type              | Default | Description            |
+| ----------- | ----------------- | ------- | ---------------------- |
+| `children`  | `React.ReactNode` | -       | The step content       |
+| `className` | `string`          | -       | Additional CSS classes |

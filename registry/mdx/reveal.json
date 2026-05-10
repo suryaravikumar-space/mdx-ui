@@ -5,8 +5,13 @@
   "whenToUse": "Use to hide a single answer, solution, or hint the reader must actively choose to reveal. Common in tutorials and exercises.",
   "whenNotToUse": "Do not use for navigation or multi-section disclosure — use Accordion. Do not use when content should always be visible.",
   "example": "<Reveal label=\"Show solution\">\n  Use a hash map keyed on the complement: `target - nums[i]`.\n</Reveal>",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "reveal.tsx",

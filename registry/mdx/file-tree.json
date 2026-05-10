@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use for navigation. Do not exceed 3 levels of nesting without strong reason.",
   "example": "<FileTree>\n  src/\n    components/\n      accordion.tsx\n    lib/\n      utils.ts\n  package.json\n</FileTree>",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "file-tree.tsx",

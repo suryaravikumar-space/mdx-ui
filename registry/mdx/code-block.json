@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use for command-line sessions — use Terminal. Do not use for showing diffs — use DiffBlock.",
   "example": "<CodeBlock title=\"binary-search.ts\" data-language=\"typescript\">\n  {`function binarySearch(arr: number[], target: number): number {\n    let lo = 0, hi = arr.length - 1\n    while (lo <= hi) {\n      const mid = (lo + hi) >> 1\n      if (arr[mid] === target) return mid\n      arr[mid] < target ? lo = mid + 1 : hi = mid - 1\n    }\n    return -1\n  }`}\n</CodeBlock>",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "code-block.tsx",

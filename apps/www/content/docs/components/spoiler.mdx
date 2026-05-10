@@ -20,9 +20,7 @@ npx @ravikumarsurya/mdx-ui add spoiler
 ### Basic
 
 ```mdx
-<Spoiler summary="Show answer">
-  The answer is 42.
-</Spoiler>
+<Spoiler summary="Show answer">The answer is 42.</Spoiler>
 ```
 
 ### Open by default
@@ -47,20 +45,20 @@ npx @ravikumarsurya/mdx-ui add spoiler
 
 ## Spoiler vs Accordion
 
-| | Spoiler | Accordion |
-| --- | --- | --- |
-| Element | Native `<details>` | `<div>` with state |
-| JS required | No | Yes |
-| Multiple items | No (use Accordion) | Yes |
-| Animations | CSS only | CSS only |
-| Keyboard | Browser native | Custom |
+|                | Spoiler            | Accordion          |
+| -------------- | ------------------ | ------------------ |
+| Element        | Native `<details>` | `<div>` with state |
+| JS required    | No                 | Yes                |
+| Multiple items | No (use Accordion) | Yes                |
+| Animations     | CSS only           | CSS only           |
+| Keyboard       | Browser native     | Custom             |
 
 Use `Spoiler` for a single collapsible item. Use `Accordion` when you need multiple items or single-open behavior.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `summary` | `string` | — | Text for the toggle button (required) |
-| `open` | `boolean` | `false` | Start expanded |
-| `className` | `string` | — | Extra classes on the `<details>` element |
+| Prop        | Type      | Default | Description                              |
+| ----------- | --------- | ------- | ---------------------------------------- |
+| `summary`   | `string`  | —       | Text for the toggle button (required)    |
+| `open`      | `boolean` | `false` | Start expanded                           |
+| `className` | `string`  | —       | Extra classes on the `<details>` element |

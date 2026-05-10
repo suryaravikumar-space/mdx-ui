@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use for navigation menus. Do not use for more than three levels of nesting without strong reason.",
   "example": "<Tree>\n  <TreeItem label=\"src\">\n    <TreeItem label=\"components\" />\n    <TreeItem label=\"lib\" />\n  </TreeItem>\n</Tree>",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "tree.tsx",

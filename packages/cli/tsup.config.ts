@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup"
+import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["src/**/*.ts", "!src/**/*.test.ts", "!src/__tests__/**"],
@@ -10,4 +10,4 @@ export default defineConfig({
   shims: true,
   splitting: false,
   bundle: false,
-})
+});

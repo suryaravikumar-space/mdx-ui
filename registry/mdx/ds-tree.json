@@ -5,13 +5,8 @@
   "whenToUse": "Use to visually render tree-structured data — Binary Tree, BST, AVL, Heap, N-ary Tree, Trie. Includes traversal animation.",
   "whenNotToUse": "Do not use for abstract concept diagrams — use Mermaid. Use only when the visual structure of the tree data is the point.",
   "example": "<MermaidBST data={[8, 3, 10, 1, 6, 14]} />",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "ds-tree.tsx",

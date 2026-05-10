@@ -100,9 +100,13 @@ Every component that renders a DOM element must use `React.forwardRef`. The ref 
 
 ```tsx
 export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
-  ({ children, ...props }, ref) => <div ref={ref} {...props}>{children}</div>
-)
-Callout.displayName = "Callout"
+  ({ children, ...props }, ref) => (
+    <div ref={ref} {...props}>
+      {children}
+    </div>
+  ),
+);
+Callout.displayName = "Callout";
 ```
 
 ### Always set `displayName`
@@ -110,9 +114,9 @@ Callout.displayName = "Callout"
 Every component and sub-component sets `displayName`. This makes React DevTools readable and error messages clear.
 
 ```tsx
-Accordion.displayName = "Accordion"
-AccordionItem.displayName = "AccordionItem"
-AccordionTrigger.displayName = "AccordionTrigger"
+Accordion.displayName = "Accordion";
+AccordionItem.displayName = "AccordionItem";
+AccordionTrigger.displayName = "AccordionTrigger";
 ```
 
 ### Spread remaining props
@@ -122,11 +126,15 @@ Always spread `...props` onto the root element after explicit prop destructuring
 ```tsx
 export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
   ({ variant, title, children, className, ...props }, ref) => (
-    <div ref={ref} className={cn(calloutVariants({ variant }), className)} {...props}>
+    <div
+      ref={ref}
+      className={cn(calloutVariants({ variant }), className)}
+      {...props}
+    >
       {children}
     </div>
-  )
-)
+  ),
+);
 ```
 
 ### `className` is always the last merge
@@ -190,6 +198,7 @@ className="rounded-lg border border-border bg-muted focus-visible:outline-none f
 ### When to add a new primitive
 
 A new primitive is justified only when:
+
 1. The exact same Tailwind string appears in **five or more** components, AND
 2. It represents a stable, named semantic concept
 
@@ -201,10 +210,11 @@ Use Tailwind CSS variables (`text-foreground`, `bg-muted`, `border-border`) inst
 
 ```tsx
 // correct — theme-aware
-className="text-foreground bg-muted border-border"
+className = "text-foreground bg-muted border-border";
 
 // wrong — hardcoded
-className="text-gray-900 bg-gray-100 border-gray-200 dark:text-white dark:bg-gray-800"
+className =
+  "text-gray-900 bg-gray-100 border-gray-200 dark:text-white dark:bg-gray-800";
 ```
 
 ### `data-*` attributes on root elements
@@ -224,11 +234,11 @@ Every component adds a `data-{component-name}` attribute to its root element. Th
 Use `Collapse` from `@/lib/motion` for all show/hide transitions. Do not implement custom height animations.
 
 ```tsx
-import { Collapse } from "@/lib/motion"
+import { Collapse } from "@/lib/motion";
 
 <Collapse open={isOpen}>
   <div className="py-4">{children}</div>
-</Collapse>
+</Collapse>;
 ```
 
 `Collapse` uses `aria-hidden={!open}`. When closed, content stays in the DOM but is hidden from assistive technology and not visible. Tests should check `aria-hidden` state, not DOM presence.
@@ -298,6 +308,7 @@ If two props could be confused, rename one. An AI agent has no context to resolv
 ### `whenToUse` and `whenNotToUse` in registry
 
 Every component entry in `scripts/build-registry.ts` must have:
+
 - `whenToUse` — one to three sentences on when this component is the right choice
 - `whenNotToUse` — one to two sentences on when to use something else
 - `example` — a minimal, copy-pasteable MDX snippet

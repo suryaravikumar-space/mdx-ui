@@ -1,10 +1,10 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface InvariantProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Optional complexity annotation, e.g. "O(log n)" */
-  complexity?: string
-  children: React.ReactNode
+  complexity?: string;
+  children: React.ReactNode;
 }
 
 /**
@@ -26,7 +26,7 @@ export const Invariant = React.forwardRef<HTMLDivElement, InvariantProps>(
       data-invariant
       className={cn(
         "my-6 flex gap-3 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3",
-        className
+        className,
       )}
       {...props}
     >
@@ -55,6 +55,6 @@ export const Invariant = React.forwardRef<HTMLDivElement, InvariantProps>(
         )}
       </div>
     </div>
-  )
-)
-Invariant.displayName = "Invariant"
+  ),
+);
+Invariant.displayName = "Invariant";

@@ -1,19 +1,18 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface ComplexityRow {
-  operation: string
-  best?: string
-  average?: string
-  worst?: string
-  space?: string
+  operation: string;
+  best?: string;
+  average?: string;
+  worst?: string;
+  space?: string;
 }
 
-export interface ComplexityTableProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  rows: ComplexityRow[]
+export interface ComplexityTableProps extends React.HTMLAttributes<HTMLDivElement> {
+  rows: ComplexityRow[];
   /** Optional caption displayed below the table */
-  caption?: string
+  caption?: string;
 }
 
 /**
@@ -35,10 +34,10 @@ export const ComplexityTable = React.forwardRef<
   HTMLDivElement,
   ComplexityTableProps
 >(({ rows, caption, className, ...props }, ref) => {
-  const hasBest = rows.some((r) => r.best !== undefined)
-  const hasAverage = rows.some((r) => r.average !== undefined)
-  const hasWorst = rows.some((r) => r.worst !== undefined)
-  const hasSpace = rows.some((r) => r.space !== undefined)
+  const hasBest = rows.some((r) => r.best !== undefined);
+  const hasAverage = rows.some((r) => r.average !== undefined);
+  const hasWorst = rows.some((r) => r.worst !== undefined);
+  const hasSpace = rows.some((r) => r.space !== undefined);
 
   return (
     <div
@@ -129,6 +128,6 @@ export const ComplexityTable = React.forwardRef<
         </p>
       )}
     </div>
-  )
-})
-ComplexityTable.displayName = "ComplexityTable"
+  );
+});
+ComplexityTable.displayName = "ComplexityTable";

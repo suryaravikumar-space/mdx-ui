@@ -1,10 +1,10 @@
-import * as React from "react"
+import * as React from "react";
 
 export interface CollapseProps {
   /** Whether the content is visible */
-  open: boolean
-  children: React.ReactNode
-  className?: string
+  open: boolean;
+  children: React.ReactNode;
+  className?: string;
 }
 
 /**
@@ -32,5 +32,5 @@ export function Collapse({ open, children, className }: CollapseProps) {
     >
       <div style={{ overflow: "hidden" }}>{children}</div>
     </div>
-  )
+  );
 }

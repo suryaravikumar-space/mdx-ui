@@ -1,27 +1,67 @@
 import { useMDXComponent } from "next-contentlayer2/hooks";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/mdx/accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/mdx/accordion";
 import { Badge } from "@/components/mdx/badge";
 import { Blockquote } from "@/components/mdx/blockquote";
 import { Callout } from "@/components/mdx/callout";
 import { Steps, Step } from "@/components/mdx/steps";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/mdx/tabs";
 import { Tree, TreeItem } from "@/components/mdx/tree";
 import { FileTree } from "@/components/mdx/file-tree";
 import { Headings } from "@/components/mdx/headings";
 import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx/heading";
-import { Paragraph, Lead, Intro, Large, Small, Muted } from "@/components/mdx/paragraph";
+import {
+  Paragraph,
+  Lead,
+  Intro,
+  Large,
+  Small,
+  Muted,
+} from "@/components/mdx/paragraph";
 import { Math, BlockMath, InlineMath } from "@/components/mdx/math";
-import { Mermaid, MermaidBST, MermaidTree, MermaidBFS, MermaidDFS } from "@/components/mdx/mermaid";
-import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from "@/components/mdx/table";
+import {
+  Mermaid,
+  MermaidBST,
+  MermaidTree,
+  MermaidBFS,
+  MermaidDFS,
+} from "@/components/mdx/mermaid";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+} from "@/components/mdx/table";
 import { CodeGroup } from "@/components/mdx/code-group";
 import { Alert, AlertTitle, AlertDescription } from "@/components/mdx/alert";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, LinkCard } from "@/components/mdx/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+  LinkCard,
+} from "@/components/mdx/card";
 import { Kbd } from "@/components/mdx/kbd";
 import { Link } from "@/components/mdx/link";
-import { Spoiler } from "@/components/mdx/spoiler"
-import { Annotation } from "@/components/mdx/annotation"
-import { Reveal } from "@/components/mdx/reveal"
-import { Preview } from "@/components/mdx/preview"
+import { Spoiler } from "@/components/mdx/spoiler";
+import { Annotation } from "@/components/mdx/annotation";
+import { Reveal } from "@/components/mdx/reveal";
+import { Preview } from "@/components/mdx/preview";
 import { GlossaryProvider, Term } from "@/components/mdx/glossary";
 import { Video } from "@/components/mdx/video";
 import { Image, ImageGlossary } from "@/components/mdx/image";
@@ -29,19 +69,41 @@ import { DataTable } from "@/components/mdx/data-table";
 import { Highlight } from "@/components/mdx/highlight";
 import { DiffBlock } from "@/components/mdx/diff-block";
 import { Terminal, TerminalLine } from "@/components/mdx/terminal";
-import { Changelog, ChangelogEntry, ChangelogItem } from "@/components/mdx/changelog";
+import {
+  Changelog,
+  ChangelogEntry,
+  ChangelogItem,
+} from "@/components/mdx/changelog";
 import { JsonLd } from "@/components/mdx/json-ld";
 import { Definition } from "@/components/mdx/definition";
 import { Invariant } from "@/components/mdx/invariant";
 import { ComplexityTable } from "@/components/mdx/complexity-table";
 import {
-  DSArray, DSMatrix,
-  DSLinkedList, DSDoublyLinkedList, DSCircularLinkedList,
-  DSStack, DSQueue, DSDeque, DSPriorityQueue,
-  DSBinaryTree, DSBST, DSMinHeap, DSMaxHeap,
-  DSTrie, DSGraph, DSDigraph, DSWeightedGraph, DSDAG,
-  DSHashMap, DSHashSet, DSNaryTree, DSSegmentTree,
-  DSBFS, DSDFS, DSAgentFlow,
+  DSArray,
+  DSMatrix,
+  DSLinkedList,
+  DSDoublyLinkedList,
+  DSCircularLinkedList,
+  DSStack,
+  DSQueue,
+  DSDeque,
+  DSPriorityQueue,
+  DSBinaryTree,
+  DSBST,
+  DSMinHeap,
+  DSMaxHeap,
+  DSTrie,
+  DSGraph,
+  DSDigraph,
+  DSWeightedGraph,
+  DSDAG,
+  DSHashMap,
+  DSHashSet,
+  DSNaryTree,
+  DSSegmentTree,
+  DSBFS,
+  DSDFS,
+  DSAgentFlow,
 } from "@/components/mdx/ds";
 
 const components = {
@@ -110,13 +172,31 @@ const components = {
   Definition,
   Invariant,
   ComplexityTable,
-  DSArray, DSMatrix,
-  DSLinkedList, DSDoublyLinkedList, DSCircularLinkedList,
-  DSStack, DSQueue, DSDeque, DSPriorityQueue,
-  DSBinaryTree, DSBST, DSMinHeap, DSMaxHeap,
-  DSTrie, DSGraph, DSDigraph, DSWeightedGraph, DSDAG,
-  DSHashMap, DSHashSet, DSNaryTree, DSSegmentTree,
-  DSBFS, DSDFS, DSAgentFlow,
+  DSArray,
+  DSMatrix,
+  DSLinkedList,
+  DSDoublyLinkedList,
+  DSCircularLinkedList,
+  DSStack,
+  DSQueue,
+  DSDeque,
+  DSPriorityQueue,
+  DSBinaryTree,
+  DSBST,
+  DSMinHeap,
+  DSMaxHeap,
+  DSTrie,
+  DSGraph,
+  DSDigraph,
+  DSWeightedGraph,
+  DSDAG,
+  DSHashMap,
+  DSHashSet,
+  DSNaryTree,
+  DSSegmentTree,
+  DSBFS,
+  DSDFS,
+  DSAgentFlow,
   Table,
   TableHeader,
   TableBody,
@@ -131,12 +211,11 @@ const components = {
   h4: H4,
   h5: H5,
   h6: H6,
-  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <Link {...props} />,
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <Link {...props} />
+  ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p
-      className="text-base leading-7 [&:not(:first-child)]:mt-6"
-      {...props}
-    />
+    <p className="text-base leading-7 [&:not(:first-child)]:mt-6" {...props} />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className="my-6 ml-6 list-disc space-y-2 [&>li]:mt-2" {...props} />
@@ -148,10 +227,7 @@ const components = {
     <li className="mt-2" {...props} />
   ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <blockquote
-      className="mt-6 border-l-2 pl-6 italic"
-      {...props}
-    />
+    <blockquote className="mt-6 border-l-2 pl-6 italic" {...props} />
   ),
   img: ({
     className,
@@ -170,10 +246,7 @@ const components = {
     </div>
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr
-      className="m-0 border-t p-0 even:bg-muted"
-      {...props}
-    />
+    <tr className="m-0 border-t p-0 even:bg-muted" {...props} />
   ),
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
@@ -201,12 +274,7 @@ const components = {
   ),
   div: ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
     if (className === "preview") {
-      return (
-        <div
-          className="my-6 rounded-lg border bg-card p-6"
-          {...props}
-        />
-      );
+      return <div className="my-6 rounded-lg border bg-card p-6" {...props} />;
     }
     return <div className={className} {...props} />;
   },

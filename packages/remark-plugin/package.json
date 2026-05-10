@@ -36,6 +36,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
@@ -47,6 +49,7 @@
     "tsup": "^8.0.2",
     "typescript": "^5.5.3",
     "unified": "^11.0.0",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.1.0",
+    "vitest": "^4.1.5"
   }
 }

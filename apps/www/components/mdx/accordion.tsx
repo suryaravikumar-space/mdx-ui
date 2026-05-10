@@ -1,7 +1,8 @@
-"use client"
-
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { focusRing, transitions } from "@/lib/primitives"
+import { Collapse } from "@/lib/motion"
+
 
 interface AccordionContextValue {
   openValues: string[]
@@ -91,7 +92,10 @@ export const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTri
         aria-expanded={isOpen}
         onClick={() => toggle(itemValue)}
         className={cn(
-          "flex w-full items-center justify-between py-4 text-sm font-medium text-foreground transition-all hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "flex w-full items-center justify-between py-4 text-sm font-medium text-foreground",
+          transitions.all,
+          "hover:underline",
+          focusRing,
           className
         )}
         {...props}
@@ -108,7 +112,8 @@ export const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTri
           strokeLinecap="round"
           strokeLinejoin="round"
           className={cn(
-            "shrink-0 text-muted-foreground transition-transform duration-200",
+            "shrink-0 text-muted-foreground",
+            transitions.transform,
             isOpen && "rotate-180"
           )}
           aria-hidden="true"
@@ -129,12 +134,16 @@ export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionConten
     const itemValue = React.useContext(AccordionItemContext)
     const isOpen = openValues.includes(itemValue)
 
-    if (!isOpen) return null
-
     return (
-      <div ref={ref} className={cn("pb-4 pt-0 text-sm text-muted-foreground", className)} {...props}>
-        {children}
-      </div>
+      <Collapse open={isOpen}>
+        <div
+          ref={ref}
+          className={cn("pb-4 pt-0 text-sm text-muted-foreground", className)}
+          {...props}
+        >
+          {children}
+        </div>
+      </Collapse>
     )
   }
 )

@@ -1,4 +1,4 @@
-import type { Config } from "jest"
+import type { Config } from "jest";
 
 const config: Config = {
   testEnvironment: "jest-environment-jsdom",
@@ -30,13 +30,16 @@ const config: Config = {
   },
   reporters: [
     "default",
-    ["jest-junit", {
-      outputDirectory: "coverage",
-      outputName: "junit.xml",
-      classNameTemplate: "{classname}",
-      titleTemplate: "{title}",
-    }],
+    [
+      "jest-junit",
+      {
+        outputDirectory: "coverage",
+        outputName: "junit.xml",
+        classNameTemplate: "{classname}",
+        titleTemplate: "{title}",
+      },
+    ],
   ],
-}
+};
 
-export default config
+export default config;

@@ -1,10 +1,10 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface DefinitionProps extends React.HTMLAttributes<HTMLDivElement> {
   /** The word or phrase being defined */
-  term: string
-  children: React.ReactNode
+  term: string;
+  children: React.ReactNode;
 }
 
 /**
@@ -31,6 +31,6 @@ export const Definition = React.forwardRef<HTMLDivElement, DefinitionProps>(
       </div>
       <div className="text-sm text-muted-foreground">{children}</div>
     </div>
-  )
-)
-Definition.displayName = "Definition"
+  ),
+);
+Definition.displayName = "Definition";

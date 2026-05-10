@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource, ComputedFields } from "contentlayer2/source-files";
+import {
+  defineDocumentType,
+  makeSource,
+  ComputedFields,
+} from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
 import rehypePrettyCode from "rehype-pretty-code";

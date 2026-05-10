@@ -5,13 +5,8 @@
   "whenToUse": "Use for versioned release notes with typed change entries: added, fixed, changed, removed, security.",
   "whenNotToUse": "Do not use for general timelines — use a Steps or list. Do not use for non-versioned content.",
   "example": "<Changelog version=\"2.1.0\" date=\"2026-01-15\">\n  <ChangelogEntry type=\"added\">Collapse animation on Accordion</ChangelogEntry>\n  <ChangelogEntry type=\"fixed\">Focus ring on mobile Safari</ChangelogEntry>\n</Changelog>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "changelog.tsx",

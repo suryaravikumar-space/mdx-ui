@@ -11,7 +11,7 @@ import { list } from "./commands/list.js";
 import { update } from "./commands/update.js";
 import { remove } from "./commands/remove.js";
 import { doctor } from "./commands/doctor.js";
-import { save } from "./commands/save.js"
+import { save } from "./commands/save.js";
 import { newCommand } from "./commands/new.js";
 
 const __filename = fileURLToPath(import.meta.url);

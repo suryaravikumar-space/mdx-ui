@@ -19,12 +19,12 @@ v0.1.0 is the first architecture release. Before this version the repository had
 
 The core decision was to match the test runner to the runtime — not force one tool across all packages.
 
-| Package | Runner | Environment | Reason |
-|---|---|---|---|
-| `packages/registry` | Jest 30 + RTL | jsdom | React components need a DOM; `moduleNameMapper` handles CSS/asset mocking |
-| `packages/remark-plugin` | Vitest | node | Pure ESM; `unist-util-visit` and remark are ESM-only — Jest's `--experimental-vm-modules` is fragile |
-| `packages/cli` | Vitest | node | `execa`, `chalk`, `cosmiconfig` are ESM — same reason |
-| `apps/www` | Playwright | chromium + firefox | Real browser needed for MDX rendering, clipboard, navigation |
+| Package                  | Runner        | Environment        | Reason                                                                                               |
+| ------------------------ | ------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
+| `packages/registry`      | Jest 30 + RTL | jsdom              | React components need a DOM; `moduleNameMapper` handles CSS/asset mocking                            |
+| `packages/remark-plugin` | Vitest        | node               | Pure ESM; `unist-util-visit` and remark are ESM-only — Jest's `--experimental-vm-modules` is fragile |
+| `packages/cli`           | Vitest        | node               | `execa`, `chalk`, `cosmiconfig` are ESM — same reason                                                |
+| `apps/www`               | Playwright    | chromium + firefox | Real browser needed for MDX rendering, clipboard, navigation                                         |
 
 ### Registry — Jest + RTL (130 tests, 13 suites)
 
@@ -47,6 +47,7 @@ tabs         → keyboard navigation, ARIA panel roles
 ```
 
 **Key decisions:**
+
 - `jest-environment-jsdom` for DOM simulation
 - `ts-jest` with `tsconfig.test.json` (`module: CommonJS`, `moduleResolution: node10`, `ignoreDeprecations: "5.0"`)
 - `@jest/globals` explicit import in `__mocks__/` files — avoids "Cannot find name jest" TypeScript error
@@ -100,13 +101,13 @@ Before this release the same Tailwind strings were copy-pasted across every comp
 After: named constants imported where needed.
 
 ```ts
-focusRing        // full focus-visible chain for interactive elements
-focusRingInset   // inset variant for buttons inside bordered containers
-surface          // rounded-lg border border-border bg-muted
-cardSurface      // rounded-lg border border-border bg-card shadow-sm
-popoverSurface   // tooltip/popover surface with shadow
-mutedText        // text-sm text-muted-foreground
-transitions      // { colors, all, transform, opacity } at duration-200
+focusRing; // full focus-visible chain for interactive elements
+focusRingInset; // inset variant for buttons inside bordered containers
+surface; // rounded-lg border border-border bg-muted
+cardSurface; // rounded-lg border border-border bg-card shadow-sm
+popoverSurface; // tooltip/popover surface with shadow
+mutedText; // text-sm text-muted-foreground
+transitions; // { colors, all, transform, opacity } at duration-200
 ```
 
 **Maintenance impact:** changing the design token (e.g., focus ring radius, border colour, timing) is a one-line edit in one file. Without this, it would require a grep-and-replace across 36 component files.
@@ -130,24 +131,26 @@ After:  Collapse keeps content mounted with aria-hidden="true" when closed
 **Technique:** CSS `grid-template-rows: 0fr → 1fr`
 
 ```tsx
-<div style={{
-  display: "grid",
-  gridTemplateRows: open ? "1fr" : "0fr",
-  transition: "grid-template-rows 220ms cubic-bezier(0.4, 0, 0.2, 1)",
-}}>
+<div
+  style={{
+    display: "grid",
+    gridTemplateRows: open ? "1fr" : "0fr",
+    transition: "grid-template-rows 220ms cubic-bezier(0.4, 0, 0.2, 1)",
+  }}
+>
   <div style={{ overflow: "hidden" }}>{children}</div>
 </div>
 ```
 
 **Why this technique over alternatives:**
 
-| Technique | Problem |
-|---|---|
-| `max-height` hack | Requires hardcoded max value; easing is wrong at extremes |
-| JS height measurement (`useLayoutEffect` + `ref`) | Breaks on content resize, adds layout thrash |
-| `height: auto` transition | CSS cannot transition to `auto` |
-| Framer Motion | External dependency; overkill for collapse |
-| `grid-template-rows` | No JS, handles unknown height, single property, GPU-composited |
+| Technique                                         | Problem                                                        |
+| ------------------------------------------------- | -------------------------------------------------------------- |
+| `max-height` hack                                 | Requires hardcoded max value; easing is wrong at extremes      |
+| JS height measurement (`useLayoutEffect` + `ref`) | Breaks on content resize, adds layout thrash                   |
+| `height: auto` transition                         | CSS cannot transition to `auto`                                |
+| Framer Motion                                     | External dependency; overkill for collapse                     |
+| `grid-template-rows`                              | No JS, handles unknown height, single property, GPU-composited |
 
 `Collapse` is used by `AccordionContent` and `Reveal`. Any future component needing animated show/hide imports from the same primitive.
 
@@ -165,7 +168,8 @@ Inline text with a click-to-reveal explanation popover.
 
 ```mdx
 Look at this <Annotation note="Quadratic: for each element we scan all others">
-  O(n²)
+O(n²)
+
 </Annotation> growth rate.
 ```
 
@@ -219,10 +223,20 @@ Tabbed component preview — rendered output and source code side by side.
 Context-based term linking system.
 
 ```mdx
-<GlossaryProvider terms={{
-  bfs: { label: "BFS", definition: "Breadth-First Search: explores nodes level by level using a queue." },
-  dfs: { label: "DFS", definition: "Depth-First Search: explores as far as possible along each branch." },
-}}>
+<GlossaryProvider
+  terms={{
+    bfs: {
+      label: "BFS",
+      definition:
+        "Breadth-First Search: explores nodes level by level using a queue.",
+    },
+    dfs: {
+      label: "DFS",
+      definition:
+        "Depth-First Search: explores as far as possible along each branch.",
+    },
+  }}
+>
   <Term id="bfs" /> is used for shortest-path problems.
   <Term id="dfs" /> is used for topological sort.
 </GlossaryProvider>
@@ -293,6 +307,7 @@ Fixed pnpm version alignment to match `packageManager` field in root `package.js
 ### Dependabot (`.github/dependabot.yml`)
 
 Weekly PRs for:
+
 - GitHub Actions versions
 - Root workspace deps — grouped into `typescript-ecosystem`, `testing`, `turbo`
 - Each package independently: `registry`, `cli`, `remark-plugin`, `apps/www`
@@ -318,7 +333,7 @@ Installed via `"prepare": "husky"` — runs automatically on `pnpm install` for 
 export default defineWorkspace([
   "packages/cli/vitest.config.ts",
   "packages/remark-plugin/vitest.config.ts",
-])
+]);
 ```
 
 Unifies both Vitest packages. `pnpm vitest` from root runs both. Turbo handles the same for CI via `turbo run test`.
@@ -346,13 +361,13 @@ New contributors get working test runner integration and correct linting on firs
 
 ## 8. TypeScript Fixes
 
-| Issue | Root Cause | Fix |
-|---|---|---|
-| `Cannot find name 'jest'` in `__mocks__/` | `jest` used as implicit global; workspace root lacks `@types/jest` | `import { jest } from "@jest/globals"` |
-| `Invalid value for '--ignoreDeprecations'` | TS 5.9 error message says use `"6.0"` but doesn't accept it yet | Use `"5.0"` which suppresses the `node10` deprecation warning in TS 5.x |
-| `coverageThresholds` unknown property | Typo — Jest config key is `coverageThreshold` (no `s`) | Renamed |
-| `@/lib/motion` not resolved in tests | `jest.config.ts` `moduleNameMapper` only mapped `@/lib/utils` | Added mappers for `@/lib/primitives` and `@/lib/motion` |
-| Same paths missing from TypeScript | `tsconfig.json` `paths` only had `@/lib/utils` | Added entries for all lib files |
+| Issue                                      | Root Cause                                                         | Fix                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `Cannot find name 'jest'` in `__mocks__/`  | `jest` used as implicit global; workspace root lacks `@types/jest` | `import { jest } from "@jest/globals"`                                  |
+| `Invalid value for '--ignoreDeprecations'` | TS 5.9 error message says use `"6.0"` but doesn't accept it yet    | Use `"5.0"` which suppresses the `node10` deprecation warning in TS 5.x |
+| `coverageThresholds` unknown property      | Typo — Jest config key is `coverageThreshold` (no `s`)             | Renamed                                                                 |
+| `@/lib/motion` not resolved in tests       | `jest.config.ts` `moduleNameMapper` only mapped `@/lib/utils`      | Added mappers for `@/lib/primitives` and `@/lib/motion`                 |
+| Same paths missing from TypeScript         | `tsconfig.json` `paths` only had `@/lib/utils`                     | Added entries for all lib files                                         |
 
 ---
 
@@ -522,6 +537,7 @@ variant / tone / kind / type / mode / intent / appearance
 All meaning roughly the same thing. This destroys ecosystems. The decision of which naming system wins must be made before the third variant of anything is built.
 
 Decide now:
+
 - Variants → `variant` prop using CVA
 - Sizes → `size` prop (`sm`, `md`, `lg`)
 - Semantic intent → `intent` or `variant` (pick one, never both)

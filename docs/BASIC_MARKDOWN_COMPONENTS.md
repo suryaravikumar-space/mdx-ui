@@ -9,16 +9,23 @@ Implementation plan for basic Markdown syntax components. These will be implemen
 **Purpose**: Markdown headings with auto-generated anchor links for navigation
 
 **Markdown Syntax**:
+
 ```md
 # H1 Heading
+
 ## H2 Heading
+
 ### H3 Heading
+
 #### H4 Heading
+
 ##### H5 Heading
+
 ###### H6 Heading
 ```
 
 **Features**:
+
 - Auto-generated ID from heading text (slugified)
 - Anchor link icon on hover
 - Smooth scroll to section
@@ -26,11 +33,12 @@ Implementation plan for basic Markdown syntax components. These will be implemen
 - Dark/light theme support
 
 **Props**:
+
 ```typescript
 interface HeadingProps {
-  children: React.ReactNode
-  className?: string
-  id?: string // Optional custom ID
+  children: React.ReactNode;
+  className?: string;
+  id?: string; // Optional custom ID
 }
 ```
 
@@ -43,6 +51,7 @@ interface HeadingProps {
 **Purpose**: Standard text paragraphs with proper spacing
 
 **Markdown Syntax**:
+
 ```md
 This is a paragraph.
 
@@ -50,15 +59,17 @@ This is another paragraph separated by a blank line.
 ```
 
 **Features**:
+
 - Proper line height for readability
 - Spacing between paragraphs
 - Text color from theme
 
 **Props**:
+
 ```typescript
 interface ParagraphProps {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 ```
 
@@ -71,22 +82,25 @@ interface ParagraphProps {
 **Purpose**: Text emphasis and strong emphasis
 
 **Markdown Syntax**:
+
 ```md
-*italic* or _italic_
-**bold** or __bold__
-***bold italic*** or ___bold italic___
+_italic_ or _italic_
+**bold** or **bold**
+**_bold italic_** or **_bold italic_**
 ```
 
 **Features**:
+
 - Semantic HTML (em, strong)
 - Proper font weights
 - Inherits color from parent
 
 **Props**:
+
 ```typescript
 interface EmphasisProps {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 ```
 
@@ -99,6 +113,7 @@ interface EmphasisProps {
 **Purpose**: Quoted text or callout sections
 
 **Markdown Syntax**:
+
 ```md
 > This is a blockquote.
 > It can span multiple lines.
@@ -107,6 +122,7 @@ interface EmphasisProps {
 ```
 
 **Features**:
+
 - Left border accent
 - Background color distinction
 - Nested blockquote support
@@ -114,10 +130,11 @@ interface EmphasisProps {
 - Dark/light theme variants
 
 **Props**:
+
 ```typescript
 interface BlockquoteProps {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 ```
 
@@ -130,34 +147,39 @@ interface BlockquoteProps {
 **Purpose**: Bulleted and numbered lists
 
 **Markdown Syntax**:
+
 ```md
 Unordered:
+
 - Item 1
 - Item 2
   - Nested item
 
 Ordered:
+
 1. First item
 2. Second item
    1. Nested item
 ```
 
 **Features**:
+
 - Proper indentation for nesting
 - Custom list markers
 - Spacing between items
 - Support for nested lists
 
 **Props**:
+
 ```typescript
 interface ListProps {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 
 interface ListItemProps {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 ```
 
@@ -170,11 +192,13 @@ interface ListItemProps {
 **Purpose**: Inline code snippets within text
 
 **Markdown Syntax**:
+
 ```md
 Use the `useState` hook for state management.
 ```
 
 **Features**:
+
 - Monospace font
 - Background highlight
 - Proper padding
@@ -182,10 +206,11 @@ Use the `useState` hook for state management.
 - Syntax-aware color
 
 **Props**:
+
 ```typescript
 interface InlineCodeProps {
-  children: React.ReactNode
-  className?: string
+  children: React.ReactNode;
+  className?: string;
 }
 ```
 
@@ -198,19 +223,21 @@ interface InlineCodeProps {
 **Purpose**: Multi-line code blocks with syntax highlighting
 
 **Markdown Syntax**:
+
 ````md
 ```javascript
 function hello() {
-  console.log("Hello World")
+  console.log("Hello World");
 }
 ```
 
 Indented code block:
-    const x = 10
-    const y = 20
+const x = 10
+const y = 20
 ````
 
 **Features**:
+
 - Syntax highlighting (via existing CodeBlock component)
 - Language label
 - Copy button
@@ -218,13 +245,14 @@ Indented code block:
 - Dark/light theme
 
 **Props**:
+
 ```typescript
 interface CodeBlockProps {
-  children: string
-  className?: string
-  language?: string
-  showLineNumbers?: boolean
-  filename?: string
+  children: string;
+  className?: string;
+  language?: string;
+  showLineNumbers?: boolean;
+  filename?: string;
 }
 ```
 
@@ -239,21 +267,26 @@ interface CodeBlockProps {
 **Purpose**: Visual section separator
 
 **Markdown Syntax**:
+
 ```md
 ---
-***
-___
+
+---
+
+---
 ```
 
 **Features**:
+
 - Subtle visual divider
 - Proper spacing above/below
 - Theme-aware color
 
 **Props**:
+
 ```typescript
 interface HrProps {
-  className?: string
+  className?: string;
 }
 ```
 
@@ -266,12 +299,14 @@ interface HrProps {
 **Purpose**: Enhanced hyperlinks for documentation
 
 **Markdown Syntax**:
+
 ```md
 [Link text](https://example.com)
 [Link with title](https://example.com "Title text")
 ```
 
 **Features**:
+
 - External link icon
 - Underline on hover
 - Color distinction for visited
@@ -279,12 +314,13 @@ interface HrProps {
 - Security (rel="noopener noreferrer")
 
 **Props**:
+
 ```typescript
 interface LinkProps {
-  href: string
-  children: React.ReactNode
-  title?: string
-  className?: string
+  href: string;
+  children: React.ReactNode;
+  title?: string;
+  className?: string;
 }
 ```
 
@@ -297,12 +333,14 @@ interface LinkProps {
 **Purpose**: Enhanced images with captions and optimization
 
 **Markdown Syntax**:
+
 ```md
 ![Alt text](image.png)
 ![Alt text](image.png "Image title")
 ```
 
 **Features**:
+
 - Responsive sizing
 - Optional caption from title
 - Lazy loading
@@ -311,14 +349,15 @@ interface LinkProps {
 - Shadow
 
 **Props**:
+
 ```typescript
 interface ImageProps {
-  src: string
-  alt: string
-  title?: string
-  className?: string
-  width?: number
-  height?: number
+  src: string;
+  alt: string;
+  title?: string;
+  className?: string;
+  width?: number;
+  height?: number;
 }
 ```
 
@@ -331,6 +370,7 @@ interface ImageProps {
 **Purpose**: Hard line breaks within paragraphs
 
 **Markdown Syntax**:
+
 ```md
 Line one
 Line two (two spaces at end of line one)
@@ -339,6 +379,7 @@ Or use <br /> tag directly
 ```
 
 **Features**:
+
 - Standard HTML br element
 - Preserved in MDX
 
@@ -351,6 +392,7 @@ Or use <br /> tag directly
 **Purpose**: Display literal markdown characters
 
 **Markdown Syntax**:
+
 ```md
 \* Not italic \*
 \# Not a heading
@@ -363,6 +405,7 @@ Or use <br /> tag directly
 ## Implementation Priority
 
 ### Phase 1: Core Text Components (Implement First) ⭐⭐⭐
+
 1. ✅ **Headings** (H1-H6) - Auto-anchor links
 2. **Paragraphs** (P) - Basic text
 3. **Emphasis** (Strong, Em) - Bold and italic
@@ -371,6 +414,7 @@ Or use <br /> tag directly
 **Why**: Most frequently used in any documentation
 
 ### Phase 2: Structure Components (Second) ⭐⭐⭐
+
 5. **Blockquotes** - Quoted sections
 6. **Lists** (Ul, Ol, Li) - Bulleted and numbered
 7. **Links** (A) - Enhanced hyperlinks
@@ -378,6 +422,7 @@ Or use <br /> tag directly
 **Why**: Essential for document structure
 
 ### Phase 3: Visual Components (Third) ⭐⭐
+
 8. **Horizontal Rules** (Hr) - Section dividers
 9. **Images** (Img) - Enhanced images
 10. **Code Blocks** (Pre) - Integration with existing CodeBlock
@@ -389,6 +434,7 @@ Or use <br /> tag directly
 ## File Structure
 
 All components will be created in:
+
 ```
 components/mdx/
 ├── headings.tsx         (H1, H2, H3, H4, H5, H6) ✅ CREATED
@@ -404,6 +450,7 @@ components/mdx/
 ```
 
 Registry files:
+
 ```
 registry/mdx/
 ├── headings.json        ✅ CREATED
@@ -426,20 +473,25 @@ Once all components are created, the MDX components object will look like:
 
 ```typescript
 // apps/www/components/mdx-components.tsx
-import { H1, H2, H3, H4, H5, H6 } from '@/components/mdx/headings'
-import { P } from '@/components/mdx/paragraph'
-import { Strong, Em } from '@/components/mdx/emphasis'
-import { Code } from '@/components/mdx/inline-code'
-import { Blockquote } from '@/components/mdx/blockquote'
-import { Ul, Ol, Li } from '@/components/mdx/lists'
-import { A } from '@/components/mdx/link'
-import { Hr } from '@/components/mdx/horizontal-rule'
-import { Img } from '@/components/mdx/image'
-import { Pre } from '@/components/mdx/pre'
-import { Callout } from '@/components/mdx/callout'
-import { CodeBlock } from '@/components/mdx/code-block'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/mdx/tabs'
-import { Steps, Step } from '@/components/mdx/steps'
+import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx/headings";
+import { P } from "@/components/mdx/paragraph";
+import { Strong, Em } from "@/components/mdx/emphasis";
+import { Code } from "@/components/mdx/inline-code";
+import { Blockquote } from "@/components/mdx/blockquote";
+import { Ul, Ol, Li } from "@/components/mdx/lists";
+import { A } from "@/components/mdx/link";
+import { Hr } from "@/components/mdx/horizontal-rule";
+import { Img } from "@/components/mdx/image";
+import { Pre } from "@/components/mdx/pre";
+import { Callout } from "@/components/mdx/callout";
+import { CodeBlock } from "@/components/mdx/code-block";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/mdx/tabs";
+import { Steps, Step } from "@/components/mdx/steps";
 
 export const mdxComponents = {
   // Headings
@@ -479,7 +531,7 @@ export const mdxComponents = {
   TabsContent,
   Steps,
   Step,
-}
+};
 ```
 
 ---

@@ -1,13 +1,13 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { focusRingInset, transitions } from "@/lib/primitives"
-import { Collapse } from "@/lib/motion"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { focusRingInset, transitions } from "@/lib/primitives";
+import { Collapse } from "@/lib/motion";
 
 export interface RevealProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Label text shown on the toggle button */
-  label?: string
+  label?: string;
   /** Start in the open state */
-  defaultOpen?: boolean
+  defaultOpen?: boolean;
 }
 
 /**
@@ -22,25 +22,37 @@ export interface RevealProps extends React.HTMLAttributes<HTMLDivElement> {
  * </Reveal>
  */
 export const Reveal = React.forwardRef<HTMLDivElement, RevealProps>(
-  ({ label = "Show answer", defaultOpen = false, children, className, ...props }, ref) => {
-    const [open, setOpen] = React.useState(defaultOpen)
+  (
+    {
+      label = "Show answer",
+      defaultOpen = false,
+      children,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const [open, setOpen] = React.useState(defaultOpen);
 
     return (
       <div
         ref={ref}
-        className={cn("my-4 overflow-hidden rounded-lg border border-border bg-card", className)}
+        className={cn(
+          "my-4 overflow-hidden rounded-lg border border-border bg-card",
+          className,
+        )}
         {...props}
       >
         <button
           type="button"
-          onClick={() => setOpen(v => !v)}
+          onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           className={cn(
             "flex w-full items-center justify-between px-4 py-3",
             "text-sm font-medium text-foreground",
             transitions.colors,
             "hover:bg-muted/50",
-            focusRingInset
+            focusRingInset,
           )}
         >
           <span>{label}</span>
@@ -58,7 +70,7 @@ export const Reveal = React.forwardRef<HTMLDivElement, RevealProps>(
             className={cn(
               "shrink-0 text-muted-foreground",
               transitions.transform,
-              open && "rotate-180"
+              open && "rotate-180",
             )}
           >
             <path d="m6 9 6 6 6-6" />
@@ -71,7 +83,7 @@ export const Reveal = React.forwardRef<HTMLDivElement, RevealProps>(
           </div>
         </Collapse>
       </div>
-    )
-  }
-)
-Reveal.displayName = "Reveal"
+    );
+  },
+);
+Reveal.displayName = "Reveal";

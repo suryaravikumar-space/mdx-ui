@@ -5,12 +5,8 @@
   "whenToUse": "Use H1 for page title, H2 for major sections, H3 for subsections. Maintain strict heading hierarchy.",
   "whenNotToUse": "Do not skip heading levels. Do not use headings for visual emphasis — use typography components.",
   "example": "<H2>Algorithm Analysis</H2>\n<H3>Time Complexity</H3>",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "heading.tsx",

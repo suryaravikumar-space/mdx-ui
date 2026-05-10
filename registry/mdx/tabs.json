@@ -6,9 +6,7 @@
   "whenNotToUse": "Do not use for sequential content — use Steps. Do not use more than five tabs.",
   "example": "<Tabs>\n  <TabsList>\n    <TabsTrigger value=\"ts\">TypeScript</TabsTrigger>\n    <TabsTrigger value=\"js\">JavaScript</TabsTrigger>\n  </TabsList>\n  <TabsContent value=\"ts\">const x: number = 1</TabsContent>\n  <TabsContent value=\"js\">const x = 1</TabsContent>\n</Tabs>",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "tabs.tsx",

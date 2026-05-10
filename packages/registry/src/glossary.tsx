@@ -1,23 +1,25 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
-import { focusRing, popoverSurface } from "@/lib/primitives"
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { focusRing, popoverSurface } from "@/lib/primitives";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface GlossaryEntry {
   /** Short display label for the term (shown as popover heading) */
-  label: string
+  label: string;
   /** Full definition rendered in the popover */
-  definition: string
+  definition: string;
 }
 
 interface GlossaryContextValue {
-  terms: Record<string, GlossaryEntry>
+  terms: Record<string, GlossaryEntry>;
 }
 
 // ─── Context ─────────────────────────────────────────────────────────────────
 
-const GlossaryContext = React.createContext<GlossaryContextValue>({ terms: {} })
+const GlossaryContext = React.createContext<GlossaryContextValue>({
+  terms: {},
+});
 
 // ─── GlossaryProvider ────────────────────────────────────────────────────────
 
@@ -27,8 +29,8 @@ export interface GlossaryProviderProps {
    * @example
    * terms={{ bfs: { label: "BFS", definition: "Breadth-First Search..." } }}
    */
-  terms: Record<string, GlossaryEntry>
-  children: React.ReactNode
+  terms: Record<string, GlossaryEntry>;
+  children: React.ReactNode;
 }
 
 /**
@@ -45,17 +47,17 @@ export function GlossaryProvider({ terms, children }: GlossaryProviderProps) {
     <GlossaryContext.Provider value={{ terms }}>
       {children}
     </GlossaryContext.Provider>
-  )
+  );
 }
 
 // ─── Term ─────────────────────────────────────────────────────────────────────
 
 export interface TermProps {
   /** Must match a key in the nearest GlossaryProvider's terms map */
-  id: string
+  id: string;
   /** Override display text; defaults to entry.label */
-  children?: React.ReactNode
-  className?: string
+  children?: React.ReactNode;
+  className?: string;
 }
 
 /**
@@ -69,28 +71,31 @@ export interface TermProps {
  * <Term id="bfs" /> is used for level-order traversal.
  */
 export function Term({ id, children, className }: TermProps) {
-  const { terms } = React.useContext(GlossaryContext)
-  const entry = terms[id]
-  const [open, setOpen] = React.useState(false)
-  const ref = React.useRef<HTMLSpanElement>(null)
-  const popoverId = React.useId()
+  const { terms } = React.useContext(GlossaryContext);
+  const entry = terms[id];
+  const [open, setOpen] = React.useState(false);
+  const ref = React.useRef<HTMLSpanElement>(null);
+  const popoverId = React.useId();
 
   React.useEffect(() => {
-    if (!open) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false) }
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
     const onDown = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
-    }
-    document.addEventListener("keydown", onKey)
-    document.addEventListener("mousedown", onDown)
+      if (ref.current && !ref.current.contains(e.target as Node))
+        setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onDown);
     return () => {
-      document.removeEventListener("keydown", onKey)
-      document.removeEventListener("mousedown", onDown)
-    }
-  }, [open])
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onDown);
+    };
+  }, [open]);
 
   // Graceful degradation when term id isn't in the provider
-  if (!entry) return <>{children ?? id}</>
+  if (!entry) return <>{children ?? id}</>;
 
   return (
     <span ref={ref} className={cn("relative inline-block", className)}>
@@ -98,13 +103,13 @@ export function Term({ id, children, className }: TermProps) {
         type="button"
         aria-expanded={open}
         aria-describedby={open ? popoverId : undefined}
-        onClick={() => setOpen(v => !v)}
+        onClick={() => setOpen((v) => !v)}
         className={cn(
           "inline cursor-pointer font-medium",
           "border-b border-dotted border-foreground/50",
           "hover:border-foreground",
           "focus-visible:rounded-sm",
-          focusRing
+          focusRing,
         )}
       >
         {children ?? entry.label}
@@ -117,7 +122,7 @@ export function Term({ id, children, className }: TermProps) {
           className={cn(
             "absolute bottom-full left-0 z-50 mb-2",
             "w-72 px-3 py-2.5 text-sm",
-            popoverSurface
+            popoverSurface,
           )}
         >
           <span className="mb-1 block font-semibold text-foreground">
@@ -133,6 +138,6 @@ export function Term({ id, children, className }: TermProps) {
         </span>
       )}
     </span>
-  )
+  );
 }
-Term.displayName = "Term"
+Term.displayName = "Term";

@@ -1,9 +1,11 @@
-import { jest } from "@jest/globals"
+import { jest } from "@jest/globals";
 
 const katex = {
-  renderToString: jest.fn((expression: string, options?: { displayMode?: boolean }) => {
-    return `<span class="katex${options?.displayMode ? "-display" : ""}">${expression}</span>`
-  }),
-}
+  renderToString: jest.fn(
+    (expression: string, options?: { displayMode?: boolean }) => {
+      return `<span class="katex${options?.displayMode ? "-display" : ""}">${expression}</span>`;
+    },
+  ),
+};
 
-export default katex
+export default katex;

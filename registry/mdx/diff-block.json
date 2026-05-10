@@ -5,13 +5,8 @@
   "whenToUse": "Use to show what changed in code — before/after a refactor, migration steps, or patch explanations.",
   "whenNotToUse": "Do not use to show two alternatives side by side — use CodeGroup. Not for prose changes.",
   "example": "<DiffBlock>\n  {`- const result = items.filter(x => x.active)\n+ const result = items.filter(({ active }) => active)`}\n</DiffBlock>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "diff-block.tsx",

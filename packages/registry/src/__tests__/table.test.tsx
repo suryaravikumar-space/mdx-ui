@@ -1,6 +1,6 @@
-import React from "react"
-import { render, screen } from "@testing-library/react"
-import "@testing-library/jest-dom"
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import {
   Table,
   TableHeader,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableCell,
   TableCaption,
-} from "../table"
+} from "../table";
 
 function FullTable() {
   return (
@@ -39,55 +39,59 @@ function FullTable() {
         </TableRow>
       </TableFooter>
     </Table>
-  )
+  );
 }
 
 describe("Table", () => {
   it("renders all cell content", () => {
-    render(<FullTable />)
-    expect(screen.getByText("Name")).toBeInTheDocument()
-    expect(screen.getByText("Role")).toBeInTheDocument()
-    expect(screen.getByText("Alice")).toBeInTheDocument()
-    expect(screen.getByText("Bob")).toBeInTheDocument()
-    expect(screen.getByText("Admin")).toBeInTheDocument()
-    expect(screen.getByText("Editor")).toBeInTheDocument()
-  })
+    render(<FullTable />);
+    expect(screen.getByText("Name")).toBeInTheDocument();
+    expect(screen.getByText("Role")).toBeInTheDocument();
+    expect(screen.getByText("Alice")).toBeInTheDocument();
+    expect(screen.getByText("Bob")).toBeInTheDocument();
+    expect(screen.getByText("Admin")).toBeInTheDocument();
+    expect(screen.getByText("Editor")).toBeInTheDocument();
+  });
 
   it("renders caption", () => {
-    render(<FullTable />)
-    expect(screen.getByText("A list of users")).toBeInTheDocument()
-  })
+    render(<FullTable />);
+    expect(screen.getByText("A list of users")).toBeInTheDocument();
+  });
 
   it("renders footer content", () => {
-    render(<FullTable />)
-    expect(screen.getByText("Total")).toBeInTheDocument()
-    expect(screen.getByText("2")).toBeInTheDocument()
-  })
+    render(<FullTable />);
+    expect(screen.getByText("Total")).toBeInTheDocument();
+    expect(screen.getByText("2")).toBeInTheDocument();
+  });
 
   it("renders a table element", () => {
-    const { container } = render(<FullTable />)
-    expect(container.querySelector("table")).toBeInTheDocument()
-  })
+    const { container } = render(<FullTable />);
+    expect(container.querySelector("table")).toBeInTheDocument();
+  });
 
   it("wraps table in a scrollable div", () => {
-    const { container } = render(<FullTable />)
-    const wrapper = container.firstChild as HTMLElement
-    expect(wrapper.nodeName).toBe("DIV")
-    expect(wrapper.querySelector("table")).toBeInTheDocument()
-  })
+    const { container } = render(<FullTable />);
+    const wrapper = container.firstChild as HTMLElement;
+    expect(wrapper.nodeName).toBe("DIV");
+    expect(wrapper.querySelector("table")).toBeInTheDocument();
+  });
 
   it("TableHead renders as th", () => {
-    render(<FullTable />)
-    const headers = screen.getAllByRole("columnheader")
-    expect(headers).toHaveLength(2)
-  })
+    render(<FullTable />);
+    const headers = screen.getAllByRole("columnheader");
+    expect(headers).toHaveLength(2);
+  });
 
   it("applies custom className to Table", () => {
     const { container } = render(
       <Table className="compact-table">
-        <TableBody><TableRow><TableCell>x</TableCell></TableRow></TableBody>
-      </Table>
-    )
-    expect(container.querySelector("table")).toHaveClass("compact-table")
-  })
-})
+        <TableBody>
+          <TableRow>
+            <TableCell>x</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>,
+    );
+    expect(container.querySelector("table")).toHaveClass("compact-table");
+  });
+});

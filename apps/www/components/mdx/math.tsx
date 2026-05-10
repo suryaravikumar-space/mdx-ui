@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react";
 import katex from "katex";
 import { cn } from "@/lib/utils";

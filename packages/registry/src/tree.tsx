@@ -6,7 +6,7 @@ interface TreeProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 interface TreeItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * The name of the file or folder
    */

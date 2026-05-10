@@ -95,7 +95,7 @@ describe("writeComponent", () => {
 
   it("writes file content as utf-8", async () => {
     await writeComponent(baseComponent, baseConfig);
-    const [, , encoding] = mockWriteFile.mock.calls[0] as [
+    const [, , encoding] = mockWriteFile.mock.calls[0] as unknown as [
       string,
       string,
       string,

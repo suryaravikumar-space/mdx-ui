@@ -1,4 +1,4 @@
-import { FileTree } from "@/components/mdx/file-tree"
+import { FileTree } from "@/components/mdx/file-tree";
 
 export default function FileTreeDefault() {
   return (
@@ -14,5 +14,5 @@ components*/
   mdx-components.tsx
 public/
   favicon.ico`}</FileTree>
-  )
+  );
 }

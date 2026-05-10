@@ -16,11 +16,11 @@ npx @ravikumarsurya/mdx-ui add annotation
 ## Usage
 
 ```tsx
-import { Annotation } from "@/components/mdx/annotation"
+import { Annotation } from "@/components/mdx/annotation";
 
 <Annotation note="Quadratic time: for each element we scan all remaining elements.">
   O(n²)
-</Annotation>
+</Annotation>;
 ```
 
 ## Examples
@@ -51,8 +51,8 @@ The chip uses <Annotation note="One-Time Programmable: fuse bits that can be wri
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `note` | `string` | — | The explanation shown in the popover (required) |
-| `children` | `React.ReactNode` | — | The inline text to annotate (required) |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type              | Default | Description                                     |
+| ----------- | ----------------- | ------- | ----------------------------------------------- |
+| `note`      | `string`          | —       | The explanation shown in the popover (required) |
+| `children`  | `React.ReactNode` | —       | The inline text to annotate (required)          |
+| `className` | `string`          | —       | Additional CSS classes                          |

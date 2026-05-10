@@ -1,4 +1,4 @@
-import { H2, H3, H4, H5 } from "@/components/mdx/heading"
+import { H2, H3, H4, H5 } from "@/components/mdx/heading";
 
 export default function HeadingDefault() {
   return (
@@ -8,5 +8,5 @@ export default function HeadingDefault() {
       <H4>Heading level 4</H4>
       <H5>Heading level 5</H5>
     </div>
-  )
+  );
 }

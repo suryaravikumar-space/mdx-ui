@@ -1,5 +1,5 @@
-import { Headings } from "@/components/mdx/headings"
+import { Headings } from "@/components/mdx/headings";
 
 export default function HeadingsDefault() {
-  return <Headings />
+  return <Headings />;
 }

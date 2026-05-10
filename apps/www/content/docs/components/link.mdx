@@ -40,7 +40,9 @@ External links get `target="_blank"`, `rel="noopener noreferrer"`, and the exter
 ### Force external / internal
 
 ```mdx
-<Link href="/api/proxy" external>Opens in new tab</Link>
+<Link href="/api/proxy" external>
+  Opens in new tab
+</Link>
 
 <Link href="https://cdn.example.com/file.pdf" external={false}>
   Same tab
@@ -51,20 +53,20 @@ External links get `target="_blank"`, `rel="noopener noreferrer"`, and the exter
 
 A URL is treated as external if it starts with `http://` or `https://`. Everything else — relative paths (`/docs`), hash links (`#section`), mailto, etc. — is treated as internal.
 
-| URL | Detected as |
-| --- | --- |
-| `https://example.com` | External — icon + new tab |
-| `http://example.com` | External — icon + new tab |
-| `/docs/intro` | Internal |
-| `#section` | Internal |
-| `mailto:hi@example.com` | Internal |
+| URL                     | Detected as               |
+| ----------------------- | ------------------------- |
+| `https://example.com`   | External — icon + new tab |
+| `http://example.com`    | External — icon + new tab |
+| `/docs/intro`           | Internal                  |
+| `#section`              | Internal                  |
+| `mailto:hi@example.com` | Internal                  |
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `href` | `string` | `""` | Link destination |
-| `external` | `boolean` | auto-detected | Override external detection |
-| `target` | `string` | `"_blank"` for external | HTML target attribute |
-| `rel` | `string` | `"noopener noreferrer"` for external | HTML rel attribute |
-| `className` | `string` | — | Extra classes |
+| Prop        | Type      | Default                              | Description                 |
+| ----------- | --------- | ------------------------------------ | --------------------------- |
+| `href`      | `string`  | `""`                                 | Link destination            |
+| `external`  | `boolean` | auto-detected                        | Override external detection |
+| `target`    | `string`  | `"_blank"` for external              | HTML target attribute       |
+| `rel`       | `string`  | `"noopener noreferrer"` for external | HTML rel attribute          |
+| `className` | `string`  | —                                    | Extra classes               |

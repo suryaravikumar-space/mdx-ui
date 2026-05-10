@@ -23,15 +23,8 @@ Wrap multiple fenced code blocks inside `<CodeGroup>`. Add a `title` annotation 
 
 ````mdx
 <CodeGroup>
-  ```bash title="npm"
-  npm install my-package
-  ```
-  ```bash title="pnpm"
-  pnpm add my-package
-  ```
-  ```bash title="yarn"
-  yarn add my-package
-  ```
+  ```bash title="npm" npm install my-package ``` ```bash title="pnpm" pnpm add
+  my-package ``` ```bash title="yarn" yarn add my-package ```
 </CodeGroup>
 ````
 
@@ -42,18 +35,9 @@ Wrap multiple fenced code blocks inside `<CodeGroup>`. Add a `title` annotation 
 ### Package manager install
 
 <CodeGroup>
-  ```bash title="npm"
-  npm install my-package
-  ```
-  ```bash title="pnpm"
-  pnpm add my-package
-  ```
-  ```bash title="yarn"
-  yarn add my-package
-  ```
-  ```bash title="bun"
-  bun add my-package
-  ```
+  ```bash title="npm" npm install my-package ``` ```bash title="pnpm" pnpm add
+  my-package ``` ```bash title="yarn" yarn add my-package ``` ```bash
+  title="bun" bun add my-package ```
 </CodeGroup>
 
 ### Multiple languages
@@ -81,17 +65,19 @@ Wrap multiple fenced code blocks inside `<CodeGroup>`. Add a `title` annotation 
   ```ts title="next.config.ts"
   import createMDX from "@next/mdx"
 
-  const withMDX = createMDX({})
-  export default withMDX({ pageExtensions: ["mdx", "tsx"] })
-  ```
-  ```ts title="astro.config.ts"
-  import { defineConfig } from "astro/config"
-  import mdx from "@astrojs/mdx"
+const withMDX = createMDX({})
+export default withMDX({ pageExtensions: ["mdx", "tsx"] })
 
-  export default defineConfig({
-    integrations: [mdx()],
-  })
-  ```
+````
+```ts title="astro.config.ts"
+import { defineConfig } from "astro/config"
+import mdx from "@astrojs/mdx"
+
+export default defineConfig({
+  integrations: [mdx()],
+})
+````
+
 </CodeGroup>
 
 ## How it works
@@ -102,15 +88,15 @@ Without rehype-pretty-code, code fences still work — tabs fall back to the lan
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `children` | `ReactNode` | — | Code block children (fenced code blocks) |
-| `className` | `string` | — | Extra classes on the outer `<figure>` |
+| Prop        | Type        | Default | Description                              |
+| ----------- | ----------- | ------- | ---------------------------------------- |
+| `children`  | `ReactNode` | —       | Code block children (fenced code blocks) |
+| `className` | `string`    | —       | Extra classes on the outer `<figure>`    |
 
 ## Tab labels
 
-| Source | Example | Label shown |
-| --- | --- | --- |
-| ` ```bash title="npm" ` | title annotation | `npm` |
-| ` ```typescript ` | language (no title) | `typescript` |
-| ` ``` ` | neither | `Code` |
+| Source                  | Example             | Label shown  |
+| ----------------------- | ------------------- | ------------ |
+| ` ```bash title="npm" ` | title annotation    | `npm`        |
+| ` ```typescript `       | language (no title) | `typescript` |
+| ` ``` `                 | neither             | `Code`       |

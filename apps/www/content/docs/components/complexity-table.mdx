@@ -16,14 +16,19 @@ npx @ravikumarsurya/mdx-ui add complexity-table
 ## Usage
 
 ```tsx
-import { ComplexityTable } from "@/components/mdx/complexity-table"
+import { ComplexityTable } from "@/components/mdx/complexity-table";
 
 <ComplexityTable
   rows={[
     { operation: "Search", best: "O(1)", average: "O(log n)", worst: "O(n)" },
-    { operation: "Insert", best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+    {
+      operation: "Insert",
+      best: "O(log n)",
+      average: "O(log n)",
+      worst: "O(n)",
+    },
   ]}
-/>
+/>;
 ```
 
 ## Examples
@@ -36,8 +41,18 @@ import { ComplexityTable } from "@/components/mdx/complexity-table"
 <ComplexityTable
   rows={[
     { operation: "Search", best: "O(1)", average: "O(log n)", worst: "O(n)" },
-    { operation: "Insert", best: "O(log n)", average: "O(log n)", worst: "O(n)" },
-    { operation: "Delete", best: "O(log n)", average: "O(log n)", worst: "O(n)" },
+    {
+      operation: "Insert",
+      best: "O(log n)",
+      average: "O(log n)",
+      worst: "O(n)",
+    },
+    {
+      operation: "Delete",
+      best: "O(log n)",
+      average: "O(log n)",
+      worst: "O(n)",
+    },
   ]}
   caption="Binary Search Tree — unbalanced worst case"
 />
@@ -48,9 +63,27 @@ import { ComplexityTable } from "@/components/mdx/complexity-table"
 ```tsx
 <ComplexityTable
   rows={[
-    { operation: "Merge Sort", best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)", space: "O(n)" },
-    { operation: "Quick Sort", best: "O(n log n)", average: "O(n log n)", worst: "O(n²)",      space: "O(log n)" },
-    { operation: "Heap Sort",  best: "O(n log n)", average: "O(n log n)", worst: "O(n log n)", space: "O(1)" },
+    {
+      operation: "Merge Sort",
+      best: "O(n log n)",
+      average: "O(n log n)",
+      worst: "O(n log n)",
+      space: "O(n)",
+    },
+    {
+      operation: "Quick Sort",
+      best: "O(n log n)",
+      average: "O(n log n)",
+      worst: "O(n²)",
+      space: "O(log n)",
+    },
+    {
+      operation: "Heap Sort",
+      best: "O(n log n)",
+      average: "O(n log n)",
+      worst: "O(n log n)",
+      space: "O(1)",
+    },
   ]}
 />
 ```
@@ -72,18 +105,18 @@ Only columns that have data in at least one row are rendered. Missing values sho
 
 ### ComplexityTable
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `rows` | `ComplexityRow[]` | — | Array of operation rows (required) |
-| `caption` | `string` | — | Optional caption below the table |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type              | Default | Description                        |
+| ----------- | ----------------- | ------- | ---------------------------------- |
+| `rows`      | `ComplexityRow[]` | —       | Array of operation rows (required) |
+| `caption`   | `string`          | —       | Optional caption below the table   |
+| `className` | `string`          | —       | Additional CSS classes             |
 
 ### ComplexityRow
 
-| Field | Type | Description |
-| --- | --- | --- |
+| Field       | Type     | Description               |
+| ----------- | -------- | ------------------------- |
 | `operation` | `string` | Operation name (required) |
-| `best` | `string` | Best-case complexity |
-| `average` | `string` | Average-case complexity |
-| `worst` | `string` | Worst-case complexity |
-| `space` | `string` | Space complexity |
+| `best`      | `string` | Best-case complexity      |
+| `average`   | `string` | Average-case complexity   |
+| `worst`     | `string` | Worst-case complexity     |
+| `space`     | `string` | Space complexity          |

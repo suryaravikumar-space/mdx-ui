@@ -1,11 +1,10 @@
-import { Link } from "@/components/mdx/link"
+import { Link } from "@/components/mdx/link";
 
 export default function LinkDefault() {
   return (
     <div className="space-y-3 text-sm leading-7">
       <p>
-        Read the{" "}
-        <Link href="/docs/getting-started">getting started guide</Link>{" "}
+        Read the <Link href="/docs/getting-started">getting started guide</Link>{" "}
         before installing components.
       </p>
       <p>
@@ -16,5 +15,5 @@ export default function LinkDefault() {
         .
       </p>
     </div>
-  )
+  );
 }

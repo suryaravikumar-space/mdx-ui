@@ -23,10 +23,10 @@ Just pass `headers` and `rows` as plain arrays. No JavaScript objects needed.
 <DataTable
   headers={["Prop", "Type", "Required", "Description"]}
   rows={[
-    ["src",    "string", "Yes", "Image URL or path"],
-    ["alt",    "string", "Yes", "Alt text"],
-    ["width",  "number", "No",  "Width in px"],
-    ["height", "number", "No",  "Height in px"],
+    ["src", "string", "Yes", "Image URL or path"],
+    ["alt", "string", "Yes", "Alt text"],
+    ["width", "number", "No", "Width in px"],
+    ["height", "number", "No", "Height in px"],
   ]}
 />
 ```
@@ -34,10 +34,10 @@ Just pass `headers` and `rows` as plain arrays. No JavaScript objects needed.
 <DataTable
   headers={["Prop", "Type", "Required", "Description"]}
   rows={[
-    ["src",    "string", "Yes", "Image URL or path"],
-    ["alt",    "string", "Yes", "Alt text"],
-    ["width",  "number", "No",  "Width in px"],
-    ["height", "number", "No",  "Height in px"],
+    ["src", "string", "Yes", "Image URL or path"],
+    ["alt", "string", "Yes", "Alt text"],
+    ["width", "number", "No", "Width in px"],
+    ["height", "number", "No", "Height in px"],
   ]}
 />
 
@@ -46,30 +46,40 @@ Just pass `headers` and `rows` as plain arrays. No JavaScript objects needed.
 Use when data comes from a file, fetch, or database.
 
 ```mdx
-import data from "./props.json"
+import data from "./props.json";
 
 export const columns = [
-  { key: "prop",     header: "Prop",     sortable: true },
-  { key: "type",     header: "Type" },
+  { key: "prop", header: "Prop", sortable: true },
+  { key: "type", header: "Type" },
   { key: "required", header: "Required", sortable: true },
-]
+];
 
 <DataTable columns={columns} data={data} searchable pagination />
 ```
 
 export const progColumns = [
-  { key: "prop",     header: "Prop",     sortable: true },
-  { key: "type",     header: "Type" },
+  { key: "prop", header: "Prop", sortable: true },
+  { key: "type", header: "Type" },
   { key: "required", header: "Required", sortable: true },
   { key: "description", header: "Description" },
-]
+];
 
 export const progData = [
-  { prop: "src",    type: "string",  required: "Yes", description: "Image URL or path" },
-  { prop: "alt",    type: "string",  required: "Yes", description: "Alt text" },
-  { prop: "width",  type: "number",  required: "No",  description: "Width in px" },
-  { prop: "height", type: "number",  required: "No",  description: "Height in px" },
-]
+  {
+    prop: "src",
+    type: "string",
+    required: "Yes",
+    description: "Image URL or path",
+  },
+  { prop: "alt", type: "string", required: "Yes", description: "Alt text" },
+  { prop: "width", type: "number", required: "No", description: "Width in px" },
+  {
+    prop: "height",
+    type: "number",
+    required: "No",
+    description: "Height in px",
+  },
+];
 
 <DataTable columns={progColumns} data={progData} searchable pagination />
 
@@ -84,14 +94,14 @@ Add `searchable` to show a search input. Add `sortable` to enable click-to-sort 
 <DataTable
   headers={["Component", "Version", "Size (KB)", "Released"]}
   rows={[
-    ["Accordion",  "0.0.1",  3.2,  "2024-11-01"],
-    ["Mermaid",    "0.0.17", 8.7,  "2025-01-10"],
-    ["DataTable",  "0.0.29", 5.1,  "2025-05-08"],
-    ["Changelog",  "0.0.26", 2.9,  "2025-04-22"],
-    ["Terminal",   "0.0.26", 3.4,  "2025-04-22"],
-    ["DiffBlock",  "0.0.26", 2.1,  "2025-04-22"],
-    ["Badge",      "0.0.1",  1.4,  "2024-11-01"],
-    ["Callout",    "0.0.1",  2.8,  "2024-11-01"],
+    ["Accordion", "0.0.1", 3.2, "2024-11-01"],
+    ["Mermaid", "0.0.17", 8.7, "2025-01-10"],
+    ["DataTable", "0.0.29", 5.1, "2025-05-08"],
+    ["Changelog", "0.0.26", 2.9, "2025-04-22"],
+    ["Terminal", "0.0.26", 3.4, "2025-04-22"],
+    ["DiffBlock", "0.0.26", 2.1, "2025-04-22"],
+    ["Badge", "0.0.1", 1.4, "2024-11-01"],
+    ["Callout", "0.0.1", 2.8, "2024-11-01"],
   ]}
   sortable
   searchable
@@ -103,14 +113,14 @@ Add `searchable` to show a search input. Add `sortable` to enable click-to-sort 
 <DataTable
   headers={["Component", "Version", "Size (KB)", "Released"]}
   rows={[
-    ["Accordion",  "0.0.1",  3.2,  "2024-11-01"],
-    ["Mermaid",    "0.0.17", 8.7,  "2025-01-10"],
-    ["DataTable",  "0.0.29", 5.1,  "2025-05-08"],
-    ["Changelog",  "0.0.26", 2.9,  "2025-04-22"],
-    ["Terminal",   "0.0.26", 3.4,  "2025-04-22"],
-    ["DiffBlock",  "0.0.26", 2.1,  "2025-04-22"],
-    ["Badge",      "0.0.1",  1.4,  "2024-11-01"],
-    ["Callout",    "0.0.1",  2.8,  "2024-11-01"],
+    ["Accordion", "0.0.1", 3.2, "2024-11-01"],
+    ["Mermaid", "0.0.17", 8.7, "2025-01-10"],
+    ["DataTable", "0.0.29", 5.1, "2025-05-08"],
+    ["Changelog", "0.0.26", 2.9, "2025-04-22"],
+    ["Terminal", "0.0.26", 3.4, "2025-04-22"],
+    ["DiffBlock", "0.0.26", 2.1, "2025-04-22"],
+    ["Badge", "0.0.1", 1.4, "2024-11-01"],
+    ["Callout", "0.0.1", 2.8, "2024-11-01"],
   ]}
   sortable
   searchable
@@ -128,9 +138,9 @@ Add `searchable` to show a search input. Add `sortable` to enable click-to-sort 
     { label: "Published", sortType: "date" },
   ]}
   rows={[
-    ["Alpha", "9.99",  "2024-01-15"],
-    ["Beta",  "19.99", "2023-06-01"],
-    ["Gamma", "4.99",  "2025-03-22"],
+    ["Alpha", "9.99", "2024-01-15"],
+    ["Beta", "19.99", "2023-06-01"],
+    ["Gamma", "4.99", "2025-03-22"],
   ]}
   sortable
 />
@@ -140,21 +150,21 @@ Add `searchable` to show a search input. Add `sortable` to enable click-to-sort 
 
 ### DataTable
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `headers` | `string[] \| Header[]` | — | Column headers for the simple API |
-| `rows` | `Array<Array<string \| number>>` | — | Row data for the simple API |
-| `columns` | `DataTableColumn[]` | — | Column definitions for the programmatic API |
-| `data` | `T[]` | — | Row objects for the programmatic API |
-| `searchable` | `boolean` | `false` | Show a search input above the table |
-| `searchPlaceholder` | `string` | `"Search…"` | Placeholder for the search input |
-| `sortable` | `boolean` | `false` | Enable sorting on all columns (simple API). For programmatic API, set per column |
-| `pagination` | `boolean` | `false` | Enable pagination with rows-per-page selector |
-| `defaultPageSize` | `number` | `10` | Initial rows per page |
-| `pageSizeOptions` | `number[]` | `[10,25,50,100]` | Rows-per-page dropdown options |
-| `caption` | `string` | — | Caption below the table |
-| `emptyText` | `string` | `"No data available."` | Text shown when no rows match |
-| `className` | `string` | — | Extra classes on the outer wrapper |
+| Prop                | Type                             | Default                | Description                                                                      |
+| ------------------- | -------------------------------- | ---------------------- | -------------------------------------------------------------------------------- |
+| `headers`           | `string[] \| Header[]`           | —                      | Column headers for the simple API                                                |
+| `rows`              | `Array<Array<string \| number>>` | —                      | Row data for the simple API                                                      |
+| `columns`           | `DataTableColumn[]`              | —                      | Column definitions for the programmatic API                                      |
+| `data`              | `T[]`                            | —                      | Row objects for the programmatic API                                             |
+| `searchable`        | `boolean`                        | `false`                | Show a search input above the table                                              |
+| `searchPlaceholder` | `string`                         | `"Search…"`            | Placeholder for the search input                                                 |
+| `sortable`          | `boolean`                        | `false`                | Enable sorting on all columns (simple API). For programmatic API, set per column |
+| `pagination`        | `boolean`                        | `false`                | Enable pagination with rows-per-page selector                                    |
+| `defaultPageSize`   | `number`                         | `10`                   | Initial rows per page                                                            |
+| `pageSizeOptions`   | `number[]`                       | `[10,25,50,100]`       | Rows-per-page dropdown options                                                   |
+| `caption`           | `string`                         | —                      | Caption below the table                                                          |
+| `emptyText`         | `string`                         | `"No data available."` | Text shown when no rows match                                                    |
+| `className`         | `string`                         | —                      | Extra classes on the outer wrapper                                               |
 
 ### Header object (simple API)
 
@@ -162,17 +172,17 @@ Instead of a plain string, a header can be an object to set sort type explicitly
 
 ```mdx
 { label: "Price", sortType: "number" }
-{ label: "Date",  sortType: "date" }
+{ label: "Date", sortType: "date" }
 ```
 
 ### DataTableColumn (programmatic API)
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `key` | `string` | — | Key read from each row object (required) |
-| `header` | `string` | — | Column header label (required) |
-| `sortable` | `boolean` | `false` | Enable sort on this column |
-| `sortType` | `"string" \| "number" \| "date"` | auto | Sort strategy; auto-detected if omitted |
-| `searchable` | `boolean` | `true` | Include in search |
-| `render` | `(value, row, index) => ReactNode` | — | Custom cell renderer |
-| `className` | `string` | — | Extra classes on `<th>` and `<td>` |
+| Prop         | Type                               | Default | Description                              |
+| ------------ | ---------------------------------- | ------- | ---------------------------------------- |
+| `key`        | `string`                           | —       | Key read from each row object (required) |
+| `header`     | `string`                           | —       | Column header label (required)           |
+| `sortable`   | `boolean`                          | `false` | Enable sort on this column               |
+| `sortType`   | `"string" \| "number" \| "date"`   | auto    | Sort strategy; auto-detected if omitted  |
+| `searchable` | `boolean`                          | `true`  | Include in search                        |
+| `render`     | `(value, row, index) => ReactNode` | —       | Custom cell renderer                     |
+| `className`  | `string`                           | —       | Extra classes on `<th>` and `<td>`       |

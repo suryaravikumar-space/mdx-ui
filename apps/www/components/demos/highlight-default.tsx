@@ -1,4 +1,4 @@
-import { Highlight } from "@/components/mdx/highlight"
+import { Highlight } from "@/components/mdx/highlight";
 
 export default function HighlightDefault() {
   return (
@@ -9,5 +9,5 @@ export default function HighlightDefault() {
       <Highlight color="pink">pink</Highlight> for warnings, and{" "}
       <Highlight color="purple">purple</Highlight> for special concepts.
     </p>
-  )
+  );
 }

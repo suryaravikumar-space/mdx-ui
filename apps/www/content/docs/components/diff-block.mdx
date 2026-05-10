@@ -17,7 +17,7 @@ Lines starting with `+` are additions (green), `-` are removals (red), and lines
 
 ```mdx
 <DiffBlock title="Rename prop">
-{`- function Button({ onClick }) {
+  {`- function Button({ onClick }) {
 + function Button({ onPress }) {
 -   return <button onClick={onClick}>Click</button>
 +   return <button onClick={onPress}>Click</button>
@@ -36,13 +36,14 @@ Lines starting with `+` are additions (green), `-` are removals (red), and lines
 + import { Callout } from "@/components/mdx/callout"
 
 - <Callout type="warning">
-+ <Callout variant="warning">`}
+
+* <Callout variant="warning">`}
 </DiffBlock>
 
 ### Config change
 
 <DiffBlock title="next.config.ts">
-{`  const config = {
+  {`  const config = {
 -   experimental: { appDir: true },
 +   // appDir is stable in Next.js 13.4+, no flag needed
   }`}
@@ -50,8 +51,8 @@ Lines starting with `+` are additions (green), `-` are removals (red), and lines
 
 ## Props
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `children` | `string` | Diff content — lines prefixed with `+`, `-`, or space |
-| `title` | `string` | Optional title bar above the diff |
-| `className` | `string` | Extra classes on the outer `<figure>` |
+| Prop        | Type     | Description                                           |
+| ----------- | -------- | ----------------------------------------------------- |
+| `children`  | `string` | Diff content — lines prefixed with `+`, `-`, or space |
+| `title`     | `string` | Optional title bar above the diff                     |
+| `className` | `string` | Extra classes on the outer `<figure>`                 |

@@ -1,4 +1,4 @@
-import { Kbd } from "@/components/mdx/kbd"
+import { Kbd } from "@/components/mdx/kbd";
 
 export default function KbdDefault() {
   return (
@@ -7,11 +7,12 @@ export default function KbdDefault() {
         Save file: <Kbd>Ctrl</Kbd> + <Kbd>S</Kbd>
       </p>
       <p>
-        Copy: <Kbd>⌘</Kbd> + <Kbd>C</Kbd> &nbsp; Paste: <Kbd>⌘</Kbd> + <Kbd>V</Kbd>
+        Copy: <Kbd>⌘</Kbd> + <Kbd>C</Kbd> &nbsp; Paste: <Kbd>⌘</Kbd> +{" "}
+        <Kbd>V</Kbd>
       </p>
       <p>
         Open command palette: <Kbd>⌘</Kbd> + <Kbd>Shift</Kbd> + <Kbd>P</Kbd>
       </p>
     </div>
-  )
+  );
 }

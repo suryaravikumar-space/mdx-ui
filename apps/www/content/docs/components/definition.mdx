@@ -16,12 +16,12 @@ npx @ravikumarsurya/mdx-ui add definition
 ## Usage
 
 ```tsx
-import { Definition } from "@/components/mdx/definition"
+import { Definition } from "@/components/mdx/definition";
 
 <Definition term="Memoization">
   An optimization technique that stores the results of expensive function calls
   and returns the cached result when the same inputs occur again.
-</Definition>
+</Definition>;
 ```
 
 ## Examples
@@ -32,7 +32,8 @@ import { Definition } from "@/components/mdx/definition"
 
 ```tsx
 <Definition term="Invariant">
-  A condition that holds true before and after every operation on a data structure.
+  A condition that holds true before and after every operation on a data
+  structure.
 </Definition>
 ```
 
@@ -40,8 +41,8 @@ import { Definition } from "@/components/mdx/definition"
 
 ```tsx
 <Definition term="OTP Fuse" source="Qualcomm QFPROM ICD">
-  One-Time Programmable fuse bits that store configuration and cryptographic keys.
-  Once written, the value cannot be changed.
+  One-Time Programmable fuse bits that store configuration and cryptographic
+  keys. Once written, the value cannot be changed.
 </Definition>
 ```
 
@@ -62,9 +63,9 @@ Use consecutive Definition blocks to build a mini-glossary inline.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `term` | `string` | — | The term being defined (required) |
-| `source` | `string` | — | Optional source or reference label |
-| `children` | `React.ReactNode` | — | The definition text (required) |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type              | Default | Description                        |
+| ----------- | ----------------- | ------- | ---------------------------------- |
+| `term`      | `string`          | —       | The term being defined (required)  |
+| `source`    | `string`          | —       | Optional source or reference label |
+| `children`  | `React.ReactNode` | —       | The definition text (required)     |
+| `className` | `string`          | —       | Additional CSS classes             |

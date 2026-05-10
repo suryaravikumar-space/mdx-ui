@@ -16,12 +16,12 @@ npx @ravikumarsurya/mdx-ui add invariant
 ## Usage
 
 ```tsx
-import { Invariant } from "@/components/mdx/invariant"
+import { Invariant } from "@/components/mdx/invariant";
 
 <Invariant>
-  After every insertion, the BST property holds: all left descendants are smaller
-  and all right descendants are larger than the current node.
-</Invariant>
+  After every insertion, the BST property holds: all left descendants are
+  smaller and all right descendants are larger than the current node.
+</Invariant>;
 ```
 
 ## Examples
@@ -32,7 +32,8 @@ import { Invariant } from "@/components/mdx/invariant"
 
 ```tsx
 <Invariant>
-  At the start of each iteration, arr[0..i-1] contains the i smallest elements in sorted order.
+  At the start of each iteration, arr[0..i-1] contains the i smallest elements
+  in sorted order.
 </Invariant>
 ```
 
@@ -51,15 +52,15 @@ The `complexity` prop adds a monospace badge — useful for tying an invariant t
 
 ```tsx
 <Invariant complexity="O(n log n)">
-  After merging two sorted halves, the combined array segment is sorted.
-  This invariant holds at every level of the recursion.
+  After merging two sorted halves, the combined array segment is sorted. This
+  invariant holds at every level of the recursion.
 </Invariant>
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `complexity` | `string` | — | Optional complexity label shown as a monospace badge (e.g. `"O(log n)"`) |
-| `children` | `React.ReactNode` | — | The invariant statement (required) |
-| `className` | `string` | — | Additional CSS classes |
+| Prop         | Type              | Default | Description                                                              |
+| ------------ | ----------------- | ------- | ------------------------------------------------------------------------ |
+| `complexity` | `string`          | —       | Optional complexity label shown as a monospace badge (e.g. `"O(log n)"`) |
+| `children`   | `React.ReactNode` | —       | The invariant statement (required)                                       |
+| `className`  | `string`          | —       | Additional CSS classes                                                   |

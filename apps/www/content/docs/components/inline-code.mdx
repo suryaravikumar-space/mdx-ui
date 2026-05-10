@@ -76,17 +76,20 @@ The inline code component has:
 Customize through your MDX component mappings:
 
 ```tsx
-import { Code } from "@/components/mdx-ui/inline-code"
+import { Code } from "@/components/mdx-ui/inline-code";
 
 export const mdxComponents = {
   code: Code,
-}
+};
 ```
 
 Or create your own styled version:
 
 ```tsx
-export function InlineCode({ children, ...props }: React.HTMLAttributes<HTMLElement>) {
+export function InlineCode({
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLElement>) {
   return (
     <code
       className="px-1.5 py-0.5 rounded bg-muted font-mono text-sm"
@@ -94,7 +97,7 @@ export function InlineCode({ children, ...props }: React.HTMLAttributes<HTMLElem
     >
       {children}
     </code>
-  )
+  );
 }
 ```
 

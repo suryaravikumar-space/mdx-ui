@@ -14,7 +14,9 @@ npx @ravikumarsurya/mdx-ui add tree
 ```
 
 <Callout type="info">
-**Looking for simpler syntax?** Check out the [FileTree](/docs/components/file-tree) component for a string-based alternative with 90% less code!
+  **Looking for simpler syntax?** Check out the
+  [FileTree](/docs/components/file-tree) component for a string-based
+  alternative with 90% less code!
 </Callout>
 
 ## Usage
@@ -128,20 +130,20 @@ This component gives you **full programmatic control** over each tree item. If y
 
 ### Tree
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | - | TreeItem components |
-| `className` | `string` | - | Additional CSS classes |
+| Prop        | Type        | Default | Description            |
+| ----------- | ----------- | ------- | ---------------------- |
+| `children`  | `ReactNode` | -       | TreeItem components    |
+| `className` | `string`    | -       | Additional CSS classes |
 
 ### TreeItem
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `name` | `string` | - | Name of the file or folder |
-| `isFolder` | `boolean` | `false` | Whether this item is a folder |
-| `defaultOpen` | `boolean` | `false` | Whether folder is expanded by default |
-| `children` | `ReactNode` | - | Nested TreeItem components |
-| `className` | `string` | - | Additional CSS classes |
+| Prop          | Type        | Default | Description                           |
+| ------------- | ----------- | ------- | ------------------------------------- |
+| `name`        | `string`    | -       | Name of the file or folder            |
+| `isFolder`    | `boolean`   | `false` | Whether this item is a folder         |
+| `defaultOpen` | `boolean`   | `false` | Whether folder is expanded by default |
+| `children`    | `ReactNode` | -       | Nested TreeItem components            |
+| `className`   | `string`    | -       | Additional CSS classes                |
 
 ## Use Cases
 
@@ -209,13 +211,13 @@ Display component organization:
 Add to your `mdx-components.tsx`:
 
 ```tsx
-import { Tree, TreeItem } from "@/components/mdx-ui/tree"
+import { Tree, TreeItem } from "@/components/mdx-ui/tree";
 
 export const mdxComponents = {
   // ... other components
   Tree,
   TreeItem,
-}
+};
 ```
 
 ## Tips

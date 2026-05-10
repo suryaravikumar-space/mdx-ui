@@ -16,11 +16,11 @@ npx @ravikumarsurya/mdx-ui add reveal
 ## Usage
 
 ```tsx
-import { Reveal } from "@/components/mdx/reveal"
+import { Reveal } from "@/components/mdx/reveal";
 
 <Reveal label="Show solution">
   The answer is to use a hash map for O(1) lookups.
-</Reveal>
+</Reveal>;
 ```
 
 ## Examples
@@ -57,16 +57,17 @@ import { Reveal } from "@/components/mdx/reveal"
 
 ```tsx
 <Reveal label="Explanation" defaultOpen>
-  Merge sort divides the array in half recursively, then merges the sorted halves.
-  The divide step is O(log n) levels deep, and each level does O(n) work.
+  Merge sort divides the array in half recursively, then merges the sorted
+  halves. The divide step is O(log n) levels deep, and each level does O(n)
+  work.
 </Reveal>
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | `"Show"` | Text shown on the toggle button |
-| `defaultOpen` | `boolean` | `false` | Whether the content starts expanded |
-| `children` | `React.ReactNode` | — | Content to reveal (required) |
-| `className` | `string` | — | Additional CSS classes |
+| Prop          | Type              | Default  | Description                         |
+| ------------- | ----------------- | -------- | ----------------------------------- |
+| `label`       | `string`          | `"Show"` | Text shown on the toggle button     |
+| `defaultOpen` | `boolean`         | `false`  | Whether the content starts expanded |
+| `children`    | `React.ReactNode` | —        | Content to reveal (required)        |
+| `className`   | `string`          | —        | Additional CSS classes              |

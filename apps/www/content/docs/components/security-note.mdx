@@ -16,12 +16,12 @@ npx @ravikumarsurya/mdx-ui add security-note
 ## Usage
 
 ```tsx
-import { SecurityNote } from "@/components/mdx/security-note"
+import { SecurityNote } from "@/components/mdx/security-note";
 
 <SecurityNote severity="warning" title="OTP Fuse Burn">
-  QFPROM fuse values are permanent once written. Ensure correct values
-  before provisioning production devices.
-</SecurityNote>
+  QFPROM fuse values are permanent once written. Ensure correct values before
+  provisioning production devices.
+</SecurityNote>;
 ```
 
 ## Examples
@@ -32,8 +32,8 @@ import { SecurityNote } from "@/components/mdx/security-note"
 
 ```tsx
 <SecurityNote>
-  All API requests must include a signed JWT in the Authorization header.
-  Tokens expire after 15 minutes.
+  All API requests must include a signed JWT in the Authorization header. Tokens
+  expire after 15 minutes.
 </SecurityNote>
 ```
 
@@ -41,8 +41,8 @@ import { SecurityNote } from "@/components/mdx/security-note"
 
 ```tsx
 <SecurityNote severity="warning" title="Key Storage">
-  Never store private keys in non-volatile memory outside of the
-  Secure Execution Environment (SEE). Use the QFPROM-backed secure storage API.
+  Never store private keys in non-volatile memory outside of the Secure
+  Execution Environment (SEE). Use the QFPROM-backed secure storage API.
 </SecurityNote>
 ```
 
@@ -59,16 +59,16 @@ import { SecurityNote } from "@/components/mdx/security-note"
 
 ```tsx
 <SecurityNote severity="warning" title="JTAG Disabled in Production">
-  JTAG access is disabled by OTP fuse in production builds.
-  Debugging requires a signed debug certificate from Qualcomm.
+  JTAG access is disabled by OTP fuse in production builds. Debugging requires a
+  signed debug certificate from Qualcomm.
 </SecurityNote>
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `severity` | `"info" \| "warning" \| "critical"` | `"info"` | Visual severity — controls icon and colour scheme |
-| `title` | `string` | Auto | Custom title; defaults to "Security Note", "Security Warning", or "Critical Security Advisory" |
-| `children` | `React.ReactNode` | — | Body content (required) |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type                                | Default  | Description                                                                                    |
+| ----------- | ----------------------------------- | -------- | ---------------------------------------------------------------------------------------------- |
+| `severity`  | `"info" \| "warning" \| "critical"` | `"info"` | Visual severity — controls icon and colour scheme                                              |
+| `title`     | `string`                            | Auto     | Custom title; defaults to "Security Note", "Security Warning", or "Critical Security Advisory" |
+| `children`  | `React.ReactNode`                   | —        | Body content (required)                                                                        |
+| `className` | `string`                            | —        | Additional CSS classes                                                                         |

@@ -1,4 +1,4 @@
-import { HorizontalRule } from "@/components/mdx/horizontal-rule"
+import { HorizontalRule } from "@/components/mdx/horizontal-rule";
 
 export default function HorizontalRuleDefault() {
   return (
@@ -12,5 +12,5 @@ export default function HorizontalRuleDefault() {
       <p className="text-xs text-muted-foreground">gradient</p>
       <HorizontalRule variant="gradient" />
     </div>
-  )
+  );
 }

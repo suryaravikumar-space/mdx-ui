@@ -24,8 +24,8 @@ npm install rehype-pretty-code shiki
 ### Next.js (`next.config.ts`)
 
 ```ts
-import createMDX from "@next/mdx"
-import rehypePrettyCode from "rehype-pretty-code"
+import createMDX from "@next/mdx";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const withMDX = createMDX({
   options: {
@@ -39,16 +39,16 @@ const withMDX = createMDX({
       ],
     ],
   },
-})
+});
 
-export default withMDX({ pageExtensions: ["ts", "tsx", "md", "mdx"] })
+export default withMDX({ pageExtensions: ["ts", "tsx", "md", "mdx"] });
 ```
 
 ### next-mdx-remote
 
 ```ts
-import { compileMDX } from "next-mdx-remote/rsc"
-import rehypePrettyCode from "rehype-pretty-code"
+import { compileMDX } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const { content } = await compileMDX({
   source,
@@ -58,21 +58,24 @@ const { content } = await compileMDX({
         [
           rehypePrettyCode,
           {
-            theme: { light: "github-light-default", dark: "github-dark-default" },
+            theme: {
+              light: "github-light-default",
+              dark: "github-dark-default",
+            },
             defaultColor: false,
           },
         ],
       ],
     },
   },
-})
+});
 ```
 
 ### Contentlayer / Contentlayer2
 
 ```ts
 // contentlayer.config.ts
-import rehypePrettyCode from "rehype-pretty-code"
+import rehypePrettyCode from "rehype-pretty-code";
 
 export default makeSource({
   mdxOptions: {
@@ -86,7 +89,7 @@ export default makeSource({
       ],
     ],
   },
-})
+});
 ```
 
 ### Map `pre` to `CodeBlock`
@@ -94,12 +97,12 @@ export default makeSource({
 In your MDX components file, map the `pre` element to `CodeBlock`:
 
 ```tsx
-import { CodeBlock } from "@/components/mdx/code-block"
+import { CodeBlock } from "@/components/mdx/code-block";
 
 const components = {
   pre: CodeBlock,
   // ... other components
-}
+};
 ```
 
 ## Usage
@@ -115,7 +118,7 @@ export function Button({ children }: { children: React.ReactNode }) {
     <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md">
       {children}
     </button>
-  )
+  );
 }
 ```
 ````
@@ -137,12 +140,13 @@ rehype-pretty-code supports line and word highlighting out of the box:
 ````mdx
 ```tsx {2,4-6}
 function greet(name: string) {
-  const greeting = `Hello, ${name}!`  // highlighted
-  console.log(greeting)
-  return {                              // highlighted
-    message: greeting,                 // highlighted
-    timestamp: Date.now(),             // highlighted
-  }
+  const greeting = `Hello, ${name}!`; // highlighted
+  console.log(greeting);
+  return {
+    // highlighted
+    message: greeting, // highlighted
+    timestamp: Date.now(), // highlighted
+  };
 }
 ```
 ````
@@ -151,8 +155,8 @@ function greet(name: string) {
 
 ````mdx
 ```tsx /useState/
-const [count, setCount] = useState(0)
-const [name, setName] = useState("")
+const [count, setCount] = useState(0);
+const [name, setName] = useState("");
 ```
 ````
 
@@ -183,13 +187,13 @@ The CSS for Shiki token colors is automatically injected into your `globals.css`
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `title` | `string` | - | Override the title shown in the header |
-| `showLineNumbers` | `boolean` | `false` | Enable CSS counter-based line numbers |
-| `data-language` | `string` | - | Set by rehype-pretty-code; shown as language badge |
-| `data-title` | `string` | - | Set by rehype-pretty-code from title annotation |
-| `className` | `string` | - | Additional classes on the `<pre>` element |
+| Prop              | Type      | Default | Description                                        |
+| ----------------- | --------- | ------- | -------------------------------------------------- |
+| `title`           | `string`  | -       | Override the title shown in the header             |
+| `showLineNumbers` | `boolean` | `false` | Enable CSS counter-based line numbers              |
+| `data-language`   | `string`  | -       | Set by rehype-pretty-code; shown as language badge |
+| `data-title`      | `string`  | -       | Set by rehype-pretty-code from title annotation    |
+| `className`       | `string`  | -       | Additional classes on the `<pre>` element          |
 
 ## Without rehype-pretty-code
 

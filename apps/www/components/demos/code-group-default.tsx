@@ -1,5 +1,5 @@
-"use client"
-import { CodeGroup } from "@/components/mdx/code-group"
+"use client";
+import { CodeGroup } from "@/components/mdx/code-group";
 
 export default function CodeGroupDefault() {
   return (
@@ -16,5 +16,5 @@ export default function CodeGroupDefault() {
         </pre>
       </CodeGroup>
     </div>
-  )
+  );
 }

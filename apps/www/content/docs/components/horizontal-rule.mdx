@@ -18,9 +18,9 @@ Create a horizontal rule using three or more hyphens, asterisks, or underscores:
 ```mdx
 ---
 
-***
+---
 
-___
+---
 ```
 
 All three syntaxes render the same horizontal rule.
@@ -89,11 +89,11 @@ The horizontal rule has default spacing and styling that works well in most cont
 You can customize the horizontal rule through your MDX component mappings:
 
 ```tsx
-import { Hr } from "@/components/mdx-ui/horizontal-rule"
+import { Hr } from "@/components/mdx-ui/horizontal-rule";
 
 export const mdxComponents = {
   hr: Hr,
-}
+};
 ```
 
 ## Accessibility

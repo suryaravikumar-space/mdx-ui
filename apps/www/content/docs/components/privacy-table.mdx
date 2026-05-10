@@ -16,14 +16,26 @@ npx @ravikumarsurya/mdx-ui add privacy-table
 ## Usage
 
 ```tsx
-import { PrivacyTable } from "@/components/mdx/privacy-table"
+import { PrivacyTable } from "@/components/mdx/privacy-table";
 
 <PrivacyTable
   rows={[
-    { dataType: "Email Address",       purpose: "Authentication",    legalBasis: "Consent",             retention: "Until deletion", shared: false },
-    { dataType: "Chipset Serial Number", purpose: "Device diagnostics", legalBasis: "Legitimate Interest", retention: "5 years",        shared: true  },
+    {
+      dataType: "Email Address",
+      purpose: "Authentication",
+      legalBasis: "Consent",
+      retention: "Until deletion",
+      shared: false,
+    },
+    {
+      dataType: "Chipset Serial Number",
+      purpose: "Device diagnostics",
+      legalBasis: "Legitimate Interest",
+      retention: "5 years",
+      shared: true,
+    },
   ]}
-/>
+/>;
 ```
 
 ## Examples
@@ -35,11 +47,41 @@ import { PrivacyTable } from "@/components/mdx/privacy-table"
 ```tsx
 <PrivacyTable
   rows={[
-    { dataType: "Email Address",         purpose: "Account authentication and notifications", legalBasis: "Consent",              retention: "Until account deletion", shared: false },
-    { dataType: "Account Credentials",   purpose: "Secure login",                             legalBasis: "Consent",              retention: "Until account deletion", shared: false },
-    { dataType: "Chipset Serial Number", purpose: "Device identification and diagnostics",    legalBasis: "Legitimate Interest",  retention: "5 years",                shared: true  },
-    { dataType: "Battery Usage",         purpose: "System performance analytics",             legalBasis: "Legitimate Interest",  retention: "90 days",                shared: false },
-    { dataType: "Thermal Data",          purpose: "Thermal management optimisation",          legalBasis: "Legitimate Interest",  retention: "90 days",                shared: false },
+    {
+      dataType: "Email Address",
+      purpose: "Account authentication and notifications",
+      legalBasis: "Consent",
+      retention: "Until account deletion",
+      shared: false,
+    },
+    {
+      dataType: "Account Credentials",
+      purpose: "Secure login",
+      legalBasis: "Consent",
+      retention: "Until account deletion",
+      shared: false,
+    },
+    {
+      dataType: "Chipset Serial Number",
+      purpose: "Device identification and diagnostics",
+      legalBasis: "Legitimate Interest",
+      retention: "5 years",
+      shared: true,
+    },
+    {
+      dataType: "Battery Usage",
+      purpose: "System performance analytics",
+      legalBasis: "Legitimate Interest",
+      retention: "90 days",
+      shared: false,
+    },
+    {
+      dataType: "Thermal Data",
+      purpose: "Thermal management optimisation",
+      legalBasis: "Legitimate Interest",
+      retention: "90 days",
+      shared: false,
+    },
   ]}
   caption="Collected in accordance with the Qualcomm Privacy Policy"
 />
@@ -52,8 +94,11 @@ Columns are omitted when no row provides that data.
 ```tsx
 <PrivacyTable
   rows={[
-    { dataType: "IP Address",   purpose: "Network routing and abuse prevention" },
-    { dataType: "Device Model", purpose: "Compatibility and feature detection" },
+    { dataType: "IP Address", purpose: "Network routing and abuse prevention" },
+    {
+      dataType: "Device Model",
+      purpose: "Compatibility and feature detection",
+    },
   ]}
 />
 ```
@@ -63,8 +108,18 @@ Columns are omitted when no row provides that data.
 ```tsx
 <PrivacyTable
   rows={[
-    { dataType: "Analytics Events", purpose: "Product improvement", legalBasis: "Consent", shared: true  },
-    { dataType: "Crash Reports",    purpose: "Bug diagnostics",     legalBasis: "Consent", shared: false },
+    {
+      dataType: "Analytics Events",
+      purpose: "Product improvement",
+      legalBasis: "Consent",
+      shared: true,
+    },
+    {
+      dataType: "Crash Reports",
+      purpose: "Bug diagnostics",
+      legalBasis: "Consent",
+      shared: false,
+    },
   ]}
 />
 ```
@@ -73,18 +128,18 @@ Columns are omitted when no row provides that data.
 
 ### PrivacyTable
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `rows` | `PrivacyRow[]` | — | Array of data rows (required) |
-| `caption` | `string` | — | Optional caption below the table |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type           | Default | Description                      |
+| ----------- | -------------- | ------- | -------------------------------- |
+| `rows`      | `PrivacyRow[]` | —       | Array of data rows (required)    |
+| `caption`   | `string`       | —       | Optional caption below the table |
+| `className` | `string`       | —       | Additional CSS classes           |
 
 ### PrivacyRow
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `dataType` | `string` | Type of personal data collected (required) |
-| `purpose` | `string` | Why this data is collected (required) |
-| `legalBasis` | `string` | GDPR legal basis, e.g. `"Consent"`, `"Legitimate Interest"` |
-| `retention` | `string` | How long data is kept, e.g. `"90 days"` |
-| `shared` | `boolean` | Whether data is shared with third parties |
+| Field        | Type      | Description                                                 |
+| ------------ | --------- | ----------------------------------------------------------- |
+| `dataType`   | `string`  | Type of personal data collected (required)                  |
+| `purpose`    | `string`  | Why this data is collected (required)                       |
+| `legalBasis` | `string`  | GDPR legal basis, e.g. `"Consent"`, `"Legitimate Interest"` |
+| `retention`  | `string`  | How long data is kept, e.g. `"90 days"`                     |
+| `shared`     | `boolean` | Whether data is shared with third parties                   |

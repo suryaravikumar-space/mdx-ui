@@ -1,4 +1,4 @@
-import { CodeBlock } from "@/components/mdx/code-block"
+import { CodeBlock } from "@/components/mdx/code-block";
 
 export default function CodeBlockDefault() {
   return (
@@ -9,5 +9,5 @@ export function StatusBadge({ status }: { status: string }) {
   return <Badge variant="success">{status}</Badge>
 }`}</code>
     </CodeBlock>
-  )
+  );
 }

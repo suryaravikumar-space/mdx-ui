@@ -16,13 +16,17 @@ npx @ravikumarsurya/mdx-ui add changelog
 ```mdx
 <Changelog>
   <ChangelogEntry version="0.0.25" date="2025-05-08">
-    <ChangelogItem type="added">Link component with external link detection</ChangelogItem>
+    <ChangelogItem type="added">
+      Link component with external link detection
+    </ChangelogItem>
     <ChangelogItem type="added">Spoiler collapsible component</ChangelogItem>
     <ChangelogItem type="fixed">Video iframe lazy loading</ChangelogItem>
   </ChangelogEntry>
   <ChangelogEntry version="0.0.24" date="2025-04-20">
     <ChangelogItem type="added">Alert, Card, Kbd components</ChangelogItem>
-    <ChangelogItem type="changed">All components updated with forwardRef + displayName</ChangelogItem>
+    <ChangelogItem type="changed">
+      All components updated with forwardRef + displayName
+    </ChangelogItem>
   </ChangelogEntry>
 </Changelog>
 ```
@@ -31,13 +35,13 @@ npx @ravikumarsurya/mdx-ui add changelog
 
 ## Change types
 
-| Type | Badge | Use for |
-| --- | --- | --- |
-| `added` | <ChangelogItem type="added">New feature</ChangelogItem> | New features |
-| `fixed` | <ChangelogItem type="fixed">Bug fix</ChangelogItem> | Bug fixes |
-| `changed` | <ChangelogItem type="changed">Update</ChangelogItem> | Changes to existing behaviour |
-| `removed` | <ChangelogItem type="removed">Deprecated</ChangelogItem> | Removed features |
-| `security` | <ChangelogItem type="security">Patch</ChangelogItem> | Security patches |
+| Type       | Badge                                                    | Use for                       |
+| ---------- | -------------------------------------------------------- | ----------------------------- |
+| `added`    | <ChangelogItem type="added">New feature</ChangelogItem>  | New features                  |
+| `fixed`    | <ChangelogItem type="fixed">Bug fix</ChangelogItem>      | Bug fixes                     |
+| `changed`  | <ChangelogItem type="changed">Update</ChangelogItem>     | Changes to existing behaviour |
+| `removed`  | <ChangelogItem type="removed">Deprecated</ChangelogItem> | Removed features              |
+| `security` | <ChangelogItem type="security">Patch</ChangelogItem>     | Security patches              |
 
 ## Props
 
@@ -47,15 +51,15 @@ Wrapper with a vertical timeline line. Accepts standard `div` props + `className
 
 ### ChangelogEntry
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `version` | `string` | Version string shown as heading (required) |
-| `date` | `string` | Optional date label beside the version |
-| `className` | `string` | Extra classes |
+| Prop        | Type     | Description                                |
+| ----------- | -------- | ------------------------------------------ |
+| `version`   | `string` | Version string shown as heading (required) |
+| `date`      | `string` | Optional date label beside the version     |
+| `className` | `string` | Extra classes                              |
 
 ### ChangelogItem
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `type` | `"added" \| "fixed" \| "changed" \| "removed" \| "security"` | `"added"` | Change type badge |
-| `children` | `ReactNode` | — | Description of the change |
+| Prop       | Type                                                         | Default   | Description               |
+| ---------- | ------------------------------------------------------------ | --------- | ------------------------- |
+| `type`     | `"added" \| "fixed" \| "changed" \| "removed" \| "security"` | `"added"` | Change type badge         |
+| `children` | `ReactNode`                                                  | —         | Description of the change |

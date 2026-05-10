@@ -16,14 +16,24 @@ npx @ravikumarsurya/mdx-ui add certification-badge
 ## Usage
 
 ```tsx
-import { CertificationBadge } from "@/components/mdx/certification-badge"
+import { CertificationBadge } from "@/components/mdx/certification-badge";
 
 <CertificationBadge
   certs={[
-    { name: "ISO 27001:2022", scope: "Information Security Management", year: 2023, status: "active" },
-    { name: "TISAX",          scope: "Automotive Information Security",  year: 2024, status: "active" },
+    {
+      name: "ISO 27001:2022",
+      scope: "Information Security Management",
+      year: 2023,
+      status: "active",
+    },
+    {
+      name: "TISAX",
+      scope: "Automotive Information Security",
+      year: 2024,
+      status: "active",
+    },
   ]}
-/>
+/>;
 ```
 
 ## Examples
@@ -35,9 +45,24 @@ import { CertificationBadge } from "@/components/mdx/certification-badge"
 ```tsx
 <CertificationBadge
   certs={[
-    { name: "ISO 27001:2022", scope: "Information Security Management", year: 2023, status: "active" },
-    { name: "TISAX",          scope: "Automotive Information Security",  year: 2024, status: "active" },
-    { name: "SOC 2 Type II",  scope: "Trust Services Criteria",          year: 2023, status: "active" },
+    {
+      name: "ISO 27001:2022",
+      scope: "Information Security Management",
+      year: 2023,
+      status: "active",
+    },
+    {
+      name: "TISAX",
+      scope: "Automotive Information Security",
+      year: 2024,
+      status: "active",
+    },
+    {
+      name: "SOC 2 Type II",
+      scope: "Trust Services Criteria",
+      year: 2023,
+      status: "active",
+    },
   ]}
 />
 ```
@@ -47,9 +72,9 @@ import { CertificationBadge } from "@/components/mdx/certification-badge"
 ```tsx
 <CertificationBadge
   certs={[
-    { name: "ISO 27001:2022", status: "active"  },
-    { name: "ISO 9001:2015",  status: "expired" },
-    { name: "SOC 2 Type II",  status: "pending" },
+    { name: "ISO 27001:2022", status: "active" },
+    { name: "ISO 9001:2015", status: "expired" },
+    { name: "SOC 2 Type II", status: "pending" },
   ]}
 />
 ```
@@ -58,36 +83,32 @@ import { CertificationBadge } from "@/components/mdx/certification-badge"
 
 ```tsx
 <CertificationBadge
-  certs={[
-    { name: "GDPR" },
-    { name: "CCPA" },
-    { name: "ISO 27001" },
-  ]}
+  certs={[{ name: "GDPR" }, { name: "CCPA" }, { name: "ISO 27001" }]}
 />
 ```
 
 ### Status reference
 
-| Status | Indicator | Meaning |
-|---|---|---|
-| `active` | Green dot | Currently valid certification |
+| Status    | Indicator | Meaning                            |
+| --------- | --------- | ---------------------------------- |
+| `active`  | Green dot | Currently valid certification      |
 | `pending` | Amber dot | Audit in progress, not yet awarded |
-| `expired` | Grey dot | Certification has lapsed |
+| `expired` | Grey dot  | Certification has lapsed           |
 
 ## Props
 
 ### CertificationBadge
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `certs` | `Certification[]` | — | One or more certifications to display (required) |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type              | Default | Description                                      |
+| ----------- | ----------------- | ------- | ------------------------------------------------ |
+| `certs`     | `Certification[]` | —       | One or more certifications to display (required) |
+| `className` | `string`          | —       | Additional CSS classes                           |
 
 ### Certification
 
-| Field | Type | Default | Description |
-| --- | --- | --- | --- |
-| `name` | `string` | — | Certification name, e.g. `"ISO 27001:2022"` (required) |
-| `scope` | `string` | — | Scope or standard description |
-| `year` | `string \| number` | — | Year awarded or last renewed |
-| `status` | `"active" \| "pending" \| "expired"` | `"active"` | Current certification status |
+| Field    | Type                                 | Default    | Description                                            |
+| -------- | ------------------------------------ | ---------- | ------------------------------------------------------ |
+| `name`   | `string`                             | —          | Certification name, e.g. `"ISO 27001:2022"` (required) |
+| `scope`  | `string`                             | —          | Scope or standard description                          |
+| `year`   | `string \| number`                   | —          | Year awarded or last renewed                           |
+| `status` | `"active" \| "pending" \| "expired"` | `"active"` | Current certification status                           |

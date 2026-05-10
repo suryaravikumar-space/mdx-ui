@@ -1,4 +1,4 @@
-import { SecurityNote } from "@/components/mdx/security-note"
+import { SecurityNote } from "@/components/mdx/security-note";
 
 export default function SecurityNoteDefault() {
   return (
@@ -7,11 +7,13 @@ export default function SecurityNoteDefault() {
         API keys are scoped to your workspace. Rotate them every 90 days.
       </SecurityNote>
       <SecurityNote severity="warning" title="Token Storage">
-        Never store access tokens in localStorage. Use httpOnly cookies or a secure server-side session.
+        Never store access tokens in localStorage. Use httpOnly cookies or a
+        secure server-side session.
       </SecurityNote>
       <SecurityNote severity="critical" title="Private Key Handling">
-        Never commit private keys to version control. Revoke and rotate immediately if exposed.
+        Never commit private keys to version control. Revoke and rotate
+        immediately if exposed.
       </SecurityNote>
     </div>
-  )
+  );
 }

@@ -16,7 +16,7 @@ npx @ravikumarsurya/mdx-ui add hardware-spec
 ## Usage
 
 ```tsx
-import { HardwareSpec } from "@/components/mdx/hardware-spec"
+import { HardwareSpec } from "@/components/mdx/hardware-spec";
 
 <HardwareSpec
   name="USB 3.1 Gen 2"
@@ -25,7 +25,7 @@ import { HardwareSpec } from "@/components/mdx/hardware-spec"
   voltage="3.3V / 1.8V"
   pins={24}
   description="High-speed USB for peripheral connectivity."
-/>
+/>;
 ```
 
 ## Examples
@@ -89,14 +89,14 @@ Only provided fields are rendered — omit any that don't apply.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `name` | `string` | — | Interface name shown in the card header (required) |
-| `type` | `string` | — | Full interface type name |
-| `version` | `string` | — | Version or generation string |
-| `speed` | `string` | — | Transfer speed or clock frequency |
-| `voltage` | `string` | — | Operating voltage level(s) |
-| `pins` | `number` | — | Number of physical pins or lanes |
-| `protocol` | `string` | — | Protocol or standard (e.g. NVMe, SuperSpeed+) |
-| `description` | `string` | — | Prose description rendered below the fields |
-| `className` | `string` | — | Additional CSS classes |
+| Prop          | Type     | Default | Description                                        |
+| ------------- | -------- | ------- | -------------------------------------------------- |
+| `name`        | `string` | —       | Interface name shown in the card header (required) |
+| `type`        | `string` | —       | Full interface type name                           |
+| `version`     | `string` | —       | Version or generation string                       |
+| `speed`       | `string` | —       | Transfer speed or clock frequency                  |
+| `voltage`     | `string` | —       | Operating voltage level(s)                         |
+| `pins`        | `number` | —       | Number of physical pins or lanes                   |
+| `protocol`    | `string` | —       | Protocol or standard (e.g. NVMe, SuperSpeed+)      |
+| `description` | `string` | —       | Prose description rendered below the fields        |
+| `className`   | `string` | —       | Additional CSS classes                             |

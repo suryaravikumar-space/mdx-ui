@@ -1,5 +1,5 @@
-"use client"
-import { Annotation } from "@/components/mdx/annotation"
+"use client";
+import { Annotation } from "@/components/mdx/annotation";
 
 export default function AnnotationDefault() {
   return (
@@ -14,5 +14,5 @@ export default function AnnotationDefault() {
       </Annotation>
       . Click the underlined terms to learn more.
     </p>
-  )
+  );
 }

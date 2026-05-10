@@ -1,4 +1,4 @@
-import { DiffBlock } from "@/components/mdx/diff-block"
+import { DiffBlock } from "@/components/mdx/diff-block";
 
 export default function DiffBlockDefault() {
   return (
@@ -21,5 +21,5 @@ export default function DiffBlockDefault() {
 +  </pre>
 +)}`}
     </DiffBlock>
-  )
+  );
 }

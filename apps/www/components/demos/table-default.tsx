@@ -6,7 +6,7 @@ import {
   TableHead,
   TableCell,
   TableCaption,
-} from "@/components/mdx/table"
+} from "@/components/mdx/table";
 
 export default function TableDefault() {
   return (
@@ -39,5 +39,5 @@ export default function TableDefault() {
         </TableBody>
       </Table>
     </div>
-  )
+  );
 }

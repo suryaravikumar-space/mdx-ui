@@ -24,7 +24,7 @@ The `FileTree` component provides a **much simpler syntax** compared to the verb
 <ComponentPreview name="file-tree-default" />
 
 <FileTree>
-{`
+  {`
 src*/
   components*/
     Button.tsx
@@ -36,7 +36,7 @@ package.json
 
 ```tsx
 <FileTree>
-{`
+  {`
 src*/
   components*/
     Button.tsx
@@ -49,19 +49,19 @@ package.json
 
 ## Syntax Rules
 
-| Syntax | Meaning |
-|--------|---------|
-| `folder/` | Folder (ends with `/`) |
+| Syntax     | Meaning                                 |
+| ---------- | --------------------------------------- |
+| `folder/`  | Folder (ends with `/`)                  |
 | `folder*/` | Folder open by default (ends with `*/`) |
-| `file.txt` | File (no trailing `/`) |
-| `  ` | 2 spaces = 1 level of nesting |
+| `file.txt` | File (no trailing `/`)                  |
+| `  `       | 2 spaces = 1 level of nesting           |
 
 ## Examples
 
 ### Deep Nesting
 
 <FileTree>
-{`
+  {`
 src*/
   app*/
     features*/
@@ -82,7 +82,7 @@ package.json
 
 ```tsx
 <FileTree>
-{`
+  {`
 src*/
   app*/
     features*/
@@ -105,7 +105,7 @@ package.json
 ### Next.js Project
 
 <FileTree>
-{`
+  {`
 my-project*/
   app*/
     blog/
@@ -131,7 +131,7 @@ my-project*/
 ### Monorepo Structure
 
 <FileTree>
-{`
+  {`
 monorepo*/
   apps*/
     web*/
@@ -181,7 +181,7 @@ monorepo*/
 
 ```tsx
 <FileTree>
-{`
+  {`
 src*/
   app*/
     features*/
@@ -207,12 +207,14 @@ src*/
 ## When to Use
 
 ### Use FileTree when:
+
 - ✅ You have simple, static file structures
 - ✅ You want minimal typing
 - ✅ The structure won't change dynamically
 - ✅ You're documenting project layouts
 
 ### Use Tree when:
+
 - �� You need programmatic control over each item
 - 🔧 Items have custom props or event handlers
 - 🔧 Structure is generated dynamically
@@ -231,7 +233,7 @@ src*/
 ### Config Files Location
 
 <FileTree>
-{`
+  {`
 project-root*/
   .env.local
   .gitignore
@@ -245,7 +247,7 @@ project-root*/
 ### Component Library
 
 <FileTree>
-{`
+  {`
 components*/
   ui*/
     button.tsx
@@ -264,12 +266,12 @@ components*/
 Add to your `mdx-components.tsx`:
 
 ```tsx
-import { FileTree } from "@/components/mdx-ui/file-tree"
+import { FileTree } from "@/components/mdx-ui/file-tree";
 
 export const mdxComponents = {
   // ... other components
   FileTree,
-}
+};
 ```
 
 ## Accessibility

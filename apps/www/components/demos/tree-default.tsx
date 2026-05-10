@@ -1,5 +1,5 @@
-"use client"
-import { Tree, TreeItem } from "@/components/mdx/tree"
+"use client";
+import { Tree, TreeItem } from "@/components/mdx/tree";
 
 export default function TreeDefault() {
   return (
@@ -21,5 +21,5 @@ export default function TreeDefault() {
         <TreeItem name="registry" isFolder />
       </TreeItem>
     </Tree>
-  )
+  );
 }

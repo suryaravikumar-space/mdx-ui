@@ -7,7 +7,7 @@ dependencies: ["class-variance-authority", "clsx", "tailwind-merge"]
 registryDependencies: ["utils"]
 ---
 
-import { Heading, H1, H2, H3, H4, H5, H6 } from "@/components/mdx/heading"
+import { Heading, H1, H2, H3, H4, H5, H6 } from "@/components/mdx/heading";
 
 ## Installation
 
@@ -29,9 +29,15 @@ The base `Heading` component allows you to specify the semantic HTML element and
 
 <div className="preview">
   <div className="space-y-4">
-    <Heading as="h2" level="h2">Standard H2</Heading>
-    <Heading as="h3" level="h2">H3 styled as H2</Heading>
-    <Heading as="div" level="h3">Div styled as H3</Heading>
+    <Heading as="h2" level="h2">
+      Standard H2
+    </Heading>
+    <Heading as="h3" level="h2">
+      H3 styled as H2
+    </Heading>
+    <Heading as="div" level="h3">
+      Div styled as H3
+    </Heading>
   </div>
 </div>
 
@@ -92,13 +98,13 @@ You can pass custom className to override or extend the default styles:
 
 ### Heading
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `as` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h2"` | The HTML element to render |
-| `level` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h2"` | The visual styling level |
-| `className` | `string` | - | Additional CSS classes |
-| `id` | `string` | - | Element ID for anchor links |
-| `children` | `React.ReactNode` | - | Heading content |
+| Prop        | Type                                           | Default | Description                 |
+| ----------- | ---------------------------------------------- | ------- | --------------------------- |
+| `as`        | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h2"`  | The HTML element to render  |
+| `level`     | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6"` | `"h2"`  | The visual styling level    |
+| `className` | `string`                                       | -       | Additional CSS classes      |
+| `id`        | `string`                                       | -       | Element ID for anchor links |
+| `children`  | `React.ReactNode`                              | -       | Heading content             |
 
 All standard HTML heading attributes are also supported.
 
@@ -144,6 +150,8 @@ The heading components are automatically used for all Markdown headings in MDX f
 
 ```markdown
 # This renders as H1
+
 ## This renders as H2
+
 ### This renders as H3
 ```

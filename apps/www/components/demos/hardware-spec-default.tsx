@@ -1,4 +1,4 @@
-import { HardwareSpec } from "@/components/mdx/hardware-spec"
+import { HardwareSpec } from "@/components/mdx/hardware-spec";
 
 export default function HardwareSpecDefault() {
   return (
@@ -11,5 +11,5 @@ export default function HardwareSpecDefault() {
       pins={24}
       description="High-speed USB interface for peripheral connectivity and power delivery."
     />
-  )
+  );
 }

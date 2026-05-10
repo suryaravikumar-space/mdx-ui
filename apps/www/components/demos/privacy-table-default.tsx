@@ -1,4 +1,4 @@
-import { PrivacyTable } from "@/components/mdx/privacy-table"
+import { PrivacyTable } from "@/components/mdx/privacy-table";
 
 export default function PrivacyTableDefault() {
   return (
@@ -28,5 +28,5 @@ export default function PrivacyTableDefault() {
         },
       ]}
     />
-  )
+  );
 }

@@ -78,7 +78,8 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["ds.tsx"],
     deps: ["mermaid", "clsx", "tailwind-merge"],
-    description: "Full data structures visualization suite (arrays, graphs, trees, etc.)",
+    description:
+      "Full data structures visualization suite (arrays, graphs, trees, etc.)",
   },
   annotation: {
     importFile: "./annotation",
@@ -102,7 +103,8 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["data-type-table.tsx"],
     deps: ["clsx", "tailwind-merge"],
-    description: "ML/hardware data type specifications table (INT8, FP16, BF16, etc.)",
+    description:
+      "ML/hardware data type specifications table (INT8, FP16, BF16, etc.)",
   },
   "hardware-spec": {
     importFile: "./hardware-spec",
@@ -134,7 +136,8 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["security-note.tsx"],
     deps: ["clsx", "tailwind-merge"],
-    description: "Security warnings with severity levels (critical, high, medium, low)",
+    description:
+      "Security warnings with severity levels (critical, high, medium, low)",
   },
   "complexity-table": {
     importFile: "./complexity-table",
@@ -166,7 +169,8 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["invariant.tsx"],
     deps: ["clsx", "tailwind-merge"],
-    description: "Algorithm invariant callout blocks with optional complexity badge",
+    description:
+      "Algorithm invariant callout blocks with optional complexity badge",
   },
   preview: {
     importFile: "./preview",
@@ -338,7 +342,8 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: { hr: "HorizontalRule" },
     files: ["horizontal-rule.tsx"],
     deps: [],
-    description: "Styled horizontal divider lines (default, dashed, dotted, gradient)",
+    description:
+      "Styled horizontal divider lines (default, dashed, dotted, gradient)",
   },
   image: {
     importFile: "./image",
@@ -551,12 +556,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
   },
   "math-solution": {
     importFile: "./math-solution",
-    imports: [
-      "Solution",
-      "SolutionStep",
-      "SolutionAnswer",
-      "SolutionNote",
-    ],
+    imports: ["Solution", "SolutionStep", "SolutionAnswer", "SolutionNote"],
     elementMappings: {},
     files: ["math-solution.tsx"],
     deps: ["clsx", "tailwind-merge"],

@@ -600,7 +600,7 @@ const componentsMetadata: Record<
     whenNotToUse:
       "Do not use for complex display equations — use BlockMath with KaTeX for heavy LaTeX. These primitives are for structural, composable math.",
     example:
-      "<Frac num=\"1\" den=\"2\" />  <Pow exp=\"2\">x</Pow>  <Sqrt>x+1</Sqrt>  <Deg>30</Deg>  <Theta />",
+      '<Frac num="1" den="2" />  <Pow exp="2">x</Pow>  <Sqrt>x+1</Sqrt>  <Deg>30</Deg>  <Theta />',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
@@ -612,7 +612,7 @@ const componentsMetadata: Record<
     whenNotToUse:
       "Do not use for prose paragraphs that mention variables — use InlineMath. Do not use for code listings.",
     example:
-      "<Equation label=\"1\">E = mc<Pow exp=\"2\" /></Equation>\n<EqSystem><div>x + y = 5</div><div>2x − y = 1</div></EqSystem>",
+      '<Equation label="1">E = mc<Pow exp="2" /></Equation>\n<EqSystem><div>x + y = 5</div><div>2x − y = 1</div></EqSystem>',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
@@ -624,7 +624,7 @@ const componentsMetadata: Record<
     whenNotToUse:
       "Do not use for general procedure guides — use Steps/Step for non-math workflows. Do not use for code walkthroughs.",
     example:
-      "<Solution title=\"Solve: 2x + 4 = 10\">\n  <SolutionStep reason=\"Given\">2x + 4 = 10</SolutionStep>\n  <SolutionStep reason=\"Subtract 4\">2x = 6</SolutionStep>\n  <SolutionAnswer>x = 3</SolutionAnswer>\n</Solution>",
+      '<Solution title="Solve: 2x + 4 = 10">\n  <SolutionStep reason="Given">2x + 4 = 10</SolutionStep>\n  <SolutionStep reason="Subtract 4">2x = 6</SolutionStep>\n  <SolutionAnswer>x = 3</SolutionAnswer>\n</Solution>',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },

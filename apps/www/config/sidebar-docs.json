@@ -23,6 +23,10 @@
       "path": "/docs/components/alert"
     },
     {
+      "title": "Annotation",
+      "path": "/docs/components/annotation"
+    },
+    {
       "title": "Badge",
       "path": "/docs/components/badge"
     },
@@ -43,22 +47,6 @@
       "path": "/docs/components/changelog"
     },
     {
-      "title": "File Tree",
-      "path": "/docs/components/file-tree"
-    },
-    {
-      "title": "Heading",
-      "path": "/docs/components/heading"
-    },
-    {
-      "title": "Headings",
-      "path": "/docs/components/headings"
-    },
-    {
-      "title": "Paragraph",
-      "path": "/docs/components/paragraph"
-    },
-    {
       "title": "Code Block",
       "path": "/docs/components/code-block"
     },
@@ -67,8 +55,16 @@
       "path": "/docs/components/code-group"
     },
     {
+      "title": "Complexity Table",
+      "path": "/docs/components/complexity-table"
+    },
+    {
       "title": "Data Table",
       "path": "/docs/components/data-table"
+    },
+    {
+      "title": "Definition",
+      "path": "/docs/components/definition"
     },
     {
       "title": "Diff Block",
@@ -77,6 +73,22 @@
     {
       "title": "Emphasis",
       "path": "/docs/components/emphasis"
+    },
+    {
+      "title": "File Tree",
+      "path": "/docs/components/file-tree"
+    },
+    {
+      "title": "Glossary",
+      "path": "/docs/components/glossary"
+    },
+    {
+      "title": "Heading",
+      "path": "/docs/components/heading"
+    },
+    {
+      "title": "Headings",
+      "path": "/docs/components/headings"
     },
     {
       "title": "Highlight",
@@ -91,16 +103,16 @@
       "path": "/docs/components/image"
     },
     {
-      "title": "JSON-LD",
-      "path": "/docs/components/json-ld"
-    },
-    {
-      "title": "Video",
-      "path": "/docs/components/video"
-    },
-    {
       "title": "Inline Code",
       "path": "/docs/components/inline-code"
+    },
+    {
+      "title": "Invariant",
+      "path": "/docs/components/invariant"
+    },
+    {
+      "title": "JSON-LD",
+      "path": "/docs/components/json-ld"
     },
     {
       "title": "Kbd",
@@ -123,6 +135,18 @@
       "path": "/docs/components/mermaid"
     },
     {
+      "title": "Paragraph",
+      "path": "/docs/components/paragraph"
+    },
+    {
+      "title": "Preview",
+      "path": "/docs/components/preview"
+    },
+    {
+      "title": "Reveal",
+      "path": "/docs/components/reveal"
+    },
+    {
       "title": "Spoiler",
       "path": "/docs/components/spoiler"
     },
@@ -135,16 +159,48 @@
       "path": "/docs/components/table"
     },
     {
-      "title": "Terminal",
-      "path": "/docs/components/terminal"
-    },
-    {
       "title": "Tabs",
       "path": "/docs/components/tabs"
     },
     {
+      "title": "Terminal",
+      "path": "/docs/components/terminal"
+    },
+    {
       "title": "Tree",
       "path": "/docs/components/tree"
+    },
+    {
+      "title": "Video",
+      "path": "/docs/components/video"
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Technical Docs"
+    },
+    {
+      "title": "Certification Badge",
+      "path": "/docs/components/certification-badge"
+    },
+    {
+      "title": "Data Type Table",
+      "path": "/docs/components/data-type-table"
+    },
+    {
+      "title": "Hardware Spec",
+      "path": "/docs/components/hardware-spec"
+    },
+    {
+      "title": "Privacy Table",
+      "path": "/docs/components/privacy-table"
+    },
+    {
+      "title": "Register Map",
+      "path": "/docs/components/register-map"
+    },
+    {
+      "title": "Security Note",
+      "path": "/docs/components/security-note"
     },
     {
       "hasSectionHeader": true,

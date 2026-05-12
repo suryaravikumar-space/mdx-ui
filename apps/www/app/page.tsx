@@ -11,14 +11,13 @@ export default function Home() {
             LLM writes Markdown. You get components.
           </div>
           <h1 className="text-4xl font-bold leading-tight tracking-tighter md:text-6xl lg:leading-[1.1]">
-            Transform LLM Markdown into{" "}
-            <br className="hidden sm:inline" />
+            Transform LLM Markdown into <br className="hidden sm:inline" />
             Rich, Interactive UI
           </h1>
           <p className="max-w-[750px] text-lg text-muted-foreground sm:text-xl">
-            MDX UI is a token-efficient bridge between any LLM and React. The
-            AI writes plain Markdown — your pipeline transforms it into
-            beautiful, interactive components automatically.
+            MDX UI is a token-efficient bridge between any LLM and React. The AI
+            writes plain Markdown — your pipeline transforms it into beautiful,
+            interactive components automatically.
           </p>
           <div className="flex gap-4">
             <Link
@@ -49,30 +48,40 @@ export default function Home() {
               <thead>
                 <tr className="border-b bg-muted/50">
                   <th className="px-4 py-3 text-left font-medium">Format</th>
-                  <th className="px-4 py-3 text-left font-medium">Relative Token Cost</th>
+                  <th className="px-4 py-3 text-left font-medium">
+                    Relative Token Cost
+                  </th>
                   <th className="px-4 py-3 text-left font-medium">Problem</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b bg-primary/5">
                   <td className="px-4 py-3 font-semibold">Markdown (MDX UI)</td>
-                  <td className="px-4 py-3 font-bold text-primary">1× baseline</td>
+                  <td className="px-4 py-3 font-bold text-primary">
+                    1× baseline
+                  </td>
                   <td className="px-4 py-3 text-muted-foreground">None</td>
                 </tr>
                 <tr className="border-b">
                   <td className="px-4 py-3">JSON</td>
                   <td className="px-4 py-3">2.6×</td>
-                  <td className="px-4 py-3 text-muted-foreground">Brittle parsing, no native UI mapping</td>
+                  <td className="px-4 py-3 text-muted-foreground">
+                    Brittle parsing, no native UI mapping
+                  </td>
                 </tr>
                 <tr className="border-b">
                   <td className="px-4 py-3">JSX / custom schema</td>
                   <td className="px-4 py-3">3–5×</td>
-                  <td className="px-4 py-3 text-muted-foreground">LLM hallucinates props and components</td>
+                  <td className="px-4 py-3 text-muted-foreground">
+                    LLM hallucinates props and components
+                  </td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3">HTML</td>
                   <td className="px-4 py-3">5–10×</td>
-                  <td className="px-4 py-3 text-muted-foreground">Massive waste, security risks</td>
+                  <td className="px-4 py-3 text-muted-foreground">
+                    Massive waste, security risks
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -103,8 +112,8 @@ export default function Home() {
             </div>
             <h3 className="text-lg font-bold">Model Agnostic</h3>
             <p className="text-sm text-muted-foreground">
-              Works with Groq, OpenAI, Anthropic, Gemini, or any local model.
-              No fine-tuning, no per-model prompts. Swap models without changing
+              Works with Groq, OpenAI, Anthropic, Gemini, or any local model. No
+              fine-tuning, no per-model prompts. Swap models without changing
               your pipeline.
             </p>
           </div>
@@ -136,7 +145,7 @@ export default function Home() {
               {
                 step: "1",
                 title: "LLM generates plain Markdown",
-                desc: 'Any model, any provider. Standard GitHub-flavored Markdown — no JSX, no custom tags. Just > [!NOTE] text and ```python code blocks.',
+                desc: "Any model, any provider. Standard GitHub-flavored Markdown — no JSX, no custom tags. Just > [!NOTE] text and ```python code blocks.",
               },
               {
                 step: "2",
@@ -146,7 +155,7 @@ export default function Home() {
               {
                 step: "3",
                 title: "remarkMdxUi transforms at the AST level",
-                desc: "> [!NOTE] becomes <Callout variant=\"info\">, tables become <DataTable>, code fences become <CodeBlock> with Shiki highlighting.",
+                desc: '> [!NOTE] becomes <Callout variant="info">, tables become <DataTable>, code fences become <CodeBlock> with Shiki highlighting.',
               },
               {
                 step: "4",

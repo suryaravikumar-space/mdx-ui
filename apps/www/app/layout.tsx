@@ -10,8 +10,9 @@ import { SiteFooter } from "@/components/site-footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MDX UI - Beautiful MDX Components",
-  description: "A collection of beautiful, accessible MDX components for your documentation",
+  title: "MDX UI — Transform LLM Markdown into Interactive UI",
+  description:
+    "Token-efficient bridge between any LLM and React. LLM writes plain Markdown — MDX UI transforms it into rich, interactive components. 50+ copy-paste components, CLI, MCP server, and remark plugin.",
 };
 
 export default function RootLayout({

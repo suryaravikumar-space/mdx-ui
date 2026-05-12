@@ -250,6 +250,9 @@ import {
   MapsTo,
   Compose,
   OTimes,
+  DegNum,
+  Eq,
+  NotEq,
 } from "@/components/mdx/math-primitives";
 import { Equation, EqSystem } from "@/components/mdx/math-equation";
 import {
@@ -258,6 +261,7 @@ import {
   SolutionAnswer,
   SolutionNote,
 } from "@/components/mdx/math-solution";
+import { ME, BME } from "@/components/mdx/math-easy";
 import {
   DSArray,
   DSMatrix,
@@ -516,6 +520,13 @@ const components = {
   MapsTo,
   Compose,
   OTimes,
+  // Convenience shorthands
+  DegNum,
+  Eq,
+  NotEq,
+  // math-easy
+  ME,
+  BME,
   // math-equation
   Equation,
   EqSystem,

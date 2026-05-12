@@ -1324,3 +1324,28 @@ export const Arrow = mkSym("→", "right arrow");
 export const MapsTo = mkSym("↦", "maps to");
 export const Compose = mkSym("∘", "composition");
 export const OTimes = mkSym("⊗", "tensor product");
+
+// ─── Convenience shorthands ───────────────────────────────────────────────────
+
+/**
+ * DegNum — renders a numeric degree value with the degree symbol.
+ * Convenience over `<Deg>{n}</Deg>` when the value is a JS number prop.
+ *
+ * @example <DegNum n={90} />  →  90°
+ */
+export function DegNum({
+  n,
+  className,
+}: {
+  n: number;
+  className?: string;
+}) {
+  return <Deg className={className}>{n}</Deg>;
+}
+DegNum.displayName = "DegNum";
+
+/** Equals sign with standard math spacing. */
+export const Eq = mkSym("=", "equals", "mx-1");
+
+/** Not-equal sign ≠. Alias for `Neq` with a more descriptive name. */
+export const NotEq = mkSym("≠", "not equal", "mx-1");

@@ -1,0 +1,183 @@
+---
+title: Math Easy
+description: Human-readable math expressions without LaTeX backslashes — ME and BME compile a simple DSL to KaTeX
+component: math-easy
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add math-easy
+```
+
+Add KaTeX CSS to your root layout (if not already added for the `math` component):
+
+```tsx
+import "katex/dist/katex.min.css";
+```
+
+## Why Math Easy
+
+`<M expr="..." />` requires LaTeX syntax. `<ME>` accepts a natural-language
+DSL — no backslashes, no curly braces for most expressions:
+
+| LaTeX (`M`)                                               | Easy DSL (`ME`)                                   |
+| --------------------------------------------------------- | ------------------------------------------------- |
+| `<M expr="\theta \in \{90^\circ, 120^\circ\}" />`         | `<ME>theta in {90deg, 120deg}</ME>`               |
+| `<M expr="\sqrt{b^2 - 4ac}" />`                           | `<ME>sqrt(b^2 - 4ac)</ME>`                        |
+| `<M expr="\sum_{i=0}^{n} i^2" />`                         | `<ME>sum(i=0, n) i^2</ME>`                        |
+| `<M expr="\int_{0}^{\infty} e^{-x}\,dx" />`               | `<ME>int(0, inf) e^(-x) dx</ME>`                  |
+| `<M expr="\frac{-b \pm \sqrt{b^2-4ac}}{2a}" />`           | `<ME>(-b pm sqrt(b^2 - 4ac))/(2a)</ME>`           |
+
+## Inline
+
+```mdx
+The solution set is <ME>theta in {90deg, 180deg, 270deg}</ME>.
+```
+
+<ME>theta in {90deg, 180deg, 270deg}</ME>
+
+## Block
+
+Use `<BME>` or the `block` prop for display/centered mode:
+
+```mdx
+<BME>x = (-b pm sqrt(b^2 - 4ac)) / (2a)</BME>
+```
+
+<BME>x = (-b pm sqrt(b^2 - 4ac)) / (2a)</BME>
+
+```mdx
+<ME block>sum(i=0, n) i^2 = (n(n+1)(2n+1))/6</ME>
+```
+
+<ME block>sum(i=0, n) i^2 = (n(n+1)(2n+1))/6</ME>
+
+## DSL Reference
+
+### Greek letters
+
+Write the name without a backslash. Both lowercase and uppercase are supported.
+
+```
+alpha  beta  gamma  delta  epsilon  zeta  eta  theta  iota  kappa
+lambda  mu  nu  xi  pi  rho  sigma  tau  upsilon  phi  chi  psi  omega
+
+Gamma  Delta  Theta  Lambda  Xi  Pi  Sigma  Phi  Psi  Omega
+```
+
+### Functions
+
+| Input            | Renders as                         |
+| ---------------- | ---------------------------------- |
+| `sqrt(x)`        | √x                                 |
+| `cbrt(x)`        | ∛x                                 |
+| `sum(i=0, n)`    | Σ from i=0 to n                    |
+| `prod(i=1, n)`   | Π from i=1 to n                    |
+| `int(a, b)`      | ∫ from a to b                      |
+| `lim(x->0)`      | lim as x→0                         |
+
+### Fractions
+
+Wrap the numerator in parentheses followed by `/denominator`:
+
+```
+(a + b)/c                →  (a+b)/c as a fraction
+(-b pm sqrt(D))/(2a)     →  quadratic formula fraction
+```
+
+### Degrees
+
+Write the number immediately followed by `deg`:
+
+```
+90deg   →  90°
+180deg  →  180°
+```
+
+### Constants and symbols
+
+| Input   | Renders as   |
+| ------- | ------------ |
+| `inf`   | ∞            |
+| `pm`    | ±            |
+| `...`   | …            |
+
+### Comparison operators
+
+| Input  | Renders as  |
+| ------ | ----------- |
+| `!=`   | ≠           |
+| `<=`   | ≤           |
+| `>=`   | ≥           |
+| `~=`   | ≈           |
+| `->`   | →           |
+| `<-`   | ←           |
+| `=>`   | ⇒           |
+| `<=>`  | ⟺           |
+
+### Set and logic keywords
+
+| Input        | Renders as |
+| ------------ | ---------- |
+| `not in`     | ∉          |
+| `in`         | ∈          |
+| `subset`     | ⊂          |
+| `supset`     | ⊃          |
+| `union`      | ∪          |
+| `intersect`  | ∩          |
+| `forall`     | ∀          |
+| `exists`     | ∃          |
+| `and`        | ∧          |
+| `or`         | ∨          |
+| `not`        | ¬          |
+
+## More examples
+
+```mdx
+<BME>lim(x->0) (sin x)/x = 1</BME>
+```
+
+<BME>lim(x->0) (sin x)/x = 1</BME>
+
+```mdx
+<BME>int(0, inf) e^(-x) dx = 1</BME>
+```
+
+<BME>int(0, inf) e^(-x) dx = 1</BME>
+
+```mdx
+<ME>forall x in RR, x^2 >= 0</ME>
+```
+
+<ME>forall x in RR, x^2 >= 0</ME>
+
+```mdx
+<ME>alpha + beta = gamma</ME>
+```
+
+<ME>alpha + beta = gamma</ME>
+
+## Props
+
+### ME
+
+| Prop        | Type      | Default | Description                                      |
+| ----------- | --------- | ------- | ------------------------------------------------ |
+| `children`  | `string`  | —       | Expression in the easy DSL                       |
+| `block`     | `boolean` | `false` | Display mode (centered, larger)                  |
+| `className` | `string`  | —       | Additional CSS classes                           |
+
+### BME
+
+| Prop        | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `children`  | `string` | —       | Expression in easy DSL |
+| `className` | `string` | —       | Additional CSS classes |
+
+## Notes
+
+`children` must be a **plain string** — JSX cannot be mixed inside `<ME>`. This is by design: the same rule that prevents mixing `<Deg>` inside `<M expr="...">` also applies here.
+
+For expressions that need dynamic JSX composition, use `<M expr="...">` with LaTeX or combine [Math Primitives](/docs/components/math-primitives) directly.

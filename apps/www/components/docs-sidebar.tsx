@@ -37,8 +37,8 @@ function SidebarRouteTree({
               key={`section-${index}`}
               className={cn("mb-1 px-2 pb-1 pt-5", index === 0 && "pt-1")}
             >
-              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500/15 to-indigo-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 ring-1 ring-inset ring-violet-500/25 dark:text-violet-400 dark:ring-violet-400/20">
-                {route.sectionHeader}
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-green-600 dark:text-green-500">
+                {"// "}{route.sectionHeader}
               </span>
             </div>
           );
@@ -77,18 +77,18 @@ function SidebarRoute({ route, pathname, level }: SidebarRouteProps) {
           onClick={() => setIsExpanded(!isExpanded)}
           className={cn(
             "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors",
-            "hover:bg-violet-500/5 hover:text-violet-600 dark:hover:text-violet-400",
+            "hover:bg-green-500/5 hover:text-green-600 dark:hover:text-green-400",
             isActive &&
-              "border-l-2 border-violet-500 bg-gradient-to-r from-violet-500/10 via-violet-500/5 to-transparent pl-[6px] font-medium text-violet-600 dark:border-violet-400 dark:text-violet-400",
+              "border-l-2 border-green-500 bg-gradient-to-r from-green-500/10 via-green-500/5 to-transparent pl-[6px] font-medium text-green-600 dark:border-green-400 dark:text-green-400",
             !isActive && "text-muted-foreground",
-            level > 0 && "pl-4"
+            level > 0 && "pl-4",
           )}
         >
           <span>{route.title}</span>
           <ChevronRight
             className={cn(
               "h-4 w-4 transition-transform",
-              isExpanded && "rotate-90"
+              isExpanded && "rotate-90",
             )}
           />
         </button>
@@ -112,10 +112,10 @@ function SidebarRoute({ route, pathname, level }: SidebarRouteProps) {
       className={cn(
         "block rounded-md px-2 py-1.5 text-sm transition-all duration-150",
         isActive
-          ? "border-l-2 border-violet-500 bg-gradient-to-r from-violet-500/10 via-violet-500/5 to-transparent pl-[6px] font-medium text-violet-600 shadow-[0_0_12px_rgba(139,92,246,0.12)] dark:border-violet-400 dark:text-violet-400"
-          : "text-muted-foreground hover:bg-violet-500/5 hover:text-violet-600 dark:hover:text-violet-400",
+          ? "border-l-2 border-green-500 bg-gradient-to-r from-green-500/10 via-green-500/5 to-transparent pl-[6px] font-medium text-green-600 shadow-[0_0_12px_rgba(34,197,94,0.15)] dark:border-green-400 dark:text-green-400"
+          : "text-muted-foreground hover:bg-green-500/5 hover:text-green-600 dark:hover:text-green-400",
         level > 0 && !isActive && "pl-4",
-        level > 0 && isActive && "pl-[14px]"
+        level > 0 && isActive && "pl-[14px]",
       )}
     >
       {route.title}

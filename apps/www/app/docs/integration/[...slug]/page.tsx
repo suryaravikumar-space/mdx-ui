@@ -19,9 +19,7 @@ async function getDocFromParams(params: { slug: string[] }) {
   // The route is at /docs/integration/[...slug], so we need to prepend "integration/"
   // to match against slugAsParams which is "integration/nextjs-mdx-remote"
   const fullSlug = `integration/${slug}`;
-  const doc = allDocs.find(
-    (doc) => doc.slugAsParams === fullSlug
-  );
+  const doc = allDocs.find((doc) => doc.slugAsParams === fullSlug);
 
   if (!doc) {
     return null;
@@ -42,7 +40,9 @@ export async function generateStaticParams(): Promise<
     }));
 }
 
-export default async function IntegrationPage({ params }: IntegrationPageProps) {
+export default async function IntegrationPage({
+  params,
+}: IntegrationPageProps) {
   const resolvedParams = await params;
   const doc = await getDocFromParams(resolvedParams);
 
@@ -59,10 +59,15 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
         {/* Breadcrumbs */}
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           {breadcrumbs.map((crumb, index) => (
-            <div key={crumb.path || index} className="flex items-center space-x-1">
+            <div
+              key={crumb.path || index}
+              className="flex items-center space-x-1"
+            >
               {index > 0 && <ChevronRight className="h-4 w-4" />}
               {index === breadcrumbs.length - 1 ? (
-                <span className="font-medium text-foreground">{crumb.title}</span>
+                <span className="font-medium text-foreground">
+                  {crumb.title}
+                </span>
               ) : (
                 <Link
                   href={crumb.path || "#"}
@@ -77,7 +82,7 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
 
         {/* Page header */}
         <div className="space-y-4">
-          <h1 className="scroll-m-20 bg-gradient-to-r from-violet-600 to-indigo-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-violet-400 dark:to-indigo-300">
+          <h1 className="scroll-m-20 bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-green-400 dark:to-emerald-300">
             {doc.title}
           </h1>
           <p className="text-lg leading-7 text-muted-foreground">

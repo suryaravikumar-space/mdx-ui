@@ -18,7 +18,7 @@ export default function DocsPage() {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <div className="space-y-2">
-          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+          <h1 className="scroll-m-20 bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-green-400 dark:to-emerald-300">
             {doc.title}
           </h1>
           <p className="text-lg text-muted-foreground">

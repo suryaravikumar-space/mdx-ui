@@ -20,7 +20,7 @@ async function getComponentFromParams(params: { slug: string[] }) {
   // to match against slugAsParams which is "components/blockquote"
   const fullSlug = `components/${slug}`;
   const component = allComponents.find(
-    (component) => component.slugAsParams === fullSlug
+    (component) => component.slugAsParams === fullSlug,
   );
 
   if (!component) {
@@ -57,10 +57,15 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
         {/* Breadcrumbs */}
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           {breadcrumbs.map((crumb, index) => (
-            <div key={crumb.path || index} className="flex items-center space-x-1">
+            <div
+              key={crumb.path || index}
+              className="flex items-center space-x-1"
+            >
               {index > 0 && <ChevronRight className="h-4 w-4" />}
               {index === breadcrumbs.length - 1 ? (
-                <span className="font-medium text-foreground">{crumb.title}</span>
+                <span className="font-medium text-foreground">
+                  {crumb.title}
+                </span>
               ) : (
                 <Link
                   href={crumb.path || "#"}
@@ -75,7 +80,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
 
         {/* Page header */}
         <div className="space-y-4">
-          <h1 className="scroll-m-20 bg-gradient-to-r from-violet-600 to-indigo-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-violet-400 dark:to-indigo-300">
+          <h1 className="scroll-m-20 bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-green-400 dark:to-emerald-300">
             {component.title}
           </h1>
           <p className="text-lg leading-7 text-muted-foreground">

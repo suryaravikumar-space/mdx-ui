@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "katex/dist/katex.min.css";
 import { cn } from "@/lib/utils";
@@ -7,7 +7,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
   title: "MDX UI — Transform LLM Markdown into Interactive UI",
@@ -23,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(inter.className, "min-h-screen antialiased")}
+        className={cn(inter.variable, jetbrainsMono.variable, "min-h-screen font-sans antialiased")}
         suppressHydrationWarning
       >
         <ThemeProvider

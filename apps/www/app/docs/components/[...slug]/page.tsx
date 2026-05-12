@@ -75,7 +75,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
 
         {/* Page header */}
         <div className="space-y-4">
-          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+          <h1 className="scroll-m-20 bg-gradient-to-r from-violet-600 to-indigo-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-violet-400 dark:to-indigo-300">
             {component.title}
           </h1>
           <p className="text-lg leading-7 text-muted-foreground">

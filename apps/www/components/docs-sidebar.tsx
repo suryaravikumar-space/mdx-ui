@@ -23,26 +23,27 @@ interface SidebarRouteTreeProps {
   level?: number;
 }
 
-function SidebarRouteTree({ routes, pathname, level = 0 }: SidebarRouteTreeProps) {
+function SidebarRouteTree({
+  routes,
+  pathname,
+  level = 0,
+}: SidebarRouteTreeProps) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-0.5">
       {routes.map((route, index) => {
-        // Render section header
         if (route.hasSectionHeader) {
           return (
             <div
               key={`section-${index}`}
-              className={cn(
-                "px-2 py-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground",
-                level > 0 && "mt-4"
-              )}
+              className={cn("mb-1 px-2 pb-1 pt-5", index === 0 && "pt-1")}
             >
-              {route.sectionHeader}
+              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500/15 to-indigo-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 ring-1 ring-inset ring-violet-500/25 dark:text-violet-400 dark:ring-violet-400/20">
+                {route.sectionHeader}
+              </span>
             </div>
           );
         }
 
-        // Render route with potential children
         return (
           <SidebarRoute
             key={route.path || index}
@@ -69,16 +70,16 @@ function SidebarRoute({ route, pathname, level }: SidebarRouteProps) {
 
   const [isExpanded, setIsExpanded] = useState(isOpen);
 
-  // If route has children, show as expandable group
   if (hasChildren) {
     return (
-      <div className="space-y-1">
+      <div className="space-y-0.5">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className={cn(
             "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors",
-            "hover:bg-accent hover:text-accent-foreground",
-            isActive && "bg-accent font-medium text-accent-foreground",
+            "hover:bg-violet-500/5 hover:text-violet-600 dark:hover:text-violet-400",
+            isActive &&
+              "border-l-2 border-violet-500 bg-gradient-to-r from-violet-500/10 via-violet-500/5 to-transparent pl-[6px] font-medium text-violet-600 dark:border-violet-400 dark:text-violet-400",
             !isActive && "text-muted-foreground",
             level > 0 && "pl-4"
           )}
@@ -93,7 +94,7 @@ function SidebarRoute({ route, pathname, level }: SidebarRouteProps) {
         </button>
 
         {isExpanded && route.routes && (
-          <div className={cn("ml-0 space-y-1", level === 0 && "ml-2")}>
+          <div className={cn("ml-0 space-y-0.5", level === 0 && "ml-2")}>
             <SidebarRouteTree
               routes={route.routes}
               pathname={pathname}
@@ -105,16 +106,16 @@ function SidebarRoute({ route, pathname, level }: SidebarRouteProps) {
     );
   }
 
-  // Leaf node - just a link
   return (
     <Link
       href={route.path || "#"}
       className={cn(
-        "block rounded-md px-2 py-1.5 text-sm transition-colors",
-        "hover:bg-accent hover:text-accent-foreground",
-        isActive && "bg-accent font-medium text-accent-foreground",
-        !isActive && "text-muted-foreground",
-        level > 0 && "pl-4"
+        "block rounded-md px-2 py-1.5 text-sm transition-all duration-150",
+        isActive
+          ? "border-l-2 border-violet-500 bg-gradient-to-r from-violet-500/10 via-violet-500/5 to-transparent pl-[6px] font-medium text-violet-600 shadow-[0_0_12px_rgba(139,92,246,0.12)] dark:border-violet-400 dark:text-violet-400"
+          : "text-muted-foreground hover:bg-violet-500/5 hover:text-violet-600 dark:hover:text-violet-400",
+        level > 0 && !isActive && "pl-4",
+        level > 0 && isActive && "pl-[14px]"
       )}
     >
       {route.title}

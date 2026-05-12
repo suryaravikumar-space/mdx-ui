@@ -79,7 +79,9 @@ Use `SolutionNote` for commentary that is not an algebraic step — identities u
 
 ```mdx
 <Solution title="Prove: sin²θ + cos²θ = 1">
-  <SolutionNote>Start from the Pythagorean theorem on the unit circle.</SolutionNote>
+  <SolutionNote>
+    Start from the Pythagorean theorem on the unit circle.
+  </SolutionNote>
   <SolutionStep reason="Unit circle definition">
     <M expr="x^2 + y^2 = 1" />
   </SolutionStep>
@@ -93,7 +95,9 @@ Use `SolutionNote` for commentary that is not an algebraic step — identities u
 ```
 
 <Solution title="Prove: sin²θ + cos²θ = 1">
-  <SolutionNote>Start from the Pythagorean theorem on the unit circle.</SolutionNote>
+  <SolutionNote>
+    Start from the Pythagorean theorem on the unit circle.
+  </SolutionNote>
   <SolutionStep reason="Unit circle definition">
     <M expr="x^2 + y^2 = 1" />
   </SolutionStep>
@@ -119,31 +123,31 @@ Add `highlight` to a `SolutionStep` to visually mark the key transformation in a
 
 ### Solution
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | — | Problem statement in header |
-| `children` | `ReactNode` | — | `SolutionStep`, `SolutionNote`, `SolutionAnswer` |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description                                      |
+| ----------- | ----------- | ------- | ------------------------------------------------ |
+| `title`     | `string`    | —       | Problem statement in header                      |
+| `children`  | `ReactNode` | —       | `SolutionStep`, `SolutionNote`, `SolutionAnswer` |
+| `className` | `string`    | —       | Additional CSS classes                           |
 
 ### SolutionStep
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `reason` | `string` | — | Explanation shown right-aligned |
-| `highlight` | `boolean` | `false` | Highlight background on key step |
-| `children` | `ReactNode` | — | Math expression for this step |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description                      |
+| ----------- | ----------- | ------- | -------------------------------- |
+| `reason`    | `string`    | —       | Explanation shown right-aligned  |
+| `highlight` | `boolean`   | `false` | Highlight background on key step |
+| `children`  | `ReactNode` | —       | Math expression for this step    |
+| `className` | `string`    | —       | Additional CSS classes           |
 
 ### SolutionAnswer
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | — | Final answer expression |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description             |
+| ----------- | ----------- | ------- | ----------------------- |
+| `children`  | `ReactNode` | —       | Final answer expression |
+| `className` | `string`    | —       | Additional CSS classes  |
 
 ### SolutionNote
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | — | Commentary or annotation text |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description                   |
+| ----------- | ----------- | ------- | ----------------------------- |
+| `children`  | `ReactNode` | —       | Commentary or annotation text |
+| `className` | `string`    | —       | Additional CSS classes        |

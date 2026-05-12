@@ -5,13 +5,8 @@
   "whenToUse": "Use when documenting a microcontroller, SoC, or connector pinout — USB, GPIO, UART, SPI, I2C headers. Ideal for hardware BSP and SDK documentation.",
   "whenNotToUse": "Do not use for register maps — use RegisterMap. Do not use for general comparison tables — use DataTable.",
   "example": "<PinTable title=\"40-pin GPIO Header\" connector=\"J1\" rows={[\n  { pin: 1, signal: \"3.3V\", type: \"POWER\", voltage: \"3.3V\", description: \"Power supply\" },\n  { pin: 2, signal: \"5V\",   type: \"POWER\", voltage: \"5V\",   description: \"Power supply\" },\n  { pin: 3, signal: \"GPIO2\", type: \"BIDIR\", voltage: \"3.3V\", altFunction: \"I2C1_SDA\" },\n]} />",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "pin-table.tsx",

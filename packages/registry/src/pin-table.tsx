@@ -21,9 +21,12 @@ interface PinTableProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const typeStyles: Record<PinType, string> = {
   INPUT: "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
-  OUTPUT: "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300",
-  BIDIR: "bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300",
-  POWER: "bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300",
+  OUTPUT:
+    "bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300",
+  BIDIR:
+    "bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300",
+  POWER:
+    "bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300",
   GND: "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400",
   NC: "bg-muted text-muted-foreground",
 };
@@ -37,7 +40,13 @@ export function PinTable({
   ...props
 }: PinTableProps) {
   return (
-    <div className={cn("my-6 overflow-hidden rounded-lg border border-border", className)} {...props}>
+    <div
+      className={cn(
+        "my-6 overflow-hidden rounded-lg border border-border",
+        className,
+      )}
+      {...props}
+    >
       {(title || connector) && (
         <div className="flex items-center justify-between border-b border-border bg-muted/50 px-4 py-2">
           {title && <span className="text-sm font-semibold">{title}</span>}

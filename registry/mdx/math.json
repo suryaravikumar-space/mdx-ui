@@ -5,14 +5,8 @@
   "whenToUse": "Use <M expr=\"\\frac{a}{b}\" /> for inline LaTeX and <BM expr=\"...\" /> for block/display equations. The expr prop accepts literal backslashes — no JS string escaping needed. Use InlineMath/BlockMath when you need to embed a dynamic JS value.",
   "whenNotToUse": "Do not use for code — use CodeBlock. Do not use for simple expressions that read clearly as plain text.",
   "example": "The formula <M expr=\"\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\" /> gives the roots. <BM expr=\"e^{i\\pi} + 1 = 0\" />",
-  "dependencies": [
-    "katex",
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["katex", "clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "math.tsx",

@@ -29,15 +29,28 @@ A centered display block with an optional equation number. Compose with `M`/`BM`
 
 ```mdx
 <Equation label="2">
-  x = <Frac
-    num={<>-b <PlusMinus /> <Sqrt>b² - 4ac</Sqrt></>}
+  x ={" "}
+  <Frac
+    num={
+      <>
+        -b <PlusMinus /> <Sqrt>b² - 4ac</Sqrt>
+      </>
+    }
     den="2a"
   />
 </Equation>
 ```
 
 <Equation label="2">
-  x = <Frac num={<>-b <PlusMinus /> <Sqrt>b² - 4ac</Sqrt></>} den="2a" />
+  x ={" "}
+  <Frac
+    num={
+      <>
+        -b <PlusMinus /> <Sqrt>b² - 4ac</Sqrt>
+      </>
+    }
+    den="2a"
+  />
 </Equation>
 
 ### No label
@@ -84,32 +97,44 @@ A system of simultaneous equations with an SVG left brace.
 
 ```mdx
 <EqSystem>
-  <div><M expr="\frac{\partial u}{\partial t} = \alpha \nabla^2 u" /></div>
-  <div><M expr="u(x, 0) = f(x)" /></div>
-  <div><M expr="u(0, t) = u(L, t) = 0" /></div>
+  <div>
+    <M expr="\frac{\partial u}{\partial t} = \alpha \nabla^2 u" />
+  </div>
+  <div>
+    <M expr="u(x, 0) = f(x)" />
+  </div>
+  <div>
+    <M expr="u(0, t) = u(L, t) = 0" />
+  </div>
 </EqSystem>
 ```
 
 <EqSystem>
-  <div><M expr="\frac{\partial u}{\partial t} = \alpha \nabla^2 u" /></div>
-  <div><M expr="u(x, 0) = f(x)" /></div>
-  <div><M expr="u(0, t) = u(L, t) = 0" /></div>
+  <div>
+    <M expr="\frac{\partial u}{\partial t} = \alpha \nabla^2 u" />
+  </div>
+  <div>
+    <M expr="u(x, 0) = f(x)" />
+  </div>
+  <div>
+    <M expr="u(0, t) = u(L, t) = 0" />
+  </div>
 </EqSystem>
 
 ## Props
 
 ### Equation
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | — | Equation number/label shown right-aligned as `(1)` |
-| `inline` | `boolean` | `false` | Inline span with no outer box |
-| `children` | `ReactNode` | — | Math content |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description                                        |
+| ----------- | ----------- | ------- | -------------------------------------------------- |
+| `label`     | `string`    | —       | Equation number/label shown right-aligned as `(1)` |
+| `inline`    | `boolean`   | `false` | Inline span with no outer box                      |
+| `children`  | `ReactNode` | —       | Math content                                       |
+| `className` | `string`    | —       | Additional CSS classes                             |
 
 ### EqSystem
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | — | One element per equation |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description              |
+| ----------- | ----------- | ------- | ------------------------ |
+| `children`  | `ReactNode` | —       | One element per equation |
+| `className` | `string`    | —       | Additional CSS classes   |

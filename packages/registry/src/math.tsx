@@ -11,17 +11,17 @@ const KATEX_MACROS: Record<string, string> = {
   "\\Z": "\\mathbb{Z}",
   "\\C": "\\mathbb{C}",
   "\\Q": "\\mathbb{Q}",
-  "\\E": "\\mathbb{E}",   // expected value
-  "\\PP": "\\mathbb{P}",  // probability (\\P is taken by KaTeX)
+  "\\E": "\\mathbb{E}", // expected value
+  "\\PP": "\\mathbb{P}", // probability (\\P is taken by KaTeX)
   "\\F": "\\mathbb{F}",
   // Calculus
-  "\\d": "\\,\\mathrm{d}",          // differential: \d x  →  dx
+  "\\d": "\\,\\mathrm{d}", // differential: \d x  →  dx
   "\\eps": "\\varepsilon",
   // Common bracketed operators (parameterized)
-  "\\norm": "\\left\\|#1\\right\\|",         // \norm{v}
-  "\\abs": "\\left|#1\\right|",              // \abs{x}
+  "\\norm": "\\left\\|#1\\right\\|", // \norm{v}
+  "\\abs": "\\left|#1\\right|", // \abs{x}
   "\\inner": "\\left\\langle#1,#2\\right\\rangle", // \inner{u}{v}
-  "\\set": "\\left\\{#1\\right\\}",          // \set{x \mid x > 0}
+  "\\set": "\\left\\{#1\\right\\}", // \set{x \mid x > 0}
   "\\floor": "\\left\\lfloor#1\\right\\rfloor",
   "\\ceil": "\\left\\lceil#1\\right\\rceil",
 };

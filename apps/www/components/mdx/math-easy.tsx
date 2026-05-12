@@ -128,17 +128,17 @@ export function toLatex(expr: string): string {
   s = s.replace(/\bpm\b/g, "\\pm ");
 
   // Vector calculus
-  s = s.replace(/\bnabla\b/g, "\\nabla ");   // ∇
-  s = s.replace(/\bgrad\b/g, "\\nabla ");    // ∇ (gradient alias)
+  s = s.replace(/\bnabla\b/g, "\\nabla "); // ∇
+  s = s.replace(/\bgrad\b/g, "\\nabla "); // ∇ (gradient alias)
   s = s.replace(/\bpartial\b/g, "\\partial "); // ∂
 
   // Multiplication & products
-  s = s.replace(/\bcdot\b/g, "\\cdot ");    // ·  (dot product)
-  s = s.replace(/\btimes\b/g, "\\times ");  // ×  (cross product / multiply)
+  s = s.replace(/\bcdot\b/g, "\\cdot "); // ·  (dot product)
+  s = s.replace(/\btimes\b/g, "\\times "); // ×  (cross product / multiply)
 
   // Misc
-  s = s.replace(/\bhbar\b/g, "\\hbar ");    // ℏ
-  s = s.replace(/\binfty\b/g, "\\infty ");  // ∞ (long-form alias)
+  s = s.replace(/\bhbar\b/g, "\\hbar "); // ℏ
+  s = s.replace(/\binfty\b/g, "\\infty "); // ∞ (long-form alias)
 
   // ── PASS 8: Ellipsis ──────────────────────────────────────────────────────
   s = s.replace(/\.\.\./g, "\\ldots ");

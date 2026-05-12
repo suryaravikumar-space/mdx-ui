@@ -100,6 +100,7 @@ MDX UI components use Tailwind CSS for styling.
     ```css
     @import "tailwindcss";
     ```
+
   </TabsContent>
   <TabsContent value="v3">
     ```bash
@@ -125,6 +126,7 @@ MDX UI components use Tailwind CSS for styling.
     @tailwind components;
     @tailwind utilities;
     ```
+
   </TabsContent>
 </Tabs>
 
@@ -185,7 +187,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <MDXProvider components={mdxComponents}>
       <App />
     </MDXProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
@@ -232,28 +234,34 @@ export default function App() {
 
 ## Project Structure
 
-<FileTree>
-  my-app/
-    src/
-      components/
-        mdx-ui/
-          callout.tsx
-          accordion.tsx
-          lib/
-            utils.ts
-        mdx-components.tsx
-      content/
-        intro.mdx
-        guide.mdx
-      App.tsx
-      main.tsx
-      index.css
-      vite-env.d.ts
-    vite.config.ts
-    tailwind.config.ts
-    mdx-ui.json
-    package.json
-</FileTree>
+<Tree>
+  <TreeItem name="my-app" isFolder defaultOpen>
+    <TreeItem name="src" isFolder defaultOpen>
+      <TreeItem name="components" isFolder defaultOpen>
+        <TreeItem name="mdx-ui" isFolder>
+          <TreeItem name="callout.tsx" />
+          <TreeItem name="accordion.tsx" />
+          <TreeItem name="lib" isFolder>
+            <TreeItem name="utils.ts" />
+          </TreeItem>
+        </TreeItem>
+        <TreeItem name="mdx-components.tsx" />
+      </TreeItem>
+      <TreeItem name="content" isFolder>
+        <TreeItem name="intro.mdx" />
+        <TreeItem name="guide.mdx" />
+      </TreeItem>
+      <TreeItem name="App.tsx" />
+      <TreeItem name="main.tsx" />
+      <TreeItem name="index.css" />
+      <TreeItem name="vite-env.d.ts" />
+    </TreeItem>
+    <TreeItem name="vite.config.ts" />
+    <TreeItem name="tailwind.config.ts" />
+    <TreeItem name="mdx-ui.json" />
+    <TreeItem name="package.json" />
+  </TreeItem>
+</Tree>
 
 ---
 
@@ -284,8 +292,14 @@ import {
 
 export const mdxComponents = {
   // ...existing
-  M, BM, ME, BME,
-  Solution, SolutionStep, SolutionAnswer, SolutionNote,
+  M,
+  BM,
+  ME,
+  BME,
+  Solution,
+  SolutionStep,
+  SolutionAnswer,
+  SolutionNote,
 };
 ```
 

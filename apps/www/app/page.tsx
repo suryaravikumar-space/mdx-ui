@@ -4,20 +4,82 @@ import type { CSSProperties } from "react";
 
 const floatingSymbols = [
   { symbol: "∑", x: "8%", y: "18%", size: "2.2rem", delay: "0s", dur: "18s" },
-  { symbol: "∇", x: "84%", y: "22%", size: "1.8rem", delay: "1.2s", dur: "22s" },
+  {
+    symbol: "∇",
+    x: "84%",
+    y: "22%",
+    size: "1.8rem",
+    delay: "1.2s",
+    dur: "22s",
+  },
   { symbol: "∂", x: "18%", y: "68%", size: "2rem", delay: "2.1s", dur: "20s" },
-  { symbol: "∫", x: "76%", y: "62%", size: "2.6rem", delay: "0.6s", dur: "16s" },
+  {
+    symbol: "∫",
+    x: "76%",
+    y: "62%",
+    size: "2.6rem",
+    delay: "0.6s",
+    dur: "16s",
+  },
   { symbol: "λ", x: "44%", y: "8%", size: "1.6rem", delay: "3.2s", dur: "19s" },
   { symbol: "π", x: "62%", y: "78%", size: "2rem", delay: "1.8s", dur: "24s" },
   { symbol: "θ", x: "4%", y: "52%", size: "1.6rem", delay: "2.7s", dur: "17s" },
-  { symbol: "α", x: "91%", y: "44%", size: "1.8rem", delay: "4.1s", dur: "21s" },
-  { symbol: "ℏ", x: "28%", y: "28%", size: "1.5rem", delay: "0.9s", dur: "23s" },
-  { symbol: "</>", x: "78%", y: "12%", size: "0.9rem", delay: "2.3s", dur: "18s" },
-  { symbol: "mdx", x: "14%", y: "84%", size: "0.85rem", delay: "1.5s", dur: "20s" },
-  { symbol: "⟺", x: "54%", y: "88%", size: "1.3rem", delay: "3.8s", dur: "16s" },
+  {
+    symbol: "α",
+    x: "91%",
+    y: "44%",
+    size: "1.8rem",
+    delay: "4.1s",
+    dur: "21s",
+  },
+  {
+    symbol: "ℏ",
+    x: "28%",
+    y: "28%",
+    size: "1.5rem",
+    delay: "0.9s",
+    dur: "23s",
+  },
+  {
+    symbol: "</>",
+    x: "78%",
+    y: "12%",
+    size: "0.9rem",
+    delay: "2.3s",
+    dur: "18s",
+  },
+  {
+    symbol: "mdx",
+    x: "14%",
+    y: "84%",
+    size: "0.85rem",
+    delay: "1.5s",
+    dur: "20s",
+  },
+  {
+    symbol: "⟺",
+    x: "54%",
+    y: "88%",
+    size: "1.3rem",
+    delay: "3.8s",
+    dur: "16s",
+  },
 ];
 
-const glyphStrip = ["∑", "∇", "∂", "∫", "λ", "π", "θ", "α", "ℏ", "</>", "mdx", "⟺"];
+const glyphStrip = [
+  "∑",
+  "∇",
+  "∂",
+  "∫",
+  "λ",
+  "π",
+  "θ",
+  "α",
+  "ℏ",
+  "</>",
+  "mdx",
+  "⟺",
+];
 
 export default function Home() {
   return (
@@ -83,8 +145,7 @@ export default function Home() {
 
         {/* Headline */}
         <h1 className="max-w-[900px] text-4xl font-bold leading-tight tracking-[-0.03em] md:text-6xl lg:leading-[1.05]">
-          Transform LLM Markdown into{" "}
-          <br className="hidden sm:inline" />
+          Transform LLM Markdown into <br className="hidden sm:inline" />
           <span className="gradient-text">Rich, Interactive UI</span>
         </h1>
 
@@ -116,7 +177,9 @@ export default function Home() {
           {glyphStrip.map((g, i) => (
             <span
               key={i}
-              className={i % 2 === 0 ? "text-green-400/60" : "text-green-300/25"}
+              className={
+                i % 2 === 0 ? "text-green-400/60" : "text-green-300/25"
+              }
             >
               {g}
             </span>
@@ -229,7 +292,9 @@ export default function Home() {
           </p>
           <h2 className="mb-2 text-center text-3xl font-bold tracking-tighter">
             The LLM stays in its comfort zone.{" "}
-            <span className="gradient-text">Your pipeline handles the rest.</span>
+            <span className="gradient-text">
+              Your pipeline handles the rest.
+            </span>
           </h2>
           <p className="mb-12 text-center text-muted-foreground">
             Four deterministic steps. No prompt engineering per component.

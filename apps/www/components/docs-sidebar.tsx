@@ -38,7 +38,8 @@ function SidebarRouteTree({
               className={cn("mb-1 px-2 pb-1 pt-5", index === 0 && "pt-1")}
             >
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-green-600 dark:text-green-500">
-                {"// "}{route.sectionHeader}
+                {"// "}
+                {route.sectionHeader}
               </span>
             </div>
           );

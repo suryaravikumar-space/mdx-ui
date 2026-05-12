@@ -6,7 +6,9 @@ import { notFound } from "next/navigation";
 
 export default function DocsPage() {
   // Find the index doc - slugAsParams is "" for docs/index.mdx
-  const doc = allDocs.find((doc) => doc.slugAsParams === "" || doc.slugAsParams === "index");
+  const doc = allDocs.find(
+    (doc) => doc.slugAsParams === "" || doc.slugAsParams === "index",
+  );
 
   if (!doc) {
     notFound();
@@ -21,9 +23,7 @@ export default function DocsPage() {
           <h1 className="scroll-m-20 bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent dark:from-green-400 dark:to-emerald-300">
             {doc.title}
           </h1>
-          <p className="text-lg text-muted-foreground">
-            {doc.description}
-          </p>
+          <p className="text-lg text-muted-foreground">{doc.description}</p>
         </div>
         <div className="pb-12 pt-8">
           <Mdx code={doc.body.code} />

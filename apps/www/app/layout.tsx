@@ -27,7 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn(inter.variable, jetbrainsMono.variable, "min-h-screen font-sans antialiased")}
+        className={cn(
+          inter.variable,
+          jetbrainsMono.variable,
+          "min-h-screen font-sans antialiased",
+        )}
         suppressHydrationWarning
       >
         <ThemeProvider

@@ -1,1 +1,243 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "label": "glossary.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L1"}, {"id": "src_glossary_glossaryentry", "label": "GlossaryEntry", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L7"}, {"id": "src_glossary_glossarycontextvalue", "label": "GlossaryContextValue", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L14"}, {"id": "src_glossary_glossarycontext", "label": "GlossaryContext", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L20"}, {"id": "src_glossary_glossaryproviderprops", "label": "GlossaryProviderProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L26"}, {"id": "src_glossary_glossaryprovider", "label": "GlossaryProvider()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L45"}, {"id": "src_glossary_termprops", "label": "TermProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L55"}, {"id": "src_glossary_term", "label": "Term()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L73"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L1", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_utils_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "lib_utils_cn", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_primitives_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L3", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "lib_primitives_focusring", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L3", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "lib_primitives_popoversurface", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L3", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "src_glossary_glossaryentry", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L7", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "src_glossary_glossarycontextvalue", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L14", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "src_glossary_glossarycontext", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L20", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "src_glossary_glossaryproviderprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L26", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "src_glossary_glossaryprovider", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L45", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "src_glossary_termprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L55", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx", "target": "src_glossary_term", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L73", "weight": 1.0}], "raw_calls": [{"caller_nid": "src_glossary_term", "callee": "useContext", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L74"}, {"caller_nid": "src_glossary_term", "callee": "useState", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L76"}, {"caller_nid": "src_glossary_term", "callee": "useRef", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L77"}, {"caller_nid": "src_glossary_term", "callee": "useId", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L78"}, {"caller_nid": "src_glossary_term", "callee": "useEffect", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L80"}, {"caller_nid": "src_glossary_term", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L101"}, {"caller_nid": "src_glossary_term", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L107"}, {"caller_nid": "src_glossary_term", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx", "source_location": "L122"}]}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "label": "glossary.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_glossary_glossaryentry",
+      "label": "GlossaryEntry",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_glossary_glossarycontextvalue",
+      "label": "GlossaryContextValue",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_glossary_glossarycontext",
+      "label": "GlossaryContext",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "src_glossary_glossaryproviderprops",
+      "label": "GlossaryProviderProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "src_glossary_glossaryprovider",
+      "label": "GlossaryProvider()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L45"
+    },
+    {
+      "id": "src_glossary_termprops",
+      "label": "TermProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L55"
+    },
+    {
+      "id": "src_glossary_term",
+      "label": "Term()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L73"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_utils_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_primitives_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "lib_primitives_focusring",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "lib_primitives_popoversurface",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "src_glossary_glossaryentry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "src_glossary_glossarycontextvalue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "src_glossary_glossarycontext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "src_glossary_glossaryproviderprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "src_glossary_glossaryprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "src_glossary_termprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_glossary_tsx",
+      "target": "src_glossary_term",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L73",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "useContext",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L74"
+    },
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "useState",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L76"
+    },
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "useRef",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L77"
+    },
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "useId",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L78"
+    },
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "useEffect",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L80"
+    },
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L101"
+    },
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L107"
+    },
+    {
+      "caller_nid": "src_glossary_term",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx",
+      "source_location": "L122"
+    }
+  ]
+}

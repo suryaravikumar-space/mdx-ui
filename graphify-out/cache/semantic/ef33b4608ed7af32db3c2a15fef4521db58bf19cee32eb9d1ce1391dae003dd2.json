@@ -1,1 +1,69 @@
-{"nodes": [{"id": "comp_annotation", "label": "annotation Component", "file_type": "code", "source_file": "apps/www/content/docs/components/annotation.mdx", "source_location": "packages/registry/src/annotation.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "annotation_mdx_doc", "label": "annotation.mdx Documentation", "file_type": "document", "source_file": "apps/www/content/docs/components/annotation.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "comp_annotation", "target": "comp_utils", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/annotation.mdx", "source_location": null, "weight": 1.0}, {"source": "comp_annotation", "target": "clsx_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/annotation.mdx", "source_location": null, "weight": 1.0}, {"source": "comp_annotation", "target": "tailwind_merge_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/annotation.mdx", "source_location": null, "weight": 1.0}, {"source": "annotation_mdx_doc", "target": "comp_annotation", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/annotation.mdx", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "comp_annotation",
+      "label": "annotation Component",
+      "file_type": "code",
+      "source_file": "apps/www/content/docs/components/annotation.mdx",
+      "source_location": "packages/registry/src/annotation.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "annotation_mdx_doc",
+      "label": "annotation.mdx Documentation",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/annotation.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "comp_annotation",
+      "target": "comp_utils",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/annotation.mdx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "comp_annotation",
+      "target": "clsx_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/annotation.mdx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "comp_annotation",
+      "target": "tailwind_merge_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/annotation.mdx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "annotation_mdx_doc",
+      "target": "comp_annotation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/annotation.mdx",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

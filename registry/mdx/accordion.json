@@ -6,7 +6,9 @@
   "whenNotToUse": "Do not use for a single collapsible item — use Reveal or Spoiler instead. Do not use for navigation menus.",
   "example": "<Accordion>\n  <AccordionItem value=\"q1\">\n    <AccordionTrigger>What is an invariant?</AccordionTrigger>\n    <AccordionContent>A condition that holds true before and after every operation.</AccordionContent>\n  </AccordionItem>\n</Accordion>",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "accordion.tsx",

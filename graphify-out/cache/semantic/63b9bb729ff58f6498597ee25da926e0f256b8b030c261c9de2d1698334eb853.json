@@ -1,1 +1,58 @@
-{"nodes": [{"id": "security_note_component", "label": "Security Note", "file_type": "document", "source_file": "apps/www/content/docs/components/security-note.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "security_note_component", "target": "utils_registry_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/security-note.mdx", "source_location": "frontmatter: registryDependencies", "weight": 1.0}, {"source": "security_note_component", "target": "clsx_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/security-note.mdx", "source_location": "frontmatter: dependencies", "weight": 1.0}, {"source": "security_note_component", "target": "tailwind_merge_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/security-note.mdx", "source_location": "frontmatter: dependencies", "weight": 1.0}, {"source": "security_note_component", "target": "mdxui_cli", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/security-note.mdx", "source_location": "line 13", "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "security_note_component",
+      "label": "Security Note",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/security-note.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "security_note_component",
+      "target": "utils_registry_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/security-note.mdx",
+      "source_location": "frontmatter: registryDependencies",
+      "weight": 1.0
+    },
+    {
+      "source": "security_note_component",
+      "target": "clsx_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/security-note.mdx",
+      "source_location": "frontmatter: dependencies",
+      "weight": 1.0
+    },
+    {
+      "source": "security_note_component",
+      "target": "tailwind_merge_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/security-note.mdx",
+      "source_location": "frontmatter: dependencies",
+      "weight": 1.0
+    },
+    {
+      "source": "security_note_component",
+      "target": "mdxui_cli",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/security-note.mdx",
+      "source_location": "line 13",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

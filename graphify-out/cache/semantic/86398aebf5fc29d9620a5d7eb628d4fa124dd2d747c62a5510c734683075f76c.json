@@ -1,1 +1,122 @@
-{"nodes": [{"id": "mdx_system_contentlayer_config", "label": "contentlayer.config.ts", "file_type": "code", "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": "apps/www/contentlayer.config.ts", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mdx_system_toc_lib", "label": "lib/toc.ts (getTableOfContents)", "file_type": "code", "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": "apps/www/lib/toc.ts", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mdx_system_auto_toc", "label": "Auto-Generated Table of Contents", "file_type": "rationale", "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mdx_system_reactdev_pattern", "label": "react.dev Documentation Pattern", "file_type": "rationale", "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mdx_system_dynamic_routes", "label": "Dynamic Routes app/docs/components/[...slug]", "file_type": "code", "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": "apps/www/app/docs/components/[...slug]/page.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "mdx_system_contentlayer_config", "target": "complete_summary_contentlayer", "relation": "implements", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "weight": 1.0}, {"source": "mdx_system_contentlayer_config", "target": "complete_summary_shiki", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "weight": 1.0}, {"source": "mdx_system_toc_lib", "target": "mdx_system_auto_toc", "relation": "implements", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "weight": 1.0}, {"source": "mdx_system_dynamic_routes", "target": "mdx_system_contentlayer_config", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "weight": 1.0}, {"source": "mdx_system_dynamic_routes", "target": "mdx_system_toc_lib", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "weight": 1.0}, {"source": "mdx_system_dynamic_routes", "target": "adding_components_mdx_components_tsx", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "mdx_system_contentlayer_config",
+      "label": "contentlayer.config.ts",
+      "file_type": "code",
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": "apps/www/contentlayer.config.ts",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mdx_system_toc_lib",
+      "label": "lib/toc.ts (getTableOfContents)",
+      "file_type": "code",
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": "apps/www/lib/toc.ts",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mdx_system_auto_toc",
+      "label": "Auto-Generated Table of Contents",
+      "file_type": "rationale",
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mdx_system_reactdev_pattern",
+      "label": "react.dev Documentation Pattern",
+      "file_type": "rationale",
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mdx_system_dynamic_routes",
+      "label": "Dynamic Routes app/docs/components/[...slug]",
+      "file_type": "code",
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": "apps/www/app/docs/components/[...slug]/page.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "mdx_system_contentlayer_config",
+      "target": "complete_summary_contentlayer",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mdx_system_contentlayer_config",
+      "target": "complete_summary_shiki",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mdx_system_toc_lib",
+      "target": "mdx_system_auto_toc",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mdx_system_dynamic_routes",
+      "target": "mdx_system_contentlayer_config",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mdx_system_dynamic_routes",
+      "target": "mdx_system_toc_lib",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "mdx_system_dynamic_routes",
+      "target": "adding_components_mdx_components_tsx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/MDX_SYSTEM_GUIDE.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

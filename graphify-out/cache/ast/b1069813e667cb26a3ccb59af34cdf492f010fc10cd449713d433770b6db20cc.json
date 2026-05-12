@@ -1,1 +1,30 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demo_sources_generated_ts", "label": "demo-sources.generated.ts", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demo-sources.generated.ts", "source_location": "L1"}, {"id": "components_demo_sources_generated_demo_sources", "label": "DEMO_SOURCES", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demo-sources.generated.ts", "source_location": "L5"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demo_sources_generated_ts", "target": "components_demo_sources_generated_demo_sources", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demo-sources.generated.ts", "source_location": "L5", "weight": 1.0}], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demo_sources_generated_ts",
+      "label": "demo-sources.generated.ts",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demo-sources.generated.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_demo_sources_generated_demo_sources",
+      "label": "DEMO_SOURCES",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demo-sources.generated.ts",
+      "source_location": "L5"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demo_sources_generated_ts",
+      "target": "components_demo_sources_generated_demo_sources",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demo-sources.generated.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

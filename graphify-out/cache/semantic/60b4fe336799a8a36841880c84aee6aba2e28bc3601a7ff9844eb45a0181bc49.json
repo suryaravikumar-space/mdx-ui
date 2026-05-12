@@ -1,1 +1,288 @@
-{"nodes": [{"id": "component_sync_source_registry", "label": "Source-to-Registry Synchronization", "file_type": "rationale", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_blockquote", "label": "blockquote Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/blockquote.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_callout", "label": "callout Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/callout.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_code_block", "label": "code-block Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/code-block.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_emphasis", "label": "emphasis Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/emphasis.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_headings", "label": "headings Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/headings.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_horizontal_rule", "label": "horizontal-rule Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/horizontal-rule.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_image", "label": "image Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/image.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_inline_code", "label": "inline-code Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/inline-code.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_list", "label": "list Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/list.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_paragraph", "label": "paragraph Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/paragraph.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_steps", "label": "steps Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/steps.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "comp_tabs", "label": "tabs Component", "file_type": "code", "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": "packages/registry/src/tabs.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "component_sync_source_registry", "target": "readme_packages_registry_src", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 1.0}, {"source": "component_sync_source_registry", "target": "readme_registry_mdx_json", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 1.0}, {"source": "comp_blockquote", "target": "readme_packages_registry_src", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 1.0}, {"source": "comp_callout", "target": "readme_packages_registry_src", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 1.0}, {"source": "comp_tabs", "target": "readme_packages_registry_src", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 1.0}, {"source": "comp_steps", "target": "readme_packages_registry_src", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 1.0}, {"source": "readme_packages_registry_src", "target": "comp_blockquote", "relation": "references", "confidence": "INFERRED", "confidence_score": 0.95, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 0.95}, {"source": "readme_packages_registry_src", "target": "comp_callout", "relation": "references", "confidence": "INFERRED", "confidence_score": 0.95, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 0.95}, {"source": "readme_packages_registry_src", "target": "comp_tabs", "relation": "references", "confidence": "INFERRED", "confidence_score": 0.95, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 0.95}, {"source": "readme_packages_registry_src", "target": "comp_steps", "relation": "references", "confidence": "INFERRED", "confidence_score": 0.95, "source_file": "GUIDE/COMPONENT_SYNC.md", "source_location": null, "weight": 0.95}], "hyperedges": [{"id": "basic_markdown_components_group", "label": "Basic Markdown Components (blockquote, horizontal-rule, image, list)", "nodes": ["comp_blockquote", "comp_horizontal_rule", "comp_image", "comp_list"], "relation": "form", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md"}, {"id": "text_formatting_components_group", "label": "Text Formatting Components (emphasis, headings, inline-code, paragraph)", "nodes": ["comp_emphasis", "comp_headings", "comp_inline_code", "comp_paragraph"], "relation": "form", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md"}, {"id": "documentation_components_group", "label": "Documentation Components (callout, code-block, steps, tabs)", "nodes": ["comp_callout", "comp_code_block", "comp_steps", "comp_tabs"], "relation": "form", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/COMPONENT_SYNC.md"}]}
+{
+  "nodes": [
+    {
+      "id": "component_sync_source_registry",
+      "label": "Source-to-Registry Synchronization",
+      "file_type": "rationale",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_blockquote",
+      "label": "blockquote Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/blockquote.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_callout",
+      "label": "callout Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/callout.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_code_block",
+      "label": "code-block Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/code-block.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_emphasis",
+      "label": "emphasis Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/emphasis.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_headings",
+      "label": "headings Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/headings.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_horizontal_rule",
+      "label": "horizontal-rule Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/horizontal-rule.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_image",
+      "label": "image Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/image.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_inline_code",
+      "label": "inline-code Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/inline-code.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_list",
+      "label": "list Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/list.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_paragraph",
+      "label": "paragraph Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/paragraph.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_steps",
+      "label": "steps Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/steps.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "comp_tabs",
+      "label": "tabs Component",
+      "file_type": "code",
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": "packages/registry/src/tabs.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "component_sync_source_registry",
+      "target": "readme_packages_registry_src",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "component_sync_source_registry",
+      "target": "readme_registry_mdx_json",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "comp_blockquote",
+      "target": "readme_packages_registry_src",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "comp_callout",
+      "target": "readme_packages_registry_src",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "comp_tabs",
+      "target": "readme_packages_registry_src",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "comp_steps",
+      "target": "readme_packages_registry_src",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_packages_registry_src",
+      "target": "comp_blockquote",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 0.95
+    },
+    {
+      "source": "readme_packages_registry_src",
+      "target": "comp_callout",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 0.95
+    },
+    {
+      "source": "readme_packages_registry_src",
+      "target": "comp_tabs",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 0.95
+    },
+    {
+      "source": "readme_packages_registry_src",
+      "target": "comp_steps",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "GUIDE/COMPONENT_SYNC.md",
+      "source_location": null,
+      "weight": 0.95
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "basic_markdown_components_group",
+      "label": "Basic Markdown Components (blockquote, horizontal-rule, image, list)",
+      "nodes": [
+        "comp_blockquote",
+        "comp_horizontal_rule",
+        "comp_image",
+        "comp_list"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md"
+    },
+    {
+      "id": "text_formatting_components_group",
+      "label": "Text Formatting Components (emphasis, headings, inline-code, paragraph)",
+      "nodes": [
+        "comp_emphasis",
+        "comp_headings",
+        "comp_inline_code",
+        "comp_paragraph"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md"
+    },
+    {
+      "id": "documentation_components_group",
+      "label": "Documentation Components (callout, code-block, steps, tabs)",
+      "nodes": ["comp_callout", "comp_code_block", "comp_steps", "comp_tabs"],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/COMPONENT_SYNC.md"
+    }
+  ]
+}

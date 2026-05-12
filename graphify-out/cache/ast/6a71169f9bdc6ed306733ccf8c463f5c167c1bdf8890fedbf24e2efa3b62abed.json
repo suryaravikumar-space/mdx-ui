@@ -1,1 +1,30 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_site_footer_tsx", "label": "site-footer.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-footer.tsx", "source_location": "L1"}, {"id": "components_site_footer_sitefooter", "label": "SiteFooter()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-footer.tsx", "source_location": "L1"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_site_footer_tsx", "target": "components_site_footer_sitefooter", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-footer.tsx", "source_location": "L1", "weight": 1.0}], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_site_footer_tsx",
+      "label": "site-footer.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-footer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_site_footer_sitefooter",
+      "label": "SiteFooter()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-footer.tsx",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_site_footer_tsx",
+      "target": "components_site_footer_sitefooter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-footer.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

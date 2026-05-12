@@ -1,1 +1,283 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "label": "dynamic-sidebar.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L1"}, {"id": "components_dynamic_sidebar_dynamicsidebar", "label": "DynamicSidebar()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L10"}, {"id": "components_dynamic_sidebar_sidebarroutetreeprops", "label": "SidebarRouteTreeProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L28"}, {"id": "components_dynamic_sidebar_sidebarroutetree", "label": "SidebarRouteTree()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L35"}, {"id": "components_dynamic_sidebar_sidebarrouteprops", "label": "SidebarRouteProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L67"}, {"id": "components_dynamic_sidebar_sidebarroute", "label": "SidebarRoute()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L74"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L3", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "link", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L4", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "navigation", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L5", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_lib_utils_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L6", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "lib_utils_cn", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L6", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "lucide_react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L7", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_config_sidebars_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L8", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "config_sidebars_getsidebarbypath", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L8", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "config_sidebars_routeitem", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L8", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "components_dynamic_sidebar_dynamicsidebar", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L10", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "components_dynamic_sidebar_sidebarroutetreeprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L28", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "components_dynamic_sidebar_sidebarroutetree", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L35", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "components_dynamic_sidebar_sidebarrouteprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L67", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx", "target": "components_dynamic_sidebar_sidebarroute", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L74", "weight": 1.0}], "raw_calls": [{"caller_nid": "components_dynamic_sidebar_dynamicsidebar", "callee": "usePathname", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L11"}, {"caller_nid": "components_dynamic_sidebar_dynamicsidebar", "callee": "getSidebarByPath", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L12"}, {"caller_nid": "components_dynamic_sidebar_dynamicsidebar", "callee": "startsWith", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L15"}, {"caller_nid": "components_dynamic_sidebar_dynamicsidebar", "callee": "startsWith", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L15"}, {"caller_nid": "components_dynamic_sidebar_sidebarroutetree", "callee": "map", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L38"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "transformPath", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L84"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "startsWith", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L86"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "useState", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L87"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "useEffect", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L89"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L99"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L117"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L140"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L168"}, {"caller_nid": "components_dynamic_sidebar_sidebarroute", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx", "source_location": "L190"}]}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "label": "dynamic-sidebar.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_dynamic_sidebar_dynamicsidebar",
+      "label": "DynamicSidebar()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L10"
+    },
+    {
+      "id": "components_dynamic_sidebar_sidebarroutetreeprops",
+      "label": "SidebarRouteTreeProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L28"
+    },
+    {
+      "id": "components_dynamic_sidebar_sidebarroutetree",
+      "label": "SidebarRouteTree()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "components_dynamic_sidebar_sidebarrouteprops",
+      "label": "SidebarRouteProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L67"
+    },
+    {
+      "id": "components_dynamic_sidebar_sidebarroute",
+      "label": "SidebarRoute()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L74"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "link",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "navigation",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_lib_utils_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "lucide_react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_config_sidebars_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "config_sidebars_getsidebarbypath",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "config_sidebars_routeitem",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "components_dynamic_sidebar_dynamicsidebar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "components_dynamic_sidebar_sidebarroutetreeprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "components_dynamic_sidebar_sidebarroutetree",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "components_dynamic_sidebar_sidebarrouteprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_dynamic_sidebar_tsx",
+      "target": "components_dynamic_sidebar_sidebarroute",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L74",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "components_dynamic_sidebar_dynamicsidebar",
+      "callee": "usePathname",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L11"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_dynamicsidebar",
+      "callee": "getSidebarByPath",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L12"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_dynamicsidebar",
+      "callee": "startsWith",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L15"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_dynamicsidebar",
+      "callee": "startsWith",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L15"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroutetree",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L38"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "transformPath",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L84"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "startsWith",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L86"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "useState",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L87"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "useEffect",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L89"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L99"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L117"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L140"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "components_dynamic_sidebar_sidebarroute",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx",
+      "source_location": "L190"
+    }
+  ]
+}

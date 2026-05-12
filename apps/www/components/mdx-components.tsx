@@ -27,7 +27,7 @@ import {
   Small,
   Muted,
 } from "@/components/mdx/paragraph";
-import { Math, BlockMath, InlineMath } from "@/components/mdx/math";
+import { Math, BlockMath, InlineMath, M, BM } from "@/components/mdx/math";
 import {
   Mermaid,
   MermaidBST,
@@ -225,18 +225,33 @@ import {
   PhiU,
   PsiU,
   OmegaU,
-} from "@/components/mdx/math-primitives";
-import {
-  Equation,
-  EqSystem,
-  Approx,
-  Neq,
-  Leq,
-  Geq,
-  Arrow,
+  // Section 2 additions
+  Limsup,
+  Liminf,
+  // Section 7 additions
   Implies,
   Iff,
-} from "@/components/mdx/math-equation";
+  // Section 11 — Relations, Arrows & Arithmetic
+  Neq,
+  Approx,
+  Equiv,
+  Cong,
+  Leq,
+  Geq,
+  Ll,
+  Gg,
+  Propto,
+  Sim,
+  PlusMinus,
+  MinusPlus,
+  Divides,
+  NotDivides,
+  Arrow,
+  MapsTo,
+  Compose,
+  OTimes,
+} from "@/components/mdx/math-primitives";
+import { Equation, EqSystem } from "@/components/mdx/math-equation";
 import {
   Solution,
   SolutionStep,
@@ -298,6 +313,8 @@ const components = {
   Math,
   BlockMath,
   InlineMath,
+  M,
+  BM,
   Mermaid,
   MermaidBST,
   MermaidTree,
@@ -474,16 +491,34 @@ const components = {
   PhiU,
   PsiU,
   OmegaU,
+  // Section 2 additions
+  Limsup,
+  Liminf,
+  // Section 7 additions
+  Implies,
+  Iff,
+  // Section 11 — Relations, Arrows & Arithmetic
+  Neq,
+  Approx,
+  Equiv,
+  Cong,
+  Leq,
+  Geq,
+  Ll,
+  Gg,
+  Propto,
+  Sim,
+  PlusMinus,
+  MinusPlus,
+  Divides,
+  NotDivides,
+  Arrow,
+  MapsTo,
+  Compose,
+  OTimes,
   // math-equation
   Equation,
   EqSystem,
-  Approx,
-  Neq,
-  Leq,
-  Geq,
-  Arrow,
-  Implies,
-  Iff,
   Solution,
   SolutionStep,
   SolutionAnswer,

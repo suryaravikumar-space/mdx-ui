@@ -34,12 +34,7 @@
       {
         "id": "documentation_components_group",
         "label": "Documentation Components (callout, code-block, steps, tabs)",
-        "nodes": [
-          "comp_callout",
-          "comp_code_block",
-          "comp_steps",
-          "comp_tabs"
-        ],
+        "nodes": ["comp_callout", "comp_code_block", "comp_steps", "comp_tabs"],
         "relation": "form",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0,
@@ -48,11 +43,7 @@
       {
         "id": "cli_commands_group",
         "label": "CLI Commands (init, add, list)",
-        "nodes": [
-          "cli_init_command",
-          "cli_add_command",
-          "cli_list_command"
-        ],
+        "nodes": ["cli_init_command", "cli_add_command", "cli_list_command"],
         "relation": "form",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0,
@@ -238,11 +229,7 @@
       {
         "id": "image_provider_framework_integrations",
         "label": "Image Framework Integration Options",
-        "nodes": [
-          "image_renderer_provider",
-          "next_image",
-          "astro_assets"
-        ],
+        "nodes": ["image_renderer_provider", "next_image", "astro_assets"],
         "relation": "participate_in",
         "confidence": "EXTRACTED",
         "confidence_score": 1.0,
@@ -50847,12 +50834,7 @@
     {
       "id": "documentation_components_group",
       "label": "Documentation Components (callout, code-block, steps, tabs)",
-      "nodes": [
-        "comp_callout",
-        "comp_code_block",
-        "comp_steps",
-        "comp_tabs"
-      ],
+      "nodes": ["comp_callout", "comp_code_block", "comp_steps", "comp_tabs"],
       "relation": "form",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -50861,11 +50843,7 @@
     {
       "id": "cli_commands_group",
       "label": "CLI Commands (init, add, list)",
-      "nodes": [
-        "cli_init_command",
-        "cli_add_command",
-        "cli_list_command"
-      ],
+      "nodes": ["cli_init_command", "cli_add_command", "cli_list_command"],
       "relation": "form",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -51051,11 +51029,7 @@
     {
       "id": "image_provider_framework_integrations",
       "label": "Image Framework Integration Options",
-      "nodes": [
-        "image_renderer_provider",
-        "next_image",
-        "astro_assets"
-      ],
+      "nodes": ["image_renderer_provider", "next_image", "astro_assets"],
       "relation": "participate_in",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -51104,11 +51078,7 @@
     {
       "id": "structure_display_components",
       "label": "Structure Display Components",
-      "nodes": [
-        "file_tree_component",
-        "card_component",
-        "changelog_component"
-      ],
+      "nodes": ["file_tree_component", "card_component", "changelog_component"],
       "relation": "participate_in",
       "confidence": "INFERRED",
       "confidence_score": 0.75,
@@ -51186,11 +51156,7 @@
     {
       "id": "collapsible_disclosure_components",
       "label": "Collapsible disclosure components (Spoiler, Reveal, Accordion)",
-      "nodes": [
-        "spoiler_component",
-        "reveal_component",
-        "accordion_component"
-      ],
+      "nodes": ["spoiler_component", "reveal_component", "accordion_component"],
       "relation": "participate_in",
       "confidence": "INFERRED",
       "confidence_score": 0.85,

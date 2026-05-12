@@ -1,14 +1,17 @@
-# Graph Report - /home/surya/surya_ws/personal/mdx-ui  (2026-05-12)
+# Graph Report - /home/surya/surya_ws/personal/mdx-ui (2026-05-12)
 
 ## Corpus Check
+
 - Large corpus: 343 files · ~156,456 words. Semantic extraction will be expensive (many Claude tokens). Consider running on a subfolder, or use --no-semantic to run AST-only.
 
 ## Summary
+
 - 2002 nodes · 3030 edges · 195 communities (163 shown, 32 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 51 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
+
 - [[_COMMUNITY_Docs Site MDX Component Wrappers|Docs Site MDX Component Wrappers]]
 - [[_COMMUNITY_Math Primitives Source|Math Primitives Source]]
 - [[_COMMUNITY_Interactive Components (AccordionRevealAnnotation)|Interactive Components (Accordion/Reveal/Annotation)]]
@@ -191,6 +194,7 @@
 - [[_COMMUNITY_Community 194|Community 194]]
 
 ## God Nodes (most connected - your core abstractions)
+
 1. `cn()` - 106 edges
 2. `mdx-ui CLI` - 22 edges
 3. `mdx-ui CLI (@ravikumarsurya/mdx-ui)` - 20 edges
@@ -203,18 +207,20 @@
 10. `class-variance-authority` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `validateBinaryTree()` --calls--> `check`  [INFERRED]
-  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/__tests__/data-type-table.test.tsx
-- `validateBalanced()` --calls--> `check`  [INFERRED]
-  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/__tests__/data-type-table.test.tsx
-- `validateFull()` --calls--> `check`  [INFERRED]
-  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/__tests__/data-type-table.test.tsx
-- `validatePerfect()` --calls--> `check`  [INFERRED]
-  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/__tests__/data-type-table.test.tsx
-- `validateHeap()` --calls--> `check`  [INFERRED]
-  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/__tests__/data-type-table.test.tsx
+
+- `validateBinaryTree()` --calls--> `check` [INFERRED]
+  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/**tests**/data-type-table.test.tsx
+- `validateBalanced()` --calls--> `check` [INFERRED]
+  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/**tests**/data-type-table.test.tsx
+- `validateFull()` --calls--> `check` [INFERRED]
+  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/**tests**/data-type-table.test.tsx
+- `validatePerfect()` --calls--> `check` [INFERRED]
+  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/**tests**/data-type-table.test.tsx
+- `validateHeap()` --calls--> `check` [INFERRED]
+  apps/www/components/mdx/ds-tree.tsx → packages/registry/src/**tests**/data-type-table.test.tsx
 
 ## Hyperedges (group relationships)
+
 - **Basic Markdown Components (blockquote, horizontal-rule, image, list)** — comp_blockquote, comp_horizontal_rule, comp_image, comp_list [EXTRACTED 1.00]
 - **Text Formatting Components (emphasis, headings, inline-code, paragraph)** — comp_emphasis, comp_headings, comp_inline_code, comp_paragraph [EXTRACTED 1.00]
 - **Documentation Components (callout, code-block, steps, tabs)** — comp_callout, comp_code_block, comp_steps, comp_tabs [EXTRACTED 1.00]
@@ -250,603 +256,753 @@
 ## Communities (195 total, 32 thin omitted)
 
 ### Community 0 - "Docs Site MDX Component Wrappers"
+
 Cohesion: 0.03
 Nodes (138): components, MdxProps, Abs(), Alpha, And, ArcCos, ArcSin, ArcTan (+130 more)
 
 ### Community 1 - "Math Primitives Source"
+
 Cohesion: 0.01
 Nodes (92): Alpha, And, ArcCos, ArcSin, ArcTan, Because, Beta, BoundedProps (+84 more)
 
 ### Community 2 - "Interactive Components (Accordion/Reveal/Annotation)"
+
 Cohesion: 0.05
 Nodes (38): Collapse(), CollapseProps, transitions, Accordion, AccordionContent, AccordionContentProps, AccordionContext, AccordionContextValue (+30 more)
 
 ### Community 3 - "Data Structures Visualization Source"
+
 Cohesion: 0.04
 Nodes (48): AdjMap, AGENT_SHAPE, AgentEdge, agentFlowChart(), AgentNode, BSTNode, CIRCLED, DSAgentFlow() (+40 more)
 
 ### Community 4 - "Data Structures Visualization Docs"
+
 Cohesion: 0.04
 Nodes (48): AdjMap, AGENT_SHAPE, AgentEdge, agentFlowChart(), AgentNode, BSTNode, CIRCLED, DSAgentFlow() (+40 more)
 
 ### Community 5 - "Tree Data Structures Source"
+
 Cohesion: 0.05
 Nodes (26): BaseProps, countLeaves(), DSBSTPlaygroundProps, DSHeapProps, DSNaryTreeProps, DSTreeProps, EDGE_COLOR, getTraversal() (+18 more)
 
 ### Community 6 - "Tree Data Structures Docs"
+
 Cohesion: 0.05
 Nodes (26): BaseProps, countLeaves(), DSBSTPlaygroundProps, DSHeapProps, DSNaryTreeProps, DSTreeProps, EDGE_COLOR, getTraversal() (+18 more)
 
 ### Community 7 - "Next.js App Routing and Navigation"
+
 Cohesion: 0.11
 Nodes (24): SidebarRouteProps, SidebarRouteTreeProps, Mdx(), PageNavigation(), PageNavigationProps, TableOfContents(), TocProps, DocsPage() (+16 more)
 
 ### Community 8 - "Mermaid Diagrams Source"
+
 Cohesion: 0.07
 Nodes (26): AdjMap, BSTNode, bstToMermaid(), buildAdj(), buildBST(), CIRCLED, computeBFS(), computeDFS() (+18 more)
 
 ### Community 9 - "Mermaid Diagrams Docs"
+
 Cohesion: 0.07
 Nodes (26): AdjMap, BSTNode, bstToMermaid(), buildAdj(), buildBST(), CIRCLED, computeBFS(), computeDFS() (+18 more)
 
 ### Community 10 - "Remark MDX Plugin"
+
 Cohesion: 0.06
 Nodes (17): GFM_TYPE_MAP, LEGACY_TYPE_MAP, remarkMdxUi(), RemarkMdxUiOptions, chartAttr, headersAttr, highlightNode, node (+9 more)
 
 ### Community 11 - "Simple Inline Components (Utils/Emphasis/Highlight)"
+
 Cohesion: 0.09
 Nodes (17): cn(), Em, EmphasisProps, Strong, colorClasses, Highlight, HighlightProps, HorizontalRule (+9 more)
 
 ### Community 12 - "App Layouts and Sidebar"
+
 Cohesion: 0.1
 Nodes (11): BlogLayoutProps, CommunityLayoutProps, DynamicSidebar(), SidebarRouteProps, SidebarRouteTreeProps, getSidebarByPath(), RouteItem, SidebarConfig (+3 more)
 
 ### Community 13 - "Docs Hub (Installation/Index)"
+
 Cohesion: 0.12
 Nodes (26): Astro Framework, Copy-and-Paste Component Philosophy, mdx-ui Documentation Index, Installation Guide, Invariant, JSON-LD, KaTeX, Kbd (+18 more)
 
 ### Community 14 - "Project Design Principles"
+
 Cohesion: 0.12
 Nodes (25): AI Authoring Compatibility Design Principle, AI Content Generation Pipeline, CI/CD Pipeline — ci.yml, e2e.yml, publish.yml, Collapse Animation Technique — grid-template-rows 0fr to 1fr, Component API Conventions — Binding Decision Record, Contentlayer Renderer — Type-safe Content SDK, Design Primitives — Named Tailwind Token Constants, Educational Infrastructure Vision — Beyond Generic UI (+17 more)
 
 ### Community 15 - "Badge and Annotation Docs"
+
 Cohesion: 0.16
 Nodes (24): Accordion Component (referenced), annotation.mdx Documentation, badge.mdx Documentation, Certification Badge Component, class-variance-authority, clsx Dependency, annotation Component, badge Component (+16 more)
 
 ### Community 16 - "CLI Add/Update Commands"
+
 Cohesion: 0.16
 Nodes (12): RegistryComponent, DiffResult, update, CLI_VERSION, ComponentData, fetchComponent(), verifyIntegrity(), Config (+4 more)
 
 ### Community 17 - "ComponentPreview and Demo Sources"
+
 Cohesion: 0.13
 Nodes (10): ComponentPreview(), DEMOS, DEMO_SOURCES, Badge, BadgeProps, badgeVariants, Preview, PreviewProps (+2 more)
 
 ### Community 18 - "Content Block Component Docs"
+
 Cohesion: 0.13
 Nodes (20): Blockquote Component, Callout Component, Card Component, Changelog Component, ChangelogEntry Subcomponent, ChangelogItem Subcomponent, class-variance-authority, Complexity Table Component (+12 more)
 
 ### Community 19 - "CLI Init Command"
+
 Cohesion: 0.14
 Nodes (9): FRAMEWORK_LABELS, init, mockPathExists, mockReadJSON, s, detectFramework(), detectProjectStructure(), Framework (+1 more)
 
 ### Community 20 - "Code/Link/Video Demos"
+
 Cohesion: 0.13
 Nodes (6): CodeBlock, CodeBlockProps, Link, LinkProps, Video, VideoProps
 
 ### Community 21 - "CLI MCP and New Commands"
+
 Cohesion: 0.16
-Nodes (11): add, Registry, RegistryComponent, startMcpServer(), buildTemplate(), newCommand, todayIso(), __dirname (+3 more)
+Nodes (11): add, Registry, RegistryComponent, startMcpServer(), buildTemplate(), newCommand, todayIso(), \_\_dirname (+3 more)
 
 ### Community 22 - "Tabs Component"
+
 Cohesion: 0.16
 Nodes (12): Tabs, TabsContent, TabsContentProps, TabsContext, TabsContextValue, TabsList, TabsListProps, TabsProps (+4 more)
 
 ### Community 23 - "DataTable Component"
+
 Cohesion: 0.14
 Nodes (9): DataTable(), DataTableColumn, DataTableProps, DEFAULT_PAGE_SIZES, NCol, NRow, SortBadge(), SortDir (+1 more)
 
 ### Community 24 - "Sidebar Navigation System"
+
 Cohesion: 0.14
 Nodes (16): docs-nav.json Navigation Config, DynamicSidebar Component, Path Transformation Pattern (/docs ↔ /components), sidebars.ts (getSidebarByPath), lib/docs-nav.ts Navigation Utilities, DocsSidebar Component, getAdjacentRoutes() Utility, getAllRoutes() Utility (+8 more)
 
 ### Community 25 - "Developer Guides"
+
 Cohesion: 0.2
 Nodes (16): accordion.mdx Documentation, mdx-components.tsx MDX Provider, Component MDX Documentation Pattern, alert.mdx Documentation, Consolidated Monorepo Structure, accordion Component, alert Component, blockquote Component (+8 more)
 
 ### Community 26 - "Heading Component Source"
+
 Cohesion: 0.2
 Nodes (11): H1, H2, H3, H4, H5, H6, Heading, HeadingProps (+3 more)
 
 ### Community 27 - "Heading Component Docs"
+
 Cohesion: 0.17
 Nodes (10): H1, H2, H3, H4, H5, H6, Heading, HeadingProps (+2 more)
 
 ### Community 28 - "CLI Doctor and Registry"
+
 Cohesion: 0.21
 Nodes (9): doctor, Issue, COMPONENT_DEPS, COMPONENT_FILES, COMPONENT_MDX_MAP, ComponentEntry, FILE_TO_COMPONENT, expected (+1 more)
 
 ### Community 29 - "Table Component Source"
+
 Cohesion: 0.23
 Nodes (11): Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow (+3 more)
 
 ### Community 30 - "Community 30"
+
 Cohesion: 0.15
 Nodes (8): DataTableColumn, DataTableProps, DEFAULT_PAGE_SIZES, NCol, NRow, SortBadge(), SortDir, sortLabel()
 
 ### Community 31 - "Community 31"
+
 Cohesion: 0.16
 Nodes (10): Code Block Component, Code Group Component, Contentlayer / Contentlayer2, @next/mdx, next-mdx-remote, rehype-pretty-code, Shiki Syntax Highlighter, Component (+2 more)
 
 ### Community 32 - "Community 32"
+
 Cohesion: 0.19
 Nodes (10): Tabs, TabsContent, TabsContentProps, TabsContext, TabsContextValue, TabsList, TabsListProps, TabsProps (+2 more)
 
 ### Community 33 - "Community 33"
+
 Cohesion: 0.18
 Nodes (10): GlossaryContext, GlossaryContextValue, GlossaryEntry, GlossaryProvider(), GlossaryProviderProps, Term(), TermProps, btn (+2 more)
 
 ### Community 34 - "Community 34"
+
 Cohesion: 0.18
 Nodes (13): validateAVL(), validateBalanced(), validateBinaryTree(), validateBST(), validateFull(), validateHeap(), validateAVL(), validateBalanced() (+5 more)
 
 ### Community 35 - "Community 35"
+
 Cohesion: 0.18
 Nodes (8): CodeGroup, CodeGroupProps, TabInfo, { container }, firstTab, lastTab, mockWriteText, secondTab
 
 ### Community 36 - "Community 36"
+
 Cohesion: 0.27
 Nodes (10): Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, LinkCard, LinkCardProps (+2 more)
 
 ### Community 37 - "Community 37"
+
 Cohesion: 0.23
 Nodes (6): inter, metadata, SiteFooter(), SiteHeader(), ThemeProvider(), ThemeToggle()
 
 ### Community 38 - "Community 38"
+
 Cohesion: 0.18
 Nodes (10): baseComponent, baseConfig, [, content], empty, [, , encoding], [filePath], mockEnsureDir, mockWriteFile (+2 more)
 
 ### Community 39 - "Community 39"
+
 Cohesion: 0.2
 Nodes (9): accessStyle, RegisterAccess, RegisterMap, RegisterMapProps, RegisterRow, { container }, noAddr, rows (+1 more)
 
 ### Community 41 - "Community 41"
+
 Cohesion: 0.18
 Nodes (8): colClasses, Image, ImageGlossary, ImageGlossaryProps, ImageProps, ImageRenderer, ImageRendererContext, ImageRendererProviderProps
 
 ### Community 42 - "Community 42"
+
 Cohesion: 0.22
 Nodes (8): terms, GlossaryContext, GlossaryContextValue, GlossaryEntry, GlossaryProvider(), GlossaryProviderProps, Term(), TermProps
 
 ### Community 43 - "Community 43"
+
 Cohesion: 0.18
 Nodes (8): colClasses, Image, ImageGlossary, ImageGlossaryProps, ImageProps, ImageRenderer, ImageRendererContext, ImageRendererProviderProps
 
 ### Community 44 - "Community 44"
+
 Cohesion: 0.29
 Nodes (8): Intro, Large, Lead, Muted, Paragraph, ParagraphProps, paragraphVariants, Small
 
 ### Community 45 - "Community 45"
+
 Cohesion: 0.18
 Nodes (10): Approx(), Arrow(), EqSystem(), Equation(), EquationProps, Geq(), Iff(), Implies() (+2 more)
 
 ### Community 46 - "Community 46"
+
 Cohesion: 0.29
 Nodes (8): Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, LinkCard, LinkCardProps
 
 ### Community 47 - "Community 47"
+
 Cohesion: 0.31
 Nodes (8): Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow
 
 ### Community 48 - "Community 48"
+
 Cohesion: 0.24
 Nodes (8): CHANGE_TYPES, Changelog, ChangelogEntry, ChangelogEntryProps, ChangelogItem, ChangelogItemProps, ChangelogProps, ChangeType
 
 ### Community 49 - "Community 49"
+
 Cohesion: 0.24
 Nodes (7): save, dir, newDir, opts, saveMdxPage(), SaveMdxPageOptions, SaveMdxPageResult
 
 ### Community 50 - "Community 50"
+
 Cohesion: 0.22
 Nodes (8): DataTypeRow, DataTypeTable, DataTypeTableProps, { container }, crosses, rows, sparseRows, withShape
 
 ### Community 51 - "Community 51"
+
 Cohesion: 0.22
 Nodes (10): dagChart(), digraphChart(), DSDAG(), DSDigraph(), DSGraph(), DSWeightedGraph(), genGraphBuildSteps(), sanitize() (+2 more)
 
 ### Community 52 - "Community 52"
+
 Cohesion: 0.22
 Nodes (8): defaultTitles, SecurityNote, SecurityNoteProps, SecurityNoteSeverity, severityConfig, { container }, { unmount }, { unmount: u2 }
 
 ### Community 53 - "Community 53"
+
 Cohesion: 0.22
 Nodes (8): Certification, CertificationBadge, CertificationBadgeProps, CertStatus, statusConfig, actives, certs, { container }
 
 ### Community 54 - "Community 54"
+
 Cohesion: 0.22
 Nodes (4): FileTree(), FileTreeProps, ParsedNode, TreeItemInternalProps
 
 ### Community 55 - "Community 55"
+
 Cohesion: 0.22
 Nodes (10): dagChart(), digraphChart(), DSDAG(), DSDigraph(), DSGraph(), DSWeightedGraph(), genGraphBuildSteps(), sanitize() (+2 more)
 
 ### Community 56 - "Community 56"
+
 Cohesion: 0.22
-Nodes (10): Build Registry Workflow — packages/registry/src to registry/mdx JSON, pnpm Monorepo Workspace (packages/* and apps/*), Registry JSON File Format, Copy-Paste Component Distribution Philosophy (shadcn-style), CLI Package README, Code to npm Publish Workflow, pnpm Workspace Configuration, Registry Package README (+2 more)
+Nodes (10): Build Registry Workflow — packages/registry/src to registry/mdx JSON, pnpm Monorepo Workspace (packages/_ and apps/_), Registry JSON File Format, Copy-Paste Component Distribution Philosophy (shadcn-style), CLI Package README, Code to npm Publish Workflow, pnpm Workspace Configuration, Registry Package README (+2 more)
 
 ### Community 57 - "Community 57"
+
 Cohesion: 0.31
 Nodes (7): collectStepsBlock(), emitSteps(), preprocessMarkdown(), StepData, StepsBlock, input, output
 
 ### Community 58 - "Community 58"
+
 Cohesion: 0.22
 Nodes (6): filePath, out, segments, slug, targetDir, today
 
 ### Community 59 - "Community 59"
+
 Cohesion: 0.28
 Nodes (4): remove, mockPathExists, mockReadJSON, getConfig()
 
 ### Community 60 - "Community 60"
+
 Cohesion: 0.25
 Nodes (7): PrivacyRow, PrivacyTable, PrivacyTableProps, { container }, dashes, minimal, rows
 
 ### Community 61 - "Community 61"
+
 Cohesion: 0.25
 Nodes (7): ComplexityRow, ComplexityTable, ComplexityTableProps, bstRows, { container }, rows, table
 
 ### Community 62 - "Community 62"
+
 Cohesion: 0.22
 Nodes (8): Intro, Large, Lead, Muted, Paragraph, ParagraphProps, paragraphVariants, Small
 
 ### Community 63 - "Community 63"
+
 Cohesion: 0.22
 Nodes (8): CHANGE_TYPES, Changelog, ChangelogEntry, ChangelogEntryProps, ChangelogItem, ChangelogItemProps, ChangelogProps, ChangeType
 
 ### Community 64 - "Community 64"
+
 Cohesion: 0.25
 Nodes (5): SidebarNavItemsProps, SidebarNavProps, DocsConfig, NavItem, NavItemWithChildren
 
 ### Community 65 - "Community 65"
+
 Cohesion: 0.28
 Nodes (9): code-block Component, Contentlayer MDX Content Management, Next.js 15 App Router, Shiki Syntax Highlighting, contentlayer.config.ts, apps/www Documentation Website, rehype-pretty-code Plugin, Tailwind CSS (+1 more)
 
 ### Community 66 - "Community 66"
+
 Cohesion: 0.42
 Nodes (9): Basic Markdown Components Implementation Plan (Phase 1-3), Component Implementation Phases (Phase 0 through Phase 4), Component Naming Philosophy — Universal over Framework-Specific, react.dev as Inspiration Source for Component Design, Variant Strategy — Single Component with Variants over Many Separate Components, Basic Markdown Components Plan, Component Names Reference (react.dev to mdx-ui mapping), mdx-ui Component Roadmap (+1 more)
 
 ### Community 67 - "Community 67"
+
 Cohesion: 0.36
 Nodes (6): Alert, AlertDescription, AlertProps, AlertTitle, alertVariants, { container }
 
 ### Community 68 - "Community 68"
+
 Cohesion: 0.25
 Nodes (3): FileTreeProps, ParsedNode, TreeItemInternalProps
 
 ### Community 69 - "Community 69"
+
 Cohesion: 0.36
 Nodes (5): ListItem, ListItemProps, ListProps, OrderedList, UnorderedList
 
 ### Community 70 - "Community 70"
+
 Cohesion: 0.36
 Nodes (5): Alert, AlertDescription, AlertProps, AlertTitle, alertVariants
 
 ### Community 71 - "Community 71"
+
 Cohesion: 0.29
 Nodes (5): accessStyle, RegisterAccess, RegisterMap, RegisterMapProps, RegisterRow
 
 ### Community 72 - "Community 72"
+
 Cohesion: 0.29
 Nodes (5): defaultTitles, SecurityNote, SecurityNoteProps, SecurityNoteSeverity, severityConfig
 
 ### Community 73 - "Community 73"
+
 Cohesion: 0.32
 Nodes (5): Tree(), TreeContext, TreeItem(), TreeItemProps, TreeProps
 
 ### Community 74 - "Community 74"
+
 Cohesion: 0.29
 Nodes (4): DiffBlock, DiffBlockProps, DiffLine, DiffLineType
 
 ### Community 75 - "Community 75"
+
 Cohesion: 0.29
 Nodes (5): Certification, CertificationBadge, CertificationBadgeProps, CertStatus, statusConfig
 
 ### Community 76 - "Community 76"
+
 Cohesion: 0.33
-Nodes (6): buildRegistry(), componentsMetadata, __dirname, __filename, integrity(), libDependencies
+Nodes (6): buildRegistry(), componentsMetadata, **dirname, **filename, integrity(), libDependencies
 
 ### Community 77 - "Community 77"
+
 Cohesion: 0.43
 Nodes (5): AnyObject, extractContent(), isObject(), joinBlocks(), response
 
 ### Community 78 - "Community 78"
+
 Cohesion: 0.33
 Nodes (5): CodeBlock, CodeBlockProps, { container }, labelDiv, mockWriteText
 
 ### Community 79 - "Community 79"
+
 Cohesion: 0.33
 Nodes (5): Invariant, InvariantProps, { container }, ref, svg
 
 ### Community 81 - "Community 81"
+
 Cohesion: 0.38
 Nodes (5): Step, StepProps, Steps, StepsProps, { container }
 
 ### Community 82 - "Community 82"
+
 Cohesion: 0.33
-Nodes (6): demosDir, __dirname, escapeTemplateLiteral(), main(), outFile, root
+Nodes (6): demosDir, \_\_dirname, escapeTemplateLiteral(), main(), outFile, root
 
 ### Community 83 - "Community 83"
+
 Cohesion: 0.38
 Nodes (4): Terminal, TerminalLine, TerminalLineProps, TerminalProps
 
 ### Community 84 - "Community 84"
+
 Cohesion: 0.38
 Nodes (4): Step, StepProps, Steps, StepsProps
 
 ### Community 85 - "Community 85"
+
 Cohesion: 0.29
 Nodes (6): Solution(), SolutionAnswer(), SolutionNote(), SolutionProps, SolutionStep(), SolutionStepProps
 
 ### Community 86 - "Community 86"
+
 Cohesion: 0.29
 Nodes (7): Commander.js CLI Framework, GUIDE README, Quickstart Guide, mdx-ui CLI Tool (@ravikumarsurya/mdx-ui), mdx-ui Project, packages/cli (CLI Package), shadcn/ui Copy-Paste Philosophy
 
 ### Community 87 - "Community 87"
+
 Cohesion: 0.4
 Nodes (5): buildRegistryFromSource(), list, loadRegistry(), UTILITY_NAMES, REGISTRY
 
 ### Community 88 - "Community 88"
+
 Cohesion: 0.6
 Nodes (6): buildAdj(), DSBFS(), DSDFS(), genBFSSteps(), genDFSSteps(), graphTraversalChart()
 
 ### Community 89 - "Community 89"
+
 Cohesion: 0.4
 Nodes (4): Definition, DefinitionProps, { container }, ref
 
 ### Community 90 - "Community 90"
+
 Cohesion: 0.4
 Nodes (4): Badge, BadgeProps, badgeVariants, { container }
 
 ### Community 91 - "Community 91"
+
 Cohesion: 0.4
 Nodes (4): Preview, PreviewProps, { container }, defaultProps
 
 ### Community 92 - "Community 92"
+
 Cohesion: 0.33
 Nodes (4): PinRow, PinTableProps, PinType, typeStyles
 
 ### Community 93 - "Community 93"
+
 Cohesion: 0.4
 Nodes (4): Blockquote, BlockquoteProps, { container }, footer
 
 ### Community 94 - "Community 94"
+
 Cohesion: 0.4
 Nodes (4): Callout, CalloutProps, calloutVariants, { container }
 
 ### Community 95 - "Community 95"
+
 Cohesion: 0.33
 Nodes (4): DiffBlock, DiffBlockProps, DiffLine, DiffLineType
 
 ### Community 96 - "Community 96"
+
 Cohesion: 0.33
 Nodes (3): TreeContext, TreeItemProps, TreeProps
 
 ### Community 97 - "Community 97"
+
 Cohesion: 0.33
 Nodes (5): ListItem, ListItemProps, ListProps, OrderedList, UnorderedList
 
 ### Community 98 - "Community 98"
+
 Cohesion: 0.33
 Nodes (6): MermaidBFS (Breadth-First Search visualizer), MermaidBST (Binary Search Tree visualizer), Mermaid, MermaidDFS (Depth-First Search visualizer), MermaidTree (Generic Tree visualizer), remark-mdx-ui plugin (@ravikumarsurya/remark-mdx-ui)
 
 ### Community 99 - "Community 99"
+
 Cohesion: 0.33
 Nodes (5): codeBtn, codeContent, COMPONENT_PAGES, previewBtn, previewPane
 
 ### Community 100 - "Community 100"
+
 Cohesion: 0.47
 Nodes (3): Em, EmphasisProps, Strong
 
 ### Community 101 - "Community 101"
+
 Cohesion: 0.4
 Nodes (3): PrivacyRow, PrivacyTable, PrivacyTableProps
 
 ### Community 102 - "Community 102"
+
 Cohesion: 0.4
 Nodes (3): DataTypeRow, DataTypeTable, DataTypeTableProps
 
 ### Community 103 - "Community 103"
+
 Cohesion: 0.4
 Nodes (3): CodeGroup, CodeGroupProps, TabInfo
 
 ### Community 104 - "Community 104"
+
 Cohesion: 0.4
 Nodes (3): colorClasses, Highlight, HighlightProps
 
 ### Community 105 - "Community 105"
+
 Cohesion: 0.4
 Nodes (3): Callout, CalloutProps, calloutVariants
 
 ### Community 106 - "Community 106"
+
 Cohesion: 0.4
 Nodes (3): ComplexityRow, ComplexityTable, ComplexityTableProps
 
 ### Community 107 - "Community 107"
+
 Cohesion: 0.53
 Nodes (6): buildAdj(), DSBFS(), DSDFS(), genBFSSteps(), genDFSSteps(), graphTraversalChart()
 
 ### Community 108 - "Community 108"
+
 Cohesion: 0.33
 Nodes (6): CLI add Command, Automatic Dependency Resolution, fetch-component.ts Utility, get-config.ts Utility, install-deps.ts Utility, write-component.ts Utility
 
 ### Community 109 - "Community 109"
+
 Cohesion: 0.7
 Nodes (5): buildHeap(), DSMaxHeap(), DSMinHeap(), genHeapSteps(), heapChart()
 
 ### Community 110 - "Community 110"
+
 Cohesion: 0.5
 Nodes (5): DSTrie(), genTrieSteps(), insertTrie(), mkTrie(), trieToChart()
 
 ### Community 111 - "Community 111"
+
 Cohesion: 0.5
 Nodes (3): Kbd, KbdProps, { container }
 
 ### Community 112 - "Community 112"
+
 Cohesion: 0.5
 Nodes (3): HardwareSpec, HardwareSpecProps, { container }
 
 ### Community 114 - "Community 114"
+
 Cohesion: 0.4
 Nodes (4): Terminal, TerminalLine, TerminalLineProps, TerminalProps
 
 ### Community 115 - "Community 115"
+
 Cohesion: 0.6
 Nodes (5): astro:assets, Image Component, ImageGlossary Subcomponent, ImageRendererProvider Pattern, next/image
 
 ### Community 116 - "Community 116"
+
 Cohesion: 0.4
 Nodes (4): errors, header, links, pages
 
 ### Community 125 - "Community 125"
+
 Cohesion: 0.4
 Nodes (5): DSTree(), renderTree(), treeHeight(), useTraversal(), validatePerfect()
 
 ### Community 126 - "Community 126"
+
 Cohesion: 0.4
 Nodes (5): DSTree(), renderTree(), treeHeight(), useTraversal(), validatePerfect()
 
 ### Community 127 - "Community 127"
+
 Cohesion: 0.4
 Nodes (4): BlockMath(), InlineMath(), Math(), MathProps
 
 ### Community 128 - "Community 128"
+
 Cohesion: 0.7
 Nodes (5): buildHeap(), DSMaxHeap(), DSMinHeap(), genHeapSteps(), heapChart()
 
 ### Community 129 - "Community 129"
+
 Cohesion: 0.5
 Nodes (5): DSTrie(), genTrieSteps(), insertTrie(), mkTrie(), trieToChart()
 
 ### Community 130 - "Community 130"
+
 Cohesion: 0.5
 Nodes (5): MCP Server for Registry Exposure, Structured Output Pipeline (AI → JSON → MDX), Component Registry System, registry.json Master Registry, schema.json Registry Schema
 
 ### Community 131 - "Community 131"
+
 Cohesion: 0.67
 Nodes (4): bstInsert(), bstToChart(), DSBST(), genBSTSteps()
 
 ### Community 132 - "Community 132"
+
 Cohesion: 0.67
 Nodes (4): Glossary Component, GlossaryProvider Subcomponent, React Context Pattern, Term Subcomponent
 
 ### Community 133 - "Community 133"
+
 Cohesion: 0.5
 Nodes (3): codeBlock, headings, nav
 
 ### Community 134 - "Community 134"
+
 Cohesion: 0.67
 Nodes (4): bstInsert(), bstToChart(), DSBST(), genBSTSteps()
 
 ### Community 135 - "Community 135"
+
 Cohesion: 0.5
 Nodes (4): Auto-Generated Table of Contents, Dynamic Routes app/docs/components/[...slug], lib/toc.ts (getTableOfContents), TableOfContents Component
 
 ### Community 138 - "Community 138"
+
 Cohesion: 0.67
 Nodes (3): buildSegTree(), DSSegmentTree(), segTreeChart()
 
 ### Community 139 - "Community 139"
+
 Cohesion: 1.0
 Nodes (3): DSLinkedList(), genLinkedListSteps(), linkedListChart()
 
 ### Community 140 - "Community 140"
+
 Cohesion: 1.0
 Nodes (3): dequeChart(), DSDeque(), genDequeSteps()
 
 ### Community 141 - "Community 141"
+
 Cohesion: 1.0
 Nodes (3): DSQueue(), genQueueSteps(), queueChart()
 
 ### Community 142 - "Community 142"
+
 Cohesion: 1.0
 Nodes (3): arrayChart(), DSArray(), genArraySteps()
 
 ### Community 143 - "Community 143"
+
 Cohesion: 0.67
 Nodes (3): DSMatrix(), matrixChart(), q()
 
 ### Community 144 - "Community 144"
+
 Cohesion: 0.67
 Nodes (3): btToChart(), DSBinaryTree(), genBinaryTreeSteps()
 
 ### Community 145 - "Community 145"
+
 Cohesion: 1.0
 Nodes (3): doublyListChart(), DSDoublyLinkedList(), genDoublySteps()
 
 ### Community 146 - "Community 146"
+
 Cohesion: 1.0
 Nodes (3): DSStack(), genStackSteps(), stackChart()
 
 ### Community 147 - "Community 147"
+
 Cohesion: 1.0
 Nodes (3): circularListChart(), DSCircularLinkedList(), genCircularSteps()
 
 ### Community 148 - "Community 148"
+
 Cohesion: 0.67
 Nodes (3): DSNaryTree(), genNarySteps(), naryToChart()
 
 ### Community 151 - "Community 151"
+
 Cohesion: 1.0
 Nodes (3): doublyListChart(), DSDoublyLinkedList(), genDoublySteps()
 
 ### Community 152 - "Community 152"
+
 Cohesion: 0.67
 Nodes (3): DSNaryTree(), genNarySteps(), naryToChart()
 
 ### Community 153 - "Community 153"
+
 Cohesion: 1.0
 Nodes (3): DSStack(), genStackSteps(), stackChart()
 
 ### Community 154 - "Community 154"
+
 Cohesion: 1.0
 Nodes (3): dequeChart(), DSDeque(), genDequeSteps()
 
 ### Community 155 - "Community 155"
+
 Cohesion: 1.0
 Nodes (3): DSQueue(), genQueueSteps(), queueChart()
 
 ### Community 156 - "Community 156"
+
 Cohesion: 0.67
 Nodes (3): buildSegTree(), DSSegmentTree(), segTreeChart()
 
 ### Community 157 - "Community 157"
+
 Cohesion: 1.0
 Nodes (3): circularListChart(), DSCircularLinkedList(), genCircularSteps()
 
 ### Community 158 - "Community 158"
+
 Cohesion: 1.0
 Nodes (3): DSLinkedList(), genLinkedListSteps(), linkedListChart()
 
 ### Community 159 - "Community 159"
+
 Cohesion: 0.67
 Nodes (3): btToChart(), DSBinaryTree(), genBinaryTreeSteps()
 
 ### Community 160 - "Community 160"
+
 Cohesion: 0.67
 Nodes (3): DSMatrix(), matrixChart(), q()
 
 ### Community 161 - "Community 161"
+
 Cohesion: 1.0
 Nodes (3): arrayChart(), DSArray(), genArraySteps()
 
 ### Community 162 - "Community 162"
+
 Cohesion: 0.67
 Nodes (3): Root Layout (app/layout.tsx), SiteFooter Component, SiteHeader Component
 
 ## Knowledge Gaps
+
 - **729 isolated node(s):** `__filename`, `__dirname`, `componentsMetadata`, `libDependencies`, `RemarkMdxUiOptions` (+724 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
+
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `cn()` connect `Simple Inline Components (Utils/Emphasis/Highlight)` to `Docs Site MDX Component Wrappers`, `Math Primitives Source`, `Interactive Components (Accordion/Reveal/Annotation)`, `Data Structures Visualization Source`, `Data Structures Visualization Docs`, `Tree Data Structures Source`, `Tree Data Structures Docs`, `Next.js App Routing and Navigation`, `Mermaid Diagrams Source`, `Mermaid Diagrams Docs`, `App Layouts and Sidebar`, `ComponentPreview and Demo Sources`, `Code/Link/Video Demos`, `Tabs Component`, `DataTable Component`, `Heading Component Source`, `Heading Component Docs`, `Table Component Source`, `Community 30`, `Community 32`, `Community 33`, `Community 35`, `Community 36`, `Community 37`, `Community 39`, `Community 40`, `Community 41`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 50`, `Community 52`, `Community 53`, `Community 54`, `Community 60`, `Community 61`, `Community 62`, `Community 63`, `Community 64`, `Community 67`, `Community 68`, `Community 69`, `Community 70`, `Community 71`, `Community 72`, `Community 73`, `Community 74`, `Community 75`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 83`, `Community 84`, `Community 85`, `Community 89`, `Community 90`, `Community 91`, `Community 92`, `Community 93`, `Community 94`, `Community 95`, `Community 96`, `Community 97`, `Community 100`, `Community 101`, `Community 102`, `Community 103`, `Community 104`, `Community 105`, `Community 106`, `Community 111`, `Community 112`, `Community 113`, `Community 114`, `Community 117`, `Community 118`, `Community 119`, `Community 121`, `Community 122`, `Community 123`, `Community 124`, `Community 127`?**

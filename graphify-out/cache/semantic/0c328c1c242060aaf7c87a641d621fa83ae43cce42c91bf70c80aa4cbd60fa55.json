@@ -1,1 +1,69 @@
-{"nodes": [{"id": "spoiler_component", "label": "Spoiler", "file_type": "document", "source_file": "apps/www/content/docs/components/spoiler.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "accordion_component", "label": "Accordion Component (referenced)", "file_type": "document", "source_file": "apps/www/content/docs/components/spoiler.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "spoiler_component", "target": "accordion_component", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/spoiler.mdx", "source_location": "line 56", "weight": 1.0}, {"source": "spoiler_component", "target": "mdxui_cli", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/spoiler.mdx", "source_location": "line 11", "weight": 1.0}, {"source": "spoiler_component", "target": "reveal_component", "relation": "semantically_similar_to", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "apps/www/content/docs/components/spoiler.mdx", "source_location": null, "weight": 0.8}], "hyperedges": [{"id": "collapsible_disclosure_components", "label": "Collapsible disclosure components (Spoiler, Reveal, Accordion)", "nodes": ["spoiler_component", "reveal_component", "accordion_component"], "relation": "participate_in", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "apps/www/content/docs/components/spoiler.mdx"}]}
+{
+  "nodes": [
+    {
+      "id": "spoiler_component",
+      "label": "Spoiler",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/spoiler.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "accordion_component",
+      "label": "Accordion Component (referenced)",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/spoiler.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "spoiler_component",
+      "target": "accordion_component",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/spoiler.mdx",
+      "source_location": "line 56",
+      "weight": 1.0
+    },
+    {
+      "source": "spoiler_component",
+      "target": "mdxui_cli",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/spoiler.mdx",
+      "source_location": "line 11",
+      "weight": 1.0
+    },
+    {
+      "source": "spoiler_component",
+      "target": "reveal_component",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "apps/www/content/docs/components/spoiler.mdx",
+      "source_location": null,
+      "weight": 0.8
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "collapsible_disclosure_components",
+      "label": "Collapsible disclosure components (Spoiler, Reveal, Accordion)",
+      "nodes": ["spoiler_component", "reveal_component", "accordion_component"],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "apps/www/content/docs/components/spoiler.mdx"
+    }
+  ]
+}

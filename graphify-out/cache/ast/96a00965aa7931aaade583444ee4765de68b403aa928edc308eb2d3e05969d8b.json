@@ -1,1 +1,64 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx", "label": "json-ld.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx", "source_location": "L1"}, {"id": "src_json_ld_jsonldprops", "label": "JsonLdProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx", "source_location": "L3"}, {"id": "src_json_ld_jsonld", "label": "JsonLd()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx", "source_location": "L14"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx", "target": "react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx", "source_location": "L1", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx", "target": "src_json_ld_jsonldprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx", "source_location": "L3", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx", "target": "src_json_ld_jsonld", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx", "source_location": "L14", "weight": 1.0}], "raw_calls": [{"caller_nid": "src_json_ld_jsonld", "callee": "stringify", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx", "source_location": "L18"}]}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx",
+      "label": "json-ld.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_json_ld_jsonldprops",
+      "label": "JsonLdProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_json_ld_jsonld",
+      "label": "JsonLd()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx",
+      "source_location": "L14"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx",
+      "target": "src_json_ld_jsonldprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_json_ld_tsx",
+      "target": "src_json_ld_jsonld",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "src_json_ld_jsonld",
+      "callee": "stringify",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx",
+      "source_location": "L18"
+    }
+  ]
+}

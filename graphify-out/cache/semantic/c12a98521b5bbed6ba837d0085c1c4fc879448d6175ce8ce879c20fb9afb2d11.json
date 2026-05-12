@@ -1,1 +1,70 @@
-{"nodes": [{"id": "file_tree_component", "label": "FileTree Component", "file_type": "document", "source_file": "apps/www/content/docs/components/file-tree.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "file_tree_vs_tree_pattern", "label": "FileTree vs Tree Design Pattern", "file_type": "rationale", "source_file": "apps/www/content/docs/components/file-tree.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null, "rationale": "FileTree was designed as a simpler alternative to the verbose Tree component, using indented text syntax (2 spaces = 1 nesting level) to reduce code by ~90%. The design trade-off is that Tree remains for programmatic/dynamic use cases while FileTree handles static documentation structures."}], "edges": [{"source": "file_tree_component", "target": "mdx_ui_cli", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/file-tree.mdx", "source_location": "line 14", "weight": 1.0}, {"source": "file_tree_component", "target": "utils_registry_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/file-tree.mdx", "source_location": "line 7", "weight": 1.0}, {"source": "file_tree_component", "target": "file_tree_vs_tree_pattern", "relation": "rationale_for", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/file-tree.mdx", "source_location": "line 159-194", "weight": 1.0}], "hyperedges": [{"id": "structure_display_components", "label": "Structure Display Components", "nodes": ["file_tree_component", "card_component", "changelog_component"], "relation": "participate_in", "confidence": "INFERRED", "confidence_score": 0.75, "source_file": "apps/www/content/docs/components/file-tree.mdx"}]}
+{
+  "nodes": [
+    {
+      "id": "file_tree_component",
+      "label": "FileTree Component",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/file-tree.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "file_tree_vs_tree_pattern",
+      "label": "FileTree vs Tree Design Pattern",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/components/file-tree.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "FileTree was designed as a simpler alternative to the verbose Tree component, using indented text syntax (2 spaces = 1 nesting level) to reduce code by ~90%. The design trade-off is that Tree remains for programmatic/dynamic use cases while FileTree handles static documentation structures."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file_tree_component",
+      "target": "mdx_ui_cli",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/file-tree.mdx",
+      "source_location": "line 14",
+      "weight": 1.0
+    },
+    {
+      "source": "file_tree_component",
+      "target": "utils_registry_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/file-tree.mdx",
+      "source_location": "line 7",
+      "weight": 1.0
+    },
+    {
+      "source": "file_tree_component",
+      "target": "file_tree_vs_tree_pattern",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/file-tree.mdx",
+      "source_location": "line 159-194",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "structure_display_components",
+      "label": "Structure Display Components",
+      "nodes": ["file_tree_component", "card_component", "changelog_component"],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "apps/www/content/docs/components/file-tree.mdx"
+    }
+  ]
+}

@@ -1,1 +1,49 @@
-{"nodes": [{"id": "doc_nextjs_mdx_mdx", "label": "Next.js + @next/mdx Integration Guide", "file_type": "document", "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "concept_next_mdx_renderer", "label": "@next/mdx Official Next.js MDX Plugin", "file_type": "rationale", "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "doc_nextjs_mdx_mdx", "target": "doc_component_mappings_mdx", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx", "source_location": "line 350", "weight": 1.0}, {"source": "doc_nextjs_mdx_mdx", "target": "concept_next_mdx_renderer", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "doc_nextjs_mdx_mdx",
+      "label": "Next.js + @next/mdx Integration Guide",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_next_mdx_renderer",
+      "label": "@next/mdx Official Next.js MDX Plugin",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc_nextjs_mdx_mdx",
+      "target": "doc_component_mappings_mdx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx",
+      "source_location": "line 350",
+      "weight": 1.0
+    },
+    {
+      "source": "doc_nextjs_mdx_mdx",
+      "target": "concept_next_mdx_renderer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx.mdx",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

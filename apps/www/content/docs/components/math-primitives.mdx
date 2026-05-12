@@ -1,0 +1,237 @@
+---
+title: Math Primitives
+description: JSX components for every standard math symbol — fractions, integrals, matrices, Greek letters, logic, sets, and more
+component: math-primitives
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add math-primitives
+```
+
+## When to use
+
+Primitives are best for **structured math UI** — numbered equations with layout, solution blocks, inline symbols alongside prose. For writing raw expressions, `<M expr="..." />` (LaTeX string) is simpler. Both can be mixed.
+
+```mdx
+{/* LaTeX string — best for expressions */}
+<M expr="\frac{-b \pm \sqrt{b^2-4ac}}{2a}" />
+
+{/* Primitives — best for layout and structure */}
+<Equation label="1">
+  x = <Frac num={<>-b <PlusMinus/> <Sqrt>b²-4ac</Sqrt></>} den="2a" />
+</Equation>
+```
+
+## Basic structural
+
+| Component | Renders | Props |
+|-----------|---------|-------|
+| `<Frac num den />` | num/den fraction | `num`, `den` |
+| `<Pow exp />` | base^exp | `exp`, `base` or children |
+| `<Sub sub />` | base_sub | `sub`, `base` or children |
+| `<Sqrt>` | √x with overbar | `n` for nth root |
+| `<Abs>` | \|x\| | children |
+| `<Paren>` | (x) scaled | children |
+| `<Deg>` | 30° | children |
+| `<Inf />` | ∞ | — |
+
+```mdx
+<Frac num="1" den="2" />
+
+x<Pow exp="2" /> + y<Pow exp="2" />
+
+<Sqrt n="3">27</Sqrt>
+
+<Abs>x - y</Abs>
+```
+
+x<Pow exp="2" /> + y<Pow exp="2" /> = <Pow base="r" exp="2" />
+
+<Frac num={<>1 + <Sqrt>5</Sqrt></>} den="2" />
+
+## Calculus
+
+```mdx
+<Integral from="0" to="\infty" />
+
+<Sum from={<>i=0</>} to="n">x_i</Sum>
+
+<Lim sub={<>x → 0</>} />
+
+<Deriv of="x" />   {/* d/dx */}
+<PDeriv of="t" />  {/* ∂/∂t */}
+
+<Limsup sub={<>n→∞</>} />
+<Liminf sub={<>n→∞</>} />
+```
+
+<Integral from="a" to="b" >f(x) dx</Integral>
+
+<Sum from={<>i=1</>} to="n"><Pow base="x" exp="i" /></Sum>
+
+<Lim sub={<>x → 0</>}><Frac num="sin x" den="x" /></Lim>
+
+## Trigonometry
+
+`Sin`, `Cos`, `Tan`, `Cot`, `Sec`, `Csc` · `ArcSin`, `ArcCos`, `ArcTan` · `Sinh`, `Cosh`, `Tanh` · `Log`, `Ln`, `Exp`
+
+```mdx
+<Sin>θ</Sin>   <Cos>θ</Cos>   <Tan>θ</Tan>
+
+<Ln>x</Ln>   <Log>n</Log>
+```
+
+<Sin>θ</Sin> = <Frac num="opposite" den="hypotenuse" />
+
+## Algebra & combinatorics
+
+| Component | Renders | Example |
+|-----------|---------|---------|
+| `<Factorial>` | n! | `<Factorial>n</Factorial>` |
+| `<Choose n k />` | C(n,k) | `<Choose n="n" k="k" />` |
+| `<Perm n r />` | P(n,r) | `<Perm n="n" r="r" />` |
+| `<Mod a n />` | a mod n | `<Mod a="7" n="3" />` |
+| `<GCD a b />` | gcd(a,b) | `<GCD a="m" b="n" />` |
+| `<LCM a b />` | lcm(a,b) | `<LCM a="m" b="n" />` |
+
+<Choose n="n" k="k" /> = <Frac num={<><Factorial>n</Factorial></>} den={<><Factorial>k</Factorial> <Factorial><>n-k</></Factorial></>} />
+
+## Set theory
+
+`Floor`, `Ceil`, `SetOf`, `Cardinality`, `PowerSet` · `In`, `NotIn`, `Subset`, `SubsetEq`, `Supset`, `SupsetEq` · `Union`, `Intersect`, `Empty`, `SetMinus`
+
+```mdx
+<Floor>x</Floor>   <Ceil>x</Ceil>
+
+<SetOf variable="x" condition={<>x <Geq /> 0</>} />
+
+A <Union /> B      A <Intersect /> B
+
+x <In /> <NN />
+```
+
+<SetOf variable="x" condition={<>x <In /> <NN /> and x <Geq /> 0</>} />
+
+## Number systems
+
+`NN` (ℕ) · `ZZ` (ℤ) · `QQ` (ℚ) · `RR` (ℝ) · `CC` (ℂ) · `PP` (ℙ) · `FF` (𝔽)
+
+```mdx
+f: <RR /> → <RR />
+
+z = <Complex re="a" im="b" />
+
+<Conj>z</Conj>   {/* z̄ */}
+```
+
+## Logic & proof
+
+`And` (∧) · `Or` (∨) · `Not` (¬) · `Xor` (⊕) · `Nand` (↑) · `Nor` (↓)
+
+`ForAll` (∀) · `Exists` (∃) · `NotExists` (∄)
+
+`Implies` (⟹) · `Iff` (⟺) · `Therefore` (∴) · `Because` (∵) · `Turnstile` (⊢) · `QED`
+
+```mdx
+<ForAll /> x <In /> <RR />, x<Pow exp="2" /> <Geq /> 0
+
+P <Implies /> Q
+
+P <Iff /> Q
+
+∴ the proof is complete. <QED />
+```
+
+<ForAll /> x <In /> <RR />, x<Pow exp="2" /> <Geq /> 0 <Therefore /> <Abs>x</Abs> <Geq /> 0 <QED />
+
+## Linear algebra
+
+| Component | Renders |
+|-----------|---------|
+| `<Vec>` | v⃗ with overhead arrow |
+| `<Norm>` | ‖v‖ |
+| `<Dot />` | · |
+| `<Cross />` | × |
+| `<Transpose>` | A^T |
+| `<Det>` | \|A\| or det(A) |
+| `<Matrix rows={[[...],[...]]} />` | grid with brackets |
+| `SpanOp`, `Rank`, `Dim`, `NullOp`, `Img`, `Trace` | named operators |
+
+```mdx
+<Matrix rows={[["a","b"],["c","d"]]} />
+
+<Matrix rows={[["1","0"],["0","1"]]} bracket="round" />
+
+<Transpose><Vec>v</Vec></Transpose>
+
+<Norm><Vec>u</Vec> - <Vec>v</Vec></Norm>
+```
+
+<Matrix rows={[["a","b"],["c","d"]]} /> has <Det variant="det"><Matrix rows={[["a","b"],["c","d"]]} /></Det> = ad - bc
+
+## Statistics & probability
+
+| Component | Renders |
+|-----------|---------|
+| `<Prob>` | P(event) |
+| `<CondProb event given />` | P(A\|B) |
+| `<Expected>` | 𝔼[X] |
+| `<Variance>` | Var(X) |
+| `<StdDev>` | SD(X) |
+| `<Cov x y />` | Cov(X,Y) |
+| `<Corr x y />` | Corr(X,Y) |
+| `<Dist name params />` | X ~ Name(params) |
+
+```mdx
+<CondProb event="A" given="B" /> = <Frac
+  num={<><Prob>B <Iff /> A</Prob><Prob>A</Prob></>}
+  den={<><Prob>B</Prob></>}
+/>
+
+X <Dist name="Normal" params={<>μ, σ²</>} />
+```
+
+## Greek letters
+
+`<Greek letter="alpha" />` for any letter. Shortcuts for all 23 lowercase + 10 uppercase:
+
+```mdx
+<Alpha />  <Beta />  <Gamma />  <Theta />
+<Lambda />  <Mu />  <Pi />  {/* etc */}
+
+{/* Uppercase */}
+<GammaU />  <DeltaU />  <SigmaU />  <OmegaU />
+```
+
+Note: `GDelta` (δ), `PiSym` (π), `SigmaSym` (σ) avoid conflicts with other exports.
+
+## Relations, arrows & arithmetic
+
+Section 11 — symbols that appear throughout math writing:
+
+```mdx
+{/* Comparison */}
+<Neq />  <Approx />  <Equiv />  <Cong />
+<Leq />  <Geq />  <Ll />  <Gg />
+<Propto />  <Sim />
+
+{/* Arithmetic */}
+<PlusMinus />  <MinusPlus />
+
+{/* Number theory */}
+a <Divides /> b    {/* a | b */}
+a <NotDivides /> b
+
+{/* Arrows & operations */}
+<Arrow />     {/* → */}
+<MapsTo />    {/* ↦ */}
+<Compose />   {/* ∘ */}
+<OTimes />    {/* ⊗ */}
+```
+
+f <Compose /> g : <RR /> <Arrow /> <RR />
+
+a<Pow exp="2" /> + b<Pow exp="2" /> <Approx /> c<Pow exp="2" /> when c <Gg /> 1

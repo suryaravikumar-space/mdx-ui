@@ -1,1 +1,145 @@
-{"nodes": [{"id": "glossary_component", "label": "Glossary Component", "file_type": "document", "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "react_context_pattern", "label": "React Context Pattern", "file_type": "rationale", "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "GlossaryProvider", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "glossary_provider_subcomponent", "label": "GlossaryProvider Subcomponent", "file_type": "rationale", "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "term_subcomponent", "label": "Term Subcomponent", "file_type": "rationale", "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "glossary_component", "target": "mdx_ui_cli", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 13", "weight": 1.0}, {"source": "glossary_component", "target": "utils_registry_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 6", "weight": 1.0}, {"source": "glossary_component", "target": "clsx_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 7", "weight": 1.0}, {"source": "glossary_component", "target": "tailwind_merge_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 7", "weight": 1.0}, {"source": "glossary_component", "target": "react_context_pattern", "relation": "implements", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 18", "weight": 1.0}, {"source": "glossary_component", "target": "glossary_provider_subcomponent", "relation": "implements", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 22", "weight": 1.0}, {"source": "glossary_component", "target": "term_subcomponent", "relation": "implements", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 28", "weight": 1.0}, {"source": "glossary_provider_subcomponent", "target": "term_subcomponent", "relation": "shares_data_with", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx", "source_location": "line 23-29", "weight": 1.0}], "hyperedges": [{"id": "glossary_term_pair", "label": "Glossary Provider and Term Pair", "nodes": ["glossary_provider_subcomponent", "term_subcomponent", "react_context_pattern"], "relation": "implement", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/glossary.mdx"}]}
+{
+  "nodes": [
+    {
+      "id": "glossary_component",
+      "label": "Glossary Component",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "react_context_pattern",
+      "label": "React Context Pattern",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "GlossaryProvider",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "glossary_provider_subcomponent",
+      "label": "GlossaryProvider Subcomponent",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "term_subcomponent",
+      "label": "Term Subcomponent",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "glossary_component",
+      "target": "mdx_ui_cli",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 13",
+      "weight": 1.0
+    },
+    {
+      "source": "glossary_component",
+      "target": "utils_registry_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 6",
+      "weight": 1.0
+    },
+    {
+      "source": "glossary_component",
+      "target": "clsx_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 7",
+      "weight": 1.0
+    },
+    {
+      "source": "glossary_component",
+      "target": "tailwind_merge_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 7",
+      "weight": 1.0
+    },
+    {
+      "source": "glossary_component",
+      "target": "react_context_pattern",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 18",
+      "weight": 1.0
+    },
+    {
+      "source": "glossary_component",
+      "target": "glossary_provider_subcomponent",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 22",
+      "weight": 1.0
+    },
+    {
+      "source": "glossary_component",
+      "target": "term_subcomponent",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 28",
+      "weight": 1.0
+    },
+    {
+      "source": "glossary_provider_subcomponent",
+      "target": "term_subcomponent",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx",
+      "source_location": "line 23-29",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "glossary_term_pair",
+      "label": "Glossary Provider and Term Pair",
+      "nodes": [
+        "glossary_provider_subcomponent",
+        "term_subcomponent",
+        "react_context_pattern"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/glossary.mdx"
+    }
+  ]
+}

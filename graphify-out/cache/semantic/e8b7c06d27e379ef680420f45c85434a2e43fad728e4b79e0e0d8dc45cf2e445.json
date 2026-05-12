@@ -1,1 +1,48 @@
-{"nodes": [{"id": "two_registry_design", "label": "Two Registry Locations Design", "file_type": "rationale", "source_file": "TwoRegistryLocationsExplained.txt", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "two_registry_design", "target": "readme_packages_registry_src", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "TwoRegistryLocationsExplained.txt", "source_location": null, "weight": 1.0}, {"source": "two_registry_design", "target": "readme_registry_mdx_json", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "TwoRegistryLocationsExplained.txt", "source_location": null, "weight": 1.0}, {"source": "two_registry_design", "target": "readme_build_registry_script", "relation": "rationale_for", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "TwoRegistryLocationsExplained.txt", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "two_registry_design",
+      "label": "Two Registry Locations Design",
+      "file_type": "rationale",
+      "source_file": "TwoRegistryLocationsExplained.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "two_registry_design",
+      "target": "readme_packages_registry_src",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "TwoRegistryLocationsExplained.txt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "two_registry_design",
+      "target": "readme_registry_mdx_json",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "TwoRegistryLocationsExplained.txt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "two_registry_design",
+      "target": "readme_build_registry_script",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "TwoRegistryLocationsExplained.txt",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

@@ -1,0 +1,149 @@
+---
+title: Math Solution
+description: Step-by-step solution blocks with reasons, highlights, and a final answer — for worked examples and proofs
+component: math-solution
+published: true
+---
+
+## Installation
+
+```bash
+npx @ravikumarsurya/mdx-ui add math-solution
+```
+
+## Solution
+
+A bordered container for a worked mathematical solution. The optional `title` shows the problem statement in a header.
+
+```mdx
+<Solution title="Solve: 2x + 4 = 10">
+  <SolutionStep reason="Given">2x + 4 = 10</SolutionStep>
+  <SolutionStep reason="Subtract 4">2x = 6</SolutionStep>
+  <SolutionStep reason="Divide by 2">x = 3</SolutionStep>
+  <SolutionAnswer>x = 3</SolutionAnswer>
+</Solution>
+```
+
+<Solution title="Solve: 2x + 4 = 10">
+  <SolutionStep reason="Given">2x + 4 = 10</SolutionStep>
+  <SolutionStep reason="Subtract 4 from both sides">2x = 6</SolutionStep>
+  <SolutionStep reason="Divide both sides by 2">x = 3</SolutionStep>
+  <SolutionAnswer>x = 3</SolutionAnswer>
+</Solution>
+
+## With LaTeX expressions
+
+Use `M` for inline LaTeX inside steps:
+
+```mdx
+<Solution title="Quadratic formula derivation">
+  <SolutionStep reason="Standard form">
+    <M expr="ax^2 + bx + c = 0" />
+  </SolutionStep>
+  <SolutionStep reason="Divide by a">
+    <M expr="x^2 + \frac{b}{a}x = -\frac{c}{a}" />
+  </SolutionStep>
+  <SolutionStep reason="Complete the square" highlight>
+    <M expr="\left(x + \frac{b}{2a}\right)^2 = \frac{b^2 - 4ac}{4a^2}" />
+  </SolutionStep>
+  <SolutionStep reason="Take square root">
+    <M expr="x + \frac{b}{2a} = \pm\frac{\sqrt{b^2-4ac}}{2a}" />
+  </SolutionStep>
+  <SolutionAnswer>
+    <M expr="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
+  </SolutionAnswer>
+</Solution>
+```
+
+<Solution title="Quadratic formula derivation">
+  <SolutionStep reason="Standard form">
+    <M expr="ax^2 + bx + c = 0" />
+  </SolutionStep>
+  <SolutionStep reason="Divide by a">
+    <M expr="x^2 + \frac{b}{a}x = -\frac{c}{a}" />
+  </SolutionStep>
+  <SolutionStep reason="Complete the square" highlight>
+    <M expr="\left(x + \frac{b}{2a}\right)^2 = \frac{b^2 - 4ac}{4a^2}" />
+  </SolutionStep>
+  <SolutionStep reason="Take square root">
+    <M expr="x + \frac{b}{2a} = \pm\frac{\sqrt{b^2-4ac}}{2a}" />
+  </SolutionStep>
+  <SolutionAnswer>
+    <M expr="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
+  </SolutionAnswer>
+</Solution>
+
+## SolutionNote
+
+Use `SolutionNote` for commentary that is not an algebraic step — identities used, constraints to keep in mind, or explanatory remarks.
+
+```mdx
+<Solution title="Prove: sin²θ + cos²θ = 1">
+  <SolutionNote>Start from the Pythagorean theorem on the unit circle.</SolutionNote>
+  <SolutionStep reason="Unit circle definition">
+    <M expr="x^2 + y^2 = 1" />
+  </SolutionStep>
+  <SolutionStep reason="Substitute trig definitions">
+    <M expr="\cos^2\theta + \sin^2\theta = 1" />
+  </SolutionStep>
+  <SolutionAnswer>
+    <M expr="\sin^2\theta + \cos^2\theta = 1" /> <QED />
+  </SolutionAnswer>
+</Solution>
+```
+
+<Solution title="Prove: sin²θ + cos²θ = 1">
+  <SolutionNote>Start from the Pythagorean theorem on the unit circle.</SolutionNote>
+  <SolutionStep reason="Unit circle definition">
+    <M expr="x^2 + y^2 = 1" />
+  </SolutionStep>
+  <SolutionStep reason="Substitute trig definitions">
+    <M expr="\cos^2\theta + \sin^2\theta = 1" />
+  </SolutionStep>
+  <SolutionAnswer>
+    <M expr="\sin^2\theta + \cos^2\theta = 1" /> <QED />
+  </SolutionAnswer>
+</Solution>
+
+## Highlight
+
+Add `highlight` to a `SolutionStep` to visually mark the key transformation in a derivation.
+
+```mdx
+<SolutionStep reason="Critical step" highlight>
+  ...
+</SolutionStep>
+```
+
+## Props
+
+### Solution
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | — | Problem statement in header |
+| `children` | `ReactNode` | — | `SolutionStep`, `SolutionNote`, `SolutionAnswer` |
+| `className` | `string` | — | Additional CSS classes |
+
+### SolutionStep
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `reason` | `string` | — | Explanation shown right-aligned |
+| `highlight` | `boolean` | `false` | Highlight background on key step |
+| `children` | `ReactNode` | — | Math expression for this step |
+| `className` | `string` | — | Additional CSS classes |
+
+### SolutionAnswer
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | — | Final answer expression |
+| `className` | `string` | — | Additional CSS classes |
+
+### SolutionNote
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | — | Commentary or annotation text |
+| `className` | `string` | — | Additional CSS classes |

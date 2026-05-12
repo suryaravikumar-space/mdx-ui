@@ -1,1 +1,92 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx", "label": "data-type-table.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L1"}, {"id": "mdx_data_type_table_datatyperow", "label": "DataTypeRow", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L4"}, {"id": "mdx_data_type_table_datatypetableprops", "label": "DataTypeTableProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L19"}, {"id": "mdx_data_type_table_datatypetable", "label": "DataTypeTable", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L43"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx", "target": "react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L1", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_lib_utils_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx", "target": "lib_utils_cn", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx", "target": "mdx_data_type_table_datatyperow", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L4", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx", "target": "mdx_data_type_table_datatypetableprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L19", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx", "target": "mdx_data_type_table_datatypetable", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx", "source_location": "L43", "weight": 1.0}], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx",
+      "label": "data-type-table.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "mdx_data_type_table_datatyperow",
+      "label": "DataTypeRow",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "mdx_data_type_table_datatypetableprops",
+      "label": "DataTypeTableProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "mdx_data_type_table_datatypetable",
+      "label": "DataTypeTable",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L43"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_lib_utils_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx",
+      "target": "mdx_data_type_table_datatyperow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx",
+      "target": "mdx_data_type_table_datatypetableprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_data_type_table_tsx",
+      "target": "mdx_data_type_table_datatypetable",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx",
+      "source_location": "L43",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

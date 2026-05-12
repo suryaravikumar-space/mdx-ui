@@ -1,1 +1,38 @@
-{"nodes": [{"id": "doc_registry_pkg_readme", "label": "Registry Package README", "file_type": "document", "source_file": "packages/registry/README.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "doc_registry_pkg_readme", "target": "doc_registry_readme", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "packages/registry/README.md", "source_location": "lines 34-38", "weight": 1.0}, {"source": "doc_registry_pkg_readme", "target": "concept_build_registry_workflow", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "packages/registry/README.md", "source_location": "lines 29-32", "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "doc_registry_pkg_readme",
+      "label": "Registry Package README",
+      "file_type": "document",
+      "source_file": "packages/registry/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc_registry_pkg_readme",
+      "target": "doc_registry_readme",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/registry/README.md",
+      "source_location": "lines 34-38",
+      "weight": 1.0
+    },
+    {
+      "source": "doc_registry_pkg_readme",
+      "target": "concept_build_registry_workflow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "packages/registry/README.md",
+      "source_location": "lines 29-32",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

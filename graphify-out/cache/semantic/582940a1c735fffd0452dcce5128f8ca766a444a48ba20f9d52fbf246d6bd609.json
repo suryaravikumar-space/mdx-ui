@@ -1,1 +1,38 @@
-{"nodes": [{"id": "inline_code_component", "label": "Inline Code Component", "file_type": "document", "source_file": "apps/www/content/docs/components/inline-code.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "inline_code_component", "target": "mdx_ui_cli", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/inline-code.mdx", "source_location": "line 11", "weight": 1.0}, {"source": "inline_code_component", "target": "code_block_component", "relation": "conceptually_related_to", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "apps/www/content/docs/components/inline-code.mdx", "source_location": "line 121-123", "weight": 0.85}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "inline_code_component",
+      "label": "Inline Code Component",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/inline-code.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "inline_code_component",
+      "target": "mdx_ui_cli",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/inline-code.mdx",
+      "source_location": "line 11",
+      "weight": 1.0
+    },
+    {
+      "source": "inline_code_component",
+      "target": "code_block_component",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "apps/www/content/docs/components/inline-code.mdx",
+      "source_location": "line 121-123",
+      "weight": 0.85
+    }
+  ],
+  "hyperedges": []
+}

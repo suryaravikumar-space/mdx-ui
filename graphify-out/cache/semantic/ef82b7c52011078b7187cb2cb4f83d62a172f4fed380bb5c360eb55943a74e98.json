@@ -1,1 +1,69 @@
-{"nodes": [{"id": "doc_component_mappings_mdx", "label": "Component Mappings Integration Guide", "file_type": "document", "source_file": "apps/www/content/docs/integration/component-mappings.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "concept_mdx_component_mapping", "label": "MDX Component Mapping Pattern", "file_type": "rationale", "source_file": "apps/www/content/docs/integration/component-mappings.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "doc_component_mappings_mdx", "target": "doc_nextjs_mdx_remote_mdx", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/component-mappings.mdx", "source_location": "line 149", "weight": 1.0}, {"source": "doc_component_mappings_mdx", "target": "doc_nextjs_contentlayer_mdx", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/component-mappings.mdx", "source_location": "line 150", "weight": 1.0}, {"source": "doc_component_mappings_mdx", "target": "doc_nextjs_mdx_mdx", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/component-mappings.mdx", "source_location": "line 151", "weight": 1.0}, {"source": "doc_component_mappings_mdx", "target": "concept_mdx_component_mapping", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/component-mappings.mdx", "source_location": "lines 7-70", "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "doc_component_mappings_mdx",
+      "label": "Component Mappings Integration Guide",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/integration/component-mappings.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_mdx_component_mapping",
+      "label": "MDX Component Mapping Pattern",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/integration/component-mappings.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc_component_mappings_mdx",
+      "target": "doc_nextjs_mdx_remote_mdx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/component-mappings.mdx",
+      "source_location": "line 149",
+      "weight": 1.0
+    },
+    {
+      "source": "doc_component_mappings_mdx",
+      "target": "doc_nextjs_contentlayer_mdx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/component-mappings.mdx",
+      "source_location": "line 150",
+      "weight": 1.0
+    },
+    {
+      "source": "doc_component_mappings_mdx",
+      "target": "doc_nextjs_mdx_mdx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/component-mappings.mdx",
+      "source_location": "line 151",
+      "weight": 1.0
+    },
+    {
+      "source": "doc_component_mappings_mdx",
+      "target": "concept_mdx_component_mapping",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/component-mappings.mdx",
+      "source_location": "lines 7-70",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

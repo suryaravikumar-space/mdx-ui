@@ -1,1 +1,49 @@
-{"nodes": [{"id": "doc_nextjs_mdx_remote_mdx", "label": "Next.js + next-mdx-remote Integration Guide", "file_type": "document", "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "concept_next_mdx_remote_renderer", "label": "next-mdx-remote Renderer", "file_type": "rationale", "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "doc_nextjs_mdx_remote_mdx", "target": "doc_component_mappings_mdx", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx", "source_location": "line 249", "weight": 1.0}, {"source": "doc_nextjs_mdx_remote_mdx", "target": "concept_next_mdx_remote_renderer", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "doc_nextjs_mdx_remote_mdx",
+      "label": "Next.js + next-mdx-remote Integration Guide",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_next_mdx_remote_renderer",
+      "label": "next-mdx-remote Renderer",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc_nextjs_mdx_remote_mdx",
+      "target": "doc_component_mappings_mdx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx",
+      "source_location": "line 249",
+      "weight": 1.0
+    },
+    {
+      "source": "doc_nextjs_mdx_remote_mdx",
+      "target": "concept_next_mdx_remote_renderer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/nextjs-mdx-remote.mdx",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

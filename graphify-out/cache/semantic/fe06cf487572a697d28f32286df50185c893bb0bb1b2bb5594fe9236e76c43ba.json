@@ -1,1 +1,68 @@
-{"nodes": [{"id": "definition_component", "label": "Definition Component", "file_type": "document", "source_file": "apps/www/content/docs/components/definition.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "definition_component", "target": "mdx_ui_cli", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/definition.mdx", "source_location": "line 13", "weight": 1.0}, {"source": "definition_component", "target": "utils_registry_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/definition.mdx", "source_location": "line 6", "weight": 1.0}, {"source": "definition_component", "target": "clsx_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/definition.mdx", "source_location": "line 7", "weight": 1.0}, {"source": "definition_component", "target": "tailwind_merge_dep", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/definition.mdx", "source_location": "line 7", "weight": 1.0}, {"source": "definition_component", "target": "glossary_component", "relation": "conceptually_related_to", "confidence": "INFERRED", "confidence_score": 0.75, "source_file": "apps/www/content/docs/components/definition.mdx", "source_location": "line 49-62", "weight": 0.75}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "definition_component",
+      "label": "Definition Component",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/definition.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "definition_component",
+      "target": "mdx_ui_cli",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/definition.mdx",
+      "source_location": "line 13",
+      "weight": 1.0
+    },
+    {
+      "source": "definition_component",
+      "target": "utils_registry_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/definition.mdx",
+      "source_location": "line 6",
+      "weight": 1.0
+    },
+    {
+      "source": "definition_component",
+      "target": "clsx_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/definition.mdx",
+      "source_location": "line 7",
+      "weight": 1.0
+    },
+    {
+      "source": "definition_component",
+      "target": "tailwind_merge_dep",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/definition.mdx",
+      "source_location": "line 7",
+      "weight": 1.0
+    },
+    {
+      "source": "definition_component",
+      "target": "glossary_component",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "apps/www/content/docs/components/definition.mdx",
+      "source_location": "line 49-62",
+      "weight": 0.75
+    }
+  ],
+  "hyperedges": []
+}

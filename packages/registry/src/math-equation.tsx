@@ -111,48 +111,5 @@ export function EqSystem({
   );
 }
 EqSystem.displayName = "EqSystem";
-
-// ── Relation symbols ──────────────────────────────────────────────────────────
-// Small helpers for common math operators to keep JSX readable.
-
-/** Renders ≈ */
-export function Approx({ className }: { className?: string }) {
-  return <span className={cn("mx-1 font-serif", className)}>≈</span>;
-}
-Approx.displayName = "Approx";
-
-/** Renders ≠ */
-export function Neq({ className }: { className?: string }) {
-  return <span className={cn("mx-1 font-serif", className)}>≠</span>;
-}
-Neq.displayName = "Neq";
-
-/** Renders ≤ */
-export function Leq({ className }: { className?: string }) {
-  return <span className={cn("mx-1 font-serif", className)}>≤</span>;
-}
-Leq.displayName = "Leq";
-
-/** Renders ≥ */
-export function Geq({ className }: { className?: string }) {
-  return <span className={cn("mx-1 font-serif", className)}>≥</span>;
-}
-Geq.displayName = "Geq";
-
-/** Renders → (right arrow — useful for limits, mappings) */
-export function Arrow({ className }: { className?: string }) {
-  return <span className={cn("mx-1 font-serif", className)}>→</span>;
-}
-Arrow.displayName = "Arrow";
-
-/** Renders ⇒ (implies) */
-export function Implies({ className }: { className?: string }) {
-  return <span className={cn("mx-1 font-serif", className)}>⇒</span>;
-}
-Implies.displayName = "Implies";
-
-/** Renders ⟺ (if and only if) */
-export function Iff({ className }: { className?: string }) {
-  return <span className={cn("mx-1 font-serif", className)}>⟺</span>;
-}
-Iff.displayName = "Iff";
+// Relation symbols (Approx, Neq, Leq, Geq, Arrow, Implies, Iff, etc.)
+// live in math-primitives — import them from there.

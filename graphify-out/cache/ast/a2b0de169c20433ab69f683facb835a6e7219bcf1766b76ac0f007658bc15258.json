@@ -1,1 +1,337 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "label": "doctor.ts", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L1"}, {"id": "commands_doctor_issue", "label": "Issue", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L8"}, {"id": "commands_doctor_getinstalleddeps", "label": "getInstalledDeps()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L13"}, {"id": "commands_doctor_doctor", "label": "doctor", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L25"}, {"id": "commands_doctor_printreport", "label": "printReport()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L118"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "commander", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L1", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "chalk", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "fs_extra", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L3", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "path", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L4", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_utils_get_config_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L5", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "utils_get_config_getconfig", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L5", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_lib_component_registry_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L6", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "lib_component_registry_component_files", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L6", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "lib_component_registry_component_deps", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L6", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "commands_doctor_issue", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L8", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "commands_doctor_getinstalleddeps", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L13", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "commands_doctor_doctor", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L25", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts", "target": "commands_doctor_printreport", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L118", "weight": 1.0}], "raw_calls": [{"caller_nid": "commands_doctor_getinstalleddeps", "callee": "join", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L15"}, {"caller_nid": "commands_doctor_getinstalleddeps", "callee": "pathExists", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L16"}, {"caller_nid": "commands_doctor_getinstalleddeps", "callee": "readJSON", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L18"}, {"caller_nid": "commands_doctor_getinstalleddeps", "callee": "forEach", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L20"}, {"caller_nid": "commands_doctor_getinstalleddeps", "callee": "keys", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L20"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L119"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L122"}, {"caller_nid": "commands_doctor_printreport", "callee": "green", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L122"}, {"caller_nid": "commands_doctor_printreport", "callee": "bold", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L122"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L123"}, {"caller_nid": "commands_doctor_printreport", "callee": "filter", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L127"}, {"caller_nid": "commands_doctor_printreport", "callee": "filter", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L128"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L131"}, {"caller_nid": "commands_doctor_printreport", "callee": "red", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L131"}, {"caller_nid": "commands_doctor_printreport", "callee": "bold", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L131"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L132"}, {"caller_nid": "commands_doctor_printreport", "callee": "red", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L132"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L133"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L136"}, {"caller_nid": "commands_doctor_printreport", "callee": "yellow", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L136"}, {"caller_nid": "commands_doctor_printreport", "callee": "bold", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L136"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L137"}, {"caller_nid": "commands_doctor_printreport", "callee": "yellow", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L137"}, {"caller_nid": "commands_doctor_printreport", "callee": "log", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts", "source_location": "L138"}]}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "label": "doctor.ts",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "commands_doctor_issue",
+      "label": "Issue",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "commands_doctor_getinstalleddeps",
+      "label": "getInstalledDeps()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "commands_doctor_doctor",
+      "label": "doctor",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L25"
+    },
+    {
+      "id": "commands_doctor_printreport",
+      "label": "printReport()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L118"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "commander",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "chalk",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "fs_extra",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_utils_get_config_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "utils_get_config_getconfig",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_lib_component_registry_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "lib_component_registry_component_files",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "lib_component_registry_component_deps",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "commands_doctor_issue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "commands_doctor_getinstalleddeps",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "commands_doctor_doctor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_cli_src_commands_doctor_ts",
+      "target": "commands_doctor_printreport",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L118",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "commands_doctor_getinstalleddeps",
+      "callee": "join",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L15"
+    },
+    {
+      "caller_nid": "commands_doctor_getinstalleddeps",
+      "callee": "pathExists",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L16"
+    },
+    {
+      "caller_nid": "commands_doctor_getinstalleddeps",
+      "callee": "readJSON",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L18"
+    },
+    {
+      "caller_nid": "commands_doctor_getinstalleddeps",
+      "callee": "forEach",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "commands_doctor_getinstalleddeps",
+      "callee": "keys",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L119"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L122"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "green",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L122"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "bold",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L122"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L123"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L127"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "filter",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L128"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "red",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "bold",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L131"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L132"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "red",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L132"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L133"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "yellow",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "bold",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L136"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L137"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "yellow",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L137"
+    },
+    {
+      "caller_nid": "commands_doctor_printreport",
+      "callee": "log",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts",
+      "source_location": "L138"
+    }
+  ]
+}

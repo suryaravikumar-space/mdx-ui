@@ -1,1 +1,49 @@
-{"nodes": [{"id": "comp_alert", "label": "alert Component", "file_type": "code", "source_file": "apps/www/content/docs/components/alert.mdx", "source_location": "packages/registry/src/alert.tsx", "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "alert_mdx_doc", "label": "alert.mdx Documentation", "file_type": "document", "source_file": "apps/www/content/docs/components/alert.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "alert_mdx_doc", "target": "comp_alert", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/alert.mdx", "source_location": null, "weight": 1.0}, {"source": "alert_mdx_doc", "target": "comp_callout", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/alert.mdx", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "comp_alert",
+      "label": "alert Component",
+      "file_type": "code",
+      "source_file": "apps/www/content/docs/components/alert.mdx",
+      "source_location": "packages/registry/src/alert.tsx",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "alert_mdx_doc",
+      "label": "alert.mdx Documentation",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/alert.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "alert_mdx_doc",
+      "target": "comp_alert",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/alert.mdx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "alert_mdx_doc",
+      "target": "comp_callout",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/alert.mdx",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

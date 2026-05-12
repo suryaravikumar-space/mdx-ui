@@ -1,1 +1,124 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "label": "register-map.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L1"}, {"id": "src_register_map_registeraccess", "label": "RegisterAccess", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L4"}, {"id": "src_register_map_registerrow", "label": "RegisterRow", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L6"}, {"id": "src_register_map_registermapprops", "label": "RegisterMapProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L21"}, {"id": "src_register_map_accessstyle", "label": "accessStyle", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L29"}, {"id": "src_register_map_registermap", "label": "RegisterMap", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L54"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L1", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_utils_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "lib_utils_cn", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "src_register_map_registeraccess", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L4", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "src_register_map_registerrow", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L6", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "src_register_map_registermapprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L21", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "src_register_map_accessstyle", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L29", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx", "target": "src_register_map_registermap", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx", "source_location": "L54", "weight": 1.0}], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "label": "register-map.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_register_map_registeraccess",
+      "label": "RegisterAccess",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_register_map_registerrow",
+      "label": "RegisterRow",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_register_map_registermapprops",
+      "label": "RegisterMapProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "src_register_map_accessstyle",
+      "label": "accessStyle",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L29"
+    },
+    {
+      "id": "src_register_map_registermap",
+      "label": "RegisterMap",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L54"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_utils_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "src_register_map_registeraccess",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "src_register_map_registerrow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "src_register_map_registermapprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "src_register_map_accessstyle",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_register_map_tsx",
+      "target": "src_register_map_registermap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx",
+      "source_location": "L54",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

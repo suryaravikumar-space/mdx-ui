@@ -1,1 +1,30 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_apps_www_app_community_page_tsx", "label": "page.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/page.tsx", "source_location": "L1"}, {"id": "community_page_communitypage", "label": "CommunityPage()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/page.tsx", "source_location": "L1"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_app_community_page_tsx", "target": "community_page_communitypage", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/page.tsx", "source_location": "L1", "weight": 1.0}], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_apps_www_app_community_page_tsx",
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "community_page_communitypage",
+      "label": "CommunityPage()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/page.tsx",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_app_community_page_tsx",
+      "target": "community_page_communitypage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

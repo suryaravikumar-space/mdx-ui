@@ -37,21 +37,30 @@ export async function startMcpServer() {
   });
 
   // Tool 1: list all components
-  server.tool("list_components", "List all available mdx-ui components with descriptions", {}, async () => {
-    const registry = await fetchRegistry();
-    const lines = registry.components.map(
-      (c) => `- **${c.name}** (${c.type}): ${c.description}`,
-    );
-    return {
-      content: [{ type: "text", text: lines.join("\n") }],
-    };
-  });
+  server.tool(
+    "list_components",
+    "List all available mdx-ui components with descriptions",
+    {},
+    async () => {
+      const registry = await fetchRegistry();
+      const lines = registry.components.map(
+        (c) => `- **${c.name}** (${c.type}): ${c.description}`,
+      );
+      return {
+        content: [{ type: "text", text: lines.join("\n") }],
+      };
+    },
+  );
 
   // Tool 2: get full schema for a component
   server.tool(
     "get_component",
     "Get the full schema for a component — props, when to use, when not to use, and an MDX usage example",
-    { name: z.string().describe("Component name, e.g. accordion, complexity-table, dsbst") },
+    {
+      name: z
+        .string()
+        .describe("Component name, e.g. accordion, complexity-table, dsbst"),
+    },
     async ({ name }) => {
       const registry = await fetchRegistry();
       const component = registry.components.find(
@@ -83,10 +92,14 @@ export async function startMcpServer() {
         lines.push(`**When NOT to use:** ${component.whenNotToUse}`);
       }
       if (component.dependencies?.length) {
-        lines.push(`\n**npm dependencies:** ${component.dependencies.join(", ")}`);
+        lines.push(
+          `\n**npm dependencies:** ${component.dependencies.join(", ")}`,
+        );
       }
       if (component.registryDependencies?.length) {
-        lines.push(`**Requires:** ${component.registryDependencies.join(", ")}`);
+        lines.push(
+          `**Requires:** ${component.registryDependencies.join(", ")}`,
+        );
       }
       if (component.example) {
         lines.push(`\n**Example:**\n\`\`\`mdx\n${component.example}\n\`\`\``);
@@ -108,12 +121,7 @@ export async function startMcpServer() {
       const q = query.toLowerCase();
 
       const matches = registry.components.filter((c) => {
-        const haystack = [
-          c.name,
-          c.description,
-          c.whenToUse ?? "",
-          c.type,
-        ]
+        const haystack = [c.name, c.description, c.whenToUse ?? "", c.type]
           .join(" ")
           .toLowerCase();
         return haystack.includes(q);

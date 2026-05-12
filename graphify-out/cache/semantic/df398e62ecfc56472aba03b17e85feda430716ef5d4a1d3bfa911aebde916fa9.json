@@ -1,1 +1,159 @@
-{"nodes": [{"id": "mermaid_component", "label": "Mermaid", "file_type": "document", "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "remark_mdx_ui_plugin", "label": "remark-mdx-ui plugin (@ravikumarsurya/remark-mdx-ui)", "file_type": "code", "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mermaid_bst_subcomponent", "label": "MermaidBST (Binary Search Tree visualizer)", "file_type": "document", "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mermaid_bfs_subcomponent", "label": "MermaidBFS (Breadth-First Search visualizer)", "file_type": "document", "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mermaid_dfs_subcomponent", "label": "MermaidDFS (Depth-First Search visualizer)", "file_type": "document", "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "mermaid_tree_subcomponent", "label": "MermaidTree (Generic Tree visualizer)", "file_type": "document", "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "mermaid_component", "target": "remark_mdx_ui_plugin", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": "line 37", "weight": 1.0}, {"source": "mermaid_component", "target": "mermaid_bst_subcomponent", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": "line 112", "weight": 1.0}, {"source": "mermaid_component", "target": "mermaid_bfs_subcomponent", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": "line 149", "weight": 1.0}, {"source": "mermaid_component", "target": "mermaid_dfs_subcomponent", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": "line 167", "weight": 1.0}, {"source": "mermaid_component", "target": "mermaid_tree_subcomponent", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": "line 121", "weight": 1.0}, {"source": "mermaid_component", "target": "mdxui_cli", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": "line 11", "weight": 1.0}, {"source": "mermaid_bst_subcomponent", "target": "invariant_component", "relation": "conceptually_related_to", "confidence": "INFERRED", "confidence_score": 0.65, "source_file": "apps/www/content/docs/components/mermaid.mdx", "source_location": null, "weight": 0.5}], "hyperedges": [{"id": "mermaid_data_structure_components", "label": "Mermaid data structure visualization subcomponents", "nodes": ["mermaid_component", "mermaid_bst_subcomponent", "mermaid_bfs_subcomponent", "mermaid_dfs_subcomponent", "mermaid_tree_subcomponent"], "relation": "participate_in", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/components/mermaid.mdx"}]}
+{
+  "nodes": [
+    {
+      "id": "mermaid_component",
+      "label": "Mermaid",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "remark_mdx_ui_plugin",
+      "label": "remark-mdx-ui plugin (@ravikumarsurya/remark-mdx-ui)",
+      "file_type": "code",
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mermaid_bst_subcomponent",
+      "label": "MermaidBST (Binary Search Tree visualizer)",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mermaid_bfs_subcomponent",
+      "label": "MermaidBFS (Breadth-First Search visualizer)",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mermaid_dfs_subcomponent",
+      "label": "MermaidDFS (Depth-First Search visualizer)",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mermaid_tree_subcomponent",
+      "label": "MermaidTree (Generic Tree visualizer)",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "mermaid_component",
+      "target": "remark_mdx_ui_plugin",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": "line 37",
+      "weight": 1.0
+    },
+    {
+      "source": "mermaid_component",
+      "target": "mermaid_bst_subcomponent",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": "line 112",
+      "weight": 1.0
+    },
+    {
+      "source": "mermaid_component",
+      "target": "mermaid_bfs_subcomponent",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": "line 149",
+      "weight": 1.0
+    },
+    {
+      "source": "mermaid_component",
+      "target": "mermaid_dfs_subcomponent",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": "line 167",
+      "weight": 1.0
+    },
+    {
+      "source": "mermaid_component",
+      "target": "mermaid_tree_subcomponent",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": "line 121",
+      "weight": 1.0
+    },
+    {
+      "source": "mermaid_component",
+      "target": "mdxui_cli",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": "line 11",
+      "weight": 1.0
+    },
+    {
+      "source": "mermaid_bst_subcomponent",
+      "target": "invariant_component",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx",
+      "source_location": null,
+      "weight": 0.5
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "mermaid_data_structure_components",
+      "label": "Mermaid data structure visualization subcomponents",
+      "nodes": [
+        "mermaid_component",
+        "mermaid_bst_subcomponent",
+        "mermaid_bfs_subcomponent",
+        "mermaid_dfs_subcomponent",
+        "mermaid_tree_subcomponent"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/components/mermaid.mdx"
+    }
+  ]
+}

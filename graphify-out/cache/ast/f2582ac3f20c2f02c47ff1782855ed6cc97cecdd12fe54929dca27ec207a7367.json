@@ -1,1 +1,371 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "label": "index.ts", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L1"}, {"id": "src_index_remarkmdxuioptions", "label": "RemarkMdxUiOptions", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L22"}, {"id": "src_index_estree1d", "label": "estree1D()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L62"}, {"id": "src_index_estree2d", "label": "estree2D()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L84"}, {"id": "src_index_strattr", "label": "strAttr()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L109"}, {"id": "src_index_exprattr", "label": "exprAttr()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L114"}, {"id": "src_index_jsxblock", "label": "jsxBlock()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L127"}, {"id": "src_index_totext", "label": "toText()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L133"}, {"id": "src_index_gfm_type_map", "label": "GFM_TYPE_MAP", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L147"}, {"id": "src_index_legacy_type_map", "label": "LEGACY_TYPE_MAP", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L155"}, {"id": "src_index_transformcallouts", "label": "transformCallouts()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L167"}, {"id": "src_index_transformtables", "label": "transformTables()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L219"}, {"id": "src_index_transformsteps", "label": "transformSteps()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L244"}, {"id": "src_index_transformhighlight", "label": "transformHighlight()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L261"}, {"id": "src_index_estreliteral", "label": "estreLiteral()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L294"}, {"id": "src_index_transformmermaid", "label": "transformMermaid()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L308"}, {"id": "src_index_remarkmdxui", "label": "remarkMdxUi()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L323"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "unist_util_visit", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L16", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "unified", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L17", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "mdast", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L18", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_remarkmdxuioptions", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L22", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_estree1d", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L62", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_estree2d", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L84", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_strattr", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L109", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_exprattr", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L114", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_jsxblock", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L127", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_totext", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L133", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_gfm_type_map", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L147", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_legacy_type_map", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L155", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_transformcallouts", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L167", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_transformtables", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L219", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_transformsteps", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L244", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_transformhighlight", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L261", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_estreliteral", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L294", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_transformmermaid", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L308", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts", "target": "src_index_remarkmdxui", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L323", "weight": 1.0}], "raw_calls": [{"caller_nid": "src_index_estree1d", "callee": "map", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L71"}, {"caller_nid": "src_index_estree2d", "callee": "map", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L93"}, {"caller_nid": "src_index_totext", "callee": "join", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L135"}, {"caller_nid": "src_index_totext", "callee": "map", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L135"}, {"caller_nid": "src_index_transformcallouts", "callee": "visit", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L168"}, {"caller_nid": "src_index_transformtables", "callee": "visit", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L220"}, {"caller_nid": "src_index_transformsteps", "callee": "visit", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L245"}, {"caller_nid": "src_index_transformhighlight", "callee": "visit", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L262"}, {"caller_nid": "src_index_estreliteral", "callee": "stringify", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L301"}, {"caller_nid": "src_index_transformmermaid", "callee": "visit", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts", "source_location": "L309"}]}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_index_remarkmdxuioptions",
+      "label": "RemarkMdxUiOptions",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_index_estree1d",
+      "label": "estree1D()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L62"
+    },
+    {
+      "id": "src_index_estree2d",
+      "label": "estree2D()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L84"
+    },
+    {
+      "id": "src_index_strattr",
+      "label": "strAttr()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L109"
+    },
+    {
+      "id": "src_index_exprattr",
+      "label": "exprAttr()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L114"
+    },
+    {
+      "id": "src_index_jsxblock",
+      "label": "jsxBlock()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L127"
+    },
+    {
+      "id": "src_index_totext",
+      "label": "toText()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L133"
+    },
+    {
+      "id": "src_index_gfm_type_map",
+      "label": "GFM_TYPE_MAP",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L147"
+    },
+    {
+      "id": "src_index_legacy_type_map",
+      "label": "LEGACY_TYPE_MAP",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L155"
+    },
+    {
+      "id": "src_index_transformcallouts",
+      "label": "transformCallouts()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L167"
+    },
+    {
+      "id": "src_index_transformtables",
+      "label": "transformTables()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L219"
+    },
+    {
+      "id": "src_index_transformsteps",
+      "label": "transformSteps()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L244"
+    },
+    {
+      "id": "src_index_transformhighlight",
+      "label": "transformHighlight()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L261"
+    },
+    {
+      "id": "src_index_estreliteral",
+      "label": "estreLiteral()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L294"
+    },
+    {
+      "id": "src_index_transformmermaid",
+      "label": "transformMermaid()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L308"
+    },
+    {
+      "id": "src_index_remarkmdxui",
+      "label": "remarkMdxUi()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L323"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "unist_util_visit",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "unified",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "mdast",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_remarkmdxuioptions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_estree1d",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_estree2d",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_strattr",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_exprattr",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_jsxblock",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_totext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L133",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_gfm_type_map",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_legacy_type_map",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L155",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_transformcallouts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L167",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_transformtables",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L219",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_transformsteps",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L244",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_transformhighlight",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L261",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_estreliteral",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L294",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_transformmermaid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L308",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_remark_plugin_src_index_ts",
+      "target": "src_index_remarkmdxui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L323",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "src_index_estree1d",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L71"
+    },
+    {
+      "caller_nid": "src_index_estree2d",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L93"
+    },
+    {
+      "caller_nid": "src_index_totext",
+      "callee": "join",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L135"
+    },
+    {
+      "caller_nid": "src_index_totext",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L135"
+    },
+    {
+      "caller_nid": "src_index_transformcallouts",
+      "callee": "visit",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L168"
+    },
+    {
+      "caller_nid": "src_index_transformtables",
+      "callee": "visit",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L220"
+    },
+    {
+      "caller_nid": "src_index_transformsteps",
+      "callee": "visit",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L245"
+    },
+    {
+      "caller_nid": "src_index_transformhighlight",
+      "callee": "visit",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L262"
+    },
+    {
+      "caller_nid": "src_index_estreliteral",
+      "callee": "stringify",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L301"
+    },
+    {
+      "caller_nid": "src_index_transformmermaid",
+      "callee": "visit",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts",
+      "source_location": "L309"
+    }
+  ]
+}

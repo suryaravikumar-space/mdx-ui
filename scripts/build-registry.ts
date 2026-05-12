@@ -418,13 +418,14 @@ const componentsMetadata: Record<
     dependencies: [],
   },
   math: {
-    description: "LaTeX math rendering with block and inline support",
+    description:
+      "LaTeX math rendering via KaTeX — M (inline) and BM (block) for clean authoring with no JS string escaping, plus InlineMath/BlockMath longform aliases. Built-in macros: \\R \\N \\Z \\C \\Q \\E \\PP \\F \\d \\eps \\norm \\abs \\inner \\set \\floor \\ceil.",
     whenToUse:
-      "Use BlockMath for display equations centred on their own line. Use InlineMath for expressions embedded in prose.",
+      "Use <M expr=\"\\frac{a}{b}\" /> for inline LaTeX and <BM expr=\"...\" /> for block/display equations. The expr prop accepts literal backslashes — no JS string escaping needed. Use InlineMath/BlockMath when you need to embed a dynamic JS value.",
     whenNotToUse:
       "Do not use for code — use CodeBlock. Do not use for simple expressions that read clearly as plain text.",
     example:
-      "The recurrence <InlineMath>T(n) = 2T(n/2) + O(n)</InlineMath> solves to <InlineMath>O(n \\log n)</InlineMath>.",
+      'The formula <M expr="\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}" /> gives the roots. <BM expr="e^{i\\pi} + 1 = 0" />',
     dependencies: ["katex", "clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
@@ -594,25 +595,25 @@ const componentsMetadata: Record<
   },
   "math-primitives": {
     description:
-      "Semantic math primitive atoms: Frac (fraction), Pow (exponent), Sub (subscript), Sqrt (radical), Abs (absolute value), Deg (degree), Inf (infinity), Greek letter components",
+      "150+ JSX math primitive components across 11 sections: Basic (Frac, Pow, Sub, Sqrt, Abs, Paren, Deg, Inf), Calculus (Integral, Sum, Prod, Lim, Limsup, Liminf, Deriv, PDeriv, Nabla, Laplacian), Trig (Sin–Csc, ArcSin–ArcTan, Sinh/Cosh/Tanh, Log/Ln/Exp), Algebra (Factorial, Choose, Perm, Mod, GCD, LCM), Set Theory (Floor, Ceil, SetOf, Cardinality, PowerSet, In, Subset, Union, Intersect…), Number Systems (NN ℕ, ZZ ℤ, QQ ℚ, RR ℝ, CC ℂ, PP ℙ, FF 𝔽, Complex, Conj), Logic (And, Or, Not, ForAll, Exists, Implies ⟹, Iff ⟺, Therefore, QED), Linear Algebra (Vec, Norm, Dot, Cross, Transpose, Det, Matrix, Rank, Dim, Trace), Statistics (Prob, CondProb, Expected, Variance, StdDev, Cov, Corr, Dist), Greek (full set), Relations/Arrows (Neq, Approx, Equiv, Cong, Leq, Geq, Ll, Gg, Propto, Sim, PlusMinus, MinusPlus, Divides, NotDivides, Arrow, MapsTo, Compose, OTimes).",
     whenToUse:
-      "Use to compose mathematical expressions inline in JSX without raw Unicode or LaTeX. Compose with Equation and Solution for full semantic math.",
+      "Use for structured math UI — numbered equations with layout, solution steps, inline symbols alongside prose. For raw LaTeX expressions, use <M expr=\"...\" /> instead — it is simpler. Both approaches can be mixed freely.",
     whenNotToUse:
-      "Do not use for complex display equations — use BlockMath with KaTeX for heavy LaTeX. These primitives are for structural, composable math.",
+      "Do not use primitives to write raw math expressions — use <M expr=\"\\frac{a}{b}\" /> for that. Primitives are for composing layout-level math components.",
     example:
-      '<Frac num="1" den="2" />  <Pow exp="2">x</Pow>  <Sqrt>x+1</Sqrt>  <Deg>30</Deg>  <Theta />',
+      '<Equation label="1"><Frac num={<>-b <PlusMinus /> <Sqrt>b²-4ac</Sqrt></>} den="2a" /></Equation>',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
   "math-equation": {
     description:
-      "Semantic equation display blocks: Equation (centered labeled formula), EqSystem (system of equations with brace), relation symbols (Approx, Neq, Leq, Geq, Arrow, Implies, Iff)",
+      "Display equation containers: Equation (centered block with optional equation number label) and EqSystem (system of simultaneous equations with SVG left brace). Relation symbols (Approx, Neq, Leq, Geq, Arrow, Implies, Iff, etc.) live in math-primitives.",
     whenToUse:
-      "Use Equation to display a formula prominently with an optional reference number. Use EqSystem for simultaneous equations. Use relation symbols inline between expressions.",
+      "Use Equation to display a formula prominently with an optional reference number — pair with <M expr=\"...\" /> for LaTeX content or math-primitives for JSX layout. Use EqSystem for systems of simultaneous equations.",
     whenNotToUse:
-      "Do not use for prose paragraphs that mention variables — use InlineMath. Do not use for code listings.",
+      "Do not use for prose paragraphs that mention variables — use M or InlineMath. Do not use for code listings.",
     example:
-      '<Equation label="1">E = mc<Pow exp="2" /></Equation>\n<EqSystem><div>x + y = 5</div><div>2x − y = 1</div></EqSystem>',
+      '<Equation label="1"><M expr="E = mc^2" /></Equation>\n<EqSystem><div><M expr="x + y = 5" /></div><div><M expr="2x - y = 1" /></div></EqSystem>',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
@@ -625,6 +626,18 @@ const componentsMetadata: Record<
       "Do not use for general procedure guides — use Steps/Step for non-math workflows. Do not use for code walkthroughs.",
     example:
       '<Solution title="Solve: 2x + 4 = 10">\n  <SolutionStep reason="Given">2x + 4 = 10</SolutionStep>\n  <SolutionStep reason="Subtract 4">2x = 6</SolutionStep>\n  <SolutionAnswer>x = 3</SolutionAnswer>\n</Solution>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
+  "pin-table": {
+    description:
+      "Hardware pinout table — documents connector pins with signal name, direction type (INPUT/OUTPUT/BIDIR/POWER/GND/NC), voltage, alternate function, and description. Color-coded type badges.",
+    whenToUse:
+      "Use when documenting a microcontroller, SoC, or connector pinout — USB, GPIO, UART, SPI, I2C headers. Ideal for hardware BSP and SDK documentation.",
+    whenNotToUse:
+      "Do not use for register maps — use RegisterMap. Do not use for general comparison tables — use DataTable.",
+    example:
+      '<PinTable title="40-pin GPIO Header" connector="J1" rows={[\n  { pin: 1, signal: "3.3V", type: "POWER", voltage: "3.3V", description: "Power supply" },\n  { pin: 2, signal: "5V",   type: "POWER", voltage: "5V",   description: "Power supply" },\n  { pin: 3, signal: "GPIO2", type: "BIDIR", voltage: "3.3V", altFunction: "I2C1_SDA" },\n]} />',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },

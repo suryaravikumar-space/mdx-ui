@@ -1,1 +1,55 @@
-{"nodes": [{"id": "doc_scripts_readme", "label": "Registry Build Script README", "file_type": "document", "source_file": "scripts/README.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "concept_build_registry_workflow", "label": "Build Registry Workflow \u2014 packages/registry/src to registry/mdx JSON", "file_type": "rationale", "source_file": "scripts/README.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "doc_scripts_readme", "target": "concept_build_registry_workflow", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "scripts/README.md", "source_location": null, "weight": 1.0}], "hyperedges": [{"id": "registry_distribution_system", "label": "Registry Build and Distribution System", "nodes": ["doc_registry_pkg_readme", "doc_registry_readme", "doc_scripts_readme", "concept_build_registry_workflow", "concept_registry_json_format"], "relation": "implement", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "scripts/README.md"}]}
+{
+  "nodes": [
+    {
+      "id": "doc_scripts_readme",
+      "label": "Registry Build Script README",
+      "file_type": "document",
+      "source_file": "scripts/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_build_registry_workflow",
+      "label": "Build Registry Workflow \u2014 packages/registry/src to registry/mdx JSON",
+      "file_type": "rationale",
+      "source_file": "scripts/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc_scripts_readme",
+      "target": "concept_build_registry_workflow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/README.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "registry_distribution_system",
+      "label": "Registry Build and Distribution System",
+      "nodes": [
+        "doc_registry_pkg_readme",
+        "doc_registry_readme",
+        "doc_scripts_readme",
+        "concept_build_registry_workflow",
+        "concept_registry_json_format"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/README.md"
+    }
+  ]
+}

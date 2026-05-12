@@ -1,1 +1,49 @@
-{"nodes": [{"id": "doc_nextjs_contentlayer_mdx", "label": "Next.js + Contentlayer Integration Guide", "file_type": "document", "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}, {"id": "concept_contentlayer_renderer", "label": "Contentlayer Renderer \u2014 Type-safe Content SDK", "file_type": "rationale", "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "doc_nextjs_contentlayer_mdx", "target": "doc_component_mappings_mdx", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx", "source_location": "line 406", "weight": 1.0}, {"source": "doc_nextjs_contentlayer_mdx", "target": "concept_contentlayer_renderer", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "doc_nextjs_contentlayer_mdx",
+      "label": "Next.js + Contentlayer Integration Guide",
+      "file_type": "document",
+      "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_contentlayer_renderer",
+      "label": "Contentlayer Renderer \u2014 Type-safe Content SDK",
+      "file_type": "rationale",
+      "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "doc_nextjs_contentlayer_mdx",
+      "target": "doc_component_mappings_mdx",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx",
+      "source_location": "line 406",
+      "weight": 1.0
+    },
+    {
+      "source": "doc_nextjs_contentlayer_mdx",
+      "target": "concept_contentlayer_renderer",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/www/content/docs/integration/nextjs-contentlayer.mdx",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

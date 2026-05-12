@@ -1,1 +1,50 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx", "label": "mdx-components.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx", "source_location": "L1"}, {"id": "src_mdx_components_usemdxcomponents", "label": "useMDXComponents()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx", "source_location": "L16"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx", "target": "types", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx", "source_location": "L1", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx", "target": "react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx", "target": "src_mdx_components_usemdxcomponents", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx", "source_location": "L16", "weight": 1.0}], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx",
+      "label": "mdx-components.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_mdx_components_usemdxcomponents",
+      "label": "useMDXComponents()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx",
+      "source_location": "L16"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx",
+      "target": "types",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_mdx_components_tsx",
+      "target": "src_mdx_components_usemdxcomponents",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

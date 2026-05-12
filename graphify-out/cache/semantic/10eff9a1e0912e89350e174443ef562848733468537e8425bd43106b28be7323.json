@@ -1,1 +1,28 @@
-{"nodes": [{"id": "cli_fetch_component", "label": "fetch-component.ts Utility", "file_type": "code", "source_file": "GUIDE/PROJECT_STRUCTURE.md", "source_location": "packages/cli/src/utils/fetch-component.ts", "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [{"source": "cli_fetch_component", "target": "readme_registry_mdx_json", "relation": "references", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "GUIDE/PROJECT_STRUCTURE.md", "source_location": null, "weight": 1.0}], "hyperedges": []}
+{
+  "nodes": [
+    {
+      "id": "cli_fetch_component",
+      "label": "fetch-component.ts Utility",
+      "file_type": "code",
+      "source_file": "GUIDE/PROJECT_STRUCTURE.md",
+      "source_location": "packages/cli/src/utils/fetch-component.ts",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "cli_fetch_component",
+      "target": "readme_registry_mdx_json",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "GUIDE/PROJECT_STRUCTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": []
+}

@@ -175,7 +175,7 @@ Inf.displayName = "Inf";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SECTION 2 — CALCULUS
-// Integral · Sum · Prod · Lim · Deriv · PDeriv · Nabla · Laplacian
+// Integral · Sum · Prod · Lim · Limsup · Liminf · Deriv · PDeriv · Nabla · Laplacian
 // ═══════════════════════════════════════════════════════════════════════════════
 
 interface BoundedProps {
@@ -273,6 +273,58 @@ export function Lim({
   );
 }
 Lim.displayName = "Lim";
+
+/** lim sup — limit superior with optional subscript bound. */
+export function Limsup({
+  sub,
+  children,
+  className,
+}: {
+  sub?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
+      <span className="inline-flex flex-col items-center">
+        <span className="font-serif text-sm leading-none">lim sup</span>
+        {sub !== undefined && (
+          <span className="text-[0.6em] leading-none">{sub}</span>
+        )}
+      </span>
+      {children && <span className="ml-1">{children}</span>}
+    </span>
+  );
+}
+Limsup.displayName = "Limsup";
+
+/** lim inf — limit inferior with optional subscript bound. */
+export function Liminf({
+  sub,
+  children,
+  className,
+}: {
+  sub?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
+      <span className="inline-flex flex-col items-center">
+        <span className="font-serif text-sm leading-none">lim inf</span>
+        {sub !== undefined && (
+          <span className="text-[0.6em] leading-none">{sub}</span>
+        )}
+      </span>
+      {children && <span className="ml-1">{children}</span>}
+    </span>
+  );
+}
+Liminf.displayName = "Liminf";
 
 /** Ordinary derivative d^n/dx^n. `of` = variable name, `n` = order. */
 export function Deriv({
@@ -763,6 +815,8 @@ export const NotExists = mkSym("∄", "there does not exist", "mr-px");
 export const Therefore = mkSym("∴", "therefore");
 export const Because = mkSym("∵", "because");
 export const Turnstile = mkSym("⊢", "proves");
+export const Implies = mkSym("⟹", "implies");
+export const Iff = mkSym("⟺", "if and only if");
 
 /** QED end-of-proof square □. */
 export function QED({ className }: { className?: string }) {
@@ -1238,3 +1292,35 @@ export const SigmaU = mkGreek("Sigma");
 export const PhiU = mkGreek("Phi");
 export const PsiU = mkGreek("Psi");
 export const OmegaU = mkGreek("Omega");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 11 — RELATIONS, ARROWS & ARITHMETIC
+// Neq · Approx · Equiv · Cong · Leq · Geq · Ll · Gg · Propto · Sim
+// PlusMinus · MinusPlus · Divides · NotDivides · MapsTo · Compose · OTimes
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Comparison relations
+export const Neq = mkSym("≠", "not equal");
+export const Approx = mkSym("≈", "approximately equal");
+export const Equiv = mkSym("≡", "equivalent");
+export const Cong = mkSym("≅", "congruent");
+export const Leq = mkSym("≤", "less than or equal");
+export const Geq = mkSym("≥", "greater than or equal");
+export const Ll = mkSym("≪", "much less than");
+export const Gg = mkSym("≫", "much greater than");
+export const Propto = mkSym("∝", "proportional to");
+export const Sim = mkSym("∼", "similar");
+
+// Arithmetic
+export const PlusMinus = mkSym("±", "plus or minus");
+export const MinusPlus = mkSym("∓", "minus or plus");
+
+// Number theory
+export const Divides = mkSym("∣", "divides");
+export const NotDivides = mkSym("∤", "does not divide");
+
+// Arrows & operations
+export const Arrow = mkSym("→", "right arrow");
+export const MapsTo = mkSym("↦", "maps to");
+export const Compose = mkSym("∘", "composition");
+export const OTimes = mkSym("⊗", "tensor product");

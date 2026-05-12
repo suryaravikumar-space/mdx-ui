@@ -1,1 +1,2707 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "label": "math-primitives.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1"}, {"id": "src_math_primitives_fracprops", "label": "FracProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L9"}, {"id": "src_math_primitives_frac", "label": "Frac()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L15"}, {"id": "src_math_primitives_powprops", "label": "PowProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L32"}, {"id": "src_math_primitives_pow", "label": "Pow()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L39"}, {"id": "src_math_primitives_subprops", "label": "SubProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L51"}, {"id": "src_math_primitives_sub", "label": "Sub()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L58"}, {"id": "src_math_primitives_sqrtprops", "label": "SqrtProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L70"}, {"id": "src_math_primitives_sqrt", "label": "Sqrt()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L77"}, {"id": "src_math_primitives_abs", "label": "Abs()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L100"}, {"id": "src_math_primitives_paren", "label": "Paren()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L126"}, {"id": "src_math_primitives_deg", "label": "Deg()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L148"}, {"id": "src_math_primitives_inf", "label": "Inf()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L167"}, {"id": "src_math_primitives_boundedprops", "label": "BoundedProps", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L181"}, {"id": "src_math_primitives_integral", "label": "Integral()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L189"}, {"id": "src_math_primitives_sum", "label": "Sum()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L212"}, {"id": "src_math_primitives_prod", "label": "Prod()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L233"}, {"id": "src_math_primitives_lim", "label": "Lim()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L254"}, {"id": "src_math_primitives_deriv", "label": "Deriv()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L278"}, {"id": "src_math_primitives_pderiv", "label": "PDeriv()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L313"}, {"id": "src_math_primitives_nabla", "label": "Nabla()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L348"}, {"id": "src_math_primitives_laplacian", "label": "Laplacian()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L358"}, {"id": "src_math_primitives_mktrig", "label": "mkTrig()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L374"}, {"id": "src_math_primitives_sin", "label": "Sin", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L391"}, {"id": "src_math_primitives_cos", "label": "Cos", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L392"}, {"id": "src_math_primitives_tan", "label": "Tan", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L393"}, {"id": "src_math_primitives_cot", "label": "Cot", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L394"}, {"id": "src_math_primitives_sec", "label": "Sec", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L395"}, {"id": "src_math_primitives_csc", "label": "Csc", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L396"}, {"id": "src_math_primitives_arcsin", "label": "ArcSin", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L397"}, {"id": "src_math_primitives_arccos", "label": "ArcCos", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L398"}, {"id": "src_math_primitives_arctan", "label": "ArcTan", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L399"}, {"id": "src_math_primitives_sinh", "label": "Sinh", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L400"}, {"id": "src_math_primitives_cosh", "label": "Cosh", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L401"}, {"id": "src_math_primitives_tanh", "label": "Tanh", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L402"}, {"id": "src_math_primitives_log", "label": "Log", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L403"}, {"id": "src_math_primitives_ln", "label": "Ln", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L404"}, {"id": "src_math_primitives_exp", "label": "Exp", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L405"}, {"id": "src_math_primitives_factorial", "label": "Factorial()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L413"}, {"id": "src_math_primitives_choose", "label": "Choose()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L430"}, {"id": "src_math_primitives_perm", "label": "Perm()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L461"}, {"id": "src_math_primitives_mod", "label": "Mod()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L487"}, {"id": "src_math_primitives_gcd", "label": "GCD()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L507"}, {"id": "src_math_primitives_lcm", "label": "LCM()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L528"}, {"id": "src_math_primitives_floor", "label": "Floor()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L555"}, {"id": "src_math_primitives_ceil", "label": "Ceil()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L573"}, {"id": "src_math_primitives_setof", "label": "SetOf()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L591"}, {"id": "src_math_primitives_cardinality", "label": "Cardinality()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L613"}, {"id": "src_math_primitives_powerset", "label": "PowerSet()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L634"}, {"id": "src_math_primitives_mksym", "label": "mkSym()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L654"}, {"id": "src_math_primitives_in", "label": "In", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L671"}, {"id": "src_math_primitives_notin", "label": "NotIn", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L672"}, {"id": "src_math_primitives_subset", "label": "Subset", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L673"}, {"id": "src_math_primitives_subseteq", "label": "SubsetEq", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L674"}, {"id": "src_math_primitives_supset", "label": "Supset", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L675"}, {"id": "src_math_primitives_supseteq", "label": "SupsetEq", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L676"}, {"id": "src_math_primitives_union", "label": "Union", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L677"}, {"id": "src_math_primitives_intersect", "label": "Intersect", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L678"}, {"id": "src_math_primitives_empty", "label": "Empty", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L679"}, {"id": "src_math_primitives_setminus", "label": "SetMinus", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L680"}, {"id": "src_math_primitives_mknumset", "label": "mkNumSet()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L687"}, {"id": "src_math_primitives_nn", "label": "NN", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L697"}, {"id": "src_math_primitives_zz", "label": "ZZ", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L698"}, {"id": "src_math_primitives_qq", "label": "QQ", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L699"}, {"id": "src_math_primitives_rr", "label": "RR", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L700"}, {"id": "src_math_primitives_cc", "label": "CC", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L701"}, {"id": "src_math_primitives_pp", "label": "PP", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L702"}, {"id": "src_math_primitives_ff", "label": "FF", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L703"}, {"id": "src_math_primitives_complex", "label": "Complex()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L706"}, {"id": "src_math_primitives_conj", "label": "Conj()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L727"}, {"id": "src_math_primitives_and", "label": "And", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L754"}, {"id": "src_math_primitives_or", "label": "Or", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L755"}, {"id": "src_math_primitives_not", "label": "Not", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L756"}, {"id": "src_math_primitives_xor", "label": "Xor", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L757"}, {"id": "src_math_primitives_nand", "label": "Nand", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L758"}, {"id": "src_math_primitives_nor", "label": "Nor", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L759"}, {"id": "src_math_primitives_forall", "label": "ForAll", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L760"}, {"id": "src_math_primitives_exists", "label": "Exists", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L761"}, {"id": "src_math_primitives_notexists", "label": "NotExists", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L762"}, {"id": "src_math_primitives_therefore", "label": "Therefore", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L763"}, {"id": "src_math_primitives_because", "label": "Because", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L764"}, {"id": "src_math_primitives_turnstile", "label": "Turnstile", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L765"}, {"id": "src_math_primitives_qed", "label": "QED()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L768"}, {"id": "src_math_primitives_vec", "label": "Vec()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L788"}, {"id": "src_math_primitives_norm", "label": "Norm()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L811"}, {"id": "src_math_primitives_dot", "label": "Dot", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L831"}, {"id": "src_math_primitives_cross", "label": "Cross", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L832"}, {"id": "src_math_primitives_transpose", "label": "Transpose()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L835"}, {"id": "src_math_primitives_det", "label": "Det()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L851"}, {"id": "src_math_primitives_matrix", "label": "Matrix()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L882"}, {"id": "src_math_primitives_mkop", "label": "mkOp()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L934"}, {"id": "src_math_primitives_spanop", "label": "SpanOp", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L951"}, {"id": "src_math_primitives_rank", "label": "Rank", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L952"}, {"id": "src_math_primitives_dim", "label": "Dim", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L953"}, {"id": "src_math_primitives_nullop", "label": "NullOp", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L954"}, {"id": "src_math_primitives_img", "label": "Img", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L955"}, {"id": "src_math_primitives_trace", "label": "Trace", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L956"}, {"id": "src_math_primitives_prob", "label": "Prob()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L964"}, {"id": "src_math_primitives_condprob", "label": "CondProb()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L984"}, {"id": "src_math_primitives_expected", "label": "Expected()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1010"}, {"id": "src_math_primitives_variance", "label": "Variance()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1032"}, {"id": "src_math_primitives_stddev", "label": "StdDev()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1052"}, {"id": "src_math_primitives_cov", "label": "Cov()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1072"}, {"id": "src_math_primitives_corr", "label": "Corr()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1096"}, {"id": "src_math_primitives_dist", "label": "Dist()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1120"}, {"id": "src_math_primitives_greek_map", "label": "GREEK_MAP", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1144"}, {"id": "src_math_primitives_greekletter", "label": "GreekLetter", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1180"}, {"id": "src_math_primitives_greek", "label": "Greek()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1183"}, {"id": "src_math_primitives_mkgreek", "label": "mkGreek()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1198"}, {"id": "src_math_primitives_alpha", "label": "Alpha", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1207"}, {"id": "src_math_primitives_beta", "label": "Beta", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1208"}, {"id": "src_math_primitives_gamma", "label": "Gamma", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1209"}, {"id": "src_math_primitives_gdelta", "label": "GDelta", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1210"}, {"id": "src_math_primitives_epsilon", "label": "Epsilon", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1211"}, {"id": "src_math_primitives_zeta", "label": "Zeta", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1212"}, {"id": "src_math_primitives_eta", "label": "Eta", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1213"}, {"id": "src_math_primitives_theta", "label": "Theta", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1214"}, {"id": "src_math_primitives_iota", "label": "Iota", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1215"}, {"id": "src_math_primitives_kappa", "label": "Kappa", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1216"}, {"id": "src_math_primitives_lambda", "label": "Lambda", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1217"}, {"id": "src_math_primitives_mu", "label": "Mu", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1218"}, {"id": "src_math_primitives_nu", "label": "Nu", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1219"}, {"id": "src_math_primitives_xi", "label": "Xi", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1220"}, {"id": "src_math_primitives_pisym", "label": "PiSym", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1221"}, {"id": "src_math_primitives_rho", "label": "Rho", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1222"}, {"id": "src_math_primitives_sigmasym", "label": "SigmaSym", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1223"}, {"id": "src_math_primitives_tau", "label": "Tau", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1224"}, {"id": "src_math_primitives_upsilon", "label": "Upsilon", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1225"}, {"id": "src_math_primitives_phi", "label": "Phi", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1226"}, {"id": "src_math_primitives_chi", "label": "Chi", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1227"}, {"id": "src_math_primitives_psi", "label": "Psi", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1228"}, {"id": "src_math_primitives_omega", "label": "Omega", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1229"}, {"id": "src_math_primitives_gammau", "label": "GammaU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1231"}, {"id": "src_math_primitives_deltau", "label": "DeltaU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1232"}, {"id": "src_math_primitives_thetau", "label": "ThetaU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1233"}, {"id": "src_math_primitives_lambdau", "label": "LambdaU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1234"}, {"id": "src_math_primitives_xiu", "label": "XiU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1235"}, {"id": "src_math_primitives_piu", "label": "PiU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1236"}, {"id": "src_math_primitives_sigmau", "label": "SigmaU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1237"}, {"id": "src_math_primitives_phiu", "label": "PhiU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1238"}, {"id": "src_math_primitives_psiu", "label": "PsiU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1239"}, {"id": "src_math_primitives_omegau", "label": "OmegaU", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1240"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "react", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_utils_ts", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "lib_utils_cn", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_fracprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L9", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_frac", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L15", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_powprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L32", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_pow", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L39", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_subprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L51", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sub", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L58", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sqrtprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L70", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sqrt", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L77", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_abs", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L100", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_paren", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L126", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_deg", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L148", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_inf", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L167", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_boundedprops", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L181", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_integral", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L189", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sum", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L212", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_prod", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L233", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_lim", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L254", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_deriv", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L278", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_pderiv", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L313", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_nabla", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L348", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_laplacian", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L358", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_mktrig", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L374", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sin", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L391", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_cos", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L392", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_tan", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L393", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_cot", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L394", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sec", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L395", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_csc", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L396", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_arcsin", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L397", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_arccos", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L398", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_arctan", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L399", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sinh", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L400", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_cosh", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L401", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_tanh", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L402", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_log", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L403", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_ln", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L404", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_exp", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L405", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_factorial", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L413", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_choose", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L430", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_perm", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L461", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_mod", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L487", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_gcd", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L507", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_lcm", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L528", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_floor", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L555", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_ceil", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L573", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_setof", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L591", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_cardinality", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L613", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_powerset", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L634", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_mksym", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L654", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_in", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L671", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_notin", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L672", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_subset", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L673", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_subseteq", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L674", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_supset", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L675", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_supseteq", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L676", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_union", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L677", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_intersect", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L678", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_empty", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L679", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_setminus", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L680", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_mknumset", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L687", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_nn", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L697", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_zz", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L698", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_qq", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L699", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_rr", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L700", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_cc", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L701", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_pp", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L702", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_ff", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L703", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_complex", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L706", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_conj", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L727", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_and", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L754", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_or", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L755", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_not", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L756", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_xor", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L757", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_nand", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L758", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_nor", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L759", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_forall", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L760", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_exists", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L761", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_notexists", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L762", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_therefore", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L763", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_because", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L764", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_turnstile", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L765", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_qed", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L768", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_vec", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L788", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_norm", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L811", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_dot", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L831", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_cross", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L832", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_transpose", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L835", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_det", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L851", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_matrix", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L882", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_mkop", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L934", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_spanop", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L951", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_rank", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L952", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_dim", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L953", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_nullop", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L954", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_img", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L955", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_trace", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L956", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_prob", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L964", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_condprob", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L984", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_expected", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1010", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_variance", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1032", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_stddev", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1052", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_cov", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1072", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_corr", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1096", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_dist", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1120", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_greek_map", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1144", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_greekletter", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1180", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_greek", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1183", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_mkgreek", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1198", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_alpha", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1207", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_beta", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1208", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_gamma", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1209", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_gdelta", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1210", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_epsilon", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1211", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_zeta", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1212", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_eta", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1213", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_theta", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1214", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_iota", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1215", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_kappa", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1216", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_lambda", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1217", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_mu", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1218", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_nu", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1219", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_xi", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1220", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_pisym", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1221", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_rho", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1222", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sigmasym", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1223", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_tau", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1224", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_upsilon", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1225", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_phi", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1226", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_chi", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1227", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_psi", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1228", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_omega", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1229", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_gammau", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1231", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_deltau", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1232", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_thetau", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1233", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_lambdau", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1234", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_xiu", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1235", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_piu", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1236", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_sigmau", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1237", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_phiu", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1238", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_psiu", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1239", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx", "target": "src_math_primitives_omegau", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1240", "weight": 1.0}], "raw_calls": [{"caller_nid": "src_math_primitives_frac", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L20"}, {"caller_nid": "src_math_primitives_pow", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L41"}, {"caller_nid": "src_math_primitives_sub", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L60"}, {"caller_nid": "src_math_primitives_sqrt", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L81"}, {"caller_nid": "src_math_primitives_abs", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L111"}, {"caller_nid": "src_math_primitives_paren", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L134"}, {"caller_nid": "src_math_primitives_deg", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L156"}, {"caller_nid": "src_math_primitives_inf", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L169"}, {"caller_nid": "src_math_primitives_integral", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L192"}, {"caller_nid": "src_math_primitives_sum", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L215"}, {"caller_nid": "src_math_primitives_prod", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L236"}, {"caller_nid": "src_math_primitives_lim", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L265"}, {"caller_nid": "src_math_primitives_deriv", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L295"}, {"caller_nid": "src_math_primitives_pderiv", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L330"}, {"caller_nid": "src_math_primitives_nabla", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L350"}, {"caller_nid": "src_math_primitives_laplacian", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L360"}, {"caller_nid": "src_math_primitives_mktrig", "callee": "toUpperCase", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L387"}, {"caller_nid": "src_math_primitives_mktrig", "callee": "charAt", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L387"}, {"caller_nid": "src_math_primitives_mktrig", "callee": "slice", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L387"}, {"caller_nid": "src_math_primitives_factorial", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L421"}, {"caller_nid": "src_math_primitives_choose", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L443"}, {"caller_nid": "src_math_primitives_perm", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L474"}, {"caller_nid": "src_math_primitives_mod", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L497"}, {"caller_nid": "src_math_primitives_gcd", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L517"}, {"caller_nid": "src_math_primitives_lcm", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L538"}, {"caller_nid": "src_math_primitives_floor", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L563"}, {"caller_nid": "src_math_primitives_ceil", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L581"}, {"caller_nid": "src_math_primitives_setof", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L601"}, {"caller_nid": "src_math_primitives_cardinality", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L622"}, {"caller_nid": "src_math_primitives_powerset", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L643"}, {"caller_nid": "src_math_primitives_mksym", "callee": "join", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L663"}, {"caller_nid": "src_math_primitives_mksym", "callee": "map", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L663"}, {"caller_nid": "src_math_primitives_mksym", "callee": "split", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L663"}, {"caller_nid": "src_math_primitives_complex", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L716"}, {"caller_nid": "src_math_primitives_conj", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L736"}, {"caller_nid": "src_math_primitives_qed", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L771"}, {"caller_nid": "src_math_primitives_vec", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L797"}, {"caller_nid": "src_math_primitives_norm", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L820"}, {"caller_nid": "src_math_primitives_det", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L863"}, {"caller_nid": "src_math_primitives_matrix", "callee": "max", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L891"}, {"caller_nid": "src_math_primitives_matrix", "callee": "map", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L891"}, {"caller_nid": "src_math_primitives_matrix", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L904"}, {"caller_nid": "src_math_primitives_matrix", "callee": "map", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L915"}, {"caller_nid": "src_math_primitives_mkop", "callee": "toUpperCase", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L947"}, {"caller_nid": "src_math_primitives_mkop", "callee": "charAt", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L947"}, {"caller_nid": "src_math_primitives_mkop", "callee": "slice", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L947"}, {"caller_nid": "src_math_primitives_prob", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L973"}, {"caller_nid": "src_math_primitives_condprob", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L995"}, {"caller_nid": "src_math_primitives_expected", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1019"}, {"caller_nid": "src_math_primitives_variance", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1041"}, {"caller_nid": "src_math_primitives_stddev", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1061"}, {"caller_nid": "src_math_primitives_cov", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1083"}, {"caller_nid": "src_math_primitives_corr", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1107"}, {"caller_nid": "src_math_primitives_dist", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1130"}, {"caller_nid": "src_math_primitives_greek", "callee": "cn", "is_member_call": false, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1191"}, {"caller_nid": "src_math_primitives_mkgreek", "callee": "toUpperCase", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1202"}, {"caller_nid": "src_math_primitives_mkgreek", "callee": "charAt", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1202"}, {"caller_nid": "src_math_primitives_mkgreek", "callee": "slice", "is_member_call": true, "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx", "source_location": "L1202"}]}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "label": "math-primitives.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_math_primitives_fracprops",
+      "label": "FracProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_math_primitives_frac",
+      "label": "Frac()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "src_math_primitives_powprops",
+      "label": "PowProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L32"
+    },
+    {
+      "id": "src_math_primitives_pow",
+      "label": "Pow()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L39"
+    },
+    {
+      "id": "src_math_primitives_subprops",
+      "label": "SubProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L51"
+    },
+    {
+      "id": "src_math_primitives_sub",
+      "label": "Sub()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L58"
+    },
+    {
+      "id": "src_math_primitives_sqrtprops",
+      "label": "SqrtProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L70"
+    },
+    {
+      "id": "src_math_primitives_sqrt",
+      "label": "Sqrt()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L77"
+    },
+    {
+      "id": "src_math_primitives_abs",
+      "label": "Abs()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L100"
+    },
+    {
+      "id": "src_math_primitives_paren",
+      "label": "Paren()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L126"
+    },
+    {
+      "id": "src_math_primitives_deg",
+      "label": "Deg()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L148"
+    },
+    {
+      "id": "src_math_primitives_inf",
+      "label": "Inf()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L167"
+    },
+    {
+      "id": "src_math_primitives_boundedprops",
+      "label": "BoundedProps",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L181"
+    },
+    {
+      "id": "src_math_primitives_integral",
+      "label": "Integral()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L189"
+    },
+    {
+      "id": "src_math_primitives_sum",
+      "label": "Sum()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L212"
+    },
+    {
+      "id": "src_math_primitives_prod",
+      "label": "Prod()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L233"
+    },
+    {
+      "id": "src_math_primitives_lim",
+      "label": "Lim()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L254"
+    },
+    {
+      "id": "src_math_primitives_deriv",
+      "label": "Deriv()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L278"
+    },
+    {
+      "id": "src_math_primitives_pderiv",
+      "label": "PDeriv()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L313"
+    },
+    {
+      "id": "src_math_primitives_nabla",
+      "label": "Nabla()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L348"
+    },
+    {
+      "id": "src_math_primitives_laplacian",
+      "label": "Laplacian()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L358"
+    },
+    {
+      "id": "src_math_primitives_mktrig",
+      "label": "mkTrig()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L374"
+    },
+    {
+      "id": "src_math_primitives_sin",
+      "label": "Sin",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L391"
+    },
+    {
+      "id": "src_math_primitives_cos",
+      "label": "Cos",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L392"
+    },
+    {
+      "id": "src_math_primitives_tan",
+      "label": "Tan",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L393"
+    },
+    {
+      "id": "src_math_primitives_cot",
+      "label": "Cot",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L394"
+    },
+    {
+      "id": "src_math_primitives_sec",
+      "label": "Sec",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L395"
+    },
+    {
+      "id": "src_math_primitives_csc",
+      "label": "Csc",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L396"
+    },
+    {
+      "id": "src_math_primitives_arcsin",
+      "label": "ArcSin",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L397"
+    },
+    {
+      "id": "src_math_primitives_arccos",
+      "label": "ArcCos",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L398"
+    },
+    {
+      "id": "src_math_primitives_arctan",
+      "label": "ArcTan",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L399"
+    },
+    {
+      "id": "src_math_primitives_sinh",
+      "label": "Sinh",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L400"
+    },
+    {
+      "id": "src_math_primitives_cosh",
+      "label": "Cosh",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L401"
+    },
+    {
+      "id": "src_math_primitives_tanh",
+      "label": "Tanh",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L402"
+    },
+    {
+      "id": "src_math_primitives_log",
+      "label": "Log",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L403"
+    },
+    {
+      "id": "src_math_primitives_ln",
+      "label": "Ln",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L404"
+    },
+    {
+      "id": "src_math_primitives_exp",
+      "label": "Exp",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L405"
+    },
+    {
+      "id": "src_math_primitives_factorial",
+      "label": "Factorial()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L413"
+    },
+    {
+      "id": "src_math_primitives_choose",
+      "label": "Choose()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L430"
+    },
+    {
+      "id": "src_math_primitives_perm",
+      "label": "Perm()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L461"
+    },
+    {
+      "id": "src_math_primitives_mod",
+      "label": "Mod()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L487"
+    },
+    {
+      "id": "src_math_primitives_gcd",
+      "label": "GCD()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L507"
+    },
+    {
+      "id": "src_math_primitives_lcm",
+      "label": "LCM()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L528"
+    },
+    {
+      "id": "src_math_primitives_floor",
+      "label": "Floor()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L555"
+    },
+    {
+      "id": "src_math_primitives_ceil",
+      "label": "Ceil()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L573"
+    },
+    {
+      "id": "src_math_primitives_setof",
+      "label": "SetOf()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L591"
+    },
+    {
+      "id": "src_math_primitives_cardinality",
+      "label": "Cardinality()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L613"
+    },
+    {
+      "id": "src_math_primitives_powerset",
+      "label": "PowerSet()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L634"
+    },
+    {
+      "id": "src_math_primitives_mksym",
+      "label": "mkSym()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L654"
+    },
+    {
+      "id": "src_math_primitives_in",
+      "label": "In",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L671"
+    },
+    {
+      "id": "src_math_primitives_notin",
+      "label": "NotIn",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L672"
+    },
+    {
+      "id": "src_math_primitives_subset",
+      "label": "Subset",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L673"
+    },
+    {
+      "id": "src_math_primitives_subseteq",
+      "label": "SubsetEq",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L674"
+    },
+    {
+      "id": "src_math_primitives_supset",
+      "label": "Supset",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L675"
+    },
+    {
+      "id": "src_math_primitives_supseteq",
+      "label": "SupsetEq",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L676"
+    },
+    {
+      "id": "src_math_primitives_union",
+      "label": "Union",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L677"
+    },
+    {
+      "id": "src_math_primitives_intersect",
+      "label": "Intersect",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L678"
+    },
+    {
+      "id": "src_math_primitives_empty",
+      "label": "Empty",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L679"
+    },
+    {
+      "id": "src_math_primitives_setminus",
+      "label": "SetMinus",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L680"
+    },
+    {
+      "id": "src_math_primitives_mknumset",
+      "label": "mkNumSet()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L687"
+    },
+    {
+      "id": "src_math_primitives_nn",
+      "label": "NN",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L697"
+    },
+    {
+      "id": "src_math_primitives_zz",
+      "label": "ZZ",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L698"
+    },
+    {
+      "id": "src_math_primitives_qq",
+      "label": "QQ",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L699"
+    },
+    {
+      "id": "src_math_primitives_rr",
+      "label": "RR",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L700"
+    },
+    {
+      "id": "src_math_primitives_cc",
+      "label": "CC",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L701"
+    },
+    {
+      "id": "src_math_primitives_pp",
+      "label": "PP",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L702"
+    },
+    {
+      "id": "src_math_primitives_ff",
+      "label": "FF",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L703"
+    },
+    {
+      "id": "src_math_primitives_complex",
+      "label": "Complex()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L706"
+    },
+    {
+      "id": "src_math_primitives_conj",
+      "label": "Conj()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L727"
+    },
+    {
+      "id": "src_math_primitives_and",
+      "label": "And",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L754"
+    },
+    {
+      "id": "src_math_primitives_or",
+      "label": "Or",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L755"
+    },
+    {
+      "id": "src_math_primitives_not",
+      "label": "Not",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L756"
+    },
+    {
+      "id": "src_math_primitives_xor",
+      "label": "Xor",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L757"
+    },
+    {
+      "id": "src_math_primitives_nand",
+      "label": "Nand",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L758"
+    },
+    {
+      "id": "src_math_primitives_nor",
+      "label": "Nor",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L759"
+    },
+    {
+      "id": "src_math_primitives_forall",
+      "label": "ForAll",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L760"
+    },
+    {
+      "id": "src_math_primitives_exists",
+      "label": "Exists",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L761"
+    },
+    {
+      "id": "src_math_primitives_notexists",
+      "label": "NotExists",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L762"
+    },
+    {
+      "id": "src_math_primitives_therefore",
+      "label": "Therefore",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L763"
+    },
+    {
+      "id": "src_math_primitives_because",
+      "label": "Because",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L764"
+    },
+    {
+      "id": "src_math_primitives_turnstile",
+      "label": "Turnstile",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L765"
+    },
+    {
+      "id": "src_math_primitives_qed",
+      "label": "QED()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L768"
+    },
+    {
+      "id": "src_math_primitives_vec",
+      "label": "Vec()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L788"
+    },
+    {
+      "id": "src_math_primitives_norm",
+      "label": "Norm()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L811"
+    },
+    {
+      "id": "src_math_primitives_dot",
+      "label": "Dot",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L831"
+    },
+    {
+      "id": "src_math_primitives_cross",
+      "label": "Cross",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L832"
+    },
+    {
+      "id": "src_math_primitives_transpose",
+      "label": "Transpose()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L835"
+    },
+    {
+      "id": "src_math_primitives_det",
+      "label": "Det()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L851"
+    },
+    {
+      "id": "src_math_primitives_matrix",
+      "label": "Matrix()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L882"
+    },
+    {
+      "id": "src_math_primitives_mkop",
+      "label": "mkOp()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L934"
+    },
+    {
+      "id": "src_math_primitives_spanop",
+      "label": "SpanOp",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L951"
+    },
+    {
+      "id": "src_math_primitives_rank",
+      "label": "Rank",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L952"
+    },
+    {
+      "id": "src_math_primitives_dim",
+      "label": "Dim",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L953"
+    },
+    {
+      "id": "src_math_primitives_nullop",
+      "label": "NullOp",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L954"
+    },
+    {
+      "id": "src_math_primitives_img",
+      "label": "Img",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L955"
+    },
+    {
+      "id": "src_math_primitives_trace",
+      "label": "Trace",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L956"
+    },
+    {
+      "id": "src_math_primitives_prob",
+      "label": "Prob()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L964"
+    },
+    {
+      "id": "src_math_primitives_condprob",
+      "label": "CondProb()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L984"
+    },
+    {
+      "id": "src_math_primitives_expected",
+      "label": "Expected()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1010"
+    },
+    {
+      "id": "src_math_primitives_variance",
+      "label": "Variance()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1032"
+    },
+    {
+      "id": "src_math_primitives_stddev",
+      "label": "StdDev()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1052"
+    },
+    {
+      "id": "src_math_primitives_cov",
+      "label": "Cov()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1072"
+    },
+    {
+      "id": "src_math_primitives_corr",
+      "label": "Corr()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1096"
+    },
+    {
+      "id": "src_math_primitives_dist",
+      "label": "Dist()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1120"
+    },
+    {
+      "id": "src_math_primitives_greek_map",
+      "label": "GREEK_MAP",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1144"
+    },
+    {
+      "id": "src_math_primitives_greekletter",
+      "label": "GreekLetter",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1180"
+    },
+    {
+      "id": "src_math_primitives_greek",
+      "label": "Greek()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1183"
+    },
+    {
+      "id": "src_math_primitives_mkgreek",
+      "label": "mkGreek()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1198"
+    },
+    {
+      "id": "src_math_primitives_alpha",
+      "label": "Alpha",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1207"
+    },
+    {
+      "id": "src_math_primitives_beta",
+      "label": "Beta",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1208"
+    },
+    {
+      "id": "src_math_primitives_gamma",
+      "label": "Gamma",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1209"
+    },
+    {
+      "id": "src_math_primitives_gdelta",
+      "label": "GDelta",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1210"
+    },
+    {
+      "id": "src_math_primitives_epsilon",
+      "label": "Epsilon",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1211"
+    },
+    {
+      "id": "src_math_primitives_zeta",
+      "label": "Zeta",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1212"
+    },
+    {
+      "id": "src_math_primitives_eta",
+      "label": "Eta",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1213"
+    },
+    {
+      "id": "src_math_primitives_theta",
+      "label": "Theta",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1214"
+    },
+    {
+      "id": "src_math_primitives_iota",
+      "label": "Iota",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1215"
+    },
+    {
+      "id": "src_math_primitives_kappa",
+      "label": "Kappa",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1216"
+    },
+    {
+      "id": "src_math_primitives_lambda",
+      "label": "Lambda",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1217"
+    },
+    {
+      "id": "src_math_primitives_mu",
+      "label": "Mu",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1218"
+    },
+    {
+      "id": "src_math_primitives_nu",
+      "label": "Nu",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1219"
+    },
+    {
+      "id": "src_math_primitives_xi",
+      "label": "Xi",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1220"
+    },
+    {
+      "id": "src_math_primitives_pisym",
+      "label": "PiSym",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1221"
+    },
+    {
+      "id": "src_math_primitives_rho",
+      "label": "Rho",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1222"
+    },
+    {
+      "id": "src_math_primitives_sigmasym",
+      "label": "SigmaSym",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1223"
+    },
+    {
+      "id": "src_math_primitives_tau",
+      "label": "Tau",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1224"
+    },
+    {
+      "id": "src_math_primitives_upsilon",
+      "label": "Upsilon",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1225"
+    },
+    {
+      "id": "src_math_primitives_phi",
+      "label": "Phi",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1226"
+    },
+    {
+      "id": "src_math_primitives_chi",
+      "label": "Chi",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1227"
+    },
+    {
+      "id": "src_math_primitives_psi",
+      "label": "Psi",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1228"
+    },
+    {
+      "id": "src_math_primitives_omega",
+      "label": "Omega",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1229"
+    },
+    {
+      "id": "src_math_primitives_gammau",
+      "label": "GammaU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1231"
+    },
+    {
+      "id": "src_math_primitives_deltau",
+      "label": "DeltaU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1232"
+    },
+    {
+      "id": "src_math_primitives_thetau",
+      "label": "ThetaU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1233"
+    },
+    {
+      "id": "src_math_primitives_lambdau",
+      "label": "LambdaU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1234"
+    },
+    {
+      "id": "src_math_primitives_xiu",
+      "label": "XiU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1235"
+    },
+    {
+      "id": "src_math_primitives_piu",
+      "label": "PiU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1236"
+    },
+    {
+      "id": "src_math_primitives_sigmau",
+      "label": "SigmaU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1237"
+    },
+    {
+      "id": "src_math_primitives_phiu",
+      "label": "PhiU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1238"
+    },
+    {
+      "id": "src_math_primitives_psiu",
+      "label": "PsiU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1239"
+    },
+    {
+      "id": "src_math_primitives_omegau",
+      "label": "OmegaU",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1240"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_lib_utils_ts",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_fracprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_frac",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_powprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_pow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_subprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sub",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sqrtprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sqrt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_abs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_paren",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_deg",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_inf",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L167",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_boundedprops",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_integral",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L189",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sum",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L212",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_prod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L233",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_lim",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L254",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_deriv",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L278",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_pderiv",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L313",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_nabla",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L348",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_laplacian",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L358",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_mktrig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L374",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L391",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_cos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L392",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_tan",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L393",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_cot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L394",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sec",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L395",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_csc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L396",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_arcsin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L397",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_arccos",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L398",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_arctan",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L399",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sinh",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L400",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_cosh",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L401",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_tanh",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L402",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_log",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L403",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_ln",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L404",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_exp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L405",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_factorial",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L413",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_choose",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L430",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_perm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L461",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_mod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L487",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_gcd",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L507",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_lcm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L528",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_floor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L555",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_ceil",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L573",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_setof",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L591",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_cardinality",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L613",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_powerset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L634",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_mksym",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L654",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_in",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L671",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_notin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L672",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_subset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L673",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_subseteq",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L674",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_supset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L675",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_supseteq",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L676",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_union",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L677",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_intersect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L678",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_empty",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L679",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_setminus",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L680",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_mknumset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L687",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_nn",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L697",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_zz",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L698",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_qq",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L699",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_rr",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L700",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_cc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L701",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_pp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L702",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_ff",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L703",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_complex",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L706",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_conj",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L727",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_and",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L754",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_or",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L755",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_not",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L756",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_xor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L757",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_nand",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L758",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_nor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L759",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_forall",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L760",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_exists",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L761",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_notexists",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L762",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_therefore",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L763",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_because",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L764",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_turnstile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L765",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_qed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L768",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_vec",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L788",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_norm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L811",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_dot",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L831",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_cross",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L832",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_transpose",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L835",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_det",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L851",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_matrix",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L882",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_mkop",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L934",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_spanop",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L951",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_rank",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L952",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_dim",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L953",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_nullop",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L954",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_img",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L955",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_trace",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L956",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_prob",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L964",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_condprob",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L984",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_expected",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1010",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_variance",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1032",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_stddev",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1052",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_cov",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1072",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_corr",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1096",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_dist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1120",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_greek_map",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1144",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_greekletter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1180",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_greek",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1183",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_mkgreek",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1198",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_alpha",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1207",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_beta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1208",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_gamma",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1209",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_gdelta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1210",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_epsilon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1211",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_zeta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1212",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_eta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1213",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_theta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1214",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_iota",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1215",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_kappa",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1216",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_lambda",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1217",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_mu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1218",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_nu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1219",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_xi",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1220",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_pisym",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1221",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_rho",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1222",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sigmasym",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1223",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_tau",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1224",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_upsilon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1225",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_phi",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1226",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_chi",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1227",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_psi",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1228",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_omega",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1229",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_gammau",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1231",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_deltau",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1232",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_thetau",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1233",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_lambdau",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1234",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_xiu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1235",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_piu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1236",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_sigmau",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1237",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_phiu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1238",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_psiu",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1239",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_packages_registry_src_math_primitives_tsx",
+      "target": "src_math_primitives_omegau",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1240",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "src_math_primitives_frac",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L20"
+    },
+    {
+      "caller_nid": "src_math_primitives_pow",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L41"
+    },
+    {
+      "caller_nid": "src_math_primitives_sub",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L60"
+    },
+    {
+      "caller_nid": "src_math_primitives_sqrt",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L81"
+    },
+    {
+      "caller_nid": "src_math_primitives_abs",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L111"
+    },
+    {
+      "caller_nid": "src_math_primitives_paren",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L134"
+    },
+    {
+      "caller_nid": "src_math_primitives_deg",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L156"
+    },
+    {
+      "caller_nid": "src_math_primitives_inf",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L169"
+    },
+    {
+      "caller_nid": "src_math_primitives_integral",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L192"
+    },
+    {
+      "caller_nid": "src_math_primitives_sum",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L215"
+    },
+    {
+      "caller_nid": "src_math_primitives_prod",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L236"
+    },
+    {
+      "caller_nid": "src_math_primitives_lim",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L265"
+    },
+    {
+      "caller_nid": "src_math_primitives_deriv",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L295"
+    },
+    {
+      "caller_nid": "src_math_primitives_pderiv",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L330"
+    },
+    {
+      "caller_nid": "src_math_primitives_nabla",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L350"
+    },
+    {
+      "caller_nid": "src_math_primitives_laplacian",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L360"
+    },
+    {
+      "caller_nid": "src_math_primitives_mktrig",
+      "callee": "toUpperCase",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L387"
+    },
+    {
+      "caller_nid": "src_math_primitives_mktrig",
+      "callee": "charAt",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L387"
+    },
+    {
+      "caller_nid": "src_math_primitives_mktrig",
+      "callee": "slice",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L387"
+    },
+    {
+      "caller_nid": "src_math_primitives_factorial",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L421"
+    },
+    {
+      "caller_nid": "src_math_primitives_choose",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L443"
+    },
+    {
+      "caller_nid": "src_math_primitives_perm",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L474"
+    },
+    {
+      "caller_nid": "src_math_primitives_mod",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L497"
+    },
+    {
+      "caller_nid": "src_math_primitives_gcd",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L517"
+    },
+    {
+      "caller_nid": "src_math_primitives_lcm",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L538"
+    },
+    {
+      "caller_nid": "src_math_primitives_floor",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L563"
+    },
+    {
+      "caller_nid": "src_math_primitives_ceil",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L581"
+    },
+    {
+      "caller_nid": "src_math_primitives_setof",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L601"
+    },
+    {
+      "caller_nid": "src_math_primitives_cardinality",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L622"
+    },
+    {
+      "caller_nid": "src_math_primitives_powerset",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L643"
+    },
+    {
+      "caller_nid": "src_math_primitives_mksym",
+      "callee": "join",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L663"
+    },
+    {
+      "caller_nid": "src_math_primitives_mksym",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L663"
+    },
+    {
+      "caller_nid": "src_math_primitives_mksym",
+      "callee": "split",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L663"
+    },
+    {
+      "caller_nid": "src_math_primitives_complex",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L716"
+    },
+    {
+      "caller_nid": "src_math_primitives_conj",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L736"
+    },
+    {
+      "caller_nid": "src_math_primitives_qed",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L771"
+    },
+    {
+      "caller_nid": "src_math_primitives_vec",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L797"
+    },
+    {
+      "caller_nid": "src_math_primitives_norm",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L820"
+    },
+    {
+      "caller_nid": "src_math_primitives_det",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L863"
+    },
+    {
+      "caller_nid": "src_math_primitives_matrix",
+      "callee": "max",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L891"
+    },
+    {
+      "caller_nid": "src_math_primitives_matrix",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L891"
+    },
+    {
+      "caller_nid": "src_math_primitives_matrix",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L904"
+    },
+    {
+      "caller_nid": "src_math_primitives_matrix",
+      "callee": "map",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L915"
+    },
+    {
+      "caller_nid": "src_math_primitives_mkop",
+      "callee": "toUpperCase",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L947"
+    },
+    {
+      "caller_nid": "src_math_primitives_mkop",
+      "callee": "charAt",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L947"
+    },
+    {
+      "caller_nid": "src_math_primitives_mkop",
+      "callee": "slice",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L947"
+    },
+    {
+      "caller_nid": "src_math_primitives_prob",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L973"
+    },
+    {
+      "caller_nid": "src_math_primitives_condprob",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L995"
+    },
+    {
+      "caller_nid": "src_math_primitives_expected",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1019"
+    },
+    {
+      "caller_nid": "src_math_primitives_variance",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1041"
+    },
+    {
+      "caller_nid": "src_math_primitives_stddev",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1061"
+    },
+    {
+      "caller_nid": "src_math_primitives_cov",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1083"
+    },
+    {
+      "caller_nid": "src_math_primitives_corr",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1107"
+    },
+    {
+      "caller_nid": "src_math_primitives_dist",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1130"
+    },
+    {
+      "caller_nid": "src_math_primitives_greek",
+      "callee": "cn",
+      "is_member_call": false,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1191"
+    },
+    {
+      "caller_nid": "src_math_primitives_mkgreek",
+      "callee": "toUpperCase",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1202"
+    },
+    {
+      "caller_nid": "src_math_primitives_mkgreek",
+      "callee": "charAt",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1202"
+    },
+    {
+      "caller_nid": "src_math_primitives_mkgreek",
+      "callee": "slice",
+      "is_member_call": true,
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx",
+      "source_location": "L1202"
+    }
+  ]
+}

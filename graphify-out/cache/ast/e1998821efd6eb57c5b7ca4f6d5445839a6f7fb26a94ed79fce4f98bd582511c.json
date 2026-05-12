@@ -1,1 +1,80 @@
-{"nodes": [{"id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx", "label": "tabs-default.tsx", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L1"}, {"id": "demos_tabs_default_tabsdefault", "label": "TabsDefault()", "file_type": "code", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L9"}], "edges": [{"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx", "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_tabs_tsx", "relation": "imports_from", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx", "target": "mdx_tabs_tabs", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx", "target": "mdx_tabs_tabslist", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx", "target": "mdx_tabs_tabstrigger", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx", "target": "mdx_tabs_tabscontent", "relation": "imports", "context": "import", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L2", "weight": 1.0}, {"source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx", "target": "demos_tabs_default_tabsdefault", "relation": "contains", "confidence": "EXTRACTED", "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx", "source_location": "L9", "weight": 1.0}], "raw_calls": []}
+{
+  "nodes": [
+    {
+      "id": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx",
+      "label": "tabs-default.tsx",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "demos_tabs_default_tabsdefault",
+      "label": "TabsDefault()",
+      "file_type": "code",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L9"
+    }
+  ],
+  "edges": [
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx",
+      "target": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_mdx_tabs_tsx",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx",
+      "target": "mdx_tabs_tabs",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx",
+      "target": "mdx_tabs_tabslist",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx",
+      "target": "mdx_tabs_tabstrigger",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx",
+      "target": "mdx_tabs_tabscontent",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "home_surya_surya_ws_personal_mdx_ui_apps_www_components_demos_tabs_default_tsx",
+      "target": "demos_tabs_default_tabsdefault",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": []
+}

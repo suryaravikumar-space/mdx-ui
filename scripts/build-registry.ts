@@ -633,9 +633,9 @@ const componentsMetadata: Record<
     description:
       "Human-readable math DSL compiled to KaTeX — write math without LaTeX backslashes. ME (inline) and BME (block) accept natural words: theta, sqrt(x), (a+b)/c, 90deg, sum(i=0,n), int(a,b), lim(x->0), forall, in, union, and more.",
     whenToUse:
-      "Use <ME>theta in {90deg, 120deg}</ME> for inline math and <BME>x = (-b pm sqrt(b^2-4ac))/(2a)</BME> for block/display. Prefer over <M expr=\"...\"> when the author or LLM does not know LaTeX — the DSL maps directly to natural language.",
+      'Use <ME>theta in {90deg, 120deg}</ME> for inline math and <BME>x = (-b pm sqrt(b^2-4ac))/(2a)</BME> for block/display. Prefer over <M expr="..."> when the author or LLM does not know LaTeX — the DSL maps directly to natural language.',
     whenNotToUse:
-      "Do not use when you already know LaTeX — <M expr=\"...\"> is simpler for power users. Do not mix JSX inside <ME> children — it accepts a plain string only.",
+      'Do not use when you already know LaTeX — <M expr="..."> is simpler for power users. Do not mix JSX inside <ME> children — it accepts a plain string only.',
     example:
       "<ME>theta in {90deg, 120deg, 210deg, 330deg}</ME>\n<BME>x = (-b pm sqrt(b^2 - 4ac)) / (2a)</BME>\n<ME>forall x in RR, x^2 >= 0</ME>",
     dependencies: ["katex", "clsx", "tailwind-merge"],

@@ -22,13 +22,13 @@ import "katex/dist/katex.min.css";
 `<M expr="..." />` requires LaTeX syntax. `<ME>` accepts a natural-language
 DSL — no backslashes, no curly braces for most expressions:
 
-| LaTeX (`M`)                                               | Easy DSL (`ME`)                                   |
-| --------------------------------------------------------- | ------------------------------------------------- |
-| `<M expr="\theta \in \{90^\circ, 120^\circ\}" />`         | `<ME>theta in {90deg, 120deg}</ME>`               |
-| `<M expr="\sqrt{b^2 - 4ac}" />`                           | `<ME>sqrt(b^2 - 4ac)</ME>`                        |
-| `<M expr="\sum_{i=0}^{n} i^2" />`                         | `<ME>sum(i=0, n) i^2</ME>`                        |
-| `<M expr="\int_{0}^{\infty} e^{-x}\,dx" />`               | `<ME>int(0, inf) e^(-x) dx</ME>`                  |
-| `<M expr="\frac{-b \pm \sqrt{b^2-4ac}}{2a}" />`           | `<ME>(-b pm sqrt(b^2 - 4ac))/(2a)</ME>`           |
+| LaTeX (`M`)                                       | Easy DSL (`ME`)                         |
+| ------------------------------------------------- | --------------------------------------- |
+| `<M expr="\theta \in \{90^\circ, 120^\circ\}" />` | `<ME>theta in {90deg, 120deg}</ME>`     |
+| `<M expr="\sqrt{b^2 - 4ac}" />`                   | `<ME>sqrt(b^2 - 4ac)</ME>`              |
+| `<M expr="\sum_{i=0}^{n} i^2" />`                 | `<ME>sum(i=0, n) i^2</ME>`              |
+| `<M expr="\int_{0}^{\infty} e^{-x}\,dx" />`       | `<ME>int(0, inf) e^(-x) dx</ME>`        |
+| `<M expr="\frac{-b \pm \sqrt{b^2-4ac}}{2a}" />`   | `<ME>(-b pm sqrt(b^2 - 4ac))/(2a)</ME>` |
 
 ## Inline
 
@@ -69,14 +69,14 @@ Gamma  Delta  Theta  Lambda  Xi  Pi  Sigma  Phi  Psi  Omega
 
 ### Functions
 
-| Input            | Renders as                         |
-| ---------------- | ---------------------------------- |
-| `sqrt(x)`        | √x                                 |
-| `cbrt(x)`        | ∛x                                 |
-| `sum(i=0, n)`    | Σ from i=0 to n                    |
-| `prod(i=1, n)`   | Π from i=1 to n                    |
-| `int(a, b)`      | ∫ from a to b                      |
-| `lim(x->0)`      | lim as x→0                         |
+| Input          | Renders as      |
+| -------------- | --------------- |
+| `sqrt(x)`      | √x              |
+| `cbrt(x)`      | ∛x              |
+| `sum(i=0, n)`  | Σ from i=0 to n |
+| `prod(i=1, n)` | Π from i=1 to n |
+| `int(a, b)`    | ∫ from a to b   |
+| `lim(x->0)`    | lim as x→0      |
 
 ### Fractions
 
@@ -98,40 +98,40 @@ Write the number immediately followed by `deg`:
 
 ### Constants and symbols
 
-| Input   | Renders as   |
-| ------- | ------------ |
-| `inf`   | ∞            |
-| `pm`    | ±            |
-| `...`   | …            |
+| Input | Renders as |
+| ----- | ---------- |
+| `inf` | ∞          |
+| `pm`  | ±          |
+| `...` | …          |
 
 ### Comparison operators
 
-| Input  | Renders as  |
-| ------ | ----------- |
-| `!=`   | ≠           |
-| `<=`   | ≤           |
-| `>=`   | ≥           |
-| `~=`   | ≈           |
-| `->`   | →           |
-| `<-`   | ←           |
-| `=>`   | ⇒           |
-| `<=>`  | ⟺           |
+| Input | Renders as |
+| ----- | ---------- |
+| `!=`  | ≠          |
+| `<=`  | ≤          |
+| `>=`  | ≥          |
+| `~=`  | ≈          |
+| `->`  | →          |
+| `<-`  | ←          |
+| `=>`  | ⇒          |
+| `<=>` | ⟺          |
 
 ### Set and logic keywords
 
-| Input        | Renders as |
-| ------------ | ---------- |
-| `not in`     | ∉          |
-| `in`         | ∈          |
-| `subset`     | ⊂          |
-| `supset`     | ⊃          |
-| `union`      | ∪          |
-| `intersect`  | ∩          |
-| `forall`     | ∀          |
-| `exists`     | ∃          |
-| `and`        | ∧          |
-| `or`         | ∨          |
-| `not`        | ¬          |
+| Input       | Renders as |
+| ----------- | ---------- |
+| `not in`    | ∉          |
+| `in`        | ∈          |
+| `subset`    | ⊂          |
+| `supset`    | ⊃          |
+| `union`     | ∪          |
+| `intersect` | ∩          |
+| `forall`    | ∀          |
+| `exists`    | ∃          |
+| `and`       | ∧          |
+| `or`        | ∨          |
+| `not`       | ¬          |
 
 ## More examples
 
@@ -163,11 +163,11 @@ Write the number immediately followed by `deg`:
 
 ### ME
 
-| Prop        | Type      | Default | Description                                      |
-| ----------- | --------- | ------- | ------------------------------------------------ |
-| `children`  | `string`  | —       | Expression in the easy DSL                       |
-| `block`     | `boolean` | `false` | Display mode (centered, larger)                  |
-| `className` | `string`  | —       | Additional CSS classes                           |
+| Prop        | Type      | Default | Description                     |
+| ----------- | --------- | ------- | ------------------------------- |
+| `children`  | `string`  | —       | Expression in the easy DSL      |
+| `block`     | `boolean` | `false` | Display mode (centered, larger) |
+| `className` | `string`  | —       | Additional CSS classes          |
 
 ### BME
 

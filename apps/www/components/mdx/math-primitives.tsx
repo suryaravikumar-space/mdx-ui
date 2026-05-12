@@ -1343,13 +1343,7 @@ export const OTimes = mkSym("⊗", "tensor product");
  *
  * @example <DegNum n={90} />  →  90°
  */
-export function DegNum({
-  n,
-  className,
-}: {
-  n: number;
-  className?: string;
-}) {
+export function DegNum({ n, className }: { n: number; className?: string }) {
   return <Deg className={className}>{n}</Deg>;
 }
 DegNum.displayName = "DegNum";

@@ -1,0 +1,326 @@
+---
+title: React + Vite
+description: Integrate MDX UI with a React + Vite project using @mdx-js/rollup and MDXProvider
+published: true
+---
+
+## Overview
+
+Vite has no built-in MDX convention like Next.js, so you wire things up manually — `@mdx-js/rollup` handles MDX compilation, and `MDXProvider` from `@mdx-js/react` injects your components globally.
+
+**Best for:** SPAs, dashboards, internal tools, interactive docs without SSR.
+
+---
+
+## 1. Create a Vite + React Project
+
+Skip this step if you already have a project.
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install
+```
+
+---
+
+## 2. Install MDX Support
+
+```bash
+npm install @mdx-js/rollup @mdx-js/react remark-gfm
+npm install --save-dev @types/mdx
+```
+
+---
+
+## 3. Configure Vite
+
+Update `vite.config.ts`:
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import mdx from "@mdx-js/rollup";
+import remarkGfm from "remark-gfm";
+
+export default defineConfig({
+  plugins: [
+    mdx({
+      remarkPlugins: [remarkGfm],
+      providerImportSource: "@mdx-js/react",
+    }),
+    react(),
+  ],
+});
+```
+
+Add MDX type declarations to `src/vite-env.d.ts`:
+
+```ts
+/// <reference types="vite/client" />
+declare module "*.mdx" {
+  import type { ComponentType } from "react";
+  const Component: ComponentType;
+  export default Component;
+}
+```
+
+---
+
+## 4. Install Tailwind CSS
+
+MDX UI components use Tailwind CSS for styling.
+
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="v4">Tailwind v4</TabsTrigger>
+    <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
+  </TabsList>
+  <TabsContent value="v4">
+    ```bash
+    npm install tailwindcss @tailwindcss/vite
+    ```
+
+    Update `vite.config.ts`:
+
+    ```ts
+    import tailwindcss from "@tailwindcss/vite";
+
+    export default defineConfig({
+      plugins: [
+        mdx({ remarkPlugins: [remarkGfm], providerImportSource: "@mdx-js/react" }),
+        react(),
+        tailwindcss(),
+      ],
+    });
+    ```
+
+    Add to `src/index.css`:
+
+    ```css
+    @import "tailwindcss";
+    ```
+  </TabsContent>
+  <TabsContent value="v3">
+    ```bash
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    ```
+
+    Update `tailwind.config.ts`:
+
+    ```ts
+    export default {
+      content: [
+        "./index.html",
+        "./src/**/*.{ts,tsx,mdx}",
+      ],
+    };
+    ```
+
+    Add to `src/index.css`:
+
+    ```css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
+  </TabsContent>
+</Tabs>
+
+---
+
+## 5. Initialize MDX UI
+
+```bash
+npx @ravikumarsurya/mdx-ui init
+```
+
+This creates `mdx-ui.json` and installs the `cn()` utility.
+
+---
+
+## 6. Add Components
+
+```bash
+npx @ravikumarsurya/mdx-ui add callout accordion code-block
+```
+
+---
+
+## 7. Register Components with MDXProvider
+
+Create `src/components/mdx-components.tsx`:
+
+```tsx
+import { Callout } from "./mdx-ui/callout";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./mdx-ui/accordion";
+
+export const mdxComponents = {
+  Callout,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+};
+```
+
+Wrap your app with `MDXProvider` in `src/main.tsx`:
+
+```tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { MDXProvider } from "@mdx-js/react";
+import { mdxComponents } from "./components/mdx-components";
+import App from "./App";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <MDXProvider components={mdxComponents}>
+      <App />
+    </MDXProvider>
+  </React.StrictMode>
+);
+```
+
+---
+
+## 8. Use MDX Files
+
+Create `src/content/intro.mdx`:
+
+```mdx
+# Getting Started
+
+Welcome to my docs.
+
+<Callout variant="info" title="Note">
+  Components registered in MDXProvider are available in every .mdx file.
+</Callout>
+
+<Accordion>
+  <AccordionItem value="q1">
+    <AccordionTrigger>What is MDX?</AccordionTrigger>
+    <AccordionContent>
+      MDX lets you use React components inside Markdown files.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+Import and render it in `src/App.tsx`:
+
+```tsx
+import Intro from "./content/intro.mdx";
+
+export default function App() {
+  return (
+    <main className="max-w-3xl mx-auto px-6 py-12">
+      <Intro />
+    </main>
+  );
+}
+```
+
+---
+
+## Project Structure
+
+<FileTree>
+  my-app/
+    src/
+      components/
+        mdx-ui/
+          callout.tsx
+          accordion.tsx
+          lib/
+            utils.ts
+        mdx-components.tsx
+      content/
+        intro.mdx
+        guide.mdx
+      App.tsx
+      main.tsx
+      index.css
+      vite-env.d.ts
+    vite.config.ts
+    tailwind.config.ts
+    mdx-ui.json
+    package.json
+</FileTree>
+
+---
+
+## Math Components
+
+If you're using math components, add the KaTeX stylesheet in `src/index.css`:
+
+```css
+@import "katex/dist/katex.min.css";
+```
+
+Install and add to components:
+
+```bash
+npx @ravikumarsurya/mdx-ui add math math-easy math-solution
+```
+
+```tsx
+// src/components/mdx-components.tsx
+import { M, BM } from "./mdx-ui/math";
+import { ME, BME } from "./mdx-ui/math-easy";
+import {
+  Solution,
+  SolutionStep,
+  SolutionAnswer,
+  SolutionNote,
+} from "./mdx-ui/math-solution";
+
+export const mdxComponents = {
+  // ...existing
+  M, BM, ME, BME,
+  Solution, SolutionStep, SolutionAnswer, SolutionNote,
+};
+```
+
+---
+
+## Troubleshooting
+
+### Components not rendering in MDX
+
+Make sure `providerImportSource: "@mdx-js/react"` is set in `vite.config.ts` and your app is wrapped in `<MDXProvider>`.
+
+### TypeScript error on `.mdx` imports
+
+Add the module declaration to `vite-env.d.ts`:
+
+```ts
+declare module "*.mdx" {
+  import type { ComponentType } from "react";
+  const Component: ComponentType;
+  export default Component;
+}
+```
+
+### Tailwind classes not applying
+
+Ensure `src/**/*.mdx` is in your Tailwind `content` array so component class names are not purged.
+
+### KaTeX styles missing
+
+Import `katex/dist/katex.min.css` in your root CSS file, not inside a component.
+
+---
+
+## Next Steps
+
+- [Component Mappings](/docs/integration/component-mappings)
+- [Next.js + @next/mdx](/docs/integration/nextjs-mdx)
+- [Browse Components](/docs/components/callout)

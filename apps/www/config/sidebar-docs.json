@@ -233,6 +233,10 @@
     {
       "title": "Next.js + @next/mdx",
       "path": "/docs/integration/nextjs-mdx"
+    },
+    {
+      "title": "React + Vite",
+      "path": "/docs/integration/react-vite"
     }
   ]
 }

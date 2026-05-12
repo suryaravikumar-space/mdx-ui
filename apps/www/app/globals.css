@@ -73,6 +73,27 @@
   background: transparent !important;
 }
 
+/* ── Homepage animations ─────────────────────────────────────────────────────── */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.12;
+  }
+  33% {
+    transform: translateY(-14px) rotate(3deg);
+    opacity: 0.28;
+  }
+  66% {
+    transform: translateY(7px) rotate(-2deg);
+    opacity: 0.16;
+  }
+}
+
+.animate-float {
+  animation: float var(--float-duration, 9s) ease-in-out infinite;
+}
+
 /* ── Brand gradient utilities ───────────────────────────────────────────────── */
 .gradient-text {
   background: linear-gradient(135deg, #7c3aed, #6366f1);

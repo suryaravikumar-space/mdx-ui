@@ -1,0 +1,1374 @@
+{
+  "/home/surya/surya_ws/personal/mdx-ui/vitest.workspace.ts": {
+    "mtime": 1778375034.687139,
+    "hash": "fafedd3fc9f180a86574fa53912f1e04"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/scripts/build-registry.ts": {
+    "mtime": 1778442265.342203,
+    "hash": "8e001d72dc3a817a12c723f5412c4717"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/vitest.config.ts": {
+    "mtime": 1778377380.0336318,
+    "hash": "5ceac8c9d02001278592f9ebaa345bf6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/tsup.config.ts": {
+    "mtime": 1778260705.389979,
+    "hash": "5a3f59de1e824b10bd565ff5ef5ea4a7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/index.ts": {
+    "mtime": 1778301874.0367224,
+    "hash": "7a3799c2d4a1bd9c6c00a9404de92731"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/extract.ts": {
+    "mtime": 1778377380.0136352,
+    "hash": "1e35627cdebba8fd67a921fbabd953b0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/preprocess.ts": {
+    "mtime": 1778264505.7885623,
+    "hash": "cc9d37b7b1f9574c4705b106d990f528"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/__tests__/preprocess.test.ts": {
+    "mtime": 1778377379.968515,
+    "hash": "b6c38445d60e39f1573ce0abe11f4ae3"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/__tests__/plugin.test.ts": {
+    "mtime": 1778377379.9309695,
+    "hash": "19d9871661ed93eec41de005f3b679fd"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/remark-plugin/src/__tests__/extract.test.ts": {
+    "mtime": 1778377379.8602455,
+    "hash": "fffab73a9399ad5895e059e1b4415193"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/vitest.config.ts": {
+    "mtime": 1778377178.9103303,
+    "hash": "787afddab87d44d524157302b15aff35"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/tsup.config.ts": {
+    "mtime": 1778377178.9103303,
+    "hash": "a264434dfc1c573e5f044472859199b8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/index.ts": {
+    "mtime": 1778554869.7825556,
+    "hash": "1d06d07d5b537a0f9fa41985dbdb3b3f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/utils/get-config.ts": {
+    "mtime": 1767101193.1013565,
+    "hash": "71594f1e03667b87ad2d1b5b1d827492"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/utils/detect-structure.ts": {
+    "mtime": 1774873727.9303446,
+    "hash": "90c9c899a7734534387d10fcdfdc1ad9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/utils/install-deps.ts": {
+    "mtime": 1767101214.0000796,
+    "hash": "aeab410b5ee17c81a04bdc49b884004f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/utils/save-mdx-page.ts": {
+    "mtime": 1778377178.9093304,
+    "hash": "db7ce84177e3eaa77cad3e3e7c947a21"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/utils/write-component.ts": {
+    "mtime": 1778441589.0299215,
+    "hash": "e48f0fbca392f596fdd315a25287c2c3"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/utils/fetch-component.ts": {
+    "mtime": 1778237360.1303186,
+    "hash": "defa2bd6cb72252571e51a30643c02d2"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/__tests__/save-mdx-page.test.ts": {
+    "mtime": 1778377178.9093304,
+    "hash": "654dbd079547f7748e6a8c1a1c3d726a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/__tests__/get-config.test.ts": {
+    "mtime": 1778377376.596231,
+    "hash": "75008e72b946103d4518cdb9b10d9b6e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/__tests__/component-registry.test.ts": {
+    "mtime": 1778377376.2983356,
+    "hash": "002751104665a35bbb0307acb1e7fc44"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/__tests__/detect-structure.test.ts": {
+    "mtime": 1778377376.5203464,
+    "hash": "5fdcf6263c409d7e4017b9b724bfef86"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/__tests__/write-component.test.ts": {
+    "mtime": 1778398127.8262837,
+    "hash": "0d58acd671c957f12465afe69f2bb218"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/__tests__/new.test.ts": {
+    "mtime": 1778377178.9093304,
+    "hash": "6ef1055a93f8723a0456edd3fb3534e9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/init.ts": {
+    "mtime": 1778183835.3412435,
+    "hash": "845595fc6941e38491a53fa45bdfd004"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/update.ts": {
+    "mtime": 1778441588.997007,
+    "hash": "72cd5a935060777afca9beb046623888"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/doctor.ts": {
+    "mtime": 1778237223.2662442,
+    "hash": "f5109453d9f75648e0c57e8f493b55ee"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/mcp.ts": {
+    "mtime": 1778554912.6862116,
+    "hash": "b4e70d5344b690ac895710cf47778957"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/add.ts": {
+    "mtime": 1778402134.4731066,
+    "hash": "f9c973a7a6183a6bbf5e79128962d03c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/new.ts": {
+    "mtime": 1778377178.9093304,
+    "hash": "fa31238ca4f7a6b7bd46c9d26cfb7c46"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/list.ts": {
+    "mtime": 1778402134.4731066,
+    "hash": "8513479dc298432198e23dc150278956"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/remove.ts": {
+    "mtime": 1778237192.4923832,
+    "hash": "90c377f48dd04681f41326458b0a17f1"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/commands/save.ts": {
+    "mtime": 1778377178.9093304,
+    "hash": "8e4a64cbaa564527228b7e3b73842314"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/src/lib/component-registry.ts": {
+    "mtime": 1778442265.411206,
+    "hash": "6ab057a0baced118853b78eebc43bb48"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/jest.config.ts": {
+    "mtime": 1778377178.9103303,
+    "hash": "5de5836a0dde921c8db9155a9dc07f67"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/heading.tsx": {
+    "mtime": 1778183011.9548883,
+    "hash": "bdd8bd2dc6116ed7e18eddb7c61ac234"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/register-map.tsx": {
+    "mtime": 1778379527.1780179,
+    "hash": "09a1b0bf4dc387b3970a5aae2df56678"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-primitives.tsx": {
+    "mtime": 1778440108.645114,
+    "hash": "0ce27992ce7830179a972457f38142c0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/diff-block.tsx": {
+    "mtime": 1778236704.1549394,
+    "hash": "9c9d07e56d2ef31d2d1ad66956d85661"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/annotation.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "673554fb3038a38ae36238033c1ac395"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/spoiler.tsx": {
+    "mtime": 1778235218.2887163,
+    "hash": "caf0feba58a166ad309266ad7c36549c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/preview.tsx": {
+    "mtime": 1778396054.4413803,
+    "hash": "f2caf4ae64d95c5cc30dd8aa9e6d1361"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/definition.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "c9543b434947ba93e3aacffc4afbfd6e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/code-group.tsx": {
+    "mtime": 1778377378.1064239,
+    "hash": "43aa6b79427c0d77eff2605ee81a99a0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/glossary.tsx": {
+    "mtime": 1778377178.9223309,
+    "hash": "bbc988cc0f0590a0173f58d4710770b5"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/invariant.tsx": {
+    "mtime": 1778377178.9223309,
+    "hash": "ab8648146e4b3d3ec45e3b1574bcfc66"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/headings.tsx": {
+    "mtime": 1778182598.061757,
+    "hash": "004284c08bd465fe60f2e94c9050a481"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/file-tree.tsx": {
+    "mtime": 1778377379.501666,
+    "hash": "799d22f8ddd5f57accdbb1dc75d646ea"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mermaid.tsx": {
+    "mtime": 1778377379.685501,
+    "hash": "92e8b4c7ce29689fb16cca650188a4e8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/table.tsx": {
+    "mtime": 1778208851.9727657,
+    "hash": "f782b075e9fd347ce016b22ebd6a911e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/ds-tree.tsx": {
+    "mtime": 1778377178.9203308,
+    "hash": "e672445ae35e45cf2fe0d6d91129a7ce"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/terminal.tsx": {
+    "mtime": 1778236711.3862538,
+    "hash": "2c4962447815641ef99665542b67839d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/hardware-spec.tsx": {
+    "mtime": 1778379527.0750134,
+    "hash": "2dc5df17176227173639ab42443fa156"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math.tsx": {
+    "mtime": 1778377379.5524945,
+    "hash": "3fc9690a246d89d07da1ff787a268b68"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/data-table.tsx": {
+    "mtime": 1778377378.2634315,
+    "hash": "3e9b7e1ed8c848027bf9c60fd40174f5"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/list.tsx": {
+    "mtime": 1778208841.2393417,
+    "hash": "03d45b85b9d846fc128bfa7da15693bc"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/tabs.tsx": {
+    "mtime": 1778377379.7715054,
+    "hash": "79e29ca5b5490f1b0090fa5a254e4902"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/json-ld.tsx": {
+    "mtime": 1778236723.041761,
+    "hash": "e98e5dc0529d39c83968fcfe72af5b95"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/accordion.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "8bcc1647e96ad7fcfae7db4b57605003"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/privacy-table.tsx": {
+    "mtime": 1778378628.0197098,
+    "hash": "7b3e2e98ec5b770bbb68bde20f139da2"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/complexity-table.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "920e48d0b2066a2117ffc7f2c997eb59"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/tree.tsx": {
+    "mtime": 1778397503.9875932,
+    "hash": "224dedffb3687f04dde25c022504ded9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/alert.tsx": {
+    "mtime": 1778208897.6715913,
+    "hash": "a1d4a9a6b42e28b0b5f4e2ff8d107e57"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/data-type-table.tsx": {
+    "mtime": 1778379526.2059755,
+    "hash": "93c9dea6780b748ca3f21d8910906af0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/reveal.tsx": {
+    "mtime": 1778377178.923331,
+    "hash": "349c6c588551922b6b07495672869c42"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-equation.tsx": {
+    "mtime": 1778403011.618806,
+    "hash": "f006abb08e542867fd7170ce88f10180"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/ds.tsx": {
+    "mtime": 1778377379.464809,
+    "hash": "b2fe286689adfc960401841ee8a0ff07"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/mdx-components.tsx": {
+    "mtime": 1778182598.068217,
+    "hash": "587c970f702bb86ccd2b73c62e67863c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/blockquote.tsx": {
+    "mtime": 1778208829.3678753,
+    "hash": "de62ede2636ad0cc58f47899bb9589a9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/video.tsx": {
+    "mtime": 1778235227.77323,
+    "hash": "f2be907f0bf54553a23656c26fec4445"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/pin-table.tsx": {
+    "mtime": 1778464092.9540234,
+    "hash": "679afdadb8d73ec8587a01dfab74050a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/highlight.tsx": {
+    "mtime": 1778258292.4886448,
+    "hash": "4f09467beefc3c03ea7e6e35f5581587"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/math-solution.tsx": {
+    "mtime": 1778403031.6675394,
+    "hash": "c05d298e0bf91d6c4f793572d276b5be"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/card.tsx": {
+    "mtime": 1778208905.8549218,
+    "hash": "d6e4042664145fb7e002a8905f3dd3f9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/badge.tsx": {
+    "mtime": 1778208824.8826997,
+    "hash": "11cc92b679600f355ff57ceb3ae468da"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/security-note.tsx": {
+    "mtime": 1778379527.1960187,
+    "hash": "2b7ee651b6c524752fb73d2b9d398507"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/paragraph.tsx": {
+    "mtime": 1778182598.0719664,
+    "hash": "36045949fd1f95d7a88a07bc1e62bb37"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/image.tsx": {
+    "mtime": 1778234780.4982874,
+    "hash": "1e807f14a1038fec3f68398a4355e69e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/changelog.tsx": {
+    "mtime": 1778236721.5826974,
+    "hash": "6fc92ed62e6be6d9955fdc3d5e0b1ec6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/certification-badge.tsx": {
+    "mtime": 1778379525.8389595,
+    "hash": "5b2ae3cbf4124f089ead84b1c16ccde0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/inline-code.tsx": {
+    "mtime": 1778208836.3121479,
+    "hash": "c13bfd7ec82f6e6757e7c918ebd0cc4e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/emphasis.tsx": {
+    "mtime": 1778208831.6199636,
+    "hash": "d71ae10930aeeed25669797460806499"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/steps.tsx": {
+    "mtime": 1778208844.9194868,
+    "hash": "6d062f2d5be293337b67c53a32531a0b"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/link.tsx": {
+    "mtime": 1778235215.0355396,
+    "hash": "1137bf8c5cad4b08817cb3a9a6685fc6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/kbd.tsx": {
+    "mtime": 1778208891.1443286,
+    "hash": "36f8f64dc1bac75ec346968c2f4b52f6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/code-block.tsx": {
+    "mtime": 1778377378.0544214,
+    "hash": "7d3ea480b8f4a90ba867409e1da45c07"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/callout.tsx": {
+    "mtime": 1778208827.1685808,
+    "hash": "89cb2f990a0b13a530c3bfd1ac4bffed"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/horizontal-rule.tsx": {
+    "mtime": 1778208833.8910527,
+    "hash": "5a2fc781934d8cfd0a3978f4e0183ae6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__mocks__/katex.ts": {
+    "mtime": 1778377178.9103303,
+    "hash": "1e05c1559ad7a0db44bfe344a06be2e3"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__mocks__/mermaid.ts": {
+    "mtime": 1778377178.9103303,
+    "hash": "e248250bd9d07570510017bace6e4591"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__mocks__/fileMock.ts": {
+    "mtime": 1774874360.4177425,
+    "hash": "9963974a20a3833d6358bb9d2bd01bb1"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/blockquote.test.tsx": {
+    "mtime": 1778377178.9103303,
+    "hash": "a54d6dfc1374053a5b52bc2bcd1d6a4e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/alert.test.tsx": {
+    "mtime": 1778377178.9103303,
+    "hash": "a7c6ea2de9f3ea22dd1201c655657749"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/register-map.test.tsx": {
+    "mtime": 1778379525.7139542,
+    "hash": "fc7feed47cbe80ac272436f57425196c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/accordion.test.tsx": {
+    "mtime": 1778377178.9103303,
+    "hash": "b8e8f64c444bde507b2ee2ec4881689d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/annotation.test.tsx": {
+    "mtime": 1778377178.9103303,
+    "hash": "48268dc6436f5a0391a68f5385b78db7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/security-note.test.tsx": {
+    "mtime": 1778379525.7659564,
+    "hash": "cc87e3c48c08572bab2f3e4e7a16a43d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/invariant.test.tsx": {
+    "mtime": 1778377178.9153306,
+    "hash": "faa26313fa7c67d75289ec80c840f6cf"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/card.test.tsx": {
+    "mtime": 1778377178.9103303,
+    "hash": "ae63e7a53e7504f6995cb2e0050e8283"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/definition.test.tsx": {
+    "mtime": 1778377178.9153306,
+    "hash": "7175da429dc50ef32d82ae1dc1eaa760"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/steps.test.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "1d0930e0588b30e4aca41c63b9d4286d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/data-type-table.test.tsx": {
+    "mtime": 1778379525.5807548,
+    "hash": "0cddbefb3a11618687818648c7d06c08"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/certification-badge.test.tsx": {
+    "mtime": 1778379525.528946,
+    "hash": "de81ef1cd2787d76c56b6ea19ae73184"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/tabs.test.tsx": {
+    "mtime": 1774874402.3153045,
+    "hash": "7204c1c12909f71c5e72314aba742c02"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/table.test.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "d309d7028edd8ca3a43bb2699df888ad"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/callout.test.tsx": {
+    "mtime": 1774874389.8581867,
+    "hash": "4b2da7b0104e8e13acdf1dd56adfa6df"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/reveal.test.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "6480734330cba941709e77fc988ced08"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/code-block.test.tsx": {
+    "mtime": 1778377178.9103303,
+    "hash": "b85e1699d0ead3387365e44459fc2e88"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/glossary.test.tsx": {
+    "mtime": 1778377178.9153306,
+    "hash": "22e7c192cdecf59af18cc51672faad01"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/heading.test.tsx": {
+    "mtime": 1778377178.9153306,
+    "hash": "1509672bc6ee8c84f3a7b197931c2c28"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/badge.test.tsx": {
+    "mtime": 1778377178.9103303,
+    "hash": "c5b66d5c744e0286f1bbf6fa65d8d0af"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/hardware-spec.test.tsx": {
+    "mtime": 1778379525.6147149,
+    "hash": "9ce6fee5163b850e58971965da5ed733"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/kbd.test.tsx": {
+    "mtime": 1778377178.9153306,
+    "hash": "118e375b7586555e099f5debf7a74f4b"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/preview.test.tsx": {
+    "mtime": 1778377178.9163306,
+    "hash": "14e33d13e1aed67e4b496aa846110db9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/complexity-table.test.tsx": {
+    "mtime": 1778377178.9153306,
+    "hash": "54114ce98e6d789c638259b61a5de7bb"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/code-group.test.tsx": {
+    "mtime": 1778377178.9153306,
+    "hash": "6396f7d466bf4758f382a0794971acea"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/__tests__/privacy-table.test.tsx": {
+    "mtime": 1778379525.6589518,
+    "hash": "0ef7a37223e0695d3f9e1882ec86373a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/lib/motion.tsx": {
+    "mtime": 1778377178.9223309,
+    "hash": "cba215e963380ede1871870f008587a7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/lib/utils.ts": {
+    "mtime": 1778182598.0750523,
+    "hash": "ea1c194ee828369e6fcdde84b4d8b8ba"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/src/lib/primitives.ts": {
+    "mtime": 1778377178.9223309,
+    "hash": "1a6826a8ed8fc5ff857adbef55463fb0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/postcss.config.mjs": {
+    "mtime": 1767124573.1700478,
+    "hash": "c56b5f3c12f777a86e2513f45daab56a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/next.config.ts": {
+    "mtime": 1774868855.567197,
+    "hash": "5219af208208049c33b123217b5a1ef0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/contentlayer.config.ts": {
+    "mtime": 1778377178.90433,
+    "hash": "18e8cc13fec0f2cf721eb70e862e0122"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/playwright.config.ts": {
+    "mtime": 1778377067.8052309,
+    "hash": "c9067e5402db1a01b19e5c0fa81fdf55"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/tailwind.config.ts": {
+    "mtime": 1767124568.6768677,
+    "hash": "e29257d7a32042ae80f8027745b9c55e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/next-env.d.ts": {
+    "mtime": 1767124868.6019385,
+    "hash": "ba64ff7d54714a8f64db89b1003207d8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/config/sidebars.ts": {
+    "mtime": 1767153150.4641402,
+    "hash": "0c73e0d9df5ee5dfc60cddfa1816360e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/config/docs.ts": {
+    "mtime": 1778262938.0031254,
+    "hash": "d0fc763e4088d3b506a7ce26cb731ab2"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/scripts/build-previews.ts": {
+    "mtime": 1778386669.369746,
+    "hash": "6f7552d20e3fb236a557a486fdcf15e8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/e2e/home.spec.ts": {
+    "mtime": 1778377067.8052309,
+    "hash": "dda86494422bfb6d0787d2baaa84d755"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/e2e/component-preview.spec.ts": {
+    "mtime": 1778397813.5702164,
+    "hash": "e5d4317640e484fbf8f88eeb3fe9de2e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/e2e/navigation.spec.ts": {
+    "mtime": 1778377067.8052309,
+    "hash": "5855133d9d721521c70879a949f192b0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/e2e/docs.spec.ts": {
+    "mtime": 1778377067.8052309,
+    "hash": "d9835fba5419c1b5d51cf215d01eaf77"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/lib/motion.tsx": {
+    "mtime": 1778377178.90433,
+    "hash": "cba215e963380ede1871870f008587a7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/lib/docs-nav.ts": {
+    "mtime": 1767151676.9972277,
+    "hash": "1782e4073d49eb8396c40c02b77c6653"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/lib/utils.ts": {
+    "mtime": 1767124625.2661383,
+    "hash": "ea1c194ee828369e6fcdde84b4d8b8ba"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/lib/primitives.ts": {
+    "mtime": 1778377178.90433,
+    "hash": "1a6826a8ed8fc5ff857adbef55463fb0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/lib/toc.ts": {
+    "mtime": 1767148878.9369204,
+    "hash": "763afdabfc1cfb8843702d5c9f2c239a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/page.tsx": {
+    "mtime": 1767151090.6247284,
+    "hash": "42577aa55214ea17cb82f70ffcd0bc8a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/layout.tsx": {
+    "mtime": 1774868373.3373353,
+    "hash": "77c40e0d1f3e54be2631844228b48f38"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/docs/page.tsx": {
+    "mtime": 1778154467.685675,
+    "hash": "fd68011f534512e76164e07c5b08386d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/docs/layout.tsx": {
+    "mtime": 1767152207.9301736,
+    "hash": "48cc217ff34e96b81a67fa6ca19b877e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/docs/integration/page.tsx": {
+    "mtime": 1778154470.3717694,
+    "hash": "9603a4f218894daad194ad906523d9f8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/docs/integration/[...slug]/page.tsx": {
+    "mtime": 1778154471.156797,
+    "hash": "6c434b4c7f0cafba1dc93c6a36574579"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/docs/components/[...slug]/page.tsx": {
+    "mtime": 1778154472.1928334,
+    "hash": "ea6e7f9e356191ef680e6f701a6cc982"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/blog/page.tsx": {
+    "mtime": 1767439564.9918447,
+    "hash": "ae3be5a9e947e1847279ab19d8a695a0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/blog/layout.tsx": {
+    "mtime": 1767152186.3385167,
+    "hash": "c5ceab22dec1352742e77bac30662ccc"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/page.tsx": {
+    "mtime": 1778262951.4429984,
+    "hash": "733e44ac334a08923620edb7d92bdd7f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/community/layout.tsx": {
+    "mtime": 1767152192.9327173,
+    "hash": "4fc8363fae448b65e6f053c0b20a748c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/components/page.tsx": {
+    "mtime": 1778154469.6027424,
+    "hash": "34420021581a8fac7c1698e12333089e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/learn/page.tsx": {
+    "mtime": 1767152225.5877113,
+    "hash": "662574ad203027fda6c9078073c43d2e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/learn/layout.tsx": {
+    "mtime": 1767152175.6328192,
+    "hash": "91d2f56a2db733adb033dce845d3da87"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/reference/page.tsx": {
+    "mtime": 1767152236.837054,
+    "hash": "de2a2a5fcfbda9866b8824f1bca9c377"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/app/reference/layout.tsx": {
+    "mtime": 1767152180.8993514,
+    "hash": "64c49b0c49caab40630ba4446a5a23b8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/page-navigation.tsx": {
+    "mtime": 1767149987.938817,
+    "hash": "72e49aee8526c5c46791f83837d2547a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/theme-provider.tsx": {
+    "mtime": 1767146722.1948102,
+    "hash": "4559b99b635b34929e2b77a1a25405e7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/docs-sidebar.tsx": {
+    "mtime": 1767439565.0068455,
+    "hash": "24d54c62cea03477e523460d0b2b404d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/dynamic-sidebar.tsx": {
+    "mtime": 1767439565.0078454,
+    "hash": "1a33bc4c6bb15ad171ff8b9618add428"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-footer.tsx": {
+    "mtime": 1767150993.6632342,
+    "hash": "1d07b91ff693952b8478361171217fb1"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/sidebar-nav.tsx": {
+    "mtime": 1767148443.379647,
+    "hash": "4040eaf58abe3ebcaed165dd2000e259"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/site-header.tsx": {
+    "mtime": 1778262938.2349515,
+    "hash": "1f45f6781ef2420b2d78e2f6a115e9d8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demo-sources.generated.ts": {
+    "mtime": 1778397526.6594315,
+    "hash": "c9dd7d911cfa5dfbdab9201d24d81cc8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/component-preview.tsx": {
+    "mtime": 1778397149.335891,
+    "hash": "9af897473007847981a6483de04e62c9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/theme-toggle.tsx": {
+    "mtime": 1767146753.731099,
+    "hash": "198a9129502464565fb611dd4fc03a97"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx-components.tsx": {
+    "mtime": 1778440121.5601916,
+    "hash": "f63a141d925ba04554589ae474badda7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/toc.tsx": {
+    "mtime": 1767155199.8600762,
+    "hash": "7ebeb58e1f3848eae234a4a9d85ae476"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/badge-variants.tsx": {
+    "mtime": 1778386669.1387374,
+    "hash": "f2c7bc280d926612e371422b9a5c53c1"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/hardware-spec-default.tsx": {
+    "mtime": 1778397526.8544388,
+    "hash": "13b593f8695c36cd26e27cbefb5420bd"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/list-default.tsx": {
+    "mtime": 1778397526.936442,
+    "hash": "549a1bd7f5fbf8651856804ac45b4d49"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/headings-default.tsx": {
+    "mtime": 1778397526.8754396,
+    "hash": "224f2b90fa1c0aafd3fc0ae17d85fabf"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/definition-default.tsx": {
+    "mtime": 1778397526.8024368,
+    "hash": "23a9ab15556bca783b674d3cec1827cd"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/security-note-default.tsx": {
+    "mtime": 1778397526.9824436,
+    "hash": "ee57de985198234fb0f5cdc85c440a3e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/heading-default.tsx": {
+    "mtime": 1778397526.860439,
+    "hash": "886ebbece0a61f126084351a3a2193d2"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/accordion-default.tsx": {
+    "mtime": 1778386669.1147366,
+    "hash": "ac86f3ab627d462d5a2f747b2bf24624"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/card-default.tsx": {
+    "mtime": 1778386669.1637383,
+    "hash": "8de5b2bad65fa9e7a3ecc4d624f499a6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/terminal-default.tsx": {
+    "mtime": 1778397526.994444,
+    "hash": "cb4c03a370fde2d10adcbd43146da42d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/kbd-default.tsx": {
+    "mtime": 1778397526.9244413,
+    "hash": "059b8ff66f86516329adff710dd753f9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tabs-default.tsx": {
+    "mtime": 1778386669.1937394,
+    "hash": "ac975945bc794c9252fbba28940f35bf"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/alert-default.tsx": {
+    "mtime": 1778386669.1292036,
+    "hash": "714e668a5d96743500f5b73cb37e253e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/file-tree-default.tsx": {
+    "mtime": 1778397526.8274379,
+    "hash": "ff92a2eca79399bc30d0d0d1eb80fbd2"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/inline-code-default.tsx": {
+    "mtime": 1778397526.913441,
+    "hash": "cf31628fe985c7e833a3d0bf3cac67d2"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/register-map-default.tsx": {
+    "mtime": 1778397526.972443,
+    "hash": "4d1e76216d71c23411023451bd967830"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/reveal-default.tsx": {
+    "mtime": 1778397526.9774435,
+    "hash": "ac42a6bd137e22859753890b1702f5f8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/privacy-table-default.tsx": {
+    "mtime": 1778397526.9664428,
+    "hash": "d32a2e0dae1ebe3cd204fdc5cdd30811"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/invariant-default.tsx": {
+    "mtime": 1778397526.918441,
+    "hash": "6e1d2dcb20ac71bd5997da27469734c1"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/spoiler-default.tsx": {
+    "mtime": 1778386669.1719933,
+    "hash": "2419a88f49a4f91bc60cca7b7b10c8a9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/diff-block-default.tsx": {
+    "mtime": 1778397526.808437,
+    "hash": "b6e7602b7346a86d0bf6ff4d9229d85e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/certification-badge-default.tsx": {
+    "mtime": 1778397526.728434,
+    "hash": "c20aec2dfe36fef75c018cb17124aa97"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/paragraph-default.tsx": {
+    "mtime": 1778397526.941442,
+    "hash": "772b900142a44e9a208d8cc70388e06b"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/horizontal-rule-default.tsx": {
+    "mtime": 1778397526.9064407,
+    "hash": "110a3ffaad9f881950fbb44cf551aee0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/callout-default.tsx": {
+    "mtime": 1778386669.1497378,
+    "hash": "4dad92d389267a5998c5a086b4ab7e4a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/annotation-default.tsx": {
+    "mtime": 1778397526.6764321,
+    "hash": "798f2a82ca699a7a55db8e8293730a03"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/link-default.tsx": {
+    "mtime": 1778397526.9304416,
+    "hash": "3e6c529ef043ab76edcab31143447efe"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/glossary-default.tsx": {
+    "mtime": 1778397526.8444383,
+    "hash": "ba2ae45e5017dc5dc681b487a06beb32"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/data-table-default.tsx": {
+    "mtime": 1778397526.778436,
+    "hash": "4a0ce9555024cbb7a5e9a5a5bfa9f293"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/data-type-table-default.tsx": {
+    "mtime": 1778397526.7954366,
+    "hash": "e5f8615993a8b7e6cfcf3870b46a900d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/table-default.tsx": {
+    "mtime": 1778397526.9894438,
+    "hash": "cb301a2787439b540a88ab2a59a6acfd"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/emphasis-default.tsx": {
+    "mtime": 1778397526.8194375,
+    "hash": "f4410eb9143513f4b3ae749509991c8e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/complexity-table-default.tsx": {
+    "mtime": 1778397526.7684357,
+    "hash": "f8ed3f64251d22a90a5c56f8e54ae72d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/highlight-default.tsx": {
+    "mtime": 1778397526.888665,
+    "hash": "7f4d6ea1acfe33b1fdb12a158429436a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/blockquote-default.tsx": {
+    "mtime": 1778397526.6905293,
+    "hash": "579cefc16fa695e7db25513678eac66d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/steps-default.tsx": {
+    "mtime": 1778386669.179739,
+    "hash": "e0b6e9fc0cc04d7bad679796d0533457"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/tree-default.tsx": {
+    "mtime": 1778397527.0034442,
+    "hash": "97cacaad4c313f4603e104fcb570331c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/changelog-default.tsx": {
+    "mtime": 1778397526.7406256,
+    "hash": "09015e14fce353fcc11d6c5aca7e522c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/code-group-default.tsx": {
+    "mtime": 1778397526.757435,
+    "hash": "39fbf7e2aabc0b58f126926abc6cbe4c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/preview-default.tsx": {
+    "mtime": 1778397526.9604428,
+    "hash": "e57975110143a1f2dc120e51633b512f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/demos/code-block-default.tsx": {
+    "mtime": 1778397526.7479515,
+    "hash": "50d1e70699f92fc1d09bf25493ecb456"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/heading.tsx": {
+    "mtime": 1778183047.488321,
+    "hash": "bdd8bd2dc6116ed7e18eddb7c61ac234"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/register-map.tsx": {
+    "mtime": 1778379529.0661001,
+    "hash": "09a1b0bf4dc387b3970a5aae2df56678"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/math-primitives.tsx": {
+    "mtime": 1778440121.9745998,
+    "hash": "0ce27992ce7830179a972457f38142c0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/diff-block.tsx": {
+    "mtime": 1778237269.9425406,
+    "hash": "9c9d07e56d2ef31d2d1ad66956d85661"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/annotation.tsx": {
+    "mtime": 1778383197.6258464,
+    "hash": "5a3c5559da1b6026ad570d7f5469d090"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/spoiler.tsx": {
+    "mtime": 1778235231.9032893,
+    "hash": "caf0feba58a166ad309266ad7c36549c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/preview.tsx": {
+    "mtime": 1778386669.3338816,
+    "hash": "f2caf4ae64d95c5cc30dd8aa9e6d1361"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/definition.tsx": {
+    "mtime": 1778377178.9033298,
+    "hash": "c9543b434947ba93e3aacffc4afbfd6e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/code-group.tsx": {
+    "mtime": 1778383197.6258464,
+    "hash": "832e6d680556d75061fd92520b51f402"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/glossary.tsx": {
+    "mtime": 1778383197.6278465,
+    "hash": "c15dcdafb7e18bdec6f3ffe19f44ecb1"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/invariant.tsx": {
+    "mtime": 1778377178.90433,
+    "hash": "ab8648146e4b3d3ec45e3b1574bcfc66"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/headings.tsx": {
+    "mtime": 1778182944.2113175,
+    "hash": "004284c08bd465fe60f2e94c9050a481"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/file-tree.tsx": {
+    "mtime": 1778383197.6278465,
+    "hash": "6a4a5faa355e9bf4e4793ec3a33eb857"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/mermaid.tsx": {
+    "mtime": 1778383197.6288466,
+    "hash": "ec551eb2deafad857707630fcdf89d9e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/table.tsx": {
+    "mtime": 1778208989.0713367,
+    "hash": "f782b075e9fd347ce016b22ebd6a911e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/ds-tree.tsx": {
+    "mtime": 1778383197.6278465,
+    "hash": "0d90246b1d69d6b4ba6f07d1d87a5b76"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/terminal.tsx": {
+    "mtime": 1778237269.9489784,
+    "hash": "2c4962447815641ef99665542b67839d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/hardware-spec.tsx": {
+    "mtime": 1778379528.9790964,
+    "hash": "2dc5df17176227173639ab42443fa156"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/math.tsx": {
+    "mtime": 1778383197.6278465,
+    "hash": "1502fd0e4af7721e065223f74a17e64f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-table.tsx": {
+    "mtime": 1778383197.6258464,
+    "hash": "32ce8976258e23bd256ddd237f5b7588"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/list.tsx": {
+    "mtime": 1778208989.0626264,
+    "hash": "03d45b85b9d846fc128bfa7da15693bc"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/tabs.tsx": {
+    "mtime": 1778383197.6288466,
+    "hash": "7f848b143ecdbbd5509184b7669783ff"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/json-ld.tsx": {
+    "mtime": 1778237269.9540753,
+    "hash": "e98e5dc0529d39c83968fcfe72af5b95"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/accordion.tsx": {
+    "mtime": 1778383197.6258464,
+    "hash": "5daf3e75b493bb1a17424042ba070732"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/privacy-table.tsx": {
+    "mtime": 1778379203.916485,
+    "hash": "7b3e2e98ec5b770bbb68bde20f139da2"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/complexity-table.tsx": {
+    "mtime": 1778377178.9008276,
+    "hash": "920e48d0b2066a2117ffc7f2c997eb59"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/tree.tsx": {
+    "mtime": 1778397527.0284452,
+    "hash": "7f065d6fffbdb7edbde549cfbd689cd7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/alert.tsx": {
+    "mtime": 1778208989.0930855,
+    "hash": "a1d4a9a6b42e28b0b5f4e2ff8d107e57"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/data-type-table.tsx": {
+    "mtime": 1778379528.4800746,
+    "hash": "93c9dea6780b748ca3f21d8910906af0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/reveal.tsx": {
+    "mtime": 1778383197.6288466,
+    "hash": "3f53313ddac3e936cbb30ad01f55d6d9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/math-equation.tsx": {
+    "mtime": 1778403041.5879147,
+    "hash": "f006abb08e542867fd7170ce88f10180"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/ds.tsx": {
+    "mtime": 1778377382.1466212,
+    "hash": "4fe65f38e4689c02779ab425ff5d668f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/blockquote.tsx": {
+    "mtime": 1778208989.05087,
+    "hash": "de62ede2636ad0cc58f47899bb9589a9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/video.tsx": {
+    "mtime": 1778234103.2187567,
+    "hash": "218880a72b0ef122e584affda1df8ee9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/highlight.tsx": {
+    "mtime": 1778258327.467019,
+    "hash": "4f09467beefc3c03ea7e6e35f5581587"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/math-solution.tsx": {
+    "mtime": 1778403041.5906951,
+    "hash": "c05d298e0bf91d6c4f793572d276b5be"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/card.tsx": {
+    "mtime": 1778208989.097338,
+    "hash": "d6e4042664145fb7e002a8905f3dd3f9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/badge.tsx": {
+    "mtime": 1778208989.0444136,
+    "hash": "11cc92b679600f355ff57ceb3ae468da"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/security-note.tsx": {
+    "mtime": 1778379529.0846522,
+    "hash": "2b7ee651b6c524752fb73d2b9d398507"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/paragraph.tsx": {
+    "mtime": 1767163422.2928267,
+    "hash": "36045949fd1f95d7a88a07bc1e62bb37"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/image.tsx": {
+    "mtime": 1778237831.170403,
+    "hash": "9ff2afd29b0f3490bfc9286bff904124"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/changelog.tsx": {
+    "mtime": 1778237269.9521496,
+    "hash": "6fc92ed62e6be6d9955fdc3d5e0b1ec6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/certification-badge.tsx": {
+    "mtime": 1778379528.3221946,
+    "hash": "5b2ae3cbf4124f089ead84b1c16ccde0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/inline-code.tsx": {
+    "mtime": 1778208989.0581923,
+    "hash": "c13bfd7ec82f6e6757e7c918ebd0cc4e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/emphasis.tsx": {
+    "mtime": 1778208989.0539308,
+    "hash": "d71ae10930aeeed25669797460806499"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/steps.tsx": {
+    "mtime": 1778208989.0674214,
+    "hash": "6d062f2d5be293337b67c53a32531a0b"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/link.tsx": {
+    "mtime": 1778235231.8992324,
+    "hash": "1137bf8c5cad4b08817cb3a9a6685fc6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/kbd.tsx": {
+    "mtime": 1778208989.0889385,
+    "hash": "36f8f64dc1bac75ec346968c2f4b52f6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/code-block.tsx": {
+    "mtime": 1778383197.6258464,
+    "hash": "fcccd588acb301abb38dd37c69c4ec5a"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/callout.tsx": {
+    "mtime": 1778208989.0465193,
+    "hash": "89cb2f990a0b13a530c3bfd1ac4bffed"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/components/mdx/horizontal-rule.tsx": {
+    "mtime": 1778208989.0562751,
+    "hash": "5a2fc781934d8cfd0a3978f4e0183ae6"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/pnpm-workspace.yaml": {
+    "mtime": 1767124671.3659909,
+    "hash": "5cf64d88f9650586110ffd596a8bbbdd"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/TwoRegistryLocationsExplained.txt": {
+    "mtime": 1767440778.9151185,
+    "hash": "ccf9114f63ae09146804388b745074a0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/README.md": {
+    "mtime": 1778208312.0709991,
+    "hash": "69c235a0439afe16a0483d363c28be0c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/code_git_npmjs_flow.txt": {
+    "mtime": 1767440018.254564,
+    "hash": "7228173db0536510e7d02357a1ea8e35"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/IDEAS.md": {
+    "mtime": 1778443686.5316339,
+    "hash": "280513407027735229118dc7965d9aa4"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/scripts/README.md": {
+    "mtime": 1767441179.755932,
+    "hash": "2008ec58d093faf6cb8f4b9459f9d3d8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/SIDEBAR_FILES_GUIDE.md": {
+    "mtime": 1778377377.597399,
+    "hash": "5a4969cbdfa533797ad476628496a271"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/COMPONENT_SYNC.md": {
+    "mtime": 1778377376.923366,
+    "hash": "e77e6b59b694d12e626a200c935c1fcf"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/CLEANUP_SUMMARY.md": {
+    "mtime": 1778377376.6435208,
+    "hash": "19e3b46049a73e63f9c4dc4e3c0395ed"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/DYNAMIC_SIDEBAR_GUIDE.md": {
+    "mtime": 1778377377.0403717,
+    "hash": "b6ca56be54920928eddc24a21f12ad87"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/QUICKSTART.md": {
+    "mtime": 1778377178.9000204,
+    "hash": "f3969ed224228fb8b8502e58792054e0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/COMPLETE_PROJECT_SUMMARY.md": {
+    "mtime": 1778377376.882364,
+    "hash": "09dbe0c88f8a4f8709cb85663e4d3523"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/ADDING_COMPONENTS.md": {
+    "mtime": 1778377376.5633483,
+    "hash": "ff88f39a635c3f8206ae75c959cecf9f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/README.md": {
+    "mtime": 1778377178.9000204,
+    "hash": "2c892dab2e5214f7ccccdea7418d438e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/WEBSITE_SETUP.md": {
+    "mtime": 1778377377.6654024,
+    "hash": "e4547e0a2a5ebd9d9854de755ab0ce15"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/NAVIGATION_SYSTEM.md": {
+    "mtime": 1778377377.3793883,
+    "hash": "f9b4545449136272b9b01a8d86f37f58"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/PROJECT_STRUCTURE.md": {
+    "mtime": 1778377377.4583921,
+    "hash": "8d94a757a9b0de6c47243b34d194ecf4"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/MDX_SYSTEM_GUIDE.md": {
+    "mtime": 1778377377.227381,
+    "hash": "37622df09c6b3e3dccbeaa1413ac0806"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/PROJECT_STATUS.md": {
+    "mtime": 1778377377.4098647,
+    "hash": "ef95ded7a3d972547bd6fb2ec15bfb2b"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/GUIDE/SITE_STRUCTURE.md": {
+    "mtime": 1778377377.6290932,
+    "hash": "47e7d9b300a4831ec16c22ddf54675f8"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/docs/REACT_DEV_COMPONENTS_ANALYSIS.md": {
+    "mtime": 1778377178.9083302,
+    "hash": "8bec0834c43c8945442a550e69c3cf3d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/docs/RELEASE_v0.1.0_FOUNDATION.md": {
+    "mtime": 1778377178.9083302,
+    "hash": "28f88fb629e352081bcad615496cda0b"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/docs/COMPONENT_API_CONVENTIONS.md": {
+    "mtime": 1778377178.9083302,
+    "hash": "1101d35f5af26c5704445a4c2c2c75d0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/docs/BASIC_MARKDOWN_COMPONENTS.md": {
+    "mtime": 1778377377.7934086,
+    "hash": "06e181fb8d6208f46094a8bd8beab866"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/docs/COMPONENT_NAMES_REFERENCE.md": {
+    "mtime": 1778377178.9083302,
+    "hash": "b85d4904a86ccc5071c9518497ae55ca"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/docs/COMPONENT_ROADMAP.md": {
+    "mtime": 1778377178.9083302,
+    "hash": "7f2f932e9b568b4feb62585a9f95c3b5"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/cli/README.md": {
+    "mtime": 1778208327.0423555,
+    "hash": "9e52a8f7191d05cb2734f6ba541c29bb"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/packages/registry/README.md": {
+    "mtime": 1767123044.707732,
+    "hash": "690370836d4bf175f39956734015a635"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/registry/README.md": {
+    "mtime": 1767123031.0824406,
+    "hash": "9dbf62f5cf10fd3849bbad62c46fbb94"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/README.md": {
+    "mtime": 1767124695.7059698,
+    "hash": "085e4d4eead86fbea0892182f3df5af9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/installation.mdx": {
+    "mtime": 1778377067.8052309,
+    "hash": "f9a3972a1d4483527e0cdd04d583e1c9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/index.mdx": {
+    "mtime": 1778235753.6054509,
+    "hash": "1145fee55eaf89f0f66863c3833b0877"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/integration/nextjs-contentlayer.mdx": {
+    "mtime": 1774869616.1532946,
+    "hash": "ead0f0635b1e5e351d53f4640a7fc1e5"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/integration/ai-content.mdx": {
+    "mtime": 1778304073.3952887,
+    "hash": "5c5573dd0f9ab9b7417350b2836ec50b"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/integration/nextjs-mdx-remote.mdx": {
+    "mtime": 1774869616.1555493,
+    "hash": "83b62426887d308629738fe3bf02dd99"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/integration/component-mappings.mdx": {
+    "mtime": 1774869616.1566157,
+    "hash": "a22eb3b530340e746ad6e9ca9666120d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/integration/nextjs-mdx.mdx": {
+    "mtime": 1774869616.1593735,
+    "hash": "3b1fe3470608c662cb1b90021dc2bc4d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/integration/index.mdx": {
+    "mtime": 1774869616.1612835,
+    "hash": "920a88e7682e335b68f9f3e90d5127de"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/blockquote.mdx": {
+    "mtime": 1778397524.8063629,
+    "hash": "73706fee94175240c0a637c954255c17"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/callout.mdx": {
+    "mtime": 1778386667.400674,
+    "hash": "dc3b83854fb69831978992e1f1e2085c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/annotation.mdx": {
+    "mtime": 1778397524.757692,
+    "hash": "c690e05a9417a20e54c6ca8e7e8d623f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/definition.mdx": {
+    "mtime": 1778397525.376384,
+    "hash": "d3d4664df9268e33b74ce0bbf4937388"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/terminal.mdx": {
+    "mtime": 1778397526.0574093,
+    "hash": "dbdb24cefcce5cbc5521c183eb8d39cb"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/tree.mdx": {
+    "mtime": 1778397526.0874104,
+    "hash": "bba06ee94a2a50182b0c578787cd6dd3"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/spoiler.mdx": {
+    "mtime": 1778386667.5119648,
+    "hash": "fe1920d27b58dbf59b5b2bd6ef9d8f8c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/kbd.mdx": {
+    "mtime": 1778397525.783399,
+    "hash": "fe235ad69d8142b57acbfd02c3a41274"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/security-note.mdx": {
+    "mtime": 1778397526.025198,
+    "hash": "642fb00e0e7f5beebb43ebf82ea195b5"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/tabs.mdx": {
+    "mtime": 1778386667.6866846,
+    "hash": "da36745215b7ca153169b1633744489f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/card.mdx": {
+    "mtime": 1778386667.4546762,
+    "hash": "a2cd1667da76addcd472160a44ccd7bc"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/reveal.mdx": {
+    "mtime": 1778397526.0092776,
+    "hash": "acaa430e84a48881bb964481453ae057"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/image.mdx": {
+    "mtime": 1778237842.3582313,
+    "hash": "0293849ea309d3f8e748969cd98b5d15"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/privacy-table.mdx": {
+    "mtime": 1778397525.9614058,
+    "hash": "648c7dd2d3033e847f22c7c7d4952013"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/hardware-spec.mdx": {
+    "mtime": 1778397525.5553906,
+    "hash": "9a062c56d2a609b56d6530c5cf7501f9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/horizontal-rule.mdx": {
+    "mtime": 1778397925.4214885,
+    "hash": "2e9ae325083c2e301a8c328dd78905a7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/steps.mdx": {
+    "mtime": 1778386667.5720248,
+    "hash": "aac168f5cee687312a47ff7b2467fcc3"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/invariant.mdx": {
+    "mtime": 1778397525.7653985,
+    "hash": "d0a864bee9e474023dcae6ed6e793e76"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/register-map.mdx": {
+    "mtime": 1778397525.9874067,
+    "hash": "078c35b90c74fc6779be3577c0e185b4"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/preview.mdx": {
+    "mtime": 1778397525.9364047,
+    "hash": "471f98325d51bec0b6e692afa6f24e80"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/diff-block.mdx": {
+    "mtime": 1778397525.4063852,
+    "hash": "392742c00b392a6c051ac721fca4df98"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/glossary.mdx": {
+    "mtime": 1778397525.5213895,
+    "hash": "23b2c5d21364b54e3c53d70217b8f1ba"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/accordion.mdx": {
+    "mtime": 1778386667.1670756,
+    "hash": "3df918ca6c12d66c4f2bf69764a6b080"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/paragraph.mdx": {
+    "mtime": 1778397525.9174042,
+    "hash": "6c49de1bdac88513fda56f39c13cccac"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/emphasis.mdx": {
+    "mtime": 1778397525.429386,
+    "hash": "606a2c4622e7223f2c817ff6709f4562"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/certification-badge.mdx": {
+    "mtime": 1778397524.8833659,
+    "hash": "d6f20a46dc38e097e52ab00804e4f2b0"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/highlight.mdx": {
+    "mtime": 1778397525.6687136,
+    "hash": "1ad910344b68f17e46a30206f4f48098"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/data-table.mdx": {
+    "mtime": 1778397525.290381,
+    "hash": "983a002bd4bab2448e63fd25027dfa76"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/video.mdx": {
+    "mtime": 1778237842.3896375,
+    "hash": "39435fe2114f98ea3af64287b566f1f4"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/headings.mdx": {
+    "mtime": 1778397525.6393938,
+    "hash": "569833315f6dc85991c36750591b9502"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/badge.mdx": {
+    "mtime": 1778386667.3516724,
+    "hash": "425c59a67ce5dcfd93ee4a1990908508"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/changelog.mdx": {
+    "mtime": 1778397524.915367,
+    "hash": "6050a76b9767a67beddec3aff5c1bc2d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/table.mdx": {
+    "mtime": 1778397363.2794511,
+    "hash": "5e1dbed008cfb4ea6ef90c9970983e98"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/complexity-table.mdx": {
+    "mtime": 1778397525.2121732,
+    "hash": "c3200f277ec1e929533d7276c7267021"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/link.mdx": {
+    "mtime": 1778397525.8114002,
+    "hash": "fef136ea35e1962fbd9e0ac24ed6a69e"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/math.mdx": {
+    "mtime": 1774875397.9549124,
+    "hash": "239355348eb8722621f120d5e289ff72"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/mermaid.mdx": {
+    "mtime": 1778303963.9309795,
+    "hash": "dbc17f2105f3d46b3ea70784a92a09f9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/list.mdx": {
+    "mtime": 1778397525.8476188,
+    "hash": "128357da212dd6db41a9608c8f5e682c"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/alert.mdx": {
+    "mtime": 1778386667.2936702,
+    "hash": "d7d527bcb41f6f11811d1e6aa728d73f"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/json-ld.mdx": {
+    "mtime": 1778237842.3608353,
+    "hash": "f6a1a52e11990bd8ef166c26f03244b9"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/file-tree.mdx": {
+    "mtime": 1778397525.4893882,
+    "hash": "16a1945736f71d3a09872ac8565dc0ae"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/data-type-table.mdx": {
+    "mtime": 1778397525.3273823,
+    "hash": "186c90f32dae303011a994a760d1369d"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/inline-code.mdx": {
+    "mtime": 1778397525.7414448,
+    "hash": "1822edc6b8556367482c3fc113b0dfea"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/heading.mdx": {
+    "mtime": 1778397525.617393,
+    "hash": "41d3b2c30a4c1848629c6bd78f4e1bf7"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/code-group.mdx": {
+    "mtime": 1778397525.129375,
+    "hash": "12c4dfb839d0c34bb7283c51617d50cc"
+  },
+  "/home/surya/surya_ws/personal/mdx-ui/apps/www/content/docs/components/code-block.mdx": {
+    "mtime": 1778397525.091037,
+    "hash": "2d44e792b935a302c990d6b96b8bc101"
+  }
+}

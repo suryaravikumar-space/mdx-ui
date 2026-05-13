@@ -1,97 +1,116 @@
-import { Command } from "commander"
-import prompts from "prompts"
-import chalk from "chalk"
-import ora from "ora"
-import fs from "fs-extra"
-import path from "path"
-import { getConfig } from "../utils/get-config.js"
-import { fetchComponent, type ComponentData } from "../utils/fetch-component.js"
-import { installDependencies } from "../utils/install-deps.js"
-import { writeComponent } from "../utils/write-component.js"
-import { COMPONENT_MDX_MAP, REGISTRY } from "../lib/component-registry.js"
+import { Command } from "commander";
+import prompts from "prompts";
+import chalk from "chalk";
+import ora from "ora";
+import fs from "fs-extra";
+import path from "path";
+import { getConfig } from "../utils/get-config.js";
+import {
+  fetchComponent,
+  type ComponentData,
+} from "../utils/fetch-component.js";
+import { installDependencies } from "../utils/install-deps.js";
+import { writeComponent } from "../utils/write-component.js";
+import { COMPONENT_MDX_MAP, REGISTRY } from "../lib/component-registry.js";
 
 interface RegistryComponent {
-  name: string
-  type: string
-  description: string
-  files: string[]
-  registryDependencies?: string[]
+  name: string;
+  type: string;
+  description: string;
+  files: string[];
+  registryDependencies?: string[];
 }
 
 async function patchMdxComponents(
   componentName: string,
   componentsDir: string,
-  cwd: string
+  cwd: string,
 ): Promise<void> {
-  const mapping = COMPONENT_MDX_MAP[componentName]
-  if (!mapping) return
+  const mapping = COMPONENT_MDX_MAP[componentName];
+  if (!mapping) return;
 
   // Prefer .tsx but fall back to .jsx
-  let mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx")
+  let mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx");
   if (!(await fs.pathExists(mdxPath))) {
-    const jsxPath = path.join(cwd, componentsDir, "mdx-components.jsx")
+    const jsxPath = path.join(cwd, componentsDir, "mdx-components.jsx");
     if (await fs.pathExists(jsxPath)) {
-      mdxPath = jsxPath
+      mdxPath = jsxPath;
     } else {
-      // File doesn't exist yet — create it with markers so patching can proceed
-      await fs.ensureDir(path.dirname(mdxPath))
+      await fs.ensureDir(path.dirname(mdxPath));
       await fs.writeFile(
         mdxPath,
-        `// Auto-managed by mdx-ui CLI — run \`npx @ravikumarsurya/mdx-ui add <component>\` to update.\n// @mdx-ui-imports-start\n// @mdx-ui-imports-end\n\nexport const mdxComponents = {\n// @mdx-ui-mappings-start\n// @mdx-ui-mappings-end\n}\n`
-      )
+        `export const mdxComponents = {\n}\n`,
+      );
     }
   }
 
-  let content = await fs.readFile(mdxPath, "utf-8")
+  let content = await fs.readFile(mdxPath, "utf-8");
 
-  const IMPORTS_START = "// @mdx-ui-imports-start"
-  const IMPORTS_END   = "// @mdx-ui-imports-end"
-  const MAP_START     = "// @mdx-ui-mappings-start"
-  const MAP_END       = "// @mdx-ui-mappings-end"
-
-  // --- patch imports block ---
-  const iStart = content.indexOf(IMPORTS_START)
-  const iEnd   = content.indexOf(IMPORTS_END)
-  if (iStart !== -1 && iEnd !== -1) {
-    const block = content.slice(iStart + IMPORTS_START.length, iEnd)
-    if (!block.includes(mapping.importFile)) {
-      const line = `\nimport { ${mapping.imports.join(", ")} } from "${mapping.importFile}"`
+  // --- inject import if not already present ---
+  if (!content.includes(mapping.importFile)) {
+    const importLine = `import { ${mapping.imports.join(", ")} } from "${mapping.importFile}"\n`;
+    // Insert before `export const mdxComponents` (or prepend)
+    const exportIdx = content.indexOf("export const mdxComponents");
+    if (exportIdx !== -1) {
       content =
-        content.slice(0, iStart + IMPORTS_START.length) +
-        block + line + "\n" +
-        content.slice(iEnd)
+        content.slice(0, exportIdx) + importLine + content.slice(exportIdx);
+    } else {
+      content = importLine + content;
     }
   }
 
-  // --- patch mappings block ---
-  const mStart = content.indexOf(MAP_START)
-  const mEnd   = content.indexOf(MAP_END)
-  if (mStart !== -1 && mEnd !== -1) {
-    const block = content.slice(mStart + MAP_START.length, mEnd)
-    let additions = ""
+  // --- inject entries into the mdxComponents object ---
+  const additions: string[] = [];
 
-    for (const [element, component] of Object.entries(mapping.elementMappings)) {
-      if (!block.includes(`${element}:`)) {
-        additions += `\n    ${element}: ${component},`
+  for (const [element, component] of Object.entries(mapping.elementMappings)) {
+    if (!content.includes(`${element}:`) && !content.includes(`${element} :`)) {
+      additions.push(`  ${element}: ${component},`);
+    }
+  }
+
+  for (const exportName of mapping.imports) {
+    const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName);
+    if (
+      !alreadyMapped &&
+      !content.includes(`${exportName},`) &&
+      !content.includes(`${exportName}:`)
+    ) {
+      additions.push(`  ${exportName},`);
+    }
+  }
+
+  if (additions.length > 0) {
+    // Find `export const mdxComponents = {` and locate its matching closing brace
+    const ANCHOR = "export const mdxComponents";
+    const anchorIdx = content.indexOf(ANCHOR);
+    if (anchorIdx !== -1) {
+      const openBrace = content.indexOf("{", anchorIdx);
+      if (openBrace !== -1) {
+        // Walk forward counting braces to find the matching }
+        let depth = 0;
+        let closeIdx = -1;
+        for (let i = openBrace; i < content.length; i++) {
+          if (content[i] === "{") depth++;
+          else if (content[i] === "}") {
+            depth--;
+            if (depth === 0) {
+              closeIdx = i;
+              break;
+            }
+          }
+        }
+        if (closeIdx !== -1) {
+          content =
+            content.slice(0, closeIdx) +
+            additions.join("\n") +
+            "\n" +
+            content.slice(closeIdx);
+        }
       }
     }
-
-    for (const exportName of mapping.imports) {
-      const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName)
-      if (!alreadyMapped && !block.includes(`${exportName},`) && !block.includes(`${exportName}:`)) {
-        additions += `\n    ${exportName},`
-      }
-    }
-
-    if (additions) {
-      content =
-        content.slice(0, mStart + MAP_START.length) +
-        block + additions + "\n    " +
-        content.slice(mEnd)
-    }
   }
 
-  await fs.writeFile(mdxPath, content)
+  await fs.writeFile(mdxPath, content);
 }
 
 function loadRegistry(): { components: RegistryComponent[] } {
@@ -104,7 +123,7 @@ function loadRegistry(): { components: RegistryComponent[] } {
         description: entry.description,
         files: entry.files,
       })),
-  }
+  };
 }
 
 export const add = new Command()
@@ -112,19 +131,21 @@ export const add = new Command()
   .description("Add components to your project")
   .argument("[components...]", "components to add")
   .action(async (components: string[]) => {
-    console.log()
+    console.log();
 
-    const config = await getConfig()
+    const config = await getConfig();
 
     if (!config) {
-      console.log(chalk.red("✗ No mdx-ui.json found"))
-      console.log(chalk.yellow("Run 'npx mdx-ui init' first"))
-      process.exit(1)
+      console.log(chalk.red("✗ No mdx-ui.json found"));
+      console.log(chalk.yellow("Run 'npx mdx-ui init' first"));
+      process.exit(1);
     }
 
     if (components.length === 0) {
-      const registry = loadRegistry()
-      const mdxComponents = registry.components.filter((c: RegistryComponent) => c.type === "mdx")
+      const registry = loadRegistry();
+      const mdxComponents = registry.components.filter(
+        (c: RegistryComponent) => c.type === "mdx",
+      );
 
       const { selected } = await prompts({
         type: "multiselect",
@@ -138,74 +159,78 @@ export const add = new Command()
           value: c.name,
           description: c.description,
         })),
-      })
+      });
 
-      components = selected
+      components = selected;
     }
 
     if (!components || components.length === 0) {
-      console.log(chalk.yellow("No components selected"))
-      process.exit(0)
+      console.log(chalk.yellow("No components selected"));
+      process.exit(0);
     }
 
-    const spinner = ora("Fetching components...").start()
+    const spinner = ora("Fetching components...").start();
 
     try {
-      const componentsData: ComponentData[] = []
-      const processedComponents = new Set<string>()
+      const componentsData: ComponentData[] = [];
+      const processedComponents = new Set<string>();
 
       async function fetchComponentRecursive(componentName: string) {
-        if (processedComponents.has(componentName)) return
-        processedComponents.add(componentName)
-        const data = await fetchComponent(componentName)
+        if (processedComponents.has(componentName)) return;
+        processedComponents.add(componentName);
+        const data = await fetchComponent(componentName);
 
         if (data.registryDependencies && data.registryDependencies.length > 0) {
           for (const depName of data.registryDependencies) {
-            await fetchComponentRecursive(depName)
+            await fetchComponentRecursive(depName);
           }
         }
 
-        componentsData.push(data)
+        componentsData.push(data);
       }
 
       for (const component of components) {
-        await fetchComponentRecursive(component)
+        await fetchComponentRecursive(component);
       }
 
-      spinner.text = "Installing dependencies..."
+      spinner.text = "Installing dependencies...";
 
-      const allDeps = new Set<string>()
+      const allDeps = new Set<string>();
       for (const data of componentsData) {
-        data.dependencies?.forEach((dep: string) => allDeps.add(dep))
+        data.dependencies?.forEach((dep: string) => allDeps.add(dep));
       }
 
       if (allDeps.size > 0) {
-        await installDependencies(Array.from(allDeps))
+        await installDependencies(Array.from(allDeps));
       }
 
-      spinner.text = "Writing components..."
+      spinner.text = "Writing components...";
 
       for (const data of componentsData) {
-        await writeComponent(data, config)
+        await writeComponent(data, config);
       }
 
       for (const component of components) {
-        await patchMdxComponents(component, config.componentsDir, process.cwd())
+        await patchMdxComponents(
+          component,
+          config.componentsDir,
+          process.cwd(),
+        );
       }
 
-      spinner.succeed("Components added successfully!")
+      spinner.succeed("Components added successfully!");
 
-      console.log()
+      console.log();
       for (const component of components) {
-        console.log(chalk.green(`✓ ${component}`))
+        console.log(chalk.green(`✓ ${component}`));
       }
 
-      console.log()
-      console.log(chalk.bold("Done! 🎉"))
-      console.log()
+      console.log();
+      console.log(chalk.bold("Done! 🎉"));
+      console.log();
     } catch (error: any) {
-      spinner.fail("Failed to add components")
-      console.error(chalk.red(error.message))
-      process.exit(1)
+      spinner.fail("Failed to add components");
+      console.error(chalk.red(error.message));
+      process.exit(1);
     }
-  })
+  });

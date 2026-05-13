@@ -18,8 +18,8 @@ export interface ComponentEntry {
 
 export const REGISTRY: Record<string, ComponentEntry> = {
   utils: {
-    importFile: "./lib/utils",
-    imports: ["cn"],
+    importFile: "@/lib/utils",
+    imports: [],
     elementMappings: {},
     files: ["lib/utils.ts"],
     deps: ["clsx", "tailwind-merge"],

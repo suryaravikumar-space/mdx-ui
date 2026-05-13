@@ -51,6 +51,13 @@ async function patchMdxComponents(
   const mapping = COMPONENT_MDX_MAP[componentName];
   if (!mapping) return { patched: false, mdxPath: "" };
 
+  // Skip components that have no MDX exports (e.g. utils — internal lib only)
+  if (
+    mapping.imports.length === 0 &&
+    Object.keys(mapping.elementMappings).length === 0
+  )
+    return { patched: false, mdxPath: "" };
+
   // Find existing file or create at componentsDir
   let mdxPath = await findMdxComponentsFile(componentsDir, cwd);
   if (!mdxPath) {

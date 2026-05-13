@@ -67,10 +67,10 @@ export const init = new Command()
         ? `import { clsx, type ClassValue } from "clsx"\nimport { twMerge } from "tailwind-merge"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n`
         : `import { clsx } from "clsx"\nimport { twMerge } from "tailwind-merge"\n\nexport function cn(...inputs) {\n  return twMerge(clsx(inputs))\n}\n`;
 
-      await fs.writeFile(
-        path.join(cwd, structure.libDir, `utils.${ext}`),
-        utilsContent,
-      );
+      const utilsPath = path.join(cwd, structure.libDir, `utils.${ext}`);
+      if (!(await fs.pathExists(utilsPath))) {
+        await fs.writeFile(utilsPath, utilsContent);
+      }
 
       // Framework-specific setup
       await setupFramework(structure.framework, cwd, spinner);
@@ -120,12 +120,12 @@ export const init = new Command()
 
       spinner.succeed("Project initialized!");
 
-      console.log(chalk.green("\n✓ Created mdx-ui.json"));
-      console.log(chalk.green(`✓ Created ${config.componentsDir}/`));
-      console.log(chalk.green(`✓ Created ${structure.libDir}/utils.${ext}`));
+      console.log(chalk.green("\n✓ mdx-ui.json"));
+      console.log(chalk.green(`✓ ${config.componentsDir}/`));
+      console.log(chalk.green(`✓ ${structure.libDir}/utils.${ext}`));
       console.log(
         chalk.green(
-          `✓ Created ${config.componentsDir}/mdx-components.${config.typescript ? "tsx" : "jsx"}`,
+          `✓ ${config.componentsDir}/mdx-components.${config.typescript ? "tsx" : "jsx"}`,
         ),
       );
       if (config.typescript && structure.framework !== "nextjs") {

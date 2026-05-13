@@ -17,21 +17,10 @@ Vite has no built-in MDX convention like Next.js, so you wire things up manually
 Skip this step if you already have a project.
 
 <CodeGroup>
-  ```bash title="npm"
-  npm create vite@latest my-app -- --template react-ts
-  cd my-app
-  npm install
-  ```
-  ```bash title="pnpm"
-  pnpm create vite my-app --template react-ts
-  cd my-app
-  pnpm install
-  ```
-  ```bash title="yarn"
-  yarn create vite my-app --template react-ts
-  cd my-app
-  yarn
-  ```
+  ```bash title="npm" npm create vite@latest my-app -- --template react-ts cd
+  my-app npm install ``` ```bash title="pnpm" pnpm create vite my-app --template
+  react-ts cd my-app pnpm install ``` ```bash title="yarn" yarn create vite
+  my-app --template react-ts cd my-app yarn ```
 </CodeGroup>
 
 ---
@@ -39,18 +28,10 @@ Skip this step if you already have a project.
 ## 2. Install MDX Support
 
 <CodeGroup>
-  ```bash title="npm"
-  npm install @mdx-js/rollup @mdx-js/react remark-gfm
-  npm install --save-dev @types/mdx
-  ```
-  ```bash title="pnpm"
-  pnpm add @mdx-js/rollup @mdx-js/react remark-gfm
-  pnpm add -D @types/mdx
-  ```
-  ```bash title="yarn"
-  yarn add @mdx-js/rollup @mdx-js/react remark-gfm
-  yarn add --dev @types/mdx
-  ```
+  ```bash title="npm" npm install @mdx-js/rollup @mdx-js/react remark-gfm npm
+  install --save-dev @types/mdx ``` ```bash title="pnpm" pnpm add @mdx-js/rollup
+  @mdx-js/react remark-gfm pnpm add -D @types/mdx ``` ```bash title="yarn" yarn
+  add @mdx-js/rollup @mdx-js/react remark-gfm yarn add --dev @types/mdx ```
 </CodeGroup>
 
 ---
@@ -186,15 +167,9 @@ MDX UI components use Tailwind CSS for styling.
 ## 5. Initialize MDX UI
 
 <CodeGroup>
-  ```bash title="npm"
-  npx @ravikumarsurya/mdx-ui init
-  ```
-  ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui init
-  ```
-  ```bash title="yarn"
-  yarn dlx @ravikumarsurya/mdx-ui init
-  ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui init ``` ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui init ``` ```bash title="yarn" yarn dlx
+  @ravikumarsurya/mdx-ui init ```
 </CodeGroup>
 
 This creates `mdx-ui.json` and installs the `cn()` utility.
@@ -204,19 +179,16 @@ This creates `mdx-ui.json` and installs the `cn()` utility.
 ## 6. Add Components
 
 <CodeGroup>
-  ```bash title="npm"
-  npx @ravikumarsurya/mdx-ui add callout accordion code-block
-  ```
-  ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block
-  ```
-  ```bash title="yarn"
-  yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block
-  ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui add callout accordion
+  code-block ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
+  callout accordion code-block ``` ```bash title="yarn" yarn dlx
+  @ravikumarsurya/mdx-ui add callout accordion code-block ```
 </CodeGroup>
 
 <Callout variant="info" title="Auto-updated for you">
-  The CLI automatically copies the component file **and** updates `src/components/mdx-components.tsx` with the correct imports and mappings. You never need to edit that file manually.
+  The CLI automatically copies the component file **and** updates
+  `src/components/mdx-components.tsx` with the correct imports and mappings. You
+  never need to edit that file manually.
 </Callout>
 
 ---
@@ -253,15 +225,8 @@ If your app has multiple MDX pages, use **React Router** to map URLs to files.
 ### Install React Router
 
 <CodeGroup>
-  ```bash title="npm"
-  npm install react-router-dom
-  ```
-  ```bash title="pnpm"
-  pnpm add react-router-dom
-  ```
-  ```bash title="yarn"
-  yarn add react-router-dom
-  ```
+  ```bash title="npm" npm install react-router-dom ``` ```bash title="pnpm" pnpm
+  add react-router-dom ``` ```bash title="yarn" yarn add react-router-dom ```
 </CodeGroup>
 
 ### Create your MDX pages
@@ -282,6 +247,7 @@ Create these three files with some starter content:
       </Callout>
       ```
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="about-mdx">
     <AccordionTrigger>src/content/about.mdx</AccordionTrigger>
@@ -296,6 +262,7 @@ Create these three files with some starter content:
       </Callout>
       ```
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="guide-mdx">
     <AccordionTrigger>src/content/guide.mdx</AccordionTrigger>
@@ -317,6 +284,7 @@ Create these three files with some starter content:
       </Accordion>
       ```
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -505,15 +473,10 @@ If you're using math components, add the KaTeX stylesheet in `src/index.css`:
 Install and add to components:
 
 <CodeGroup>
-  ```bash title="npm"
-  npx @ravikumarsurya/mdx-ui add math math-easy math-solution
-  ```
-  ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
-  ```
-  ```bash title="yarn"
-  yarn dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
-  ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math math-easy
+  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
+  math math-easy math-solution ``` ```bash title="yarn" yarn dlx
+  @ravikumarsurya/mdx-ui add math math-easy math-solution ```
 </CodeGroup>
 
 ```tsx
@@ -546,7 +509,7 @@ export const mdxComponents = {
 
 ### Cannot find module `@/lib/primitives` or `@/lib/motion`
 
-MDX UI components use the `@/` path alias. You need to configure it in both `vite.config.ts` and `tsconfig.json`.
+MDX UI components use the `@/` path alias. You need to configure it in `vite.config.ts` and in **every** `tsconfig` that TypeScript compiles directly.
 
 **1. Install the Node path helper:**
 
@@ -584,18 +547,23 @@ MDX UI components use the `@/` path alias. You need to configure it in both `vit
   });
 ```
 
-**3. Add the alias to `tsconfig.json`:**
+**3. Add the alias to `tsconfig.app.json` (and `tsconfig.json` if present):**
 
-```diff title="tsconfig.json"
+Vite projects use TypeScript project references. `tsc -b` compiles each reference using its **own** config file — so paths must be in `tsconfig.app.json`, not just the root `tsconfig.json`. If you only add it to the root, the dev server works (Vite has its own resolver) but `tsc` builds fail.
+
+```diff title="tsconfig.app.json"
   {
     "compilerOptions": {
-+     "baseUrl": ".",
 +     "paths": {
 +       "@/*": ["./src/*"]
 +     }
     }
   }
 ```
+
+<Callout variant="info" title="Note on baseUrl">
+  `baseUrl` is deprecated in TypeScript 5.5+. `paths` works standalone without it.
+</Callout>
 
 After this, `@/lib/primitives` resolves to `src/lib/primitives.ts` which the CLI copies during `init`.
 

@@ -11,7 +11,78 @@ import {
 } from "../utils/fetch-component.js";
 import { installDependencies } from "../utils/install-deps.js";
 import { writeComponent } from "../utils/write-component.js";
-import { FILE_TO_COMPONENT } from "../lib/component-registry.js";
+import {
+  FILE_TO_COMPONENT,
+  COMPONENT_MDX_MAP,
+} from "../lib/component-registry.js";
+
+async function patchMdxComponents(
+  componentName: string,
+  componentsDir: string,
+  cwd: string,
+): Promise<void> {
+  const mapping = COMPONENT_MDX_MAP[componentName];
+  if (!mapping) return;
+
+  let mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx");
+  if (!(await fs.pathExists(mdxPath))) {
+    const jsxPath = path.join(cwd, componentsDir, "mdx-components.jsx");
+    if (await fs.pathExists(jsxPath)) mdxPath = jsxPath;
+    else return; // don't auto-create on update
+  }
+
+  let content = await fs.readFile(mdxPath, "utf-8");
+
+  // inject import
+  if (!content.includes(mapping.importFile)) {
+    const importLine = `import { ${mapping.imports.join(", ")} } from "${mapping.importFile}"\n`;
+    const exportIdx = content.indexOf("export const mdxComponents");
+    content =
+      exportIdx !== -1
+        ? content.slice(0, exportIdx) + importLine + content.slice(exportIdx)
+        : importLine + content;
+  }
+
+  // inject entries
+  const additions: string[] = [];
+  for (const [element, component] of Object.entries(mapping.elementMappings)) {
+    if (!content.includes(`${element}:`) && !content.includes(`${element} :`))
+      additions.push(`  ${element}: ${component},`);
+  }
+  for (const exportName of mapping.imports) {
+    const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName);
+    if (!alreadyMapped && !content.includes(`${exportName},`) && !content.includes(`${exportName}:`))
+      additions.push(`  ${exportName},`);
+  }
+
+  if (additions.length > 0) {
+    const ANCHOR = "export const mdxComponents";
+    const anchorIdx = content.indexOf(ANCHOR);
+    if (anchorIdx !== -1) {
+      const openBrace = content.indexOf("{", anchorIdx);
+      if (openBrace !== -1) {
+        let depth = 0;
+        let closeIdx = -1;
+        for (let i = openBrace; i < content.length; i++) {
+          if (content[i] === "{") depth++;
+          else if (content[i] === "}") {
+            depth--;
+            if (depth === 0) { closeIdx = i; break; }
+          }
+        }
+        if (closeIdx !== -1) {
+          content =
+            content.slice(0, closeIdx) +
+            additions.join("\n") +
+            "\n" +
+            content.slice(closeIdx);
+        }
+      }
+    }
+  }
+
+  await fs.writeFile(mdxPath, content);
+}
 
 interface DiffResult {
   name: string;
@@ -228,6 +299,7 @@ export const update = new Command()
       writeSpinner.text = "Writing updated components...";
       for (const diff of toWrite) {
         await writeComponent(diff.data, config);
+        await patchMdxComponents(diff.name, config.componentsDir, cwd);
       }
 
       writeSpinner.succeed("Done!");

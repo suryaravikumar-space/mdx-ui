@@ -37,10 +37,7 @@ async function patchMdxComponents(
       mdxPath = jsxPath;
     } else {
       await fs.ensureDir(path.dirname(mdxPath));
-      await fs.writeFile(
-        mdxPath,
-        `export const mdxComponents = {\n}\n`,
-      );
+      await fs.writeFile(mdxPath, `export const mdxComponents = {\n}\n`);
     }
   }
 
@@ -69,7 +66,9 @@ async function patchMdxComponents(
   }
 
   for (const exportName of mapping.imports) {
-    const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName);
+    const alreadyMapped = Object.values(mapping.elementMappings).includes(
+      exportName,
+    );
     if (
       !alreadyMapped &&
       !content.includes(`${exportName},`) &&
@@ -130,7 +129,8 @@ export const add = new Command()
   .name("add")
   .description("Add components to your project")
   .argument("[components...]", "components to add")
-  .action(async (components: string[]) => {
+  .option("-o, --overwrite", "overwrite existing files without prompting", false)
+  .action(async (components: string[], opts: { overwrite: boolean }) => {
     console.log();
 
     const config = await getConfig();
@@ -204,25 +204,72 @@ export const add = new Command()
         await installDependencies(Array.from(allDeps));
       }
 
-      spinner.text = "Writing components...";
+      spinner.stop();
+
+      const cwd = process.cwd();
+      const framework = (config as any).framework ?? "unknown";
+      const written: string[] = [];
+      const skipped: string[] = [];
 
       for (const data of componentsData) {
-        await writeComponent(data, config);
+        for (const file of data.files) {
+          // Resolve file path (mirrors writeComponent logic)
+          const libRoot = config.componentsDir.startsWith("src/")
+            ? path.join(cwd, "src")
+            : cwd;
+          const filePath = file.path.startsWith("lib/")
+            ? path.join(libRoot, file.path)
+            : path.join(cwd, config.componentsDir, file.path);
+
+          let incoming = file.content;
+          if (framework === "react") {
+            incoming = incoming.replace(/^["']use client["']\n\n?/m, "");
+          }
+
+          const exists = await fs.pathExists(filePath);
+
+          if (exists) {
+            const existing = await fs.readFile(filePath, "utf-8");
+
+            // Content identical — silent skip
+            if (existing.trim() === incoming.trim()) {
+              skipped.push(file.path);
+              continue;
+            }
+
+            // Content differs — respect --overwrite or ask
+            if (!opts.overwrite) {
+              const { overwrite } = await prompts({
+                type: "confirm",
+                name: "overwrite",
+                message: `${chalk.yellow(file.path)} already exists and has local changes. Overwrite?`,
+                initial: false,
+              });
+
+              if (!overwrite) {
+                skipped.push(file.path);
+                continue;
+              }
+            }
+          }
+
+          await fs.ensureDir(path.dirname(filePath));
+          await fs.writeFile(filePath, incoming, "utf-8");
+          written.push(file.path);
+        }
       }
 
-      for (const component of components) {
-        await patchMdxComponents(
-          component,
-          config.componentsDir,
-          process.cwd(),
-        );
+      // Patch mdx-components.tsx for ALL fetched components (including deps)
+      for (const data of componentsData) {
+        await patchMdxComponents(data.name, config.componentsDir, cwd);
       }
-
-      spinner.succeed("Components added successfully!");
 
       console.log();
       for (const component of components) {
         console.log(chalk.green(`✓ ${component}`));
+      }
+      if (skipped.length > 0) {
+        console.log(chalk.dim(`  skipped: ${skipped.join(", ")}`));
       }
 
       console.log();

@@ -17,7 +17,6 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 backdrop-blur-xl">
       <div className="container grid h-14 grid-cols-3 items-center">
-
         {/* Left — logo */}
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-green-400 to-green-600 shadow-sm shadow-green-500/30">
@@ -70,7 +69,6 @@ export function SiteHeader() {
             $ init
           </Link>
         </div>
-
       </div>
     </header>
   );

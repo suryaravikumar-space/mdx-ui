@@ -23,7 +23,10 @@ function extractTab(child: React.ReactElement): TabInfo | null {
   const props = child.props as Record<string, unknown>;
 
   // ── Shape 1: direct <pre data-language data-title> ──────────────────────────
-  if (props["data-language"] !== undefined || props["data-title"] !== undefined) {
+  if (
+    props["data-language"] !== undefined ||
+    props["data-title"] !== undefined
+  ) {
     return {
       label:
         (props["data-title"] as string | undefined) ??
@@ -39,28 +42,26 @@ function extractTab(child: React.ReactElement): TabInfo | null {
     let language: string | undefined;
     let codeContent: React.ReactNode;
 
-    React.Children.forEach(
-      props.children as React.ReactNode,
-      (figChild) => {
-        if (!React.isValidElement(figChild)) return;
-        const fp = figChild.props as Record<string, unknown>;
+    React.Children.forEach(props.children as React.ReactNode, (figChild) => {
+      if (!React.isValidElement(figChild)) return;
+      const fp = figChild.props as Record<string, unknown>;
 
-        // figcaption holds the title text
-        if ("data-rehype-pretty-code-title" in fp) {
-          title = typeof fp.children === "string" ? fp.children : undefined;
-          language =
-            language ?? (fp["data-language"] as string | undefined);
-        }
+      // figcaption holds the title text
+      if ("data-rehype-pretty-code-title" in fp) {
+        title = typeof fp.children === "string" ? fp.children : undefined;
+        language = language ?? (fp["data-language"] as string | undefined);
+      }
 
-        // pre holds the highlighted code
-        if ((figChild.type as string) === "pre" || fp["data-language"] !== undefined) {
-          language =
-            language ?? (fp["data-language"] as string | undefined);
-          // Pass the whole pre so Shiki colours are preserved
-          codeContent = figChild;
-        }
-      },
-    );
+      // pre holds the highlighted code
+      if (
+        (figChild.type as string) === "pre" ||
+        fp["data-language"] !== undefined
+      ) {
+        language = language ?? (fp["data-language"] as string | undefined);
+        // Pass the whole pre so Shiki colours are preserved
+        codeContent = figChild;
+      }
+    });
 
     return {
       label: title ?? language ?? "Code",

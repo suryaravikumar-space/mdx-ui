@@ -203,7 +203,7 @@ Wrap your app with `MDXProvider` in `src/main.tsx`:
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { MDXProvider } from "@mdx-js/react";
-import { mdxComponents } from "./components/mdx-components";
+import { mdxComponents } from "./components/mdx-ui/mdx-components";
 import App from "./App";
 import "./index.css";
 
@@ -357,7 +357,7 @@ Add `<Navbar />` to the `src/App.tsx` from the previous step:
 ```diff title="src/App.tsx"
   import { BrowserRouter, Routes, Route } from "react-router-dom";
   import { MDXProvider } from "@mdx-js/react";
-  import { mdxComponents } from "./components/mdx-components";
+  import { mdxComponents } from "./components/mdx-ui/mdx-components";
 + import { Navbar } from "./components/Navbar";
   import Index from "./content/index.mdx";
   import About from "./content/about.mdx";

@@ -21,24 +21,42 @@ interface RegistryComponent {
   registryDependencies?: string[];
 }
 
+/** Find mdx-components.{tsx,jsx} — checks componentsDir first, then common fallbacks. */
+async function findMdxComponentsFile(
+  componentsDir: string,
+  cwd: string,
+): Promise<string | null> {
+  const candidates = [
+    path.join(cwd, componentsDir, "mdx-components.tsx"),
+    path.join(cwd, componentsDir, "mdx-components.jsx"),
+    // common fallbacks in case init used a different dir than the actual file
+    path.join(cwd, "src/components/mdx-components.tsx"),
+    path.join(cwd, "src/components/mdx-components.jsx"),
+    path.join(cwd, "components/mdx-components.tsx"),
+    path.join(cwd, "components/mdx-components.jsx"),
+    path.join(cwd, "src/mdx-components.tsx"),
+    path.join(cwd, "src/mdx-components.jsx"),
+  ];
+  for (const p of candidates) {
+    if (await fs.pathExists(p)) return p;
+  }
+  return null;
+}
+
 async function patchMdxComponents(
   componentName: string,
   componentsDir: string,
   cwd: string,
-): Promise<void> {
+): Promise<{ patched: boolean; mdxPath: string }> {
   const mapping = COMPONENT_MDX_MAP[componentName];
-  if (!mapping) return;
+  if (!mapping) return { patched: false, mdxPath: "" };
 
-  // Prefer .tsx but fall back to .jsx
-  let mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx");
-  if (!(await fs.pathExists(mdxPath))) {
-    const jsxPath = path.join(cwd, componentsDir, "mdx-components.jsx");
-    if (await fs.pathExists(jsxPath)) {
-      mdxPath = jsxPath;
-    } else {
-      await fs.ensureDir(path.dirname(mdxPath));
-      await fs.writeFile(mdxPath, `export const mdxComponents = {\n}\n`);
-    }
+  // Find existing file or create at componentsDir
+  let mdxPath = await findMdxComponentsFile(componentsDir, cwd);
+  if (!mdxPath) {
+    mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx");
+    await fs.ensureDir(path.dirname(mdxPath));
+    await fs.writeFile(mdxPath, `export const mdxComponents = {\n}\n`);
   }
 
   let content = await fs.readFile(mdxPath, "utf-8");
@@ -110,6 +128,7 @@ async function patchMdxComponents(
   }
 
   await fs.writeFile(mdxPath, content);
+  return { patched: true, mdxPath };
 }
 
 function loadRegistry(): { components: RegistryComponent[] } {
@@ -129,7 +148,11 @@ export const add = new Command()
   .name("add")
   .description("Add components to your project")
   .argument("[components...]", "components to add")
-  .option("-o, --overwrite", "overwrite existing files without prompting", false)
+  .option(
+    "-o, --overwrite",
+    "overwrite existing files without prompting",
+    false,
+  )
   .action(async (components: string[], opts: { overwrite: boolean }) => {
     console.log();
 
@@ -260,8 +283,16 @@ export const add = new Command()
       }
 
       // Patch mdx-components.tsx for ALL fetched components (including deps)
+      let patchedFile = "";
       for (const data of componentsData) {
-        await patchMdxComponents(data.name, config.componentsDir, cwd);
+        const result = await patchMdxComponents(
+          data.name,
+          config.componentsDir,
+          cwd,
+        );
+        if (result.patched && !patchedFile) {
+          patchedFile = path.relative(cwd, result.mdxPath);
+        }
       }
 
       console.log();
@@ -270,6 +301,9 @@ export const add = new Command()
       }
       if (skipped.length > 0) {
         console.log(chalk.dim(`  skipped: ${skipped.join(", ")}`));
+      }
+      if (patchedFile) {
+        console.log(chalk.dim(`  updated: ${patchedFile}`));
       }
 
       console.log();

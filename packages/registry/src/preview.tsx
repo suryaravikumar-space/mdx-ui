@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { transitions } from "@/lib/primitives";
+import { transitions } from "./lib/primitives";
 
 export interface PreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Raw source code string displayed in the Code tab and used by the copy button */

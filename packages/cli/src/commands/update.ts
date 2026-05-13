@@ -50,8 +50,14 @@ async function patchMdxComponents(
       additions.push(`  ${element}: ${component},`);
   }
   for (const exportName of mapping.imports) {
-    const alreadyMapped = Object.values(mapping.elementMappings).includes(exportName);
-    if (!alreadyMapped && !content.includes(`${exportName},`) && !content.includes(`${exportName}:`))
+    const alreadyMapped = Object.values(mapping.elementMappings).includes(
+      exportName,
+    );
+    if (
+      !alreadyMapped &&
+      !content.includes(`${exportName},`) &&
+      !content.includes(`${exportName}:`)
+    )
       additions.push(`  ${exportName},`);
   }
 
@@ -67,7 +73,10 @@ async function patchMdxComponents(
           if (content[i] === "{") depth++;
           else if (content[i] === "}") {
             depth--;
-            if (depth === 0) { closeIdx = i; break; }
+            if (depth === 0) {
+              closeIdx = i;
+              break;
+            }
           }
         }
         if (closeIdx !== -1) {
@@ -100,12 +109,15 @@ async function diffComponent(
   const framework = (config as any).framework ?? "unknown";
 
   for (const file of data.files) {
-    const libRoot = config.componentsDir.startsWith("src/")
-      ? path.join(cwd, "src")
-      : cwd;
-    const filePath = file.path.startsWith("lib/")
-      ? path.join(libRoot, file.path)
-      : path.join(cwd, config.componentsDir, file.path);
+    // utils stays at src/lib; everything else (primitives, motion, components) in componentsDir
+    const filePath =
+      file.path === "lib/utils.ts"
+        ? path.join(
+            cwd,
+            config.componentsDir.startsWith("src/") ? "src" : "",
+            file.path,
+          )
+        : path.join(cwd, config.componentsDir, file.path);
 
     if (!(await fs.pathExists(filePath))) {
       changedFiles.push(file.path);

@@ -8,13 +8,15 @@ function resolveFilePath(
   componentsDir: string,
   cwd: string,
 ): string {
-  if (filePath.startsWith("lib/")) {
-    // lib/* files live at src/lib/ or lib/ — not inside componentsDir
+  if (filePath === "lib/utils.ts") {
+    // utils lives at src/lib/utils.ts — imported via @/lib/utils alias
     const libRoot = componentsDir.startsWith("src/")
       ? path.join(cwd, "src")
       : cwd;
     return path.join(libRoot, filePath);
   }
+  // Everything else (lib/primitives.ts, lib/motion.tsx, component files)
+  // goes directly inside componentsDir so all mdx-ui files are in one place
   return path.join(cwd, componentsDir, filePath);
 }
 

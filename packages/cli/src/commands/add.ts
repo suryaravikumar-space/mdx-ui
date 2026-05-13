@@ -26,8 +26,21 @@ async function patchMdxComponents(
   const mapping = COMPONENT_MDX_MAP[componentName]
   if (!mapping) return
 
-  const mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx")
-  if (!(await fs.pathExists(mdxPath))) return
+  // Prefer .tsx but fall back to .jsx
+  let mdxPath = path.join(cwd, componentsDir, "mdx-components.tsx")
+  if (!(await fs.pathExists(mdxPath))) {
+    const jsxPath = path.join(cwd, componentsDir, "mdx-components.jsx")
+    if (await fs.pathExists(jsxPath)) {
+      mdxPath = jsxPath
+    } else {
+      // File doesn't exist yet — create it with markers so patching can proceed
+      await fs.ensureDir(path.dirname(mdxPath))
+      await fs.writeFile(
+        mdxPath,
+        `// Auto-managed by mdx-ui CLI — run \`npx @ravikumarsurya/mdx-ui add <component>\` to update.\n// @mdx-ui-imports-start\n// @mdx-ui-imports-end\n\nexport const mdxComponents = {\n// @mdx-ui-mappings-start\n// @mdx-ui-mappings-end\n}\n`
+      )
+    }
+  }
 
   let content = await fs.readFile(mdxPath, "utf-8")
 

@@ -16,20 +16,42 @@ Vite has no built-in MDX convention like Next.js, so you wire things up manually
 
 Skip this step if you already have a project.
 
-```bash
-npm create vite@latest my-app -- --template react-ts
-cd my-app
-npm install
-```
+<CodeGroup>
+  ```bash title="npm"
+  npm create vite@latest my-app -- --template react-ts
+  cd my-app
+  npm install
+  ```
+  ```bash title="pnpm"
+  pnpm create vite my-app --template react-ts
+  cd my-app
+  pnpm install
+  ```
+  ```bash title="yarn"
+  yarn create vite my-app --template react-ts
+  cd my-app
+  yarn
+  ```
+</CodeGroup>
 
 ---
 
 ## 2. Install MDX Support
 
-```bash
-npm install @mdx-js/rollup @mdx-js/react remark-gfm
-npm install --save-dev @types/mdx
-```
+<CodeGroup>
+  ```bash title="npm"
+  npm install @mdx-js/rollup @mdx-js/react remark-gfm
+  npm install --save-dev @types/mdx
+  ```
+  ```bash title="pnpm"
+  pnpm add @mdx-js/rollup @mdx-js/react remark-gfm
+  pnpm add -D @types/mdx
+  ```
+  ```bash title="yarn"
+  yarn add @mdx-js/rollup @mdx-js/react remark-gfm
+  yarn add --dev @types/mdx
+  ```
+</CodeGroup>
 
 ---
 
@@ -77,13 +99,25 @@ MDX UI components use Tailwind CSS for styling.
     <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
   </TabsList>
   <TabsContent value="v4">
-    ```bash
-    npm install tailwindcss @tailwindcss/vite
-    ```
+    <CodeGroup>
+      ```bash title="npm"
+      npm install tailwindcss @tailwindcss/vite
+      ```
+      ```bash title="pnpm"
+      pnpm add tailwindcss @tailwindcss/vite
+      ```
+      ```bash title="yarn"
+      yarn add tailwindcss @tailwindcss/vite
+      ```
+    </CodeGroup>
 
     Update `vite.config.ts`:
 
     ```ts
+    import { defineConfig } from "vite";
+    import react from "@vitejs/plugin-react";
+    import mdx from "@mdx-js/rollup";
+    import remarkGfm from "remark-gfm";
     import tailwindcss from "@tailwindcss/vite";
 
     export default defineConfig({
@@ -95,18 +129,35 @@ MDX UI components use Tailwind CSS for styling.
     });
     ```
 
-    Add to `src/index.css`:
+    Add at the **top** of `src/index.css`:
 
-    ```css
+    ```css title="src/index.css"
     @import "tailwindcss";
+
+    /* rest of your existing styles stay below */
+    :root {
+      --my-var: ...;
+    }
     ```
+
+    > If you have existing `@tailwind base`, `@tailwind components`, or `@tailwind utilities` lines, remove those and use this single import instead. All other CSS in the file stays as-is.
 
   </TabsContent>
   <TabsContent value="v3">
-    ```bash
-    npm install -D tailwindcss postcss autoprefixer
-    npx tailwindcss init -p
-    ```
+    <CodeGroup>
+      ```bash title="npm"
+      npm install -D tailwindcss postcss autoprefixer
+      npx tailwindcss init -p
+      ```
+      ```bash title="pnpm"
+      pnpm add -D tailwindcss postcss autoprefixer
+      pnpm dlx tailwindcss init -p
+      ```
+      ```bash title="yarn"
+      yarn add --dev tailwindcss postcss autoprefixer
+      npx tailwindcss init -p
+      ```
+    </CodeGroup>
 
     Update `tailwind.config.ts`:
 
@@ -134,9 +185,17 @@ MDX UI components use Tailwind CSS for styling.
 
 ## 5. Initialize MDX UI
 
-```bash
-npx @ravikumarsurya/mdx-ui init
-```
+<CodeGroup>
+  ```bash title="npm"
+  npx @ravikumarsurya/mdx-ui init
+  ```
+  ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui init
+  ```
+  ```bash title="yarn"
+  yarn dlx @ravikumarsurya/mdx-ui init
+  ```
+</CodeGroup>
 
 This creates `mdx-ui.json` and installs the `cn()` utility.
 
@@ -144,33 +203,27 @@ This creates `mdx-ui.json` and installs the `cn()` utility.
 
 ## 6. Add Components
 
-```bash
-npx @ravikumarsurya/mdx-ui add callout accordion code-block
-```
+<CodeGroup>
+  ```bash title="npm"
+  npx @ravikumarsurya/mdx-ui add callout accordion code-block
+  ```
+  ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+  ```
+  ```bash title="yarn"
+  yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+  ```
+</CodeGroup>
+
+<Callout variant="info" title="Auto-updated for you">
+  The CLI automatically copies the component file **and** updates `src/components/mdx-components.tsx` with the correct imports and mappings. You never need to edit that file manually.
+</Callout>
 
 ---
 
-## 7. Register Components with MDXProvider
+## 7. Set Up MDXProvider
 
-Create `src/components/mdx-components.tsx`:
-
-```tsx
-import { Callout } from "./mdx-ui/callout";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "./mdx-ui/accordion";
-
-export const mdxComponents = {
-  Callout,
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-};
-```
+The `init` command creates `src/components/mdx-components.tsx` with the marker comments the CLI uses to auto-patch it. You only need to wire it up once in `src/main.tsx` — every subsequent `add` command keeps it up to date.
 
 Wrap your app with `MDXProvider` in `src/main.tsx`:
 
@@ -193,42 +246,218 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ---
 
-## 8. Use MDX Files
+## 8. Set Up Routing
 
-Create `src/content/intro.mdx`:
+If your app has multiple MDX pages, use **React Router** to map URLs to files.
 
-```mdx
-# Getting Started
+### Install React Router
 
-Welcome to my docs.
+<CodeGroup>
+  ```bash title="npm"
+  npm install react-router-dom
+  ```
+  ```bash title="pnpm"
+  pnpm add react-router-dom
+  ```
+  ```bash title="yarn"
+  yarn add react-router-dom
+  ```
+</CodeGroup>
 
-<Callout variant="info" title="Note">
-  Components registered in MDXProvider are available in every .mdx file.
-</Callout>
+### Create your MDX pages
+
+Create these three files with some starter content:
 
 <Accordion>
-  <AccordionItem value="q1">
-    <AccordionTrigger>What is MDX?</AccordionTrigger>
+  <AccordionItem value="index-mdx">
+    <AccordionTrigger>src/content/index.mdx</AccordionTrigger>
     <AccordionContent>
-      MDX lets you use React components inside Markdown files.
+      ```mdx
+      # Welcome
+
+      This is the home page rendered from an MDX file.
+
+      <Callout variant="info" title="Tip">
+        Every component registered in MDXProvider is available here — no imports needed.
+      </Callout>
+      ```
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="about-mdx">
+    <AccordionTrigger>src/content/about.mdx</AccordionTrigger>
+    <AccordionContent>
+      ```mdx
+      # About
+
+      Learn more about this project.
+
+      <Callout variant="note" title="Built with MDX UI">
+        This page is a plain `.mdx` file. The LLM writes Markdown — MDX UI renders the components.
+      </Callout>
+      ```
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="guide-mdx">
+    <AccordionTrigger>src/content/guide.mdx</AccordionTrigger>
+    <AccordionContent>
+      ```mdx
+      # Guide
+
+      A quick walkthrough of the key concepts.
+
+      <Accordion>
+        <AccordionItem value="step-1">
+          <AccordionTrigger>Step 1 — Install</AccordionTrigger>
+          <AccordionContent>Run `npx @ravikumarsurya/mdx-ui init` in your project root.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="step-2">
+          <AccordionTrigger>Step 2 — Add components</AccordionTrigger>
+          <AccordionContent>Run `npx @ravikumarsurya/mdx-ui add callout accordion`.</AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      ```
     </AccordionContent>
   </AccordionItem>
 </Accordion>
-```
 
-Import and render it in `src/App.tsx`:
+### Wire up routes in `src/App.tsx`
 
-```tsx
-import Intro from "./content/intro.mdx";
+```tsx title="src/App.tsx"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MDXProvider } from "@mdx-js/react";
+import { mdxComponents } from "./components/mdx-components";
+
+import Index from "./content/index.mdx";
+import About from "./content/about.mdx";
+import Guide from "./content/guide.mdx";
 
 export default function App() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-12">
-      <Intro />
-    </main>
+    <MDXProvider components={mdxComponents}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/guide" element={<Guide />} />
+        </Routes>
+      </BrowserRouter>
+    </MDXProvider>
   );
 }
 ```
+
+> Move `<MDXProvider>` here and remove it from `main.tsx` — one provider wrapping all routes is enough.
+
+### Add a Navbar
+
+Create `src/components/Navbar.tsx` to navigate between your MDX pages:
+
+```tsx title="src/components/Navbar.tsx"
+import { NavLink } from "react-router-dom";
+
+const links = [
+  { label: "Home", href: "/" },
+  { label: "Guide", href: "/guide" },
+  { label: "About", href: "/about" },
+];
+
+export function Navbar() {
+  return (
+    <nav className="border-b px-6 py-3 flex items-center gap-6">
+      <span className="font-bold text-sm mr-4">My App</span>
+      {links.map(({ label, href }) => (
+        <NavLink
+          key={href}
+          to={href}
+          end={href === "/"}
+          className={({ isActive }) =>
+            isActive
+              ? "text-sm font-medium text-green-600"
+              : "text-sm text-gray-500 hover:text-gray-900"
+          }
+        >
+          {label}
+        </NavLink>
+      ))}
+    </nav>
+  );
+}
+```
+
+Add `<Navbar />` to the `src/App.tsx` from the previous step:
+
+```diff title="src/App.tsx"
+  import { BrowserRouter, Routes, Route } from "react-router-dom";
+  import { MDXProvider } from "@mdx-js/react";
+  import { mdxComponents } from "./components/mdx-components";
++ import { Navbar } from "./components/Navbar";
+  import Index from "./content/index.mdx";
+  import About from "./content/about.mdx";
+  import Guide from "./content/guide.mdx";
+
+  export default function App() {
+    return (
+      <MDXProvider components={mdxComponents}>
+        <BrowserRouter>
++         <Navbar />
++         <main className="max-w-3xl mx-auto px-6 py-10">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/guide" element={<Guide />} />
+            </Routes>
++         </main>
+        </BrowserRouter>
+      </MDXProvider>
+    );
+  }
+```
+
+> `NavLink` from React Router automatically applies the active class when the URL matches — no manual `useLocation` needed.
+
+### Handle client-side routing in Vite
+
+By default, Vite's dev server only serves `index.html` for `/`. Deep links like `/guide` will 404 on refresh without this fix.
+
+Add the `server` block to your existing `vite.config.ts`:
+
+```diff title="vite.config.ts"
+  import { defineConfig } from "vite";
+  import react from "@vitejs/plugin-react";
+  import mdx from "@mdx-js/rollup";
+  import remarkGfm from "remark-gfm";
+
+  export default defineConfig({
+    plugins: [
+      mdx({ remarkPlugins: [remarkGfm], providerImportSource: "@mdx-js/react" }),
+      react(),
+    ],
++   server: {
++     historyApiFallback: true,
++   },
+  });
+```
+
+For production, configure your host (Vercel, Netlify, Nginx) to redirect all paths to `index.html`:
+
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="vercel">Vercel</TabsTrigger>
+    <TabsTrigger value="netlify">Netlify</TabsTrigger>
+  </TabsList>
+  <TabsContent value="vercel">
+    ```json title="vercel.json"
+    {
+      "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+    }
+    ```
+  </TabsContent>
+  <TabsContent value="netlify">
+    ```txt title="public/_redirects"
+    /*  /index.html  200
+    ```
+  </TabsContent>
+</Tabs>
 
 ---
 
@@ -275,9 +504,17 @@ If you're using math components, add the KaTeX stylesheet in `src/index.css`:
 
 Install and add to components:
 
-```bash
-npx @ravikumarsurya/mdx-ui add math math-easy math-solution
-```
+<CodeGroup>
+  ```bash title="npm"
+  npx @ravikumarsurya/mdx-ui add math math-easy math-solution
+  ```
+  ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
+  ```
+  ```bash title="yarn"
+  yarn dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
+  ```
+</CodeGroup>
 
 ```tsx
 // src/components/mdx-components.tsx
@@ -306,6 +543,61 @@ export const mdxComponents = {
 ---
 
 ## Troubleshooting
+
+### Cannot find module `@/lib/primitives` or `@/lib/motion`
+
+MDX UI components use the `@/` path alias. You need to configure it in both `vite.config.ts` and `tsconfig.json`.
+
+**1. Install the Node path helper:**
+
+<CodeGroup>
+  ```bash title="npm"
+  npm install --save-dev @types/node
+  ```
+  ```bash title="pnpm"
+  pnpm add -D @types/node
+  ```
+  ```bash title="yarn"
+  yarn add --dev @types/node
+  ```
+</CodeGroup>
+
+**2. Add the alias to `vite.config.ts`:**
+
+```diff title="vite.config.ts"
++ import path from "path";
+  import { defineConfig } from "vite";
+  import react from "@vitejs/plugin-react";
+  import mdx from "@mdx-js/rollup";
+  import remarkGfm from "remark-gfm";
+
+  export default defineConfig({
+    plugins: [
+      mdx({ remarkPlugins: [remarkGfm], providerImportSource: "@mdx-js/react" }),
+      react(),
+    ],
++   resolve: {
++     alias: {
++       "@": path.resolve(__dirname, "./src"),
++     },
++   },
+  });
+```
+
+**3. Add the alias to `tsconfig.json`:**
+
+```diff title="tsconfig.json"
+  {
+    "compilerOptions": {
++     "baseUrl": ".",
++     "paths": {
++       "@/*": ["./src/*"]
++     }
+    }
+  }
+```
+
+After this, `@/lib/primitives` resolves to `src/lib/primitives.ts` which the CLI copies during `init`.
 
 ### Components not rendering in MDX
 

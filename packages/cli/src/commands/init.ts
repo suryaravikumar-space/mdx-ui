@@ -75,6 +75,9 @@ export const init = new Command()
         await setupTailwindConfig(cwd, twVersion, spinner)
       }
 
+      // Create mdx-components.tsx with patch markers
+      await setupMdxComponents(config.componentsDir, config.typescript, cwd, spinner)
+
       await fs.writeJSON(
         path.join(cwd, "mdx-ui.json"),
         {
@@ -92,6 +95,7 @@ export const init = new Command()
       console.log(chalk.green("\n✓ Created mdx-ui.json"))
       console.log(chalk.green(`✓ Created ${config.componentsDir}/`))
       console.log(chalk.green(`✓ Created ${structure.libDir}/utils.${ext}`))
+      console.log(chalk.green(`✓ Created ${config.componentsDir}/mdx-components.${config.typescript ? "tsx" : "jsx"}`))
       if (config.typescript && structure.framework !== "nextjs") {
         console.log(chalk.green("✓ Configured @/ path alias in tsconfig and vite.config"))
       }
@@ -490,6 +494,32 @@ async function setupTailwindConfig(cwd: string, twVersion: 4 | 3, spinner: Retur
   } catch {
     // non-fatal
   }
+}
+
+async function setupMdxComponents(
+  componentsDir: string,
+  typescript: boolean,
+  cwd: string,
+  spinner: ReturnType<typeof ora>
+) {
+  const ext = typescript ? "tsx" : "jsx"
+  const mdxPath = path.join(cwd, componentsDir, `mdx-components.${ext}`)
+
+  if (await fs.pathExists(mdxPath)) return
+
+  const content = `// Auto-managed by mdx-ui CLI — run \`npx @ravikumarsurya/mdx-ui add <component>\` to update.
+// @mdx-ui-imports-start
+// @mdx-ui-imports-end
+
+export const mdxComponents = {
+// @mdx-ui-mappings-start
+// @mdx-ui-mappings-end
+}
+`
+
+  await fs.ensureDir(path.dirname(mdxPath))
+  await fs.writeFile(mdxPath, content)
+  spinner.text = `Created ${path.relative(cwd, mdxPath)}`
 }
 
 function printNextSteps(framework: Framework) {

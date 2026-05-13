@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -12,25 +12,76 @@ export interface CodeGroupProps {
   className?: string;
 }
 
+/** Extract tab label + content from a child element.
+ *
+ *  Two shapes are handled:
+ *  1. Raw <pre data-language="x" data-title="y"> — from demos / direct JSX.
+ *  2. <figure data-rehype-pretty-code-figure> wrapping a <figcaption> and <pre>
+ *     — produced by rehype-pretty-code when code fences live inside MDX JSX.
+ */
+function extractTab(child: React.ReactElement): TabInfo | null {
+  const props = child.props as Record<string, unknown>;
+
+  // ── Shape 1: direct <pre data-language data-title> ──────────────────────────
+  if (props["data-language"] !== undefined || props["data-title"] !== undefined) {
+    return {
+      label:
+        (props["data-title"] as string | undefined) ??
+        (props["data-language"] as string | undefined) ??
+        "Code",
+      content: props.children as React.ReactNode,
+    };
+  }
+
+  // ── Shape 2: <figure data-rehype-pretty-code-figure> ────────────────────────
+  if ("data-rehype-pretty-code-figure" in props) {
+    let title: string | undefined;
+    let language: string | undefined;
+    let codeContent: React.ReactNode;
+
+    React.Children.forEach(
+      props.children as React.ReactNode,
+      (figChild) => {
+        if (!React.isValidElement(figChild)) return;
+        const fp = figChild.props as Record<string, unknown>;
+
+        // figcaption holds the title text
+        if ("data-rehype-pretty-code-title" in fp) {
+          title = typeof fp.children === "string" ? fp.children : undefined;
+          language =
+            language ?? (fp["data-language"] as string | undefined);
+        }
+
+        // pre holds the highlighted code
+        if ((figChild.type as string) === "pre" || fp["data-language"] !== undefined) {
+          language =
+            language ?? (fp["data-language"] as string | undefined);
+          // Pass the whole pre so Shiki colours are preserved
+          codeContent = figChild;
+        }
+      },
+    );
+
+    return {
+      label: title ?? language ?? "Code",
+      content: codeContent ?? null,
+    };
+  }
+
+  return null;
+}
+
 export const CodeGroup = React.forwardRef<HTMLElement, CodeGroupProps>(
   function CodeGroup({ children, className }, ref) {
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [copied, setCopied] = React.useState(false);
-    const preRef = React.useRef<HTMLPreElement>(null);
+    const panelRef = React.useRef<HTMLDivElement>(null);
 
-    // Each child is a CodeBlock (or styled pre) element from the mdx component map.
-    // rehype-pretty-code sets data-language and data-title on the <pre>; those props
-    // pass through regardless of which component pre is mapped to.
     const tabs: TabInfo[] = [];
     React.Children.forEach(children, (child) => {
       if (!React.isValidElement(child)) return;
-      const props = child.props as Record<string, unknown>;
-      const language = props["data-language"] as string | undefined;
-      const title = props["data-title"] as string | undefined;
-      tabs.push({
-        label: title ?? language ?? "Code",
-        content: props.children as React.ReactNode,
-      });
+      const tab = extractTab(child);
+      if (tab) tabs.push(tab);
     });
 
     if (tabs.length === 0) return null;
@@ -39,7 +90,7 @@ export const CodeGroup = React.forwardRef<HTMLElement, CodeGroupProps>(
     const active = tabs[clampedIndex];
 
     const handleCopy = async () => {
-      const text = preRef.current?.innerText ?? "";
+      const text = panelRef.current?.innerText ?? "";
       try {
         await navigator.clipboard.writeText(text);
         setCopied(true);
@@ -69,17 +120,18 @@ export const CodeGroup = React.forwardRef<HTMLElement, CodeGroupProps>(
       <figure
         ref={ref}
         className={cn(
-          "my-6 overflow-hidden rounded-lg border border-border bg-muted",
+          "my-6 overflow-hidden rounded-xl border border-green-500/15 bg-zinc-950",
           className,
         )}
         data-code-block
       >
         {/* Tab bar */}
-        <div className="flex items-center justify-between border-b border-border bg-muted/80 min-h-[36px]">
+        <div className="flex items-center justify-between border-b border-green-500/10 bg-zinc-900/80">
           <div
-            className="flex overflow-x-auto"
             role="tablist"
             aria-label="Code examples"
+            className="flex min-w-0 flex-1"
+            style={{ overflowX: "auto", scrollbarWidth: "none" }}
           >
             {tabs.map((tab, i) => (
               <button
@@ -90,33 +142,38 @@ export const CodeGroup = React.forwardRef<HTMLElement, CodeGroupProps>(
                 onClick={() => setActiveIndex(i)}
                 onKeyDown={(e) => handleKeyDown(e, i)}
                 className={cn(
-                  "px-4 py-2 text-sm font-medium transition-colors shrink-0 border-b-2 -mb-px",
+                  "relative shrink-0 px-4 py-2.5 font-mono text-xs font-medium transition-colors",
                   i === clampedIndex
-                    ? "text-foreground border-primary"
-                    : "text-muted-foreground border-transparent hover:text-foreground",
+                    ? "text-green-400"
+                    : "text-zinc-500 hover:text-zinc-300",
                 )}
               >
                 {tab.label}
+                {i === clampedIndex && (
+                  <span className="absolute inset-x-0 bottom-0 h-px bg-green-500" />
+                )}
               </button>
             ))}
           </div>
+
           <button
             onClick={handleCopy}
-            className="px-4 text-xs text-muted-foreground hover:text-foreground transition-colors select-none shrink-0"
+            className="shrink-0 select-none px-4 py-2.5 font-mono text-xs text-zinc-500 transition-colors hover:text-green-400"
             aria-label={copied ? "Copied" : "Copy code"}
           >
-            {copied ? "✓ Copied" : "Copy"}
+            {copied ? "✓ copied" : "copy"}
           </button>
         </div>
 
-        {/* Active tab content */}
-        <pre
-          ref={preRef}
+        {/* Active tab content — data-rehype-pretty-code-figure keeps Shiki CSS vars in scope */}
+        <div
+          ref={panelRef}
           role="tabpanel"
-          className="overflow-x-auto p-4 text-sm [&_code]:bg-transparent [&_code]:p-0 [&_code]:border-0 [&_code]:text-inherit"
+          data-rehype-pretty-code-figure=""
+          className="overflow-x-auto [&_pre]:m-0 [&_pre]:rounded-none [&_pre]:border-0 [&_pre]:bg-transparent [&_pre]:p-4"
         >
           {active.content}
-        </pre>
+        </div>
       </figure>
     );
   },

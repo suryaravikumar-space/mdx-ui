@@ -50,10 +50,36 @@ async function patchMdxComponents(
         : importLine + content;
   }
 
-  // inject entries
+  // locate the mdxComponents object body first (used for membership checks)
+  const ANCHOR = "export const mdxComponents";
+  const anchorIdx = content.indexOf(ANCHOR);
+  const openBrace = anchorIdx !== -1 ? content.indexOf("{", anchorIdx) : -1;
+  let closeIdx = -1;
+  if (openBrace !== -1) {
+    let depth = 0;
+    for (let i = openBrace; i < content.length; i++) {
+      if (content[i] === "{") depth++;
+      else if (content[i] === "}") {
+        depth--;
+        if (depth === 0) {
+          closeIdx = i;
+          break;
+        }
+      }
+    }
+  }
+  const objectBody =
+    openBrace !== -1 && closeIdx !== -1
+      ? content.slice(openBrace + 1, closeIdx)
+      : "";
+
+  // build additions list, checking membership against objectBody only
   const additions: string[] = [];
   for (const [element, component] of Object.entries(mapping.elementMappings)) {
-    if (!content.includes(`${element}:`) && !content.includes(`${element} :`))
+    if (
+      !objectBody.includes(`${element}:`) &&
+      !objectBody.includes(`${element} :`)
+    )
       additions.push(`  ${element}: ${component},`);
   }
   for (const exportName of mapping.imports) {
@@ -62,39 +88,18 @@ async function patchMdxComponents(
     );
     if (
       !alreadyMapped &&
-      !content.includes(`${exportName},`) &&
-      !content.includes(`${exportName}:`)
+      !objectBody.includes(`${exportName},`) &&
+      !objectBody.includes(`${exportName}:`)
     )
       additions.push(`  ${exportName},`);
   }
 
-  if (additions.length > 0) {
-    const ANCHOR = "export const mdxComponents";
-    const anchorIdx = content.indexOf(ANCHOR);
-    if (anchorIdx !== -1) {
-      const openBrace = content.indexOf("{", anchorIdx);
-      if (openBrace !== -1) {
-        let depth = 0;
-        let closeIdx = -1;
-        for (let i = openBrace; i < content.length; i++) {
-          if (content[i] === "{") depth++;
-          else if (content[i] === "}") {
-            depth--;
-            if (depth === 0) {
-              closeIdx = i;
-              break;
-            }
-          }
-        }
-        if (closeIdx !== -1) {
-          content =
-            content.slice(0, closeIdx) +
-            additions.join("\n") +
-            "\n" +
-            content.slice(closeIdx);
-        }
-      }
-    }
+  if (additions.length > 0 && closeIdx !== -1) {
+    content =
+      content.slice(0, closeIdx) +
+      additions.join("\n") +
+      "\n" +
+      content.slice(closeIdx);
   }
 
   await fs.writeFile(mdxPath, content);

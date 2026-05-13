@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { focusRing, popoverSurface } from "./lib/primitives";
+import { focusRing, popoverSurface } from "@/lib/primitives";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 

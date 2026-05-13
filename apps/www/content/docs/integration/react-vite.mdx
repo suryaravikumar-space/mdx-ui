@@ -514,15 +514,9 @@ MDX UI components use the `@/` path alias. You need to configure it in `vite.con
 **1. Install the Node path helper:**
 
 <CodeGroup>
-  ```bash title="npm"
-  npm install --save-dev @types/node
-  ```
-  ```bash title="pnpm"
-  pnpm add -D @types/node
-  ```
-  ```bash title="yarn"
-  yarn add --dev @types/node
-  ```
+  ```bash title="npm" npm install --save-dev @types/node ``` ```bash
+  title="pnpm" pnpm add -D @types/node ``` ```bash title="yarn" yarn add --dev
+  @types/node ```
 </CodeGroup>
 
 **2. Add the alias to `vite.config.ts`:**
@@ -562,7 +556,8 @@ Vite projects use TypeScript project references. `tsc -b` compiles each referenc
 ```
 
 <Callout variant="info" title="Note on baseUrl">
-  `baseUrl` is deprecated in TypeScript 5.5+. `paths` works standalone without it.
+  `baseUrl` is deprecated in TypeScript 5.5+. `paths` works standalone without
+  it.
 </Callout>
 
 After this, `@/lib/primitives` resolves to `src/lib/primitives.ts` which the CLI copies during `init`.

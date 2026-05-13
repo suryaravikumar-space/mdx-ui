@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { focusRing, transitions } from "./lib/primitives";
-import { Collapse } from "./lib/motion";
+import { focusRing, transitions } from "@/lib/primitives";
+import { Collapse } from "@/lib/motion";
 
 interface AccordionContextValue {
   openValues: string[];

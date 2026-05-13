@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { focusRingInset, transitions } from "./lib/primitives";
-import { Collapse } from "./lib/motion";
+import { focusRingInset, transitions } from "@/lib/primitives";
+import { Collapse } from "@/lib/motion";
 
 export interface RevealProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Label text shown on the toggle button */

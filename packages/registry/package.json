@@ -11,7 +11,7 @@
     "katex": "^0.16.44",
     "mermaid": "^11.13.0",
     "react": "^18.2.0",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^3.5.0"
   },
   "scripts": {
     "test": "jest --no-coverage",

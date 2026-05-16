@@ -4,7 +4,20 @@ import { z } from "zod";
 import axios from "axios";
 import fs from "fs-extra";
 import path from "path";
+import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
+
+function getCliVersion(): string {
+  try {
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    const pkg = JSON.parse(
+      readFileSync(path.join(__dirname, "../../package.json"), "utf-8"),
+    );
+    return typeof pkg.version === "string" ? pkg.version : "0.0.0";
+  } catch {
+    return "0.0.0";
+  }
+}
 
 const REGISTRY_URL =
   "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui/main/registry/registry.json";
@@ -91,7 +104,7 @@ function registryError(msg: string) {
 export async function startMcpServer() {
   const server = new McpServer({
     name: "mdx-ui",
-    version: "1.0.0",
+    version: getCliVersion(),
   });
 
   // Tool 1: list all components
@@ -378,7 +391,13 @@ STRICT RULES
           "register-map",
           "table",
         ],
-        "Diagrams & Visualization": ["ds", "ds-tree", "file-tree", "mermaid", "tree"],
+        "Diagrams & Visualization": [
+          "ds",
+          "ds-tree",
+          "file-tree",
+          "mermaid",
+          "tree",
+        ],
         Media: ["image", "video"],
         "Annotation & Reference": ["annotation", "glossary"],
         "Metadata & Utility": [

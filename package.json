@@ -30,6 +30,9 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "test": "turbo run test",
     "test:coverage": "turbo run test:coverage",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -38,9 +41,11 @@
       "prettier --write"
     ],
     "packages/**/*.{ts,tsx}": [
+      "eslint --config eslint.config.js --max-warnings=0 --fix",
       "prettier --write"
     ],
     "scripts/**/*.{ts,tsx}": [
+      "eslint --config eslint.config.js --max-warnings=0 --fix",
       "prettier --write"
     ],
     "*.{js,mjs,cjs,json,md,mdx,yml,yaml}": [
@@ -49,10 +54,12 @@
   },
   "packageManager": "pnpm@9.0.6",
   "devDependencies": {
+    "@eslint/js": "^9.0.0",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
+    "eslint": "^9.0.0",
     "fs-extra": "^11.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.3",
@@ -61,6 +68,7 @@
     "tsx": "^4.7.0",
     "turbo": "^1.12.5",
     "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.0",
     "vitest": "^4.1.5"
   }
 }

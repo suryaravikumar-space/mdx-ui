@@ -10,7 +10,7 @@ import {
   type ComponentData,
 } from "../utils/fetch-component.js";
 import { installDependencies } from "../utils/install-deps.js";
-import { writeComponent } from "../utils/write-component.js";
+
 import { COMPONENT_MDX_MAP, REGISTRY } from "../lib/component-registry.js";
 
 interface RegistryComponent {
@@ -84,7 +84,7 @@ async function patchMdxComponents(
   // --- locate the mdxComponents object body first (used for membership checks) ---
   const ANCHOR = "export const mdxComponents";
   const anchorIdx = content.indexOf(ANCHOR);
-  let openBrace = anchorIdx !== -1 ? content.indexOf("{", anchorIdx) : -1;
+  const openBrace = anchorIdx !== -1 ? content.indexOf("{", anchorIdx) : -1;
   let closeIdx = -1;
   if (openBrace !== -1) {
     let depth = 0;

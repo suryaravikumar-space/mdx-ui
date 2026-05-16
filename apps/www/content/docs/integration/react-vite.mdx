@@ -17,10 +17,21 @@ Vite has no built-in MDX convention like Next.js, so you wire things up manually
 Skip this step if you already have a project.
 
 <CodeGroup>
-  ```bash title="npm" npm create vite@latest my-app -- --template react-ts cd
-  my-app npm install ``` ```bash title="pnpm" pnpm create vite my-app --template
-  react-ts cd my-app pnpm install ``` ```bash title="yarn" yarn create vite
-  my-app --template react-ts cd my-app yarn ```
+  ```bash title="npm"
+  npm create vite@latest my-app -- --template react-ts
+  cd my-app
+  npm install
+  ```
+  ```bash title="pnpm"
+  pnpm create vite my-app --template react-ts
+  cd my-app
+  pnpm install
+  ```
+  ```bash title="yarn"
+  yarn create vite my-app --template react-ts
+  cd my-app
+  yarn
+  ```
 </CodeGroup>
 
 ---
@@ -28,10 +39,18 @@ Skip this step if you already have a project.
 ## 2. Install MDX Support
 
 <CodeGroup>
-  ```bash title="npm" npm install @mdx-js/rollup @mdx-js/react remark-gfm npm
-  install --save-dev @types/mdx ``` ```bash title="pnpm" pnpm add @mdx-js/rollup
-  @mdx-js/react remark-gfm pnpm add -D @types/mdx ``` ```bash title="yarn" yarn
-  add @mdx-js/rollup @mdx-js/react remark-gfm yarn add --dev @types/mdx ```
+  ```bash title="npm"
+  npm install @mdx-js/rollup @mdx-js/react remark-gfm
+  npm install --save-dev @types/mdx
+  ```
+  ```bash title="pnpm"
+  pnpm add @mdx-js/rollup @mdx-js/react remark-gfm
+  pnpm add -D @types/mdx
+  ```
+  ```bash title="yarn"
+  yarn add @mdx-js/rollup @mdx-js/react remark-gfm
+  yarn add --dev @types/mdx
+  ```
 </CodeGroup>
 
 ---
@@ -167,9 +186,15 @@ MDX UI components use Tailwind CSS for styling.
 ## 5. Initialize MDX UI
 
 <CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui init ``` ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui init ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui init ```
+  ```bash title="npm"
+  npx @ravikumarsurya/mdx-ui init
+  ```
+  ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui init
+  ```
+  ```bash title="yarn"
+  yarn dlx @ravikumarsurya/mdx-ui init
+  ```
 </CodeGroup>
 
 This creates `mdx-ui.json` and installs the `cn()` utility.
@@ -179,10 +204,15 @@ This creates `mdx-ui.json` and installs the `cn()` utility.
 ## 6. Add Components
 
 <CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add callout accordion
-  code-block ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  callout accordion code-block ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add callout accordion code-block ```
+  ```bash title="npm"
+  npx @ravikumarsurya/mdx-ui add callout accordion code-block
+  ```
+  ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+  ```
+  ```bash title="yarn"
+  yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+  ```
 </CodeGroup>
 
 <Callout variant="info" title="Auto-updated for you">
@@ -225,8 +255,15 @@ If your app has multiple MDX pages, use **React Router** to map URLs to files.
 ### Install React Router
 
 <CodeGroup>
-  ```bash title="npm" npm install react-router-dom ``` ```bash title="pnpm" pnpm
-  add react-router-dom ``` ```bash title="yarn" yarn add react-router-dom ```
+  ```bash title="npm"
+  npm install react-router-dom
+  ```
+  ```bash title="pnpm"
+  pnpm add react-router-dom
+  ```
+  ```bash title="yarn"
+  yarn add react-router-dom
+  ```
 </CodeGroup>
 
 ### Create your MDX pages
@@ -473,10 +510,15 @@ If you're using math components, add the KaTeX stylesheet in `src/index.css`:
 Install and add to components:
 
 <CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math math-easy
-  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  math math-easy math-solution ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add math math-easy math-solution ```
+  ```bash title="npm"
+  npx @ravikumarsurya/mdx-ui add math math-easy math-solution
+  ```
+  ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
+  ```
+  ```bash title="yarn"
+  yarn dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
+  ```
 </CodeGroup>
 
 ```tsx
@@ -514,9 +556,15 @@ MDX UI components use the `@/` path alias. You need to configure it in `vite.con
 **1. Install the Node path helper:**
 
 <CodeGroup>
-  ```bash title="npm" npm install --save-dev @types/node ``` ```bash
-  title="pnpm" pnpm add -D @types/node ``` ```bash title="yarn" yarn add --dev
-  @types/node ```
+  ```bash title="npm"
+  npm install --save-dev @types/node
+  ```
+  ```bash title="pnpm"
+  pnpm add -D @types/node
+  ```
+  ```bash title="yarn"
+  yarn add --dev @types/node
+  ```
 </CodeGroup>
 
 **2. Add the alias to `vite.config.ts`:**

@@ -16,42 +16,21 @@ Before integrating MDX UI, make sure you have:
 2. **Tailwind CSS** configured in your project
 3. **A Next.js project** (or other React framework)
 
-## Choosing an MDX Renderer
+## Choose Your Framework
 
-MDX UI works with any MDX renderer. Choose the one that fits your needs:
+MDX UI works with any MDX renderer. Follow the guide for your setup:
 
-### next-mdx-remote
+### Next.js
 
-**Best for:** Flexible content sources, blogs, CMS integration
+Covers both `@next/mdx` (MDX files as pages) and `next-mdx-remote` (content from files or a CMS) — pick the approach that fits your project.
 
-- Load MDX from anywhere (files, CMS, database)
-- Server-side rendering
-- Easy to set up
-- No build-time processing
+[View Guide →](/docs/integration/nextjs)
 
-[View Guide →](/docs/integration/nextjs-mdx-remote)
+### React + Vite
 
-### Contentlayer
+For SPAs, dashboards, and interactive docs without SSR.
 
-**Best for:** Type-safe content, large sites, content validation
-
-- Full TypeScript support
-- Content validation
-- Great developer experience
-- Automatic type generation
-
-[View Guide →](/docs/integration/nextjs-contentlayer)
-
-### @next/mdx
-
-**Best for:** MDX-first sites, simple blogs, documentation
-
-- Official Next.js plugin
-- MDX files as pages
-- Simplest setup
-- Best Next.js integration
-
-[View Guide →](/docs/integration/nextjs-mdx)
+[View Guide →](/docs/integration/react-vite)
 
 ## Quick Start
 
@@ -110,37 +89,21 @@ This uses the custom H1 component.
 </Callout>
 ```
 
-## Comparison
-
-| Feature | next-mdx-remote | contentlayer | @next/mdx |
-|---------|----------------|--------------|-----------|
-| Setup Complexity | Low | Medium | Low |
-| TypeScript Support | Basic | Excellent | Good |
-| Content Validation | No | Yes | No |
-| Remote Content | Yes | No | With extra setup |
-| Build Time | Fast | Slower (first build) | Fast |
-| Hot Reload | Yes | Yes | Yes |
-| Framework | Any | Next.js focused | Next.js only |
-
 ## Component Mappings
 
-All integration approaches require mapping MDX elements to your components. This is done through a component mappings file.
+All integration approaches use the same component mappings file — the CLI keeps it updated automatically.
 
 [Learn More →](/docs/integration/component-mappings)
 
-## Framework-Specific Guides
+## Integration Guides
 
-### React Frameworks
-
-- [Next.js + next-mdx-remote](/docs/integration/nextjs-mdx-remote)
-- [Next.js + contentlayer](/docs/integration/nextjs-contentlayer)
-- [Next.js + @next/mdx](/docs/integration/nextjs-mdx)
+- [Next.js](/docs/integration/nextjs) — `@next/mdx` or `next-mdx-remote`
+- [React + Vite](/docs/integration/react-vite) — `@mdx-js/rollup` + `MDXProvider`
 
 ### Coming Soon
 
-- Remix integration
-- Astro integration
-- Gatsby integration
+- Remix
+- Astro
 
 ## Example Projects
 

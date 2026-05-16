@@ -76,7 +76,7 @@ async function fetchRegistry(): Promise<Registry> {
     const reason =
       err.code === "ECONNABORTED"
         ? "request timed out"
-        : err.message ?? "network error";
+        : (err.message ?? "network error");
     throw new Error(`Could not load component registry — ${reason}`);
   }
 }
@@ -318,6 +318,100 @@ STRICT RULES
 
       return {
         content: [{ type: "text", text: standard }],
+      };
+    },
+  );
+
+  // Tool 5: list components grouped by category
+  server.registerTool(
+    "list_categories",
+    {
+      description:
+        "List mdx-ui components grouped by category — use this to discover components before calling get_component",
+    },
+    async () => {
+      let registry: Registry;
+      try {
+        registry = await fetchRegistry();
+      } catch (err: any) {
+        return registryError(err.message);
+      }
+
+      const CATEGORIES: Record<string, string[]> = {
+        "Layout & Structure": [
+          "accordion",
+          "callout",
+          "card",
+          "steps",
+          "tabs",
+          "reveal",
+          "spoiler",
+        ],
+        "Typography & Text": [
+          "blockquote",
+          "emphasis",
+          "heading",
+          "headings",
+          "highlight",
+          "horizontal-rule",
+          "inline-code",
+          "kbd",
+          "link",
+          "list",
+          "paragraph",
+        ],
+        Code: ["code-block", "code-group", "diff-block", "terminal"],
+        Math: [
+          "math",
+          "math-easy",
+          "math-equation",
+          "math-primitives",
+          "math-solution",
+        ],
+        "Data & Tables": [
+          "complexity-table",
+          "data-table",
+          "data-type-table",
+          "hardware-spec",
+          "pin-table",
+          "privacy-table",
+          "register-map",
+          "table",
+        ],
+        "Diagrams & Visualization": ["ds", "ds-tree", "file-tree", "mermaid", "tree"],
+        Media: ["image", "video"],
+        "Annotation & Reference": ["annotation", "glossary"],
+        "Metadata & Utility": [
+          "alert",
+          "badge",
+          "certification-badge",
+          "changelog",
+          "definition",
+          "invariant",
+          "json-ld",
+          "security-note",
+        ],
+      };
+
+      const byName = new Map(registry.components.map((c) => [c.name, c]));
+
+      const lines: string[] = [];
+      for (const [category, names] of Object.entries(CATEGORIES)) {
+        lines.push(`\n### ${category}`);
+        for (const name of names) {
+          const comp = byName.get(name);
+          if (comp) {
+            lines.push(`- **${comp.name}**: ${comp.description}`);
+          }
+        }
+      }
+
+      lines.push(
+        "\nUse get_component(<name>) for full schema, or search_components(<query>) to find by use case.",
+      );
+
+      return {
+        content: [{ type: "text", text: lines.join("\n") }],
       };
     },
   );

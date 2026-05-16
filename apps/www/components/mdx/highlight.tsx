@@ -1,5 +1,5 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 // Marker-style highlight: transparent top 45%, colour bottom 55%
 // Uses Tailwind arbitrary bg values so dark: variant works correctly.
@@ -24,15 +24,15 @@ const colorClasses: Record<string, string> = {
     "bg-[linear-gradient(transparent_45%,rgba(216,180,254,0.65)_45%)]",
     "dark:bg-[linear-gradient(transparent_45%,rgba(192,132,252,0.25)_45%)]",
   ].join(" "),
-}
+};
 
 export interface HighlightProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Highlight colour — simulates a real marker pen.
    * @default "yellow"
    */
-  color?: "yellow" | "blue" | "green" | "pink" | "purple"
-  children: React.ReactNode
+  color?: "yellow" | "blue" | "green" | "pink" | "purple";
+  children: React.ReactNode;
 }
 
 export const Highlight = React.forwardRef<HTMLElement, HighlightProps>(
@@ -42,12 +42,12 @@ export const Highlight = React.forwardRef<HTMLElement, HighlightProps>(
       className={cn(
         "rounded-sm bg-transparent [background-size:100%_100%] [background-repeat:no-repeat]",
         colorClasses[color] ?? colorClasses.yellow,
-        className
+        className,
       )}
       {...props}
     >
       {children}
     </mark>
-  )
-)
-Highlight.displayName = "Highlight"
+  ),
+);
+Highlight.displayName = "Highlight";

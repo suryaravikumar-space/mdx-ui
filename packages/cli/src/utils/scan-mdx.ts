@@ -14,7 +14,9 @@ function extractComponentNames(content: string): Set<string> {
   // Match opening tags: <ComponentName or <ComponentName.SubName
   const tagRe = /<([A-Z][a-zA-Z0-9]*)/g;
   // Skip inside code fences
-  const stripped = content.replace(/```[\s\S]*?```/g, "").replace(/`[^`]*`/g, "");
+  const stripped = content
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`[^`]*`/g, "");
   let m: RegExpExecArray | null;
   while ((m = tagRe.exec(stripped)) !== null) {
     names.add(m[1]);
@@ -33,7 +35,11 @@ function extractRegistered(mdxComponentsPath: string): Set<string> {
   while ((m = importRe.exec(content)) !== null) {
     m[1].split(",").forEach((s) => {
       // Handle "Foo as Bar" aliases
-      const name = s.trim().split(/\s+as\s+/).pop()?.trim();
+      const name = s
+        .trim()
+        .split(/\s+as\s+/)
+        .pop()
+        ?.trim();
       if (name && /^[A-Z]/.test(name)) names.add(name);
     });
   }
@@ -47,7 +53,11 @@ function extractRegistered(mdxComponentsPath: string): Set<string> {
 
 // HTML-like elements and React built-ins to skip
 const IGNORE = new Set([
-  "Fragment", "React", "StrictMode", "Suspense", "ErrorBoundary",
+  "Fragment",
+  "React",
+  "StrictMode",
+  "Suspense",
+  "ErrorBoundary",
 ]);
 
 export interface ScanResult {
@@ -71,7 +81,10 @@ export async function scanMdxComponents(cwd: string): Promise<ScanResult[]> {
   let mdxComponentsPath = "";
   for (const c of candidates) {
     const full = path.join(cwd, c);
-    if (fs.existsSync(full)) { mdxComponentsPath = full; break; }
+    if (fs.existsSync(full)) {
+      mdxComponentsPath = full;
+      break;
+    }
   }
 
   const registered = extractRegistered(mdxComponentsPath);
@@ -128,7 +141,7 @@ export function printScanWarnings(results: ScanResult[], pm = "pnpm"): void {
   for (const { file, missing } of results) {
     for (const { name } of missing) {
       console.log(
-        `  ${chalk.dim(file)} → ${chalk.cyan(`<${name}>`)} is not installed`
+        `  ${chalk.dim(file)} → ${chalk.cyan(`<${name}>`)} is not installed`,
       );
     }
   }
@@ -139,7 +152,7 @@ export function printScanWarnings(results: ScanResult[], pm = "pnpm"): void {
   const dlx = pm === "pnpm" ? "pnpm dlx" : pm === "yarn" ? "yarn dlx" : "npx";
   const installNames = [...allMissing.values()].join(" ");
   console.log(
-    `  ${chalk.green(`${dlx} @ravikumarsurya/mdx-ui add ${installNames}`)}`
+    `  ${chalk.green(`${dlx} @ravikumarsurya/mdx-ui add ${installNames}`)}`,
   );
   console.log("");
 }

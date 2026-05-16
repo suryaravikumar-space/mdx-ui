@@ -60,11 +60,11 @@ Claude will call `list_components` and return the full registry — if it does, 
 
 Resources are loaded once at session start and stay in Claude's context.
 
-| Resource | URI | What it contains |
-|---|---|---|
-| Output standard | `registry://output-standard` | Full writing rules — structure, math, component syntax |
-| Component registry | `registry://components` | Every component with description, examples, when-to-use |
-| Symbol map | `registry://symbol-map` | 200+ math symbols: LaTeX → primitive component mapping |
+| Resource           | URI                          | What it contains                                        |
+| ------------------ | ---------------------------- | ------------------------------------------------------- |
+| Output standard    | `registry://output-standard` | Full writing rules — structure, math, component syntax  |
+| Component registry | `registry://components`      | Every component with description, examples, when-to-use |
+| Symbol map         | `registry://symbol-map`      | 200+ math symbols: LaTeX → primitive component mapping  |
 
 Claude reads these automatically. You do not need to paste system prompts.
 
@@ -76,30 +76,30 @@ Claude calls these during content generation. You can also ask Claude to call an
 
 ### Component tools
 
-| Tool | What it does |
-|---|---|
-| `list_components` | Returns all registered components |
-| `get_component` | Full detail for one component — example, props, dependencies |
-| `search_components` | Fuzzy search by name or description |
-| `check_component_exists` | Quick boolean — is this component name valid? |
-| `get_output_standard` | Returns the full writing standard |
-| `validate_mdx` | Checks MDX content for violations — flags unknown components or KaTeX usage |
+| Tool                     | What it does                                                                |
+| ------------------------ | --------------------------------------------------------------------------- |
+| `list_components`        | Returns all registered components                                           |
+| `get_component`          | Full detail for one component — example, props, dependencies                |
+| `search_components`      | Fuzzy search by name or description                                         |
+| `check_component_exists` | Quick boolean — is this component name valid?                               |
+| `get_output_standard`    | Returns the full writing standard                                           |
+| `validate_mdx`           | Checks MDX content for violations — flags unknown components or KaTeX usage |
 
 ### Math tools
 
-| Tool | What it does |
-|---|---|
-| `search_symbols` | Find the right primitive for any concept or symbol |
-| `list_symbol_categories` | Lists all 20+ math categories (greek, calculus, geometry…) |
-| `get_symbol_cheatsheet` | Full component list for a category |
-| `convert_latex` | **Converts any LaTeX expression to primitive JSX deterministically** |
-| `convert_mdx_math` | Fixes a whole MDX string — replaces all `$…$` and `$$…$$` with primitives |
-| `parse_solution` | Converts a plain-text worked solution to `<Solution><SolutionStep>` MDX |
+| Tool                     | What it does                                                              |
+| ------------------------ | ------------------------------------------------------------------------- |
+| `search_symbols`         | Find the right primitive for any concept or symbol                        |
+| `list_symbol_categories` | Lists all 20+ math categories (greek, calculus, geometry…)                |
+| `get_symbol_cheatsheet`  | Full component list for a category                                        |
+| `convert_latex`          | **Converts any LaTeX expression to primitive JSX deterministically**      |
+| `convert_mdx_math`       | Fixes a whole MDX string — replaces all `$…$` and `$$…$$` with primitives |
+| `parse_solution`         | Converts a plain-text worked solution to `<Solution><SolutionStep>` MDX   |
 
 ### Meta
 
-| Tool | What it does |
-|---|---|
+| Tool                   | What it does                    |
+| ---------------------- | ------------------------------- |
 | `get_registry_version` | Returns the current CLI version |
 
 ---
@@ -108,10 +108,10 @@ Claude calls these during content generation. You can also ask Claude to call an
 
 Two built-in prompts scaffold common content types:
 
-| Prompt | When to use |
-|---|---|
-| `generate_content` | Start a full lesson page — headings, sections, examples |
-| `write_math_content` | Math-heavy content — enforces primitives-only output |
+| Prompt               | When to use                                             |
+| -------------------- | ------------------------------------------------------- |
+| `generate_content`   | Start a full lesson page — headings, sections, examples |
+| `write_math_content` | Math-heavy content — enforces primitives-only output    |
 
 Invoke them from the Claude Code slash command or by asking Claude directly.
 
@@ -137,9 +137,30 @@ convert_latex("\\int_{-\\infty}^{\\infty} f(x)\\,e^{-2\\pi i x t}\\,dx")
 ```
 
 Returns ready-to-paste JSX:
+
 ```mdx
-<Integral low={<><InfSym/>;</>} high={<InfSym/>}>
-  f(x)<Thin/><Pow exp={<><Neg/>2<Pi/>ixt</>}>e</Pow><Thin/>dx
+<Integral
+  low={
+    <>
+      <InfSym />;
+    </>
+  }
+  high={<InfSym />}
+>
+  f(x)
+  <Thin />
+  <Pow
+    exp={
+      <>
+        <Neg />2<Pi />
+        ixt
+      </>
+    }
+  >
+    e
+  </Pow>
+  <Thin />
+  dx
 </Integral>
 ```
 
@@ -150,14 +171,19 @@ parse_solution("8x − 3 = 3x + 2 ⇒ 5x = 5 (collect x terms) ⇒ x = 1")
 ```
 
 Returns:
+
 ```mdx
 <Solution>
   <SolutionStep reason="collect x terms">
-    <Sub sub=""><Neg/>3</Sub>8x <Neg/> 3 = 3x + 2
+    <Sub sub="">
+      <Neg />3
+    </Sub>
+    8x <Neg /> 3 = 3x + 2
   </SolutionStep>
   <SolutionAnswer>x = 1</SolutionAnswer>
 </Solution>
 ```
+
 </Steps>
 
 ---
@@ -199,9 +225,9 @@ Any violation is returned with the line and a fix suggestion.
 
 ## Supported clients
 
-| Client | Status |
-|---|---|
-| Claude Code (VS Code extension) | Supported |
-| Claude Code (CLI) | Supported |
-| Any MCP-compatible client via stdio | Supported |
-| Claude.ai web | Not supported (MCP is local only) |
+| Client                              | Status                            |
+| ----------------------------------- | --------------------------------- |
+| Claude Code (VS Code extension)     | Supported                         |
+| Claude Code (CLI)                   | Supported                         |
+| Any MCP-compatible client via stdio | Supported                         |
+| Claude.ai web                       | Not supported (MCP is local only) |

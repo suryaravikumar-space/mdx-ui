@@ -37,8 +37,8 @@ function getTextContent(children: React.ReactNode): string {
   if (typeof children === "string") return children;
   if (typeof children === "number") return String(children);
   if (Array.isArray(children)) return children.map(getTextContent).join("");
-  if (React.isValidElement(children)) {
-    return getTextContent((children.props as any).children ?? "");
+  if (React.isValidElement<{ children?: React.ReactNode }>(children)) {
+    return getTextContent(children.props.children ?? "");
   }
   return "";
 }
@@ -49,7 +49,7 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     return (
       <Comp
         ref={ref}
-        className={cn(headingVariants({ level: level || (as as any) }), className)}
+        className={cn(headingVariants({ level: level || as }), className)}
         {...props}
       />
     );

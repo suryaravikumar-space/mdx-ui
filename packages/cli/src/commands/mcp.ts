@@ -66,8 +66,9 @@ async function loadLocalRegistry(): Promise<Registry | null> {
         return await fs.readJSON(p);
       }
     }
-  } catch (err: any) {
-    process.stderr.write(`[mdx-ui mcp] Failed to load local registry: ${err.message}\n`);
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    process.stderr.write(`[mdx-ui mcp] Failed to load local registry: ${msg}\n`);
   }
   return null;
 }
@@ -96,12 +97,9 @@ async function fetchRegistry(): Promise<Registry> {
     }
     cache = { data, fetchedAt: Date.now() };
     return data;
-  } catch (err: any) {
+  } catch (err: unknown) {
     if (cache) return cache.data;
-    const reason =
-      err.code === "ECONNABORTED"
-        ? "request timed out"
-        : (err.message ?? "network error");
+    const reason = err instanceof Error ? err.message : "network error";
     throw new Error(`Could not load component registry — ${reason}`);
   }
 }
@@ -593,13 +591,14 @@ export async function startMcpServer() {
       let registry: Registry;
       try {
         registry = await fetchRegistry();
-      } catch (err: any) {
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
         return {
           contents: [
             {
               uri: "registry://components",
               mimeType: "application/json",
-              text: JSON.stringify({ error: err.message }),
+              text: JSON.stringify({ error: msg }),
             },
           ],
         };
@@ -645,13 +644,14 @@ export async function startMcpServer() {
       let registry: Registry;
       try {
         registry = await fetchRegistry();
-      } catch (err: any) {
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
         return {
           contents: [
             {
               uri: uri.href,
               mimeType: "text/plain",
-              text: `Error: ${err.message}`,
+              text: `Error: ${msg}`,
             },
           ],
         };
@@ -847,15 +847,15 @@ Then provide the fully corrected MDX at the end.`,
   server.registerTool(
     "list_components",
     {
-    description:
-      "List all available mdx-ui components with descriptions. For a grouped view by category, use list_categories instead.",
-  },
+      description:
+        "List all available mdx-ui components with descriptions. For a grouped view by category, use list_categories instead.",
+    },
     async () => {
       let registry: Registry;
       try {
         registry = await fetchRegistry();
-      } catch (err: any) {
-        return registryError(err.message);
+      } catch (err: unknown) {
+        return registryError(err instanceof Error ? err.message : String(err));
       }
       const lines = registry.components.map(
         (c) => `- **${c.name}** (${c.type}): ${c.description}`,
@@ -883,8 +883,8 @@ Then provide the fully corrected MDX at the end.`,
       let registry: Registry;
       try {
         registry = await fetchRegistry();
-      } catch (err: any) {
-        return registryError(err.message);
+      } catch (err: unknown) {
+        return registryError(err instanceof Error ? err.message : String(err));
       }
 
       const normalizedInput = normalize(name);
@@ -941,8 +941,8 @@ Then provide the fully corrected MDX at the end.`,
       let registry: Registry;
       try {
         registry = await fetchRegistry();
-      } catch (err: any) {
-        return registryError(err.message);
+      } catch (err: unknown) {
+        return registryError(err instanceof Error ? err.message : String(err));
       }
 
       const words = query
@@ -1013,8 +1013,8 @@ Then provide the fully corrected MDX at the end.`,
       let registry: Registry;
       try {
         registry = await fetchRegistry();
-      } catch (err: any) {
-        return registryError(err.message);
+      } catch (err: unknown) {
+        return registryError(err instanceof Error ? err.message : String(err));
       }
 
       const byName = new Map(registry.components.map((c) => [c.name, c]));

@@ -82,8 +82,8 @@ export async function fetchComponent(name: string): Promise<ComponentData> {
       const data: ComponentData = response.data
       verifyIntegrity(data)
       return data
-    } catch (error: any) {
-      if (error.response?.status === 404) {
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error) && error.response?.status === 404) {
         if (!isLast) continue // tag doesn't exist yet — try main
         throw new Error(`Component "${name}" not found. Run: npx @ravikumarsurya/mdx-ui list`)
       }

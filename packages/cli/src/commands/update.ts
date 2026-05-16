@@ -118,7 +118,7 @@ async function diffComponent(
   cwd: string,
 ): Promise<DiffResult> {
   const changedFiles: string[] = [];
-  const framework = (config as any).framework ?? "unknown";
+  const framework = config.framework ?? "unknown";
 
   for (const file of data.files) {
     const libRoot = config.componentsDir.startsWith("src/")
@@ -329,9 +329,10 @@ export const update = new Command()
         console.log(chalk.green(`  ✓ ${diff.name}`));
       }
       console.log();
-    } catch (error: any) {
+    } catch (error: unknown) {
       spinner.fail("Update failed");
-      console.error(chalk.red(`  ${error.message}\n`));
+      const msg = error instanceof Error ? error.message : String(error);
+      console.error(chalk.red(`  ${msg}\n`));
       process.exit(1);
     }
   });

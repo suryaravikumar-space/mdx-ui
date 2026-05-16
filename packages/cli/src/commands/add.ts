@@ -241,7 +241,7 @@ export const add = new Command()
       spinner.stop();
 
       const cwd = process.cwd();
-      const framework = (config as any).framework ?? "unknown";
+      const framework = config.framework ?? "unknown";
       const written: string[] = [];
       const skipped: string[] = [];
 
@@ -320,9 +320,10 @@ export const add = new Command()
       console.log();
       console.log(chalk.bold("Done! 🎉"));
       console.log();
-    } catch (error: any) {
+    } catch (error: unknown) {
       spinner.fail("Failed to add components");
-      console.error(chalk.red(error.message));
+      const msg = error instanceof Error ? error.message : String(error);
+      console.error(chalk.red(msg));
       process.exit(1);
     }
   });

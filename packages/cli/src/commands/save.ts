@@ -61,9 +61,10 @@ export const save = new Command()
       console.log();
       console.log(`  ${chalk.green("✓")} ${chalk.bold(result.relativePath)}`);
       console.log();
-    } catch (error: any) {
+    } catch (error: unknown) {
       spinner.fail("Failed to save MDX file");
-      console.error(chalk.red(error.message));
+      const msg = error instanceof Error ? error.message : String(error);
+      console.error(chalk.red(msg));
       process.exit(1);
     }
   });

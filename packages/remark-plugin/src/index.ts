@@ -15,7 +15,16 @@
 
 import { visit } from "unist-util-visit"
 import type { Plugin } from "unified"
-import type { Root, Blockquote, Table, List, Paragraph, Text, Code } from "mdast"
+import type { Root, Blockquote, Table, List, Paragraph, Text, Code, RootContent } from "mdast"
+
+/** Minimal shape shared by mdast text-bearing nodes and MDX JSX nodes */
+interface MdastNode {
+  type: string
+  value?: string
+  name?: string
+  attributes?: unknown[]
+  children?: MdastNode[]
+}
 
 // ─── Options ──────────────────────────────────────────────────────────────────
 
@@ -130,12 +139,12 @@ function jsxBlock(name: string, attributes: unknown[], children: unknown[]) {
 
 // ─── Extract plain text from mdast node children ──────────────────────────────
 
-function toText(node: { children?: unknown[] }): string {
+function toText(node: MdastNode): string {
   if (!node.children) return ""
-  return (node.children as any[])
-    .map((child: any) => {
-      if (child.type === "text") return child.value as string
-      if (child.type === "inlineCode") return child.value as string
+  return node.children
+    .map((child: MdastNode) => {
+      if (child.type === "text") return child.value ?? ""
+      if (child.type === "inlineCode") return child.value ?? ""
       if (child.children) return toText(child)
       return ""
     })
@@ -190,27 +199,27 @@ function transformCallouts(tree: Root) {
             contentChildren = node.children.slice(1)
           }
         }
-        parent.children[index] = jsxBlock("Callout", [strAttr("type", calloutType)], contentChildren) as any
+        parent.children[index] = jsxBlock("Callout", [strAttr("type", calloutType)], contentChildren) as unknown as RootContent
         return
       }
     }
 
     // ── Legacy **Note:** syntax ───────────────────────────────────────────
     if (firstChild?.type === "strong") {
-      const strongText = toText(firstChild as any).toLowerCase().replace(/:$/, "").trim()
+      const strongText = toText(firstChild).toLowerCase().replace(/:$/, "").trim()
       if (LEGACY_TYPE_MAP[strongText]) {
         calloutType = LEGACY_TYPE_MAP[strongText]
         // Drop the **Note:** node and optional leading ": " from the next sibling
         first.children = first.children.slice(1)
         const next = first.children[0] as Text | undefined
         if (next?.type === "text") next.value = next.value.replace(/^:\s*/, "")
-        parent.children[index] = jsxBlock("Callout", [strAttr("type", calloutType)], contentChildren) as any
+        parent.children[index] = jsxBlock("Callout", [strAttr("type", calloutType)], contentChildren) as unknown as RootContent
         return
       }
     }
 
     // ── Plain blockquote — wrap as default Callout ────────────────────────
-    parent.children[index] = jsxBlock("Callout", [], contentChildren) as any
+    parent.children[index] = jsxBlock("Callout", [], contentChildren) as unknown as RootContent
   })
 }
 
@@ -222,8 +231,8 @@ function transformTables(tree: Root) {
 
     const [headerRow, ...bodyRows] = node.children
 
-    const headers = headerRow.children.map((cell) => toText(cell as any))
-    const rows = bodyRows.map((row) => row.children.map((cell) => toText(cell as any)))
+    const headers = headerRow.children.map((cell) => toText(cell))
+    const rows = bodyRows.map((row) => row.children.map((cell) => toText(cell)))
 
     const headersCode = JSON.stringify(headers)
     const rowsCode = JSON.stringify(rows)
@@ -235,7 +244,7 @@ function transformTables(tree: Root) {
         exprAttr("rows", rowsCode, estree2D(rows)),
       ],
       []
-    ) as any
+    ) as unknown as RootContent
   })
 }
 
@@ -250,7 +259,7 @@ function transformSteps(tree: Root) {
       jsxBlock("Step", [], item.children)
     )
 
-    parent.children[index] = jsxBlock("Steps", [], stepChildren) as any
+    parent.children[index] = jsxBlock("Steps", [], stepChildren) as unknown as RootContent
   })
 }
 
@@ -264,7 +273,7 @@ function transformHighlight(tree: Root) {
     if (!HIGHLIGHT_RE.test(node.value)) return
     HIGHLIGHT_RE.lastIndex = 0
 
-    const newChildren: any[] = []
+    const newChildren: MdastNode[] = []
     let last = 0
     let match: RegExpExecArray | null
 
@@ -285,7 +294,7 @@ function transformHighlight(tree: Root) {
       newChildren.push({ type: "text", value: node.value.slice(last) })
     }
 
-    parent.children.splice(index, 1, ...newChildren)
+    ;(parent.children as MdastNode[]).splice(index, 1, ...newChildren)
   })
 }
 
@@ -314,7 +323,7 @@ function transformMermaid(tree: Root) {
       "Mermaid",
       [exprAttr("chart", JSON.stringify(node.value), estreLiteral(node.value))],
       []
-    ) as any
+    ) as unknown as RootContent
   })
 }
 

@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+
 - MCP server: Resources (`registry://components`, `registry://component/{name}`, `registry://standard`), Prompts (`generate_mdx`, `review_mdx`), and `validate_mdx` tool
 - MCP server: `list_categories` tool for grouped component discovery
 - MCP server: Levenshtein-based "did you mean?" suggestions for unknown component names
@@ -24,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Changesets for automated versioning and changelog
 
 ### Fixed
+
 - `validate_mdx` no longer flags code inside fenced blocks as violations
 - `search_components` vacuous-truth bug when query words are all single characters
 - `loadLocalRegistry` now logs parse errors to stderr instead of silently swallowing them

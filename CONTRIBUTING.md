@@ -79,6 +79,7 @@ pnpm lint
 ## Making Changes
 
 1. Create a branch from `main`:
+
    ```bash
    git checkout -b feat/my-feature
    ```

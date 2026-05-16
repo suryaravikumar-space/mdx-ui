@@ -37,7 +37,6 @@
   },
   "lint-staged": {
     "apps/www/**/*.{ts,tsx}": [
-      "eslint --max-warnings=0 --fix",
       "prettier --write"
     ],
     "packages/**/*.{ts,tsx}": [

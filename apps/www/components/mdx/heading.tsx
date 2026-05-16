@@ -19,7 +19,8 @@ const headingVariants = cva("scroll-m-20 tracking-tight", {
 });
 
 export interface HeadingProps
-  extends React.HTMLAttributes<HTMLHeadingElement>,
+  extends
+    React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
@@ -53,12 +54,15 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
         {...props}
       />
     );
-  }
+  },
 );
 Heading.displayName = "Heading";
 
 const HeadingWithAnchor = React.forwardRef<HTMLHeadingElement, HeadingProps>(
-  function HeadingWithAnchor({ as, level, children, id, className, ...props }, ref) {
+  function HeadingWithAnchor(
+    { as, level, children, id, className, ...props },
+    ref,
+  ) {
     const slug = id ?? slugify(getTextContent(children));
     return (
       <Heading
@@ -80,35 +84,53 @@ const HeadingWithAnchor = React.forwardRef<HTMLHeadingElement, HeadingProps>(
         </a>
       </Heading>
     );
-  }
+  },
 );
 
-export const H1 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <HeadingWithAnchor ref={ref} as="h1" level="h1" {...props} />
-);
+export const H1 = React.forwardRef<
+  HTMLHeadingElement,
+  Omit<HeadingProps, "as" | "level">
+>((props, ref) => (
+  <HeadingWithAnchor ref={ref} as="h1" level="h1" {...props} />
+));
 H1.displayName = "H1";
 
-export const H2 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <HeadingWithAnchor ref={ref} as="h2" level="h2" {...props} />
-);
+export const H2 = React.forwardRef<
+  HTMLHeadingElement,
+  Omit<HeadingProps, "as" | "level">
+>((props, ref) => (
+  <HeadingWithAnchor ref={ref} as="h2" level="h2" {...props} />
+));
 H2.displayName = "H2";
 
-export const H3 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <HeadingWithAnchor ref={ref} as="h3" level="h3" {...props} />
-);
+export const H3 = React.forwardRef<
+  HTMLHeadingElement,
+  Omit<HeadingProps, "as" | "level">
+>((props, ref) => (
+  <HeadingWithAnchor ref={ref} as="h3" level="h3" {...props} />
+));
 H3.displayName = "H3";
 
-export const H4 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <HeadingWithAnchor ref={ref} as="h4" level="h4" {...props} />
-);
+export const H4 = React.forwardRef<
+  HTMLHeadingElement,
+  Omit<HeadingProps, "as" | "level">
+>((props, ref) => (
+  <HeadingWithAnchor ref={ref} as="h4" level="h4" {...props} />
+));
 H4.displayName = "H4";
 
-export const H5 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <HeadingWithAnchor ref={ref} as="h5" level="h5" {...props} />
-);
+export const H5 = React.forwardRef<
+  HTMLHeadingElement,
+  Omit<HeadingProps, "as" | "level">
+>((props, ref) => (
+  <HeadingWithAnchor ref={ref} as="h5" level="h5" {...props} />
+));
 H5.displayName = "H5";
 
-export const H6 = React.forwardRef<HTMLHeadingElement, Omit<HeadingProps, "as" | "level">>(
-  (props, ref) => <HeadingWithAnchor ref={ref} as="h6" level="h6" {...props} />
-);
+export const H6 = React.forwardRef<
+  HTMLHeadingElement,
+  Omit<HeadingProps, "as" | "level">
+>((props, ref) => (
+  <HeadingWithAnchor ref={ref} as="h6" level="h6" {...props} />
+));
 H6.displayName = "H6";

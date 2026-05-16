@@ -68,7 +68,9 @@ async function loadLocalRegistry(): Promise<Registry | null> {
     }
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
-    process.stderr.write(`[mdx-ui mcp] Failed to load local registry: ${msg}\n`);
+    process.stderr.write(
+      `[mdx-ui mcp] Failed to load local registry: ${msg}\n`,
+    );
   }
   return null;
 }

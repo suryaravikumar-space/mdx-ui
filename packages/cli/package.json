@@ -50,6 +50,10 @@
   "bin": {
     "mdx-ui": "./dist/index.js"
   },
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -58,6 +62,7 @@
     "build": "tsup",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "lint": "eslint --config ../../eslint.config.js --max-warnings=0 src/",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },

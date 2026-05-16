@@ -30,12 +30,17 @@
   ],
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "lint": "eslint --config ../../eslint.config.js --max-warnings=0 src/",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "clean": "rm -rf dist"

@@ -80,7 +80,9 @@ async function fetchRegistry(): Promise<Registry> {
   const local = await loadLocalRegistry();
   if (local) {
     if (!Array.isArray(local.components)) {
-      throw new Error("Local registry.json is malformed — missing components array");
+      throw new Error(
+        "Local registry.json is malformed — missing components array",
+      );
     }
     cache = { data: local, fetchedAt: Date.now() };
     return local;
@@ -279,78 +281,218 @@ interface ValidationIssue {
   text: string;
 }
 
-function validateMdxContent(content: string): ValidationIssue[] {
-  const issues: ValidationIssue[] = [];
-  const lines = content.split("\n");
-
-  // All valid mdx-ui component exports — keep in sync with packages/registry/src/
-  const ALLOWED_COMPONENTS = new Set([
+// All valid mdx-ui component exports — keep in sync with packages/registry/src/
+const ALLOWED_COMPONENTS = new Set([
     // callout
     "Callout",
     // steps
-    "Steps", "Step",
+    "Steps",
+    "Step",
     // accordion
-    "Accordion", "AccordionItem", "AccordionTrigger", "AccordionContent",
+    "Accordion",
+    "AccordionItem",
+    "AccordionTrigger",
+    "AccordionContent",
     // tabs
-    "Tabs", "TabsList", "TabsTrigger", "TabsContent",
+    "Tabs",
+    "TabsList",
+    "TabsTrigger",
+    "TabsContent",
     // code-group
     "CodeGroup",
     // math (math.tsx)
-    "Math", "InlineMath", "BlockMath", "M", "BM",
+    "Math",
+    "InlineMath",
+    "BlockMath",
+    "M",
+    "BM",
     // math-easy
-    "ME", "BME",
+    "ME",
+    "BME",
     // math-solution
-    "Solution", "SolutionStep", "SolutionAnswer", "SolutionNote",
+    "Solution",
+    "SolutionStep",
+    "SolutionAnswer",
+    "SolutionNote",
     // math-equation
-    "Equation", "EqSystem",
+    "Equation",
+    "EqSystem",
     // math-primitives — arithmetic & calculus
-    "Frac", "Pow", "Sub", "Sqrt", "Abs", "Paren", "Deg", "Inf",
-    "Integral", "Sum", "Prod", "Lim", "Limsup", "Liminf",
-    "Deriv", "PDeriv", "Nabla", "Laplacian",
+    "Frac",
+    "Pow",
+    "Sub",
+    "Sqrt",
+    "Abs",
+    "Paren",
+    "Deg",
+    "Inf",
+    "Integral",
+    "Sum",
+    "Prod",
+    "Lim",
+    "Limsup",
+    "Liminf",
+    "Deriv",
+    "PDeriv",
+    "Nabla",
+    "Laplacian",
     // math-primitives — trig & functions
-    "Sin", "Cos", "Tan", "Cot", "Sec", "Csc",
-    "ArcSin", "ArcCos", "ArcTan", "Sinh", "Cosh", "Tanh",
-    "Log", "Ln", "Exp",
+    "Sin",
+    "Cos",
+    "Tan",
+    "Cot",
+    "Sec",
+    "Csc",
+    "ArcSin",
+    "ArcCos",
+    "ArcTan",
+    "Sinh",
+    "Cosh",
+    "Tanh",
+    "Log",
+    "Ln",
+    "Exp",
     // math-primitives — combinatorics & number theory
-    "Factorial", "Choose", "Perm", "Mod", "GCD", "LCM", "Floor", "Ceil",
+    "Factorial",
+    "Choose",
+    "Perm",
+    "Mod",
+    "GCD",
+    "LCM",
+    "Floor",
+    "Ceil",
     // math-primitives — sets
-    "SetOf", "Cardinality", "PowerSet",
-    "In", "NotIn", "Subset", "SubsetEq", "Supset", "SupsetEq",
-    "Union", "Intersect", "Empty", "SetMinus",
-    "NN", "ZZ", "QQ", "RR", "CC", "PP", "FF",
+    "SetOf",
+    "Cardinality",
+    "PowerSet",
+    "In",
+    "NotIn",
+    "Subset",
+    "SubsetEq",
+    "Supset",
+    "SupsetEq",
+    "Union",
+    "Intersect",
+    "Empty",
+    "SetMinus",
+    "NN",
+    "ZZ",
+    "QQ",
+    "RR",
+    "CC",
+    "PP",
+    "FF",
     // math-primitives — logic
-    "And", "Or", "Not", "Xor", "Nand", "Nor",
-    "ForAll", "Exists", "NotExists",
-    "Therefore", "Because", "Turnstile", "Implies", "Iff", "QED",
+    "And",
+    "Or",
+    "Not",
+    "Xor",
+    "Nand",
+    "Nor",
+    "ForAll",
+    "Exists",
+    "NotExists",
+    "Therefore",
+    "Because",
+    "Turnstile",
+    "Implies",
+    "Iff",
+    "QED",
     // math-primitives — linear algebra
-    "Vec", "Norm", "Dot", "Cross", "Transpose", "Det", "Matrix",
-    "SpanOp", "Rank", "Dim", "NullOp", "Img", "Trace",
+    "Vec",
+    "Norm",
+    "Dot",
+    "Cross",
+    "Transpose",
+    "Det",
+    "Matrix",
+    "SpanOp",
+    "Rank",
+    "Dim",
+    "NullOp",
+    "Img",
+    "Trace",
     // math-primitives — probability & statistics
-    "Prob", "CondProb", "Expected", "Variance", "StdDev", "Cov", "Corr", "Dist",
+    "Prob",
+    "CondProb",
+    "Expected",
+    "Variance",
+    "StdDev",
+    "Cov",
+    "Corr",
+    "Dist",
     // math-primitives — complex numbers
-    "Complex", "Conj",
+    "Complex",
+    "Conj",
     // math-primitives — Greek letters
     "Greek",
-    "Alpha", "Beta", "Gamma", "GDelta", "Epsilon", "Zeta", "Eta", "Theta",
-    "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "PiSym", "Rho", "SigmaSym",
-    "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega",
-    "GammaU", "DeltaU", "ThetaU", "LambdaU", "XiU", "PiU", "SigmaU",
-    "PhiU", "PsiU", "OmegaU",
+    "Alpha",
+    "Beta",
+    "Gamma",
+    "GDelta",
+    "Epsilon",
+    "Zeta",
+    "Eta",
+    "Theta",
+    "Iota",
+    "Kappa",
+    "Lambda",
+    "Mu",
+    "Nu",
+    "Xi",
+    "PiSym",
+    "Rho",
+    "SigmaSym",
+    "Tau",
+    "Upsilon",
+    "Phi",
+    "Chi",
+    "Psi",
+    "Omega",
+    "GammaU",
+    "DeltaU",
+    "ThetaU",
+    "LambdaU",
+    "XiU",
+    "PiU",
+    "SigmaU",
+    "PhiU",
+    "PsiU",
+    "OmegaU",
     // math-primitives — relations & operators
-    "Neq", "Approx", "Equiv", "Cong", "Leq", "Geq", "Ll", "Gg",
-    "Propto", "Sim", "PlusMinus", "MinusPlus",
-    "Divides", "NotDivides", "Arrow", "MapsTo", "Compose", "OTimes",
-    "DegNum", "Eq", "NotEq",
-  ]);
+    "Neq",
+    "Approx",
+    "Equiv",
+    "Cong",
+    "Leq",
+    "Geq",
+    "Ll",
+    "Gg",
+    "Propto",
+    "Sim",
+    "PlusMinus",
+    "MinusPlus",
+    "Divides",
+    "NotDivides",
+    "Arrow",
+    "MapsTo",
+    "Compose",
+    "OTimes",
+    "DegNum",
+    "Eq",
+    "NotEq",
+]);
 
-  const BANNED_HTML =
-    /^<(div|span|p\b|b\b|i\b|strong|em|br|hr|section|article|main|aside|header|footer|nav)\s*[\s/>]/i;
-  const INVENTED_JSX = /^<([A-Z][a-zA-Z0-9]*)/;
+const BANNED_HTML =
+  /^<(div|span|p\b|b\b|i\b|strong|em|br|hr|section|article|main|aside|header|footer|nav)\s*[\s/>]/i;
+const INVENTED_JSX = /^<([A-Z][a-zA-Z0-9]*)/;
+// Match $...$ only in non-digit context to avoid flagging currency like $10
+const INLINE_MATH_DOLLAR = /(?<!\d)\$(?!\$|\d)[^$\n]{2,}\$/;
+const BLOCK_MATH_DOLLAR = /\$\$/;
 
-  // Math regex: match $...$ only when surrounded by non-digit context
-  // to avoid flagging currency like $10 or $1,000
-  const INLINE_MATH_DOLLAR = /(?<!\d)\$(?!\$|\d)[^$\n]{2,}\$/;
-  const BLOCK_MATH_DOLLAR = /\$\$/;
+function validateMdxContent(content: string): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const lines = content.split("\n");
 
   let insideCodeFence = false;
   let codeFenceMarker = "";

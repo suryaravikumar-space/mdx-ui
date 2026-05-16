@@ -79,14 +79,21 @@ async function fetchRegistry(): Promise<Registry> {
 
   const local = await loadLocalRegistry();
   if (local) {
+    if (!Array.isArray(local.components)) {
+      throw new Error("Local registry.json is malformed — missing components array");
+    }
     cache = { data: local, fetchedAt: Date.now() };
     return local;
   }
 
   try {
     const res = await axios.get<Registry>(REGISTRY_URL, { timeout: 8000 });
-    cache = { data: res.data, fetchedAt: Date.now() };
-    return res.data;
+    const data = res.data;
+    if (!data || !Array.isArray(data.components)) {
+      throw new Error("Remote registry returned malformed data");
+    }
+    cache = { data, fetchedAt: Date.now() };
+    return data;
   } catch (err: any) {
     if (cache) return cache.data;
     const reason =
@@ -276,22 +283,64 @@ function validateMdxContent(content: string): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
   const lines = content.split("\n");
 
+  // All valid mdx-ui component exports — keep in sync with packages/registry/src/
   const ALLOWED_COMPONENTS = new Set([
+    // callout
     "Callout",
-    "Steps",
-    "Accordion",
-    "AccordionItem",
-    "AccordionTrigger",
-    "AccordionContent",
-    "Tabs",
-    "TabsList",
-    "TabsTrigger",
-    "TabsContent",
+    // steps
+    "Steps", "Step",
+    // accordion
+    "Accordion", "AccordionItem", "AccordionTrigger", "AccordionContent",
+    // tabs
+    "Tabs", "TabsList", "TabsTrigger", "TabsContent",
+    // code-group
     "CodeGroup",
-    "InlineMath",
-    "BlockMath",
-    "M",
-    "BM",
+    // math (math.tsx)
+    "Math", "InlineMath", "BlockMath", "M", "BM",
+    // math-easy
+    "ME", "BME",
+    // math-solution
+    "Solution", "SolutionStep", "SolutionAnswer", "SolutionNote",
+    // math-equation
+    "Equation", "EqSystem",
+    // math-primitives — arithmetic & calculus
+    "Frac", "Pow", "Sub", "Sqrt", "Abs", "Paren", "Deg", "Inf",
+    "Integral", "Sum", "Prod", "Lim", "Limsup", "Liminf",
+    "Deriv", "PDeriv", "Nabla", "Laplacian",
+    // math-primitives — trig & functions
+    "Sin", "Cos", "Tan", "Cot", "Sec", "Csc",
+    "ArcSin", "ArcCos", "ArcTan", "Sinh", "Cosh", "Tanh",
+    "Log", "Ln", "Exp",
+    // math-primitives — combinatorics & number theory
+    "Factorial", "Choose", "Perm", "Mod", "GCD", "LCM", "Floor", "Ceil",
+    // math-primitives — sets
+    "SetOf", "Cardinality", "PowerSet",
+    "In", "NotIn", "Subset", "SubsetEq", "Supset", "SupsetEq",
+    "Union", "Intersect", "Empty", "SetMinus",
+    "NN", "ZZ", "QQ", "RR", "CC", "PP", "FF",
+    // math-primitives — logic
+    "And", "Or", "Not", "Xor", "Nand", "Nor",
+    "ForAll", "Exists", "NotExists",
+    "Therefore", "Because", "Turnstile", "Implies", "Iff", "QED",
+    // math-primitives — linear algebra
+    "Vec", "Norm", "Dot", "Cross", "Transpose", "Det", "Matrix",
+    "SpanOp", "Rank", "Dim", "NullOp", "Img", "Trace",
+    // math-primitives — probability & statistics
+    "Prob", "CondProb", "Expected", "Variance", "StdDev", "Cov", "Corr", "Dist",
+    // math-primitives — complex numbers
+    "Complex", "Conj",
+    // math-primitives — Greek letters
+    "Greek",
+    "Alpha", "Beta", "Gamma", "GDelta", "Epsilon", "Zeta", "Eta", "Theta",
+    "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "PiSym", "Rho", "SigmaSym",
+    "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega",
+    "GammaU", "DeltaU", "ThetaU", "LambdaU", "XiU", "PiU", "SigmaU",
+    "PhiU", "PsiU", "OmegaU",
+    // math-primitives — relations & operators
+    "Neq", "Approx", "Equiv", "Cong", "Leq", "Geq", "Ll", "Gg",
+    "Propto", "Sim", "PlusMinus", "MinusPlus",
+    "Divides", "NotDivides", "Arrow", "MapsTo", "Compose", "OTimes",
+    "DegNum", "Eq", "NotEq",
   ]);
 
   const BANNED_HTML =
@@ -679,6 +728,7 @@ Then provide the fully corrected MDX at the end.`,
       inputSchema: {
         name: z
           .string()
+          .min(1, "Component name cannot be empty")
           .describe("Component name, e.g. accordion, complexity-table, dsbst"),
       },
     },
@@ -754,7 +804,8 @@ Then provide the fully corrected MDX at the end.`,
         .filter((w) => w.length > 1);
 
       // Guard: if all words are single characters, treat query as a single token
-      const effectiveWords = words.length > 0 ? words : [query.toLowerCase().trim()];
+      const effectiveWords =
+        words.length > 0 ? words : [query.toLowerCase().trim()];
 
       const matches = registry.components.filter((c) => {
         const haystack = [

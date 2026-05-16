@@ -159,25 +159,33 @@ For showing the same code in multiple languages.
 
 ## Math
 
-Always use components — never dollar-sign syntax.
+Always use primitive components — never dollar signs or LaTeX strings.
+Each component reads exactly like what it renders — no engine, no backslashes.
 
 ```mdx
-Inline math — for variables and short expressions within a sentence:
+Inline — compose primitives in prose:
 
-<InlineMath math="\pi r^2" />
-<InlineMath math="\frac{a}{b}" />
+π r<Squared />
 
-Block math — for standalone equations:
+<Frac num="a" den="b" />
 
-<BlockMath math="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
-<BlockMath math="\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}" />
+Block — use Equation for display:
+
+<Equation>
+  x = <Frac num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>} den="2a" />
+</Equation>
+
+<Equation>
+  <Integral from="0" to={<Inf />}>
+    <Pow exp={<span>−<Squared>x</Squared></span>}>e</Pow> <Differential />x
+  </Integral> = <Sqrt><PiSym /></Sqrt>
+</Equation>
 ```
 
-<Callout variant="warning" title="Never use dollar signs">
-  `$\pi r^2$` and `$$\int...$$` will not render — always use `<InlineMath>` and `<BlockMath>` with the `math` prop.
+<Callout variant="warning" title="Never use dollar signs or LaTeX props">
+  `$\pi r^2$`, `$$\int...$$`, `<InlineMath math="...">`, and `<BlockMath math="...">` will not render.
+  Use math primitives: `<Frac>`, `<Pow>`, `<Integral>`, `<Alpha />`, etc.
 </Callout>
-
-Use single backslash for LaTeX commands in the `math` prop: `\frac`, `\sqrt`, `\pi`, `\int`.
 
 ---
 
@@ -187,15 +195,17 @@ Use single backslash for LaTeX commands in the `math` prop: `\frac`, `\sqrt`, `\
   If the LLM outputs any of these, components fail to render correctly.
 </Callout>
 
-| Pattern                                | Use instead                      |
-| -------------------------------------- | -------------------------------- |
-| `$...$` inline math                    | `<InlineMath math="..." />`      |
-| `$$...$$` block math                   | `<BlockMath math="..." />`       |
-| `<div>`, `<span>`, `<p>`, `<b>`, `<i>` | Plain Markdown                   |
-| `# H1 heading`                         | Start sections with `##` minimum |
-| `####` or deeper                       | Max depth is `###`               |
-| Invented component names               | Only use components listed above |
-| Markdown inside JSX props              | Props take plain strings only    |
+| Pattern | Use instead |
+|---|---|
+| `$...$` inline math | `<Frac>`, `<Pow>`, `<Alpha />` etc. |
+| `$$...$$` block math | `<Equation>` with primitives |
+| `<InlineMath math="...">` | math primitives |
+| `<BlockMath math="...">` | `<Equation>` with primitives |
+| `<div>`, `<span>`, `<p>`, `<b>`, `<i>` | Plain Markdown |
+| `# H1 heading` | Start sections with `##` minimum |
+| `####` or deeper | Max depth is `###` |
+| Invented component names | Only use components listed above |
+| Markdown inside JSX props | Props take plain strings only |
 
 ---
 
@@ -255,17 +265,24 @@ TABS — alternative explanations:
   <TabsContent value="b">Content B</TabsContent>
 </Tabs>
 
-MATH — always use components, never $ signs:
-Inline: <InlineMath math="\frac{a}{b}" />
-Block:  <BlockMath math="\int_0^1 x\,dx = \frac{1}{2}" />
+MATH — use primitive components only, never $ signs or LaTeX strings:
+Fraction:  <Frac num="a" den="b" />
+Power:     <Pow exp="2">x</Pow>
+Subscript: <Sub sub="i">x</Sub>
+Root:      <Sqrt>x</Sqrt>
+Integral:  <Integral from="0" to="1">f(x) dx</Integral>
+Sum:       <Sum from="i=0" to="n">i</Sum>
+Greek:     <Alpha /> <Beta /> <Theta /> <Lambda /> <PiSym /> <Omega />
+Display:   <Equation label="1">content using primitives</Equation>
 
 STRICT RULES
-- NEVER use $...$ or $$...$$ for math
+- NEVER use $...$ or $$...$$
+- NEVER use <InlineMath>, <BlockMath>, or any LaTeX string props
 - NEVER use raw HTML tags
 - NEVER invent component names not listed above
 - NEVER use # (h1) headings
 - NEVER go deeper than ### headings
-- Props take plain strings only
+- Props take plain strings; nested primitives in props: {<span>...</span>}
 ````
 
 ---
@@ -299,20 +316,21 @@ STRICT RULES
 
   </AccordionItem>
   <AccordionItem value="math-examples">
-    <AccordionTrigger>Common LaTeX patterns</AccordionTrigger>
+    <AccordionTrigger>Common math primitive patterns</AccordionTrigger>
     <AccordionContent>
 
-```text
-<InlineMath math="\frac{a}{b}" />         fraction
-<InlineMath math="\sqrt{x}" />            square root
-<InlineMath math="x^2 + y^2" />           superscript
-<InlineMath math="\pi r^2" />             Greek letter
-<InlineMath math="\sin(\theta)" />        trig function
-<InlineMath math="\vec{v}" />             vector
+```mdx
+<Frac num="a" den="b" />                           fraction
+<Sqrt>x</Sqrt>                                     square root
+<Pow exp="2">x</Pow>                               superscript
+<PiSym /> r<Squared />                             Greek letter
+<Sin /><Theta />                                   trig function
+<Vec>v</Vec>                                       vector
+<Bar>x</Bar>                                       mean x̄
 
-<BlockMath math="\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}" />
-<BlockMath math="\int_a^b f(x)\,dx = F(b) - F(a)" />
-<BlockMath math="e^{i\pi} + 1 = 0" />
+<Sum from="n=1" to={<Inf />}><Frac num="1" den={<Squared>n</Squared>} /></Sum>
+<Integral from="a" to="b">f(x) <Differential />x</Integral>
+<Pow exp={<span>i<PiSym /></span>}>e</Pow> + 1 = 0
 ```
 
     </AccordionContent>

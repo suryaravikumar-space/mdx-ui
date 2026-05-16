@@ -1,6 +1,6 @@
 ---
 title: Math Primitives
-description: JSX components for every standard math symbol — fractions, integrals, matrices, Greek letters, logic, sets, and more
+description: 370+ JSX components for every standard math symbol — the single math system for mdx-ui. No LaTeX engine required.
 component: math-primitives
 published: true
 ---
@@ -8,331 +8,251 @@ published: true
 ## Installation
 
 ```bash
-npx @ravikumarsurya/mdx-ui add math-primitives
+pnpm dlx @ravikumarsurya/mdx-ui add math-primitives
 ```
 
-## When to use
+## The single math system
 
-Primitives are best for **structured math UI** — numbered equations with layout, solution blocks, inline symbols alongside prose. For writing raw expressions, `<M expr="..." />` (LaTeX string) is simpler. Both can be mixed.
+Math primitives are the **only** math API in mdx-ui. Every component is pure React/CSS — no KaTeX, no LaTeX strings, no engine required.
+
+Each component reads exactly like what it renders:
 
 ```mdx
-{/* LaTeX string — best for expressions */}
-
-<M expr="\frac{-b \pm \sqrt{b^2-4ac}}{2a}" />
-
-{/* Primitives — best for layout and structure */}
-
-<Equation label="1">
-  x ={" "}
-  <Frac
-    num={
-      <>
-        -b <PlusMinus /> <Sqrt>b²-4ac</Sqrt>
-      </>
-    }
-    den="2a"
-  />
-</Equation>
+<Frac num="a" den="b" />                              → a/b fraction
+<Pow exp="2">x</Pow>                                  → x²
+<Integral from="0" to="1">f(x) dx</Integral>          → ∫₀¹ f(x) dx
+<Alpha />                                             → α
+<Angle>ABC</Angle>                                    → ∠ABC
 ```
 
 ## Basic structural
 
-| Component          | Renders          | Props                     |
-| ------------------ | ---------------- | ------------------------- |
-| `<Frac num den />` | num/den fraction | `num`, `den`              |
-| `<Pow exp />`      | base^exp         | `exp`, `base` or children |
-| `<Sub sub />`      | base_sub         | `sub`, `base` or children |
-| `<Sqrt>`           | √x with overbar  | `n` for nth root          |
-| `<Abs>`            | \|x\|            | children                  |
-| `<Paren>`          | (x) scaled       | children                  |
-| `<Deg>`            | 30°              | children                  |
-| `<Inf />`          | ∞                | —                         |
+| Component | Renders | Props |
+|---|---|---|
+| `<Frac num den />` | Vertical fraction | `num`, `den` |
+| `<Pow exp>base</Pow>` | base^exp | `exp`, children |
+| `<Sub sub>base</Sub>` | base_sub | `sub`, children |
+| `<Sqrt>x</Sqrt>` | √x with overbar | `n` for nth root |
+| `<Abs>x</Abs>` | \|x\| | children |
+| `<Paren>x</Paren>` | (x) | children |
+| `<Deg>90</Deg>` | 90° | children |
+| `<Inf />` | ∞ | — |
 
 ```mdx
 <Frac num="1" den="2" />
 
-x<Pow exp="2" /> + y<Pow exp="2" />
+<Frac num={<span><Pow exp="2">x</Pow> + 1</span>} den="2a" />
 
 <Sqrt n="3">27</Sqrt>
 
-<Abs>x - y</Abs>
+<Abs>x − y</Abs>
 ```
-
-x<Pow exp="2" /> + y<Pow exp="2" /> = <Pow base="r" exp="2" />
-
-<Frac
-  num={
-    <>
-      1 + <Sqrt>5</Sqrt>
-    </>
-  }
-  den="2"
-/>
 
 ## Calculus
 
-```mdx
-<Integral from="0" to="\infty" />
-
-<Sum from={<>i=0</>} to="n">
-  x_i
-</Sum>
-
-<Lim sub={<>x → 0</>} />
-
-<Deriv of="x" /> {/* d/dx */}
-<PDeriv of="t" /> {/* ∂/∂t */}
-
-<Limsup sub={<>n→∞</>} />
-<Liminf sub={<>n→∞</>} />
-```
-
-<Integral from="a" to="b">
-  f(x) dx
-</Integral>
-
-<Sum from={<>i=1</>} to="n">
-  <Pow base="x" exp="i" />
-</Sum>
-
-<Lim sub={<>x → 0</>}>
-  <Frac num="sin x" den="x" />
-</Lim>
-
-## Trigonometry
-
-`Sin`, `Cos`, `Tan`, `Cot`, `Sec`, `Csc` · `ArcSin`, `ArcCos`, `ArcTan` · `Sinh`, `Cosh`, `Tanh` · `Log`, `Ln`, `Exp`
+| Component | Renders | Props |
+|---|---|---|
+| `<Integral>` | ∫ | `from`, `to`, children |
+| `<ContourIntegral>` | ∮ | `from`, `to`, children |
+| `<DoubleInt />` | ∬ | — |
+| `<TripleInt />` | ∭ | — |
+| `<Sum>` | Σ | `from`, `to`, children |
+| `<Prod>` | Π | `from`, `to`, children |
+| `<Lim sub="x → 0">` | lim | `sub`, children |
+| `<Deriv of="y" by="x" />` | dy/dx | `of`, `by` |
+| `<PDeriv of="f" by="x" />` | ∂f/∂x | `of`, `by` |
+| `<Nabla />` | ∇ | — |
+| `<Laplacian />` | ∇² | — |
+| `<Differential />` | upright d | — |
+| `<Overbrace label="n">` | ⏞ with label above | `label`, children |
+| `<Underbrace label="n">` | ⏟ with label below | `label`, children |
 
 ```mdx
-<Sin>θ</Sin> <Cos>θ</Cos> <Tan>θ</Tan>
+<Integral from="a" to="b">f(x) <Differential />x</Integral>
 
-<Ln>x</Ln> <Log>n</Log>
+<Sum from="i=1" to="n"><Pow exp="2">i</Pow></Sum>
+
+<Lim sub="h → 0"><Frac num={<span>f(x+h) − f(x)</span>} den="h" /></Lim>
 ```
 
-<Sin>θ</Sin> = <Frac num="opposite" den="hypotenuse" />
+## Trigonometry & functions
+
+`Sin`, `Cos`, `Tan`, `Cot`, `Sec`, `Csc`, `ArcSin`, `ArcCos`, `ArcTan`,
+`Sinh`, `Cosh`, `Tanh`, `Log`, `Ln`, `Exp`
+
+```mdx
+sin²<Theta /> + cos²<Theta /> = 1
+```
 
 ## Algebra & combinatorics
 
-| Component        | Renders  | Example                    |
-| ---------------- | -------- | -------------------------- |
-| `<Factorial>`    | n!       | `<Factorial>n</Factorial>` |
-| `<Choose n k />` | C(n,k)   | `<Choose n="n" k="k" />`   |
-| `<Perm n r />`   | P(n,r)   | `<Perm n="n" r="r" />`     |
-| `<Mod a n />`    | a mod n  | `<Mod a="7" n="3" />`      |
-| `<GCD a b />`    | gcd(a,b) | `<GCD a="m" b="n" />`      |
-| `<LCM a b />`    | lcm(a,b) | `<LCM a="m" b="n" />`      |
+`Factorial`, `Choose`, `Perm`, `Mod`, `GCD`, `LCM`, `Floor`, `Ceil`
 
-<Choose n="n" k="k" /> =
-<Frac
-  num={
-    <>
-      <Factorial>n</Factorial>
-    </>
-  }
-  den={
-    <>
-      <Factorial>k</Factorial>{" "}
-      <Factorial>
-        <>n-k</>
-      </Factorial>
-    </>
-  }
-/>
+```mdx
+<Choose n="n" k="k" />
+
+<Floor>n/2</Floor>   <Ceil>log n</Ceil>
+```
 
 ## Set theory
 
-`Floor`, `Ceil`, `SetOf`, `Cardinality`, `PowerSet` · `In`, `NotIn`, `Subset`, `SubsetEq`, `Supset`, `SupsetEq` · `Union`, `Intersect`, `Empty`, `SetMinus`
+**Binary:** `In`, `NotIn`, `Subset`, `SubsetEq`, `Supset`, `SupsetEq`, `ProperSubset`, `ProperSupset`,
+`Union`, `Intersect`, `Empty`, `SetMinus`, `SetOf`, `Cardinality`, `PowerSet`
+
+**N-ary:** `BigUnion`, `BigIntersect`, `BigAnd`, `BigOr`
+
+**Number sets:** `NN` ℕ, `ZZ` ℤ, `QQ` ℚ, `RR` ℝ, `CC` ℂ, `PP` ℙ, `FF` 𝔽
 
 ```mdx
-<Floor>x</Floor> <Ceil>x</Ceil>
+x <In /> <RR />
 
-<SetOf
-  variable="x"
-  condition={
-    <>
-      x <Geq /> 0
-    </>
-  }
-/>
-
-A <Union /> B A <Intersect /> B
-
-x <In /> <NN />
-```
-
-<SetOf
-  variable="x"
-  condition={
-    <>
-      x <In /> <NN /> and x <Geq /> 0
-    </>
-  }
-/>
-
-## Number systems
-
-`NN` (ℕ) · `ZZ` (ℤ) · `QQ` (ℚ) · `RR` (ℝ) · `CC` (ℂ) · `PP` (ℙ) · `FF` (𝔽)
-
-```mdx
-f: <RR /> → <RR />
-
-z = <Complex re="a" im="b" />
-
-<Conj>z</Conj> {/* z̄ */}
+<BigUnion from="i=1" to="n">A<Sub sub="i" /></BigUnion>
 ```
 
 ## Logic & proof
 
-`And` (∧) · `Or` (∨) · `Not` (¬) · `Xor` (⊕) · `Nand` (↑) · `Nor` (↓)
-
-`ForAll` (∀) · `Exists` (∃) · `NotExists` (∄)
-
-`Implies` (⟹) · `Iff` (⟺) · `Therefore` (∴) · `Because` (∵) · `Turnstile` (⊢) · `QED`
+`And`, `Or`, `Not`, `Xor`, `ForAll`, `Exists`, `NotExists`,
+`Implies`, `Iff`, `Therefore`, `Because`, `Turnstile`, `Models`, `Top`, `Bot`, `QED`
 
 ```mdx
-<ForAll /> x <In /> <RR />, x<Pow exp="2" /> <Geq /> 0
+<ForAll />x <In /> <RR />, <Squared>x</Squared> <Geq /> 0
 
-P <Implies /> Q
-
-P <Iff /> Q
-
-∴ the proof is complete. <QED />
+p <Implies /> q  <Iff />  <Not />p <Or /> q
 ```
-
-<ForAll /> x <In /> <RR />, x<Pow exp="2" /> <Geq /> 0 <Therefore />
-<Abs>x</Abs> <Geq /> 0 <QED />
 
 ## Linear algebra
 
-| Component                                         | Renders                |
-| ------------------------------------------------- | ---------------------- |
-| `<Vec>`                                           | v⃗ with overhead arrow |
-| `<Norm>`                                          | ‖v‖                    |
-| `<Dot />`                                         | ·                      |
-| `<Cross />`                                       | ×                      |
-| `<Transpose>`                                     | A^T                    |
-| `<Det>`                                           | \|A\| or det(A)        |
-| `<Matrix rows={[[...],[...]]} />`                 | grid with brackets     |
-| `SpanOp`, `Rank`, `Dim`, `NullOp`, `Img`, `Trace` | named operators        |
+`Vec`, `Norm`, `Dot`, `Cross`, `Transpose`, `Det`, `Matrix`,
+`SpanOp`, `Rank`, `Dim`, `NullOp`, `Img`, `Trace`
 
 ```mdx
-<Matrix
-  rows={[
-    ["a", "b"],
-    ["c", "d"],
-  ]}
-/>
+<Det>A</Det>  =  ad − bc
 
-<Matrix
-  rows={[
-    ["1", "0"],
-    ["0", "1"],
-  ]}
-  bracket="round"
-/>
+<Matrix rows={[["a","b"],["c","d"]]} />
 
-<Transpose>
-  <Vec>v</Vec>
-</Transpose>
-
-<Norm>
-  <Vec>u</Vec> - <Vec>v</Vec>
-</Norm>
+<Transpose>A</Transpose>  →  Aᵀ
 ```
 
-<Matrix
-  rows={[
-    ["a", "b"],
-    ["c", "d"],
-  ]}
-/>
-has
-<Det variant="det">
-  <Matrix
-    rows={[
-      ["a", "b"],
-      ["c", "d"],
-    ]}
-  />
-</Det>
-= ad - bc
+## Probability & statistics
 
-## Statistics & probability
-
-| Component                  | Renders          |
-| -------------------------- | ---------------- |
-| `<Prob>`                   | P(event)         |
-| `<CondProb event given />` | P(A\|B)          |
-| `<Expected>`               | 𝔼[X]             |
-| `<Variance>`               | Var(X)           |
-| `<StdDev>`                 | SD(X)            |
-| `<Cov x y />`              | Cov(X,Y)         |
-| `<Corr x y />`             | Corr(X,Y)        |
-| `<Dist name params />`     | X ~ Name(params) |
+`Prob`, `CondProb`, `Expected`, `Variance`, `StdDev`, `Cov`, `Corr`, `Dist`
 
 ```mdx
-<CondProb event="A" given="B" /> =
-<Frac
-  num={
-    <>
-      <Prob>
-        B <Iff /> A
-      </Prob>
-      <Prob>A</Prob>
-    </>
-  }
-  den={
-    <>
-      <Prob>B</Prob>
-    </>
-  }
-/>
-
-X <Dist name="Normal" params={<>μ, σ²</>} />
+<Prob>A <Union /> B</Prob>  =  <Prob>A</Prob> + <Prob>B</Prob> − <Prob>A <Intersect /> B</Prob>
 ```
 
 ## Greek letters
 
-`<Greek letter="alpha" />` for any letter. Shortcuts for all 23 lowercase + 10 uppercase:
+**Lowercase:** `Alpha` α, `Beta` β, `Gamma` γ, `GDelta` δ, `Epsilon` ε, `Zeta` ζ,
+`Eta` η, `Theta` θ, `Iota` ι, `Kappa` κ, `Lambda` λ, `Mu` μ, `Nu` ν, `Xi` ξ,
+`PiSym` π, `Rho` ρ, `SigmaSym` σ, `Tau` τ, `Upsilon` υ, `Phi` φ, `Chi` χ, `Psi` ψ, `Omega` ω
+
+**Uppercase:** `GammaU` Γ, `DeltaU` Δ, `ThetaU` Θ, `LambdaU` Λ, `XiU` Ξ, `PiU` Π,
+`SigmaU` Σ, `PhiU` Φ, `PsiU` Ψ, `OmegaU` Ω
+
+**Variants:** `Varsigma` ς, `Varepsilon` ε, `Varphi` φ, `Vartheta` ϑ, `Varpi` ϖ, `Varrho` ϱ
+
+## Relations & operators
+
+**Equality:** `Eq`, `Neq`, `Approx`, `Equiv`, `Cong`, `Sim`, `Leq`, `Geq`, `Ll`, `Gg`
+
+**Definition:** `DefEq` :=, `DefinedAs` ≜, `Approaches` ≐, `Corresponds` ≙
+
+**Arithmetic:** `PlusMinus` ±, `MinusPlus` ∓, `Times` ×, `Division` ÷, `Percent` %, `Proportion` ∷
+
+**Arrows:** `Arrow` →, `LeftArrow` ←, `DoubleRightArrow` ⇒, `DoubleLeftRightArrow` ⇔,
+`LongRightArrow` ⟶, `EquilibriumArrow` ⇌, and 20+ more
+
+## Accents
+
+| Component | Renders | Use for |
+|---|---|---|
+| `<Bar>x</Bar>` | x̄ | mean |
+| `<Hat>x</Hat>` | x̂ | estimate, unit vector |
+| `<Tilde>x</Tilde>` | x̃ | approximation class |
+| `<DotAccent>x</DotAccent>` | ẋ | first time derivative |
+| `<DDot>x</DDot>` | ẍ | second time derivative |
+| `<PrimeOf>f</PrimeOf>` | f′ | derivative shorthand |
+
+## Brackets & intervals
 
 ```mdx
-<Alpha /> <Beta /> <Gamma /> <Theta />
-<Lambda /> <Mu /> <Pi /> {/* etc */}
-
-{/* Uppercase */}
-
-<GammaU /> <DeltaU /> <SigmaU /> <OmegaU />
+<AngleBracket>u, v</AngleBracket>               → ⟨u, v⟩
+<Interval a="0" b="1" />                        → [0, 1]
+<Interval a="0" b="1" leftOpen rightOpen />     → (0, 1)
+<DoubleBracket>P</DoubleBracket>                → ⟦P⟧
 ```
 
-Note: `GDelta` (δ), `PiSym` (π), `SigmaSym` (σ) avoid conflicts with other exports.
-
-## Relations, arrows & arithmetic
-
-Section 11 — symbols that appear throughout math writing:
+## Piecewise functions
 
 ```mdx
-{/* Comparison */}
-
-<Neq /> <Approx /> <Equiv /> <Cong />
-<Leq /> <Geq /> <Ll /> <Gg />
-<Propto /> <Sim />
-
-{/* Arithmetic */}
-
-<PlusMinus /> <MinusPlus />
-
-{/* Number theory */}
-a <Divides /> b {/* a | b */}
-a <NotDivides /> b
-
-{/* Arrows & operations */}
-
-<Arrow /> {/* → */}
-<MapsTo /> {/* ↦ */}
-<Compose /> {/* ∘ */}
-<OTimes /> {/* ⊗ */}
+<Cases>
+  <Case expr="x" when="x ≥ 0" />
+  <Case expr={<span>−x</span>} when="x < 0" />
+</Cases>
 ```
 
-f <Compose /> g : <RR /> <Arrow /> <RR />
+## Geometry
 
-a<Pow exp="2" /> + b<Pow exp="2" /> <Approx /> c<Pow exp="2" /> when c <Gg /> 1
+`Angle` ∠, `MeasuredAngle` ∡, `Triangle` △, `RightTriangle` ⊿, `Segment` (overline),
+`Ray`, `Arc` ⌢, `Parallel` ∥, `NotParallel` ∦, `Perpendicular` ⊥, `RightAngle` ⊾, `Diameter` ⌀
+
+```mdx
+<Angle>A</Angle> = <Angle>B</Angle> − <Deg>90</Deg>
+
+<Segment>AB</Segment> <Parallel /> <Segment>CD</Segment>
+
+<Triangle>ABC</Triangle> <GeoCong /> <Triangle>DEF</Triangle>
+```
+
+## Physics
+
+```mdx
+<HBar />   → ℏ
+<Bra>psi</Bra>   → ⟨ψ|
+<Ket>phi</Ket>   → |φ⟩
+<BraKet bra={<Psi />} ket={<Phi />} />   → ⟨ψ|φ⟩
+```
+
+## Chemistry
+
+```mdx
+H₂ <ChemEquilibrium /> 2H
+
+C<SingleBond />H    C<DoubleBond />O    N<TripleBond />N
+```
+
+## Script letters
+
+`ScriptL` ℒ (Laplace), `ScriptF` ℱ (Fourier), `ScriptH` ℋ (Hilbert),
+`ScriptO` 𝒪 (Big-O), `ScriptEll` ℓ, and all 26 letters A–Z
+
+## Dots
+
+`CDots` ⋯, `VDots` ⋮, `DDots` ⋱, `LDots` …
+
+## Shorthands
+
+```mdx
+<Squared>x</Squared>   → x²
+<Cubed>x</Cubed>       → x³
+<Inverse>A</Inverse>   → A⁻¹
+<SubZero>x</SubZero>   → x₀
+```
+
+## Composing complex expressions
+
+Wrap sub-expressions in `{<span>...</span>}` when passing them as JSX props:
+
+```mdx
+{/* Quadratic formula */}
+x = <Frac
+  num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>}
+  den="2a"
+/>
+
+{/* Gaussian integral */}
+<Integral from={<span>−<Inf /></span>} to={<Inf />}>
+  <Pow exp={<span>−<Squared>x</Squared></span>}>e</Pow> <Differential />x
+</Integral>
+```

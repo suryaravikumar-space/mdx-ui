@@ -213,132 +213,136 @@ export const add = new Command()
         components = selected;
       }
 
-    if (!components || components.length === 0) {
-      console.log(chalk.yellow("No components selected"));
-      process.exit(0);
-    }
+      if (!components || components.length === 0) {
+        console.log(chalk.yellow("No components selected"));
+        process.exit(0);
+      }
 
-    const spinner = ora("Fetching components...").start();
+      const spinner = ora("Fetching components...").start();
 
-    try {
-      const componentsData: ComponentData[] = [];
-      const processedComponents = new Set<string>();
+      try {
+        const componentsData: ComponentData[] = [];
+        const processedComponents = new Set<string>();
 
-      async function fetchComponentRecursive(componentName: string) {
-        if (processedComponents.has(componentName)) return;
-        processedComponents.add(componentName);
-        const data = await fetchComponent(componentName);
+        async function fetchComponentRecursive(componentName: string) {
+          if (processedComponents.has(componentName)) return;
+          processedComponents.add(componentName);
+          const data = await fetchComponent(componentName);
 
-        if (data.registryDependencies && data.registryDependencies.length > 0) {
-          for (const depName of data.registryDependencies) {
-            await fetchComponentRecursive(depName);
+          if (
+            data.registryDependencies &&
+            data.registryDependencies.length > 0
+          ) {
+            for (const depName of data.registryDependencies) {
+              await fetchComponentRecursive(depName);
+            }
           }
+
+          componentsData.push(data);
         }
 
-        componentsData.push(data);
-      }
+        for (const component of components) {
+          await fetchComponentRecursive(component);
+        }
 
-      for (const component of components) {
-        await fetchComponentRecursive(component);
-      }
+        spinner.text = "Installing dependencies...";
 
-      spinner.text = "Installing dependencies...";
+        const allDeps = new Set<string>();
+        for (const data of componentsData) {
+          data.dependencies?.forEach((dep: string) => allDeps.add(dep));
+        }
 
-      const allDeps = new Set<string>();
-      for (const data of componentsData) {
-        data.dependencies?.forEach((dep: string) => allDeps.add(dep));
-      }
+        if (allDeps.size > 0) {
+          await installDependencies(Array.from(allDeps));
+        }
 
-      if (allDeps.size > 0) {
-        await installDependencies(Array.from(allDeps));
-      }
+        spinner.stop();
 
-      spinner.stop();
+        const cwd = process.cwd();
+        const framework = config.framework ?? "unknown";
+        const written: string[] = [];
+        const skipped: string[] = [];
 
-      const cwd = process.cwd();
-      const framework = config.framework ?? "unknown";
-      const written: string[] = [];
-      const skipped: string[] = [];
+        for (const data of componentsData) {
+          for (const file of data.files) {
+            // Resolve file path (mirrors writeComponent logic)
+            const libRoot = config.componentsDir.startsWith("src/")
+              ? path.join(cwd, "src")
+              : cwd;
+            const filePath = file.path.startsWith("lib/")
+              ? path.join(libRoot, file.path)
+              : path.join(cwd, config.componentsDir, file.path);
 
-      for (const data of componentsData) {
-        for (const file of data.files) {
-          // Resolve file path (mirrors writeComponent logic)
-          const libRoot = config.componentsDir.startsWith("src/")
-            ? path.join(cwd, "src")
-            : cwd;
-          const filePath = file.path.startsWith("lib/")
-            ? path.join(libRoot, file.path)
-            : path.join(cwd, config.componentsDir, file.path);
-
-          let incoming = file.content;
-          if (framework === "react") {
-            incoming = incoming.replace(/^["']use client["']\n\n?/m, "");
-          }
-
-          const exists = await fs.pathExists(filePath);
-
-          if (exists) {
-            const existing = await fs.readFile(filePath, "utf-8");
-
-            // Content identical — silent skip
-            if (existing.trim() === incoming.trim()) {
-              skipped.push(file.path);
-              continue;
+            let incoming = file.content;
+            if (framework === "react") {
+              incoming = incoming.replace(/^["']use client["']\n\n?/m, "");
             }
 
-            // Content differs — respect --overwrite or ask
-            if (!opts.overwrite) {
-              const { overwrite } = await prompts({
-                type: "confirm",
-                name: "overwrite",
-                message: `${chalk.yellow(file.path)} already exists and has local changes. Overwrite?`,
-                initial: false,
-              });
+            const exists = await fs.pathExists(filePath);
 
-              if (!overwrite) {
+            if (exists) {
+              const existing = await fs.readFile(filePath, "utf-8");
+
+              // Content identical — silent skip
+              if (existing.trim() === incoming.trim()) {
                 skipped.push(file.path);
                 continue;
               }
+
+              // Content differs — respect --overwrite or ask
+              if (!opts.overwrite) {
+                const { overwrite } = await prompts({
+                  type: "confirm",
+                  name: "overwrite",
+                  message: `${chalk.yellow(file.path)} already exists and has local changes. Overwrite?`,
+                  initial: false,
+                });
+
+                if (!overwrite) {
+                  skipped.push(file.path);
+                  continue;
+                }
+              }
             }
+
+            await fs.ensureDir(path.dirname(filePath));
+            await fs.writeFile(filePath, incoming, "utf-8");
+            written.push(file.path);
           }
-
-          await fs.ensureDir(path.dirname(filePath));
-          await fs.writeFile(filePath, incoming, "utf-8");
-          written.push(file.path);
         }
-      }
 
-      // Patch mdx-components.tsx for ALL fetched components (including deps)
-      let patchedFile = "";
-      for (const data of componentsData) {
-        const result = await patchMdxComponents(
-          data.name,
-          config.componentsDir,
-          cwd,
-        );
-        if (result.patched && !patchedFile) {
-          patchedFile = path.relative(cwd, result.mdxPath);
+        // Patch mdx-components.tsx for ALL fetched components (including deps)
+        let patchedFile = "";
+        for (const data of componentsData) {
+          const result = await patchMdxComponents(
+            data.name,
+            config.componentsDir,
+            cwd,
+          );
+          if (result.patched && !patchedFile) {
+            patchedFile = path.relative(cwd, result.mdxPath);
+          }
         }
-      }
 
-      console.log();
-      for (const component of components) {
-        console.log(chalk.green(`✓ ${component}`));
-      }
-      if (skipped.length > 0) {
-        console.log(chalk.dim(`  skipped: ${skipped.join(", ")}`));
-      }
-      if (patchedFile) {
-        console.log(chalk.dim(`  updated: ${patchedFile}`));
-      }
+        console.log();
+        for (const component of components) {
+          console.log(chalk.green(`✓ ${component}`));
+        }
+        if (skipped.length > 0) {
+          console.log(chalk.dim(`  skipped: ${skipped.join(", ")}`));
+        }
+        if (patchedFile) {
+          console.log(chalk.dim(`  updated: ${patchedFile}`));
+        }
 
-      console.log();
-      console.log(chalk.bold("Done! 🎉"));
-      console.log();
-    } catch (error: unknown) {
-      spinner.fail("Failed to add components");
-      const msg = error instanceof Error ? error.message : String(error);
-      console.error(chalk.red(msg));
-      process.exit(1);
-    }
-  });
+        console.log();
+        console.log(chalk.bold("Done! 🎉"));
+        console.log();
+      } catch (error: unknown) {
+        spinner.fail("Failed to add components");
+        const msg = error instanceof Error ? error.message : String(error);
+        console.error(chalk.red(msg));
+        process.exit(1);
+      }
+    },
+  );

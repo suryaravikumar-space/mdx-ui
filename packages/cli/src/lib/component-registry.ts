@@ -563,15 +563,6 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     description:
       "Step-by-step mathematical solution blocks: Solution, SolutionStep, SolutionAnswer",
   },
-  "math-easy": {
-    importFile: "./math-easy",
-    imports: ["ME", "BME"],
-    elementMappings: {},
-    files: ["math-easy.tsx"],
-    deps: ["katex", "clsx", "tailwind-merge"],
-    description:
-      "Human-readable math DSL compiled to KaTeX — ME and BME (no backslashes needed)",
-  },
 };
 
 // ─── Derived maps (consumed by add / remove / update / doctor) ────────────────

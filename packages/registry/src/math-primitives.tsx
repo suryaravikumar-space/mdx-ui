@@ -1343,3 +1343,1042 @@ export const Eq = mkSym("=", "equals", "mx-1");
 
 /** Not-equal sign ≠. Alias for `Neq` with a more descriptive name. */
 export const NotEq = mkSym("≠", "not equal", "mx-1");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION — ACCENTS
+// Bar · Hat · Tilde · Dot · DDot
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** Overline / mean bar: x̄. Border-top over the child content. */
+export function Bar({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="bar over"
+      className={cn(
+        "mx-0.5 inline-block border-t border-current pt-px",
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+Bar.displayName = "Bar";
+
+const mkAccent = (accent: string, label: string) => {
+  const Accent = ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <span
+      role="math"
+      aria-label={label}
+      className={cn("mx-0.5 inline-flex flex-col items-center", className)}
+    >
+      <span className="text-[0.65em] leading-none select-none">{accent}</span>
+      <span>{children}</span>
+    </span>
+  );
+  Accent.displayName = label
+    .split(" ")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join("");
+  return Accent;
+};
+
+/** Hat accent: x̂ — unit vector or estimate. */
+export const Hat = mkAccent("∧", "hat over");
+/** Tilde accent: x̃ — approximate or equivalence class. */
+export const Tilde = mkAccent("~", "tilde over");
+/** Single dot accent: ẋ — first time derivative (Newton notation). */
+export const DotAccent = mkAccent("·", "dot over");
+/** Double dot accent: ẍ — second time derivative (Newton notation). */
+export const DDot = mkAccent("··", "double dot over");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION — EXTENDED CALCULUS
+// ContourIntegral · Overbrace · Underbrace
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** Contour integral ∮ — closed curve integral with optional bounds. */
+export function ContourIntegral({
+  from,
+  to,
+  children,
+  className,
+}: BoundedProps) {
+  return (
+    <span
+      className={cn("mx-1 inline-flex items-center align-middle", className)}
+    >
+      <span className="inline-flex flex-col items-end">
+        {to !== undefined && (
+          <span className="text-[0.62em] leading-none">{to}</span>
+        )}
+        <span className="select-none text-[1.9em] font-light leading-none">
+          ∮
+        </span>
+        {from !== undefined && (
+          <span className="text-[0.62em] leading-none">{from}</span>
+        )}
+      </span>
+      {children && <span className="ml-0.5">{children}</span>}
+    </span>
+  );
+}
+ContourIntegral.displayName = "ContourIntegral";
+
+/** Overbrace ⏞ with an optional label above. Groups terms with annotation. */
+export function Overbrace({
+  children,
+  label,
+  className,
+}: {
+  children: React.ReactNode;
+  label?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      className={cn("mx-0.5 inline-flex flex-col items-center", className)}
+    >
+      {label && (
+        <span className="text-[0.65em] leading-none text-muted-foreground">
+          {label}
+        </span>
+      )}
+      <span className="w-full text-center text-[0.8em] leading-none select-none">
+        ⏞
+      </span>
+      <span>{children}</span>
+    </span>
+  );
+}
+Overbrace.displayName = "Overbrace";
+
+/** Underbrace ⏟ with an optional label below. Groups terms with annotation. */
+export function Underbrace({
+  children,
+  label,
+  className,
+}: {
+  children: React.ReactNode;
+  label?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      className={cn("mx-0.5 inline-flex flex-col items-center", className)}
+    >
+      <span>{children}</span>
+      <span className="w-full text-center text-[0.8em] leading-none select-none">
+        ⏟
+      </span>
+      {label && (
+        <span className="text-[0.65em] leading-none text-muted-foreground">
+          {label}
+        </span>
+      )}
+    </span>
+  );
+}
+Underbrace.displayName = "Underbrace";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION — PIECEWISE FUNCTIONS
+// Case · Cases
+// ═══════════════════════════════════════════════════════════════════════════════
+
+interface CaseProps {
+  expr: React.ReactNode;
+  when: React.ReactNode;
+  className?: string;
+}
+
+/** A single branch in a piecewise function — pair expr with its condition. */
+export function Case({ expr, when, className }: CaseProps) {
+  return (
+    <span className={cn("contents", className)}>
+      <span className="pr-4">{expr}</span>
+      <span className="text-muted-foreground text-[0.88em]">if {when}</span>
+    </span>
+  );
+}
+Case.displayName = "Case";
+
+interface CasesProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+/**
+ * Piecewise / cases function — renders a left brace with expression–condition rows.
+ *
+ * @example
+ * <Cases>
+ *   <Case expr="x" when="x ≥ 0" />
+ *   <Case expr={<span>−x</span>} when="x < 0" />
+ * </Cases>
+ */
+export function Cases({ children, className }: CasesProps) {
+  return (
+    <span
+      role="math"
+      aria-label="piecewise function"
+      className={cn("inline-grid gap-x-2 gap-y-1 border-l-[2.5px] border-current pl-2 my-1", className)}
+      style={{ gridTemplateColumns: "auto auto" }}
+    >
+      {children}
+    </span>
+  );
+}
+Cases.displayName = "Cases";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION — GEOMETRY
+// Angle · Triangle · Parallel · Perpendicular · Segment · Ray · Arc · Similar
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** Angle ∠ABC — renders ∠ prefix before the vertex label. */
+export function Angle({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="angle"
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none font-serif mr-px">∠</span>
+      <span>{children}</span>
+    </span>
+  );
+}
+Angle.displayName = "Angle";
+
+/** Triangle △ABC — renders △ prefix before the vertex label. */
+export function Triangle({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="triangle"
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none font-serif mr-px">△</span>
+      <span>{children}</span>
+    </span>
+  );
+}
+Triangle.displayName = "Triangle";
+
+/** Line segment AB̄ — overline above the two endpoint labels. */
+export function Segment({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="segment"
+      className={cn(
+        "mx-0.5 inline-block border-t border-current pt-px font-serif",
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+Segment.displayName = "Segment";
+
+/** Ray AB→ — arrow above the endpoint labels. */
+export function Ray({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="ray"
+      className={cn("mx-0.5 inline-flex flex-col items-start", className)}
+    >
+      <span className="text-[0.65em] leading-none select-none self-end">→</span>
+      <span className="font-serif">{children}</span>
+    </span>
+  );
+}
+Ray.displayName = "Ray";
+
+/** Arc ⌢ — arc above two endpoint labels. */
+export function Arc({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="arc"
+      className={cn("mx-0.5 inline-flex flex-col items-center", className)}
+    >
+      <span className="text-[0.8em] leading-none select-none">⌢</span>
+      <span className="font-serif">{children}</span>
+    </span>
+  );
+}
+Arc.displayName = "Arc";
+
+/** Parallel ∥ — two lines are parallel. */
+export const Parallel = mkSym("∥", "parallel", "mx-1");
+/** Perpendicular ⊥ — two lines are perpendicular. */
+export const Perpendicular = mkSym("⊥", "perpendicular", "mx-1");
+/** Therefore ∴ — geometric conclusion marker. Already exported above as Therefore. */
+/** Right angle symbol ⊾ — marks a 90° angle in diagrams. */
+export const RightAngle = mkSym("⊾", "right angle", "mx-1");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 12 — ARROWS
+// Single, double, long, harpoon, diagonal, chemistry equilibrium
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Single-headed arrows
+export const LeftArrow        = mkSym("←",  "left arrow",            "mx-1");
+export const UpArrow          = mkSym("↑",  "up arrow",              "mx-1");
+export const DownArrow        = mkSym("↓",  "down arrow",            "mx-1");
+export const LeftRightArrow   = mkSym("↔",  "left right arrow",      "mx-1");
+export const NearArrow        = mkSym("↗",  "north east arrow",      "mx-1");
+export const SeArrow          = mkSym("↘",  "south east arrow",      "mx-1");
+export const SwArrow          = mkSym("↙",  "south west arrow",      "mx-1");
+export const NwArrow          = mkSym("↖",  "north west arrow",      "mx-1");
+export const HookRightArrow   = mkSym("↪",  "hook right arrow",      "mx-1");
+export const HookLeftArrow    = mkSym("↩",  "hook left arrow",       "mx-1");
+export const TwoHeadRight     = mkSym("↠",  "two head right arrow",  "mx-1");
+export const TwoHeadLeft      = mkSym("↞",  "two head left arrow",   "mx-1");
+export const UpDownArrow      = mkSym("↕",  "up down arrow",         "mx-1");
+
+// Double-headed (implication style)
+export const DoubleLeftArrow      = mkSym("⇐",  "double left arrow",       "mx-1");
+export const DoubleRightArrow     = mkSym("⇒",  "double right arrow",      "mx-1");
+export const DoubleLeftRightArrow = mkSym("⇔",  "double left right arrow", "mx-1");
+export const DoubleUpArrow        = mkSym("⇑",  "double up arrow",         "mx-1");
+export const DoubleDownArrow      = mkSym("⇓",  "double down arrow",       "mx-1");
+export const DoubleUpDownArrow    = mkSym("⇕",  "double up down arrow",    "mx-1");
+
+// Long arrows
+export const LongRightArrow       = mkSym("⟶",  "long right arrow",       "mx-1");
+export const LongLeftArrow        = mkSym("⟵",  "long left arrow",        "mx-1");
+export const LongLeftRightArrow   = mkSym("⟷",  "long left right arrow",  "mx-1");
+export const LongMapsTo           = mkSym("⟼",  "long maps to",           "mx-1");
+
+// Harpoons (used in chemistry / physics)
+export const RightHarpoonUp    = mkSym("⇀",  "right harpoon up",    "mx-1");
+export const RightHarpoonDown  = mkSym("⇁",  "right harpoon down",  "mx-1");
+export const LeftHarpoonUp     = mkSym("↼",  "left harpoon up",     "mx-1");
+export const LeftHarpoonDown   = mkSym("↽",  "left harpoon down",   "mx-1");
+export const EquilibriumArrow  = mkSym("⇌",  "equilibrium arrow",   "mx-1");
+export const DoubleHarpoon     = mkSym("⇋",  "double harpoon",      "mx-1");
+
+// Curved / circular
+export const CircleArrow       = mkSym("↻",  "clockwise circle arrow",         "mx-1");
+export const CircleArrowLeft   = mkSym("↺",  "counter clockwise circle arrow", "mx-1");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 13 — DOTS & ELLIPSIS
+// CDots · VDots · DDots · LDots · Therefore dots
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const CDots = mkSym("⋯",  "centered dots");   // horizontal middle dots
+export const VDots = mkSym("⋮",  "vertical dots");   // vertical dots
+export const DDots = mkSym("⋱",  "diagonal dots");   // diagonal dots (down-right)
+export const LDots = mkSym("…",  "lower dots");      // baseline ellipsis
+export const UpDots = mkSym("⋰", "diagonal dots up"); // diagonal dots (up-right)
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 14 — BRACKETS & INTERVALS
+// AngleBracket · DoubleBracket · Interval
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Angle brackets ⟨ ⟩ — inner product, expectation, Dirac notation.
+ * @example <AngleBracket>u, v</AngleBracket>  →  ⟨u, v⟩
+ */
+export function AngleBracket({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="angle bracket"
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none text-[1.1em] font-light">⟨</span>
+      <span>{children}</span>
+      <span className="select-none text-[1.1em] font-light">⟩</span>
+    </span>
+  );
+}
+AngleBracket.displayName = "AngleBracket";
+
+/**
+ * Double square brackets ⟦ ⟧ — Iverson bracket / semantic bracket.
+ * @example <DoubleBracket>P</DoubleBracket>  →  ⟦P⟧
+ */
+export function DoubleBracket({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="double bracket"
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none text-[1.1em] font-light">⟦</span>
+      <span>{children}</span>
+      <span className="select-none text-[1.1em] font-light">⟧</span>
+    </span>
+  );
+}
+DoubleBracket.displayName = "DoubleBracket";
+
+interface IntervalProps {
+  a: React.ReactNode;
+  b: React.ReactNode;
+  /** Open left endpoint — uses ( instead of [ */
+  leftOpen?: boolean;
+  /** Open right endpoint — uses ) instead of ] */
+  rightOpen?: boolean;
+  className?: string;
+}
+
+/**
+ * Interval notation — [a, b], (a, b), (a, b], [a, b).
+ * @example <Interval a="0" b="1" />          →  [0, 1]
+ * @example <Interval a="0" b="1" leftOpen /> →  (0, 1]
+ */
+export function Interval({
+  a,
+  b,
+  leftOpen = false,
+  rightOpen = false,
+  className,
+}: IntervalProps) {
+  return (
+    <span
+      role="math"
+      aria-label={`interval ${leftOpen ? "open" : "closed"} ${a} to ${b} ${rightOpen ? "open" : "closed"}`}
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none">{leftOpen ? "(" : "["}</span>
+      <span>{a}</span>
+      <span className="mx-0.5 select-none">,</span>
+      <span>{b}</span>
+      <span className="select-none">{rightOpen ? ")" : "]"}</span>
+    </span>
+  );
+}
+Interval.displayName = "Interval";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 15 — SCRIPT / CALLIGRAPHIC LETTERS
+// ℒ ℱ ℋ ℰ ℳ 𝒜 ℬ 𝒞 … — transforms, spaces, operators
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const mkScript = (letter: string, label: string) => {
+  const S = ({ className }: { className?: string }) => (
+    <span
+      className={cn("mx-0.5 font-serif italic", className)}
+      aria-label={label}
+    >
+      {letter}
+    </span>
+  );
+  S.displayName = label
+    .split(" ")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join("");
+  return S;
+};
+
+export const ScriptA = mkScript("𝒜", "script A");
+export const ScriptB = mkScript("ℬ", "script B");
+export const ScriptC = mkScript("𝒞", "script C");
+export const ScriptD = mkScript("𝒟", "script D");
+export const ScriptE = mkScript("ℰ", "script E");   // also Euler/energy
+export const ScriptF = mkScript("ℱ", "script F");   // Fourier transform ℱ
+export const ScriptG = mkScript("𝒢", "script G");
+export const ScriptH = mkScript("ℋ", "script H");   // Hilbert space ℋ
+export const ScriptI = mkScript("ℐ", "script I");
+export const ScriptJ = mkScript("𝒥", "script J");
+export const ScriptK = mkScript("𝒦", "script K");
+export const ScriptL = mkScript("ℒ", "script L");   // Laplace transform ℒ
+export const ScriptM = mkScript("ℳ", "script M");
+export const ScriptN = mkScript("𝒩", "script N");
+export const ScriptO = mkScript("𝒪", "script O");   // Big-O notation 𝒪
+export const ScriptP = mkScript("𝒫", "script P");
+export const ScriptQ = mkScript("𝒬", "script Q");
+export const ScriptR = mkScript("ℛ", "script R");   // Riemann ℛ
+export const ScriptS = mkScript("𝒮", "script S");
+export const ScriptT = mkScript("𝒯", "script T");
+export const ScriptU = mkScript("𝒰", "script U");
+export const ScriptV = mkScript("𝒱", "script V");
+export const ScriptW = mkScript("𝒲", "script W");
+export const ScriptX = mkScript("𝒳", "script X");
+export const ScriptY = mkScript("𝒴", "script Y");
+export const ScriptZ = mkScript("𝒵", "script Z");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 16 — PHYSICS
+// HBar · Bra · Ket · BraKet · Angstrom · Planck
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** ℏ — reduced Planck constant (h-bar). */
+export const HBar = mkSym("ℏ", "h bar");
+
+/** Ångström Å — unit of length (0.1 nm). */
+export const Angstrom = mkSym("Å", "angstrom");
+
+/** ∞ alias for physics context — use <Inf /> directly instead. */
+export const InfSym = Inf;
+
+/**
+ * Bra ⟨ψ| — left part of Dirac bra-ket notation.
+ * @example <Bra>psi</Bra>  →  ⟨ψ|
+ */
+export function Bra({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="bra"
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none text-[1.1em] font-light">⟨</span>
+      <span>{children}</span>
+      <span className="select-none font-light">|</span>
+    </span>
+  );
+}
+Bra.displayName = "Bra";
+
+/**
+ * Ket |φ⟩ — right part of Dirac bra-ket notation.
+ * @example <Ket>phi</Ket>  →  |φ⟩
+ */
+export function Ket({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="ket"
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none font-light">|</span>
+      <span>{children}</span>
+      <span className="select-none text-[1.1em] font-light">⟩</span>
+    </span>
+  );
+}
+Ket.displayName = "Ket";
+
+/**
+ * BraKet ⟨ψ|φ⟩ — full Dirac inner product.
+ * @example <BraKet bra={<Psi />} ket={<Phi />} />
+ */
+export function BraKet({
+  bra,
+  ket,
+  className,
+}: {
+  bra: React.ReactNode;
+  ket: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span
+      role="math"
+      aria-label="bra ket"
+      className={cn("mx-0.5 inline-flex items-center", className)}
+    >
+      <span className="select-none text-[1.1em] font-light">⟨</span>
+      <span>{bra}</span>
+      <span className="mx-px select-none font-light">|</span>
+      <span>{ket}</span>
+      <span className="select-none text-[1.1em] font-light">⟩</span>
+    </span>
+  );
+}
+BraKet.displayName = "BraKet";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 17 — EXTRA OPERATORS
+// DirectSum · Hadamard · CircledDiv · Star · Bullet · Dagger · Bowtie
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const DirectSum      = mkSym("⊕",  "direct sum",         "mx-1");
+export const Hadamard       = mkSym("⊙",  "hadamard product",   "mx-1");
+export const CircledDiv     = mkSym("⊘",  "circled division",   "mx-1");
+export const CircledStar    = mkSym("⊛",  "circled star",       "mx-1");
+export const CircledPlus    = mkSym("⊕",  "circled plus",       "mx-1");
+export const CircledMinus   = mkSym("⊖",  "circled minus",      "mx-1");
+export const CircledTimes   = mkSym("⊗",  "circled times",      "mx-1"); // alias OTimes
+export const WreathProduct  = mkSym("≀",  "wreath product",     "mx-1");
+export const Star           = mkSym("⋆",  "star",               "mx-1");
+export const Bullet         = mkSym("•",  "bullet",             "mx-1");
+export const Dagger         = mkSym("†",  "dagger",             "mx-1");
+export const DoubleDagger   = mkSym("‡",  "double dagger",      "mx-1");
+export const Diamond        = mkSym("⋄",  "diamond",            "mx-1");
+export const Bowtie         = mkSym("⋈",  "bowtie",             "mx-1");
+export const Amalg          = mkSym("∐",  "coproduct amalg",    "mx-1");
+export const SmallInt       = mkSym("∫",  "integral small",     "mx-0.5"); // inline ∫ without sizing
+export const DoubleInt      = mkSym("∬",  "double integral",    "mx-1");
+export const TripleInt      = mkSym("∭",  "triple integral",    "mx-1");
+export const SurfaceInt     = mkSym("∯",  "surface integral",   "mx-1");
+export const VolumeInt      = mkSym("∰",  "volume integral",    "mx-1");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 18 — PRIME NOTATION
+// Prime · DoublePrime · TriplePrime · PrimeOf
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** Single prime ′ — derivative or transpose shorthand. */
+export const Prime = mkSym("′", "prime", "text-[0.75em]");
+/** Double prime ″ — second derivative. */
+export const DoublePrime = mkSym("″", "double prime", "text-[0.75em]");
+/** Triple prime ‴ — third derivative. */
+export const TriplePrime = mkSym("‴", "triple prime", "text-[0.75em]");
+
+/**
+ * PrimeOf — renders an expression immediately followed by a prime.
+ * @example <PrimeOf>f</PrimeOf>  →  f′
+ */
+export function PrimeOf({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span className={cn("inline-flex items-start", className)}>
+      <span>{children}</span>
+      <span className="text-[0.75em] leading-none">′</span>
+    </span>
+  );
+}
+PrimeOf.displayName = "PrimeOf";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 19 — CHEMISTRY
+// ReactionArrow · DoubleReactionArrow · GasMarker · PrecipitateMarker · Bond
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const ReactionArrow       = mkSym("⟶",  "reaction arrow",          "mx-1");
+export const GasMarker           = mkSym("↑",   "gas product",             "mx-1");
+export const PrecipitateMarker   = mkSym("↓",   "precipitate",             "mx-1");
+export const ChemEquilibrium     = mkSym("⇌",   "chemical equilibrium",    "mx-1");
+
+/** Single bond — (–). */
+export const SingleBond  = mkSym("—",  "single bond",  "mx-px");
+/** Double bond — (=). */
+export const DoubleBond  = mkSym("═",  "double bond",  "mx-px");
+/** Triple bond — (≡). */
+export const TripleBond  = mkSym("≡",  "triple bond",  "mx-px");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 20 — NUMBER THEORY & MISC OPERATORS
+// Lcm · Gcd · Ord · Sgn · Arg · Re · Im · Res
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const mkOp2 = (name: string) => {
+  const Op = ({ children, className }: { children?: React.ReactNode; className?: string }) => (
+    <span className={cn("mx-0.5 inline-flex items-center align-middle", className)}>
+      <span className="font-serif text-sm leading-none">{name}</span>
+      {children && <span className="ml-0.5">{children}</span>}
+    </span>
+  );
+  Op.displayName = name.charAt(0).toUpperCase() + name.slice(1);
+  return Op;
+};
+
+export const Lcm  = mkOp2("lcm");
+export const Gcd  = mkOp2("gcd");
+export const Ord  = mkOp2("ord");
+export const Sgn  = mkOp2("sgn");
+export const Arg  = mkOp2("arg");
+export const Re   = mkOp2("Re");
+export const Im   = mkOp2("Im");
+export const Res  = mkOp2("Res");
+export const Sup  = mkOp2("sup");
+export const Inf2 = mkOp2("inf");   // infimum operator (not infinity)
+export const Max  = mkOp2("max");
+export const Min  = mkOp2("min");
+export const Ker  = mkOp2("ker");
+export const Hom  = mkOp2("Hom");
+export const End  = mkOp2("End");
+export const Aut  = mkOp2("Aut");
+export const Der  = mkOp2("der");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 21 — GEOMETRIC SHAPES (additional)
+// Circle · Square · Rhombus · Pentagon · Hexagon
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const Circle      = mkSym("○",  "circle",     "mx-1");
+export const FilledCircle = mkSym("●", "filled circle", "mx-1");
+export const Square      = mkSym("□",  "square",     "mx-1");
+export const FilledSquare = mkSym("■", "filled square", "mx-1");
+export const Rhombus     = mkSym("◇",  "rhombus",    "mx-1");
+export const FilledRhombus = mkSym("◆", "filled rhombus", "mx-1");
+export const Pentagon    = mkSym("⬠",  "pentagon",   "mx-1");
+export const Hexagon     = mkSym("⬡",  "hexagon",    "mx-1");
+export const Ellipse     = mkSym("⬭",  "ellipse",    "mx-1");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 22 — MISCELLANEOUS MATH SYMBOLS
+// Aleph · Beth · Gimel · Daleth · Planck · Euler e · Imaginary i
+// ═══════════════════════════════════════════════════════════════════════════════
+
+export const Aleph       = mkSym("ℵ",  "aleph",           "font-serif");
+export const Beth        = mkSym("ℶ",  "beth",            "font-serif");
+export const Gimel       = mkSym("ℷ",  "gimel",           "font-serif");
+export const Daleth      = mkSym("ℸ",  "daleth",          "font-serif");
+export const PlanckH     = mkSym("h",  "Planck constant", "font-serif italic");
+export const EulerE      = mkSym("e",  "Euler number",    "font-serif italic");
+export const ImagUnit    = mkSym("i",  "imaginary unit",  "font-serif italic");
+export const NaturalLog  = mkSym("e",  "natural log base","font-serif italic"); // alias EulerE
+export const PartialDiff = mkSym("∂",  "partial differential");
+export const Grad        = mkSym("∇",  "gradient nabla"); // alias Nabla
+export const Lapl        = mkSym("△",  "Laplacian delta");
+export const FlatSymbol  = mkSym("♭",  "flat");
+export const SharpSymbol = mkSym("♯",  "sharp");
+export const NaturalSymbol = mkSym("♮","natural");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 23 — SUBSCRIPT / SUPERSCRIPT SHORTHANDS
+// SubZero · SubOne · SubTwo · PowTwo · PowThree · PowN
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** Subscript 0 — convenience for Sub with sub="0". */
+export function SubZero({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <Sub sub="0" className={className}>{children}</Sub>;
+}
+SubZero.displayName = "SubZero";
+
+/** Subscript 1. */
+export function SubOne({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <Sub sub="1" className={className}>{children}</Sub>;
+}
+SubOne.displayName = "SubOne";
+
+/** Subscript 2. */
+export function SubTwo({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <Sub sub="2" className={className}>{children}</Sub>;
+}
+SubTwo.displayName = "SubTwo";
+
+/** Squared — x². */
+export function Squared({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <Pow exp="2" className={className}>{children}</Pow>;
+}
+Squared.displayName = "Squared";
+
+/** Cubed — x³. */
+export function Cubed({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <Pow exp="3" className={className}>{children}</Pow>;
+}
+Cubed.displayName = "Cubed";
+
+/** Inverse — x⁻¹. */
+export function Inverse({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <Pow exp="−1" className={className}>{children}</Pow>;
+}
+Inverse.displayName = "Inverse";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 24 — SCHOOL ARITHMETIC (K–8)
+// Division · Times · Percent · Permille · Proportion · PlusMinus already above
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** ÷ — division / obelus. Used in elementary school arithmetic. */
+export const Division     = mkSym("÷",  "division",  "mx-1");
+/** × — multiplication cross. General multiplication (vs Cross which is vector). */
+export const Times        = mkSym("×",  "times",     "mx-1");
+/** % — percent. */
+export const Percent      = mkSym("%",  "percent",   "mx-0.5");
+/** ‰ — per mille (per thousand). */
+export const Permille     = mkSym("‰",  "per mille", "mx-0.5");
+/** ∷ — proportion. a : b ∷ c : d means a/b = c/d. */
+export const Proportion   = mkSym("∷",  "proportion","mx-1");
+/** ∶ — ratio colon. Slightly different weight from plain colon. */
+export const Ratio        = mkSym("∶",  "ratio",     "mx-0.5");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 25 — GEOMETRY (additional)
+// MeasuredAngle · SphericalAngle · Diameter · NotParallel · RightTriangle
+// LeftAngle · Congruent already above as Cong
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** ∡ — measured angle (arc with endpoint). Different from ∠ (plane angle). */
+export const MeasuredAngle  = mkSym("∡",  "measured angle",  "mx-1 font-serif");
+/** ∢ — spherical angle. */
+export const SphericalAngle = mkSym("∢",  "spherical angle", "mx-1 font-serif");
+/** ∟ — right angle (square corner symbol). */
+export const RightAngleCorner = mkSym("∟", "right angle corner", "mx-1 font-serif");
+/** ⊿ — right triangle. */
+export const RightTriangle  = mkSym("⊿",  "right triangle",  "mx-1");
+/** ∦ — not parallel. */
+export const NotParallel    = mkSym("∦",  "not parallel",    "mx-1");
+/** ⌀ — diameter symbol. Used in engineering drawings. */
+export const Diameter       = mkSym("⌀",  "diameter",        "mx-1");
+/** ≅ — congruent (geometry). Same as Cong, aliased with geometric label. */
+export const GeoCong        = mkSym("≅",  "congruent",       "mx-1");
+/** ∼ — similar (geometry). Same as Sim, aliased with geometric label. */
+export const GeoSim         = mkSym("∼",  "similar",         "mx-1");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 26 — SET THEORY (additional)
+// ProperSubset · ProperSuperset · BigUnion · BigIntersect · BigAnd · BigOr
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** ⊊ — proper subset (strict, ≠). */
+export const ProperSubset    = mkSym("⊊",  "proper subset",    "mx-1");
+/** ⊋ — proper superset (strict, ≠). */
+export const ProperSupset    = mkSym("⊋",  "proper superset",  "mx-1");
+/** ⊄ — not a subset. */
+export const NotSubset       = mkSym("⊄",  "not subset",       "mx-1");
+/** ⊅ — not a superset. */
+export const NotSupset       = mkSym("⊅",  "not superset",     "mx-1");
+/** ≁ — not similar. */
+export const NotSim          = mkSym("≁",  "not similar",      "mx-1");
+/** ≇ — not congruent. */
+export const NotCong         = mkSym("≇",  "not congruent",    "mx-1");
+
+/** ⋂ — n-ary big intersection (for indexed families). */
+export function BigIntersect({ from, to, children, className }: BoundedProps) {
+  return (
+    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+      <span className="inline-flex flex-col items-center">
+        {to !== undefined && <span className="text-[0.62em] leading-none">{to}</span>}
+        <span className="select-none text-[1.6em] leading-none">⋂</span>
+        {from !== undefined && <span className="text-[0.62em] leading-none">{from}</span>}
+      </span>
+      {children && <span className="ml-0.5">{children}</span>}
+    </span>
+  );
+}
+BigIntersect.displayName = "BigIntersect";
+
+/** ⋃ — n-ary big union (for indexed families). */
+export function BigUnion({ from, to, children, className }: BoundedProps) {
+  return (
+    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+      <span className="inline-flex flex-col items-center">
+        {to !== undefined && <span className="text-[0.62em] leading-none">{to}</span>}
+        <span className="select-none text-[1.6em] leading-none">⋃</span>
+        {from !== undefined && <span className="text-[0.62em] leading-none">{from}</span>}
+      </span>
+      {children && <span className="ml-0.5">{children}</span>}
+    </span>
+  );
+}
+BigUnion.displayName = "BigUnion";
+
+/** ⋀ — n-ary big AND (logic). */
+export function BigAnd({ from, to, children, className }: BoundedProps) {
+  return (
+    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+      <span className="inline-flex flex-col items-center">
+        {to !== undefined && <span className="text-[0.62em] leading-none">{to}</span>}
+        <span className="select-none text-[1.5em] leading-none">⋀</span>
+        {from !== undefined && <span className="text-[0.62em] leading-none">{from}</span>}
+      </span>
+      {children && <span className="ml-0.5">{children}</span>}
+    </span>
+  );
+}
+BigAnd.displayName = "BigAnd";
+
+/** ⋁ — n-ary big OR (logic). */
+export function BigOr({ from, to, children, className }: BoundedProps) {
+  return (
+    <span className={cn("mx-1 inline-flex items-center align-middle", className)}>
+      <span className="inline-flex flex-col items-center">
+        {to !== undefined && <span className="text-[0.62em] leading-none">{to}</span>}
+        <span className="select-none text-[1.5em] leading-none">⋁</span>
+        {from !== undefined && <span className="text-[0.62em] leading-none">{from}</span>}
+      </span>
+      {children && <span className="ml-0.5">{children}</span>}
+    </span>
+  );
+}
+BigOr.displayName = "BigOr";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 27 — EQUALITY & DEFINITION RELATIONS
+// Approaches · DefinedAs · Corresponds · AssignEq · Equiv already above
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** ≐ — approaches / equal at limit. */
+export const Approaches    = mkSym("≐",  "approaches",       "mx-1");
+/** ≜ — defined as (equal by definition). Common in engineering. */
+export const DefinedAs     = mkSym("≜",  "defined as",       "mx-1");
+/** ≝ — equal by definition (alternate). */
+export const EqDef         = mkSym("≝",  "equal by definition", "mx-1");
+/** ≙ — corresponds to. */
+export const Corresponds   = mkSym("≙",  "corresponds to",   "mx-1");
+/** ≚ — equiangular. */
+export const Equiangular   = mkSym("≚",  "equiangular",      "mx-1");
+/** ≃ — asymptotically equal. */
+export const AsympEq       = mkSym("≃",  "asymptotically equal", "mx-1");
+/** ≄ — not asymptotically equal. */
+export const NotAsympEq    = mkSym("≄",  "not asymptotically equal", "mx-1");
+/** ≶ — less than or greater than (not equal). */
+export const LessGreater   = mkSym("≶",  "less or greater",  "mx-1");
+/** ≷ — greater than or less than. */
+export const GreaterLess   = mkSym("≷",  "greater or less",  "mx-1");
+/** ≺ — precedes. */
+export const Prec          = mkSym("≺",  "precedes",         "mx-1");
+/** ≻ — succeeds. */
+export const Succ          = mkSym("≻",  "succeeds",         "mx-1");
+/** ≼ — precedes or equal. */
+export const PrecEq        = mkSym("≼",  "precedes or equal","mx-1");
+/** ≽ — succeeds or equal. */
+export const SuccEq        = mkSym("≽",  "succeeds or equal","mx-1");
+
+/**
+ * DefEq — := assignment / definition.
+ * Renders ":=" with math spacing.
+ * @example f(x) <DefEq /> x² + 1
+ */
+export function DefEq({ className }: { className?: string }) {
+  return (
+    <span className={cn("mx-1 font-serif", className)} aria-label="defined as">
+      :=
+    </span>
+  );
+}
+DefEq.displayName = "DefEq";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 28 — ENGINEERING & ANALYSIS
+// Convolution · Differential · Real/Imaginary symbols · ScriptL already above
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** ∗ — convolution star. Distinct from multiplication ×. */
+export const Convo         = mkSym("∗",  "convolution",      "mx-1");
+/** ℓ — script-l. Length, ell function, ℓp spaces. */
+export const ScriptEll     = mkSym("ℓ",  "script ell",       "mx-0.5 font-serif italic");
+/** ℜ — Real part symbol (Fraktur R). Alternate to Re operator. */
+export const FrakR         = mkSym("ℜ",  "real part fraktur","mx-0.5 font-serif");
+/** ℑ — Imaginary part symbol (Fraktur I). Alternate to Im operator. */
+export const FrakI         = mkSym("ℑ",  "imaginary part fraktur", "mx-0.5 font-serif");
+/** ℘ — Weierstrass p. */
+export const Weierstrass   = mkSym("℘",  "Weierstrass p",    "mx-0.5 font-serif italic");
+/** ℓ² — square-summable sequences space shorthand. */
+export const EllTwo        = mkSym("ℓ²", "ell two space",    "mx-0.5 font-serif italic");
+
+/**
+ * Differential — styled roman 'd' for calculus differentials.
+ * Renders upright (non-italic) d to distinguish from variable d.
+ * @example <Differential />x  →  dx  (with upright d)
+ */
+export function Differential({ className }: { className?: string }) {
+  return (
+    <span
+      className={cn("mx-px not-italic font-sans text-[0.95em]", className)}
+      aria-label="differential"
+    >
+      d
+    </span>
+  );
+}
+Differential.displayName = "Differential";
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 29 — LOGIC & PROOF (additional)
+// Contradiction · TruthVal · Models · Entails
+// ═══════════════════════════════════════════════════════════════════════════════
+
+/** ⊨ — models / semantic entailment. */
+export const Models        = mkSym("⊨",  "models",           "mx-1");
+/** ⊬ — does not prove. */
+export const NotTurnstile  = mkSym("⊬",  "does not prove",   "mx-1");
+/** ⊭ — does not model. */
+export const NotModels     = mkSym("⊭",  "does not model",   "mx-1");
+/** ⊤ — top / tautology / true. */
+export const Top           = mkSym("⊤",  "top true",         "mx-1");
+/** ⊥ — bottom / contradiction / false. Same as Perpendicular in context. */
+export const Bot           = mkSym("⊥",  "bottom false",     "mx-1");
+/** ↯ — contradiction (lightning bolt). */
+export const Contradiction = mkSym("↯",  "contradiction",    "mx-1");
+/** □ — end of proof (Halmos tombstone). Alternative to QED. */
+export const Tombstone     = mkSym("□",  "tombstone QED",    "mx-1");
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SECTION 30 — MISSING GREEK & VARIANTS
+// Varsigma · Varepsilon · Varphi · Vartheta · Varpi · Varrho · Digamma
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const mkGreekVariant = (char: string, name: string) => {
+  const G = ({ className }: { className?: string }) => (
+    <span className={cn("mx-px font-serif italic", className)} aria-label={name}>
+      {char}
+    </span>
+  );
+  G.displayName = name;
+  return G;
+};
+
+export const Varsigma   = mkGreekVariant("ς",  "varsigma");    // alternate σ
+export const Varepsilon = mkGreekVariant("ε",  "varepsilon");  // alternate ε (more open)
+export const Varphi     = mkGreekVariant("φ",  "varphi");      // alternate φ
+export const Vartheta   = mkGreekVariant("ϑ",  "vartheta");    // alternate θ
+export const Varpi      = mkGreekVariant("ϖ",  "varpi");       // alternate π
+export const Varrho     = mkGreekVariant("ϱ",  "varrho");      // alternate ρ
+export const Digamma    = mkGreekVariant("ϝ",  "digamma");     // archaic Greek

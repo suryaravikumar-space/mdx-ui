@@ -1,6 +1,6 @@
 ---
 title: Math Equation
-description: Numbered display equations and systems of equations for structured mathematical writing
+description: Numbered display equations and systems of equations — compose with math-primitives
 component: math-equation
 published: true
 ---
@@ -8,74 +8,62 @@ published: true
 ## Installation
 
 ```bash
-npx @ravikumarsurya/mdx-ui add math-equation
+pnpm dlx @ravikumarsurya/mdx-ui add math-equation
 ```
 
 ## Equation
 
-A centered display block with an optional equation number. Compose with `M`/`BM` for LaTeX expressions, or with [Math Primitives](/docs/components/math-primitives) for structured layout.
+A centered display block with an optional equation number. Fill it with [math-primitives](/docs/components/math-primitives) for the equation content.
 
 ```mdx
 <Equation label="1">
-  <BM expr="E = mc^2" />
+  E = mc<Squared />
 </Equation>
 ```
 
 <Equation label="1">
-  <BM expr="E = mc^2" />
+  E = mc<Squared />
 </Equation>
 
-### With primitives
+### Quadratic formula
 
 ```mdx
 <Equation label="2">
-  x ={" "}
-  <Frac
-    num={
-      <>
-        -b <PlusMinus /> <Sqrt>b² - 4ac</Sqrt>
-      </>
-    }
+  x = <Frac
+    num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>}
     den="2a"
   />
 </Equation>
 ```
 
 <Equation label="2">
-  x ={" "}
-  <Frac
-    num={
-      <>
-        -b <PlusMinus /> <Sqrt>b² - 4ac</Sqrt>
-      </>
-    }
+  x = <Frac
+    num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>}
     den="2a"
   />
 </Equation>
 
 ### No label
 
-Omit `label` for an unlabeled display block:
-
 ```mdx
 <Equation>
-  <M expr="\nabla^2 \phi = 0" />
+  <Nabla /><Squared /> <Phi /> = 0
 </Equation>
 ```
 
 <Equation>
-  <M expr="\nabla^2 \phi = 0" />
+  <Nabla /><Squared /> <Phi /> = 0
 </Equation>
 
 ### Inline mode
 
-Use `inline` to wrap expressions inside prose without the outer box:
+Use `inline` to wrap an expression inside prose:
 
 ```mdx
-The identity <Equation inline>e<Pow exp={<>iπ</>} /> + 1 = 0</Equation> connects five constants.
+The identity <Equation inline><Pow exp={<span>i<PiSym /></span>}>e</Pow> + 1 = 0</Equation> connects five constants.
 ```
 
-The identity <Equation inline>e<Pow exp={<>iπ</>} /> + 1 = 0</Equation> connects five fundamental constants.
+The identity <Equation inline><Pow exp={<span>i<PiSym /></span>}>e</Pow> + 1 = 0</Equation> connects five fundamental constants.
 
 ## EqSystem
 
@@ -93,48 +81,36 @@ A system of simultaneous equations with an SVG left brace.
   <div>2x − y = 1</div>
 </EqSystem>
 
-### With LaTeX expressions
+### With primitives
 
 ```mdx
 <EqSystem>
-  <div>
-    <M expr="\frac{\partial u}{\partial t} = \alpha \nabla^2 u" />
-  </div>
-  <div>
-    <M expr="u(x, 0) = f(x)" />
-  </div>
-  <div>
-    <M expr="u(0, t) = u(L, t) = 0" />
-  </div>
+  <div><PDeriv of="u" by="t" /> = <Alpha /> <Nabla /><Squared />u</div>
+  <div>u(x, 0) = f(x)</div>
+  <div>u(0, t) = u(L, t) = 0</div>
 </EqSystem>
 ```
 
 <EqSystem>
-  <div>
-    <M expr="\frac{\partial u}{\partial t} = \alpha \nabla^2 u" />
-  </div>
-  <div>
-    <M expr="u(x, 0) = f(x)" />
-  </div>
-  <div>
-    <M expr="u(0, t) = u(L, t) = 0" />
-  </div>
+  <div><PDeriv of="u" by="t" /> = <Alpha /> <Nabla /><Squared />u</div>
+  <div>u(x, 0) = f(x)</div>
+  <div>u(0, t) = u(L, t) = 0</div>
 </EqSystem>
 
 ## Props
 
 ### Equation
 
-| Prop        | Type        | Default | Description                                        |
-| ----------- | ----------- | ------- | -------------------------------------------------- |
-| `label`     | `string`    | —       | Equation number/label shown right-aligned as `(1)` |
-| `inline`    | `boolean`   | `false` | Inline span with no outer box                      |
-| `children`  | `ReactNode` | —       | Math content                                       |
-| `className` | `string`    | —       | Additional CSS classes                             |
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Equation number shown right-aligned as `(1)` |
+| `inline` | `boolean` | `false` | Inline span with no outer box |
+| `children` | `ReactNode` | — | Math content — use math-primitives |
+| `className` | `string` | — | Additional CSS classes |
 
 ### EqSystem
 
-| Prop        | Type        | Default | Description              |
-| ----------- | ----------- | ------- | ------------------------ |
-| `children`  | `ReactNode` | —       | One element per equation |
-| `className` | `string`    | —       | Additional CSS classes   |
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | — | One element per equation |
+| `className` | `string` | — | Additional CSS classes |

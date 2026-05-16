@@ -8,6 +8,15 @@ import axios from "axios";
 import fs from "fs-extra";
 import path from "path";
 import { readFileSync } from "fs";
+import {
+  SYMBOL_MAP,
+  searchSymbols,
+  symbolsByCategory,
+  buildMathStandard,
+  formatEntry,
+  CATEGORIES_LIST,
+} from "../symbol-map.js";
+import { latexToPrimitives, convertMarkdownMath, hasLatex, parseSolution } from "../latex-to-primitives.js";
 import { fileURLToPath } from "url";
 
 // ─── Version ─────────────────────────────────────────────────────────────────
@@ -151,8 +160,9 @@ function formatComponent(c: RegistryComponent): string {
 }
 
 // ─── AI Output Standard ───────────────────────────────────────────────────────
+// Built dynamically from symbol-map.ts — never hardcode math symbols here.
 
-const OUTPUT_STANDARD = `You generate content as MDX — Markdown with a small set of JSX components.
+const STRUCTURE_STANDARD = `You generate content as MDX — Markdown with a small set of JSX components.
 
 STRUCTURE
 - Start sections with ## headings, subsections with ###, never go deeper
@@ -203,17 +213,111 @@ TABS — alternative explanations:
   <TabsContent value="b">Content B</TabsContent>
 </Tabs>
 
-MATH — always use components, never $ signs:
-Inline: <InlineMath math="\\frac{a}{b}" />
-Block:  <BlockMath math="\\int_0^1 x\\,dx = \\frac{1}{2}" />
+TOOLS — call these before writing math or solutions:
 
-STRICT RULES
-- NEVER use $...$ or $$...$$ for math
-- NEVER use raw HTML tags
-- NEVER invent component names not listed above
-- NEVER use # (h1) headings
-- NEVER go deeper than ### headings
-- Props take plain strings only`;
+convert_latex(latex, block?)
+  → converts any LaTeX expression to primitive JSX deterministically
+  → USE THIS for any complex expression — do not guess the primitives yourself
+  → example: convert_latex("\\int_{-\\infty}^{\\infty} f(x) e^{-2\\pi i x t}\\,dx")
+
+parse_solution(text)
+  → converts a plain-text step-by-step solution (with ⇒ steps, parenthetical reasons)
+    into <Solution><SolutionStep>...</SolutionStep><SolutionAnswer/></Solution> MDX
+  → USE THIS whenever you write a worked example or derivation
+
+convert_mdx_math(content)
+  → fixes an entire MDX string — replaces all $...$ and $$...$$ with primitives
+  → USE THIS if you accidentally produced dollar-sign math
+
+search_symbols(query)
+  → find the right primitive component for any symbol or concept
+  → example: search_symbols("fourier") → ScriptF, Integral usage
+
+MATH — use primitive components only, never $ signs or LaTeX strings.
+Each primitive maps directly to readable English: <Frac num="a" den="b" /> means "a over b".
+
+── BUILDING BLOCKS ──────────────────────────────────────────────────────────────
+
+Fraction            → <Frac num="1" den="2" />                        (1/2)
+Power / exponent    → <Pow exp="2">x</Pow>                            (x²)
+Subscript           → <Sub sub="n">a</Sub>                            (aₙ)
+Square root         → <Sqrt>b² − 4ac</Sqrt>                          (√(b²−4ac))
+Nth root            → <Sqrt n="3">x</Sqrt>                           (∛x)
+Absolute value      → <Abs>x − y</Abs>                               (|x−y|)
+Parentheses         → <Paren>a + b</Paren>                           ((a+b))
+Infinity            → <Inf />                                         (∞)
+Degree symbol       → <Deg>90</Deg>                                   (90°)
+
+── CALCULUS ─────────────────────────────────────────────────────────────────────
+
+Indefinite integral → <Integral>f(x) dx</Integral>
+Definite integral   → <Integral from="a" to="b">f(x) dx</Integral>
+To infinity         → <Integral from="0" to={<Inf />}>f(x) dx</Integral>
+Summation           → <Sum from="i=1" to="n"><Pow exp="2">i</Pow></Sum>
+Product             → <Prod from="i=1" to="n">i</Prod>
+Limit               → <Lim sub="x → 0"><Frac num="sin x" den="x" /></Lim>
+
+── GREEK LETTERS ────────────────────────────────────────────────────────────────
+
+Lowercase: <Alpha /> <Beta /> <Gamma /> <Epsilon /> <Theta /> <Lambda />
+           <Mu /> <PiSym /> <Rho /> <SigmaSym /> <Tau /> <Phi /> <Omega />
+Uppercase: <GammaU /> <DeltaU /> <ThetaU /> <LambdaU /> <SigmaU /> <PhiU /> <OmegaU />
+
+── REAL EXAMPLES ────────────────────────────────────────────────────────────────
+
+Quadratic formula:
+x = <Frac num={<span>−b ± <Sqrt>b² − 4ac</Sqrt></span>} den="2a" />
+
+sin²θ + cos²θ = 1  (Pythagorean identity — write in plain text, use Greek inline):
+sin²<Theta /> + cos²<Theta /> = 1
+
+Euler's formula:
+<Pow exp={<span>i<Theta /></span>}>e</Pow> = cos<Theta /> + i sin<Theta />
+
+Derivative definition:
+f′(x) = <Lim sub="h → 0"><Frac num={<span>f(x + h) − f(x)</span>} den="h" /></Lim>
+
+Geometric series:
+<Sum from="k=0" to={<Inf />}><Pow exp="k">r</Pow></Sum> = <Frac num="1" den="1 − r" /> when |r| < 1
+
+Gaussian integral:
+<Integral from={<span>−<Inf /></span>} to={<Inf />}><Pow exp={<span>−<Pow exp="2">x</Pow></span>}>e</Pow> dx</Integral> = <Sqrt><PiSym /></Sqrt>
+
+Trig table cell (use in markdown table columns):
+| <Theta /> | sin <Theta /> | cos <Theta /> | tan <Theta /> |
+| 0° | 0 | 1 | 0 |
+| 30° | <Frac num="1" den="2" /> | <Frac num={<Sqrt>3</Sqrt>} den="2" /> | <Frac num="1" den={<Sqrt>3</Sqrt>} /> |
+| 45° | <Frac num={<Sqrt>2</Sqrt>} den="2" /> | <Frac num={<Sqrt>2</Sqrt>} den="2" /> | 1 |
+| 60° | <Frac num={<Sqrt>3</Sqrt>} den="2" /> | <Frac num="1" den="2" /> | <Sqrt>3</Sqrt> |
+| 90° | 1 | 0 | undefined |
+
+Binomial coefficient (n choose k):
+<Frac num={<span>n!</span>} den={<span>k!(n − k)!</span>} />
+
+Integration by parts:
+<Integral>u dv</Integral> = uv − <Integral>v du</Integral>
+
+── COMPOSING NESTED EXPRESSIONS ─────────────────────────────────────────────────
+
+For complex numerators/denominators, wrap in {<span>...</span>}:
+<Frac num={<span><Pow exp="2">x</Pow> + 2x + 1</span>} den={<span>x − 1</span>} />
+
+For exponents containing expressions:
+<Pow exp={<span>−<Frac num="x" den="2" /></span>}>e</Pow>
+
+── SOLUTION BLOCKS — step-by-step worked math ───────────────────────────────────
+
+<Solution title="Problem statement in plain English">
+  <SolutionStep reason="What this step does">expression with primitives</SolutionStep>
+  <SolutionStep reason="Key insight" highlight>key transformation</SolutionStep>
+  <SolutionAnswer>final result with primitives</SolutionAnswer>
+  <SolutionNote>Optional caveat or note.</SolutionNote>
+</Solution>
+
+`;
+
+// Composed at runtime — math section is always current with the symbol map
+const OUTPUT_STANDARD = STRUCTURE_STANDARD + "\n\n" + buildMathStandard();
 
 // ─── Category map ─────────────────────────────────────────────────────────────
 
@@ -242,8 +346,6 @@ const CATEGORIES: Record<string, string[]> = {
   ],
   Code: ["code-block", "code-group", "diff-block", "terminal"],
   Math: [
-    "math",
-    "math-easy",
     "math-equation",
     "math-primitives",
     "math-solution",
@@ -281,211 +383,129 @@ interface ValidationIssue {
   text: string;
 }
 
-// All valid mdx-ui component exports — keep in sync with packages/registry/src/
+// All valid mdx-ui component exports — generated from packages/registry/src/math-primitives.tsx
 const ALLOWED_COMPONENTS = new Set([
-  // callout
-  "Callout",
-  // steps
-  "Steps",
-  "Step",
-  // accordion
-  "Accordion",
-  "AccordionItem",
-  "AccordionTrigger",
-  "AccordionContent",
-  // tabs
-  "Tabs",
-  "TabsList",
-  "TabsTrigger",
-  "TabsContent",
-  // code-group
-  "CodeGroup",
-  // math (math.tsx)
-  "Math",
-  "InlineMath",
-  "BlockMath",
-  "M",
-  "BM",
-  // math-easy
-  "ME",
-  "BME",
-  // math-solution
-  "Solution",
-  "SolutionStep",
-  "SolutionAnswer",
-  "SolutionNote",
-  // math-equation
-  "Equation",
-  "EqSystem",
-  // math-primitives — arithmetic & calculus
-  "Frac",
-  "Pow",
-  "Sub",
-  "Sqrt",
-  "Abs",
-  "Paren",
-  "Deg",
-  "Inf",
-  "Integral",
-  "Sum",
-  "Prod",
-  "Lim",
-  "Limsup",
-  "Liminf",
-  "Deriv",
-  "PDeriv",
-  "Nabla",
-  "Laplacian",
+  // layout & structure
+  "Callout", "Steps", "Step",
+  "Accordion", "AccordionItem", "AccordionTrigger", "AccordionContent",
+  "Tabs", "TabsList", "TabsTrigger", "TabsContent",
+  "CodeGroup", "Solution", "SolutionStep", "SolutionAnswer", "SolutionNote",
+  "Equation", "EqSystem",
+  // math-primitives — structural
+  "Frac", "Pow", "Sub", "Sqrt", "Abs", "Paren", "Deg", "Inf",
+  // math-primitives — calculus
+  "Integral", "ContourIntegral", "DoubleInt", "TripleInt", "SurfaceInt", "VolumeInt",
+  "Sum", "Prod", "Lim", "Limsup", "Liminf",
+  "Deriv", "PDeriv", "Nabla", "Laplacian",
+  "Overbrace", "Underbrace",
   // math-primitives — trig & functions
-  "Sin",
-  "Cos",
-  "Tan",
-  "Cot",
-  "Sec",
-  "Csc",
-  "ArcSin",
-  "ArcCos",
-  "ArcTan",
-  "Sinh",
-  "Cosh",
-  "Tanh",
-  "Log",
-  "Ln",
-  "Exp",
-  // math-primitives — combinatorics & number theory
-  "Factorial",
-  "Choose",
-  "Perm",
-  "Mod",
-  "GCD",
-  "LCM",
-  "Floor",
-  "Ceil",
-  // math-primitives — sets
-  "SetOf",
-  "Cardinality",
-  "PowerSet",
-  "In",
-  "NotIn",
-  "Subset",
-  "SubsetEq",
-  "Supset",
-  "SupsetEq",
-  "Union",
-  "Intersect",
-  "Empty",
-  "SetMinus",
-  "NN",
-  "ZZ",
-  "QQ",
-  "RR",
-  "CC",
-  "PP",
-  "FF",
-  // math-primitives — logic
-  "And",
-  "Or",
-  "Not",
-  "Xor",
-  "Nand",
-  "Nor",
-  "ForAll",
-  "Exists",
-  "NotExists",
-  "Therefore",
-  "Because",
-  "Turnstile",
-  "Implies",
-  "Iff",
-  "QED",
+  "Sin", "Cos", "Tan", "Cot", "Sec", "Csc",
+  "ArcSin", "ArcCos", "ArcTan",
+  "Sinh", "Cosh", "Tanh",
+  "Log", "Ln", "Exp",
+  // math-primitives — algebra & combinatorics
+  "Factorial", "Choose", "Perm", "Mod", "GCD", "LCM", "Floor", "Ceil",
+  // math-primitives — set theory
+  "SetOf", "Cardinality", "PowerSet",
+  "In", "NotIn", "Subset", "SubsetEq", "Supset", "SupsetEq",
+  "ProperSubset", "ProperSupset", "NotSubset", "NotSupset",
+  "Union", "Intersect", "Empty", "SetMinus",
+  "BigUnion", "BigIntersect", "BigAnd", "BigOr",
+  "NN", "ZZ", "QQ", "RR", "CC", "PP", "FF",
+  // math-primitives — logic & proof
+  "And", "Or", "Not", "Xor", "Nand", "Nor",
+  "ForAll", "Exists", "NotExists",
+  "Therefore", "Because", "Turnstile", "QED",
+  "Implies", "Iff",
+  "Models", "NotTurnstile", "NotModels",
+  "Top", "Bot", "Contradiction", "Tombstone",
   // math-primitives — linear algebra
-  "Vec",
-  "Norm",
-  "Dot",
-  "Cross",
-  "Transpose",
-  "Det",
-  "Matrix",
-  "SpanOp",
-  "Rank",
-  "Dim",
-  "NullOp",
-  "Img",
-  "Trace",
+  "Vec", "Norm", "Dot", "Cross", "Transpose", "Det", "Matrix",
+  "SpanOp", "Rank", "Dim", "NullOp", "Img", "Trace",
   // math-primitives — probability & statistics
-  "Prob",
-  "CondProb",
-  "Expected",
-  "Variance",
-  "StdDev",
-  "Cov",
-  "Corr",
-  "Dist",
+  "Prob", "CondProb", "Expected", "Variance", "StdDev", "Cov", "Corr", "Dist",
   // math-primitives — complex numbers
-  "Complex",
-  "Conj",
-  // math-primitives — Greek letters
-  "Greek",
-  "Alpha",
-  "Beta",
-  "Gamma",
-  "GDelta",
-  "Epsilon",
-  "Zeta",
-  "Eta",
-  "Theta",
-  "Iota",
-  "Kappa",
-  "Lambda",
-  "Mu",
-  "Nu",
-  "Xi",
-  "PiSym",
-  "Rho",
-  "SigmaSym",
-  "Tau",
-  "Upsilon",
-  "Phi",
-  "Chi",
-  "Psi",
-  "Omega",
-  "GammaU",
-  "DeltaU",
-  "ThetaU",
-  "LambdaU",
-  "XiU",
-  "PiU",
-  "SigmaU",
-  "PhiU",
-  "PsiU",
-  "OmegaU",
+  "Complex", "Conj",
+  // math-primitives — Greek lowercase
+  "Greek", "Alpha", "Beta", "Gamma", "GDelta", "Epsilon", "Zeta", "Eta",
+  "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi",
+  "PiSym", "Rho", "SigmaSym", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega",
+  // math-primitives — Greek uppercase
+  "GammaU", "DeltaU", "ThetaU", "LambdaU", "XiU", "PiU", "SigmaU", "PhiU", "PsiU", "OmegaU",
+  // math-primitives — Greek variants
+  "Varsigma", "Varepsilon", "Varphi", "Vartheta", "Varpi", "Varrho", "Digamma",
   // math-primitives — relations & operators
-  "Neq",
-  "Approx",
-  "Equiv",
-  "Cong",
-  "Leq",
-  "Geq",
-  "Ll",
-  "Gg",
-  "Propto",
-  "Sim",
-  "PlusMinus",
-  "MinusPlus",
-  "Divides",
-  "NotDivides",
-  "Arrow",
-  "MapsTo",
-  "Compose",
-  "OTimes",
-  "DegNum",
-  "Eq",
-  "NotEq",
+  "Eq", "Neq", "NotEq", "Approx", "Equiv", "Cong", "NotCong", "NotSim",
+  "Leq", "Geq", "Ll", "Gg", "Propto", "Sim",
+  "PlusMinus", "MinusPlus", "Divides", "NotDivides",
+  "Arrow", "MapsTo", "Compose", "OTimes", "DegNum",
+  "Prec", "Succ", "PrecEq", "SuccEq",
+  "LessGreater", "GreaterLess",
+  // math-primitives — equality & definition
+  "Approaches", "DefinedAs", "EqDef", "Corresponds", "Equiangular",
+  "AsympEq", "NotAsympEq", "DefEq",
+  // math-primitives — accents
+  "Bar", "Hat", "Tilde", "DotAccent", "DDot",
+  // math-primitives — prime notation
+  "Prime", "DoublePrime", "TriplePrime", "PrimeOf",
+  // math-primitives — arrows
+  "LeftArrow", "UpArrow", "DownArrow", "LeftRightArrow", "UpDownArrow",
+  "NearArrow", "SeArrow", "SwArrow", "NwArrow",
+  "HookRightArrow", "HookLeftArrow", "TwoHeadRight", "TwoHeadLeft",
+  "DoubleLeftArrow", "DoubleRightArrow", "DoubleLeftRightArrow",
+  "DoubleUpArrow", "DoubleDownArrow", "DoubleUpDownArrow",
+  "LongRightArrow", "LongLeftArrow", "LongLeftRightArrow", "LongMapsTo",
+  "RightHarpoonUp", "RightHarpoonDown", "LeftHarpoonUp", "LeftHarpoonDown",
+  "EquilibriumArrow", "DoubleHarpoon",
+  "CircleArrow", "CircleArrowLeft",
+  // math-primitives — dots & ellipsis
+  "CDots", "VDots", "DDots", "LDots", "UpDots",
+  // math-primitives — brackets & intervals
+  "AngleBracket", "DoubleBracket", "Interval",
+  // math-primitives — piecewise
+  "Case", "Cases",
+  // math-primitives — script letters
+  "ScriptA", "ScriptB", "ScriptC", "ScriptD", "ScriptE", "ScriptF",
+  "ScriptG", "ScriptH", "ScriptI", "ScriptJ", "ScriptK", "ScriptL",
+  "ScriptM", "ScriptN", "ScriptO", "ScriptP", "ScriptQ", "ScriptR",
+  "ScriptS", "ScriptT", "ScriptU", "ScriptV", "ScriptW", "ScriptX",
+  "ScriptY", "ScriptZ", "ScriptEll",
+  // math-primitives — physics
+  "HBar", "Angstrom", "Bra", "Ket", "BraKet",
+  "FrakR", "FrakI", "Weierstrass",
+  // math-primitives — extra operators
+  "DirectSum", "Hadamard", "CircledDiv", "CircledStar", "CircledPlus",
+  "CircledMinus", "CircledTimes", "WreathProduct",
+  "Star", "Bullet", "Dagger", "DoubleDagger", "Diamond", "Bowtie", "Amalg",
+  "SmallInt", "Convo",
+  // math-primitives — school arithmetic
+  "Division", "Times", "Percent", "Permille", "Proportion", "Ratio",
+  // math-primitives — geometry
+  "Angle", "Triangle", "Segment", "Ray", "Arc",
+  "Parallel", "NotParallel", "Perpendicular", "RightAngle", "RightAngleCorner",
+  "RightTriangle", "Diameter", "MeasuredAngle", "SphericalAngle",
+  "GeoCong", "GeoSim",
+  // math-primitives — shapes
+  "Circle", "FilledCircle", "Square", "FilledSquare",
+  "Rhombus", "FilledRhombus", "Pentagon", "Hexagon", "Ellipse",
+  // math-primitives — number theory operators
+  "Lcm", "Gcd", "Ord", "Sgn", "Arg", "Re", "Im", "Res",
+  "Sup", "Inf2", "Max", "Min", "Ker", "Hom", "End", "Aut", "Der",
+  // math-primitives — chemistry
+  "ReactionArrow", "GasMarker", "PrecipitateMarker", "ChemEquilibrium",
+  "SingleBond", "DoubleBond", "TripleBond",
+  // math-primitives — misc symbols
+  "Aleph", "Beth", "Gimel", "Daleth",
+  "PartialDiff", "FlatSymbol", "SharpSymbol", "NaturalSymbol",
+  "Differential",
+  // math-primitives — shorthands
+  "Squared", "Cubed", "Inverse", "SubZero", "SubOne", "SubTwo",
 ]);
 
 const BANNED_HTML =
   /^<(div|span|p\b|b\b|i\b|strong|em|br|hr|section|article|main|aside|header|footer|nav)\s*[\s/>]/i;
 const INVENTED_JSX = /^<([A-Z][a-zA-Z0-9]*)/;
+const BANNED_MATH_COMPONENTS = /^<(InlineMath|BlockMath|Math\b|ME\b|BME\b|BM\b)\s/;
 // Match $...$ only in non-digit context to avoid flagging currency like $10
 const INLINE_MATH_DOLLAR = /(?<!\d)\$(?!\$|\d)[^$\n]{2,}\$/;
 const BLOCK_MATH_DOLLAR = /\$\$/;
@@ -521,7 +541,16 @@ function validateMdxContent(content: string): ValidationIssue[] {
       issues.push({
         line: lineNo,
         rule: "no-dollar-math",
-        text: `Dollar-sign math detected — use <InlineMath> or <BlockMath> instead`,
+        text: `Dollar-sign math detected — use math primitive components instead (Frac, Pow, Integral, etc.)`,
+      });
+    }
+
+    // KaTeX components — use primitives instead
+    if (BANNED_MATH_COMPONENTS.test(trimmed)) {
+      issues.push({
+        line: lineNo,
+        rule: "no-katex-components",
+        text: `KaTeX component not allowed — use math primitives: <Frac>, <Pow>, <Integral>, <Sum>, Greek letters, etc.`,
       });
     }
 
@@ -738,8 +767,8 @@ export async function startMcpServer() {
               "steps",
               "accordion",
               "tabs",
-              "math",
-              "math-easy",
+              "math-primitives",
+              "math-solution",
               "code-block",
               "code-group",
             ].includes(c.name),
@@ -777,6 +806,11 @@ export async function startMcpServer() {
 Generate a ${level} ${type} about: **${topic}**
 
 ${typeInstructions[type]}
+
+BEFORE WRITING MATH:
+- Call convert_latex(latex) for any complex expression — never guess the primitives
+- Call parse_solution(text) for any worked example or step-by-step derivation
+- Call search_symbols(query) if unsure which component to use for a symbol
 
 Output only the MDX content — no explanation, no code fences wrapping the whole thing.`,
             },
@@ -834,6 +868,10 @@ Review the content above. For each problem found:
 1. Quote the problematic line
 2. State which rule it breaks
 3. Provide the corrected version
+
+If the content contains $...$ or $$...$$ math, call convert_mdx_math(content) to fix it automatically.
+If the content has step-by-step solutions in plain text, call parse_solution(text) to convert them.
+If any LaTeX expression needs converting, call convert_latex(latex) first.
 
 Then provide the fully corrected MDX at the end.`,
             },
@@ -1076,6 +1114,221 @@ Then provide the fully corrected MDX at the end.`,
 
       return {
         content: [{ type: "text", text: lines.join("\n") }],
+      };
+    },
+  );
+
+  // Resource: full symbol map as JSON
+  server.registerResource(
+    "symbol-map",
+    "registry://symbol-map",
+    {
+      title: "mdx-ui Symbol Map",
+      description:
+        "Complete mapping of mathematical symbols / LaTeX names to mdx-ui primitive components — use this to find the right component for any symbol",
+      mimeType: "application/json",
+    },
+    async () => ({
+      contents: [
+        {
+          uri: "registry://symbol-map",
+          mimeType: "application/json",
+          text: JSON.stringify(SYMBOL_MAP, null, 2),
+        },
+      ],
+    }),
+  );
+
+  // Tool: search symbols by concept name, LaTeX, or Unicode symbol
+  server.registerTool(
+    "search_symbols",
+    {
+      description:
+        "Search the symbol map by concept name, LaTeX command, Unicode symbol, or category — returns the mdx-ui primitive component and MDX usage example",
+      inputSchema: {
+        query: z
+          .string()
+          .min(1, "Query cannot be empty")
+          .max(200)
+          .describe(
+            "What to search for — e.g. 'integral', '\\\\frac', '∑', 'greek', 'geometry'",
+          ),
+      },
+    },
+    async ({ query }) => {
+      const results = searchSymbols(query);
+      if (results.length === 0) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: `No symbols found for "${query}".\n\nTry: 'integral', 'fraction', 'greek', 'geometry', 'arrow', 'logic', 'set', 'probability', 'physics', 'chemistry'`,
+            },
+          ],
+        };
+      }
+      const lines = [
+        `Found ${results.length} symbol${results.length !== 1 ? "s" : ""} for "${query}":\n`,
+        ...results.map(
+          (e) =>
+            `**${e.name}** [${e.category}]\n  Symbols: ${e.symbols.join(", ")}\n  LaTeX: ${e.latex.slice(0, 2).join(" or ")}\n  → \`${e.usage}\`\n`,
+        ),
+      ];
+      return { content: [{ type: "text", text: lines.join("\n") }] };
+    },
+  );
+
+  // Tool: list all symbol categories
+  server.registerTool(
+    "list_symbol_categories",
+    {
+      description:
+        "List all symbol categories in the symbol map — use with search_symbols to explore by category",
+    },
+    async () => {
+      const lines = CATEGORIES_LIST.map((cat) => {
+        const count = symbolsByCategory(cat).length;
+        return `- **${cat}** (${count} symbols)`;
+      });
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Symbol map categories:\n\n${lines.join("\n")}\n\nUse search_symbols with a category name to list all symbols in it.`,
+          },
+        ],
+      };
+    },
+  );
+
+  // Tool: get the complete symbol map as a formatted cheat sheet
+  server.registerTool(
+    "get_symbol_cheatsheet",
+    {
+      description:
+        "Get the complete symbol map as a formatted cheat sheet — every symbol with its component and usage, grouped by category",
+      inputSchema: {
+        category: z
+          .string()
+          .optional()
+          .describe("Filter to a single category (e.g. 'calculus', 'greek')"),
+      },
+    },
+    async ({ category }) => {
+      const entries = category
+        ? symbolsByCategory(category as Parameters<typeof symbolsByCategory>[0])
+        : SYMBOL_MAP;
+
+      if (entries.length === 0) {
+        return {
+          content: [{ type: "text", text: `No entries for category "${category}".` }],
+        };
+      }
+
+      const lines: string[] = [];
+      let lastCat = "";
+      for (const e of entries) {
+        if (e.category !== lastCat) {
+          lines.push(`\n### ${e.category.toUpperCase().replace(/-/g, " ")}`);
+          lastCat = e.category;
+        }
+        lines.push(`  ${formatEntry(e)}`);
+      }
+
+      return {
+        content: [{ type: "text", text: lines.join("\n") }],
+      };
+    },
+  );
+
+  // Tool: convert LaTeX to primitives — deterministic, no guessing
+  server.registerTool(
+    "convert_latex",
+    {
+      description:
+        "Convert a LaTeX math expression to mdx-ui primitive components deterministically. Use this whenever you need to write a complex math expression — pass the LaTeX and get back ready-to-paste MDX primitives.",
+      inputSchema: {
+        latex: z
+          .string()
+          .min(1)
+          .max(2000)
+          .describe("LaTeX expression WITHOUT $ delimiters — e.g. \\\\int_{-\\\\infty}^{\\\\infty} f(x)\\\\,dx"),
+        block: z
+          .boolean()
+          .optional()
+          .describe("Wrap in <Equation> for display/block mode (default: false = inline)"),
+      },
+    },
+    async ({ latex, block = false }) => {
+      const result = latexToPrimitives(latex, block);
+      return {
+        content: [
+          {
+            type: "text",
+            text: `**Input LaTeX:** \`${latex}\`\n\n**MDX Primitives:**\n\`\`\`mdx\n${result}\n\`\`\``,
+          },
+        ],
+      };
+    },
+  );
+
+  // Tool: convert a full MDX string — replaces all $...$ and $$...$$ with primitives
+  server.registerTool(
+    "convert_mdx_math",
+    {
+      description:
+        "Convert all $...$ and $$...$$ LaTeX math in an MDX string to mdx-ui primitives. Use this to fix AI-generated content that used dollar-sign math instead of components.",
+      inputSchema: {
+        content: z
+          .string()
+          .min(1)
+          .max(50000)
+          .describe("MDX content that may contain $...$ or $$...$$ math"),
+      },
+    },
+    async ({ content }) => {
+      if (!hasLatex(content)) {
+        return {
+          content: [{ type: "text", text: "✅ No LaTeX found — content already uses primitives." }],
+        };
+      }
+      const converted = convertMarkdownMath(content);
+      return {
+        content: [
+          {
+            type: "text",
+            text: `**Converted MDX:**\n\`\`\`mdx\n${converted}\n\`\`\``,
+          },
+        ],
+      };
+    },
+  );
+
+  // Tool: parse plain-text step-by-step solution → Solution component MDX
+  server.registerTool(
+    "parse_solution",
+    {
+      description:
+        "Convert a plain-text step-by-step math solution (with ⇒ steps, parenthetical reasons, fractions like 3/2) into <Solution><SolutionStep>...</SolutionStep></Solution> MDX components automatically.",
+      inputSchema: {
+        text: z
+          .string()
+          .min(10)
+          .max(10000)
+          .describe(
+            "The plain-text solution — include the problem statement and all ⇒ steps with parenthetical reasons",
+          ),
+      },
+    },
+    async ({ text }) => {
+      const mdx = parseSolution(text);
+      return {
+        content: [
+          {
+            type: "text",
+            text: `**Converted to MDX:**\n\`\`\`mdx\n${mdx}\n\`\`\``,
+          },
+        ],
       };
     },
   );

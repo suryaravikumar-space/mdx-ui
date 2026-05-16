@@ -464,44 +464,27 @@ For production, configure your host (Vercel, Netlify, Nginx) to redirect all pat
 
 ## Math Components
 
-If you're using math components, add the KaTeX stylesheet in `src/index.css`:
-
-```css
-@import "katex/dist/katex.min.css";
-```
-
-Install and add to components:
+Math uses pure JSX primitives — no KaTeX or LaTeX required. Install and add to components:
 
 <CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math math-easy
-  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  math math-easy math-solution ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add math math-easy math-solution ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
+  ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
+  ```bash title="yarn" yarn dlx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
 </CodeGroup>
 
 ```tsx
 // src/components/mdx-components.tsx
-import { M, BM } from "./mdx-ui/math";
-import { ME, BME } from "./mdx-ui/math-easy";
-import {
-  Solution,
-  SolutionStep,
-  SolutionAnswer,
-  SolutionNote,
-} from "./mdx-ui/math-solution";
+import { Frac, Pow, Integral, Sum, Alpha /* ...all primitives */ } from "./mdx-ui/math-primitives";
+import { Solution, SolutionStep, SolutionAnswer, SolutionNote } from "./mdx-ui/math-solution";
 
 export const mdxComponents = {
   // ...existing
-  M,
-  BM,
-  ME,
-  BME,
-  Solution,
-  SolutionStep,
-  SolutionAnswer,
-  SolutionNote,
+  Frac, Pow, Integral, Sum, Alpha,
+  Solution, SolutionStep, SolutionAnswer, SolutionNote,
 };
 ```
+
+See [Math Primitives](/docs/components/math-primitives) for the full list of 370+ components.
 
 ---
 
@@ -581,10 +564,6 @@ declare module "*.mdx" {
 ### Tailwind classes not applying
 
 Ensure `src/**/*.mdx` is in your Tailwind `content` array so component class names are not purged.
-
-### KaTeX styles missing
-
-Import `katex/dist/katex.min.css` in your root CSS file, not inside a component.
 
 ---
 

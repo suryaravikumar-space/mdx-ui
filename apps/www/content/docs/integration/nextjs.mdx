@@ -316,18 +316,15 @@ export default function AboutPage() {
 
 ## Math Components
 
-If you're using math components, add the KaTeX stylesheet in `app/layout.tsx` or your global CSS:
-
-```css title="app/globals.css"
-@import "katex/dist/katex.min.css";
-```
+Math uses pure JSX primitives — no KaTeX or LaTeX required:
 
 <CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math math-easy
-  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  math math-easy math-solution ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add math math-easy math-solution ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
+  ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
+  ```bash title="yarn" yarn dlx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
 </CodeGroup>
+
+See [Math Primitives](/docs/components/math-primitives) for the full list.
 
 ---
 

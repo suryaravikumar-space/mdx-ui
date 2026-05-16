@@ -137,8 +137,7 @@ function formatComponent(c: RegistryComponent): string {
     lines.push(`\n**npm dependencies:** ${c.dependencies.join(", ")}`);
   if (c.registryDependencies?.length)
     lines.push(`**Requires:** ${c.registryDependencies.join(", ")}`);
-  if (c.example)
-    lines.push(`\n**Example:**\n\`\`\`mdx\n${c.example}\n\`\`\``);
+  if (c.example) lines.push(`\n**Example:**\n\`\`\`mdx\n${c.example}\n\`\`\``);
   return lines.join("\n");
 }
 
@@ -295,7 +294,8 @@ function validateMdxContent(content: string): ValidationIssue[] {
     "BM",
   ]);
 
-  const BANNED_HTML = /^<(div|span|p\b|b\b|i\b|strong|em|br|hr|section|article|main|aside|header|footer|nav)\s*[\s/>]/i;
+  const BANNED_HTML =
+    /^<(div|span|p\b|b\b|i\b|strong|em|br|hr|section|article|main|aside|header|footer|nav)\s*[\s/>]/i;
   const INVENTED_JSX = /^<([A-Z][a-zA-Z0-9]*)/;
 
   for (let i = 0; i < lines.length; i++) {
@@ -303,7 +303,10 @@ function validateMdxContent(content: string): ValidationIssue[] {
     const lineNo = i + 1;
 
     // Dollar-sign math
-    if (/\$\$[\s\S]*?\$\$/.test(line) || /(?<!\$)\$(?!\$)[^$\n]+\$/.test(line)) {
+    if (
+      /\$\$[\s\S]*?\$\$/.test(line) ||
+      /(?<!\$)\$(?!\$)[^$\n]+\$/.test(line)
+    ) {
       issues.push({
         line: lineNo,
         rule: "no-dollar-math",
@@ -828,9 +831,7 @@ Then provide the fully corrected MDX at the end.`,
 
       const lines = [
         `❌ Found ${issues.length} issue${issues.length !== 1 ? "s" : ""}:\n`,
-        ...issues.map(
-          (i) => `- **Line ${i.line}** [${i.rule}]: ${i.text}`,
-        ),
+        ...issues.map((i) => `- **Line ${i.line}** [${i.rule}]: ${i.text}`),
         `\nUse the review_mdx prompt to get a corrected version.`,
       ];
 

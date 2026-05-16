@@ -29,20 +29,20 @@ Components appear — no correction needed
 
 These map to styled components automatically via `mdxComponents`. Write plain Markdown — the renderer handles everything else.
 
-| Write | Renders as |
-|---|---|
-| `## Section` | Styled H2 |
-| `### Subsection` | Styled H3 |
-| `**bold**` | Emphasis strong |
-| `*italic*` | Emphasis em |
-| `` `inline code` `` | InlineCode |
-| `> text` | Blockquote |
-| `- item` | UnorderedList + ListItem |
-| `1. item` | OrderedList + ListItem |
-| ` ```lang ` block | CodeBlock with syntax highlight |
-| `\| col \|` table | Table components |
-| `---` | HorizontalRule |
-| `![alt](url)` | Image |
+| Write               | Renders as                      |
+| ------------------- | ------------------------------- |
+| `## Section`        | Styled H2                       |
+| `### Subsection`    | Styled H3                       |
+| `**bold**`          | Emphasis strong                 |
+| `*italic*`          | Emphasis em                     |
+| `` `inline code` `` | InlineCode                      |
+| `> text`            | Blockquote                      |
+| `- item`            | UnorderedList + ListItem        |
+| `1. item`           | OrderedList + ListItem          |
+| ` ```lang ` block   | CodeBlock with syntax highlight |
+| `\| col \|` table   | Table components                |
+| `---`               | HorizontalRule                  |
+| `![alt](url)`       | Image                           |
 
 <Callout variant="info" title="No JSX needed for these">
   Never write `<h2>`, `<strong>`, `<p>`, `<ul>`, `<li>`, `<table>` — just write plain Markdown.
@@ -90,10 +90,13 @@ For sequential procedures only — not for math derivations.
 Determine whether the equation is linear or quadratic.
 
 ### Step 2: Apply the method
+
 Use the appropriate technique for the type identified.
 
 ### Step 3: Verify
+
 Substitute the result back to confirm it is correct.
+
 </Steps>
 ```
 
@@ -115,9 +118,7 @@ For optional depth — proofs, derivations, extra examples.
   </AccordionItem>
   <AccordionItem value="example">
     <AccordionTrigger>Worked example</AccordionTrigger>
-    <AccordionContent>
-      Step-by-step example with explanation.
-    </AccordionContent>
+    <AccordionContent>Step-by-step example with explanation.</AccordionContent>
   </AccordionItem>
 </Accordion>
 ```
@@ -134,9 +135,7 @@ For alternative explanations or parallel content.
     <TabsTrigger value="simple">Simple</TabsTrigger>
     <TabsTrigger value="formal">Formal</TabsTrigger>
   </TabsList>
-  <TabsContent value="simple">
-    A plain-language explanation here.
-  </TabsContent>
+  <TabsContent value="simple">A plain-language explanation here.</TabsContent>
   <TabsContent value="formal">
     A rigorous, technical explanation here.
   </TabsContent>
@@ -151,12 +150,8 @@ For showing the same code in multiple languages.
 
 ````mdx
 <CodeGroup>
-  ```python title="Python"
-  area = 3.14159 * r ** 2
-  ```
-  ```js title="JavaScript"
-  const area = Math.PI * r ** 2;
-  ```
+  ```python title="Python" area = 3.14159 * r ** 2 ``` ```js title="JavaScript"
+  const area = Math.PI * r ** 2; ```
 </CodeGroup>
 ````
 
@@ -168,10 +163,12 @@ Always use components — never dollar-sign syntax.
 
 ```mdx
 Inline math — for variables and short expressions within a sentence:
+
 <InlineMath math="\pi r^2" />
 <InlineMath math="\frac{a}{b}" />
 
 Block math — for standalone equations:
+
 <BlockMath math="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
 <BlockMath math="\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}" />
 ```
@@ -190,15 +187,15 @@ Use single backslash for LaTeX commands in the `math` prop: `\frac`, `\sqrt`, `\
   If the LLM outputs any of these, components fail to render correctly.
 </Callout>
 
-| Pattern | Use instead |
-|---|---|
-| `$...$` inline math | `<InlineMath math="..." />` |
-| `$$...$$` block math | `<BlockMath math="..." />` |
-| `<div>`, `<span>`, `<p>`, `<b>`, `<i>` | Plain Markdown |
-| `# H1 heading` | Start sections with `##` minimum |
-| `####` or deeper | Max depth is `###` |
-| Invented component names | Only use components listed above |
-| Markdown inside JSX props | Props take plain strings only |
+| Pattern                                | Use instead                      |
+| -------------------------------------- | -------------------------------- |
+| `$...$` inline math                    | `<InlineMath math="..." />`      |
+| `$$...$$` block math                   | `<BlockMath math="..." />`       |
+| `<div>`, `<span>`, `<p>`, `<b>`, `<i>` | Plain Markdown                   |
+| `# H1 heading`                         | Start sections with `##` minimum |
+| `####` or deeper                       | Max depth is `###`               |
+| Invented component names               | Only use components listed above |
+| Markdown inside JSX props              | Props take plain strings only    |
 
 ---
 
@@ -206,7 +203,7 @@ Use single backslash for LaTeX commands in the `math` prop: `\frac`, `\sqrt`, `\
 
 Copy this into your system prompt. The LLM will follow it to generate valid MDX.
 
-```text
+````text
 You generate content as MDX — Markdown with a small set of JSX components.
 
 STRUCTURE
@@ -269,7 +266,7 @@ STRICT RULES
 - NEVER use # (h1) headings
 - NEVER go deeper than ### headings
 - Props take plain strings only
-```
+````
 
 ---
 
@@ -280,14 +277,15 @@ STRICT RULES
     <AccordionTrigger>When to use each Callout variant</AccordionTrigger>
     <AccordionContent>
 
-| Variant | Use for |
-|---|---|
-| `info` | Key concepts, definitions, background context |
-| `warning` | Common mistakes, things to watch out for |
-| `success` | Rules to remember, tips, best practices |
-| `error` | Things that must never be done |
+| Variant   | Use for                                       |
+| --------- | --------------------------------------------- |
+| `info`    | Key concepts, definitions, background context |
+| `warning` | Common mistakes, things to watch out for      |
+| `success` | Rules to remember, tips, best practices       |
+| `error`   | Things that must never be done                |
 
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="steps-vs-accordion">
     <AccordionTrigger>Steps vs Accordion — when to use which</AccordionTrigger>
@@ -298,6 +296,7 @@ STRICT RULES
 **Use `<Accordion>`** for optional depth — a proof, full derivation, or extra worked example that some readers want but others can skip.
 
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="math-examples">
     <AccordionTrigger>Common LaTeX patterns</AccordionTrigger>
@@ -317,6 +316,7 @@ STRICT RULES
 ```
 
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

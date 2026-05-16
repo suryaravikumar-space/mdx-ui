@@ -64,9 +64,9 @@ npx @ravikumarsurya/mdx-ui@latest add callout headings paragraph
 
 ```tsx
 // components/mdx-components.tsx
-import { H1, H2, H3 } from "@/components/mdx-ui/headings"
-import { P } from "@/components/mdx-ui/paragraph"
-import { Callout } from "@/components/mdx-ui/callout"
+import { H1, H2, H3 } from "@/components/mdx-ui/headings";
+import { P } from "@/components/mdx-ui/paragraph";
+import { Callout } from "@/components/mdx-ui/callout";
 
 export const mdxComponents = {
   h1: H1,
@@ -74,7 +74,7 @@ export const mdxComponents = {
   h3: H3,
   p: P,
   Callout,
-}
+};
 ```
 
 ### 3. Use in Your MDX
@@ -84,9 +84,7 @@ export const mdxComponents = {
 
 This uses the custom H1 component.
 
-<Callout variant="info">
-  Custom components work too!
-</Callout>
+<Callout variant="info">Custom components work too!</Callout>
 ```
 
 ## Component Mappings
@@ -128,11 +126,8 @@ Check out complete working examples:
 ```js
 // tailwind.config.ts
 export default {
-  content: [
-    './app/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-  ],
-}
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+};
 ```
 
 ### TypeScript errors

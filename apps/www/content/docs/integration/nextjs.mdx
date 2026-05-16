@@ -8,12 +8,12 @@ published: true
 
 Next.js has two common ways to render MDX — pick the one that fits your project:
 
-| | `@next/mdx` | `next-mdx-remote` |
-|---|---|---|
-| **MDX files as pages** | Yes | No |
-| **Content from files / CMS** | With extra setup | Yes |
-| **Frontmatter** | Needs extra plugin | Built-in |
-| **Setup** | Minimal | Minimal |
+|                              | `@next/mdx`        | `next-mdx-remote` |
+| ---------------------------- | ------------------ | ----------------- |
+| **MDX files as pages**       | Yes                | No                |
+| **Content from files / CMS** | With extra setup   | Yes               |
+| **Frontmatter**              | Needs extra plugin | Built-in          |
+| **Setup**                    | Minimal            | Minimal           |
 
 **Use `@next/mdx`** when your `.mdx` files live in `app/` and act as pages directly.
 
@@ -26,18 +26,10 @@ Next.js has two common ways to render MDX — pick the one that fits your projec
 Skip this step if you already have a project.
 
 <CodeGroup>
-  ```bash title="npm"
-  npx create-next-app@latest my-app --typescript --tailwind --app
-  cd my-app
-  ```
-  ```bash title="pnpm"
-  pnpm create next-app my-app --typescript --tailwind --app
-  cd my-app
-  ```
-  ```bash title="yarn"
-  yarn create next-app my-app --typescript --tailwind --app
-  cd my-app
-  ```
+  ```bash title="npm" npx create-next-app@latest my-app --typescript --tailwind
+  --app cd my-app ``` ```bash title="pnpm" pnpm create next-app my-app
+  --typescript --tailwind --app cd my-app ``` ```bash title="yarn" yarn create
+  next-app my-app --typescript --tailwind --app cd my-app ```
 </CodeGroup>
 
 ---
@@ -45,15 +37,9 @@ Skip this step if you already have a project.
 ## 2. Initialize MDX UI
 
 <CodeGroup>
-  ```bash title="npm"
-  npx @ravikumarsurya/mdx-ui init
-  ```
-  ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui init
-  ```
-  ```bash title="yarn"
-  yarn dlx @ravikumarsurya/mdx-ui init
-  ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui init ``` ```bash title="pnpm"
+  pnpm dlx @ravikumarsurya/mdx-ui init ``` ```bash title="yarn" yarn dlx
+  @ravikumarsurya/mdx-ui init ```
 </CodeGroup>
 
 This creates `mdx-ui.json` and copies the `cn()` utility into your project.
@@ -63,19 +49,16 @@ This creates `mdx-ui.json` and copies the `cn()` utility into your project.
 ## 3. Add Components
 
 <CodeGroup>
-  ```bash title="npm"
-  npx @ravikumarsurya/mdx-ui add callout accordion code-block
-  ```
-  ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block
-  ```
-  ```bash title="yarn"
-  yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block
-  ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui add callout accordion
+  code-block ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
+  callout accordion code-block ``` ```bash title="yarn" yarn dlx
+  @ravikumarsurya/mdx-ui add callout accordion code-block ```
 </CodeGroup>
 
 <Callout variant="info" title="Auto-updated for you">
-  The CLI copies the component file **and** patches `components/mdx-ui/mdx-components.tsx` with the correct imports and mappings automatically.
+  The CLI copies the component file **and** patches
+  `components/mdx-ui/mdx-components.tsx` with the correct imports and mappings
+  automatically.
 </Callout>
 
 ---
@@ -93,15 +76,8 @@ This creates `mdx-ui.json` and copies the `cn()` utility into your project.
 ### Install next-mdx-remote
 
 <CodeGroup>
-  ```bash title="npm"
-  npm install next-mdx-remote
-  ```
-  ```bash title="pnpm"
-  pnpm add next-mdx-remote
-  ```
-  ```bash title="yarn"
-  yarn add next-mdx-remote
-  ```
+  ```bash title="npm" npm install next-mdx-remote ``` ```bash title="pnpm" pnpm
+  add next-mdx-remote ``` ```bash title="yarn" yarn add next-mdx-remote ```
 </CodeGroup>
 
 No changes needed to `next.config.ts` — `next-mdx-remote` runs at request time, not at the bundler level.
@@ -113,15 +89,10 @@ No changes needed to `next.config.ts` — `next-mdx-remote` runs at request time
 ### Install @next/mdx
 
 <CodeGroup>
-  ```bash title="npm"
-  npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
-  ```
-  ```bash title="pnpm"
-  pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
-  ```
-  ```bash title="yarn"
-  yarn add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
-  ```
+  ```bash title="npm" npm install @next/mdx @mdx-js/loader @mdx-js/react
+  @types/mdx ``` ```bash title="pnpm" pnpm add @next/mdx @mdx-js/loader
+  @mdx-js/react @types/mdx ``` ```bash title="yarn" yarn add @next/mdx
+  @mdx-js/loader @mdx-js/react @types/mdx ```
 </CodeGroup>
 
 Update `next.config.ts`:
@@ -208,7 +179,11 @@ async function getPost(slug: string) {
   return { content, frontmatter: data };
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { content, frontmatter } = await getPost(params.slug);
 
   return (
@@ -223,15 +198,8 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 Install `gray-matter` for frontmatter parsing:
 
 <CodeGroup>
-  ```bash title="npm"
-  npm install gray-matter
-  ```
-  ```bash title="pnpm"
-  pnpm add gray-matter
-  ```
-  ```bash title="yarn"
-  yarn add gray-matter
-  ```
+  ```bash title="npm" npm install gray-matter ``` ```bash title="pnpm" pnpm add
+  gray-matter ``` ```bash title="yarn" yarn add gray-matter ```
 </CodeGroup>
 
   </TabsContent>
@@ -281,38 +249,38 @@ export default function AboutPage() {
     <TabsTrigger value="next-mdx">@next/mdx</TabsTrigger>
   </TabsList>
 
-  <TabsContent value="next-mdx-remote">
-    <Tree>
-      <TreeItem name="my-app" isFolder defaultOpen>
-        <TreeItem name="app" isFolder defaultOpen>
-          <TreeItem name="blog" isFolder>
-            <TreeItem name="[slug]" isFolder>
-              <TreeItem name="page.tsx" />
-            </TreeItem>
-          </TreeItem>
-          <TreeItem name="layout.tsx" />
-        </TreeItem>
-        <TreeItem name="content" isFolder defaultOpen>
-          <TreeItem name="blog" isFolder>
-            <TreeItem name="hello-world.mdx" />
+<TabsContent value="next-mdx-remote">
+  <Tree>
+    <TreeItem name="my-app" isFolder defaultOpen>
+      <TreeItem name="app" isFolder defaultOpen>
+        <TreeItem name="blog" isFolder>
+          <TreeItem name="[slug]" isFolder>
+            <TreeItem name="page.tsx" />
           </TreeItem>
         </TreeItem>
-        <TreeItem name="components" isFolder defaultOpen>
-          <TreeItem name="mdx-ui" isFolder>
-            <TreeItem name="callout.tsx" />
-            <TreeItem name="accordion.tsx" />
-            <TreeItem name="mdx-components.tsx" />
-            <TreeItem name="lib" isFolder>
-              <TreeItem name="utils.ts" />
-            </TreeItem>
-          </TreeItem>
-        </TreeItem>
-        <TreeItem name="next.config.ts" />
-        <TreeItem name="mdx-ui.json" />
-        <TreeItem name="package.json" />
+        <TreeItem name="layout.tsx" />
       </TreeItem>
-    </Tree>
-  </TabsContent>
+      <TreeItem name="content" isFolder defaultOpen>
+        <TreeItem name="blog" isFolder>
+          <TreeItem name="hello-world.mdx" />
+        </TreeItem>
+      </TreeItem>
+      <TreeItem name="components" isFolder defaultOpen>
+        <TreeItem name="mdx-ui" isFolder>
+          <TreeItem name="callout.tsx" />
+          <TreeItem name="accordion.tsx" />
+          <TreeItem name="mdx-components.tsx" />
+          <TreeItem name="lib" isFolder>
+            <TreeItem name="utils.ts" />
+          </TreeItem>
+        </TreeItem>
+      </TreeItem>
+      <TreeItem name="next.config.ts" />
+      <TreeItem name="mdx-ui.json" />
+      <TreeItem name="package.json" />
+    </TreeItem>
+  </Tree>
+</TabsContent>
 
   <TabsContent value="next-mdx">
     <Tree>
@@ -355,15 +323,10 @@ If you're using math components, add the KaTeX stylesheet in `app/layout.tsx` or
 ```
 
 <CodeGroup>
-  ```bash title="npm"
-  npx @ravikumarsurya/mdx-ui add math math-easy math-solution
-  ```
-  ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
-  ```
-  ```bash title="yarn"
-  yarn dlx @ravikumarsurya/mdx-ui add math math-easy math-solution
-  ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math math-easy
+  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
+  math math-easy math-solution ``` ```bash title="yarn" yarn dlx
+  @ravikumarsurya/mdx-ui add math math-easy math-solution ```
 </CodeGroup>
 
 ---

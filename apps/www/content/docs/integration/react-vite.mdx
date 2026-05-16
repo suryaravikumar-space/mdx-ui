@@ -16,23 +16,64 @@ Vite has no built-in MDX convention like Next.js, so you wire things up manually
 
 Skip this step if you already have a project.
 
-<CodeGroup>
-  ```bash title="npm" npm create vite@latest my-app -- --template react-ts cd
-  my-app npm install ``` ```bash title="pnpm" pnpm create vite my-app --template
-  react-ts cd my-app pnpm install ``` ```bash title="yarn" yarn create vite
-  my-app --template react-ts cd my-app yarn ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm create vite my-app --template react-ts
+    cd my-app
+    pnpm install
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm create vite@latest my-app -- --template react-ts
+    cd my-app
+    npm install
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn create vite my-app --template react-ts
+    cd my-app
+    yarn
+    ```
+  </TabsContent>
+</Tabs>
 
 ---
 
 ## 2. Install MDX Support
 
-<CodeGroup>
-  ```bash title="npm" npm install @mdx-js/rollup @mdx-js/react remark-gfm npm
-  install --save-dev @types/mdx ``` ```bash title="pnpm" pnpm add @mdx-js/rollup
-  @mdx-js/react remark-gfm pnpm add -D @types/mdx ``` ```bash title="yarn" yarn
-  add @mdx-js/rollup @mdx-js/react remark-gfm yarn add --dev @types/mdx ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add @mdx-js/rollup @mdx-js/react remark-gfm
+    pnpm add -D @types/mdx
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install @mdx-js/rollup @mdx-js/react remark-gfm
+    npm install --save-dev @types/mdx
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add @mdx-js/rollup @mdx-js/react remark-gfm
+    yarn add --dev @types/mdx
+    ```
+  </TabsContent>
+</Tabs>
 
 ---
 
@@ -74,90 +115,111 @@ declare module "*.mdx" {
 
 MDX UI components use Tailwind CSS for styling.
 
-<Tabs>
+<Tabs defaultValue="v4">
   <TabsList>
     <TabsTrigger value="v4">Tailwind v4</TabsTrigger>
     <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
   </TabsList>
   <TabsContent value="v4">
-    <CodeGroup>
-      ```bash title="npm"
-      npm install tailwindcss @tailwindcss/vite
-      ```
-      ```bash title="pnpm"
-      pnpm add tailwindcss @tailwindcss/vite
-      ```
-      ```bash title="yarn"
-      yarn add tailwindcss @tailwindcss/vite
-      ```
-    </CodeGroup>
 
-    Update `vite.config.ts`:
-
-    ```ts
-    import { defineConfig } from "vite";
-    import react from "@vitejs/plugin-react";
-    import mdx from "@mdx-js/rollup";
-    import remarkGfm from "remark-gfm";
-    import tailwindcss from "@tailwindcss/vite";
-
-    export default defineConfig({
-      plugins: [
-        mdx({ remarkPlugins: [remarkGfm], providerImportSource: "@mdx-js/react" }),
-        react(),
-        tailwindcss(),
-      ],
-    });
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add tailwindcss @tailwindcss/vite
     ```
-
-    Add at the **top** of `src/index.css`:
-
-    ```css title="src/index.css"
-    @import "tailwindcss";
-
-    /* rest of your existing styles stay below */
-    :root {
-      --my-var: ...;
-    }
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install tailwindcss @tailwindcss/vite
     ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add tailwindcss @tailwindcss/vite
+    ```
+  </TabsContent>
+</Tabs>
 
-    > If you have existing `@tailwind base`, `@tailwind components`, or `@tailwind utilities` lines, remove those and use this single import instead. All other CSS in the file stays as-is.
+Update `vite.config.ts`:
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import mdx from "@mdx-js/rollup";
+import remarkGfm from "remark-gfm";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  plugins: [
+    mdx({ remarkPlugins: [remarkGfm], providerImportSource: "@mdx-js/react" }),
+    react(),
+    tailwindcss(),
+  ],
+});
+```
+
+Add at the **top** of `src/index.css`:
+
+```css title="src/index.css"
+@import "tailwindcss";
+
+/* rest of your existing styles stay below */
+```
+
+> If you have existing `@tailwind base`, `@tailwind components`, or `@tailwind utilities` lines, remove those and use this single import instead.
 
   </TabsContent>
   <TabsContent value="v3">
-    <CodeGroup>
-      ```bash title="npm"
-      npm install -D tailwindcss postcss autoprefixer
-      npx tailwindcss init -p
-      ```
-      ```bash title="pnpm"
-      pnpm add -D tailwindcss postcss autoprefixer
-      pnpm dlx tailwindcss init -p
-      ```
-      ```bash title="yarn"
-      yarn add --dev tailwindcss postcss autoprefixer
-      npx tailwindcss init -p
-      ```
-    </CodeGroup>
 
-    Update `tailwind.config.ts`:
-
-    ```ts
-    export default {
-      content: [
-        "./index.html",
-        "./src/**/*.{ts,tsx,mdx}",
-      ],
-    };
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add -D tailwindcss postcss autoprefixer
+    pnpm dlx tailwindcss init -p
     ```
-
-    Add to `src/index.css`:
-
-    ```css
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
     ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add --dev tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    ```
+  </TabsContent>
+</Tabs>
+
+Update `tailwind.config.ts`:
+
+```ts
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{ts,tsx,mdx}",
+  ],
+};
+```
+
+Add to `src/index.css`:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
   </TabsContent>
 </Tabs>
@@ -166,11 +228,28 @@ MDX UI components use Tailwind CSS for styling.
 
 ## 5. Initialize MDX UI
 
-<CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui init ``` ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui init ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui init ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx @ravikumarsurya/mdx-ui init
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npx @ravikumarsurya/mdx-ui init
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx @ravikumarsurya/mdx-ui init
+    ```
+  </TabsContent>
+</Tabs>
 
 This creates `mdx-ui.json` and installs the `cn()` utility.
 
@@ -178,12 +257,28 @@ This creates `mdx-ui.json` and installs the `cn()` utility.
 
 ## 6. Add Components
 
-<CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add callout accordion
-  code-block ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  callout accordion code-block ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add callout accordion code-block ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npx @ravikumarsurya/mdx-ui add callout accordion code-block
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+    ```
+  </TabsContent>
+</Tabs>
 
 <Callout variant="info" title="Auto-updated for you">
   The CLI automatically copies the component file **and** updates
@@ -224,10 +319,28 @@ If your app has multiple MDX pages, use **React Router** to map URLs to files.
 
 ### Install React Router
 
-<CodeGroup>
-  ```bash title="npm" npm install react-router-dom ``` ```bash title="pnpm" pnpm
-  add react-router-dom ``` ```bash title="yarn" yarn add react-router-dom ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add react-router-dom
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install react-router-dom
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add react-router-dom
+    ```
+  </TabsContent>
+</Tabs>
 
 ### Create your MDX pages
 
@@ -466,12 +579,28 @@ For production, configure your host (Vercel, Netlify, Nginx) to redirect all pat
 
 Math uses pure JSX primitives — no KaTeX or LaTeX required. Install and add to components:
 
-<CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math-primitives
-  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  math-primitives math-solution ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add math-primitives math-solution ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npx @ravikumarsurya/mdx-ui add math-primitives math-solution
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+    ```
+  </TabsContent>
+</Tabs>
 
 ```tsx
 // src/components/mdx-components.tsx
@@ -515,11 +644,28 @@ MDX UI components use the `@/` path alias. You need to configure it in `vite.con
 
 **1. Install the Node path helper:**
 
-<CodeGroup>
-  ```bash title="npm" npm install --save-dev @types/node ``` ```bash
-  title="pnpm" pnpm add -D @types/node ``` ```bash title="yarn" yarn add --dev
-  @types/node ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add -D @types/node
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install --save-dev @types/node
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add --dev @types/node
+    ```
+  </TabsContent>
+</Tabs>
 
 **2. Add the alias to `vite.config.ts`:**
 
@@ -589,5 +735,5 @@ Ensure `src/**/*.mdx` is in your Tailwind `content` array so component class nam
 ## Next Steps
 
 - [Component Mappings](/docs/integration/component-mappings)
-- [Next.js + @next/mdx](/docs/integration/nextjs-mdx)
+- [Next.js](/docs/integration/nextjs)
 - [Browse Components](/docs/components/callout)

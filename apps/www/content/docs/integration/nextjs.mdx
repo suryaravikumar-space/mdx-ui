@@ -25,22 +25,58 @@ Next.js has two common ways to render MDX — pick the one that fits your projec
 
 Skip this step if you already have a project.
 
-<CodeGroup>
-  ```bash title="npm" npx create-next-app@latest my-app --typescript --tailwind
-  --app cd my-app ``` ```bash title="pnpm" pnpm create next-app my-app
-  --typescript --tailwind --app cd my-app ``` ```bash title="yarn" yarn create
-  next-app my-app --typescript --tailwind --app cd my-app ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm create next-app my-app --typescript --tailwind --app
+    cd my-app
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npx create-next-app@latest my-app --typescript --tailwind --app
+    cd my-app
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn create next-app my-app --typescript --tailwind --app
+    cd my-app
+    ```
+  </TabsContent>
+</Tabs>
 
 ---
 
 ## 2. Initialize MDX UI
 
-<CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui init ``` ```bash title="pnpm"
-  pnpm dlx @ravikumarsurya/mdx-ui init ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui init ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx @ravikumarsurya/mdx-ui init
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npx @ravikumarsurya/mdx-ui init
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx @ravikumarsurya/mdx-ui init
+    ```
+  </TabsContent>
+</Tabs>
 
 This creates `mdx-ui.json` and copies the `cn()` utility into your project.
 
@@ -48,12 +84,28 @@ This creates `mdx-ui.json` and copies the `cn()` utility into your project.
 
 ## 3. Add Components
 
-<CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add callout accordion
-  code-block ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  callout accordion code-block ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add callout accordion code-block ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npx @ravikumarsurya/mdx-ui add callout accordion code-block
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+    ```
+  </TabsContent>
+</Tabs>
 
 <Callout variant="info" title="Auto-updated for you">
   The CLI copies the component file **and** patches
@@ -75,10 +127,28 @@ This creates `mdx-ui.json` and copies the `cn()` utility into your project.
 
 ### Install next-mdx-remote
 
-<CodeGroup>
-  ```bash title="npm" npm install next-mdx-remote ``` ```bash title="pnpm" pnpm
-  add next-mdx-remote ``` ```bash title="yarn" yarn add next-mdx-remote ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add next-mdx-remote
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install next-mdx-remote
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add next-mdx-remote
+    ```
+  </TabsContent>
+</Tabs>
 
 No changes needed to `next.config.ts` — `next-mdx-remote` runs at request time, not at the bundler level.
 
@@ -88,12 +158,28 @@ No changes needed to `next.config.ts` — `next-mdx-remote` runs at request time
 
 ### Install @next/mdx
 
-<CodeGroup>
-  ```bash title="npm" npm install @next/mdx @mdx-js/loader @mdx-js/react
-  @types/mdx ``` ```bash title="pnpm" pnpm add @next/mdx @mdx-js/loader
-  @mdx-js/react @types/mdx ``` ```bash title="yarn" yarn add @next/mdx
-  @mdx-js/loader @mdx-js/react @types/mdx ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+    ```
+  </TabsContent>
+</Tabs>
 
 Update `next.config.ts`:
 
@@ -197,10 +283,28 @@ export default async function BlogPost({
 
 Install `gray-matter` for frontmatter parsing:
 
-<CodeGroup>
-  ```bash title="npm" npm install gray-matter ``` ```bash title="pnpm" pnpm add
-  gray-matter ``` ```bash title="yarn" yarn add gray-matter ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add gray-matter
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npm install gray-matter
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add gray-matter
+    ```
+  </TabsContent>
+</Tabs>
 
   </TabsContent>
 
@@ -318,12 +422,28 @@ export default function AboutPage() {
 
 Math uses pure JSX primitives — no KaTeX or LaTeX required:
 
-<CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math-primitives
-  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
-  math-primitives math-solution ``` ```bash title="yarn" yarn dlx
-  @ravikumarsurya/mdx-ui add math-primitives math-solution ```
-</CodeGroup>
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+    ```
+  </TabsContent>
+  <TabsContent value="npm">
+    ```bash
+    npx @ravikumarsurya/mdx-ui add math-primitives math-solution
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+    ```
+  </TabsContent>
+</Tabs>
 
 See [Math Primitives](/docs/components/math-primitives) for the full list.
 

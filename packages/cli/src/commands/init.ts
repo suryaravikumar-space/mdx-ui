@@ -9,6 +9,7 @@ import {
   detectProjectStructure,
   type Framework,
 } from "../utils/detect-structure.js";
+import { scanMdxComponents, printScanWarnings } from "../utils/scan-mdx.js";
 
 const FRAMEWORK_LABELS: Record<Framework, string> = {
   nextjs: "Next.js",
@@ -142,6 +143,15 @@ export const init = new Command()
       }
 
       printNextSteps(structure.framework);
+
+      // Scan MDX files for unregistered components
+      const pm = (await fs.pathExists(path.join(cwd, "pnpm-lock.yaml")))
+        ? "pnpm"
+        : (await fs.pathExists(path.join(cwd, "yarn.lock")))
+          ? "yarn"
+          : "npm";
+      const scanResults = await scanMdxComponents(cwd);
+      printScanWarnings(scanResults, pm);
     } catch (error) {
       spinner.fail("Failed to initialize project");
       console.error(error);

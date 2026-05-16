@@ -40,7 +40,7 @@ export const Highlight = React.forwardRef<HTMLElement, HighlightProps>(
     <mark
       ref={ref}
       className={cn(
-        "rounded-sm bg-none [background-size:100%_100%] [background-repeat:no-repeat]",
+        "rounded-sm bg-transparent [background-size:100%_100%] [background-repeat:no-repeat]",
         colorClasses[color] ?? colorClasses.yellow,
         className
       )}

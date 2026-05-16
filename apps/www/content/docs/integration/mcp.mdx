@@ -1,0 +1,207 @@
+---
+title: MCP Server
+description: Give Claude a live connection to your component registry — so it knows exactly which components exist, how to use them, and how to write math without LaTeX.
+published: true
+---
+
+The mdx-ui MCP server plugs directly into Claude Code (or any MCP-compatible AI client). Once connected, Claude can browse your component registry, look up math symbols, convert LaTeX expressions, and generate rich MDX content that renders correctly the first time — no post-editing.
+
+---
+
+## What the MCP server does
+
+Without MCP, you paste a system prompt into every conversation and hope Claude remembers the rules. With MCP, Claude reads live data from your registry on every request:
+
+- Knows every component by name, with examples and when-to-use guidance
+- Calls the LaTeX transpiler before writing any formula — no guessing primitives
+- Validates MDX it generates against the output standard before giving it to you
+- Searches 200+ math symbols by concept, not by memorised component name
+
+---
+
+## Setup
+
+### 1. Add the MCP server to your project
+
+Create `.claude/settings.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "mdx-ui": {
+      "command": "pnpm",
+      "args": ["dlx", "@ravikumarsurya/mdx-ui@latest", "mcp"]
+    }
+  }
+}
+```
+
+<Callout variant="info" title="npm or yarn">
+  Replace `pnpm dlx` with `npx` or `yarn dlx` depending on your package manager.
+</Callout>
+
+### 2. Open the project in VS Code with Claude Code
+
+The server starts automatically when you open a chat in Claude Code. You should see `mdx-ui` listed under active MCP servers in the sidebar.
+
+### 3. Verify it is connected
+
+In the Claude Code chat, type:
+
+```
+What components does mdx-ui have?
+```
+
+Claude will call `list_components` and return the full registry — if it does, the server is live.
+
+---
+
+## Resources
+
+Resources are loaded once at session start and stay in Claude's context.
+
+| Resource | URI | What it contains |
+|---|---|---|
+| Output standard | `registry://output-standard` | Full writing rules — structure, math, component syntax |
+| Component registry | `registry://components` | Every component with description, examples, when-to-use |
+| Symbol map | `registry://symbol-map` | 200+ math symbols: LaTeX → primitive component mapping |
+
+Claude reads these automatically. You do not need to paste system prompts.
+
+---
+
+## Tools
+
+Claude calls these during content generation. You can also ask Claude to call any of them directly.
+
+### Component tools
+
+| Tool | What it does |
+|---|---|
+| `list_components` | Returns all registered components |
+| `get_component` | Full detail for one component — example, props, dependencies |
+| `search_components` | Fuzzy search by name or description |
+| `check_component_exists` | Quick boolean — is this component name valid? |
+| `get_output_standard` | Returns the full writing standard |
+| `validate_mdx` | Checks MDX content for violations — flags unknown components or KaTeX usage |
+
+### Math tools
+
+| Tool | What it does |
+|---|---|
+| `search_symbols` | Find the right primitive for any concept or symbol |
+| `list_symbol_categories` | Lists all 20+ math categories (greek, calculus, geometry…) |
+| `get_symbol_cheatsheet` | Full component list for a category |
+| `convert_latex` | **Converts any LaTeX expression to primitive JSX deterministically** |
+| `convert_mdx_math` | Fixes a whole MDX string — replaces all `$…$` and `$$…$$` with primitives |
+| `parse_solution` | Converts a plain-text worked solution to `<Solution><SolutionStep>` MDX |
+
+### Meta
+
+| Tool | What it does |
+|---|---|
+| `get_registry_version` | Returns the current CLI version |
+
+---
+
+## Prompts
+
+Two built-in prompts scaffold common content types:
+
+| Prompt | When to use |
+|---|---|
+| `generate_content` | Start a full lesson page — headings, sections, examples |
+| `write_math_content` | Math-heavy content — enforces primitives-only output |
+
+Invoke them from the Claude Code slash command or by asking Claude directly.
+
+---
+
+## How Claude generates math
+
+The primitive system means there is no LaTeX engine at runtime. Every formula is a tree of React components. Claude uses three tools to get this right:
+
+<Steps>
+### Search for the symbol
+
+```
+search_symbols("integral fourier transform")
+```
+
+Returns: `Integral`, `ScriptF`, `InfSym`, `CDots` — with usage examples.
+
+### Convert the expression
+
+```
+convert_latex("\\int_{-\\infty}^{\\infty} f(x)\\,e^{-2\\pi i x t}\\,dx")
+```
+
+Returns ready-to-paste JSX:
+```mdx
+<Integral low={<><InfSym/>;</>} high={<InfSym/>}>
+  f(x)<Thin/><Pow exp={<><Neg/>2<Pi/>ixt</>}>e</Pow><Thin/>dx
+</Integral>
+```
+
+### Parse a worked solution
+
+```
+parse_solution("8x − 3 = 3x + 2 ⇒ 5x = 5 (collect x terms) ⇒ x = 1")
+```
+
+Returns:
+```mdx
+<Solution>
+  <SolutionStep reason="collect x terms">
+    <Sub sub=""><Neg/>3</Sub>8x <Neg/> 3 = 3x + 2
+  </SolutionStep>
+  <SolutionAnswer>x = 1</SolutionAnswer>
+</Solution>
+```
+</Steps>
+
+---
+
+## Example: asking Claude to write a lesson
+
+Once MCP is connected, you can ask in plain English:
+
+> "Write a lesson on the chain rule with two worked examples."
+
+Claude will:
+
+1. Read `registry://output-standard` for structure rules
+2. Call `search_symbols("chain rule derivative")` for the right components
+3. Call `convert_latex` for each formula
+4. Call `parse_solution` for each worked example
+5. Return a complete `.mdx` file ready to drop into your content directory
+
+No system prompt. No post-editing. No LaTeX strings in the output.
+
+---
+
+## Validation
+
+After generating content, ask Claude to validate it:
+
+> "Validate the MDX you just wrote."
+
+Claude calls `validate_mdx` which checks for:
+
+- Unknown component names not in the registry
+- Dollar-sign math (`$...$`) that should be primitives
+- KaTeX component usage (`<InlineMath>`, `<BlockMath>`)
+- Malformed JSX structure
+
+Any violation is returned with the line and a fix suggestion.
+
+---
+
+## Supported clients
+
+| Client | Status |
+|---|---|
+| Claude Code (VS Code extension) | Supported |
+| Claude Code (CLI) | Supported |
+| Any MCP-compatible client via stdio | Supported |
+| Claude.ai web | Not supported (MCP is local only) |

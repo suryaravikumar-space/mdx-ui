@@ -206,6 +206,33 @@
   border-radius: 0;
 }
 
+/* ── Line + word highlighting ───────────────────────────────────────────────── */
+[data-rehype-pretty-code-figure] .line--highlighted {
+  background-color: rgba(74, 222, 128, 0.12);
+  border-left: 2px solid #4ade80;
+  padding-left: calc(1rem - 2px);
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-right: 1rem;
+  display: inline-block;
+  width: calc(100% + 2rem);
+}
+
+.dark [data-rehype-pretty-code-figure] .line--highlighted {
+  background-color: rgba(74, 222, 128, 0.08);
+  border-left-color: #86efac;
+}
+
+[data-rehype-pretty-code-figure] .word--highlighted {
+  background-color: rgba(74, 222, 128, 0.2);
+  border-radius: 0.2rem;
+  padding: 0.1rem 0.2rem;
+}
+
+.dark [data-rehype-pretty-code-figure] .word--highlighted {
+  background-color: rgba(74, 222, 128, 0.15);
+}
+
 [data-rehype-pretty-code-title] {
   background: linear-gradient(
     to right,

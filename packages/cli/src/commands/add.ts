@@ -12,6 +12,7 @@ import {
 import { installDependencies } from "../utils/install-deps.js";
 
 import { COMPONENT_MDX_MAP, REGISTRY } from "../lib/component-registry.js";
+import { scanMdxComponents, printScanWarnings } from "../utils/scan-mdx.js";
 
 interface RegistryComponent {
   name: string;
@@ -338,6 +339,14 @@ export const add = new Command()
         console.log();
         console.log(chalk.bold("Done! 🎉"));
         console.log();
+
+        const pm = (await fs.pathExists(path.join(cwd, "pnpm-lock.yaml")))
+          ? "pnpm"
+          : (await fs.pathExists(path.join(cwd, "yarn.lock")))
+            ? "yarn"
+            : "npm";
+        const scanResults = await scanMdxComponents(cwd);
+        printScanWarnings(scanResults, pm);
       } catch (error: unknown) {
         spinner.fail("Failed to add components");
         const msg = error instanceof Error ? error.message : String(error);

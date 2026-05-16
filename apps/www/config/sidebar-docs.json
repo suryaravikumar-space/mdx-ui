@@ -15,6 +15,10 @@
       "path": "/docs/integration"
     },
     {
+      "title": "MCP Server",
+      "path": "/docs/integration/mcp"
+    },
+    {
       "title": "AI Output Standard",
       "path": "/docs/integration/ai-content"
     },

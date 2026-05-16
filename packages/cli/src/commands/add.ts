@@ -164,39 +164,54 @@ export const add = new Command()
     "overwrite existing files without prompting",
     false,
   )
-  .action(async (components: string[], opts: { overwrite: boolean }) => {
-    console.log();
+  .option("-a, --all", "add all available components", false)
+  .action(
+    async (
+      components: string[],
+      opts: { overwrite: boolean; all: boolean },
+    ) => {
+      console.log();
 
-    const config = await getConfig();
+      const config = await getConfig();
 
-    if (!config) {
-      console.log(chalk.red("✗ No mdx-ui.json found"));
-      console.log(chalk.yellow("Run 'npx mdx-ui init' first"));
-      process.exit(1);
-    }
+      if (!config) {
+        console.log(chalk.red("✗ No mdx-ui.json found"));
+        console.log(chalk.yellow("Run 'npx mdx-ui init' first"));
+        process.exit(1);
+      }
 
-    if (components.length === 0) {
-      const registry = loadRegistry();
-      const mdxComponents = registry.components.filter(
-        (c: RegistryComponent) => c.type === "mdx",
-      );
+      if (opts.all) {
+        const registry = loadRegistry();
+        components = registry.components
+          .filter((c: RegistryComponent) => c.type === "mdx")
+          .map((c: RegistryComponent) => c.name);
+        console.log(
+          chalk.dim(`Adding all ${components.length} components...\n`),
+        );
+      } else if (components.length === 0) {
+        const registry = loadRegistry();
+        const mdxComponents = registry.components.filter(
+          (c: RegistryComponent) => c.type === "mdx",
+        );
 
-      const { selected } = await prompts({
-        type: "multiselect",
-        name: "selected",
-        message: "Which components would you like to add?",
-        choices: mdxComponents.map((c: RegistryComponent) => ({
-          title: c.name
-            .split("-")
-            .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" "),
-          value: c.name,
-          description: c.description,
-        })),
-      });
+        const { selected } = await prompts({
+          type: "multiselect",
+          name: "selected",
+          message: "Which components would you like to add?",
+          choices: mdxComponents.map((c: RegistryComponent) => ({
+            title: c.name
+              .split("-")
+              .map(
+                (word: string) => word.charAt(0).toUpperCase() + word.slice(1),
+              )
+              .join(" "),
+            value: c.name,
+            description: c.description,
+          })),
+        });
 
-      components = selected;
-    }
+        components = selected;
+      }
 
     if (!components || components.length === 0) {
       console.log(chalk.yellow("No components selected"));

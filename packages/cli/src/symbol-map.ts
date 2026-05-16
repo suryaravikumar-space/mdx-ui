@@ -1118,7 +1118,7 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     symbols: ["⟨ψ|φ⟩", "⟨ψ|", "|φ⟩"],
     latex: ["\\langle\\psi|\\phi\\rangle"],
     component: "BraKet / Bra / Ket",
-    usage: '<BraKet bra={<Psi />} ket={<Phi />} />',
+    usage: "<BraKet bra={<Psi />} ket={<Phi />} />",
     description: "Dirac notation ⟨ψ|φ⟩",
   },
 
@@ -1450,7 +1450,9 @@ export function buildMathStandard(): string {
   for (const cat of CATEGORIES_LIST) {
     const entries = symbolsByCategory(cat);
     if (entries.length === 0) continue;
-    lines.push(`── ${cat.toUpperCase().replace(/-/g, " ")} ${"─".repeat(Math.max(0, 60 - cat.length))}`);
+    lines.push(
+      `── ${cat.toUpperCase().replace(/-/g, " ")} ${"─".repeat(Math.max(0, 60 - cat.length))}`,
+    );
     for (const e of entries) {
       lines.push(`  ${formatEntry(e)}`);
     }

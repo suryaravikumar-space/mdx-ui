@@ -18,30 +18,39 @@ Math primitives are the **only** math API in mdx-ui. Every component is pure Rea
 Each component reads exactly like what it renders:
 
 ```mdx
-<Frac num="a" den="b" />                              → a/b fraction
-<Pow exp="2">x</Pow>                                  → x²
-<Integral from="0" to="1">f(x) dx</Integral>          → ∫₀¹ f(x) dx
-<Alpha />                                             → α
-<Angle>ABC</Angle>                                    → ∠ABC
+<Frac num="a" den="b" /> → a/b fraction
+<Pow exp="2">x</Pow> → x²
+<Integral from="0" to="1">
+  f(x) dx
+</Integral>
+→ ∫₀¹ f(x) dx
+<Alpha /> → α<Angle>ABC</Angle> → ∠ABC
 ```
 
 ## Basic structural
 
-| Component | Renders | Props |
-|---|---|---|
-| `<Frac num den />` | Vertical fraction | `num`, `den` |
-| `<Pow exp>base</Pow>` | base^exp | `exp`, children |
-| `<Sub sub>base</Sub>` | base_sub | `sub`, children |
-| `<Sqrt>x</Sqrt>` | √x with overbar | `n` for nth root |
-| `<Abs>x</Abs>` | \|x\| | children |
-| `<Paren>x</Paren>` | (x) | children |
-| `<Deg>90</Deg>` | 90° | children |
-| `<Inf />` | ∞ | — |
+| Component             | Renders           | Props            |
+| --------------------- | ----------------- | ---------------- |
+| `<Frac num den />`    | Vertical fraction | `num`, `den`     |
+| `<Pow exp>base</Pow>` | base^exp          | `exp`, children  |
+| `<Sub sub>base</Sub>` | base_sub          | `sub`, children  |
+| `<Sqrt>x</Sqrt>`      | √x with overbar   | `n` for nth root |
+| `<Abs>x</Abs>`        | \|x\|             | children         |
+| `<Paren>x</Paren>`    | (x)               | children         |
+| `<Deg>90</Deg>`       | 90°               | children         |
+| `<Inf />`             | ∞                 | —                |
 
 ```mdx
 <Frac num="1" den="2" />
 
-<Frac num={<span><Pow exp="2">x</Pow> + 1</span>} den="2a" />
+<Frac
+  num={
+    <span>
+      <Pow exp="2">x</Pow> + 1
+    </span>
+  }
+  den="2a"
+/>
 
 <Sqrt n="3">27</Sqrt>
 
@@ -50,29 +59,35 @@ Each component reads exactly like what it renders:
 
 ## Calculus
 
-| Component | Renders | Props |
-|---|---|---|
-| `<Integral>` | ∫ | `from`, `to`, children |
-| `<ContourIntegral>` | ∮ | `from`, `to`, children |
-| `<DoubleInt />` | ∬ | — |
-| `<TripleInt />` | ∭ | — |
-| `<Sum>` | Σ | `from`, `to`, children |
-| `<Prod>` | Π | `from`, `to`, children |
-| `<Lim sub="x → 0">` | lim | `sub`, children |
-| `<Deriv of="y" by="x" />` | dy/dx | `of`, `by` |
-| `<PDeriv of="f" by="x" />` | ∂f/∂x | `of`, `by` |
-| `<Nabla />` | ∇ | — |
-| `<Laplacian />` | ∇² | — |
-| `<Differential />` | upright d | — |
-| `<Overbrace label="n">` | ⏞ with label above | `label`, children |
-| `<Underbrace label="n">` | ⏟ with label below | `label`, children |
+| Component                  | Renders            | Props                  |
+| -------------------------- | ------------------ | ---------------------- |
+| `<Integral>`               | ∫                  | `from`, `to`, children |
+| `<ContourIntegral>`        | ∮                  | `from`, `to`, children |
+| `<DoubleInt />`            | ∬                  | —                      |
+| `<TripleInt />`            | ∭                  | —                      |
+| `<Sum>`                    | Σ                  | `from`, `to`, children |
+| `<Prod>`                   | Π                  | `from`, `to`, children |
+| `<Lim sub="x → 0">`        | lim                | `sub`, children        |
+| `<Deriv of="y" by="x" />`  | dy/dx              | `of`, `by`             |
+| `<PDeriv of="f" by="x" />` | ∂f/∂x              | `of`, `by`             |
+| `<Nabla />`                | ∇                  | —                      |
+| `<Laplacian />`            | ∇²                 | —                      |
+| `<Differential />`         | upright d          | —                      |
+| `<Overbrace label="n">`    | ⏞ with label above | `label`, children      |
+| `<Underbrace label="n">`   | ⏟ with label below | `label`, children      |
 
 ```mdx
-<Integral from="a" to="b">f(x) <Differential />x</Integral>
+<Integral from="a" to="b">
+  f(x) <Differential />x
+</Integral>
 
-<Sum from="i=1" to="n"><Pow exp="2">i</Pow></Sum>
+<Sum from="i=1" to="n">
+  <Pow exp="2">i</Pow>
+</Sum>
 
-<Lim sub="h → 0"><Frac num={<span>f(x+h) − f(x)</span>} den="h" /></Lim>
+<Lim sub="h → 0">
+  <Frac num={<span>f(x+h) − f(x)</span>} den="h" />
+</Lim>
 ```
 
 ## Trigonometry & functions
@@ -91,7 +106,7 @@ sin²<Theta /> + cos²<Theta /> = 1
 ```mdx
 <Choose n="n" k="k" />
 
-<Floor>n/2</Floor>   <Ceil>log n</Ceil>
+<Floor>n/2</Floor> <Ceil>log n</Ceil>
 ```
 
 ## Set theory
@@ -106,7 +121,9 @@ sin²<Theta /> + cos²<Theta /> = 1
 ```mdx
 x <In /> <RR />
 
-<BigUnion from="i=1" to="n">A<Sub sub="i" /></BigUnion>
+<BigUnion from="i=1" to="n">
+  A<Sub sub="i" />
+</BigUnion>
 ```
 
 ## Logic & proof
@@ -117,7 +134,7 @@ x <In /> <RR />
 ```mdx
 <ForAll />x <In /> <RR />, <Squared>x</Squared> <Geq /> 0
 
-p <Implies /> q  <Iff />  <Not />p <Or /> q
+p <Implies /> q <Iff /> <Not />p <Or /> q
 ```
 
 ## Linear algebra
@@ -126,11 +143,16 @@ p <Implies /> q  <Iff />  <Not />p <Or /> q
 `SpanOp`, `Rank`, `Dim`, `NullOp`, `Img`, `Trace`
 
 ```mdx
-<Det>A</Det>  =  ad − bc
+<Det>A</Det> = ad − bc
 
-<Matrix rows={[["a","b"],["c","d"]]} />
+<Matrix
+  rows={[
+    ["a", "b"],
+    ["c", "d"],
+  ]}
+/>
 
-<Transpose>A</Transpose>  →  Aᵀ
+<Transpose>A</Transpose> → Aᵀ
 ```
 
 ## Probability & statistics
@@ -138,7 +160,13 @@ p <Implies /> q  <Iff />  <Not />p <Or /> q
 `Prob`, `CondProb`, `Expected`, `Variance`, `StdDev`, `Cov`, `Corr`, `Dist`
 
 ```mdx
-<Prob>A <Union /> B</Prob>  =  <Prob>A</Prob> + <Prob>B</Prob> − <Prob>A <Intersect /> B</Prob>
+<Prob>
+  A <Union /> B
+</Prob>
+= <Prob>A</Prob> + <Prob>B</Prob> −
+<Prob>
+  A <Intersect /> B
+</Prob>
 ```
 
 ## Greek letters
@@ -165,22 +193,22 @@ p <Implies /> q  <Iff />  <Not />p <Or /> q
 
 ## Accents
 
-| Component | Renders | Use for |
-|---|---|---|
-| `<Bar>x</Bar>` | x̄ | mean |
-| `<Hat>x</Hat>` | x̂ | estimate, unit vector |
-| `<Tilde>x</Tilde>` | x̃ | approximation class |
-| `<DotAccent>x</DotAccent>` | ẋ | first time derivative |
-| `<DDot>x</DDot>` | ẍ | second time derivative |
-| `<PrimeOf>f</PrimeOf>` | f′ | derivative shorthand |
+| Component                  | Renders | Use for                |
+| -------------------------- | ------- | ---------------------- |
+| `<Bar>x</Bar>`             | x̄       | mean                   |
+| `<Hat>x</Hat>`             | x̂       | estimate, unit vector  |
+| `<Tilde>x</Tilde>`         | x̃       | approximation class    |
+| `<DotAccent>x</DotAccent>` | ẋ       | first time derivative  |
+| `<DDot>x</DDot>`           | ẍ       | second time derivative |
+| `<PrimeOf>f</PrimeOf>`     | f′      | derivative shorthand   |
 
 ## Brackets & intervals
 
 ```mdx
-<AngleBracket>u, v</AngleBracket>               → ⟨u, v⟩
-<Interval a="0" b="1" />                        → [0, 1]
-<Interval a="0" b="1" leftOpen rightOpen />     → (0, 1)
-<DoubleBracket>P</DoubleBracket>                → ⟦P⟧
+<AngleBracket>u, v</AngleBracket> → ⟨u, v⟩
+<Interval a="0" b="1" /> → [0, 1]
+<Interval a="0" b="1" leftOpen rightOpen /> → (0, 1)
+<DoubleBracket>P</DoubleBracket> → ⟦P⟧
 ```
 
 ## Piecewise functions
@@ -208,10 +236,9 @@ p <Implies /> q  <Iff />  <Not />p <Or /> q
 ## Physics
 
 ```mdx
-<HBar />   → ℏ
-<Bra>psi</Bra>   → ⟨ψ|
-<Ket>phi</Ket>   → |φ⟩
-<BraKet bra={<Psi />} ket={<Phi />} />   → ⟨ψ|φ⟩
+<HBar /> → ℏ<Bra>psi</Bra> → ⟨ψ|
+<Ket>phi</Ket> → |φ⟩
+<BraKet bra={<Psi />} ket={<Phi />} /> → ⟨ψ|φ⟩
 ```
 
 ## Chemistry
@@ -219,7 +246,7 @@ p <Implies /> q  <Iff />  <Not />p <Or /> q
 ```mdx
 H₂ <ChemEquilibrium /> 2H
 
-C<SingleBond />H    C<DoubleBond />O    N<TripleBond />N
+C<SingleBond />H C<DoubleBond />O N<TripleBond />N
 ```
 
 ## Script letters
@@ -234,10 +261,10 @@ C<SingleBond />H    C<DoubleBond />O    N<TripleBond />N
 ## Shorthands
 
 ```mdx
-<Squared>x</Squared>   → x²
-<Cubed>x</Cubed>       → x³
-<Inverse>A</Inverse>   → A⁻¹
-<SubZero>x</SubZero>   → x₀
+<Squared>x</Squared> → x²
+<Cubed>x</Cubed> → x³
+<Inverse>A</Inverse> → A⁻¹
+<SubZero>x</SubZero> → x₀
 ```
 
 ## Composing complex expressions
@@ -247,12 +274,29 @@ Wrap sub-expressions in `{<span>...</span>}` when passing them as JSX props:
 ```mdx
 {/* Quadratic formula */}
 x = <Frac
-  num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>}
-  den="2a"
+num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>}
+den="2a"
 />
 
 {/* Gaussian integral */}
-<Integral from={<span>−<Inf /></span>} to={<Inf />}>
-  <Pow exp={<span>−<Squared>x</Squared></span>}>e</Pow> <Differential />x
+
+<Integral
+  from={
+    <span>
+      −<Inf />
+    </span>
+  }
+  to={<Inf />}
+>
+  <Pow
+    exp={
+      <span>
+        −<Squared>x</Squared>
+      </span>
+    }
+  >
+    e
+  </Pow>{" "}
+  <Differential />x
 </Integral>
 ```

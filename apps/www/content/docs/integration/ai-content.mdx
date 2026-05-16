@@ -172,13 +172,37 @@ Inline — compose primitives in prose:
 Block — use Equation for display:
 
 <Equation>
-  x = <Frac num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>} den="2a" />
+  x ={" "}
+  <Frac
+    num={
+      <span>
+        −b <PlusMinus />{" "}
+        <Sqrt>
+          <Squared>b</Squared> − 4ac
+        </Sqrt>
+      </span>
+    }
+    den="2a"
+  />
 </Equation>
 
 <Equation>
   <Integral from="0" to={<Inf />}>
-    <Pow exp={<span>−<Squared>x</Squared></span>}>e</Pow> <Differential />x
-  </Integral> = <Sqrt><PiSym /></Sqrt>
+    <Pow
+      exp={
+        <span>
+          −<Squared>x</Squared>
+        </span>
+      }
+    >
+      e
+    </Pow>{" "}
+    <Differential />x
+  </Integral>{" "}
+  ={" "}
+  <Sqrt>
+    <PiSym />
+  </Sqrt>
 </Equation>
 ```
 
@@ -195,17 +219,17 @@ Block — use Equation for display:
   If the LLM outputs any of these, components fail to render correctly.
 </Callout>
 
-| Pattern | Use instead |
-|---|---|
-| `$...$` inline math | `<Frac>`, `<Pow>`, `<Alpha />` etc. |
-| `$$...$$` block math | `<Equation>` with primitives |
-| `<InlineMath math="...">` | math primitives |
-| `<BlockMath math="...">` | `<Equation>` with primitives |
-| `<div>`, `<span>`, `<p>`, `<b>`, `<i>` | Plain Markdown |
-| `# H1 heading` | Start sections with `##` minimum |
-| `####` or deeper | Max depth is `###` |
-| Invented component names | Only use components listed above |
-| Markdown inside JSX props | Props take plain strings only |
+| Pattern                                | Use instead                         |
+| -------------------------------------- | ----------------------------------- |
+| `$...$` inline math                    | `<Frac>`, `<Pow>`, `<Alpha />` etc. |
+| `$$...$$` block math                   | `<Equation>` with primitives        |
+| `<InlineMath math="...">`              | math primitives                     |
+| `<BlockMath math="...">`               | `<Equation>` with primitives        |
+| `<div>`, `<span>`, `<p>`, `<b>`, `<i>` | Plain Markdown                      |
+| `# H1 heading`                         | Start sections with `##` minimum    |
+| `####` or deeper                       | Max depth is `###`                  |
+| Invented component names               | Only use components listed above    |
+| Markdown inside JSX props              | Props take plain strings only       |
 
 ---
 
@@ -320,17 +344,31 @@ STRICT RULES
     <AccordionContent>
 
 ```mdx
-<Frac num="a" den="b" />                           fraction
-<Sqrt>x</Sqrt>                                     square root
-<Pow exp="2">x</Pow>                               superscript
-<PiSym /> r<Squared />                             Greek letter
-<Sin /><Theta />                                   trig function
-<Vec>v</Vec>                                       vector
-<Bar>x</Bar>                                       mean x̄
+<Frac num="a" den="b" /> fraction
+<Sqrt>x</Sqrt> square root
+<Pow exp="2">x</Pow> superscript
+<PiSym /> r<Squared /> Greek letter
+<Sin />
+<Theta /> trig function
+<Vec>v</Vec> vector
+<Bar>x</Bar> mean x̄
 
-<Sum from="n=1" to={<Inf />}><Frac num="1" den={<Squared>n</Squared>} /></Sum>
-<Integral from="a" to="b">f(x) <Differential />x</Integral>
-<Pow exp={<span>i<PiSym /></span>}>e</Pow> + 1 = 0
+<Sum from="n=1" to={<Inf />}>
+  <Frac num="1" den={<Squared>n</Squared>} />
+</Sum>
+<Integral from="a" to="b">
+  f(x) <Differential />x
+</Integral>
+<Pow
+  exp={
+    <span>
+      i<PiSym />
+    </span>
+  }
+>
+  e
+</Pow>
++ 1 = 0
 ```
 
     </AccordionContent>

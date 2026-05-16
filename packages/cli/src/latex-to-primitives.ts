@@ -16,17 +16,17 @@
 // ─── Tokenizer ────────────────────────────────────────────────────────────────
 
 type Token =
-  | { t: "CMD"; v: string }       // \frac, \alpha, \left, \,
-  | { t: "LBRACE" }               // {
-  | { t: "RBRACE" }               // }
-  | { t: "LBRACKET" }             // [
-  | { t: "RBRACKET" }             // ]
-  | { t: "CARET" }                // ^
-  | { t: "UNDER" }                // _
-  | { t: "LPAREN" }               // (
-  | { t: "RPAREN" }               // )
-  | { t: "AMP" }                  // &
-  | { t: "CHAR"; v: string }      // any other character
+  | { t: "CMD"; v: string } // \frac, \alpha, \left, \,
+  | { t: "LBRACE" } // {
+  | { t: "RBRACE" } // }
+  | { t: "LBRACKET" } // [
+  | { t: "RBRACKET" } // ]
+  | { t: "CARET" } // ^
+  | { t: "UNDER" } // _
+  | { t: "LPAREN" } // (
+  | { t: "RPAREN" } // )
+  | { t: "AMP" } // &
+  | { t: "CHAR"; v: string } // any other character
   | { t: "EOF" };
 
 function tokenize(src: string): Token[] {
@@ -46,17 +46,40 @@ function tokenize(src: string): Token[] {
         // single-char command: \, \; \! \| etc.
         tokens.push({ t: "CMD", v: src[i++] });
       }
-    } else if (ch === "{") { tokens.push({ t: "LBRACE" }); i++; }
-    else if (ch === "}") { tokens.push({ t: "RBRACE" }); i++; }
-    else if (ch === "[") { tokens.push({ t: "LBRACKET" }); i++; }
-    else if (ch === "]") { tokens.push({ t: "RBRACKET" }); i++; }
-    else if (ch === "^") { tokens.push({ t: "CARET" }); i++; }
-    else if (ch === "_") { tokens.push({ t: "UNDER" }); i++; }
-    else if (ch === "(") { tokens.push({ t: "LPAREN" }); i++; }
-    else if (ch === ")") { tokens.push({ t: "RPAREN" }); i++; }
-    else if (ch === "&") { tokens.push({ t: "AMP" }); i++; }
-    else if (/\s/.test(ch)) { i++; } // skip whitespace in LaTeX
-    else { tokens.push({ t: "CHAR", v: ch }); i++; }
+    } else if (ch === "{") {
+      tokens.push({ t: "LBRACE" });
+      i++;
+    } else if (ch === "}") {
+      tokens.push({ t: "RBRACE" });
+      i++;
+    } else if (ch === "[") {
+      tokens.push({ t: "LBRACKET" });
+      i++;
+    } else if (ch === "]") {
+      tokens.push({ t: "RBRACKET" });
+      i++;
+    } else if (ch === "^") {
+      tokens.push({ t: "CARET" });
+      i++;
+    } else if (ch === "_") {
+      tokens.push({ t: "UNDER" });
+      i++;
+    } else if (ch === "(") {
+      tokens.push({ t: "LPAREN" });
+      i++;
+    } else if (ch === ")") {
+      tokens.push({ t: "RPAREN" });
+      i++;
+    } else if (ch === "&") {
+      tokens.push({ t: "AMP" });
+      i++;
+    } else if (/\s/.test(ch)) {
+      i++;
+    } // skip whitespace in LaTeX
+    else {
+      tokens.push({ t: "CHAR", v: ch });
+      i++;
+    }
   }
   tokens.push({ t: "EOF" });
   return tokens;
@@ -66,8 +89,13 @@ function tokenize(src: string): Token[] {
 
 type ASTNode =
   | { k: "text"; v: string }
-  | { k: "comp"; name: string; props?: Record<string, ASTNode[]>; children?: ASTNode[] }
-  | { k: "seq"; nodes: ASTNode[] };   // sequence of nodes
+  | {
+      k: "comp";
+      name: string;
+      props?: Record<string, ASTNode[]>;
+      children?: ASTNode[];
+    }
+  | { k: "seq"; nodes: ASTNode[] }; // sequence of nodes
 
 // Emit helpers — determines how to render a node list as JSX
 function isAllText(nodes: ASTNode[]): boolean {
@@ -83,11 +111,7 @@ function emitProp(nodes: ASTNode[]): string {
   if (nodes.length === 0) return '""';
   if (isAllText(nodes)) return `"${textOf(nodes)}"`;
   // single self-closing component
-  if (
-    nodes.length === 1 &&
-    nodes[0].k === "comp" &&
-    !nodes[0].children
-  ) {
+  if (nodes.length === 1 && nodes[0].k === "comp" && !nodes[0].children) {
     const n = nodes[0];
     const props = emitPropsStr(n.props);
     return `{<${n.name}${props} />}`;
@@ -124,10 +148,17 @@ class Parser {
   private pos = 0;
   constructor(private tokens: Token[]) {}
 
-  peek(): Token { return this.tokens[this.pos]; }
-  eat(): Token { return this.tokens[this.pos++]; }
+  peek(): Token {
+    return this.tokens[this.pos];
+  }
+  eat(): Token {
+    return this.tokens[this.pos++];
+  }
   eatIf(t: Token["t"]): boolean {
-    if (this.peek().t === t) { this.pos++; return true; }
+    if (this.peek().t === t) {
+      this.pos++;
+      return true;
+    }
     return false;
   }
 
@@ -169,7 +200,7 @@ class Parser {
 
   // Attach ^ and _ to a base node
   parseScripts(base: ASTNode): ASTNode {
-    let node = base;
+    const node = base;
     let sup: ASTNode[] | null = null;
     let sub: ASTNode[] | null = null;
 
@@ -186,11 +217,23 @@ class Parser {
 
     if (sup && sub) {
       // both: base_{sub}^{sup} — wrap as Sub then Pow or vice versa
-      const withSub: ASTNode = { k: "comp", name: "Sub", props: { sub }, children: [node] };
-      return { k: "comp", name: "Pow", props: { exp: sup }, children: [withSub] };
+      const withSub: ASTNode = {
+        k: "comp",
+        name: "Sub",
+        props: { sub },
+        children: [node],
+      };
+      return {
+        k: "comp",
+        name: "Pow",
+        props: { exp: sup },
+        children: [withSub],
+      };
     }
-    if (sup) return { k: "comp", name: "Pow", props: { exp: sup }, children: [node] };
-    if (sub) return { k: "comp", name: "Sub", props: { sub }, children: [node] };
+    if (sup)
+      return { k: "comp", name: "Pow", props: { exp: sup }, children: [node] };
+    if (sub)
+      return { k: "comp", name: "Sub", props: { sub }, children: [node] };
     return node;
   }
 
@@ -214,7 +257,20 @@ class Parser {
     if (tok.t === "CHAR") {
       this.eat();
       // Greek shorthand: single char that maps to Unicode display
-      const map: Record<string, string> = { "+": "+", "-": "−", "=": " = ", ",": ", ", ".": ".", "/": "/", ":": ":", ";": " ", "!": "!", "|": "|", "<": "<", ">": ">" };
+      const map: Record<string, string> = {
+        "+": "+",
+        "-": "−",
+        "=": " = ",
+        ",": ", ",
+        ".": ".",
+        "/": "/",
+        ":": ":",
+        ";": " ",
+        "!": "!",
+        "|": "|",
+        "<": "<",
+        ">": ">",
+      };
       return { k: "text", v: map[tok.v] ?? tok.v };
     }
 
@@ -272,7 +328,12 @@ class Parser {
         const body = this.parseGroup();
         const props: Record<string, ASTNode[]> = {};
         if (optN) props["n"] = optN;
-        return { k: "comp", name: "Sqrt", props: Object.keys(props).length ? props : undefined, children: body };
+        return {
+          k: "comp",
+          name: "Sqrt",
+          props: Object.keys(props).length ? props : undefined,
+          children: body,
+        };
       }
 
       // ── Calculus ──────────────────────────────────────────────────────────
@@ -280,28 +341,50 @@ class Parser {
       case "intop": {
         const { from, to } = this.parseSubSup();
         const body = this.parseSeq(["RBRACE", "EOF"]);
-        return { k: "comp", name: "Integral", props: buildBounds(from, to), children: body };
+        return {
+          k: "comp",
+          name: "Integral",
+          props: buildBounds(from, to),
+          children: body,
+        };
       }
 
       case "oint": {
         const { from, to } = this.parseSubSup();
         const body = this.parseSeq(["RBRACE", "EOF"]);
-        return { k: "comp", name: "ContourIntegral", props: buildBounds(from, to), children: body };
+        return {
+          k: "comp",
+          name: "ContourIntegral",
+          props: buildBounds(from, to),
+          children: body,
+        };
       }
 
-      case "iint": return { k: "comp", name: "DoubleInt" };
-      case "iiint": return { k: "comp", name: "TripleInt" };
+      case "iint":
+        return { k: "comp", name: "DoubleInt" };
+      case "iiint":
+        return { k: "comp", name: "TripleInt" };
 
       case "sum": {
         const { from, to } = this.parseSubSup();
         const body = this.parseSeq(["RBRACE", "EOF"]);
-        return { k: "comp", name: "Sum", props: buildBounds(from, to), children: body };
+        return {
+          k: "comp",
+          name: "Sum",
+          props: buildBounds(from, to),
+          children: body,
+        };
       }
 
       case "prod": {
         const { from, to } = this.parseSubSup();
         const body = this.parseSeq(["RBRACE", "EOF"]);
-        return { k: "comp", name: "Prod", props: buildBounds(from, to), children: body };
+        return {
+          k: "comp",
+          name: "Prod",
+          props: buildBounds(from, to),
+          children: body,
+        };
       }
 
       case "lim": {
@@ -311,70 +394,101 @@ class Parser {
         return { k: "comp", name: "Lim", props, children: body };
       }
 
-      case "partial": return { k: "comp", name: "PartialDiff" };
-      case "nabla": return { k: "comp", name: "Nabla" };
+      case "partial":
+        return { k: "comp", name: "PartialDiff" };
+      case "nabla":
+        return { k: "comp", name: "Nabla" };
 
       // Limits
       case "limsup": {
         const subNodes = this.parseUnder();
-        return { k: "comp", name: "Limsup", props: subNodes ? { sub: subNodes } : undefined };
+        return {
+          k: "comp",
+          name: "Limsup",
+          props: subNodes ? { sub: subNodes } : undefined,
+        };
       }
       case "liminf": {
         const subNodes = this.parseUnder();
-        return { k: "comp", name: "Liminf", props: subNodes ? { sub: subNodes } : undefined };
+        return {
+          k: "comp",
+          name: "Liminf",
+          props: subNodes ? { sub: subNodes } : undefined,
+        };
       }
 
       // ── Accents ───────────────────────────────────────────────────────────
-      case "vec": return { k: "comp", name: "Vec", children: this.parseGroup() };
-      case "hat": return { k: "comp", name: "Hat", children: this.parseGroup() };
+      case "vec":
+        return { k: "comp", name: "Vec", children: this.parseGroup() };
+      case "hat":
+        return { k: "comp", name: "Hat", children: this.parseGroup() };
       case "bar":
-      case "overline": return { k: "comp", name: "Bar", children: this.parseGroup() };
+      case "overline":
+        return { k: "comp", name: "Bar", children: this.parseGroup() };
       case "tilde":
-      case "widetilde": return { k: "comp", name: "Tilde", children: this.parseGroup() };
-      case "dot": return { k: "comp", name: "DotAccent", children: this.parseGroup() };
-      case "ddot": return { k: "comp", name: "DDot", children: this.parseGroup() };
-      case "overbrace": return { k: "comp", name: "Overbrace", children: this.parseGroup() };
-      case "underbrace": return { k: "comp", name: "Underbrace", children: this.parseGroup() };
-      case "widehat": return { k: "comp", name: "Hat", children: this.parseGroup() };
-      case "underline": return { k: "comp", name: "Bar", children: this.parseGroup() }; // closest approximation
+      case "widetilde":
+        return { k: "comp", name: "Tilde", children: this.parseGroup() };
+      case "dot":
+        return { k: "comp", name: "DotAccent", children: this.parseGroup() };
+      case "ddot":
+        return { k: "comp", name: "DDot", children: this.parseGroup() };
+      case "overbrace":
+        return { k: "comp", name: "Overbrace", children: this.parseGroup() };
+      case "underbrace":
+        return { k: "comp", name: "Underbrace", children: this.parseGroup() };
+      case "widehat":
+        return { k: "comp", name: "Hat", children: this.parseGroup() };
+      case "underline":
+        return { k: "comp", name: "Bar", children: this.parseGroup() }; // closest approximation
 
       // ── Left/Right delimiters ──────────────────────────────────────────────
       case "left": {
         const delim = this.peek();
         this.eat();
         let compName = "Paren";
-        if (delim.t === "LBRACKET") compName = "group"; // [...]
-        else if (delim.t === "CMD" && delim.v === "langle") compName = "AngleBracket";
-        else if (delim.t === "CMD" && (delim.v === "lfloor")) compName = "Floor";
-        else if (delim.t === "CMD" && (delim.v === "lceil")) compName = "Ceil";
+        if (delim.t === "LBRACKET")
+          compName = "group"; // [...]
+        else if (delim.t === "CMD" && delim.v === "langle")
+          compName = "AngleBracket";
+        else if (delim.t === "CMD" && delim.v === "lfloor") compName = "Floor";
+        else if (delim.t === "CMD" && delim.v === "lceil") compName = "Ceil";
         else if (delim.t === "CMD" && delim.v === "lVert") compName = "Norm";
         else if (delim.t === "CMD" && delim.v === "vert") compName = "Abs";
 
         const children = this.parseUntilRight();
         if (compName === "group") {
-          return { k: "seq", nodes: [{ k: "text", v: "[" }, ...children, { k: "text", v: "]" }] };
+          return {
+            k: "seq",
+            nodes: [{ k: "text", v: "[" }, ...children, { k: "text", v: "]" }],
+          };
         }
         return { k: "comp", name: compName, children };
       }
 
-      case "right": { this.eat(); return { k: "text", v: "" }; } // consumed by left
+      case "right": {
+        this.eat();
+        return { k: "text", v: "" };
+      } // consumed by left
 
       // ── Brackets standalone ───────────────────────────────────────────────
       case "langle": {
         const children = this.parseSeq(["CMD"]);
         return { k: "comp", name: "AngleBracket", children };
       }
-      case "rangle": return { k: "text", v: "" };
+      case "rangle":
+        return { k: "text", v: "" };
       case "lfloor": {
         const children = this.parseSeq(["CMD"]);
         return { k: "comp", name: "Floor", children };
       }
-      case "rfloor": return { k: "text", v: "" };
+      case "rfloor":
+        return { k: "text", v: "" };
       case "lceil": {
         const children = this.parseSeq(["CMD"]);
         return { k: "comp", name: "Ceil", children };
       }
-      case "rceil": return { k: "text", v: "" };
+      case "rceil":
+        return { k: "text", v: "" };
 
       // ── Text ──────────────────────────────────────────────────────────────
       case "text":
@@ -393,8 +507,14 @@ class Parser {
         const g = this.parseGroup();
         const letter = textOf(g).trim().toUpperCase();
         const bbMap: Record<string, string> = {
-          N: "NN", Z: "ZZ", Q: "QQ", R: "RR", C: "CC",
-          P: "PP", F: "FF", E: "EulerE",
+          N: "NN",
+          Z: "ZZ",
+          Q: "QQ",
+          R: "RR",
+          C: "CC",
+          P: "PP",
+          F: "FF",
+          E: "EulerE",
         };
         return { k: "comp", name: bbMap[letter] ?? `BB${letter}` };
       }
@@ -411,177 +531,323 @@ class Parser {
         return { k: "comp", name: `Script${letter.toUpperCase()}` };
       }
 
-      case "ell": return { k: "comp", name: "ScriptEll" };
+      case "ell":
+        return { k: "comp", name: "ScriptEll" };
 
       // ── Greek letters ─────────────────────────────────────────────────────
-      case "alpha": return { k: "comp", name: "Alpha" };
-      case "beta": return { k: "comp", name: "Beta" };
-      case "gamma": return { k: "comp", name: "Gamma" };
-      case "delta": return { k: "comp", name: "GDelta" };
-      case "epsilon": return { k: "comp", name: "Epsilon" };
-      case "varepsilon": return { k: "comp", name: "Varepsilon" };
-      case "zeta": return { k: "comp", name: "Zeta" };
-      case "eta": return { k: "comp", name: "Eta" };
-      case "theta": return { k: "comp", name: "Theta" };
-      case "vartheta": return { k: "comp", name: "Vartheta" };
-      case "iota": return { k: "comp", name: "Iota" };
-      case "kappa": return { k: "comp", name: "Kappa" };
-      case "lambda": return { k: "comp", name: "Lambda" };
-      case "mu": return { k: "comp", name: "Mu" };
-      case "nu": return { k: "comp", name: "Nu" };
-      case "xi": return { k: "comp", name: "Xi" };
-      case "pi": return { k: "comp", name: "PiSym" };
-      case "varpi": return { k: "comp", name: "Varpi" };
-      case "rho": return { k: "comp", name: "Rho" };
-      case "varrho": return { k: "comp", name: "Varrho" };
-      case "sigma": return { k: "comp", name: "SigmaSym" };
-      case "varsigma": return { k: "comp", name: "Varsigma" };
-      case "tau": return { k: "comp", name: "Tau" };
-      case "upsilon": return { k: "comp", name: "Upsilon" };
-      case "phi": return { k: "comp", name: "Phi" };
-      case "varphi": return { k: "comp", name: "Varphi" };
-      case "chi": return { k: "comp", name: "Chi" };
-      case "psi": return { k: "comp", name: "Psi" };
-      case "omega": return { k: "comp", name: "Omega" };
+      case "alpha":
+        return { k: "comp", name: "Alpha" };
+      case "beta":
+        return { k: "comp", name: "Beta" };
+      case "gamma":
+        return { k: "comp", name: "Gamma" };
+      case "delta":
+        return { k: "comp", name: "GDelta" };
+      case "epsilon":
+        return { k: "comp", name: "Epsilon" };
+      case "varepsilon":
+        return { k: "comp", name: "Varepsilon" };
+      case "zeta":
+        return { k: "comp", name: "Zeta" };
+      case "eta":
+        return { k: "comp", name: "Eta" };
+      case "theta":
+        return { k: "comp", name: "Theta" };
+      case "vartheta":
+        return { k: "comp", name: "Vartheta" };
+      case "iota":
+        return { k: "comp", name: "Iota" };
+      case "kappa":
+        return { k: "comp", name: "Kappa" };
+      case "lambda":
+        return { k: "comp", name: "Lambda" };
+      case "mu":
+        return { k: "comp", name: "Mu" };
+      case "nu":
+        return { k: "comp", name: "Nu" };
+      case "xi":
+        return { k: "comp", name: "Xi" };
+      case "pi":
+        return { k: "comp", name: "PiSym" };
+      case "varpi":
+        return { k: "comp", name: "Varpi" };
+      case "rho":
+        return { k: "comp", name: "Rho" };
+      case "varrho":
+        return { k: "comp", name: "Varrho" };
+      case "sigma":
+        return { k: "comp", name: "SigmaSym" };
+      case "varsigma":
+        return { k: "comp", name: "Varsigma" };
+      case "tau":
+        return { k: "comp", name: "Tau" };
+      case "upsilon":
+        return { k: "comp", name: "Upsilon" };
+      case "phi":
+        return { k: "comp", name: "Phi" };
+      case "varphi":
+        return { k: "comp", name: "Varphi" };
+      case "chi":
+        return { k: "comp", name: "Chi" };
+      case "psi":
+        return { k: "comp", name: "Psi" };
+      case "omega":
+        return { k: "comp", name: "Omega" };
       // uppercase
-      case "Gamma": return { k: "comp", name: "GammaU" };
-      case "Delta": return { k: "comp", name: "DeltaU" };
-      case "Theta": return { k: "comp", name: "ThetaU" };
-      case "Lambda": return { k: "comp", name: "LambdaU" };
-      case "Xi": return { k: "comp", name: "XiU" };
-      case "Pi": return { k: "comp", name: "PiU" };
-      case "Sigma": return { k: "comp", name: "SigmaU" };
-      case "Phi": return { k: "comp", name: "PhiU" };
-      case "Psi": return { k: "comp", name: "PsiU" };
-      case "Omega": return { k: "comp", name: "OmegaU" };
+      case "Gamma":
+        return { k: "comp", name: "GammaU" };
+      case "Delta":
+        return { k: "comp", name: "DeltaU" };
+      case "Theta":
+        return { k: "comp", name: "ThetaU" };
+      case "Lambda":
+        return { k: "comp", name: "LambdaU" };
+      case "Xi":
+        return { k: "comp", name: "XiU" };
+      case "Pi":
+        return { k: "comp", name: "PiU" };
+      case "Sigma":
+        return { k: "comp", name: "SigmaU" };
+      case "Phi":
+        return { k: "comp", name: "PhiU" };
+      case "Psi":
+        return { k: "comp", name: "PsiU" };
+      case "Omega":
+        return { k: "comp", name: "OmegaU" };
 
       // ── Symbols ───────────────────────────────────────────────────────────
       case "infty":
-      case "infinity": return { k: "comp", name: "Inf" };
-      case "pm": return { k: "comp", name: "PlusMinus" };
-      case "mp": return { k: "comp", name: "MinusPlus" };
-      case "times": return { k: "comp", name: "Times" };
-      case "div": return { k: "comp", name: "Division" };
-      case "cdot": return { k: "comp", name: "Dot" };
+      case "infinity":
+        return { k: "comp", name: "Inf" };
+      case "pm":
+        return { k: "comp", name: "PlusMinus" };
+      case "mp":
+        return { k: "comp", name: "MinusPlus" };
+      case "times":
+        return { k: "comp", name: "Times" };
+      case "div":
+        return { k: "comp", name: "Division" };
+      case "cdot":
+        return { k: "comp", name: "Dot" };
 
       // Relations
       case "leq":
-      case "le": return { k: "comp", name: "Leq" };
+      case "le":
+        return { k: "comp", name: "Leq" };
       case "geq":
-      case "ge": return { k: "comp", name: "Geq" };
+      case "ge":
+        return { k: "comp", name: "Geq" };
       case "neq":
-      case "ne": return { k: "comp", name: "Neq" };
-      case "approx": return { k: "comp", name: "Approx" };
-      case "equiv": return { k: "comp", name: "Equiv" };
-      case "cong": return { k: "comp", name: "Cong" };
-      case "sim": return { k: "comp", name: "Sim" };
-      case "ll": return { k: "comp", name: "Ll" };
-      case "gg": return { k: "comp", name: "Gg" };
-      case "propto": return { k: "comp", name: "Propto" };
-      case "doteq": return { k: "comp", name: "Approaches" };
-      case "triangleq": return { k: "comp", name: "DefinedAs" };
+      case "ne":
+        return { k: "comp", name: "Neq" };
+      case "approx":
+        return { k: "comp", name: "Approx" };
+      case "equiv":
+        return { k: "comp", name: "Equiv" };
+      case "cong":
+        return { k: "comp", name: "Cong" };
+      case "sim":
+        return { k: "comp", name: "Sim" };
+      case "ll":
+        return { k: "comp", name: "Ll" };
+      case "gg":
+        return { k: "comp", name: "Gg" };
+      case "propto":
+        return { k: "comp", name: "Propto" };
+      case "doteq":
+        return { k: "comp", name: "Approaches" };
+      case "triangleq":
+        return { k: "comp", name: "DefinedAs" };
 
       // Sets
-      case "in": return { k: "comp", name: "In" };
-      case "notin": return { k: "comp", name: "NotIn" };
-      case "subset": return { k: "comp", name: "Subset" };
-      case "subseteq": return { k: "comp", name: "SubsetEq" };
-      case "subsetneq": return { k: "comp", name: "ProperSubset" };
-      case "supset": return { k: "comp", name: "Supset" };
-      case "supseteq": return { k: "comp", name: "SupsetEq" };
-      case "cup": return { k: "comp", name: "Union" };
-      case "cap": return { k: "comp", name: "Intersect" };
-      case "bigcup": return { k: "comp", name: "BigUnion" };
-      case "bigcap": return { k: "comp", name: "BigIntersect" };
+      case "in":
+        return { k: "comp", name: "In" };
+      case "notin":
+        return { k: "comp", name: "NotIn" };
+      case "subset":
+        return { k: "comp", name: "Subset" };
+      case "subseteq":
+        return { k: "comp", name: "SubsetEq" };
+      case "subsetneq":
+        return { k: "comp", name: "ProperSubset" };
+      case "supset":
+        return { k: "comp", name: "Supset" };
+      case "supseteq":
+        return { k: "comp", name: "SupsetEq" };
+      case "cup":
+        return { k: "comp", name: "Union" };
+      case "cap":
+        return { k: "comp", name: "Intersect" };
+      case "bigcup":
+        return { k: "comp", name: "BigUnion" };
+      case "bigcap":
+        return { k: "comp", name: "BigIntersect" };
       case "emptyset":
-      case "varnothing": return { k: "comp", name: "Empty" };
-      case "setminus": return { k: "comp", name: "SetMinus" };
+      case "varnothing":
+        return { k: "comp", name: "Empty" };
+      case "setminus":
+        return { k: "comp", name: "SetMinus" };
 
       // Logic
       case "land":
-      case "wedge": return { k: "comp", name: "And" };
+      case "wedge":
+        return { k: "comp", name: "And" };
       case "lor":
-      case "vee": return { k: "comp", name: "Or" };
+      case "vee":
+        return { k: "comp", name: "Or" };
       case "lnot":
-      case "neg": return { k: "comp", name: "Not" };
-      case "forall": return { k: "comp", name: "ForAll" };
-      case "exists": return { k: "comp", name: "Exists" };
-      case "nexists": return { k: "comp", name: "NotExists" };
-      case "therefore": return { k: "comp", name: "Therefore" };
-      case "because": return { k: "comp", name: "Because" };
-      case "vdash": return { k: "comp", name: "Turnstile" };
-      case "models": return { k: "comp", name: "Models" };
-      case "top": return { k: "comp", name: "Top" };
-      case "bot": return { k: "comp", name: "Bot" };
-      case "oplus": return { k: "comp", name: "DirectSum" };
-      case "otimes": return { k: "comp", name: "OTimes" };
-      case "odot": return { k: "comp", name: "Hadamard" };
+      case "neg":
+        return { k: "comp", name: "Not" };
+      case "forall":
+        return { k: "comp", name: "ForAll" };
+      case "exists":
+        return { k: "comp", name: "Exists" };
+      case "nexists":
+        return { k: "comp", name: "NotExists" };
+      case "therefore":
+        return { k: "comp", name: "Therefore" };
+      case "because":
+        return { k: "comp", name: "Because" };
+      case "vdash":
+        return { k: "comp", name: "Turnstile" };
+      case "models":
+        return { k: "comp", name: "Models" };
+      case "top":
+        return { k: "comp", name: "Top" };
+      case "bot":
+        return { k: "comp", name: "Bot" };
+      case "oplus":
+        return { k: "comp", name: "DirectSum" };
+      case "otimes":
+        return { k: "comp", name: "OTimes" };
+      case "odot":
+        return { k: "comp", name: "Hadamard" };
 
       // Arrows
       case "to":
-      case "rightarrow": return { k: "comp", name: "Arrow" };
+      case "rightarrow":
+        return { k: "comp", name: "Arrow" };
       case "leftarrow":
-      case "gets": return { k: "comp", name: "LeftArrow" };
-      case "leftrightarrow": return { k: "comp", name: "LeftRightArrow" };
+      case "gets":
+        return { k: "comp", name: "LeftArrow" };
+      case "leftrightarrow":
+        return { k: "comp", name: "LeftRightArrow" };
       case "Rightarrow":
-      case "implies": return { k: "comp", name: "DoubleRightArrow" };
-      case "Leftarrow": return { k: "comp", name: "DoubleLeftArrow" };
+      case "implies":
+        return { k: "comp", name: "DoubleRightArrow" };
+      case "Leftarrow":
+        return { k: "comp", name: "DoubleLeftArrow" };
       case "Leftrightarrow":
-      case "iff": return { k: "comp", name: "DoubleLeftRightArrow" };
-      case "longrightarrow": return { k: "comp", name: "LongRightArrow" };
-      case "longleftarrow": return { k: "comp", name: "LongLeftArrow" };
-      case "longleftrightarrow": return { k: "comp", name: "LongLeftRightArrow" };
-      case "mapsto": return { k: "comp", name: "MapsTo" };
-      case "longmapsto": return { k: "comp", name: "LongMapsTo" };
-      case "nearrow": return { k: "comp", name: "NearArrow" };
-      case "searrow": return { k: "comp", name: "SeArrow" };
-      case "uparrow": return { k: "comp", name: "UpArrow" };
-      case "downarrow": return { k: "comp", name: "DownArrow" };
-      case "updownarrow": return { k: "comp", name: "UpDownArrow" };
-      case "rightharpoonup": return { k: "comp", name: "RightHarpoonUp" };
-      case "leftharpoonup": return { k: "comp", name: "LeftHarpoonUp" };
-      case "rightleftharpoons": return { k: "comp", name: "EquilibriumArrow" };
-      case "hookleftarrow": return { k: "comp", name: "HookLeftArrow" };
-      case "hookrightarrow": return { k: "comp", name: "HookRightArrow" };
+      case "iff":
+        return { k: "comp", name: "DoubleLeftRightArrow" };
+      case "longrightarrow":
+        return { k: "comp", name: "LongRightArrow" };
+      case "longleftarrow":
+        return { k: "comp", name: "LongLeftArrow" };
+      case "longleftrightarrow":
+        return { k: "comp", name: "LongLeftRightArrow" };
+      case "mapsto":
+        return { k: "comp", name: "MapsTo" };
+      case "longmapsto":
+        return { k: "comp", name: "LongMapsTo" };
+      case "nearrow":
+        return { k: "comp", name: "NearArrow" };
+      case "searrow":
+        return { k: "comp", name: "SeArrow" };
+      case "uparrow":
+        return { k: "comp", name: "UpArrow" };
+      case "downarrow":
+        return { k: "comp", name: "DownArrow" };
+      case "updownarrow":
+        return { k: "comp", name: "UpDownArrow" };
+      case "rightharpoonup":
+        return { k: "comp", name: "RightHarpoonUp" };
+      case "leftharpoonup":
+        return { k: "comp", name: "LeftHarpoonUp" };
+      case "rightleftharpoons":
+        return { k: "comp", name: "EquilibriumArrow" };
+      case "hookleftarrow":
+        return { k: "comp", name: "HookLeftArrow" };
+      case "hookrightarrow":
+        return { k: "comp", name: "HookRightArrow" };
 
       // Linear algebra
-      case "det": return { k: "comp", name: "Det", children: this.parseMaybeArg() };
-      case "ker": return { k: "comp", name: "Ker", children: this.parseMaybeArg() };
-      case "dim": return { k: "comp", name: "Dim", children: this.parseMaybeArg() };
-      case "rank": return { k: "comp", name: "Rank", children: this.parseMaybeArg() };
+      case "det":
+        return { k: "comp", name: "Det", children: this.parseMaybeArg() };
+      case "ker":
+        return { k: "comp", name: "Ker", children: this.parseMaybeArg() };
+      case "dim":
+        return { k: "comp", name: "Dim", children: this.parseMaybeArg() };
+      case "rank":
+        return { k: "comp", name: "Rank", children: this.parseMaybeArg() };
       case "tr":
-      case "trace": return { k: "comp", name: "Trace", children: this.parseMaybeArg() };
+      case "trace":
+        return { k: "comp", name: "Trace", children: this.parseMaybeArg() };
 
       // Operator names
       case "operatorname": {
         const g = this.parseGroup();
         const name = textOf(g).trim();
         const opMap: Record<string, string> = {
-          span: "SpanOp", rank: "Rank", ker: "Ker", dim: "Dim",
-          null: "NullOp", img: "Img", tr: "Trace", det: "Det",
-          Re: "Re", Im: "Im", Res: "Res", sgn: "Sgn", arg: "Arg",
-          max: "Max", min: "Min", sup: "Sup", inf: "Inf2",
-          gcd: "Gcd", lcm: "Lcm", ord: "Ord",
+          span: "SpanOp",
+          rank: "Rank",
+          ker: "Ker",
+          dim: "Dim",
+          null: "NullOp",
+          img: "Img",
+          tr: "Trace",
+          det: "Det",
+          Re: "Re",
+          Im: "Im",
+          Res: "Res",
+          sgn: "Sgn",
+          arg: "Arg",
+          max: "Max",
+          min: "Min",
+          sup: "Sup",
+          inf: "Inf2",
+          gcd: "Gcd",
+          lcm: "Lcm",
+          ord: "Ord",
         };
-        return { k: "comp", name: opMap[name] ?? name, children: this.parseMaybeArg() };
+        return {
+          k: "comp",
+          name: opMap[name] ?? name,
+          children: this.parseMaybeArg(),
+        };
       }
 
       // Functions (trig etc.)
-      case "sin": return { k: "comp", name: "Sin", children: this.parseMaybeArg() };
-      case "cos": return { k: "comp", name: "Cos", children: this.parseMaybeArg() };
-      case "tan": return { k: "comp", name: "Tan", children: this.parseMaybeArg() };
-      case "cot": return { k: "comp", name: "Cot", children: this.parseMaybeArg() };
-      case "sec": return { k: "comp", name: "Sec", children: this.parseMaybeArg() };
-      case "csc": return { k: "comp", name: "Csc", children: this.parseMaybeArg() };
-      case "arcsin": return { k: "comp", name: "ArcSin", children: this.parseMaybeArg() };
-      case "arccos": return { k: "comp", name: "ArcCos", children: this.parseMaybeArg() };
-      case "arctan": return { k: "comp", name: "ArcTan", children: this.parseMaybeArg() };
-      case "sinh": return { k: "comp", name: "Sinh", children: this.parseMaybeArg() };
-      case "cosh": return { k: "comp", name: "Cosh", children: this.parseMaybeArg() };
-      case "tanh": return { k: "comp", name: "Tanh", children: this.parseMaybeArg() };
-      case "log": return { k: "comp", name: "Log", children: this.parseMaybeArg() };
-      case "ln": return { k: "comp", name: "Ln", children: this.parseMaybeArg() };
-      case "exp": return { k: "comp", name: "Exp", children: this.parseMaybeArg() };
+      case "sin":
+        return { k: "comp", name: "Sin", children: this.parseMaybeArg() };
+      case "cos":
+        return { k: "comp", name: "Cos", children: this.parseMaybeArg() };
+      case "tan":
+        return { k: "comp", name: "Tan", children: this.parseMaybeArg() };
+      case "cot":
+        return { k: "comp", name: "Cot", children: this.parseMaybeArg() };
+      case "sec":
+        return { k: "comp", name: "Sec", children: this.parseMaybeArg() };
+      case "csc":
+        return { k: "comp", name: "Csc", children: this.parseMaybeArg() };
+      case "arcsin":
+        return { k: "comp", name: "ArcSin", children: this.parseMaybeArg() };
+      case "arccos":
+        return { k: "comp", name: "ArcCos", children: this.parseMaybeArg() };
+      case "arctan":
+        return { k: "comp", name: "ArcTan", children: this.parseMaybeArg() };
+      case "sinh":
+        return { k: "comp", name: "Sinh", children: this.parseMaybeArg() };
+      case "cosh":
+        return { k: "comp", name: "Cosh", children: this.parseMaybeArg() };
+      case "tanh":
+        return { k: "comp", name: "Tanh", children: this.parseMaybeArg() };
+      case "log":
+        return { k: "comp", name: "Log", children: this.parseMaybeArg() };
+      case "ln":
+        return { k: "comp", name: "Ln", children: this.parseMaybeArg() };
+      case "exp":
+        return { k: "comp", name: "Exp", children: this.parseMaybeArg() };
 
       // Combinatorics
       case "binom": {
@@ -596,15 +862,20 @@ class Parser {
       }
 
       // Probability / stats
-      case "Pr": return { k: "comp", name: "Prob", children: this.parseMaybeArg() };
+      case "Pr":
+        return { k: "comp", name: "Prob", children: this.parseMaybeArg() };
 
       // Dots
       case "cdots":
-      case "hdots": return { k: "comp", name: "CDots" };
-      case "vdots": return { k: "comp", name: "VDots" };
-      case "ddots": return { k: "comp", name: "DDots" };
+      case "hdots":
+        return { k: "comp", name: "CDots" };
+      case "vdots":
+        return { k: "comp", name: "VDots" };
+      case "ddots":
+        return { k: "comp", name: "DDots" };
       case "ldots":
-      case "dots": return { k: "comp", name: "LDots" };
+      case "dots":
+        return { k: "comp", name: "LDots" };
 
       // Spacing — just emit a thin space
       case ",":
@@ -613,30 +884,48 @@ class Parser {
       case "!":
       case " ":
       case "quad":
-      case "qquad": return { k: "text", v: " " };
+      case "qquad":
+        return { k: "text", v: " " };
 
       // Misc
-      case "prime": return { k: "comp", name: "Prime" };
-      case "circ": return { k: "comp", name: "Compose" };
-      case "ast": return { k: "comp", name: "Star" };
-      case "star": return { k: "comp", name: "Star" };
-      case "dagger": return { k: "comp", name: "Dagger" };
-      case "ddagger": return { k: "comp", name: "DoubleDagger" };
-      case "aleph": return { k: "comp", name: "Aleph" };
-      case "perp": return { k: "comp", name: "Perpendicular" };
-      case "parallel": return { k: "comp", name: "Parallel" };
-      case "angle": return { k: "comp", name: "Angle" };
-      case "triangle": return { k: "comp", name: "Triangle" };
-      case "square": return { k: "comp", name: "Square" };
-      case "diamond": return { k: "comp", name: "Diamond" };
+      case "prime":
+        return { k: "comp", name: "Prime" };
+      case "circ":
+        return { k: "comp", name: "Compose" };
+      case "ast":
+        return { k: "comp", name: "Star" };
+      case "star":
+        return { k: "comp", name: "Star" };
+      case "dagger":
+        return { k: "comp", name: "Dagger" };
+      case "ddagger":
+        return { k: "comp", name: "DoubleDagger" };
+      case "aleph":
+        return { k: "comp", name: "Aleph" };
+      case "perp":
+        return { k: "comp", name: "Perpendicular" };
+      case "parallel":
+        return { k: "comp", name: "Parallel" };
+      case "angle":
+        return { k: "comp", name: "Angle" };
+      case "triangle":
+        return { k: "comp", name: "Triangle" };
+      case "square":
+        return { k: "comp", name: "Square" };
+      case "diamond":
+        return { k: "comp", name: "Diamond" };
       case "not": {
         // \not\in → NotIn, \not= → Neq, etc.
         const next = this.peek();
         if (next.t === "CMD") {
           this.eat();
           const notMap: Record<string, string> = {
-            in: "NotIn", subset: "NotSubset", sim: "NotSim",
-            cong: "NotCong", "=": "Neq", equiv: "Neq",
+            in: "NotIn",
+            subset: "NotSubset",
+            sim: "NotSim",
+            cong: "NotCong",
+            "=": "Neq",
+            equiv: "Neq",
           };
           return { k: "comp", name: notMap[next.v] ?? "Neq" };
         }
@@ -644,7 +933,8 @@ class Parser {
       }
 
       case "qed":
-      case "blacksquare": return { k: "comp", name: "QED" };
+      case "blacksquare":
+        return { k: "comp", name: "QED" };
 
       default:
         // Unknown command — emit the LaTeX as fallback text
@@ -665,9 +955,11 @@ class Parser {
     let to: ASTNode[] | null = null;
     for (let i = 0; i < 2; i++) {
       if (this.peek().t === "UNDER" && !from) {
-        this.eat(); from = this.parseGroup();
+        this.eat();
+        from = this.parseGroup();
       } else if (this.peek().t === "CARET" && !to) {
-        this.eat(); to = this.parseGroup();
+        this.eat();
+        to = this.parseGroup();
       } else break;
     }
     return { from, to };
@@ -711,14 +1003,16 @@ function buildBounds(
 
 function isPartial(nodes: ASTNode[]): boolean {
   return nodes.some(
-    (n) => (n.k === "comp" && n.name === "PartialDiff") ||
+    (n) =>
+      (n.k === "comp" && n.name === "PartialDiff") ||
       (n.k === "text" && n.v === "∂"),
   );
 }
 
 function extractAfterPartial(nodes: ASTNode[]): ASTNode[] {
   const idx = nodes.findIndex(
-    (n) => (n.k === "comp" && n.name === "PartialDiff") ||
+    (n) =>
+      (n.k === "comp" && n.name === "PartialDiff") ||
       (n.k === "text" && n.v === "∂"),
   );
   if (idx === -1) return nodes;
@@ -765,8 +1059,9 @@ export function convertMarkdownMath(mdx: string): string {
     latexToPrimitives(latex.trim(), true),
   );
   // inline math $...$
-  result = result.replace(/(?<!\$)\$(?!\$)([^$\n]+)\$(?!\$)/g, (_, latex: string) =>
-    latexToPrimitives(latex.trim(), false),
+  result = result.replace(
+    /(?<!\$)\$(?!\$)([^$\n]+)\$(?!\$)/g,
+    (_, latex: string) => latexToPrimitives(latex.trim(), false),
   );
   return result;
 }
@@ -775,7 +1070,10 @@ export function convertMarkdownMath(mdx: string): string {
  * Check if a string contains any LaTeX that should be converted.
  */
 export function hasLatex(content: string): boolean {
-  return /\$/.test(content) || /\\(?:frac|int|sum|prod|sqrt|alpha|beta|gamma|infty)\b/.test(content);
+  return (
+    /\$/.test(content) ||
+    /\\(?:frac|int|sum|prod|sqrt|alpha|beta|gamma|infty)\b/.test(content)
+  );
 }
 
 // ─── Solution Parser ──────────────────────────────────────────────────────────
@@ -821,13 +1119,13 @@ function convertInlineMath(expr: string): string {
   // Strategy: find X/Y where X and Y are algebraic tokens (no spaces, or parenthesised)
   s = s.replace(
     /(\([^)]+\)|[0-9]+[a-zA-Z]*[0-9]*|[a-zA-Z][0-9a-zA-Z]*)\/(\([^)]+\)|[0-9]+[a-zA-Z]*[0-9]*|[a-zA-Z][0-9a-zA-Z]*)/g,
-    (_, num, den) => `<Frac num="${num}" den="${den}" />`
+    (_, num, den) => `<Frac num="${num}" den="${den}" />`,
   );
 
   // Convert x^n powers: base^exp
   s = s.replace(
     /([a-zA-Z0-9]+)\^([0-9]+|[a-zA-Z])/g,
-    (_, base, exp) => `<Pow exp="${exp}">${base}</Pow>`
+    (_, base, exp) => `<Pow exp="${exp}">${base}</Pow>`,
   );
 
   return s;
@@ -844,7 +1142,9 @@ function extractReason(step: string): { expr: string; reason: string | null } {
 function isFinalAnswer(step: string): boolean {
   // heuristic: short step with single variable assignment
   const s = step.trim();
-  return /^[a-zA-Z]\s*=\s*/.test(s) && s.split("=").length === 2 && s.length < 40;
+  return (
+    /^[a-zA-Z]\s*=\s*/.test(s) && s.split("=").length === 2 && s.length < 40
+  );
 }
 
 export interface ParsedSolution {
@@ -859,22 +1159,27 @@ export interface ParsedSolution {
  * Handles both ⇒-separated and line-by-line formats.
  */
 export function parseSolutionText(text: string): ParsedSolution {
-  const lines = text.split(/\n/).map((l) => l.trim()).filter(Boolean);
+  const lines = text
+    .split(/\n/)
+    .map((l) => l.trim())
+    .filter(Boolean);
 
   // Find the "Solution:" marker
-  let solutionIdx = lines.findIndex((l) =>
-    /^solution[:\s]/i.test(l) || l.toLowerCase() === "solution"
+  const solutionIdx = lines.findIndex(
+    (l) => /^solution[:\s]/i.test(l) || l.toLowerCase() === "solution",
   );
 
   // Problem title: everything before "Solution:" or the first line
-  const titleLine = solutionIdx > 0
-    ? lines.slice(0, solutionIdx).join(" ")
-    : lines[0] ?? "Solve";
+  const titleLine =
+    solutionIdx > 0
+      ? lines.slice(0, solutionIdx).join(" ")
+      : (lines[0] ?? "Solve");
 
   const title = `Solve: ${titleLine.replace(/^(solve\s*[:：]?\s*)/i, "").trim()}`;
 
   // Collect step lines: everything after "Solution:" header
-  const stepLines = solutionIdx >= 0 ? lines.slice(solutionIdx + 1) : lines.slice(1);
+  const stepLines =
+    solutionIdx >= 0 ? lines.slice(solutionIdx + 1) : lines.slice(1);
 
   // Split steps on ⇒ or => (may be inline or line-starting)
   const rawSteps: string[] = [];
@@ -927,7 +1232,10 @@ export function parseSolutionText(text: string): ParsedSolution {
 /**
  * Convert a parsed solution to MDX using Solution/SolutionStep/SolutionAnswer components.
  */
-export function solutionToMdx(parsed: ParsedSolution, convertMath = true): string {
+export function solutionToMdx(
+  parsed: ParsedSolution,
+  convertMath = true,
+): string {
   const cvt = convertMath ? convertInlineMath : (s: string) => s;
 
   const stepLines = parsed.steps.map((s) => {

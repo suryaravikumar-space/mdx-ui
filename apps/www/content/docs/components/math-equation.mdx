@@ -17,28 +17,46 @@ A centered display block with an optional equation number. Fill it with [math-pr
 
 ```mdx
 <Equation label="1">
-  E = mc<Squared />
+  E = mc
+  <Squared />
 </Equation>
 ```
 
 <Equation label="1">
-  E = mc<Squared />
+  E = mc
+  <Squared />
 </Equation>
 
 ### Quadratic formula
 
 ```mdx
 <Equation label="2">
-  x = <Frac
-    num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>}
+  x ={" "}
+  <Frac
+    num={
+      <span>
+        −b <PlusMinus />{" "}
+        <Sqrt>
+          <Squared>b</Squared> − 4ac
+        </Sqrt>
+      </span>
+    }
     den="2a"
   />
 </Equation>
 ```
 
 <Equation label="2">
-  x = <Frac
-    num={<span>−b <PlusMinus /> <Sqrt><Squared>b</Squared> − 4ac</Sqrt></span>}
+  x ={" "}
+  <Frac
+    num={
+      <span>
+        −b <PlusMinus />{" "}
+        <Sqrt>
+          <Squared>b</Squared> − 4ac
+        </Sqrt>
+      </span>
+    }
     den="2a"
   />
 </Equation>
@@ -47,12 +65,14 @@ A centered display block with an optional equation number. Fill it with [math-pr
 
 ```mdx
 <Equation>
-  <Nabla /><Squared /> <Phi /> = 0
+  <Nabla />
+  <Squared /> <Phi /> = 0
 </Equation>
 ```
 
 <Equation>
-  <Nabla /><Squared /> <Phi /> = 0
+  <Nabla />
+  <Squared /> <Phi /> = 0
 </Equation>
 
 ### Inline mode
@@ -85,14 +105,20 @@ A system of simultaneous equations with an SVG left brace.
 
 ```mdx
 <EqSystem>
-  <div><PDeriv of="u" by="t" /> = <Alpha /> <Nabla /><Squared />u</div>
+  <div>
+    <PDeriv of="u" by="t" /> = <Alpha /> <Nabla />
+    <Squared />u
+  </div>
   <div>u(x, 0) = f(x)</div>
   <div>u(0, t) = u(L, t) = 0</div>
 </EqSystem>
 ```
 
 <EqSystem>
-  <div><PDeriv of="u" by="t" /> = <Alpha /> <Nabla /><Squared />u</div>
+  <div>
+    <PDeriv of="u" by="t" /> = <Alpha /> <Nabla />
+    <Squared />u
+  </div>
   <div>u(x, 0) = f(x)</div>
   <div>u(0, t) = u(L, t) = 0</div>
 </EqSystem>
@@ -101,16 +127,16 @@ A system of simultaneous equations with an SVG left brace.
 
 ### Equation
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `label` | `string` | — | Equation number shown right-aligned as `(1)` |
-| `inline` | `boolean` | `false` | Inline span with no outer box |
-| `children` | `ReactNode` | — | Math content — use math-primitives |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description                                  |
+| ----------- | ----------- | ------- | -------------------------------------------- |
+| `label`     | `string`    | —       | Equation number shown right-aligned as `(1)` |
+| `inline`    | `boolean`   | `false` | Inline span with no outer box                |
+| `children`  | `ReactNode` | —       | Math content — use math-primitives           |
+| `className` | `string`    | —       | Additional CSS classes                       |
 
 ### EqSystem
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `children` | `ReactNode` | — | One element per equation |
-| `className` | `string` | — | Additional CSS classes |
+| Prop        | Type        | Default | Description              |
+| ----------- | ----------- | ------- | ------------------------ |
+| `children`  | `ReactNode` | —       | One element per equation |
+| `className` | `string`    | —       | Additional CSS classes   |

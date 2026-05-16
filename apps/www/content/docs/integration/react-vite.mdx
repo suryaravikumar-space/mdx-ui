@@ -467,20 +467,39 @@ For production, configure your host (Vercel, Netlify, Nginx) to redirect all pat
 Math uses pure JSX primitives — no KaTeX or LaTeX required. Install and add to components:
 
 <CodeGroup>
-  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
-  ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
-  ```bash title="yarn" yarn dlx @ravikumarsurya/mdx-ui add math-primitives math-solution ```
+  ```bash title="npm" npx @ravikumarsurya/mdx-ui add math-primitives
+  math-solution ``` ```bash title="pnpm" pnpm dlx @ravikumarsurya/mdx-ui add
+  math-primitives math-solution ``` ```bash title="yarn" yarn dlx
+  @ravikumarsurya/mdx-ui add math-primitives math-solution ```
 </CodeGroup>
 
 ```tsx
 // src/components/mdx-components.tsx
-import { Frac, Pow, Integral, Sum, Alpha /* ...all primitives */ } from "./mdx-ui/math-primitives";
-import { Solution, SolutionStep, SolutionAnswer, SolutionNote } from "./mdx-ui/math-solution";
+import {
+  Frac,
+  Pow,
+  Integral,
+  Sum,
+  Alpha /* ...all primitives */,
+} from "./mdx-ui/math-primitives";
+import {
+  Solution,
+  SolutionStep,
+  SolutionAnswer,
+  SolutionNote,
+} from "./mdx-ui/math-solution";
 
 export const mdxComponents = {
   // ...existing
-  Frac, Pow, Integral, Sum, Alpha,
-  Solution, SolutionStep, SolutionAnswer, SolutionNote,
+  Frac,
+  Pow,
+  Integral,
+  Sum,
+  Alpha,
+  Solution,
+  SolutionStep,
+  SolutionAnswer,
+  SolutionNote,
 };
 ```
 

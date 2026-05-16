@@ -1,4 +1,7 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import {
+  McpServer,
+  ResourceTemplate,
+} from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import axios from "axios";
@@ -6,6 +9,8 @@ import fs from "fs-extra";
 import path from "path";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
+
+// ─── Version ─────────────────────────────────────────────────────────────────
 
 function getCliVersion(): string {
   try {
@@ -18,6 +23,8 @@ function getCliVersion(): string {
     return "0.0.0";
   }
 }
+
+// ─── Registry ─────────────────────────────────────────────────────────────────
 
 const REGISTRY_URL =
   "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui/main/registry/registry.json";
@@ -66,25 +73,21 @@ async function loadLocalRegistry(): Promise<Registry | null> {
 }
 
 async function fetchRegistry(): Promise<Registry> {
-  // Return cached data if still fresh
   if (cache && Date.now() - cache.fetchedAt < CACHE_TTL_MS) {
     return cache.data;
   }
 
-  // Try local registry first (monorepo / development)
   const local = await loadLocalRegistry();
   if (local) {
     cache = { data: local, fetchedAt: Date.now() };
     return local;
   }
 
-  // Fetch from remote
   try {
     const res = await axios.get<Registry>(REGISTRY_URL, { timeout: 8000 });
     cache = { data: res.data, fetchedAt: Date.now() };
     return res.data;
   } catch (err: any) {
-    // If we have stale cache, serve it rather than crashing
     if (cache) return cache.data;
     const reason =
       err.code === "ECONNABORTED"
@@ -93,6 +96,8 @@ async function fetchRegistry(): Promise<Registry> {
     throw new Error(`Could not load component registry — ${reason}`);
   }
 }
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function levenshtein(a: string, b: string): number {
   const m = a.length;
@@ -111,6 +116,8 @@ function levenshtein(a: string, b: string): number {
   return dp[m][n];
 }
 
+const normalize = (s: string) => s.toLowerCase().replace(/[-_\s]+/g, "");
+
 function registryError(msg: string) {
   return {
     content: [{ type: "text" as const, text: `⚠️ ${msg}` }],
@@ -118,181 +125,26 @@ function registryError(msg: string) {
   };
 }
 
-export async function startMcpServer() {
-  const server = new McpServer({
-    name: "mdx-ui",
-    version: getCliVersion(),
-  });
+function formatComponent(c: RegistryComponent): string {
+  const lines = [
+    `## ${c.name}`,
+    `**Type:** ${c.type}`,
+    `**Description:** ${c.description}`,
+  ];
+  if (c.whenToUse) lines.push(`\n**When to use:** ${c.whenToUse}`);
+  if (c.whenNotToUse) lines.push(`**When NOT to use:** ${c.whenNotToUse}`);
+  if (c.dependencies?.length)
+    lines.push(`\n**npm dependencies:** ${c.dependencies.join(", ")}`);
+  if (c.registryDependencies?.length)
+    lines.push(`**Requires:** ${c.registryDependencies.join(", ")}`);
+  if (c.example)
+    lines.push(`\n**Example:**\n\`\`\`mdx\n${c.example}\n\`\`\``);
+  return lines.join("\n");
+}
 
-  // Tool 1: list all components
-  server.registerTool(
-    "list_components",
-    { description: "List all available mdx-ui components with descriptions" },
-    async () => {
-      let registry: Registry;
-      try {
-        registry = await fetchRegistry();
-      } catch (err: any) {
-        return registryError(err.message);
-      }
-      const lines = registry.components.map(
-        (c) => `- **${c.name}** (${c.type}): ${c.description}`,
-      );
-      return {
-        content: [{ type: "text", text: lines.join("\n") }],
-      };
-    },
-  );
+// ─── AI Output Standard ───────────────────────────────────────────────────────
 
-  // Tool 2: get full schema for a component
-  server.registerTool(
-    "get_component",
-    {
-      description:
-        "Get the full schema for a component — props, when to use, when not to use, and an MDX usage example",
-      inputSchema: {
-        name: z
-          .string()
-          .describe("Component name, e.g. accordion, complexity-table, dsbst"),
-      },
-    },
-    async ({ name }) => {
-      let registry: Registry;
-      try {
-        registry = await fetchRegistry();
-      } catch (err: any) {
-        return registryError(err.message);
-      }
-
-      const normalize = (s: string) => s.toLowerCase().replace(/[-_\s]+/g, "");
-      const normalizedInput = normalize(name);
-
-      const component =
-        registry.components.find((c) => c.name === name.toLowerCase()) ??
-        registry.components.find((c) => normalize(c.name) === normalizedInput);
-
-      if (!component) {
-        const scored = registry.components
-          .map((c) => ({ name: c.name, dist: levenshtein(normalizedInput, normalize(c.name)) }))
-          .sort((a, b) => a.dist - b.dist)
-          .slice(0, 3);
-
-        const suggestions =
-          scored[0].dist <= 4
-            ? `\n\nDid you mean: ${scored.map((s) => `**${s.name}**`).join(", ")}?`
-            : `\n\nUse list_categories to browse all available components.`;
-
-        return {
-          content: [
-            {
-              type: "text",
-              text: `Component "${name}" not found.${suggestions}`,
-            },
-          ],
-        };
-      }
-
-      const lines = [
-        `## ${component.name}`,
-        `**Type:** ${component.type}`,
-        `**Description:** ${component.description}`,
-      ];
-
-      if (component.whenToUse) {
-        lines.push(`\n**When to use:** ${component.whenToUse}`);
-      }
-      if (component.whenNotToUse) {
-        lines.push(`**When NOT to use:** ${component.whenNotToUse}`);
-      }
-      if (component.dependencies?.length) {
-        lines.push(
-          `\n**npm dependencies:** ${component.dependencies.join(", ")}`,
-        );
-      }
-      if (component.registryDependencies?.length) {
-        lines.push(
-          `**Requires:** ${component.registryDependencies.join(", ")}`,
-        );
-      }
-      if (component.example) {
-        lines.push(`\n**Example:**\n\`\`\`mdx\n${component.example}\n\`\`\``);
-      }
-
-      return {
-        content: [{ type: "text", text: lines.join("\n") }],
-      };
-    },
-  );
-
-  // Tool 3: search components by keyword
-  server.registerTool(
-    "search_components",
-    {
-      description:
-        "Search components by keyword or use case — e.g. 'math', 'tree', 'security', 'table'",
-      inputSchema: {
-        query: z.string().describe("Search keyword or use case description"),
-      },
-    },
-    async ({ query }) => {
-      let registry: Registry;
-      try {
-        registry = await fetchRegistry();
-      } catch (err: any) {
-        return registryError(err.message);
-      }
-
-      // Split into words so "step by step" matches Steps, "code block" matches code-block
-      const words = query
-        .toLowerCase()
-        .split(/\s+/)
-        .filter((w) => w.length > 1);
-
-      const matches = registry.components.filter((c) => {
-        const haystack = [
-          c.name,
-          c.description,
-          c.whenToUse ?? "",
-          c.whenNotToUse ?? "",
-          c.type,
-        ]
-          .join(" ")
-          .toLowerCase();
-        return words.every((w) => haystack.includes(w));
-      });
-
-      if (matches.length === 0) {
-        return {
-          content: [
-            {
-              type: "text",
-              text: `No components found matching "${query}".`,
-            },
-          ],
-        };
-      }
-
-      const lines = [
-        `Found ${matches.length} component${matches.length !== 1 ? "s" : ""} matching "${query}":\n`,
-        ...matches.map((c) => `- **${c.name}**: ${c.description}`),
-        `\nUse get_component(<name>) for full schema and examples.`,
-      ];
-
-      return {
-        content: [{ type: "text", text: lines.join("\n") }],
-      };
-    },
-  );
-
-  // Tool 4: get the AI Output Standard system prompt
-  server.registerTool(
-    "get_output_standard",
-    {
-      description:
-        "Get the MDX AI Output Standard — the system prompt block to inject so an LLM generates valid MDX that renders correctly with mdx-ui components",
-    },
-    async () => {
-      const standard = `You generate content as MDX — Markdown with a small set of JSX components.
+const OUTPUT_STANDARD = `You generate content as MDX — Markdown with a small set of JSX components.
 
 STRUCTURE
 - Start sections with ## headings, subsections with ###, never go deeper
@@ -355,10 +207,563 @@ STRICT RULES
 - NEVER go deeper than ### headings
 - Props take plain strings only`;
 
+// ─── Category map ─────────────────────────────────────────────────────────────
+
+const CATEGORIES: Record<string, string[]> = {
+  "Layout & Structure": [
+    "accordion",
+    "callout",
+    "card",
+    "steps",
+    "tabs",
+    "reveal",
+    "spoiler",
+  ],
+  "Typography & Text": [
+    "blockquote",
+    "emphasis",
+    "heading",
+    "headings",
+    "highlight",
+    "horizontal-rule",
+    "inline-code",
+    "kbd",
+    "link",
+    "list",
+    "paragraph",
+  ],
+  Code: ["code-block", "code-group", "diff-block", "terminal"],
+  Math: [
+    "math",
+    "math-easy",
+    "math-equation",
+    "math-primitives",
+    "math-solution",
+  ],
+  "Data & Tables": [
+    "complexity-table",
+    "data-table",
+    "data-type-table",
+    "hardware-spec",
+    "pin-table",
+    "privacy-table",
+    "register-map",
+    "table",
+  ],
+  "Diagrams & Visualization": ["ds", "ds-tree", "file-tree", "mermaid", "tree"],
+  Media: ["image", "video"],
+  "Annotation & Reference": ["annotation", "glossary"],
+  "Metadata & Utility": [
+    "alert",
+    "badge",
+    "certification-badge",
+    "changelog",
+    "definition",
+    "invariant",
+    "json-ld",
+    "security-note",
+  ],
+};
+
+// ─── MDX validation rules ─────────────────────────────────────────────────────
+
+interface ValidationIssue {
+  line: number;
+  rule: string;
+  text: string;
+}
+
+function validateMdxContent(content: string): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const lines = content.split("\n");
+
+  const ALLOWED_COMPONENTS = new Set([
+    "Callout",
+    "Steps",
+    "Accordion",
+    "AccordionItem",
+    "AccordionTrigger",
+    "AccordionContent",
+    "Tabs",
+    "TabsList",
+    "TabsTrigger",
+    "TabsContent",
+    "CodeGroup",
+    "InlineMath",
+    "BlockMath",
+    "M",
+    "BM",
+  ]);
+
+  const BANNED_HTML = /^<(div|span|p\b|b\b|i\b|strong|em|br|hr|section|article|main|aside|header|footer|nav)\s*[\s/>]/i;
+  const INVENTED_JSX = /^<([A-Z][a-zA-Z0-9]*)/;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const lineNo = i + 1;
+
+    // Dollar-sign math
+    if (/\$\$[\s\S]*?\$\$/.test(line) || /(?<!\$)\$(?!\$)[^$\n]+\$/.test(line)) {
+      issues.push({
+        line: lineNo,
+        rule: "no-dollar-math",
+        text: `Dollar-sign math detected — use <InlineMath> or <BlockMath> instead`,
+      });
+    }
+
+    // H1 heading
+    if (/^# [^#]/.test(line)) {
+      issues.push({
+        line: lineNo,
+        rule: "no-h1",
+        text: `H1 heading not allowed — start sections with ## minimum`,
+      });
+    }
+
+    // Heading deeper than H3
+    if (/^#{4,} /.test(line)) {
+      issues.push({
+        line: lineNo,
+        rule: "max-heading-depth",
+        text: `Heading depth exceeds ### — maximum allowed is ###`,
+      });
+    }
+
+    // Raw HTML tags
+    if (BANNED_HTML.test(line.trim())) {
+      issues.push({
+        line: lineNo,
+        rule: "no-raw-html",
+        text: `Raw HTML tag not allowed — use Markdown or mdx-ui components`,
+      });
+    }
+
+    // Invented JSX component names
+    const jsxMatch = line.trim().match(INVENTED_JSX);
+    if (jsxMatch) {
+      const componentName = jsxMatch[1];
+      if (!ALLOWED_COMPONENTS.has(componentName)) {
+        issues.push({
+          line: lineNo,
+          rule: "no-invented-components",
+          text: `Unknown component <${componentName}> — only use components listed in the output standard`,
+        });
+      }
+    }
+  }
+
+  return issues;
+}
+
+// ─── Server ───────────────────────────────────────────────────────────────────
+
+export async function startMcpServer() {
+  const server = new McpServer({
+    name: "mdx-ui",
+    version: getCliVersion(),
+  });
+
+  // ── Resources ──────────────────────────────────────────────────────────────
+
+  // Resource: full registry as JSON
+  server.registerResource(
+    "component-registry",
+    "registry://components",
+    {
+      title: "mdx-ui Component Registry",
+      description:
+        "Full list of all mdx-ui components with metadata — name, description, whenToUse, whenNotToUse, example",
+      mimeType: "application/json",
+    },
+    async () => {
+      let registry: Registry;
+      try {
+        registry = await fetchRegistry();
+      } catch (err: any) {
+        return {
+          contents: [
+            {
+              uri: "registry://components",
+              mimeType: "application/json",
+              text: JSON.stringify({ error: err.message }),
+            },
+          ],
+        };
+      }
       return {
-        content: [{ type: "text", text: standard }],
+        contents: [
+          {
+            uri: "registry://components",
+            mimeType: "application/json",
+            text: JSON.stringify(registry, null, 2),
+          },
+        ],
       };
     },
+  );
+
+  // Resource: individual component by name (URI template)
+  server.registerResource(
+    "component",
+    new ResourceTemplate("registry://component/{name}", {
+      list: async () => {
+        try {
+          const registry = await fetchRegistry();
+          return {
+            resources: registry.components.map((c) => ({
+              uri: `registry://component/${c.name}`,
+              name: c.name,
+              description: c.description,
+              mimeType: "text/plain",
+            })),
+          };
+        } catch {
+          return { resources: [] };
+        }
+      },
+    }),
+    {
+      title: "mdx-ui Component",
+      description: "Full schema for a single mdx-ui component",
+      mimeType: "text/plain",
+    },
+    async (uri, { name }) => {
+      let registry: Registry;
+      try {
+        registry = await fetchRegistry();
+      } catch (err: any) {
+        return {
+          contents: [
+            {
+              uri: uri.href,
+              mimeType: "text/plain",
+              text: `Error: ${err.message}`,
+            },
+          ],
+        };
+      }
+
+      const componentName = Array.isArray(name) ? name[0] : name;
+      const component =
+        registry.components.find((c) => c.name === componentName) ??
+        registry.components.find(
+          (c) => normalize(c.name) === normalize(componentName ?? ""),
+        );
+
+      return {
+        contents: [
+          {
+            uri: uri.href,
+            mimeType: "text/plain",
+            text: component
+              ? formatComponent(component)
+              : `Component "${componentName}" not found.`,
+          },
+        ],
+      };
+    },
+  );
+
+  // Resource: AI Output Standard
+  server.registerResource(
+    "output-standard",
+    "registry://standard",
+    {
+      title: "MDX AI Output Standard",
+      description:
+        "The standard MDX output format for LLMs — inject this into your system prompt",
+      mimeType: "text/plain",
+    },
+    async () => ({
+      contents: [
+        {
+          uri: "registry://standard",
+          mimeType: "text/plain",
+          text: OUTPUT_STANDARD,
+        },
+      ],
+    }),
+  );
+
+  // ── Prompts ────────────────────────────────────────────────────────────────
+
+  // Prompt: generate MDX content for a topic
+  server.registerPrompt(
+    "generate_mdx",
+    {
+      title: "Generate MDX Content",
+      description:
+        "Generate valid mdx-ui MDX content for a topic — injects the output standard and relevant components automatically",
+      argsSchema: {
+        topic: z.string().describe("The subject to generate content about"),
+        level: z
+          .enum(["beginner", "intermediate", "advanced"])
+          .optional()
+          .describe("Audience level (default: intermediate)"),
+        type: z
+          .enum(["lesson", "reference", "exercise", "explanation"])
+          .optional()
+          .describe("Content type (default: lesson)"),
+      },
+    },
+    async ({ topic, level = "intermediate", type = "lesson" }) => {
+      let componentHint = "";
+      try {
+        const registry = await fetchRegistry();
+        // Surface components most relevant to content generation
+        const contentComponents = registry.components
+          .filter((c) =>
+            [
+              "callout",
+              "steps",
+              "accordion",
+              "tabs",
+              "math",
+              "math-easy",
+              "code-block",
+              "code-group",
+            ].includes(c.name),
+          )
+          .map((c) => `- **${c.name}**: ${c.description}`)
+          .join("\n");
+        componentHint = `\n\nKEY COMPONENTS FOR THIS CONTENT:\n${contentComponents}`;
+      } catch {
+        // Proceed without component hints
+      }
+
+      const typeInstructions: Record<string, string> = {
+        lesson:
+          "Structure as a complete lesson: introduction, core concept, examples, key points to remember.",
+        reference:
+          "Structure as a reference: concise definitions, syntax, parameters, and quick examples.",
+        exercise:
+          "Structure as a guided exercise: goal statement, steps to follow, expected outcome.",
+        explanation:
+          "Structure as a focused explanation: one concept, multiple perspectives, concrete analogies.",
+      };
+
+      return {
+        messages: [
+          {
+            role: "user" as const,
+            content: {
+              type: "text" as const,
+              text: `${OUTPUT_STANDARD}${componentHint}
+
+---
+
+Generate a ${level} ${type} about: **${topic}**
+
+${typeInstructions[type]}
+
+Output only the MDX content — no explanation, no code fences wrapping the whole thing.`,
+            },
+          },
+        ],
+      };
+    },
+  );
+
+  // Prompt: review MDX content against the output standard
+  server.registerPrompt(
+    "review_mdx",
+    {
+      title: "Review MDX Content",
+      description:
+        "Review MDX content against the AI Output Standard and suggest fixes",
+      argsSchema: {
+        content: z.string().describe("The MDX content to review"),
+      },
+    },
+    async ({ content }) => {
+      // Run programmatic validation first so the AI has concrete issues to address
+      const issues = validateMdxContent(content);
+      const issueBlock =
+        issues.length > 0
+          ? `\n\nPRE-DETECTED ISSUES (${issues.length}):\n${issues
+              .map((i) => `- Line ${i.line}: [${i.rule}] ${i.text}`)
+              .join("\n")}`
+          : "\n\nNo structural issues auto-detected — check for semantic and style problems.";
+
+      return {
+        messages: [
+          {
+            role: "user" as const,
+            content: {
+              type: "text" as const,
+              text: `You are reviewing MDX content against the mdx-ui AI Output Standard.
+
+OUTPUT STANDARD:
+${OUTPUT_STANDARD}
+${issueBlock}
+
+---
+
+CONTENT TO REVIEW:
+${content}
+
+---
+
+Review the content above. For each problem found:
+1. Quote the problematic line
+2. State which rule it breaks
+3. Provide the corrected version
+
+Then provide the fully corrected MDX at the end.`,
+            },
+          },
+        ],
+      };
+    },
+  );
+
+  // ── Tools ──────────────────────────────────────────────────────────────────
+
+  // Tool 1: list all components
+  server.registerTool(
+    "list_components",
+    { description: "List all available mdx-ui components with descriptions" },
+    async () => {
+      let registry: Registry;
+      try {
+        registry = await fetchRegistry();
+      } catch (err: any) {
+        return registryError(err.message);
+      }
+      const lines = registry.components.map(
+        (c) => `- **${c.name}** (${c.type}): ${c.description}`,
+      );
+      return {
+        content: [{ type: "text", text: lines.join("\n") }],
+      };
+    },
+  );
+
+  // Tool 2: get full schema for a component
+  server.registerTool(
+    "get_component",
+    {
+      description:
+        "Get the full schema for a component — props, when to use, when not to use, and an MDX usage example",
+      inputSchema: {
+        name: z
+          .string()
+          .describe("Component name, e.g. accordion, complexity-table, dsbst"),
+      },
+    },
+    async ({ name }) => {
+      let registry: Registry;
+      try {
+        registry = await fetchRegistry();
+      } catch (err: any) {
+        return registryError(err.message);
+      }
+
+      const normalizedInput = normalize(name);
+
+      const component =
+        registry.components.find((c) => c.name === name.toLowerCase()) ??
+        registry.components.find((c) => normalize(c.name) === normalizedInput);
+
+      if (!component) {
+        const scored = registry.components
+          .map((c) => ({
+            name: c.name,
+            dist: levenshtein(normalizedInput, normalize(c.name)),
+          }))
+          .sort((a, b) => a.dist - b.dist)
+          .slice(0, 3);
+
+        const suggestions =
+          scored[0].dist <= 4
+            ? `\n\nDid you mean: ${scored.map((s) => `**${s.name}**`).join(", ")}?`
+            : `\n\nUse list_categories to browse all available components.`;
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Component "${name}" not found.${suggestions}`,
+            },
+          ],
+        };
+      }
+
+      return {
+        content: [{ type: "text", text: formatComponent(component) }],
+      };
+    },
+  );
+
+  // Tool 3: search components by keyword
+  server.registerTool(
+    "search_components",
+    {
+      description:
+        "Search components by keyword or use case — e.g. 'math', 'tree', 'security', 'table'",
+      inputSchema: {
+        query: z.string().describe("Search keyword or use case description"),
+      },
+    },
+    async ({ query }) => {
+      let registry: Registry;
+      try {
+        registry = await fetchRegistry();
+      } catch (err: any) {
+        return registryError(err.message);
+      }
+
+      const words = query
+        .toLowerCase()
+        .split(/\s+/)
+        .filter((w) => w.length > 1);
+
+      const matches = registry.components.filter((c) => {
+        const haystack = [
+          c.name,
+          c.description,
+          c.whenToUse ?? "",
+          c.whenNotToUse ?? "",
+          c.type,
+        ]
+          .join(" ")
+          .toLowerCase();
+        return words.every((w) => haystack.includes(w));
+      });
+
+      if (matches.length === 0) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: `No components found matching "${query}".`,
+            },
+          ],
+        };
+      }
+
+      const lines = [
+        `Found ${matches.length} component${matches.length !== 1 ? "s" : ""} matching "${query}":\n`,
+        ...matches.map((c) => `- **${c.name}**: ${c.description}`),
+        `\nUse get_component(<name>) for full schema and examples.`,
+      ];
+
+      return {
+        content: [{ type: "text", text: lines.join("\n") }],
+      };
+    },
+  );
+
+  // Tool 4: get the AI Output Standard
+  server.registerTool(
+    "get_output_standard",
+    {
+      description:
+        "Get the MDX AI Output Standard — the system prompt block to inject so an LLM generates valid MDX that renders correctly with mdx-ui components",
+    },
+    async () => ({
+      content: [{ type: "text", text: OUTPUT_STANDARD }],
+    }),
   );
 
   // Tool 5: list components grouped by category
@@ -376,84 +781,58 @@ STRICT RULES
         return registryError(err.message);
       }
 
-      const CATEGORIES: Record<string, string[]> = {
-        "Layout & Structure": [
-          "accordion",
-          "callout",
-          "card",
-          "steps",
-          "tabs",
-          "reveal",
-          "spoiler",
-        ],
-        "Typography & Text": [
-          "blockquote",
-          "emphasis",
-          "heading",
-          "headings",
-          "highlight",
-          "horizontal-rule",
-          "inline-code",
-          "kbd",
-          "link",
-          "list",
-          "paragraph",
-        ],
-        Code: ["code-block", "code-group", "diff-block", "terminal"],
-        Math: [
-          "math",
-          "math-easy",
-          "math-equation",
-          "math-primitives",
-          "math-solution",
-        ],
-        "Data & Tables": [
-          "complexity-table",
-          "data-table",
-          "data-type-table",
-          "hardware-spec",
-          "pin-table",
-          "privacy-table",
-          "register-map",
-          "table",
-        ],
-        "Diagrams & Visualization": [
-          "ds",
-          "ds-tree",
-          "file-tree",
-          "mermaid",
-          "tree",
-        ],
-        Media: ["image", "video"],
-        "Annotation & Reference": ["annotation", "glossary"],
-        "Metadata & Utility": [
-          "alert",
-          "badge",
-          "certification-badge",
-          "changelog",
-          "definition",
-          "invariant",
-          "json-ld",
-          "security-note",
-        ],
-      };
-
       const byName = new Map(registry.components.map((c) => [c.name, c]));
-
       const lines: string[] = [];
+
       for (const [category, names] of Object.entries(CATEGORIES)) {
         lines.push(`\n### ${category}`);
         for (const name of names) {
           const comp = byName.get(name);
-          if (comp) {
-            lines.push(`- **${comp.name}**: ${comp.description}`);
-          }
+          if (comp) lines.push(`- **${comp.name}**: ${comp.description}`);
         }
       }
 
       lines.push(
         "\nUse get_component(<name>) for full schema, or search_components(<query>) to find by use case.",
       );
+
+      return {
+        content: [{ type: "text", text: lines.join("\n") }],
+      };
+    },
+  );
+
+  // Tool 6: validate MDX content against the output standard
+  server.registerTool(
+    "validate_mdx",
+    {
+      description:
+        "Validate MDX content against the AI Output Standard — checks for dollar-sign math, raw HTML, H1 headings, heading depth, and unknown components",
+      inputSchema: {
+        content: z.string().describe("The MDX content to validate"),
+      },
+    },
+    async ({ content }) => {
+      const issues = validateMdxContent(content);
+
+      if (issues.length === 0) {
+        return {
+          content: [
+            {
+              type: "text",
+              text: "✅ No issues found — content follows the MDX AI Output Standard.",
+            },
+          ],
+        };
+      }
+
+      const lines = [
+        `❌ Found ${issues.length} issue${issues.length !== 1 ? "s" : ""}:\n`,
+        ...issues.map(
+          (i) => `- **Line ${i.line}** [${i.rule}]: ${i.text}`,
+        ),
+        `\nUse the review_mdx prompt to get a corrected version.`,
+      ];
 
       return {
         content: [{ type: "text", text: lines.join("\n") }],

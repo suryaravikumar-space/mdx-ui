@@ -339,7 +339,7 @@ export function DataTable<T extends Record<string, unknown>>({
       nc.forEach((col, i) => {
         if (
           col.sortable &&
-          !(typeof headers[i] === "object" && (headers[i] as any).sortType)
+          !(typeof headers[i] === "object" && headers[i].sortType)
         ) {
           col.sortType = detectType(nr, col.key);
         }

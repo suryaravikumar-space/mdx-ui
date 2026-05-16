@@ -10,7 +10,7 @@ import {
   type ComponentData,
 } from "../utils/fetch-component.js";
 import { installDependencies } from "../utils/install-deps.js";
-import { writeComponent } from "../utils/write-component.js";
+
 import { COMPONENT_MDX_MAP, REGISTRY } from "../lib/component-registry.js";
 
 interface RegistryComponent {
@@ -84,7 +84,7 @@ async function patchMdxComponents(
   // --- locate the mdxComponents object body first (used for membership checks) ---
   const ANCHOR = "export const mdxComponents";
   const anchorIdx = content.indexOf(ANCHOR);
-  let openBrace = anchorIdx !== -1 ? content.indexOf("{", anchorIdx) : -1;
+  const openBrace = anchorIdx !== -1 ? content.indexOf("{", anchorIdx) : -1;
   let closeIdx = -1;
   if (openBrace !== -1) {
     let depth = 0;
@@ -241,7 +241,7 @@ export const add = new Command()
       spinner.stop();
 
       const cwd = process.cwd();
-      const framework = (config as any).framework ?? "unknown";
+      const framework = config.framework ?? "unknown";
       const written: string[] = [];
       const skipped: string[] = [];
 
@@ -320,9 +320,10 @@ export const add = new Command()
       console.log();
       console.log(chalk.bold("Done! 🎉"));
       console.log();
-    } catch (error: any) {
+    } catch (error: unknown) {
       spinner.fail("Failed to add components");
-      console.error(chalk.red(error.message));
+      const msg = error instanceof Error ? error.message : String(error);
+      console.error(chalk.red(msg));
       process.exit(1);
     }
   });

@@ -23,7 +23,7 @@ export async function writeComponent(
   config: Config,
 ): Promise<void> {
   const cwd = process.cwd();
-  const framework = (config as any).framework ?? "unknown";
+  const framework = config.framework ?? "unknown";
 
   for (const file of component.files) {
     const filePath = resolveFilePath(file.path, config.componentsDir, cwd);

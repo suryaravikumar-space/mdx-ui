@@ -1,697 +1,329 @@
 ---
-title: AI Content Generation
-description: Generate MDX content with any LLM and have mdx-ui components render automatically — no manual editing required
+title: AI Output Standard
+description: One standard MDX output format for LLMs — so your components render correctly every time, with no post-processing.
 published: true
 ---
 
-When an LLM generates MDX that includes mdx-ui component tags (`<Callout>`, `<Steps>`, `<DataTable>`, etc.), and you render that output with `next-mdx-remote` or contentlayer with the right component map registered, **the UI appears automatically** — no extra processing needed.
-
-This page shows you how to wire the full pipeline.
+Instead of correcting what an LLM outputs, define exactly what it should output upfront. One format, consistently followed, means components render correctly every time — no preprocessing, no patching.
 
 ---
 
 ## How it works
 
 ```
-LLM API call
-    │
-    │  MDX string with component tags
-    ▼
-next-mdx-remote / compileMDX
-    │
-    │  looks up components={} map
-    ▼
-React renders <Callout>, <Steps>, <DataTable>…
-    │
-    ▼
-Styled UI components appear on screen
-```
-
-The LLM generates text. Your renderer already knows about the components. Nothing extra needed in between.
-
----
-
-## Step 1 — Register your components
-
-After running `npx @ravikumarsurya/mdx-ui add callout steps datatable highlight mermaid`, register them in your component map:
-
-```tsx
-// components/mdx-components.tsx
-import { Callout } from "@/components/mdx/callout"
-import { Steps, Step } from "@/components/mdx/steps"
-import { DataTable } from "@/components/mdx/data-table"
-import { Highlight } from "@/components/mdx/highlight"
-import { Mermaid, MermaidBST, MermaidTree, MermaidBFS, MermaidDFS } from "@/components/mdx/mermaid"
-import { CodeBlock } from "@/components/mdx/code-block"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/mdx/tabs"
-
-export const mdxComponents = {
-  Callout,
-  Steps,
-  Step,
-  DataTable,
-  Highlight,
-  Mermaid,
-  MermaidBST,
-  MermaidTree,
-  MermaidBFS,
-  MermaidDFS,
-  CodeBlock,
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-  pre: CodeBlock,
-}
+System prompt defines the standard
+        │
+        ▼
+LLM generates MDX following the standard
+        │
+        ▼
+MDXRemote / MDXProvider renders it
+        │
+        ▼
+Components appear — no correction needed
 ```
 
 ---
 
-## Step 2 — Give the LLM the component catalog
+## Standard Markdown elements
 
-Include this system prompt in your API call. The model will use our syntax instead of plain markdown.
+These map to styled components automatically via `mdxComponents`. Write plain Markdown — the renderer handles everything else.
 
-```ts
-const SYSTEM_PROMPT = `
-You are a technical writer. Output MDX — Markdown with JSX components.
-Use the following components instead of plain markdown equivalents:
+| Write               | Renders as                      |
+| ------------------- | ------------------------------- |
+| `## Section`        | Styled H2                       |
+| `### Subsection`    | Styled H3                       |
+| `**bold**`          | Emphasis strong                 |
+| `*italic*`          | Emphasis em                     |
+| `` `inline code` `` | InlineCode                      |
+| `> text`            | Blockquote                      |
+| `- item`            | UnorderedList + ListItem        |
+| `1. item`           | OrderedList + ListItem          |
+| ` ```lang ` block   | CodeBlock with syntax highlight |
+| `\| col \|` table   | Table components                |
+| `---`               | HorizontalRule                  |
+| `![alt](url)`       | Image                           |
 
-CALLOUTS (instead of blockquotes):
-<Callout type="info">Informational note</Callout>
-<Callout type="warning">Caution message</Callout>
-<Callout type="error">Error or danger</Callout>
-<Callout type="success">Tip or success</Callout>
-
-STEPS (instead of numbered lists for procedures):
-<Steps>
-  <Step>First action to take</Step>
-  <Step>Second action to take</Step>
-</Steps>
-
-Steps can contain rich content including code blocks:
-<Steps>
-  <Step>
-    **Clone the repository**
-    \`\`\`bash
-    git clone https://github.com/your-org/your-repo.git
-    cd your-repo
-    \`\`\`
-  </Step>
-  <Step>
-    **Install dependencies**
-    \`\`\`bash
-    npm install
-    \`\`\`
-  </Step>
-  <Step>
-    **Start the development server**
-    \`\`\`bash
-    npm run dev
-    \`\`\`
-  </Step>
-</Steps>
-
-IMPORTANT: Never use numbered markdown lists (1. 2. 3.) when steps contain
-code blocks — the markdown parser will break the list. Always use <Steps><Step>
-for any procedure that includes commands or code examples.
-
-TABLES (instead of markdown tables):
-<DataTable
-  headers={["Column A", "Column B", "Column C"]}
-  rows={[
-    ["value 1", "value 2", "value 3"],
-    ["value 4", "value 5", "value 6"],
-  ]}
-/>
-
-HIGHLIGHT (instead of bold for key terms):
-<Highlight>key term</Highlight>
-<Highlight color="blue">another term</Highlight>
-
-TABS (for showing alternatives):
-<Tabs>
-  <TabsList>
-    <TabsTrigger value="npm">npm</TabsTrigger>
-    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-  </TabsList>
-  <TabsContent value="npm">\`\`\`bash
-npm install example
-\`\`\`</TabsContent>
-  <TabsContent value="pnpm">\`\`\`bash
-pnpm add example
-\`\`\`</TabsContent>
-</Tabs>
-
-Always use fenced code blocks with language tags for code.
-Output only the MDX content — no frontmatter, no explanation.
-`
-```
-
----
-
-## Step 3 — Call the LLM and render the output
-
-### With OpenAI
-
-```ts
-// app/api/generate/route.ts
-import OpenAI from "openai"
-
-const openai = new OpenAI()
-
-export async function POST(req: Request) {
-  const { topic } = await req.json()
-
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o",
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      { role: "user",   content: `Write a technical guide about: ${topic}` },
-    ],
-  })
-
-  const mdx = completion.choices[0].message.content ?? ""
-  return Response.json({ mdx })
-}
-```
-
-### Render the MDX output
-
-```tsx
-// app/generate/page.tsx
-import { MDXRemote } from "next-mdx-remote/rsc"
-import { mdxComponents } from "@/components/mdx-components"
-
-export default async function GeneratePage() {
-  const res = await fetch("/api/generate", {
-    method: "POST",
-    body: JSON.stringify({ topic: "React Server Components" }),
-  })
-  const { mdx } = await res.json()
-
-  return (
-    <article className="prose max-w-3xl mx-auto py-10">
-      <MDXRemote source={mdx} components={mdxComponents} />
-    </article>
-  )
-}
-```
-
-When `MDXRemote` encounters `<Callout>`, `<Steps>`, or `<DataTable>` in the LLM output, it looks them up in `mdxComponents` and renders the full UI — automatically.
-
----
-
-## Chatbot responses (fully dynamic)
-
-Chatbot APIs (GPT, Claude, Gemini, etc.) return **plain markdown**, not MDX component tags. They also generate numbered lists with code blocks that are not correctly indented under their list items — which causes the CommonMark parser to break the list at the first code fence. Everything from item 2 onward renders as raw monospace text inside a broken code block.
-
-### Why the standard parser breaks
-
-```markdown
-1. **Clone the repository**:
-   ```bash
-git clone https://github.com/your-org/app.git
-```
-
-2. **Install dependencies**:
-   ```bash
-npm install
-```
-```
-
-The closing ` ``` ` at column 0 does not satisfy CommonMark's list continuation rules. The list terminates, items 2 and 3 are never parsed as list items, and the remark plugin's `transformSteps` never sees a complete `list` node to convert.
-
-### The fix: `preprocessMarkdown`
-
-`preprocessMarkdown` is a **string pre-processor** that runs before the MDX parser. It uses a line-by-line state machine to collect numbered items and their associated code blocks regardless of indentation, then emits them as `<Steps><Step>` MDX.
-
-```bash
-npm install @ravikumarsurya/remark-mdx-ui
-```
-
-```tsx
-// app/chat/page.tsx
-import { MDXRemote } from "next-mdx-remote/rsc"
-import remarkMdxUi, { preprocessMarkdown } from "@ravikumarsurya/remark-mdx-ui"
-import { mdxComponents } from "@/components/mdx-components"
-
-interface Props {
-  chatbotResponse: string // raw markdown from any chatbot API
-}
-
-export default function ChatResponse({ chatbotResponse }: Props) {
-  // Step 1 — Fix broken numbered lists before the parser sees the string
-  const fixed = preprocessMarkdown(chatbotResponse)
-
-  // Step 2 — Let the remark plugin upgrade blockquotes, tables, ==highlights==
-  return (
-    <MDXRemote
-      source={fixed}
-      components={mdxComponents}
-      options={{
-        mdxOptions: {
-          remarkPlugins: [
-            [remarkMdxUi, { callout: true, table: true, highlight: true }],
-          ],
-        },
-      }}
-    />
-  )
-}
-```
-
-### What `preprocessMarkdown` handles
-
-| AI chatbot generates | Rendered as |
-| --- | --- |
-| `1. **step** + code block (not indented)` | `<Steps><Step>` with code inside |
-| `1. **step** + multiple code blocks` | single `<Step>` containing all blocks |
-| `1. Step\n2. Step\n3. Step` (text only) | `<Steps><Step>` (no code needed) |
-| Non-numbered content | passed through unchanged |
-
-<Callout type="info">
-  `preprocessMarkdown` only converts sequences of **2 or more** numbered items. A lone `1.` item is left as-is.
-</Callout>
-
-### Full chatbot pipeline
-
-```
-Chatbot API response (plain markdown)
-    │
-    │  preprocessMarkdown(response)
-    ▼
-Fixed MDX string — numbered lists → <Steps><Step>
-    │
-    │  MDXRemote + remarkMdxUi plugin
-    ▼
-Remark upgrades blockquotes → <Callout>, tables → <DataTable>
-    │
-    ▼
-React renders all components with full UI
-```
-
-### Using with a streaming chatbot
-
-```tsx
-// app/api/chat/route.ts
-import { preprocessMarkdown } from "@ravikumarsurya/remark-mdx-ui"
-
-export async function POST(req: Request) {
-  const { message } = await req.json()
-
-  // Call your chatbot API (OpenAI, Anthropic, etc.)
-  const response = await callChatbot(message)
-  const rawMarkdown = response.content
-
-  // Pre-process before sending to the client
-  const processedMdx = preprocessMarkdown(rawMarkdown)
-
-  return Response.json({ mdx: processedMdx })
-}
-```
-
-```tsx
-// app/chat/ChatMessage.tsx
-"use client"
-import { MDXRemote } from "next-mdx-remote"
-import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
-import { mdxComponents } from "@/components/mdx-components"
-
-export function ChatMessage({ mdx }: { mdx: string }) {
-  return (
-    <MDXRemote
-      compiledSource={mdx}
-      components={mdxComponents}
-    />
-  )
-}
-```
-
----
-
-## Automatic upgrade: plain markdown → components
-
-For **static files or controlled LLM output** (where you own the system prompt), the `@ravikumarsurya/remark-mdx-ui` remark plugin upgrades standard markdown patterns to components at AST level — no string preprocessing needed.
-
-```tsx
-import { MDXRemote } from "next-mdx-remote/rsc"
-import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
-import { mdxComponents } from "@/components/mdx-components"
-
-<MDXRemote
-  source={aiGeneratedMarkdown}
-  components={mdxComponents}
-  options={{
-    mdxOptions: {
-      remarkPlugins: [
-        [remarkMdxUi, { steps: true, highlight: true }]
-      ],
-    },
-  }}
-/>
-```
-
-What the plugin upgrades automatically:
-
-| AI generates | Renders as |
-| --- | --- |
-| `> [!NOTE]` / `> [!WARNING]` | `<Callout type="info/warning">` |
-| `> **Note:**` legacy syntax | `<Callout type="info">` |
-| Markdown table `\| col \|` | `<DataTable headers rows />` |
-| ` ```mermaid ` code block | `<Mermaid chart={…} />` (auto-detects type) |
-| Numbered list (well-formed) | `<Steps><Step>` *(opt-in)* |
-| `==text==` | `<Highlight>` *(opt-in)* |
-
-<Callout type="warning">
-  The remark plugin's `steps` transform only works on **well-formed** ordered lists — where code blocks are correctly indented under their list items. For chatbot output where code blocks escape the list, use `preprocessMarkdown` instead (see above).
+<Callout variant="info" title="No JSX needed for these">
+  Never write `<h2>`, `<strong>`, `<p>`, `<ul>`, `<li>`, `<table>` — just write plain Markdown.
 </Callout>
 
 ---
 
-## With contentlayer (static MDX files)
+## Custom components
 
-If you store AI-generated content as `.mdx` files and process them with contentlayer, add the plugin in `contentlayer.config.ts`:
+Use JSX only for these. Everything else is standard Markdown.
 
-```ts
-import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+### Callout
 
-export default makeSource({
-  mdx: {
-    remarkPlugins: [
-      [remarkMdxUi, { steps: true }]
-    ],
-  },
-})
-```
-
----
-
-## With any other LLM
-
-The system prompt and rendering pipeline work with any model:
-
-```ts
-// Anthropic Claude
-import Anthropic from "@anthropic-ai/sdk"
-const client = new Anthropic()
-const message = await client.messages.create({
-  model: "claude-opus-4-5",
-  system: SYSTEM_PROMPT,
-  messages: [{ role: "user", content: topic }],
-})
-const mdx = message.content[0].type === "text" ? message.content[0].text : ""
-```
-
-```ts
-// Google Gemini
-import { GoogleGenerativeAI } from "@google/generative-ai"
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro",
-  systemInstruction: SYSTEM_PROMPT })
-const result = await model.generateContent(topic)
-const mdx = result.response.text()
-```
-
----
-
-## Live examples
-
-The sections below show exactly what an LLM outputs (left — code) and what your users see after `MDXRemote` renders it (right — live component).
-
----
-
-### Example 1 — Deployment guide
-
-**LLM output:**
-
-````mdx
-<Callout type="info">
-  Vercel is the easiest way to deploy Next.js — built by the same team.
-</Callout>
-
-<Steps>
-  <Step>Push your project to a GitHub repository</Step>
-  <Step>Go to vercel.com and click **Add New Project**</Step>
-  <Step>Import your GitHub repo and click **Deploy**</Step>
-</Steps>
-
-<Callout type="warning">
-  Never commit `.env.local` to git. Add it to `.gitignore` before your first push.
-</Callout>
-````
-
-**Rendered:**
-
-<Callout type="info">
-  Vercel is the easiest way to deploy Next.js — built by the same team.
-</Callout>
-
-<Steps>
-  <Step>Push your project to a GitHub repository</Step>
-  <Step>Go to vercel.com and click **Add New Project**</Step>
-  <Step>Import your GitHub repo and click **Deploy**</Step>
-</Steps>
-
-<Callout type="warning">
-  Never commit `.env.local` to git. Add it to `.gitignore` before your first push.
-</Callout>
-
----
-
-### Example 2 — API reference with table
-
-**LLM output:**
+For notes, warnings, tips, and key concepts.
 
 ```mdx
-<Callout type="info">
-  All endpoints require an `Authorization: Bearer <token>` header.
+<Callout variant="info" title="Key Concept">
+  Content here. **Bold** and `code` work inside.
 </Callout>
 
-<DataTable
-  headers={["Endpoint", "Method", "Auth", "Description"]}
-  rows={[
-    ["/api/users",       "GET",    "Yes", "List all users"],
-    ["/api/users/:id",   "GET",    "Yes", "Get user by ID"],
-    ["/api/users",       "POST",   "Yes", "Create a new user"],
-    ["/api/users/:id",   "DELETE", "Yes", "Delete a user"],
-  ]}
-  searchable
-/>
+<Callout variant="warning" title="Common Mistake">
+  What students often get wrong.
+</Callout>
+
+<Callout variant="success" title="Remember">
+  A short rule to memorize.
+</Callout>
+
+<Callout variant="error" title="Do Not">
+  Something that must be avoided.
+</Callout>
 ```
 
-**Rendered:**
-
-<Callout type="info">
-  All endpoints require an `Authorization: Bearer <token>` header.
-</Callout>
-
-<DataTable
-  headers={["Endpoint", "Method", "Auth", "Description"]}
-  rows={[
-    ["/api/users",       "GET",    "Yes", "List all users"],
-    ["/api/users/:id",   "GET",    "Yes", "Get user by ID"],
-    ["/api/users",       "POST",   "Yes", "Create a new user"],
-    ["/api/users/:id",   "DELETE", "Yes", "Delete a user"],
-  ]}
-  searchable
-/>
+`title` is optional. Variants: `info` · `warning` · `success` · `error`
 
 ---
 
-### Example 3 — Multi-framework install guide
+### Steps
 
-**LLM output:**
-
-````mdx
-<Tabs>
-  <TabsList>
-    <TabsTrigger value="npm">npm</TabsTrigger>
-    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-    <TabsTrigger value="yarn">yarn</TabsTrigger>
-  </TabsList>
-  <TabsContent value="npm">
-  ```bash
-  npm install @ravikumarsurya/mdx-ui
-  ```
-  </TabsContent>
-  <TabsContent value="pnpm">
-  ```bash
-  pnpm add @ravikumarsurya/mdx-ui
-  ```
-  </TabsContent>
-  <TabsContent value="yarn">
-  ```bash
-  yarn add @ravikumarsurya/mdx-ui
-  ```
-  </TabsContent>
-</Tabs>
-````
-
-**Rendered:**
-
-<Tabs>
-  <TabsList>
-    <TabsTrigger value="npm">npm</TabsTrigger>
-    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-    <TabsTrigger value="yarn">yarn</TabsTrigger>
-  </TabsList>
-  <TabsContent value="npm">
-  ```bash
-  npm install @ravikumarsurya/mdx-ui
-  ```
-  </TabsContent>
-  <TabsContent value="pnpm">
-  ```bash
-  pnpm add @ravikumarsurya/mdx-ui
-  ```
-  </TabsContent>
-  <TabsContent value="yarn">
-  ```bash
-  yarn add @ravikumarsurya/mdx-ui
-  ```
-  </TabsContent>
-</Tabs>
-
----
-
-### Example 4 — Highlighted key terms
-
-**LLM output:**
+For sequential procedures only — not for math derivations.
 
 ```mdx
-React uses a <Highlight>unidirectional data flow</Highlight> model.
-Components are <Highlight color="blue">pure functions</Highlight> of their props and state.
-Never mutate state <Highlight color="green">directly</Highlight> — always call setState.
+<Steps>
+### Step 1: Identify the equation type
+Determine whether the equation is linear or quadratic.
+
+### Step 2: Apply the method
+
+Use the appropriate technique for the type identified.
+
+### Step 3: Verify
+
+Substitute the result back to confirm it is correct.
+
+</Steps>
 ```
 
-**Rendered:**
-
-React uses a <Highlight>unidirectional data flow</Highlight> model.
-Components are <Highlight color="blue">pure functions</Highlight> of their props and state.
-Never mutate state <Highlight color="green">directly</Highlight> — always call setState.
+Each step uses a `###` heading inside `<Steps>`.
 
 ---
 
-### Example 5 — Error handling guide
+### Accordion
 
-**LLM output:**
+For optional depth — proofs, derivations, extra examples.
 
 ```mdx
-<Callout type="error">
-  Never expose raw error messages to users in production — they may leak sensitive paths or stack traces.
-</Callout>
-
-<Steps>
-  <Step>Wrap your API handlers in a try/catch block</Step>
-  <Step>Log the full error server-side with a request ID</Step>
-  <Step>Return only a generic message and status code to the client</Step>
-  <Step>Set up alerts for error rate spikes</Step>
-</Steps>
-
-<Callout type="success">
-  Use a structured logging library like Pino or Winston to make errors searchable in your log dashboard.
-</Callout>
+<Accordion>
+  <AccordionItem value="proof">
+    <AccordionTrigger>Show full derivation</AccordionTrigger>
+    <AccordionContent>
+      Detailed proof or worked example goes here.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="example">
+    <AccordionTrigger>Worked example</AccordionTrigger>
+    <AccordionContent>Step-by-step example with explanation.</AccordionContent>
+  </AccordionItem>
+</Accordion>
 ```
-
-**Rendered:**
-
-<Callout type="error">
-  Never expose raw error messages to users in production — they may leak sensitive paths or stack traces.
-</Callout>
-
-<Steps>
-  <Step>Wrap your API handlers in a try/catch block</Step>
-  <Step>Log the full error server-side with a request ID</Step>
-  <Step>Return only a generic message and status code to the client</Step>
-  <Step>Set up alerts for error rate spikes</Step>
-</Steps>
-
-<Callout type="success">
-  Use a structured logging library like Pino or Winston to make errors searchable in your log dashboard.
-</Callout>
 
 ---
 
-### Example 6 — Steps with code blocks
+### Tabs
 
-This is the pattern to use whenever a step contains commands. Numbered markdown lists break when code fences appear inside them — `<Steps><Step>` handles rich content correctly.
+For alternative explanations or parallel content.
 
-**LLM output:**
+```mdx
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="simple">Simple</TabsTrigger>
+    <TabsTrigger value="formal">Formal</TabsTrigger>
+  </TabsList>
+  <TabsContent value="simple">A plain-language explanation here.</TabsContent>
+  <TabsContent value="formal">
+    A rigorous, technical explanation here.
+  </TabsContent>
+</Tabs>
+```
+
+---
+
+### CodeGroup
+
+For showing the same code in multiple languages.
 
 ````mdx
-<Callout type="info">
-  Run these commands in order. Each step must complete successfully before the next.
-</Callout>
-
-<Steps>
-  <Step>
-    **Clone the repository**
-    ```bash
-    git clone https://github.com/your-org/your-app.git
-    cd your-app
-    ```
-  </Step>
-  <Step>
-    **Install dependencies**
-    ```bash
-    npm install
-    ```
-  </Step>
-  <Step>
-    **Copy the environment file and add your keys**
-    ```bash
-    cp .env.example .env.local
-    ```
-  </Step>
-  <Step>
-    **Start the development server**
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) to verify it works.
-  </Step>
-</Steps>
-
-<Callout type="warning">
-  Never commit `.env.local` to version control — it contains secrets.
-</Callout>
+<CodeGroup>
+  ```python title="Python" area = 3.14159 * r ** 2 ``` ```js title="JavaScript"
+  const area = Math.PI * r ** 2; ```
+</CodeGroup>
 ````
 
-**Rendered:**
+---
 
-<Callout type="info">
-  Run these commands in order. Each step must complete successfully before the next.
+## Math
+
+Always use components — never dollar-sign syntax.
+
+```mdx
+Inline math — for variables and short expressions within a sentence:
+
+<InlineMath math="\pi r^2" />
+<InlineMath math="\frac{a}{b}" />
+
+Block math — for standalone equations:
+
+<BlockMath math="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
+<BlockMath math="\int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}" />
+```
+
+<Callout variant="warning" title="Never use dollar signs">
+  `$\pi r^2$` and `$$\int...$$` will not render — always use `<InlineMath>` and `<BlockMath>` with the `math` prop.
 </Callout>
 
+Use single backslash for LaTeX commands in the `math` prop: `\frac`, `\sqrt`, `\pi`, `\int`.
+
+---
+
+## What is not allowed
+
+<Callout variant="error" title="These break rendering">
+  If the LLM outputs any of these, components fail to render correctly.
+</Callout>
+
+| Pattern                                | Use instead                      |
+| -------------------------------------- | -------------------------------- |
+| `$...$` inline math                    | `<InlineMath math="..." />`      |
+| `$$...$$` block math                   | `<BlockMath math="..." />`       |
+| `<div>`, `<span>`, `<p>`, `<b>`, `<i>` | Plain Markdown                   |
+| `# H1 heading`                         | Start sections with `##` minimum |
+| `####` or deeper                       | Max depth is `###`               |
+| Invented component names               | Only use components listed above |
+| Markdown inside JSX props              | Props take plain strings only    |
+
+---
+
+## System prompt
+
+Copy this into your system prompt. The LLM will follow it to generate valid MDX.
+
+````text
+You generate content as MDX — Markdown with a small set of JSX components.
+
+STRUCTURE
+- Start sections with ## headings, subsections with ###, never go deeper
+- Separate major sections with ---
+- One blank line between block elements
+
+STANDARD MARKDOWN (write these normally — they map to styled components automatically)
+- Headings: ## and ###
+- Bold: **text**, Italic: *text*
+- Inline code: `code`
+- Code blocks with language tag: ```lang
+- Lists: - for unordered, 1. for ordered
+- Tables: standard markdown | col | syntax
+- Blockquotes: > text
+- Horizontal rule: ---
+
+CUSTOM COMPONENTS (use JSX for these only)
+
+CALLOUT — notes, warnings, tips:
+<Callout variant="info" title="Title">Content here.</Callout>
+<Callout variant="warning" title="Title">Content here.</Callout>
+<Callout variant="success" title="Title">Content here.</Callout>
+<Callout variant="error" title="Title">Content here.</Callout>
+
+STEPS — sequential procedures:
 <Steps>
-  <Step>
-    **Clone the repository**
-    ```bash
-    git clone https://github.com/your-org/your-app.git
-    cd your-app
-    ```
-  </Step>
-  <Step>
-    **Install dependencies**
-    ```bash
-    npm install
-    ```
-  </Step>
-  <Step>
-    **Copy the environment file and add your keys**
-    ```bash
-    cp .env.example .env.local
-    ```
-  </Step>
-  <Step>
-    **Start the development server**
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) to verify it works.
-  </Step>
+### Step 1: Title
+Step content here.
+### Step 2: Title
+Step content here.
 </Steps>
 
-<Callout type="warning">
-  Never commit `.env.local` to version control — it contains secrets.
-</Callout>
+ACCORDION — optional depth, proofs, extra examples:
+<Accordion>
+  <AccordionItem value="unique-id">
+    <AccordionTrigger>Label</AccordionTrigger>
+    <AccordionContent>Content here.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+TABS — alternative explanations:
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="a">Label A</TabsTrigger>
+    <TabsTrigger value="b">Label B</TabsTrigger>
+  </TabsList>
+  <TabsContent value="a">Content A</TabsContent>
+  <TabsContent value="b">Content B</TabsContent>
+</Tabs>
+
+MATH — always use components, never $ signs:
+Inline: <InlineMath math="\frac{a}{b}" />
+Block:  <BlockMath math="\int_0^1 x\,dx = \frac{1}{2}" />
+
+STRICT RULES
+- NEVER use $...$ or $$...$$ for math
+- NEVER use raw HTML tags
+- NEVER invent component names not listed above
+- NEVER use # (h1) headings
+- NEVER go deeper than ### headings
+- Props take plain strings only
+````
+
+---
+
+## Quick reference
+
+<Accordion>
+  <AccordionItem value="callout-variants">
+    <AccordionTrigger>When to use each Callout variant</AccordionTrigger>
+    <AccordionContent>
+
+| Variant   | Use for                                       |
+| --------- | --------------------------------------------- |
+| `info`    | Key concepts, definitions, background context |
+| `warning` | Common mistakes, things to watch out for      |
+| `success` | Rules to remember, tips, best practices       |
+| `error`   | Things that must never be done                |
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="steps-vs-accordion">
+    <AccordionTrigger>Steps vs Accordion — when to use which</AccordionTrigger>
+    <AccordionContent>
+
+**Use `<Steps>`** for procedures — a sequence of actions the reader must follow in order.
+
+**Use `<Accordion>`** for optional depth — a proof, full derivation, or extra worked example that some readers want but others can skip.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="math-examples">
+    <AccordionTrigger>Common LaTeX patterns</AccordionTrigger>
+    <AccordionContent>
+
+```text
+<InlineMath math="\frac{a}{b}" />         fraction
+<InlineMath math="\sqrt{x}" />            square root
+<InlineMath math="x^2 + y^2" />           superscript
+<InlineMath math="\pi r^2" />             Greek letter
+<InlineMath math="\sin(\theta)" />        trig function
+<InlineMath math="\vec{v}" />             vector
+
+<BlockMath math="\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}" />
+<BlockMath math="\int_a^b f(x)\,dx = F(b) - F(a)" />
+<BlockMath math="e^{i\pi} + 1 = 0" />
+```
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## Next Steps
+
+- [Component Mappings](/docs/integration/component-mappings)
+- [Next.js Integration](/docs/integration/nextjs)
+- [React + Vite Integration](/docs/integration/react-vite)

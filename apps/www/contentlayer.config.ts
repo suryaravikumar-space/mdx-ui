@@ -10,14 +10,19 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 
+interface ContentLayerDoc {
+  _raw: { flattenedPath: string };
+}
+
 const computedFields: ComputedFields = {
   slug: {
     type: "string",
-    resolve: (doc: any) => `/${doc._raw.flattenedPath}`,
+    resolve: (doc: ContentLayerDoc) => `/${doc._raw.flattenedPath}`,
   },
   slugAsParams: {
     type: "string",
-    resolve: (doc: any) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc: ContentLayerDoc) =>
+      doc._raw.flattenedPath.split("/").slice(1).join("/"),
   },
 };
 
@@ -93,17 +98,24 @@ export default makeSource({
             light: "github-light",
           },
           keepBackground: false,
-          onVisitLine(node: any) {
+          onVisitLine(node: {
+            children: unknown[];
+            properties: { className?: string[] };
+          }) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
             if (node.children.length === 0) {
               node.children = [{ type: "text", value: " " }];
             }
           },
-          onVisitHighlightedLine(node: any) {
+          onVisitHighlightedLine(node: {
+            properties: { className: string[] };
+          }) {
             node.properties.className.push("line--highlighted");
           },
-          onVisitHighlightedWord(node: any) {
+          onVisitHighlightedWord(node: {
+            properties: { className: string[] };
+          }) {
             node.properties.className = ["word--highlighted"];
           },
         },

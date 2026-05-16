@@ -13,5 +13,16 @@
     "forceConsistentCasingInFileNames": true,
     "ignoreDeprecations": "5.0"
   },
-  "exclude": ["node_modules", "apps", "packages", "dist", ".next", ".contentlayer"]
+  "references": [
+    { "path": "./packages/cli" },
+    { "path": "./packages/remark-plugin" }
+  ],
+  "exclude": [
+    "node_modules",
+    "apps",
+    "packages",
+    "dist",
+    ".next",
+    ".contentlayer"
+  ]
 }

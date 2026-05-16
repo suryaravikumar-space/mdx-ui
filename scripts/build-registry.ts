@@ -688,7 +688,17 @@ async function buildRegistry() {
   const files = await fs.readdir(srcDir);
   const tsxFiles = files.filter((f) => f.endsWith(".tsx"));
 
-  const components: any[] = [];
+  interface RegistryEntry {
+    name: string;
+    type: "utility" | "mdx";
+    description: string;
+    whenToUse: string;
+    whenNotToUse: string;
+    example: string;
+    files: string[];
+    registryDependencies?: string[];
+  }
+  const components: RegistryEntry[] = [];
 
   for (const file of tsxFiles) {
     const componentName = file.replace(".tsx", "");

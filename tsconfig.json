@@ -17,5 +17,12 @@
     { "path": "./packages/cli" },
     { "path": "./packages/remark-plugin" }
   ],
-  "exclude": ["node_modules", "apps", "packages", "dist", ".next", ".contentlayer"]
+  "exclude": [
+    "node_modules",
+    "apps",
+    "packages",
+    "dist",
+    ".next",
+    ".contentlayer"
+  ]
 }

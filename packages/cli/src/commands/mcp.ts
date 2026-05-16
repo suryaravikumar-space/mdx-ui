@@ -298,15 +298,35 @@ function validateMdxContent(content: string): ValidationIssue[] {
     /^<(div|span|p\b|b\b|i\b|strong|em|br|hr|section|article|main|aside|header|footer|nav)\s*[\s/>]/i;
   const INVENTED_JSX = /^<([A-Z][a-zA-Z0-9]*)/;
 
+  // Math regex: match $...$ only when surrounded by non-digit context
+  // to avoid flagging currency like $10 or $1,000
+  const INLINE_MATH_DOLLAR = /(?<!\d)\$(?!\$|\d)[^$\n]{2,}\$/;
+  const BLOCK_MATH_DOLLAR = /\$\$/;
+
+  let insideCodeFence = false;
+  let codeFenceMarker = "";
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const lineNo = i + 1;
+    const trimmed = line.trim();
 
-    // Dollar-sign math
-    if (
-      /\$\$[\s\S]*?\$\$/.test(line) ||
-      /(?<!\$)\$(?!\$)[^$\n]+\$/.test(line)
-    ) {
+    // Track code fence open/close — skip checks inside fences
+    const fenceMatch = trimmed.match(/^(`{3,}|~{3,})/);
+    if (fenceMatch) {
+      if (!insideCodeFence) {
+        insideCodeFence = true;
+        codeFenceMarker = fenceMatch[1];
+      } else if (trimmed.startsWith(codeFenceMarker)) {
+        insideCodeFence = false;
+        codeFenceMarker = "";
+      }
+      continue;
+    }
+    if (insideCodeFence) continue;
+
+    // Dollar-sign math (skip lines that look like plain currency)
+    if (BLOCK_MATH_DOLLAR.test(line) || INLINE_MATH_DOLLAR.test(line)) {
       issues.push({
         line: lineNo,
         rule: "no-dollar-math",
@@ -333,7 +353,7 @@ function validateMdxContent(content: string): ValidationIssue[] {
     }
 
     // Raw HTML tags
-    if (BANNED_HTML.test(line.trim())) {
+    if (BANNED_HTML.test(trimmed)) {
       issues.push({
         line: lineNo,
         rule: "no-raw-html",
@@ -342,7 +362,7 @@ function validateMdxContent(content: string): ValidationIssue[] {
     }
 
     // Invented JSX component names
-    const jsxMatch = line.trim().match(INVENTED_JSX);
+    const jsxMatch = trimmed.match(INVENTED_JSX);
     if (jsxMatch) {
       const componentName = jsxMatch[1];
       if (!ALLOWED_COMPONENTS.has(componentName)) {
@@ -498,7 +518,11 @@ export async function startMcpServer() {
       description:
         "Generate valid mdx-ui MDX content for a topic — injects the output standard and relevant components automatically",
       argsSchema: {
-        topic: z.string().describe("The subject to generate content about"),
+        topic: z
+          .string()
+          .min(3, "Topic must be at least 3 characters")
+          .max(300, "Topic must be 300 characters or fewer")
+          .describe("The subject to generate content about"),
         level: z
           .enum(["beginner", "intermediate", "advanced"])
           .optional()
@@ -575,7 +599,11 @@ Output only the MDX content — no explanation, no code fences wrapping the whol
       description:
         "Review MDX content against the AI Output Standard and suggest fixes",
       argsSchema: {
-        content: z.string().describe("The MDX content to review"),
+        content: z
+          .string()
+          .min(1, "Content cannot be empty")
+          .max(50000, "Content must be 50,000 characters or fewer")
+          .describe("The MDX content to review"),
       },
     },
     async ({ content }) => {
@@ -705,7 +733,11 @@ Then provide the fully corrected MDX at the end.`,
       description:
         "Search components by keyword or use case — e.g. 'math', 'tree', 'security', 'table'",
       inputSchema: {
-        query: z.string().describe("Search keyword or use case description"),
+        query: z
+          .string()
+          .min(2, "Query must be at least 2 characters")
+          .max(200, "Query must be 200 characters or fewer")
+          .describe("Search keyword or use case description"),
       },
     },
     async ({ query }) => {
@@ -721,6 +753,9 @@ Then provide the fully corrected MDX at the end.`,
         .split(/\s+/)
         .filter((w) => w.length > 1);
 
+      // Guard: if all words are single characters, treat query as a single token
+      const effectiveWords = words.length > 0 ? words : [query.toLowerCase().trim()];
+
       const matches = registry.components.filter((c) => {
         const haystack = [
           c.name,
@@ -731,7 +766,7 @@ Then provide the fully corrected MDX at the end.`,
         ]
           .join(" ")
           .toLowerCase();
-        return words.every((w) => haystack.includes(w));
+        return effectiveWords.every((w) => haystack.includes(w));
       });
 
       if (matches.length === 0) {
@@ -812,7 +847,11 @@ Then provide the fully corrected MDX at the end.`,
       description:
         "Validate MDX content against the AI Output Standard — checks for dollar-sign math, raw HTML, H1 headings, heading depth, and unknown components",
       inputSchema: {
-        content: z.string().describe("The MDX content to validate"),
+        content: z
+          .string()
+          .min(1, "Content cannot be empty")
+          .max(50000, "Content must be 50,000 characters or fewer")
+          .describe("The MDX content to validate"),
       },
     },
     async ({ content }) => {

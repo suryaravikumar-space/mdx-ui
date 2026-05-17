@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Coins, Code2, Bot } from "lucide-react";
+import { ArrowRight, Coins, Code2, Bot, ShieldCheck } from "lucide-react";
 import type { CSSProperties } from "react";
 
 const floatingSymbols = [
@@ -243,7 +243,7 @@ export default function Home() {
 
       {/* ── Feature cards ─────────────────────────────────────────────────────── */}
       <section className="container py-12 md:py-24">
-        <div className="mx-auto grid max-w-[980px] grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mx-auto grid max-w-[980px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               glyph: "∑",
@@ -268,6 +268,11 @@ export default function Home() {
               glyph: "</>",
               title: "You Own the Code",
               body: "50+ components copied directly into your project — shadcn-style. Modify, extend, or replace anything without waiting for an npm update.",
+            },
+            {
+              glyph: "⟡",
+              title: "MCP Server Included",
+              body: "Claude Code reads your registry before writing MDX. One config line — no prompting, no hallucinated components, no manual validation.",
             },
           ].map(({ glyph, title, body }) => (
             <div
@@ -346,6 +351,95 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── MCP Server ────────────────────────────────────────────────────────── */}
+      <section className="container border-t border-green-500/10 py-12 md:py-24">
+        <div className="mx-auto max-w-[980px]">
+          <p className="mb-3 text-center font-mono text-xs font-medium uppercase tracking-widest text-green-600 dark:text-green-500">
+            {"// "}mcp server
+          </p>
+          <h2 className="mb-2 text-center text-3xl font-bold tracking-tighter">
+            Claude Code knows your components.{" "}
+            <span className="gradient-text">Out of the box.</span>
+          </h2>
+          <p className="mb-12 text-center text-muted-foreground">
+            One config line. Claude reads your registry, generates valid MDX,
+            and validates it — no prompting required.
+          </p>
+
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
+            {/* Config snippet */}
+            <div className="flex flex-col gap-3">
+              <p className="font-mono text-xs font-medium text-green-600 dark:text-green-500">
+                .claude/settings.json
+              </p>
+              <pre className="overflow-x-auto rounded-xl border border-green-500/15 bg-green-500/5 p-5 font-mono text-xs leading-relaxed text-green-700 dark:text-green-300">
+                {`{
+  "mcpServers": {
+    "mdx-ui": {
+      "command": "pnpm",
+      "args": [
+        "dlx",
+        "@ravikumarsurya/mdx-ui",
+        "mcp"
+      ]
+    }
+  }
+}`}
+              </pre>
+              <p className="text-xs text-muted-foreground">
+                Works with Claude Code, Cursor, Windsurf, and any
+                MCP-compatible client.
+              </p>
+            </div>
+
+            {/* Capabilities */}
+            <div className="flex flex-col justify-center gap-6">
+              {[
+                {
+                  Icon: Bot,
+                  title: "Registry-aware generation",
+                  desc: "Claude reads your exact installed component list before writing a single line of MDX.",
+                },
+                {
+                  Icon: ShieldCheck,
+                  title: "Built-in validation",
+                  desc: "Catches hallucinated or uninstalled components before they reach your renderer.",
+                },
+                {
+                  Icon: Code2,
+                  title: "Math content tools",
+                  desc: "370+ math primitives exposed as MCP tools. Generate equations and proofs natively.",
+                },
+                {
+                  Icon: Coins,
+                  title: "Output Standard resource",
+                  desc: "Injects the MDX UI output spec into Claude's context automatically — zero copy-paste.",
+                },
+              ].map(({ Icon, title, desc }) => (
+                <div key={title} className="flex items-start gap-4">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-green-500/20 bg-green-500/8">
+                    <Icon className="h-4 w-4 text-green-600 dark:text-green-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">{title}</p>
+                    <p className="mt-0.5 text-sm text-muted-foreground">
+                      {desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              <Link
+                href="/docs/integration/mcp"
+                className="mt-2 inline-flex items-center gap-1.5 font-mono text-sm font-medium text-green-600 transition-colors hover:text-green-500 dark:text-green-400"
+              >
+                MCP setup guide <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

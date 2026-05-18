@@ -68,6 +68,6 @@
     "turbo": "^1.12.5",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.0",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.6"
   }
 }

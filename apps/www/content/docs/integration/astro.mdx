@@ -1,0 +1,141 @@
+---
+title: Astro
+description: Use MDX UI with Astro projects
+published: true
+---
+
+# Astro
+
+MDX UI works with Astro using the React and MDX integrations.
+
+## 1. Create an Astro Project
+
+<Tabs>
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="bun">bun</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="pnpm">
+
+```bash
+pnpm create astro@latest
+```
+
+  </TabsContent>
+
+  <TabsContent value="npm">
+
+```bash
+npm create astro@latest
+```
+
+  </TabsContent>
+
+  <TabsContent value="yarn">
+
+```bash
+yarn create astro
+```
+
+  </TabsContent>
+
+  <TabsContent value="bun">
+
+```bash
+bun create astro
+```
+
+  </TabsContent>
+</Tabs>
+
+## 2. Add React Integration
+
+MDX UI components are built with React, so you need to add the Astro React integration.
+
+```bash
+pnpm astro add react
+```
+
+## 3. Add MDX Integration
+
+Install the Astro MDX integration.
+
+```bash
+pnpm astro add mdx
+```
+
+## 4. Initialize MDX UI
+
+Initialize MDX UI in your Astro project.
+
+```bash
+pnpm dlx @ravikumarsurya/mdx-ui init
+```
+
+## 5. Add Components
+
+Install the required MDX UI components.
+
+```bash
+pnpm dlx @ravikumarsurya/mdx-ui add callout accordion
+```
+
+## 6. Register Components in Astro
+
+Create:
+
+```text
+src/components/mdx-ui/mdx-components.ts
+```
+
+Example:
+
+```ts
+export const mdxComponents = {};
+```
+
+Update your Astro configuration:
+
+```js
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import mdx from "@astrojs/mdx";
+import { mdxComponents } from "./src/components/mdx-ui/mdx-components";
+
+export default defineConfig({
+  integrations: [react(), mdx()],
+  markdown: {
+    remarkPlugins: [],
+  },
+});
+```
+
+Components are passed per-page in Astro via:
+
+```mdx
+<Content components={mdxComponents} />
+```
+
+## 7. Use in .mdx files
+
+Example MDX page:
+
+```mdx
+<Callout>MDX UI works great with Astro.</Callout>
+```
+
+## 8. Project Structure
+
+```text
+src/
+ └── components/
+     └── mdx-ui/
+         └── mdx-components.ts
+```
+
+## 9. Next Steps
+
+You can now use MDX UI components inside your Astro MDX pages.

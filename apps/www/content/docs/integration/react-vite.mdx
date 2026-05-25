@@ -665,8 +665,36 @@ Ensure `src/**/*.mdx` is in your Tailwind `content` array so component class nam
 
 ---
 
+## Use with Claude Code (MCP)
+
+Once your React + Vite project is set up, you can connect the mdx-ui MCP server so Claude knows exactly which components are available — no system prompt needed.
+
+Create `.claude/settings.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "mdx-ui": {
+      "command": "pnpm",
+      "args": ["dlx", "@ravikumarsurya/mdx-ui@latest", "mcp"]
+    }
+  }
+}
+```
+
+<Callout variant="info" title="npm or yarn">
+  Replace `pnpm dlx` with `npx` or `yarn dlx` depending on your package manager.
+</Callout>
+
+Open the project in VS Code with Claude Code. The server starts automatically and gives Claude live access to your component registry. You can then ask Claude to generate MDX content — it will call `list_components`, `convert_latex`, and `validate_mdx` automatically before returning output.
+
+See the [MCP Server](/docs/integration/mcp) doc for the full list of tools and prompts.
+
+---
+
 ## Next Steps
 
+- [MCP Server](/docs/integration/mcp)
 - [Component Mappings](/docs/integration/component-mappings)
 - [Next.js](/docs/integration/nextjs)
 - [Browse Components](/docs/components/callout)

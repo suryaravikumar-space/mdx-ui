@@ -82,24 +82,6 @@ export default function Layout({ children }) {
 }
 ```
 
-### Astro
-
-```tsx
-// src/components/ImageRenderer.tsx
-import AstroImage from "astro:assets"
-import { ImageRendererProvider } from "./mdx/image"
-
-export function AstroImageProvider({ children }) {
-  return (
-    <ImageRendererProvider
-      renderer={(props) => <AstroImage {...props} />}
-    >
-      {children}
-    </ImageRendererProvider>
-  )
-}
-```
-
 ### Remix (`@remix-run/react`)
 
 ```tsx

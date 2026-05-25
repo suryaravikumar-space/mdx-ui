@@ -3,7 +3,8 @@ import { createHash } from "crypto";
 import os from "os";
 import axios from "axios";
 
-const ENDPOINT = "https://telemetry.mdx-ui.dev/event";
+const POSTHOG_API_KEY = "phc_zNLMNdcFKJwLJqD6NK8uQwqSwXYYQfm6oAnga7sLQt6b";
+const POSTHOG_ENDPOINT = "https://app.posthog.com/capture/";
 const OWN_REPO = "suryaravikumar-space/mdx-ui";
 
 function getDistinctId(): string {
@@ -13,8 +14,7 @@ function getDistinctId(): string {
 
 function isOptedOut(): boolean {
   return (
-    process.env.MDX_UI_NO_TELEMETRY === "1" ||
-    process.env.DO_NOT_TRACK === "1"
+    process.env.MDX_UI_NO_TELEMETRY === "1" || process.env.DO_NOT_TRACK === "1"
   );
 }
 
@@ -37,8 +37,13 @@ export function ping(event: string, data?: Record<string, unknown>): void {
 
   axios
     .post(
-      ENDPOINT,
-      { event, distinct_id: getDistinctId(), ...data },
+      POSTHOG_ENDPOINT,
+      {
+        api_key: POSTHOG_API_KEY,
+        event,
+        distinct_id: getDistinctId(),
+        properties: { ...data, $lib: "mdx-ui-cli" },
+      },
       { timeout: 3000 },
     )
     .catch(() => {

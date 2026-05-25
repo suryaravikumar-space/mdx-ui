@@ -568,14 +568,16 @@ export const REGISTRY: Record<string, ComponentEntry> = {
 // ─── Derived maps (consumed by add / remove / update / doctor) ────────────────
 
 export const COMPONENT_MDX_MAP = Object.fromEntries(
-  Object.entries(REGISTRY).map(([name, e]) => [
-    name,
-    {
-      importFile: e.importFile,
-      imports: e.imports,
-      elementMappings: e.elementMappings,
-    },
-  ]),
+  Object.entries(REGISTRY)
+    .filter(([name]) => name !== "utils")
+    .map(([name, e]) => [
+      name,
+      {
+        importFile: e.importFile,
+        imports: e.imports,
+        elementMappings: e.elementMappings,
+      },
+    ]),
 );
 
 export const COMPONENT_FILES = Object.fromEntries(
@@ -583,9 +585,10 @@ export const COMPONENT_FILES = Object.fromEntries(
 );
 
 // Inverse of COMPONENT_FILES — used by update.ts to map filename → component name
+// Shared lib/ files belong to no single component — exclude them from the inverse map
 export const FILE_TO_COMPONENT: Record<string, string> = Object.fromEntries(
   Object.entries(REGISTRY).flatMap(([name, e]) =>
-    e.files.map((f) => [f, name]),
+    e.files.filter((f) => !f.startsWith("lib/")).map((f) => [f, name]),
   ),
 );
 

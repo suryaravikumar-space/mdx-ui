@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "predev": "tsx scripts/build-previews.ts",
-    "prebuild": "tsx scripts/build-previews.ts",
+    "predev": "contentlayer2 build && tsx scripts/build-previews.ts",
+    "prebuild": "contentlayer2 build && tsx scripts/build-previews.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

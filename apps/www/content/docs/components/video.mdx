@@ -16,7 +16,10 @@ npx @ravikumarsurya/mdx-ui add video
 Pass any video URL — the component auto-detects the source type.
 
 ```mdx
-<Video src="https://www.youtube.com/watch?v=Tn6-PIqc4UM" caption="React in 100 seconds" />
+<Video
+  src="https://www.youtube.com/watch?v=Tn6-PIqc4UM"
+  caption="React in 100 seconds"
+/>
 ```
 
 ## Examples
@@ -32,6 +35,7 @@ Pass any video URL — the component auto-detects the source type.
 ```
 
 Supports all YouTube URL formats:
+
 - `https://www.youtube.com/watch?v=VIDEO_ID`
 - `https://youtu.be/VIDEO_ID`
 - `https://www.youtube.com/embed/VIDEO_ID`
@@ -60,21 +64,21 @@ Note: browsers require `muted` for autoplay to work. When `autoPlay` is set, `mu
 
 ## How source detection works
 
-| URL pattern | Renders |
-| --- | --- |
+| URL pattern               | Renders              |
+| ------------------------- | -------------------- |
 | `youtube.com/watch?v=...` | YouTube iframe embed |
-| `youtu.be/...` | YouTube iframe embed |
-| `vimeo.com/123...` | Vimeo iframe embed |
-| `.mp4`, `.webm`, `.ogg` | HTML5 `<video>` |
+| `youtu.be/...`            | YouTube iframe embed |
+| `vimeo.com/123...`        | Vimeo iframe embed   |
+| `.mp4`, `.webm`, `.ogg`   | HTML5 `<video>`      |
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `src` | `string` | — | Video URL or file path (required) |
-| `title` | `string` | — | Title for iframes (accessibility) |
-| `caption` | `string` | — | Caption below the video |
-| `autoPlay` | `boolean` | `false` | Autoplay (HTML5 and YouTube/Vimeo) |
-| `loop` | `boolean` | `false` | Loop (HTML5 only) |
-| `muted` | `boolean` | `true` when autoPlay | Mute audio (HTML5 only) |
-| `className` | `string` | — | Extra classes on the outer `<figure>` |
+| Prop        | Type      | Default              | Description                           |
+| ----------- | --------- | -------------------- | ------------------------------------- |
+| `src`       | `string`  | —                    | Video URL or file path (required)     |
+| `title`     | `string`  | —                    | Title for iframes (accessibility)     |
+| `caption`   | `string`  | —                    | Caption below the video               |
+| `autoPlay`  | `boolean` | `false`              | Autoplay (HTML5 and YouTube/Vimeo)    |
+| `loop`      | `boolean` | `false`              | Loop (HTML5 only)                     |
+| `muted`     | `boolean` | `true` when autoPlay | Mute audio (HTML5 only)               |
+| `className` | `string`  | —                    | Extra classes on the outer `<figure>` |

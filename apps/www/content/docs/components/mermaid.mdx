@@ -64,7 +64,7 @@ import {
   MermaidGitGraph,
   MermaidMindmap,
   MermaidTimeline,
-} from "@/components/mdx/mermaid"
+} from "@/components/mdx/mermaid";
 ```
 
 ## Examples
@@ -153,14 +153,26 @@ Nodes are annotated with their visit order (①②③…) in breadth-first order
 ```jsx
 <MermaidBFS
   nodes={["A", "B", "C", "D", "E", "F"]}
-  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  edges={[
+    ["A", "B"],
+    ["A", "C"],
+    ["B", "D"],
+    ["B", "E"],
+    ["C", "F"],
+  ]}
   start="A"
 />
 ```
 
 <MermaidBFS
   nodes={["A", "B", "C", "D", "E", "F"]}
-  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  edges={[
+    ["A", "B"],
+    ["A", "C"],
+    ["B", "D"],
+    ["B", "E"],
+    ["C", "F"],
+  ]}
   start="A"
 />
 
@@ -171,14 +183,26 @@ Same API as `<MermaidBFS>`, but numbers reflect depth-first visit order.
 ```jsx
 <MermaidDFS
   nodes={["A", "B", "C", "D", "E", "F"]}
-  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  edges={[
+    ["A", "B"],
+    ["A", "C"],
+    ["B", "D"],
+    ["B", "E"],
+    ["C", "F"],
+  ]}
   start="A"
 />
 ```
 
 <MermaidDFS
   nodes={["A", "B", "C", "D", "E", "F"]}
-  edges={[["A","B"],["A","C"],["B","D"],["B","E"],["C","F"]]}
+  edges={[
+    ["A", "B"],
+    ["A", "C"],
+    ["B", "D"],
+    ["B", "E"],
+    ["C", "F"],
+  ]}
   start="A"
 />
 
@@ -186,49 +210,49 @@ Same API as `<MermaidBFS>`, but numbers reflect depth-first visit order.
 
 ### `<Mermaid>`
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | string | — | Diagram source (manual MDX usage) |
-| chart | string | — | Diagram source (remark plugin / prop usage) |
-| label | string | auto-detected | Override the header label |
-| className | string | — | Additional CSS classes |
+| Prop      | Type   | Default       | Description                                 |
+| --------- | ------ | ------------- | ------------------------------------------- |
+| children  | string | —             | Diagram source (manual MDX usage)           |
+| chart     | string | —             | Diagram source (remark plugin / prop usage) |
+| label     | string | auto-detected | Override the header label                   |
+| className | string | —             | Additional CSS classes                      |
 
 ### `<MermaidBST>`
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| values | number[] | — | Values to insert into the BST |
-| className | string | — | Additional CSS classes |
+| Prop      | Type     | Default | Description                   |
+| --------- | -------- | ------- | ----------------------------- |
+| values    | number[] | —       | Values to insert into the BST |
+| className | string   | —       | Additional CSS classes        |
 
 ### `<MermaidTree>`
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| data | TreeNode | — | `{ label: string, children?: TreeNode[] }` |
-| direction | `"TD"` \| `"LR"` | `"TD"` | Layout direction |
-| className | string | — | Additional CSS classes |
+| Prop      | Type             | Default | Description                                |
+| --------- | ---------------- | ------- | ------------------------------------------ |
+| data      | TreeNode         | —       | `{ label: string, children?: TreeNode[] }` |
+| direction | `"TD"` \| `"LR"` | `"TD"`  | Layout direction                           |
+| className | string           | —       | Additional CSS classes                     |
 
 ### `<MermaidBFS>` / `<MermaidDFS>`
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| nodes | string[] | — | All node names |
-| edges | [string, string][] | — | Edge pairs `[from, to]` |
-| start | string | — | Starting node for traversal |
-| directed | boolean | `false` | Treat edges as directed |
-| className | string | — | Additional CSS classes |
+| Prop      | Type               | Default | Description                 |
+| --------- | ------------------ | ------- | --------------------------- |
+| nodes     | string[]           | —       | All node names              |
+| edges     | [string, string][] | —       | Edge pairs `[from, to]`     |
+| start     | string             | —       | Starting node for traversal |
+| directed  | boolean            | `false` | Treat edges as directed     |
+| className | string             | —       | Additional CSS classes      |
 
 ## Supported diagram types (raw mermaid)
 
-| First line keyword | Detected as | Label shown |
-|--------------------|-------------|-------------|
-| `flowchart` / `graph` | `flowchart` | Flowchart |
-| `sequenceDiagram` | `sequenceDiagram` | Sequence Diagram |
-| `classDiagram` | `classDiagram` | Class Diagram |
-| `stateDiagram` | `stateDiagram` | State Diagram |
-| `erDiagram` | `erDiagram` | ER Diagram |
-| `gantt` | `gantt` | Gantt Chart |
-| `pie` | `pie` | Pie Chart |
-| `gitGraph` | `gitGraph` | Git Graph |
-| `mindmap` | `mindmap` | Mind Map |
-| `timeline` | `timeline` | Timeline |
+| First line keyword    | Detected as       | Label shown      |
+| --------------------- | ----------------- | ---------------- |
+| `flowchart` / `graph` | `flowchart`       | Flowchart        |
+| `sequenceDiagram`     | `sequenceDiagram` | Sequence Diagram |
+| `classDiagram`        | `classDiagram`    | Class Diagram    |
+| `stateDiagram`        | `stateDiagram`    | State Diagram    |
+| `erDiagram`           | `erDiagram`       | ER Diagram       |
+| `gantt`               | `gantt`           | Gantt Chart      |
+| `pie`                 | `pie`             | Pie Chart        |
+| `gitGraph`            | `gitGraph`        | Git Graph        |
+| `mindmap`             | `mindmap`         | Mind Map         |
+| `timeline`            | `timeline`        | Timeline         |

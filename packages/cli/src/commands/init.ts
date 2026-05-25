@@ -10,6 +10,7 @@ import {
   type Framework,
 } from "../utils/detect-structure.js";
 import { scanMdxComponents, printScanWarnings } from "../utils/scan-mdx.js";
+import { ping } from "../utils/telemetry.js";
 
 const FRAMEWORK_LABELS: Record<Framework, string> = {
   nextjs: "Next.js",
@@ -120,6 +121,7 @@ export const init = new Command()
       );
 
       spinner.succeed("Project initialized!");
+      ping("init", { framework: structure.framework });
 
       console.log(chalk.green("\n✓ mdx-ui.json"));
       console.log(chalk.green(`✓ ${config.componentsDir}/`));

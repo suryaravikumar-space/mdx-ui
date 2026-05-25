@@ -13,6 +13,7 @@ import { installDependencies } from "../utils/install-deps.js";
 
 import { COMPONENT_MDX_MAP, REGISTRY } from "../lib/component-registry.js";
 import { scanMdxComponents, printScanWarnings } from "../utils/scan-mdx.js";
+import { ping } from "../utils/telemetry.js";
 
 interface RegistryComponent {
   name: string;
@@ -339,6 +340,7 @@ export const add = new Command()
         console.log();
         console.log(chalk.bold("Done! 🎉"));
         console.log();
+        ping("add", { components });
 
         const pm = (await fs.pathExists(path.join(cwd, "pnpm-lock.yaml")))
           ? "pnpm"

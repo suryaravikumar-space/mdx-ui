@@ -41,8 +41,13 @@ npx @ravikumarsurya/mdx-ui add
 Add the installed components to your `mdx-components.tsx`:
 
 ```tsx
-import { Callout } from "@/components/mdx/callout"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/mdx/accordion"
+import { Callout } from "@/components/mdx/callout";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/mdx/accordion";
 
 export const components = {
   Callout,
@@ -50,7 +55,7 @@ export const components = {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-}
+};
 ```
 
 ## Framework Guides
@@ -61,13 +66,13 @@ export const components = {
 
 ## CLI Reference
 
-| Command | Description |
-|---------|-------------|
-| `mdx-ui init` | Set up mdx-ui in your project |
-| `mdx-ui add [components]` | Add components |
-| `mdx-ui update [components]` | Update to latest |
-| `mdx-ui remove [components]` | Remove components |
-| `mdx-ui list` | List all available components |
-| `mdx-ui doctor` | Check project health |
-| `mdx-ui new [title]` | Scaffold a new .mdx page |
-| `mdx-ui save` | Save MDX content to a structured path |
+| Command                      | Description                           |
+| ---------------------------- | ------------------------------------- |
+| `mdx-ui init`                | Set up mdx-ui in your project         |
+| `mdx-ui add [components]`    | Add components                        |
+| `mdx-ui update [components]` | Update to latest                      |
+| `mdx-ui remove [components]` | Remove components                     |
+| `mdx-ui list`                | List all available components         |
+| `mdx-ui doctor`              | Check project health                  |
+| `mdx-ui new [title]`         | Scaffold a new .mdx page              |
+| `mdx-ui save`                | Save MDX content to a structured path |

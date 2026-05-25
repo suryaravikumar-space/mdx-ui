@@ -28,7 +28,7 @@ npx @ravikumarsurya/mdx-ui add image
 ```mdx
 <ImageGlossary>
   <Image src="/before.png" alt="Before" caption="Before refactoring" />
-  <Image src="/after.png"  alt="After"  caption="After refactoring"  />
+  <Image src="/after.png" alt="After" caption="After refactoring" />
 </ImageGlossary>
 ```
 
@@ -61,8 +61,8 @@ For framework-level optimization (CDN, WebP/AVIF conversion, responsive srcset),
 
 ```tsx
 // app/layout.tsx  (or pages/_app.tsx)
-import NextImage from "next/image"
-import { ImageRendererProvider } from "@/components/mdx/image"
+import NextImage from "next/image";
+import { ImageRendererProvider } from "@/components/mdx/image";
 
 export default function Layout({ children }) {
   return (
@@ -78,7 +78,7 @@ export default function Layout({ children }) {
     >
       {children}
     </ImageRendererProvider>
-  )
+  );
 }
 ```
 
@@ -86,7 +86,7 @@ export default function Layout({ children }) {
 
 ```tsx
 // app/root.tsx
-import { ImageRendererProvider } from "~/components/mdx/image"
+import { ImageRendererProvider } from "~/components/mdx/image";
 
 export default function App() {
   return (
@@ -97,7 +97,7 @@ export default function App() {
     >
       <Outlet />
     </ImageRendererProvider>
-  )
+  );
 }
 ```
 
@@ -110,36 +110,36 @@ No setup needed — the default renderer already applies `loading="lazy"` and `d
 If `cols` is not set, `ImageGlossary` counts its children and picks automatically:
 
 | Children | Default cols |
-| --- | --- |
-| 1 | 1 |
-| 2 | 2 |
-| 3 | 3 |
-| 4+ | 2 |
+| -------- | ------------ |
+| 1        | 1            |
+| 2        | 2            |
+| 3        | 3            |
+| 4+       | 2            |
 
 ## Props
 
 ### Image
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `src` | `string` | Image source URL (required) |
-| `alt` | `string` | Alt text for accessibility (required) |
-| `caption` | `string` | Optional caption below the image |
-| `width` | `number` | Passed through to the renderer |
-| `height` | `number` | Passed through to the renderer |
+| Prop        | Type     | Description                           |
+| ----------- | -------- | ------------------------------------- |
+| `src`       | `string` | Image source URL (required)           |
+| `alt`       | `string` | Alt text for accessibility (required) |
+| `caption`   | `string` | Optional caption below the image      |
+| `width`     | `number` | Passed through to the renderer        |
+| `height`    | `number` | Passed through to the renderer        |
 | `className` | `string` | Extra classes on the outer `<figure>` |
 
 ### ImageGlossary
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `cols` | `1 \| 2 \| 3` | auto | Number of columns |
-| `caption` | `string` | — | Caption below the entire grid |
-| `className` | `string` | — | Extra classes on the wrapper |
+| Prop        | Type          | Default | Description                   |
+| ----------- | ------------- | ------- | ----------------------------- |
+| `cols`      | `1 \| 2 \| 3` | auto    | Number of columns             |
+| `caption`   | `string`      | —       | Caption below the entire grid |
+| `className` | `string`      | —       | Extra classes on the wrapper  |
 
 ### ImageRendererProvider
 
-| Prop | Type | Description |
-| --- | --- | --- |
+| Prop       | Type                                      | Description                    |
+| ---------- | ----------------------------------------- | ------------------------------ |
 | `renderer` | `(props: ImgHTMLAttributes) => ReactNode` | Custom image renderer function |
-| `children` | `ReactNode` | Your app or layout subtree |
+| `children` | `ReactNode`                               | Your app or layout subtree     |

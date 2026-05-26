@@ -54,7 +54,7 @@ jobs:
 
       - name: Verify registry
         run: |
-          node -e "import('./registry/registry.json', { assert: { type: 'json' } }).then(r => { if (!r.default.components.length) process.exit(1); console.log('Registry OK:', r.default.components.length, 'components') })"
+          node -e "import('./registry/registry.json', { with: { type: 'json' } }).then(r => { if (!r.default.components.length) process.exit(1); console.log('Registry OK:', r.default.components.length, 'components') })"
 
       - name: Typecheck
         run: pnpm turbo run typecheck

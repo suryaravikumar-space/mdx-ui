@@ -9,7 +9,7 @@ import chalk from "chalk";
 import { glob } from "glob";
 
 // Extract all uppercase JSX tag names from MDX content
-function extractComponentNames(content: string): Set<string> {
+export function extractComponentNames(content: string): Set<string> {
   const names = new Set<string>();
   // Match opening tags: <ComponentName or <ComponentName.SubName
   const tagRe = /<([A-Z][a-zA-Z0-9]*)/g;
@@ -25,14 +25,12 @@ function extractComponentNames(content: string): Set<string> {
 }
 
 // Extract registered component names from mdx-components.tsx
-function extractRegistered(mdxComponentsPath: string): Set<string> {
+export function extractRegistered(mdxComponentsSource: string): Set<string> {
   const names = new Set<string>();
-  if (!fs.existsSync(mdxComponentsPath)) return names;
-  const content = fs.readFileSync(mdxComponentsPath, "utf-8");
   // Match: import { Foo, Bar } from "./something"
   const importRe = /import\s*\{([^}]+)\}/g;
   let m: RegExpExecArray | null;
-  while ((m = importRe.exec(content)) !== null) {
+  while ((m = importRe.exec(mdxComponentsSource)) !== null) {
     m[1].split(",").forEach((s) => {
       // Handle "Foo as Bar" aliases
       const name = s
@@ -45,7 +43,7 @@ function extractRegistered(mdxComponentsPath: string): Set<string> {
   }
   // Also match shorthand exports: { foo: Foo } → capture Foo
   const mapRe = /:\s*([A-Z][a-zA-Z0-9]*)/g;
-  while ((m = mapRe.exec(content)) !== null) {
+  while ((m = mapRe.exec(mdxComponentsSource)) !== null) {
     names.add(m[1]);
   }
   return names;
@@ -87,7 +85,9 @@ export async function scanMdxComponents(cwd: string): Promise<ScanResult[]> {
     }
   }
 
-  const registered = extractRegistered(mdxComponentsPath);
+  const registered = mdxComponentsPath
+    ? extractRegistered(fs.readFileSync(mdxComponentsPath, "utf-8"))
+    : new Set<string>();
 
   // Find all .mdx files
   const mdxFiles = await glob("**/*.mdx", {

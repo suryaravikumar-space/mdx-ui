@@ -1,5 +1,10 @@
 # mdx-ui
 
+[![npm](https://img.shields.io/npm/v/@ravikumarsurya/mdx-ui)](https://www.npmjs.com/package/@ravikumarsurya/mdx-ui)
+[![Socket](https://socket.dev/api/badge/npm/package/@ravikumarsurya/mdx-ui)](https://socket.dev/npm/package/@ravikumarsurya/mdx-ui)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/mdx-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/mdx-ui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Copy-paste MDX components for documentation sites. Built with React, TypeScript, and Tailwind CSS. Follows the [shadcn/ui](https://ui.shadcn.com) philosophy — components live in your project, not in `node_modules`.
 
 ## Quick Start

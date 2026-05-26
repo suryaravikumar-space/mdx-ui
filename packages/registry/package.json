@@ -25,10 +25,10 @@
     "@types/jest": "^30.0.0",
     "@types/katex": "^0.16.8",
     "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.3.0",
+    "jest-environment-jsdom": "^30.4.1",
     "jest-junit": "^17.0.0",
-    "react-dom": "19",
-    "ts-jest": "^29.4.6",
+    "react-dom": "18",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2"
   }
 }

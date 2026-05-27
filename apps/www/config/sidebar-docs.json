@@ -35,6 +35,10 @@
       "path": "/docs/integration/react-vite"
     },
     {
+      "title": "Astro",
+      "path": "/docs/integration/astro"
+    },
+    {
       "hasSectionHeader": true,
       "sectionHeader": "Components"
     },

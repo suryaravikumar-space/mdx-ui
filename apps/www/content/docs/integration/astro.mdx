@@ -1,0 +1,439 @@
+---
+title: Astro
+description: Integrate MDX UI with an Astro project using @astrojs/react and @astrojs/mdx
+published: true
+---
+
+## Overview
+
+Astro has first-class MDX support via `@astrojs/mdx`. MDX UI components are React-based, so you also need the React integration. Components are injected per-page through Astro's `components` prop — no global provider needed.
+
+**Best for:** Content-heavy sites, documentation, blogs, and static sites that want interactive islands.
+
+---
+
+## 1. Create an Astro Project
+
+Skip this step if you already have a project.
+
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+
+```bash
+pnpm create astro@latest my-app
+cd my-app
+pnpm install
+```
+
+  </TabsContent>
+  <TabsContent value="npm">
+
+```bash
+npm create astro@latest my-app
+cd my-app
+npm install
+```
+
+  </TabsContent>
+  <TabsContent value="yarn">
+
+```bash
+yarn create astro my-app
+cd my-app
+yarn
+```
+
+  </TabsContent>
+</Tabs>
+
+---
+
+## 2. Add React Integration
+
+MDX UI components are built with React. Add the Astro React integration:
+
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+
+```bash
+pnpm astro add react
+```
+
+  </TabsContent>
+  <TabsContent value="npm">
+
+```bash
+npx astro add react
+```
+
+  </TabsContent>
+  <TabsContent value="yarn">
+
+```bash
+yarn astro add react
+```
+
+  </TabsContent>
+</Tabs>
+
+This automatically updates `astro.config.mjs` and installs `@astrojs/react`, `react`, and `react-dom`.
+
+---
+
+## 3. Add MDX Integration
+
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+
+```bash
+pnpm astro add mdx
+```
+
+  </TabsContent>
+  <TabsContent value="npm">
+
+```bash
+npx astro add mdx
+```
+
+  </TabsContent>
+  <TabsContent value="yarn">
+
+```bash
+yarn astro add mdx
+```
+
+  </TabsContent>
+</Tabs>
+
+---
+
+## 4. Add Tailwind CSS
+
+MDX UI components use Tailwind CSS for styling.
+
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+
+```bash
+pnpm astro add tailwind
+```
+
+  </TabsContent>
+  <TabsContent value="npm">
+
+```bash
+npx astro add tailwind
+```
+
+  </TabsContent>
+  <TabsContent value="yarn">
+
+```bash
+yarn astro add tailwind
+```
+
+  </TabsContent>
+</Tabs>
+
+After this, update `tailwind.config.mjs` to include your MDX UI component files so Tailwind doesn't purge their classes in production:
+
+```js title="tailwind.config.mjs"
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./src/**/*.{astro,html,js,jsx,ts,tsx,mdx}",
+    "./src/components/mdx-ui/**/*.{ts,tsx}", // required for MDX UI
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+---
+
+## 5. Initialize MDX UI
+
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+
+```bash
+pnpm dlx @ravikumarsurya/mdx-ui init
+```
+
+  </TabsContent>
+  <TabsContent value="npm">
+
+```bash
+npx @ravikumarsurya/mdx-ui init
+```
+
+  </TabsContent>
+  <TabsContent value="yarn">
+
+```bash
+yarn dlx @ravikumarsurya/mdx-ui init
+```
+
+  </TabsContent>
+</Tabs>
+
+This creates `mdx-ui.json` and copies the `cn()` utility to `src/lib/utils.ts`.
+
+---
+
+## 6. Add Components
+
+<Tabs defaultValue="pnpm">
+  <TabsList>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+  </TabsList>
+  <TabsContent value="pnpm">
+
+```bash
+pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+```
+
+  </TabsContent>
+  <TabsContent value="npm">
+
+```bash
+npx @ravikumarsurya/mdx-ui add callout accordion code-block
+```
+
+  </TabsContent>
+  <TabsContent value="yarn">
+
+```bash
+yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block
+```
+
+  </TabsContent>
+</Tabs>
+
+<Callout variant="info" title="Auto-updated for you">
+  The CLI automatically copies the component file **and** updates
+  `src/components/mdx-ui/mdx-components.ts` with the correct imports and
+  mappings. You never need to edit that file manually.
+</Callout>
+
+---
+
+## 7. Register Components
+
+The `init` command creates `src/components/mdx-ui/mdx-components.ts`. Every subsequent `add` command patches this file automatically — you only wire it up once.
+
+```ts title="src/components/mdx-ui/mdx-components.ts"
+import { Callout } from "./callout";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./accordion";
+import { CodeBlock } from "./code-block";
+
+export const mdxComponents = {
+  Callout,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  CodeBlock,
+};
+```
+
+In Astro, components are passed to the MDX `<Content>` renderer per page — not via a global provider. Create a shared layout that does this for all your docs pages:
+
+```astro title="src/layouts/DocsLayout.astro"
+---
+import { mdxComponents } from "../components/mdx-ui/mdx-components";
+
+const { Content } = Astro.props;
+---
+
+<html lang="en">
+  <body>
+    <main>
+      <Content components={mdxComponents} />
+    </main>
+  </body>
+</html>
+```
+
+Then use it in any `.mdx` page:
+
+```mdx title="src/pages/guide.mdx"
+---
+layout: ../layouts/DocsLayout.astro
+---
+
+# Guide
+
+<Callout variant="info" title="Tip">
+  Components registered in mdxComponents are available here — no imports needed in the MDX file.
+</Callout>
+```
+
+---
+
+## 8. Interactive Components
+
+Astro renders React components as static HTML by default. For components with interactivity (click handlers, open/close state), add a `client:` directive:
+
+```mdx
+// Static — no JS sent to browser (fine for Callout, CodeBlock, badges)
+<Callout variant="info" title="Note">This is purely visual.</Callout>
+
+// Interactive — needs hydration (Accordion, Tabs, Reveal)
+<Accordion client:load>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Click me</AccordionTrigger>
+    <AccordionContent>I open and close — needs client:load.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+| Directive | When it hydrates | Use for |
+| --- | --- | --- |
+| `client:load` | Immediately on page load | Components visible above the fold |
+| `client:visible` | When component enters the viewport | Components further down the page |
+| `client:idle` | When browser is idle | Lower-priority interactive components |
+
+<Callout variant="warning" title="Don't add client: to static components">
+  Adding `client:load` to a purely visual component like `Callout` or `CodeBlock`
+  ships unnecessary JavaScript. Only use it on components that have state or event
+  handlers (Accordion, Tabs, Reveal).
+</Callout>
+
+---
+
+## Project Structure
+
+<Tree>
+  <TreeItem name="my-app" isFolder defaultOpen>
+    <TreeItem name="src" isFolder defaultOpen>
+      <TreeItem name="components" isFolder defaultOpen>
+        <TreeItem name="mdx-ui" isFolder>
+          <TreeItem name="callout.tsx" />
+          <TreeItem name="accordion.tsx" />
+          <TreeItem name="code-block.tsx" />
+          <TreeItem name="lib" isFolder>
+            <TreeItem name="utils.ts" />
+          </TreeItem>
+          <TreeItem name="mdx-components.ts" />
+        </TreeItem>
+      </TreeItem>
+      <TreeItem name="layouts" isFolder>
+        <TreeItem name="DocsLayout.astro" />
+      </TreeItem>
+      <TreeItem name="pages" isFolder>
+        <TreeItem name="index.astro" />
+        <TreeItem name="guide.mdx" />
+        <TreeItem name="about.mdx" />
+      </TreeItem>
+      <TreeItem name="styles" isFolder>
+        <TreeItem name="global.css" />
+      </TreeItem>
+    </TreeItem>
+    <TreeItem name="astro.config.mjs" />
+    <TreeItem name="tailwind.config.mjs" />
+    <TreeItem name="mdx-ui.json" />
+    <TreeItem name="package.json" />
+  </TreeItem>
+</Tree>
+
+---
+
+## Troubleshooting
+
+### Tailwind classes not applying
+
+Ensure `src/components/mdx-ui/**/*.{ts,tsx}` is in your `content` array in `tailwind.config.mjs`. Without it, Tailwind purges all component class names in production builds — components render but look unstyled.
+
+### Components not rendering in MDX
+
+Make sure you are passing `components={mdxComponents}` to `<Content />` in your layout. Without it, MDX treats component tags as unknown HTML elements and ignores them.
+
+### TypeScript error: Cannot find module `@/lib/utils`
+
+MDX UI uses the `@/` path alias. Add it to `tsconfig.json`:
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Component renders but is not interactive
+
+You are missing the `client:` directive. Static-rendered React components have no JS. Add `client:load` to any component that has state (Accordion, Tabs, Reveal).
+
+---
+
+## Use with Claude Code (MCP)
+
+Once your Astro project is set up, connect the mdx-ui MCP server so Claude knows exactly which components are available — no system prompt needed.
+
+Create `.claude/settings.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "mdx-ui": {
+      "command": "pnpm",
+      "args": ["dlx", "@ravikumarsurya/mdx-ui@latest", "mcp"]
+    }
+  }
+}
+```
+
+<Callout variant="info" title="npm or yarn">
+  Replace `pnpm dlx` with `npx` or `yarn dlx` depending on your package manager.
+</Callout>
+
+Open the project in VS Code with Claude Code. The server starts automatically and gives Claude live access to your component registry. Claude will call `list_components`, `convert_latex`, and `validate_mdx` automatically before returning MDX output.
+
+See the [MCP Server](/docs/integration/mcp) doc for the full list of tools and prompts.
+
+---
+
+## Next Steps
+
+- [MCP Server](/docs/integration/mcp)
+- [Component Mappings](/docs/integration/component-mappings)
+- [Next.js](/docs/integration/nextjs)
+- [Browse Components](/docs/components/callout)

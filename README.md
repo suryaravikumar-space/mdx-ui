@@ -72,51 +72,51 @@ npx @ravikumarsurya/mdx-ui
 
 ### Code & Diagrams
 
-| Component    | Description                                                     |
-| ------------ | --------------------------------------------------------------- |
-| `code-block` | Syntax-highlighted code blocks via `rehype-pretty-code` + Shiki |
-| `code-group` | Tabbed code blocks — npm/pnpm/yarn or multi-language examples   |
-| `inline-code`| Styled inline code snippets                                     |
-| `diff-block` | Git-style diff viewer with added/removed line highlighting      |
-| `terminal`   | Terminal/shell output block with `$` prompt styling             |
-| `preview`    | Live component preview with tabbed source code view             |
-| `mermaid`    | Mermaid diagrams with BST/BFS/DFS variants                      |
-| `ds`         | Full data structures visualization suite (arrays, graphs, trees, linked lists, heaps, tries) |
-| `ds-tree`    | Visual tree diagrams (BST, AVL, heap, n-ary, min/max heap)      |
+| Component     | Description                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| `code-block`  | Syntax-highlighted code blocks via `rehype-pretty-code` + Shiki                              |
+| `code-group`  | Tabbed code blocks — npm/pnpm/yarn or multi-language examples                                |
+| `inline-code` | Styled inline code snippets                                                                  |
+| `diff-block`  | Git-style diff viewer with added/removed line highlighting                                   |
+| `terminal`    | Terminal/shell output block with `$` prompt styling                                          |
+| `preview`     | Live component preview with tabbed source code view                                          |
+| `mermaid`     | Mermaid diagrams with BST/BFS/DFS variants                                                   |
+| `ds`          | Full data structures visualization suite (arrays, graphs, trees, linked lists, heaps, tries) |
+| `ds-tree`     | Visual tree diagrams (BST, AVL, heap, n-ary, min/max heap)                                   |
 
 ### Math
 
-| Component         | Description                                                               |
-| ----------------- | ------------------------------------------------------------------------- |
-| `math`            | LaTeX math rendering via KaTeX (block and inline)                         |
-| `math-primitives` | Semantic math atoms: Frac, Pow, Sqrt, Abs, Deg, Greek letters             |
-| `math-equation`   | Equation display blocks with relation symbols (≈, ≠, ≤, ≥, →, ⟹, ⟺)   |
-| `math-solution`   | Step-by-step solution blocks: Solution, SolutionStep, SolutionAnswer      |
+| Component         | Description                                                          |
+| ----------------- | -------------------------------------------------------------------- |
+| `math`            | LaTeX math rendering via KaTeX (block and inline)                    |
+| `math-primitives` | Semantic math atoms: Frac, Pow, Sqrt, Abs, Deg, Greek letters        |
+| `math-equation`   | Equation display blocks with relation symbols (≈, ≠, ≤, ≥, →, ⟹, ⟺)  |
+| `math-solution`   | Step-by-step solution blocks: Solution, SolutionStep, SolutionAnswer |
 
 ### Reference & Documentation
 
-| Component          | Description                                                      |
-| ------------------ | ---------------------------------------------------------------- |
-| `table`            | Styled markdown table with full semantic elements                |
-| `data-table`       | Searchable and sortable data table                               |
+| Component          | Description                                                          |
+| ------------------ | -------------------------------------------------------------------- |
+| `table`            | Styled markdown table with full semantic elements                    |
+| `data-table`       | Searchable and sortable data table                                   |
 | `changelog`        | Versioned changelog with Added/Fixed/Changed/Removed/Security badges |
-| `definition`       | Formal definition block with term label                          |
-| `glossary`         | Inline glossary terms with hover-to-reveal definitions           |
-| `annotation`       | Inline text with click-to-reveal explanation popover             |
-| `invariant`        | Algorithm invariant callout with optional complexity badge       |
-| `complexity-table` | Algorithm time/space complexity table with Big-O notation        |
-| `data-type-table`  | ML/hardware data type reference (INT8, FP16, BF16, etc.)         |
+| `definition`       | Formal definition block with term label                              |
+| `glossary`         | Inline glossary terms with hover-to-reveal definitions               |
+| `annotation`       | Inline text with click-to-reveal explanation popover                 |
+| `invariant`        | Algorithm invariant callout with optional complexity badge           |
+| `complexity-table` | Algorithm time/space complexity table with Big-O notation            |
+| `data-type-table`  | ML/hardware data type reference (INT8, FP16, BF16, etc.)             |
 
 ### Domain Specific
 
-| Component             | Description                                            |
-| --------------------- | ------------------------------------------------------ |
-| `certification-badge` | Compliance certification badges (ISO, SOC 2, GDPR)    |
-| `hardware-spec`       | Hardware interface specification comparison table      |
-| `privacy-table`       | GDPR/privacy policy data collection table              |
-| `register-map`        | Hardware/firmware register address map table           |
-| `json-ld`             | JSON-LD structured data script tag for SEO             |
-| `video`               | Responsive video embed (YouTube/native) with caption   |
+| Component             | Description                                          |
+| --------------------- | ---------------------------------------------------- |
+| `certification-badge` | Compliance certification badges (ISO, SOC 2, GDPR)   |
+| `hardware-spec`       | Hardware interface specification comparison table    |
+| `privacy-table`       | GDPR/privacy policy data collection table            |
+| `register-map`        | Hardware/firmware register address map table         |
+| `json-ld`             | JSON-LD structured data script tag for SEO           |
+| `video`               | Responsive video embed (YouTube/native) with caption |
 
 ### Utilities
 

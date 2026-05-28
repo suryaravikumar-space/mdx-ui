@@ -58,7 +58,7 @@
     "@types/node": "^25.9.1",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.0.0",
+    "eslint": "^10.4.0",
     "fs-extra": "^11.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.3",

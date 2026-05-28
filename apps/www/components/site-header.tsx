@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { label: "/docs", href: "/docs" },
   { label: "/components", href: "/components" },
+  { label: "/playground", href: "/playground" },
 ];
 
 export function SiteHeader() {

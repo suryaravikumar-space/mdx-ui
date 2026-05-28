@@ -300,7 +300,8 @@ layout: ../layouts/DocsLayout.astro
 # Guide
 
 <Callout variant="info" title="Tip">
-  Components registered in mdxComponents are available here — no imports needed in the MDX file.
+  Components registered in mdxComponents are available here — no imports needed
+  in the MDX file.
 </Callout>
 ```
 
@@ -312,9 +313,13 @@ Astro renders React components as static HTML by default. For components with in
 
 ```mdx
 // Static — no JS sent to browser (fine for Callout, CodeBlock, badges)
-<Callout variant="info" title="Note">This is purely visual.</Callout>
+
+<Callout variant="info" title="Note">
+  This is purely visual.
+</Callout>
 
 // Interactive — needs hydration (Accordion, Tabs, Reveal)
+
 <Accordion client:load>
   <AccordionItem value="item-1">
     <AccordionTrigger>Click me</AccordionTrigger>
@@ -323,16 +328,16 @@ Astro renders React components as static HTML by default. For components with in
 </Accordion>
 ```
 
-| Directive | When it hydrates | Use for |
-| --- | --- | --- |
-| `client:load` | Immediately on page load | Components visible above the fold |
-| `client:visible` | When component enters the viewport | Components further down the page |
-| `client:idle` | When browser is idle | Lower-priority interactive components |
+| Directive        | When it hydrates                   | Use for                               |
+| ---------------- | ---------------------------------- | ------------------------------------- |
+| `client:load`    | Immediately on page load           | Components visible above the fold     |
+| `client:visible` | When component enters the viewport | Components further down the page      |
+| `client:idle`    | When browser is idle               | Lower-priority interactive components |
 
 <Callout variant="warning" title="Don't add client: to static components">
-  Adding `client:load` to a purely visual component like `Callout` or `CodeBlock`
-  ships unnecessary JavaScript. Only use it on components that have state or event
-  handlers (Accordion, Tabs, Reveal).
+  Adding `client:load` to a purely visual component like `Callout` or
+  `CodeBlock` ships unnecessary JavaScript. Only use it on components that have
+  state or event handlers (Accordion, Tabs, Reveal).
 </Callout>
 
 ---

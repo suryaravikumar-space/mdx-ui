@@ -8,7 +8,7 @@
     "@types/react": "^18.2.65",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "katex": "^0.16.44",
+    "katex": "^0.16.45",
     "mermaid": "^11.14.0",
     "react": "^18.2.0",
     "tailwind-merge": "^3.5.0"
@@ -24,11 +24,11 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
     "@types/katex": "^0.16.8",
-    "jest": "^30.3.0",
+    "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "jest-junit": "^17.0.0",
     "react-dom": "18",
-    "ts-jest": "^29.4.6",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2"
   }
 }

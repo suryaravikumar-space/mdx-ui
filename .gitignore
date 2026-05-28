@@ -86,4 +86,6 @@ TwoRegistryLocationsExplained.txt
 # Personal notes (keep actual README and docs tracked)
 *.txt
 IDEAS.md
-datetime\njson\nre
+datetime
+json
+re

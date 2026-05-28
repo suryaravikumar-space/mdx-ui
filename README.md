@@ -1,5 +1,10 @@
 # mdx-ui
 
+[![npm](https://img.shields.io/npm/v/@ravikumarsurya/mdx-ui)](https://www.npmjs.com/package/@ravikumarsurya/mdx-ui)
+[![Socket](https://socket.dev/api/badge/npm/package/@ravikumarsurya/mdx-ui)](https://socket.dev/npm/package/@ravikumarsurya/mdx-ui)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/mdx-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/mdx-ui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Copy-paste MDX components for documentation sites. Built with React, TypeScript, and Tailwind CSS. Follows the [shadcn/ui](https://ui.shadcn.com) philosophy — components live in your project, not in `node_modules`.
 
 ## Quick Start
@@ -17,65 +22,108 @@ npx @ravikumarsurya/mdx-ui
 
 ## CLI Commands
 
-| Command | Description |
-| --- | --- |
-| `init` | Set up `mdx-ui.json`, inject CSS variables, patch `tailwind.config` |
-| `add [components...]` | Add components (interactive picker if no args) |
-| `update [components...]` | Re-fetch and overwrite with latest versions |
-| `list` | Show all available components |
-| `list --installed` | Show only installed components |
+| Command                  | Description                                                         |
+| ------------------------ | ------------------------------------------------------------------- |
+| `init`                   | Set up `mdx-ui.json`, inject CSS variables, patch `tailwind.config` |
+| `add [components...]`    | Add components (interactive picker if no args)                      |
+| `update [components...]` | Re-fetch and overwrite with latest versions                         |
+| `list`                   | Show all available components                                       |
+| `list --installed`       | Show only installed components                                      |
 
-## Components (26)
+## Components (51)
 
 ### Layout & Typography
-| Component | Description |
-| --- | --- |
-| `heading` | H1–H6 with auto-generated anchor links on hover |
-| `headings` | Markdown heading overrides (h1–h6 → styled components) |
-| `paragraph` | Paragraph with Lead, Intro, Large, Small, Muted variants |
-| `emphasis` | Bold (`<strong>`) and italic (`<em>`) |
-| `list` | Ordered and unordered lists |
-| `blockquote` | Styled blockquote |
-| `horizontal-rule` | Divider with default, dashed, dotted, gradient styles |
-| `image` | Image with optional caption |
+
+| Component         | Description                                              |
+| ----------------- | -------------------------------------------------------- |
+| `heading`         | H1–H6 with anchor links on hover                         |
+| `headings`        | Markdown heading overrides (h1–h6 → styled components)   |
+| `paragraph`       | Paragraph with Lead, Intro, Large, Small, Muted variants |
+| `emphasis`        | Bold (`<strong>`) and italic (`<em>`)                    |
+| `list`            | Ordered and unordered lists                              |
+| `blockquote`      | Styled blockquote with optional citation                 |
+| `horizontal-rule` | Divider with default, dashed, dotted, gradient styles    |
+| `image`           | Image with optional caption and glossary overlay         |
+| `link`            | Styled links with external URL indicator                 |
+| `highlight`       | Inline text highlight marker (yellow, blue, green)       |
 
 ### Interactive
-| Component | Description |
-| --- | --- |
-| `accordion` | Collapsible sections, single or multiple open |
-| `tabs` | Tabbed content with keyboard navigation (Arrow/Home/End) |
-| `steps` | Numbered step-by-step guide |
-| `tree` | Interactive file/folder tree |
-| `file-tree` | Simple string-based file tree |
 
-### Feedback & Layout
-| Component | Description |
-| --- | --- |
-| `alert` | Semantic `role="alert"` boxes — info, warning, destructive, success |
-| `card` | Card + CardHeader/Title/Description/Content/Footer + LinkCard for nav grids |
-| `kbd` | Keyboard shortcut display (`Ctrl+K`, `⌘+S`) |
+| Component   | Description                                              |
+| ----------- | -------------------------------------------------------- |
+| `accordion` | Collapsible sections, single or multiple open            |
+| `tabs`      | Tabbed content with keyboard navigation (Arrow/Home/End) |
+| `steps`     | Numbered step-by-step guide                              |
+| `tree`      | Interactive file/folder tree with expand/collapse        |
+| `file-tree` | Simple string-based file/folder tree                     |
+| `spoiler`   | Collapsible spoiler using native `<details>`/`<summary>` |
+| `reveal`    | Animated click-to-reveal expandable section              |
 
-### Code
-| Component | Description |
-| --- | --- |
-| `code-block` | Syntax-highlighted code blocks via `rehype-pretty-code` + Shiki |
-| `code-group` | Tabbed code blocks — npm/pnpm/yarn or multi-language examples |
-| `inline-code` | Inline code snippets |
-| `math` | LaTeX math via KaTeX (block and inline) |
-| `mermaid` | Mermaid diagrams (flowcharts, sequences, etc.) |
+### Feedback & Callouts
 
-### Callouts & Labels
-| Component | Description |
-| --- | --- |
-| `callout` | Alert boxes with info, warning, danger, success variants |
-| `badge` | Status labels with 7 variants |
-| `table` | Styled table with header, body, footer, caption |
+| Component       | Description                                                                 |
+| --------------- | --------------------------------------------------------------------------- |
+| `callout`       | Callout boxes — note, warning, tip, error variants                          |
+| `alert`         | Semantic `role="alert"` boxes — info, warning, destructive, success         |
+| `security-note` | Security warnings with severity levels (critical, warning, info)            |
+| `card`          | Card + CardHeader/Title/Description/Content/Footer + LinkCard for nav grids |
+| `badge`         | Status and label badges with multiple variants                              |
+| `kbd`           | Keyboard shortcut display (`Ctrl+K`, `⌘+S`)                                 |
+
+### Code & Diagrams
+
+| Component     | Description                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| `code-block`  | Syntax-highlighted code blocks via `rehype-pretty-code` + Shiki                              |
+| `code-group`  | Tabbed code blocks — npm/pnpm/yarn or multi-language examples                                |
+| `inline-code` | Styled inline code snippets                                                                  |
+| `diff-block`  | Git-style diff viewer with added/removed line highlighting                                   |
+| `terminal`    | Terminal/shell output block with `$` prompt styling                                          |
+| `preview`     | Live component preview with tabbed source code view                                          |
+| `mermaid`     | Mermaid diagrams with BST/BFS/DFS variants                                                   |
+| `ds`          | Full data structures visualization suite (arrays, graphs, trees, linked lists, heaps, tries) |
+| `ds-tree`     | Visual tree diagrams (BST, AVL, heap, n-ary, min/max heap)                                   |
+
+### Math
+
+| Component         | Description                                                          |
+| ----------------- | -------------------------------------------------------------------- |
+| `math`            | LaTeX math rendering via KaTeX (block and inline)                    |
+| `math-primitives` | Semantic math atoms: Frac, Pow, Sqrt, Abs, Deg, Greek letters        |
+| `math-equation`   | Equation display blocks with relation symbols (≈, ≠, ≤, ≥, →, ⟹, ⟺)  |
+| `math-solution`   | Step-by-step solution blocks: Solution, SolutionStep, SolutionAnswer |
+
+### Reference & Documentation
+
+| Component          | Description                                                          |
+| ------------------ | -------------------------------------------------------------------- |
+| `table`            | Styled markdown table with full semantic elements                    |
+| `data-table`       | Searchable and sortable data table                                   |
+| `changelog`        | Versioned changelog with Added/Fixed/Changed/Removed/Security badges |
+| `definition`       | Formal definition block with term label                              |
+| `glossary`         | Inline glossary terms with hover-to-reveal definitions               |
+| `annotation`       | Inline text with click-to-reveal explanation popover                 |
+| `invariant`        | Algorithm invariant callout with optional complexity badge           |
+| `complexity-table` | Algorithm time/space complexity table with Big-O notation            |
+| `data-type-table`  | ML/hardware data type reference (INT8, FP16, BF16, etc.)             |
+
+### Domain Specific
+
+| Component             | Description                                          |
+| --------------------- | ---------------------------------------------------- |
+| `certification-badge` | Compliance certification badges (ISO, SOC 2, GDPR)   |
+| `hardware-spec`       | Hardware interface specification comparison table    |
+| `privacy-table`       | GDPR/privacy policy data collection table            |
+| `register-map`        | Hardware/firmware register address map table         |
+| `json-ld`             | JSON-LD structured data script tag for SEO           |
+| `video`               | Responsive video embed (YouTube/native) with caption |
 
 ### Utilities
-| Component | Description |
-| --- | --- |
-| `mdx-components` | Auto-wired MDX component mapper |
-| `utils` | `cn()` utility (clsx + tailwind-merge) |
+
+| Component        | Description                            |
+| ---------------- | -------------------------------------- |
+| `mdx-components` | Auto-wired MDX component mapper        |
+| `utils`          | `cn()` utility (clsx + tailwind-merge) |
 
 ## How It Works
 
@@ -95,23 +143,28 @@ npm install rehype-pretty-code shiki
 
 ```ts
 // next.config.ts
-import rehypePrettyCode from "rehype-pretty-code"
+import rehypePrettyCode from "rehype-pretty-code";
 
 const withMDX = createMDX({
   options: {
-    rehypePlugins: [[rehypePrettyCode, {
-      theme: { light: "github-light-default", dark: "github-dark-default" },
-      defaultColor: false,
-    }]],
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: { light: "github-light-default", dark: "github-dark-default" },
+          defaultColor: false,
+        },
+      ],
+    ],
   },
-})
+});
 ```
 
 Map `pre` to `CodeBlock` in your MDX components:
 
 ```tsx
-import { CodeBlock } from "@/components/mdx/code-block"
-const components = { pre: CodeBlock }
+import { CodeBlock } from "@/components/mdx/code-block";
+const components = { pre: CodeBlock };
 ```
 
 Shiki CSS variables are automatically injected by `mdx-ui init`.
@@ -156,7 +209,7 @@ Commit both the `.tsx` source and the generated `registry/mdx/*.json`.
 
 ## Development
 
-**Prerequisites:** Node.js 18+, pnpm 9+
+**Prerequisites:** Node.js 20.12+, pnpm 9+
 
 ```bash
 git clone https://github.com/suryaravikumar-space/mdx-ui.git

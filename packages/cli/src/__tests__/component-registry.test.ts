@@ -134,7 +134,10 @@ describe("FILE_TO_COMPONENT", () => {
     // Every file listed in COMPONENT_FILES should appear in FILE_TO_COMPONENT
     for (const [componentName, files] of Object.entries(COMPONENT_FILES)) {
       for (const file of files) {
-        if ((file.endsWith(".tsx") || file.endsWith(".ts")) && !file.startsWith("lib/")) {
+        if (
+          (file.endsWith(".tsx") || file.endsWith(".ts")) &&
+          !file.startsWith("lib/")
+        ) {
           expect(
             FILE_TO_COMPONENT[file],
             `${file} missing from FILE_TO_COMPONENT`,

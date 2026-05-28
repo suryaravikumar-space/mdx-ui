@@ -9,10 +9,10 @@ Anonymous usage tracking via PostHog. Fires on `init` and `add` commands.
 
 ### Events to look for
 
-| Event | When fired | Key properties |
-|---|---|---|
+| Event  | When fired              | Key properties                       |
+| ------ | ----------------------- | ------------------------------------ |
 | `init` | User runs `mdx-ui init` | `framework` (react / nextjs / astro) |
-| `add` | User runs `mdx-ui add` | `components` (array of names added) |
+| `add`  | User runs `mdx-ui add`  | `components` (array of names added)  |
 
 ### Useful views
 

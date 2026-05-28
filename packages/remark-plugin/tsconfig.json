@@ -4,6 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": true,
+    "ignoreDeprecations": "6.0",
     "composite": true,
     "declaration": true,
     "declarationMap": true,

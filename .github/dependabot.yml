@@ -7,6 +7,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: dev
     labels:
       - "dependencies"
       - "ci"
@@ -17,6 +18,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: dev
     labels:
       - "dependencies"
     groups:
@@ -44,6 +46,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: dev
     labels:
       - "dependencies"
       - "registry"
@@ -54,6 +57,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: dev
     labels:
       - "dependencies"
       - "cli"
@@ -64,6 +68,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: dev
     labels:
       - "dependencies"
       - "remark-plugin"
@@ -74,6 +79,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    target-branch: dev
     labels:
       - "dependencies"
       - "www"

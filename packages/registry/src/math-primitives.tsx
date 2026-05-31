@@ -3,8 +3,24 @@ import { cn } from "@/lib/utils";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SECTION 1 — BASIC STRUCTURAL PRIMITIVES
-// Frac · Pow · Sub · Sqrt · Abs · Paren · Deg · Inf
+// Expr · Frac · Pow · Sub · Sqrt · Abs · Paren · Deg · Inf
 // ═══════════════════════════════════════════════════════════════════════════════
+
+/** Inline composition wrapper — groups text, symbols, and components into a single expression node. Use instead of fragments or bare spans when passing multiple children as a JSX prop. */
+export function Expr({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span className={cn("inline-flex items-center align-middle", className)}>
+      {children}
+    </span>
+  );
+}
+Expr.displayName = "Expr";
 
 interface FracProps {
   num: React.ReactNode;
@@ -22,8 +38,10 @@ export function Frac({ num, den, className }: FracProps) {
         className,
       )}
     >
-      <span className="border-b border-current px-1 leading-snug">{num}</span>
-      <span className="px-1 leading-snug">{den}</span>
+      <span className="self-stretch border-b border-current px-1 pb-1 text-center leading-snug">
+        {num}
+      </span>
+      <span className="px-1 pt-1 leading-snug">{den}</span>
     </span>
   );
 }
@@ -131,18 +149,40 @@ export function Paren({
   className?: string;
 }) {
   return (
-    <span className={cn("mx-px inline-flex items-center", className)}>
-      <span className="select-none text-[1.3em] font-light leading-none">
+    <span className={cn("mx-px inline-flex items-stretch", className)}>
+      <span className="flex items-center select-none text-[1.6em] font-extralight leading-none">
         (
       </span>
-      <span>{children}</span>
-      <span className="select-none text-[1.3em] font-light leading-none">
+      <span className="mx-0.5">{children}</span>
+      <span className="flex items-center select-none text-[1.6em] font-extralight leading-none">
         )
       </span>
     </span>
   );
 }
 Paren.displayName = "Paren";
+
+/** Curly brace grouping: {expr}. Use for set notation or visual grouping with braces. */
+export function Brace({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span className={cn("mx-px inline-flex items-stretch", className)}>
+      <span className="flex items-center select-none text-[1.6em] font-extralight leading-none">
+        {"{"}
+      </span>
+      <span className="mx-0.5">{children}</span>
+      <span className="flex items-center select-none text-[1.6em] font-extralight leading-none">
+        {"}"}
+      </span>
+    </span>
+  );
+}
+Brace.displayName = "Brace";
 
 /** Degree symbol as superscript: 30°. */
 export function Deg({

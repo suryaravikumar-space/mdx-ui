@@ -22,7 +22,7 @@ export function TableOfContents({ toc }: TocProps) {
       },
       {
         rootMargin: "0% 0% -80% 0%",
-      }
+      },
     );
 
     const headings = document.querySelectorAll("h2, h3");
@@ -38,8 +38,10 @@ export function TableOfContents({ toc }: TocProps) {
   }
 
   return (
-    <div className="space-y-3">
-      <p className="text-sm font-semibold">On This Page</p>
+    <div className="space-y-4">
+      <p className="text-[11px] font-semibold uppercase tracking-widest text-foreground/40">
+        On This Page
+      </p>
       <Tree tree={toc} activeId={activeId} />
     </div>
   );
@@ -47,17 +49,17 @@ export function TableOfContents({ toc }: TocProps) {
 
 function Tree({ tree, activeId }: { tree: TocEntry[]; activeId: string }) {
   return tree?.length ? (
-    <div className="flex flex-col space-y-3">
+    <div className="flex flex-col space-y-1">
       {tree.map((item) => (
         <a
           key={item.id}
           href={`#${item.id}`}
           className={cn(
-            "inline-block text-sm leading-snug no-underline transition-colors hover:text-foreground",
-            item.level === 3 && "pl-4",
+            "border-l-2 py-1 pl-3 text-sm leading-snug no-underline transition-colors",
+            item.level === 3 && "ml-3 text-[13px]",
             activeId === item.id
-              ? "font-medium text-foreground"
-              : "text-muted-foreground"
+              ? "border-green-500 font-medium text-foreground"
+              : "border-transparent text-muted-foreground hover:border-border hover:text-foreground",
           )}
         >
           {item.text}

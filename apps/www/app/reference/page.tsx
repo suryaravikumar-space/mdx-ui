@@ -3,7 +3,9 @@ export default function ReferencePage() {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <div className="space-y-2">
-          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">API Reference</h1>
+          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+            API Reference
+          </h1>
           <p className="text-lg text-muted-foreground">
             Complete API documentation for MDX UI components and utilities.
           </p>
@@ -15,8 +17,9 @@ export default function ReferencePage() {
               Overview
             </h2>
             <p className="leading-7">
-              This reference covers all components, CLI commands, and utilities available in MDX UI.
-              Each component includes detailed prop documentation, usage examples, and accessibility notes.
+              This reference covers all components, CLI commands, and utilities
+              available in MDX UI. Each component includes detailed prop
+              documentation, usage examples, and accessibility notes.
             </p>
           </section>
 

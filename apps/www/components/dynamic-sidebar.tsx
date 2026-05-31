@@ -12,7 +12,9 @@ export function DynamicSidebar() {
   const sidebar = getSidebarByPath(pathname);
 
   // Determine if we're in the /components section (not /docs/components)
-  const isComponentsSection = pathname.startsWith("/components") && !pathname.startsWith("/docs/components");
+  const isComponentsSection =
+    pathname.startsWith("/components") &&
+    !pathname.startsWith("/docs/components");
 
   return (
     <nav className="w-full">
@@ -32,7 +34,12 @@ interface SidebarRouteTreeProps {
   pathPrefix?: string;
 }
 
-function SidebarRouteTree({ routes, pathname, level = 0, pathPrefix = "/docs" }: SidebarRouteTreeProps) {
+function SidebarRouteTree({
+  routes,
+  pathname,
+  level = 0,
+  pathPrefix = "/docs",
+}: SidebarRouteTreeProps) {
   return (
     <div className="space-y-1">
       {routes.map((route, index) => {
@@ -41,8 +48,8 @@ function SidebarRouteTree({ routes, pathname, level = 0, pathPrefix = "/docs" }:
             <div
               key={`section-${route.sectionHeader}-${index}`}
               className={cn(
-                "mb-1 px-2 py-1.5 text-xs font-medium tracking-wide text-foreground/60",
-                level > 0 && "mt-6"
+                "pb-1 pt-6 text-[10px] font-semibold uppercase tracking-widest text-foreground/40",
+                index === 0 && "pt-2",
               )}
             >
               {route.sectionHeader}
@@ -71,7 +78,12 @@ interface SidebarRouteProps {
   pathPrefix?: string;
 }
 
-function SidebarRoute({ route, pathname, level, pathPrefix = "/docs" }: SidebarRouteProps) {
+function SidebarRoute({
+  route,
+  pathname,
+  level,
+  pathPrefix = "/docs",
+}: SidebarRouteProps) {
   const hasChildren = route.routes && route.routes.length > 0;
 
   // Transform the path based on the prefix
@@ -94,36 +106,40 @@ function SidebarRoute({ route, pathname, level, pathPrefix = "/docs" }: SidebarR
 
   if (hasChildren) {
     return (
-      <div className="space-y-1">
+      <div className="space-y-0.5">
         <div
           className={cn(
-            "flex w-full items-center justify-between rounded-md text-sm transition-colors hover:text-foreground",
-            level > 0 && "pl-4",
-            isActive ? "text-foreground font-medium" : "text-muted-foreground"
+            "flex w-full items-center justify-between border-l-2 py-1.5 text-sm transition-colors",
+            level > 0 && "ml-3",
+            isActive
+              ? "border-green-500 font-medium text-foreground"
+              : "border-transparent text-muted-foreground hover:border-border hover:text-foreground",
           )}
         >
-          <Link
-            href={transformedPath}
-            className="flex-1 px-2 py-1.5"
-          >
+          <Link href={transformedPath} className="flex-1 pl-3 pr-2">
             {route.title}
           </Link>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="px-2 py-1.5 hover:text-foreground"
+            className="pr-2 hover:text-foreground"
             aria-label={isExpanded ? "Collapse" : "Expand"}
           >
             <ChevronRight
               className={cn(
                 "h-3.5 w-3.5 shrink-0 transition-transform duration-200",
-                isExpanded && "rotate-90"
+                isExpanded && "rotate-90",
               )}
             />
           </button>
         </div>
         {isExpanded && route.routes && (
-          <div className="ml-2 border-l pl-2">
-            <SidebarRouteTree routes={route.routes} pathname={pathname} level={level + 1} pathPrefix={pathPrefix} />
+          <div className="ml-5">
+            <SidebarRouteTree
+              routes={route.routes}
+              pathname={pathname}
+              level={level + 1}
+              pathPrefix={pathPrefix}
+            />
           </div>
         )}
       </div>
@@ -138,13 +154,13 @@ function SidebarRoute({ route, pathname, level, pathPrefix = "/docs" }: SidebarR
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          "flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground",
-          level > 0 && "pl-4"
+          "flex items-center justify-between border-l-2 border-transparent py-1.5 pl-3 pr-2 text-sm text-muted-foreground transition-colors hover:border-border hover:text-foreground",
+          level > 0 && "ml-3",
         )}
       >
         <span>{route.title}</span>
         <svg
-          className="h-3 w-3"
+          className="h-3 w-3 shrink-0"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -166,16 +182,18 @@ function SidebarRoute({ route, pathname, level, pathPrefix = "/docs" }: SidebarR
       <Link
         href={transformedPath}
         className={cn(
-          "block rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground",
-          level > 0 && "pl-4",
-          isActive && "bg-accent font-medium text-accent-foreground"
+          "block border-l-2 py-1.5 pl-3 pr-2 text-sm transition-colors",
+          level > 0 && "ml-3",
+          isActive
+            ? "border-green-500 font-medium text-foreground"
+            : "border-transparent text-muted-foreground hover:border-border hover:text-foreground",
         )}
       >
         <div>{route.title}</div>
         {(route.date || route.author) && (
-          <div className="mt-0.5 text-xs text-muted-foreground">
+          <div className="mt-0.5 text-xs text-muted-foreground/70">
             {route.date && <span>{route.date}</span>}
-            {route.date && route.author && <span className="mx-1">•</span>}
+            {route.date && route.author && <span className="mx-1">·</span>}
             {route.author && <span>{route.author}</span>}
           </div>
         )}
@@ -188,9 +206,11 @@ function SidebarRoute({ route, pathname, level, pathPrefix = "/docs" }: SidebarR
     <Link
       href={transformedPath}
       className={cn(
-        "block rounded-md px-2 py-1.5 text-sm transition-colors hover:text-foreground",
-        level > 0 && "pl-4",
-        isActive ? "text-foreground font-medium" : "text-muted-foreground"
+        "block border-l-2 py-1.5 pl-3 pr-2 text-sm transition-colors",
+        level > 0 && "ml-3",
+        isActive
+          ? "border-green-500 font-medium text-foreground"
+          : "border-transparent text-muted-foreground hover:border-border hover:text-foreground",
       )}
     >
       {route.title}

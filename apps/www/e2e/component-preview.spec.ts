@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-// Representative component pages — each must have a <ComponentPreview> tag.
+// Representative component pages — each must have a <Demo> tag.
 const COMPONENT_PAGES = [
   "accordion",
   "badge",
@@ -16,7 +16,7 @@ const COMPONENT_PAGES = [
   "highlight",
 ] as const;
 
-test.describe("ComponentPreview widget", () => {
+test.describe("Demo widget", () => {
   // ── Detailed tests against a single representative page ──────────────────
 
   test.describe("accordion component page", () => {

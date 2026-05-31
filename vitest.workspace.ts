@@ -1,6 +1,4 @@
-import { defineWorkspace } from "vitest/config"
-
-export default defineWorkspace([
+export default [
   "packages/cli/vitest.config.ts",
   "packages/remark-plugin/vitest.config.ts",
-])
+];

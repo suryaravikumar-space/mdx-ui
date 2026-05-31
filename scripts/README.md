@@ -1,126 +1,127 @@
-# Registry Build Script
+# Scripts
 
-This script automatically generates the `/registry/` folder from `/packages/registry/src/`, eliminating manual duplication.
+This directory contains build scripts that automate code generation for mdx-ui.
 
-## How It Works
+## Scripts Overview
 
-1. **Source of Truth:** `/packages/registry/src/` contains the actual TypeScript component files
-2. **Auto-Generation:** Script reads all `.tsx` files and generates JSON files
-3. **Output:** Creates `/registry/mdx/*.json` files for the CLI to fetch from GitHub
+| Script              | Location            | Command                                     |
+| ------------------- | ------------------- | ------------------------------------------- |
+| `build-registry.ts` | `scripts/`          | `pnpm build:registry`                       |
+| `build-previews.ts` | `apps/www/scripts/` | runs automatically before `dev` and `build` |
 
-## Usage
+---
 
-### Build the Registry
+## `build-registry.ts`
+
+Generates the `/registry/` folder from `/packages/registry/src/`, eliminating manual duplication.
+
+### How It Works
+
+1. Reads all `.tsx` files from `/packages/registry/src/` (52 components)
+2. Generates individual JSON files in `/registry/mdx/*.json`
+3. Generates the master index `/registry/registry.json`
+4. Computes a `sha256` integrity hash per component file
+
+### Usage
 
 ```bash
 pnpm build:registry
 ```
 
-This will:
-- Read all components from `/packages/registry/src/`
-- Generate individual JSON files in `/registry/mdx/`
-- Create the master `/registry/registry.json` file
+### Component Metadata
 
-### Workflow
-
-1. **Develop Components**
-   ```bash
-   # Edit files in packages/registry/src/
-   vim packages/registry/src/callout.tsx
-   ```
-
-2. **Build Registry**
-   ```bash
-   pnpm build:registry
-   ```
-
-3. **Commit Changes**
-   ```bash
-   git add .
-   git commit -m "feat: update callout component"
-   git push
-   ```
-
-4. **Publish CLI (if needed)**
-   ```bash
-   cd packages/cli
-   pnpm build
-   npm publish --access public
-   ```
-
-## Component Metadata
-
-Component metadata is defined in `build-registry.ts` in the `componentsMetadata` object:
+Each component entry in `build-registry.ts` has:
 
 ```typescript
-const componentsMetadata = {
-  "component-name": {
-    description: "Component description",
-    dependencies: ["dependency1", "dependency2"],
-    registryDependencies: ["utils"]
-  }
+"component-name": {
+  description: "What it renders",
+  whenToUse: "Guidance on appropriate use",
+  whenNotToUse: "What to avoid",
+  example: "<Component ... />",
+  dependencies: ["npm-package"],        // optional
+  registryDependencies: ["utils"],      // other mdx-ui components needed
 }
 ```
 
 ### Adding a New Component
 
-1. Create the component file in `/packages/registry/src/new-component.tsx`
-2. Add metadata in `scripts/build-registry.ts`:
-   ```typescript
-   "new-component": {
-     description: "Description of the new component",
-     dependencies: [],
-     registryDependencies: ["utils"]
-   }
-   ```
+1. Create the source file in `/packages/registry/src/new-component.tsx`
+2. Add its metadata entry in `scripts/build-registry.ts`
 3. Run `pnpm build:registry`
-4. Commit all changes
+4. Commit both the source file and the generated JSON
 
-## Benefits
+---
 
-✅ **Single Source of Truth:** Only edit files in `/packages/registry/src/`
-✅ **No Manual Duplication:** Registry JSON files are auto-generated
-✅ **Consistency:** Guarantees registry matches source code
-✅ **Version Control:** Easy to track changes in git
+## `apps/www/scripts/build-previews.ts`
+
+Generates `apps/www/components/demo-sources.generated.ts` — the syntax-highlighted source map used by the `<Demo>` widget in the docs.
+
+### How It Works
+
+1. Reads all `*.tsx` files from `apps/www/components/demos/`
+2. Highlights each file with Shiki (dual theme: `github-dark` / `github-light`)
+3. Writes `DEMO_SOURCES` map to `demo-sources.generated.ts`
+
+### When It Runs
+
+Automatically before `dev` and `build` via `predev` / `prebuild` hooks in `apps/www/package.json`. Run manually if you add a new demo file mid-session:
+
+```bash
+cd apps/www && pnpm tsx scripts/build-previews.ts
+```
+
+### Adding a Demo
+
+1. Create `apps/www/components/demos/my-component-default.tsx`
+2. Add `<Demo name="my-component-default" />` to the component's `.mdx` docs page
+3. Run `build-previews` — or just restart `dev` (it runs automatically)
+
+---
 
 ## File Structure
 
 ```
 mdx-ui/
-├── packages/registry/src/     ← Edit here (source of truth)
-│   ├── callout.tsx
-│   ├── tree.tsx
-│   └── lib/utils.ts
+├── scripts/
+│   ├── build-registry.ts      ← Generates registry JSON from source
+│   └── README.md
 │
-├── registry/                  ← Auto-generated (don't edit manually)
+├── packages/registry/src/     ← Source of truth (52 components) — edit here
+│   ├── math-primitives.tsx
+│   ├── callout.tsx
+│   └── ...
+│
+├── registry/                  ← Auto-generated — do not edit manually
 │   ├── mdx/
+│   │   ├── math-primitives.json
 │   │   ├── callout.json
-│   │   └── tree.json
+│   │   └── ...  (52 files)
 │   └── registry.json
 │
-└── scripts/
-    └── build-registry.ts      ← Build script
+└── apps/www/
+    ├── scripts/
+    │   └── build-previews.ts  ← Generates demo source map
+    ├── components/demos/      ← Demo files for <Demo> widget
+    │   ├── callout-default.tsx
+    │   └── ...  (46 demos)
+    └── components/
+        └── demo-sources.generated.ts  ← Auto-generated — do not edit
 ```
 
 ## Troubleshooting
 
-### Component not showing up
+### Component not appearing in CLI
 
-1. Check if component file exists in `/packages/registry/src/`
-2. Verify metadata exists in `scripts/build-registry.ts`
-3. Run `pnpm build:registry` again
+1. Check the source file exists in `/packages/registry/src/`
+2. Check metadata entry exists in `scripts/build-registry.ts`
+3. Run `pnpm build:registry`
 
-### Path errors in CLI
+### Demo not showing in docs
 
-Make sure the generated JSON files have `"path"` key, not `"name"`:
+1. Check demo file exists in `apps/www/components/demos/`
+2. Check `<Demo name="...">` is in the `.mdx` file
+3. Run `cd apps/www && pnpm tsx scripts/build-previews.ts`
 
-```json
-{
-  "files": [
-    {
-      "path": "component.tsx",  // ✅ Correct
-      "content": "..."
-    }
-  ]
-}
-```
+### JSON parse error in registry
+
+Never edit files in `/registry/mdx/` directly — always edit the source in `/packages/registry/src/` and regenerate with `pnpm build:registry`.

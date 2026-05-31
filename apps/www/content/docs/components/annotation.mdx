@@ -7,6 +7,8 @@ registryDependencies: ["utils"]
 dependencies: ["clsx", "tailwind-merge"]
 ---
 
+<Demo name="annotation-default" />
+
 ## Installation
 
 ```bash
@@ -15,38 +17,71 @@ npx @ravikumarsurya/mdx-ui add annotation
 
 ## Usage
 
-```tsx
+```tsx title="page.mdx" showLineNumbers
 import { Annotation } from "@/components/mdx/annotation";
+import { BigO, Pow } from "@/components/mdx/math-primitives";
 
 <Annotation note="Quadratic time: for each element we scan all remaining elements.">
-  O(n²)
+  <BigO />(<Pow exp="2">n</Pow>)
 </Annotation>;
 ```
 
 ## Examples
 
-<ComponentPreview name="annotation-default" />
-
 ### Basic annotation
 
 Click the underlined text to reveal the explanation.
 
-```tsx
+```tsx title="page.mdx"
 <Annotation note="A data structure that stores key-value pairs.">
   hash map
 </Annotation>
 ```
 
-### Mathematical notation
+### Algorithm complexity
 
-```tsx
-The algorithm runs in <Annotation note="Logarithmic time — halves the search space each step.">O(log n)</Annotation> time.
+Use `BigO`, `BigTheta`, `BigOmega` from math-primitives for proper asymptotic notation.
+
+```tsx title="page.mdx" showLineNumbers
+import {
+  BigO,
+  BigTheta,
+  BigOmega,
+  Pow,
+} from "@/components/mdx/math-primitives";
+
+{
+  /* Upper bound */
+}
+<Annotation note="Worst case: visits every node once.">
+  <BigO />
+  (n)
+</Annotation>;
+
+{
+  /* Tight bound */
+}
+<Annotation note="Both upper and lower bound: merge sort always splits log n times.">
+  <BigTheta />
+  (n log n)
+</Annotation>;
+
+{
+  /* Quadratic */
+}
+<Annotation note="For each of n elements, we compare against all others — n × n operations.">
+  <BigO />(<Pow exp="2">n</Pow>)
+</Annotation>;
 ```
 
 ### Technical term in prose
 
-```tsx
-The chip uses <Annotation note="One-Time Programmable: fuse bits that can be written once and never changed.">OTP</Annotation> fuses for secure key storage.
+```tsx title="page.mdx"
+The chip uses{" "}
+<Annotation note="One-Time Programmable: fuse bits written once and never changed.">
+  OTP
+</Annotation>{" "}
+fuses for secure key storage.
 ```
 
 ## Props

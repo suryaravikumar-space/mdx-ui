@@ -1,13 +1,13 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface VideoProps extends React.HTMLAttributes<HTMLElement> {
-  src: string
-  title?: string
-  caption?: string
-  autoPlay?: boolean
-  loop?: boolean
-  muted?: boolean
+  src: string;
+  title?: string;
+  caption?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
 }
 
 function getYouTubeId(url: string): string | null {
@@ -15,30 +15,49 @@ function getYouTubeId(url: string): string | null {
     /youtube\.com\/watch\?(?:.*&)?v=([a-zA-Z0-9_-]+)/,
     /youtu\.be\/([a-zA-Z0-9_-]+)/,
     /youtube\.com\/embed\/([a-zA-Z0-9_-]+)/,
-  ]
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]+)/,
+  ];
   for (const p of patterns) {
-    const m = url.match(p)
-    if (m) return m[1]
+    const m = url.match(p);
+    if (m) return m[1];
   }
-  return null
+  return null;
+}
+
+function isYouTubeShort(url: string): boolean {
+  return url.includes("/shorts/");
 }
 
 function getVimeoId(url: string): string | null {
-  const m = url.match(/vimeo\.com\/(\d+)/)
-  return m ? m[1] : null
+  const m = url.match(/vimeo\.com\/(\d+)/);
+  return m ? m[1] : null;
 }
 
 export const Video = React.forwardRef<HTMLElement, VideoProps>(
-  ({ src, title, caption, autoPlay, loop, muted, className, ...props }, ref) => {
-    const youtubeId = getYouTubeId(src)
-    const vimeoId = !youtubeId ? getVimeoId(src) : null
-    const isHtml5 = !youtubeId && !vimeoId
+  (
+    { src, title, caption, autoPlay, loop, muted, className, ...props },
+    ref,
+  ) => {
+    const youtubeId = getYouTubeId(src);
+    const vimeoId = !youtubeId ? getVimeoId(src) : null;
+    const isHtml5 = !youtubeId && !vimeoId;
+    const isShort = youtubeId ? isYouTubeShort(src) : false;
 
     return (
       <figure ref={ref} className={cn("my-6", className)} {...props}>
-        <div className="overflow-hidden rounded-lg border border-border bg-black">
+        <div
+          className={cn(
+            "overflow-hidden rounded-lg border border-border bg-black",
+            isShort && "mx-auto max-w-xs",
+          )}
+        >
           {youtubeId ? (
-            <div className="relative aspect-video">
+            <div
+              className={cn(
+                "relative",
+                isShort ? "aspect-[9/16]" : "aspect-video",
+              )}
+            >
               <iframe
                 src={`https://www.youtube.com/embed/${youtubeId}${autoPlay ? "?autoplay=1" : ""}`}
                 title={title ?? "YouTube video"}
@@ -76,7 +95,7 @@ export const Video = React.forwardRef<HTMLElement, VideoProps>(
           </figcaption>
         )}
       </figure>
-    )
-  }
-)
-Video.displayName = "Video"
+    );
+  },
+);
+Video.displayName = "Video";

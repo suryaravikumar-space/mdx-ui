@@ -62,7 +62,10 @@ import { Spoiler } from "@/components/mdx/spoiler";
 import { Annotation } from "@/components/mdx/annotation";
 import { Reveal } from "@/components/mdx/reveal";
 import { Preview } from "@/components/mdx/preview";
-import { ComponentPreview } from "@/components/component-preview";
+import { Demo } from "@/components/demo";
+import { SymbolBrowser } from "@/components/symbol-browser";
+import { DocsCodeBlock } from "@/components/docs-code-block";
+import { Sandbox } from "@/components/sandbox";
 import { GlossaryProvider, Term } from "@/components/mdx/glossary";
 import { Video } from "@/components/mdx/video";
 import { Image, ImageGlossary } from "@/components/mdx/image";
@@ -115,6 +118,7 @@ import {
   Bot,
   Bowtie,
   Bra,
+  Brace,
   BraKet,
   Bullet,
   Cardinality,
@@ -202,6 +206,7 @@ import {
   Exists,
   Exp,
   Expected,
+  Expr,
   Factorial,
   FF,
   FilledCircle,
@@ -552,7 +557,9 @@ const components = {
   Annotation,
   Reveal,
   Preview,
-  ComponentPreview,
+  Demo,
+  SymbolBrowser,
+  Sandbox,
   GlossaryProvider,
   Term,
   Video,
@@ -606,6 +613,7 @@ const components = {
   Bot,
   Bowtie,
   Bra,
+  Brace,
   BraKet,
   Bullet,
   Cardinality,
@@ -693,6 +701,7 @@ const components = {
   Exists,
   Exp,
   Expected,
+  Expr,
   Factorial,
   FF,
   FilledCircle,
@@ -1053,11 +1062,8 @@ const components = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className="mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4"
-      {...props}
-    />
+  pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
+    <DocsCodeBlock {...props} />
   ),
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code

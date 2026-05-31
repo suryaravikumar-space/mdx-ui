@@ -1,10 +1,28 @@
+"use client";
+
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SECTION 1 — BASIC STRUCTURAL PRIMITIVES
-// Frac · Pow · Sub · Sqrt · Abs · Paren · Deg · Inf
+// Expr · Frac · Pow · Sub · Sqrt · Abs · Paren · Deg · Inf
 // ═══════════════════════════════════════════════════════════════════════════════
+
+/** Inline composition wrapper — groups text, symbols, and components into a single expression node. Use instead of fragments or bare spans when passing multiple children as a JSX prop. */
+export function Expr({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <span className={cn("inline-flex items-center align-middle", className)}>
+      {children}
+    </span>
+  );
+}
+Expr.displayName = "Expr";
 
 interface FracProps {
   num: React.ReactNode;
@@ -22,8 +40,10 @@ export function Frac({ num, den, className }: FracProps) {
         className,
       )}
     >
-      <span className="border-b border-current px-1 leading-snug">{num}</span>
-      <span className="px-1 leading-snug">{den}</span>
+      <span className="self-stretch border-b border-current px-1 pb-1 text-center leading-snug">
+        {num}
+      </span>
+      <span className="px-1 pt-1 leading-snug">{den}</span>
     </span>
   );
 }
@@ -131,18 +151,66 @@ export function Paren({
   className?: string;
 }) {
   return (
-    <span className={cn("mx-px inline-flex items-center", className)}>
-      <span className="select-none text-[1.3em] font-light leading-none">
+    <span className={cn("mx-px inline-flex items-stretch", className)}>
+      <span className="flex items-center select-none text-[1.6em] font-extralight leading-none">
         (
       </span>
-      <span>{children}</span>
-      <span className="select-none text-[1.3em] font-light leading-none">
+      <span className="mx-0.5">{children}</span>
+      <span className="flex items-center select-none text-[1.6em] font-extralight leading-none">
         )
       </span>
     </span>
   );
 }
 Paren.displayName = "Paren";
+
+/** Curly brace grouping: {expr}. Dynamically scales { } to match content height. */
+export function Brace({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const contentRef = React.useRef<HTMLSpanElement>(null);
+  const [scale, setScale] = React.useState(1.6);
+
+  React.useLayoutEffect(() => {
+    if (!contentRef.current) return;
+    const measure = () => {
+      const el = contentRef.current;
+      if (!el) return;
+      const fontSize = parseFloat(getComputedStyle(el).fontSize);
+      const height = el.offsetHeight;
+      setScale(Math.max(1.2, height / fontSize));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(contentRef.current);
+    return () => ro.disconnect();
+  }, []);
+
+  const scaleX = Math.pow(scale, 0.25);
+  const charStyle: React.CSSProperties = {
+    display: "inline-block",
+    transform: `scaleX(${scaleX}) scaleY(${scale})`,
+    transformOrigin: "center",
+    lineHeight: 1,
+    fontWeight: 200,
+    userSelect: "none",
+  };
+
+  return (
+    <span className={cn("mx-px inline-flex items-center", className)}>
+      <span style={charStyle}>{"{"}</span>
+      <span ref={contentRef} className="mx-0.5">
+        {children}
+      </span>
+      <span style={charStyle}>{"}"}</span>
+    </span>
+  );
+}
+Brace.displayName = "Brace";
 
 /** Degree symbol as superscript: 30°. */
 export function Deg({
@@ -2492,3 +2560,35 @@ export const Vartheta = mkGreekVariant("ϑ", "vartheta"); // alternate θ
 export const Varpi = mkGreekVariant("ϖ", "varpi"); // alternate π
 export const Varrho = mkGreekVariant("ϱ", "varrho"); // alternate ρ
 export const Digamma = mkGreekVariant("ϝ", "digamma"); // archaic Greek
+
+// SECTION 31 — COMPUTER SCIENCE / ALGORITHMS
+// Asymptotic complexity notation: Big-O, Big-Theta, Big-Omega, little-o, little-omega
+// Use these instead of plain letters or Unicode superscripts in algorithm docs.
+
+const mkAsymptotic = (letter: string, label: string, italic = true) => {
+  const A = ({ className }: { className?: string }) => (
+    <span
+      className={cn(
+        "font-serif text-[1.15em] px-0.5 py-0.5",
+        italic && "italic",
+        className,
+      )}
+      aria-label={label}
+    >
+      {letter}
+    </span>
+  );
+  A.displayName = label.replace(/\s+/g, "");
+  return A;
+};
+
+/** O(n) — upper bound (Big-O). Upright serif O — the standard CS convention. */
+export const BigO = mkAsymptotic("O", "Big O", false);
+/** Θ(n) — tight bound (Big-Theta). Use when upper and lower bounds match. */
+export const BigTheta = mkAsymptotic("Θ", "Big Theta");
+/** Ω(n) — lower bound (Big-Omega). Use for best-case complexity. */
+export const BigOmega = mkAsymptotic("Ω", "Big Omega");
+/** 𝑜(n) — strict upper bound (little-o). */
+export const LittleO = mkAsymptotic("𝑜", "little o");
+/** ω(n) — strict lower bound (little-omega). */
+export const LittleOmega = mkAsymptotic("ω", "little omega");

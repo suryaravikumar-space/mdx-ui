@@ -1,5 +1,6 @@
 "use client";
 
+import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 const PlaygroundClient = dynamic(
@@ -11,5 +12,9 @@ const PlaygroundClient = dynamic(
 );
 
 export function PlaygroundWrapper() {
-  return <PlaygroundClient />;
+  return (
+    <Suspense fallback={null}>
+      <PlaygroundClient />
+    </Suspense>
+  );
 }

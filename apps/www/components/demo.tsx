@@ -51,6 +51,10 @@ import CodeGroupDefault from "@/components/demos/code-group-default";
 import DataTableDefault from "@/components/demos/data-table-default";
 import PreviewDefault from "@/components/demos/preview-default";
 import RegisterMapDefault from "@/components/demos/register-map-default";
+import MathSolutionDefault from "@/components/demos/math-solution-default";
+import MathEquationDefault from "@/components/demos/math-equation-default";
+import MathPrimitivesDefault from "@/components/demos/math-primitives-default";
+import VideoDefault from "@/components/demos/video-default";
 
 const DEMOS: Record<string, React.ComponentType> = {
   // Original 8
@@ -98,6 +102,10 @@ const DEMOS: Record<string, React.ComponentType> = {
   "data-table-default": DataTableDefault,
   "preview-default": PreviewDefault,
   "register-map-default": RegisterMapDefault,
+  "math-solution-default": MathSolutionDefault,
+  "math-equation-default": MathEquationDefault,
+  "math-primitives-default": MathPrimitivesDefault,
+  "video-default": VideoDefault,
 };
 
 function ErrorMessage({ name }: { name: string }) {
@@ -108,7 +116,7 @@ function ErrorMessage({ name }: { name: string }) {
   );
 }
 
-export function ComponentPreview({ name }: { name: string }) {
+export function Demo({ name }: { name: string }) {
   const Demo = DEMOS[name];
   const data = DEMO_SOURCES[name];
 

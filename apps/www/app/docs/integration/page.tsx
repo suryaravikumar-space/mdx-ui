@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allDocs } from "contentlayer/generated";
+import { siteConfig } from "@/lib/site";
 import { Mdx } from "@/components/mdx-components";
 import { TableOfContents } from "@/components/toc";
 import { getTableOfContents } from "@/lib/toc";
@@ -8,11 +10,24 @@ import { PageNavigation } from "@/components/page-navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+export function generateMetadata(): Metadata {
+  return {
+    title: "Integration",
+    description:
+      "Integrate MDX UI with Next.js, Astro, Remix, and other frameworks using next-mdx-remote or the remark plugin.",
+    alternates: { canonical: `${siteConfig.url}/docs/integration` },
+    openGraph: {
+      title: "Integration — MDX UI",
+      description:
+        "Integrate MDX UI with Next.js, Astro, Remix, and other frameworks using next-mdx-remote or the remark plugin.",
+      url: `${siteConfig.url}/docs/integration`,
+    },
+  };
+}
+
 export default async function IntegrationIndexPage() {
   // Find the integration index page
-  const doc = allDocs.find(
-    (doc) => doc.slugAsParams === "integration"
-  );
+  const doc = allDocs.find((doc) => doc.slugAsParams === "integration");
 
   if (!doc) {
     notFound();
@@ -22,15 +37,20 @@ export default async function IntegrationIndexPage() {
   const breadcrumbs = getBreadcrumbs(doc.slug);
 
   return (
-    <main className="relative px-4 py-6 md:px-8 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:gap-16">
+    <main className="relative py-8 lg:gap-10 lg:py-12 xl:grid xl:grid-cols-[1fr_300px] xl:gap-20">
       <div className="mx-auto w-full min-w-0 max-w-3xl">
         {/* Breadcrumbs */}
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           {breadcrumbs.map((crumb, index) => (
-            <div key={crumb.path || index} className="flex items-center space-x-1">
+            <div
+              key={crumb.path || index}
+              className="flex items-center space-x-1"
+            >
               {index > 0 && <ChevronRight className="h-4 w-4" />}
               {index === breadcrumbs.length - 1 ? (
-                <span className="font-medium text-foreground">{crumb.title}</span>
+                <span className="font-medium text-foreground">
+                  {crumb.title}
+                </span>
               ) : (
                 <Link
                   href={crumb.path || "#"}

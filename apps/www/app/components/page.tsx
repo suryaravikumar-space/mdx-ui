@@ -11,7 +11,8 @@ export default function ComponentsPage() {
             Browse Components
           </h1>
           <p className="text-lg text-muted-foreground md:text-xl">
-            {allComponents.length} beautifully designed MDX components for your documentation.
+            {allComponents.length} beautifully designed MDX components for your
+            documentation.
           </p>
         </div>
 
@@ -34,29 +35,35 @@ export default function ComponentsPage() {
                 <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
               </div>
 
-              {component.registryDependencies && component.registryDependencies.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {component.registryDependencies.map((dep) => (
-                    <span
-                      key={dep}
-                      className="rounded-md bg-muted px-2 py-1 text-xs"
-                    >
-                      {dep}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {component.registryDependencies &&
+                component.registryDependencies.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {component.registryDependencies.map((dep) => (
+                      <span
+                        key={dep}
+                        className="rounded-md bg-muted px-2 py-1 text-xs"
+                      >
+                        {dep}
+                      </span>
+                    ))}
+                  </div>
+                )}
             </Link>
           ))}
         </div>
 
         <div className="mt-12 rounded-lg border bg-muted/50 p-6">
-          <h2 className="mb-2 text-lg font-semibold">Need a specific component?</h2>
+          <h2 className="mb-2 text-lg font-semibold">
+            Need a specific component?
+          </h2>
           <p className="text-sm text-muted-foreground">
-            All components are available via the CLI. Install any component directly into your project:
+            All components are available via the CLI. Install any component
+            directly into your project:
           </p>
           <div className="mt-4 rounded-md bg-background p-4">
-            <code className="text-sm">npx mdx-ui add blockquote callout steps</code>
+            <code className="text-sm">
+              npx mdx-ui add blockquote callout steps
+            </code>
           </div>
         </div>
       </div>

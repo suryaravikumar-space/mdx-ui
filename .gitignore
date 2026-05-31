@@ -38,6 +38,9 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Internal docs
+COMPETITIVE-ANALYSIS.md
+
 # Keys & certificates
 key
 key.pub

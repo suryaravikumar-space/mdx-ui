@@ -22,18 +22,18 @@ Create a file at `components/mdx-components.tsx`:
 
 ```tsx
 // components/mdx-components.tsx
-import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings"
-import { P } from "@/components/mdx-ui/paragraph"
-import { Callout } from "@/components/mdx-ui/callout"
-import { Steps } from "@/components/mdx-ui/steps"
-import { InlineCode } from "@/components/mdx-ui/inline-code"
-import { CodeBlock } from "@/components/mdx-ui/code-block"
-import { Blockquote } from "@/components/mdx-ui/blockquote"
-import { List, ListItem } from "@/components/mdx-ui/list"
-import { Tabs } from "@/components/mdx-ui/tabs"
-import { Image } from "@/components/mdx-ui/image"
-import { HorizontalRule } from "@/components/mdx-ui/horizontal-rule"
-import { Emphasis } from "@/components/mdx-ui/emphasis"
+import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings";
+import { P } from "@/components/mdx-ui/paragraph";
+import { Callout } from "@/components/mdx-ui/callout";
+import { Steps } from "@/components/mdx-ui/steps";
+import { InlineCode } from "@/components/mdx-ui/inline-code";
+import { CodeBlock } from "@/components/mdx-ui/code-block";
+import { Blockquote } from "@/components/mdx-ui/blockquote";
+import { List, ListItem } from "@/components/mdx-ui/list";
+import { Tabs } from "@/components/mdx-ui/tabs";
+import { Image } from "@/components/mdx-ui/image";
+import { HorizontalRule } from "@/components/mdx-ui/horizontal-rule";
+import { Emphasis } from "@/components/mdx-ui/emphasis";
 
 export const mdxComponents = {
   // Headings
@@ -67,7 +67,7 @@ export const mdxComponents = {
   Callout,
   Steps,
   Tabs,
-}
+};
 ```
 
 ## Only Map Installed Components
@@ -75,8 +75,8 @@ export const mdxComponents = {
 You only need to import and map components you've actually installed. If you only installed `callout` and `headings`:
 
 ```tsx
-import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings"
-import { Callout } from "@/components/mdx-ui/callout"
+import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings";
+import { Callout } from "@/components/mdx-ui/callout";
 
 export const mdxComponents = {
   h1: H1,
@@ -86,7 +86,7 @@ export const mdxComponents = {
   h5: H5,
   h6: H6,
   Callout,
-}
+};
 ```
 
 ## Using Component Mappings
@@ -96,10 +96,10 @@ The exact usage depends on your MDX renderer:
 ### With next-mdx-remote
 
 ```tsx
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import { mdxComponents } from '@/components/mdx-components'
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/components/mdx-components";
 
-<MDXRemote source={content} components={mdxComponents} />
+<MDXRemote source={content} components={mdxComponents} />;
 ```
 
 ### With contentlayer
@@ -116,10 +116,10 @@ const MDXContent = useMDXComponent(post.body.code)
 
 ```tsx
 // mdx-components.tsx (root of project)
-import { mdxComponents } from './components/mdx-components'
+import { mdxComponents } from "./components/mdx-components";
 
 export function useMDXComponents(components: any) {
-  return { ...mdxComponents, ...components }
+  return { ...mdxComponents, ...components };
 }
 ```
 
@@ -132,12 +132,12 @@ export const mdxComponents = {
   h1: H1,
   h2: H2,
   // ... rest of mappings
-}
+};
 
 // Add mdxName for debugging
 for (let key in mdxComponents) {
   if (mdxComponents.hasOwnProperty(key)) {
-    (mdxComponents as any)[key].mdxName = key
+    (mdxComponents as any)[key].mdxName = key;
   }
 }
 ```

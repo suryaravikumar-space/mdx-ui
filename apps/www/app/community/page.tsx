@@ -3,7 +3,9 @@ export default function CommunityPage() {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <div className="space-y-2">
-          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Community</h1>
+          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+            Community
+          </h1>
           <p className="text-lg text-muted-foreground">
             Join our growing community of developers building with MDX UI.
           </p>
@@ -15,8 +17,9 @@ export default function CommunityPage() {
               Get Involved
             </h2>
             <p className="leading-7">
-              MDX UI is an open source project that welcomes contributions from everyone. Whether
-              you want to fix a bug, add a feature, or improve documentation, we&rsquo;d love your help.
+              MDX UI is an open source project that welcomes contributions from
+              everyone. Whether you want to fix a bug, add a feature, or improve
+              documentation, we&rsquo;d love your help.
             </p>
           </section>
 
@@ -64,8 +67,9 @@ export default function CommunityPage() {
               Code of Conduct
             </h2>
             <p className="leading-7">
-              We are committed to providing a welcoming and inclusive environment for everyone.
-              Please read our Code of Conduct to understand our community standards.
+              We are committed to providing a welcoming and inclusive
+              environment for everyone. Please read our Code of Conduct to
+              understand our community standards.
             </p>
           </section>
         </div>

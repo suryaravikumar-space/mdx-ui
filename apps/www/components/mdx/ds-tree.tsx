@@ -386,7 +386,15 @@ function layoutBinary(
     right = layoutBinary(node.right, depth + 1, xMin, xMax, levelH);
   }
 
-  return { id: node.id, value: node.value, annotation: node.annotation, x, y, left, right };
+  return {
+    id: node.id,
+    value: node.value,
+    annotation: node.annotation,
+    x,
+    y,
+    left,
+    right,
+  };
 }
 
 function layoutNary(
@@ -399,7 +407,15 @@ function layoutNary(
   const x = (xMin + xMax) / 2;
   const y = depth * levelH + levelH;
   const kids = node.children ?? [];
-  if (!kids.length) return { id: node.id, value: node.value, annotation: node.annotation, x, y, children: [] };
+  if (!kids.length)
+    return {
+      id: node.id,
+      value: node.value,
+      annotation: node.annotation,
+      x,
+      y,
+      children: [],
+    };
 
   const leafCounts = kids.map((c) => countLeaves(c) || 1);
   const total = leafCounts.reduce((s, n) => s + n, 0);
@@ -410,7 +426,14 @@ function layoutNary(
     cursor += share;
     return child;
   });
-  return { id: node.id, value: node.value, annotation: node.annotation, x, y, children: layoutChildren };
+  return {
+    id: node.id,
+    value: node.value,
+    annotation: node.annotation,
+    x,
+    y,
+    children: layoutChildren,
+  };
 }
 
 function getBounds(

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allComponents } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
@@ -7,6 +8,7 @@ import { getBreadcrumbs } from "@/lib/docs-nav";
 import { PageNavigation } from "@/components/page-navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 interface ComponentPageProps {
   params: Promise<{
@@ -28,6 +30,32 @@ async function getComponentFromParams(params: { slug: string[] }) {
   }
 
   return component;
+}
+
+export async function generateMetadata({
+  params,
+}: ComponentPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const component = await getComponentFromParams(resolvedParams);
+
+  if (!component) return {};
+
+  return {
+    title: component.title,
+    description: component.description,
+    alternates: { canonical: `${siteConfig.url}${component.slug}` },
+    openGraph: {
+      title: `${component.title} — MDX UI`,
+      description: component.description,
+      url: `${siteConfig.url}${component.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${component.title} — MDX UI`,
+      description: component.description,
+    },
+  };
 }
 
 export async function generateStaticParams(): Promise<
@@ -52,7 +80,7 @@ export default async function ComponentPage({ params }: ComponentPageProps) {
   const breadcrumbs = getBreadcrumbs(component.slug);
 
   return (
-    <main className="relative px-4 py-6 md:px-8 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:gap-16">
+    <main className="relative py-8 lg:gap-10 lg:py-12 xl:grid xl:grid-cols-[1fr_300px] xl:gap-20">
       <div className="mx-auto w-full min-w-0 max-w-3xl">
         {/* Breadcrumbs */}
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">

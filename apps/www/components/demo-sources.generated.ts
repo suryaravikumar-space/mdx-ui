@@ -2,7 +2,10 @@
 // Run `tsx scripts/build-previews.ts` to regenerate.
 // NOTE: This file is generated but committed to the repository.
 
-export const DEMO_SOURCES: Record<string, { source: string; highlighted: string }> = {
+export const DEMO_SOURCES: Record<
+  string,
+  { source: string; highlighted: string }
+> = {
   "accordion-default": {
     source: `"use client";
 import {
@@ -150,17 +153,19 @@ export default function AlertDefault() {
   "annotation-default": {
     source: `"use client";
 import { Annotation } from "@/components/mdx/annotation";
+import { Pow, BigO } from "@/components/mdx/math-primitives";
 
 export default function AnnotationDefault() {
   return (
     <p className="text-sm leading-7">
       This algorithm runs in{" "}
       <Annotation note="For each of n elements, we compare against all others — n × n operations.">
-        O(n²) time
+        <BigO />(<Pow exp="2">n</Pow>) time
       </Annotation>{" "}
       and{" "}
       <Annotation note="We only use a fixed number of extra variables regardless of input size.">
-        O(1) space
+        <BigO />
+        (1) space
       </Annotation>
       . Click the underlined terms to learn more.
     </p>
@@ -169,17 +174,19 @@ export default function AnnotationDefault() {
 `,
     highlighted: `<pre class="shiki shiki-themes github-dark github-light" style="--shiki-dark:#e1e4e8;--shiki-light:#24292e;--shiki-dark-bg:#24292e;--shiki-light-bg:#fff" tabindex="0"><code><span class="line"><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"use client"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { Annotation } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/annotation"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { Pow, BigO } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/math-primitives"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> AnnotationDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"text-sm leading-7"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      This algorithm runs in{</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Annotation</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> note</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"For each of n elements, we compare against all others — n × n operations."</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        O(n²) time</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">BigO</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> />(&#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> exp</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>n&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>) time</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Annotation</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>{</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      and{</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Annotation</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> note</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"We only use a fixed number of extra variables regardless of input size."</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        O(1) space</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">BigO</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        (1) space</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Annotation</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      . Click the underlined terms to learn more.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -255,17 +262,20 @@ export default function BlockquoteDefault() {
 export default function CalloutDefault() {
   return (
     <div className="w-full space-y-0">
-      <Callout variant="info">
-        This is an informational message to help guide users.
+      <Callout variant="info" title="Info">
+        Use for general information or helpful insights.
       </Callout>
-      <Callout variant="warning">
-        Warning: This action cannot be undone. Please proceed with caution.
+      <Callout variant="note" title="Note">
+        Perfect for adding additional context or side notes.
       </Callout>
-      <Callout variant="danger">
-        Error: This is a critical error that needs immediate attention.
+      <Callout variant="tip" title="Tip">
+        Great for quick tips, best practices, or suggestions.
       </Callout>
-      <Callout variant="success">
-        Success! Your changes have been saved.
+      <Callout variant="warning" title="Warning">
+        Use to caution users about potential issues.
+      </Callout>
+      <Callout variant="danger" title="Danger">
+        Highlight critical errors or serious warnings.
       </Callout>
     </div>
   );
@@ -276,17 +286,20 @@ export default function CalloutDefault() {
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> CalloutDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"w-full space-y-0"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"info"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        This is an informational message to help guide users.</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"info"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Info"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Use for general information or helpful insights.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"warning"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Warning: This action cannot be undone. Please proceed with caution.</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"note"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Note"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Perfect for adding additional context or side notes.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"danger"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Error: This is a critical error that needs immediate attention.</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"tip"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Tip"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Great for quick tips, best practices, or suggestions.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"success"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Success! Your changes have been saved.</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"warning"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Warning"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Use to caution users about potential issues.</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> variant</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"danger"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Danger"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Highlight critical errors or serious warnings.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Callout</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
@@ -417,7 +430,7 @@ export default function ChangelogDefault() {
     <Changelog>
       <ChangelogEntry version="v1.2.0" date="2025-04-10">
         <ChangelogItem type="added">
-          New ComponentPreview with shiki dual-theme highlighting
+          New Demo with shiki dual-theme highlighting
         </ChangelogItem>
         <ChangelogItem type="added">
           Spoiler and Reveal components
@@ -452,7 +465,7 @@ export default function ChangelogDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Changelog</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ChangelogEntry</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> version</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"v1.2.0"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> date</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2025-04-10"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ChangelogItem</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> type</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"added"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          New ComponentPreview with shiki dual-theme highlighting</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          New Demo with shiki dual-theme highlighting</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ChangelogItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ChangelogItem</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> type</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"added"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Spoiler and Reveal components</span></span>
@@ -1125,6 +1138,60 @@ export default function HorizontalRuleDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"></span></code></pre>`,
   },
+  "image-default": {
+    source: `import { Image, ImageGlossary } from "@/components/mdx/image";
+
+export default function ImageDefault() {
+  return (
+    <div className="w-full space-y-6">
+      <Image
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
+        alt="Mountain landscape at sunset"
+        caption="Single image with caption"
+      />
+      <ImageGlossary caption="Side-by-side comparison">
+        <Image
+          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80"
+          alt="Before"
+          caption="Before"
+        />
+        <Image
+          src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=80"
+          alt="After"
+          caption="After"
+        />
+      </ImageGlossary>
+    </div>
+  );
+}
+`,
+    highlighted: `<pre class="shiki shiki-themes github-dark github-light" style="--shiki-dark:#e1e4e8;--shiki-light:#24292e;--shiki-dark-bg:#24292e;--shiki-light-bg:#fff" tabindex="0"><code><span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { Image, ImageGlossary } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/image"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> ImageDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"w-full space-y-6"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Image</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">        src</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&#x26;q=80"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">        alt</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Mountain landscape at sunset"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">        caption</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Single image with caption"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ImageGlossary</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> caption</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Side-by-side comparison"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Image</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          src</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&#x26;q=80"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          alt</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Before"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          caption</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Before"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Image</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          src</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&#x26;q=80"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          alt</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"After"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          caption</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"After"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ImageGlossary</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
+<span class="line"></span></code></pre>`,
+  },
   "inline-code-default": {
     source: `import { Code } from "@/components/mdx/inline-code";
 
@@ -1345,6 +1412,258 @@ export default function ListDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">OrderedList</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
+<span class="line"></span></code></pre>`,
+  },
+  "math-equation-default": {
+    source: `import { Equation, EqSystem } from "@/components/mdx/math-equation";
+import { Frac, Pow, Sqrt } from "@/components/mdx/math-primitives";
+
+export default function MathEquationDefault() {
+  return (
+    <div className="space-y-2">
+      <Equation label="1">
+        E = m<Pow exp="2">c</Pow>
+      </Equation>
+
+      <Equation label="2">
+        x ={" "}
+        <Frac
+          num={
+            <>
+              −b ± <Sqrt>b² − 4ac</Sqrt>
+            </>
+          }
+          den="2a"
+        />
+      </Equation>
+
+      <EqSystem>
+        <div>2x + 3y = 7</div>
+        <div>x − y = 1</div>
+      </EqSystem>
+    </div>
+  );
+}
+`,
+    highlighted: `<pre class="shiki shiki-themes github-dark github-light" style="--shiki-dark:#e1e4e8;--shiki-light:#24292e;--shiki-dark-bg:#24292e;--shiki-light-bg:#fff" tabindex="0"><code><span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { Equation, EqSystem } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/math-equation"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { Frac, Pow, Sqrt } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/math-primitives"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> MathEquationDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"space-y-2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Equation</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> label</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"1"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        E = m&#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> exp</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>c&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Equation</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Equation</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> label</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        x ={</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Frac</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          num</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">{</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">              −b ± &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sqrt</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>b² − 4ac&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sqrt</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;/></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          }</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          den</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2a"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Equation</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">EqSystem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>2x + 3y = 7&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>x − y = 1&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">EqSystem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
+<span class="line"></span></code></pre>`,
+  },
+  "math-primitives-default": {
+    source: `import {
+  Frac,
+  Integral,
+  Pow,
+  Sqrt,
+  Sum,
+  Matrix,
+  Cases,
+  Case,
+  Sin,
+  Theta,
+  Cos,
+} from "@/components/mdx/math-primitives";
+
+export default function MathPrimitivesDefault() {
+  return (
+    <div className="flex flex-wrap items-center gap-x-8 gap-y-4 px-2 py-4 font-serif text-base">
+      <Frac num="a + b" den="2c" />
+
+      <Sqrt>
+        <Pow exp="2">a</Pow> + <Pow exp="2">b</Pow>
+      </Sqrt>
+
+      <Integral from="0" to="∞">
+        <Pow exp="−x">e</Pow> dx
+      </Integral>
+
+      <Sum from="k=1" to="n">
+        <Frac num={<Pow exp="2">k</Pow>} den="2" />
+      </Sum>
+
+      <Matrix
+        rows={[
+          ["a", "b"],
+          ["c", "d"],
+        ]}
+      />
+
+      <Cases>
+        <Case
+          expr={
+            <>
+              <Sin>
+                <Theta />
+              </Sin>
+            </>
+          }
+          when="x ≥ 0"
+        />
+        <Case
+          expr={
+            <>
+              <Cos>
+                <Theta />
+              </Cos>
+            </>
+          }
+          when="x < 0"
+        />
+      </Cases>
+    </div>
+  );
+}
+`,
+    highlighted: `<pre class="shiki shiki-themes github-dark github-light" style="--shiki-dark:#e1e4e8;--shiki-light:#24292e;--shiki-dark-bg:#24292e;--shiki-light-bg:#fff" tabindex="0"><code><span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> {</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Frac,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Integral,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Pow,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Sqrt,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Sum,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Matrix,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Cases,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Case,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Sin,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Theta,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Cos,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">} </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/math-primitives"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> MathPrimitivesDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"flex flex-wrap items-center gap-x-8 gap-y-4 px-2 py-4 font-serif text-base"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Frac</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> num</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"a + b"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> den</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2c"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sqrt</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> exp</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>a&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">> + &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> exp</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>b&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sqrt</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Integral</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> from</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"0"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> to</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"∞"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> exp</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"−x"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>e&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">> dx</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Integral</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sum</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> from</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"k=1"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> to</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"n"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Frac</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> num</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">{&#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> exp</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>k&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Pow</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>} </span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">den</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sum</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Matrix</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">        rows</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">{[</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          [</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"a"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">, </span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"b"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">],</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          [</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"c"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">, </span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"d"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">],</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        ]}</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      /></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Cases</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Case</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          expr</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">{</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">              &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sin</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">                &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Theta</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">              &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Sin</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;/></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          }</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          when</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"x ≥ 0"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Case</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          expr</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">{</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">              &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Cos</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">                &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Theta</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">              &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Cos</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;/></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          }</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          when</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"x &#x3C; 0"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Cases</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
+<span class="line"></span></code></pre>`,
+  },
+  "math-solution-default": {
+    source: `import {
+  Solution,
+  SolutionAnswer,
+  SolutionNote,
+  SolutionStep,
+} from "@/components/mdx/math-solution";
+import { Frac } from "@/components/mdx/math-primitives";
+
+export default function MathSolutionDefault() {
+  return (
+    <Solution title="Find: ∫(sin x + cos x) dx">
+      <SolutionNote>
+        Use the standard formulas: ∫sin x dx = −cos x + C and ∫cos x dx = sin x
+        + C
+      </SolutionNote>
+      <SolutionStep reason="Split the integral">
+        ∫sin x dx + ∫cos x dx
+      </SolutionStep>
+      <SolutionStep reason="Apply standard formulas" highlight>
+        −cos x + sin x
+      </SolutionStep>
+      <SolutionStep reason="Add constant of integration">
+        −cos x + sin x + C
+      </SolutionStep>
+      <SolutionAnswer>−cos x + sin x + C</SolutionAnswer>
+    </Solution>
+  );
+}
+`,
+    highlighted: `<pre class="shiki shiki-themes github-dark github-light" style="--shiki-dark:#e1e4e8;--shiki-light:#24292e;--shiki-dark-bg:#24292e;--shiki-light-bg:#fff" tabindex="0"><code><span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> {</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  Solution,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  SolutionAnswer,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  SolutionNote,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  SolutionStep,</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">} </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/math-solution"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { Frac } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/math-primitives"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> MathSolutionDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Solution</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Find: ∫(sin x + cos x) dx"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionNote</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Use the standard formulas: ∫sin x dx = −cos x + C and ∫cos x dx = sin x</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        + C</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionNote</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionStep</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> reason</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Split the integral"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        ∫sin x dx + ∫cos x dx</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionStep</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionStep</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> reason</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Apply standard formulas"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> highlight</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        −cos x + sin x</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionStep</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionStep</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> reason</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Add constant of integration"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        −cos x + sin x + C</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionStep</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionAnswer</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>−cos x + sin x + C&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">SolutionAnswer</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Solution</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"></span></code></pre>`,
@@ -1957,4 +2276,110 @@ export default function TreeDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"></span></code></pre>`,
   },
+  "video-default": {
+    source: `"use client";
+import { useState } from "react";
+import { Video } from "@/components/mdx/video";
+
+export default function VideoDefault() {
+  const [playing, setPlaying] = useState(false);
+
+  if (playing) {
+    return (
+      <Video
+        src="https://www.youtube.com/shorts/kMSUFHzS5rI"
+        title="Damarukam"
+        caption="Damarukam — YouTube Short"
+      />
+    );
+  }
+
+  return (
+    <div
+      className="relative mx-auto my-6 aspect-[9/16] w-full max-w-xs cursor-pointer overflow-hidden rounded-xl border border-blue-500/20 bg-black"
+      onClick={() => setPlaying(true)}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-950/60 via-black/80 to-blue-950/60" />
+
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
+        <button
+          className="relative flex h-20 w-20 items-center justify-center"
+          aria-label="Play Damarukam"
+        >
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-500 opacity-20" />
+          <span className="absolute inline-flex h-[85%] w-[85%] animate-ping rounded-full bg-blue-400 opacity-15 [animation-delay:200ms]" />
+          <span className="absolute inline-flex h-[70%] w-[70%] animate-ping rounded-full bg-blue-300 opacity-10 [animation-delay:400ms]" />
+          <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 shadow-[0_0_32px_8px_rgba(59,130,246,0.5)]">
+            <svg
+              viewBox="0 0 24 24"
+              fill="white"
+              className="h-7 w-7 translate-x-0.5"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
+
+        <div className="text-center">
+          <p className="text-sm font-semibold text-white">Damarukam</p>
+          <p className="mt-0.5 text-xs text-white/40">Click to play</p>
+        </div>
+      </div>
+    </div>
+  );
 }
+`,
+    highlighted: `<pre class="shiki shiki-themes github-dark github-light" style="--shiki-dark:#e1e4e8;--shiki-light:#24292e;--shiki-dark-bg:#24292e;--shiki-light-bg:#fff" tabindex="0"><code><span class="line"><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"use client"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { useState } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "react"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">import</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> { Video } </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">from</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62"> "@/components/mdx/video"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> VideoDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  const</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> [</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">playing</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">, </span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">setPlaying</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">] </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> useState</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">(</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">false</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  if</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (playing) {</span></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">    return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Video</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">        src</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"https://www.youtube.com/shorts/kMSUFHzS5rI"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">        title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Damarukam"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">        caption</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Damarukam — YouTube Short"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    );</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">      className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"relative mx-auto my-6 aspect-[9/16] w-full max-w-xs cursor-pointer overflow-hidden rounded-xl border border-blue-500/20 bg-black"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">      onClick</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">{() </span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=></span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> setPlaying</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">(</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">true</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">)}</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    ></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"absolute inset-0 bg-gradient-to-b from-blue-950/60 via-black/80 to-blue-950/60"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"absolute inset-0 flex flex-col items-center justify-center gap-5"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">button</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"relative flex h-20 w-20 items-center justify-center"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">          aria-label</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Play Damarukam"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        ></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">span</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-500 opacity-20"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">span</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"absolute inline-flex h-[85%] w-[85%] animate-ping rounded-full bg-blue-400 opacity-15 [animation-delay:200ms]"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">span</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"absolute inline-flex h-[70%] w-[70%] animate-ping rounded-full bg-blue-300 opacity-10 [animation-delay:400ms]"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">span</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"relative flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 shadow-[0_0_32px_8px_rgba(59,130,246,0.5)]"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">svg</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">              viewBox</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"0 0 24 24"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">              fill</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"white"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">              className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"h-7 w-7 translate-x-0.5"</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            ></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">              &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">path</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> d</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"M8 5v14l11-7z"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> /></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">svg</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">span</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">button</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"text-center"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"text-sm font-semibold text-white"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Damarukam&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"mt-0.5 text-xs text-white/40"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Click to play&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
+<span class="line"></span></code></pre>`,
+  },
+};

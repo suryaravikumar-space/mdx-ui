@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { siteConfig } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({
@@ -14,9 +15,54 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MDX UI — Transform LLM Markdown into Interactive UI",
-  description:
-    "Token-efficient bridge between any LLM and React. LLM writes plain Markdown — MDX UI transforms it into rich, interactive components. 50+ copy-paste components, CLI, MCP server, and remark plugin.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "MDX UI — Copy-paste MDX components for documentation sites",
+    template: "%s — MDX UI",
+  },
+  description: siteConfig.description,
+  keywords: [
+    "MDX",
+    "React components",
+    "documentation",
+    "copy-paste components",
+    "Tailwind CSS",
+    "math components",
+    "MCP server",
+    "remark plugin",
+    "shadcn",
+    "mdx-ui",
+  ],
+  authors: [{ name: "Surya Ravi Kumar", url: siteConfig.github }],
+  creator: "Surya Ravi Kumar",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: "MDX UI — Copy-paste MDX components for documentation sites",
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MDX UI — Copy-paste MDX components for documentation sites",
+    description: siteConfig.description,
+    creator: "@ravikumarsurya",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
 };
 
 export default function RootLayout({

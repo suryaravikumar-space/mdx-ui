@@ -1,9 +1,9 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-export interface StepsProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type StepsProps = React.HTMLAttributes<HTMLDivElement>;
 export interface StepProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string
+  title?: string;
 }
 
 export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
@@ -15,9 +15,9 @@ export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
     >
       {children}
     </div>
-  )
-)
-Steps.displayName = "Steps"
+  ),
+);
+Steps.displayName = "Steps";
 
 export const Step = React.forwardRef<HTMLDivElement, StepProps>(
   ({ className, title, children, ...props }, ref) => (
@@ -33,6 +33,6 @@ export const Step = React.forwardRef<HTMLDivElement, StepProps>(
         <div className="text-muted-foreground">{children}</div>
       </div>
     </div>
-  )
-)
-Step.displayName = "Step"
+  ),
+);
+Step.displayName = "Step";

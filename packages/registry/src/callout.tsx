@@ -1,30 +1,30 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-const calloutVariants = cva(
-  "my-6 flex gap-3 rounded-lg border p-4",
-  {
-    variants: {
-      variant: {
-        default: "border-border bg-muted/50",
-        info: "border-sky-300 bg-sky-50 dark:border-sky-800 dark:bg-sky-950/30",
-        warning: "border-amber-300 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/30",
-        danger: "border-destructive/50 bg-destructive/10",
-        success: "border-green-300 bg-green-50 dark:border-green-800 dark:bg-green-950/30",
-      },
+const calloutVariants = cva("my-6 flex gap-3 rounded-lg border p-4", {
+  variants: {
+    variant: {
+      default: "border-border bg-muted/50",
+      info: "border-sky-300 bg-sky-50 dark:border-sky-800 dark:bg-sky-950/30",
+      warning:
+        "border-amber-300 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/30",
+      danger: "border-destructive/50 bg-destructive/10",
+      success:
+        "border-green-300 bg-green-50 dark:border-green-800 dark:bg-green-950/30",
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-)
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface CalloutProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof calloutVariants> {
-  icon?: React.ReactNode
-  title?: string
+  icon?: React.ReactNode;
+  title?: string;
 }
 
 export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
@@ -42,6 +42,6 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
         <div className="text-muted-foreground">{children}</div>
       </div>
     </div>
-  )
-)
-Callout.displayName = "Callout"
+  ),
+);
+Callout.displayName = "Callout";

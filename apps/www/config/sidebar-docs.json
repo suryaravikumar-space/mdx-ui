@@ -155,6 +155,18 @@
       "path": "/docs/components/list"
     },
     {
+      "title": "Math Equation",
+      "path": "/docs/components/math-equation"
+    },
+    {
+      "title": "Math Primitives",
+      "path": "/docs/components/math-primitives"
+    },
+    {
+      "title": "Math Solution",
+      "path": "/docs/components/math-solution"
+    },
+    {
       "title": "Mermaid",
       "path": "/docs/components/mermaid"
     },
@@ -177,6 +189,10 @@
     {
       "title": "Steps",
       "path": "/docs/components/steps"
+    },
+    {
+      "title": "symbol browser",
+      "path": "/docs/components/symbol-browser"
     },
     {
       "title": "Table",

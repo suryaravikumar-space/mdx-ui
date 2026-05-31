@@ -25,7 +25,9 @@ export function PageNavigation({ currentPath }: PageNavigationProps) {
               <ChevronLeft className="mr-1 h-4 w-4" />
               Previous
             </span>
-            <span className="font-medium group-hover:underline">{prev.title}</span>
+            <span className="font-medium group-hover:underline">
+              {prev.title}
+            </span>
           </Link>
         )}
       </div>
@@ -39,7 +41,9 @@ export function PageNavigation({ currentPath }: PageNavigationProps) {
               Next
               <ChevronRight className="ml-1 h-4 w-4" />
             </span>
-            <span className="font-medium group-hover:underline">{next.title}</span>
+            <span className="font-medium group-hover:underline">
+              {next.title}
+            </span>
           </Link>
         )}
       </div>

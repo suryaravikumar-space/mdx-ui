@@ -1,12 +1,12 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 // ─── TerminalLine ─────────────────────────────────────────────────────────────
 
 export interface TerminalLineProps {
   /** Render as a command input line (adds $ prompt, white text) */
-  cmd?: boolean
-  children: React.ReactNode
+  cmd?: boolean;
+  children: React.ReactNode;
 }
 
 export const TerminalLine = React.forwardRef<HTMLDivElement, TerminalLineProps>(
@@ -21,21 +21,24 @@ export const TerminalLine = React.forwardRef<HTMLDivElement, TerminalLineProps>(
         {children}
       </span>
     </div>
-  )
-)
-TerminalLine.displayName = "TerminalLine"
+  ),
+);
+TerminalLine.displayName = "TerminalLine";
 
 // ─── Terminal ─────────────────────────────────────────────────────────────────
 
 export interface TerminalProps extends React.HTMLAttributes<HTMLElement> {
-  title?: string
+  title?: string;
 }
 
 export const Terminal = React.forwardRef<HTMLElement, TerminalProps>(
   ({ title = "Terminal", children, className, ...props }, ref) => (
     <figure
       ref={ref}
-      className={cn("my-6 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900", className)}
+      className={cn(
+        "my-6 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900",
+        className,
+      )}
       {...props}
     >
       {/* Title bar */}
@@ -46,14 +49,14 @@ export const Terminal = React.forwardRef<HTMLElement, TerminalProps>(
           <div className="h-3 w-3 rounded-full bg-green-500/80" />
         </div>
         {title && (
-          <span className="flex-1 text-center text-xs text-zinc-400">{title}</span>
+          <span className="flex-1 text-center text-xs text-zinc-400">
+            {title}
+          </span>
         )}
       </div>
       {/* Content */}
-      <div className="space-y-0.5 p-4">
-        {children}
-      </div>
+      <div className="space-y-0.5 p-4">{children}</div>
     </figure>
-  )
-)
-Terminal.displayName = "Terminal"
+  ),
+);
+Terminal.displayName = "Terminal";

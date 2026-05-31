@@ -1,6 +1,6 @@
 {
   "name": "@ravikumarsurya/mdx-ui",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "description": "Transform LLM Markdown into rich, interactive UI components. Token-efficient bridge between any LLM and React — 50+ copy-paste MDX components, CLI, MCP server, and a remark plugin.",
   "license": "MIT",
   "type": "module",

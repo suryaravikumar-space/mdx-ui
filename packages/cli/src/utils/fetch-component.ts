@@ -8,14 +8,18 @@ import { fileURLToPath } from "url";
 const REGISTRY_BASE =
   "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui";
 
-// Read CLI version at module load — used to pin registry fetches to a git tag
+const SEMVER_RE = /^\d+\.\d+\.\d+$/;
+
+// Read CLI version at module load — used to pin registry fetches to a git tag.
+// Validated against a strict semver pattern before use in URLs.
 function getCliVersion(): string | null {
   try {
     const __dirname = path.dirname(fileURLToPath(import.meta.url));
     const pkg = JSON.parse(
       readFileSync(path.join(__dirname, "../../package.json"), "utf-8"),
     );
-    return typeof pkg.version === "string" ? pkg.version : null;
+    const v: unknown = pkg.version;
+    return typeof v === "string" && SEMVER_RE.test(v) ? v : null;
   } catch {
     return null;
   }

@@ -275,6 +275,15 @@ export const add = new Command()
               ? path.join(libRoot, file.path)
               : path.join(cwd, config.componentsDir, file.path);
 
+            // Reject path traversal: resolved path must stay inside cwd
+            if (
+              !path.resolve(filePath).startsWith(path.resolve(cwd) + path.sep)
+            ) {
+              throw new Error(
+                `Refusing to write outside project root: ${file.path}`,
+              );
+            }
+
             let incoming = file.content;
             if (framework === "react") {
               incoming = incoming.replace(/^["']use client["']\n\n?/m, "");

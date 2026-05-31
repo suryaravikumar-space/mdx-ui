@@ -1,21 +1,12 @@
 name: E2E
 
 on:
-  push:
-    branches:
-      - main
-      - dev
-    paths:
-      - "apps/www/**"
-      - "packages/registry/**"
+  # Manual on-demand runs only
+  # Automatic E2E runs as a deploy gate in deploy-docs.yml
   workflow_dispatch:
 
 permissions:
   contents: read
-
-concurrency:
-  group: e2e-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   e2e:

@@ -5,12 +5,8 @@
   "whenToUse": "Use as the central MDX component map for your docs site. Import and register all mdx-ui components here.",
   "whenNotToUse": "Do not import this file directly in MDX — it is a configuration file for your MDX renderer.",
   "example": "// mdx-components.tsx\nexport const components = { Callout, Steps, Reveal, ... }",
-  "dependencies": [
-    "@types/mdx"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@types/mdx"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "mdx-components.tsx",

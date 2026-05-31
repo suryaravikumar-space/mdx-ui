@@ -4,9 +4,9 @@ This directory contains build scripts that automate code generation for mdx-ui.
 
 ## Scripts Overview
 
-| Script | Location | Command |
-| ------ | -------- | ------- |
-| `build-registry.ts` | `scripts/` | `pnpm build:registry` |
+| Script              | Location            | Command                                     |
+| ------------------- | ------------------- | ------------------------------------------- |
+| `build-registry.ts` | `scripts/`          | `pnpm build:registry`                       |
 | `build-previews.ts` | `apps/www/scripts/` | runs automatically before `dev` and `build` |
 
 ---

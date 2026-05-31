@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export type InlineCodeProps = React.HTMLAttributes<HTMLElement>
+export type InlineCodeProps = React.HTMLAttributes<HTMLElement>;
 
 export const Code = React.forwardRef<HTMLElement, InlineCodeProps>(
   ({ children, className, ...props }, ref) => (

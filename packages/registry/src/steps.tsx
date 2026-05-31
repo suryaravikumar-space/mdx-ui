@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export type StepsProps = React.HTMLAttributes<HTMLDivElement>
+export type StepsProps = React.HTMLAttributes<HTMLDivElement>;
 export interface StepProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
 }

@@ -5,13 +5,8 @@
   "whenToUse": "Use for structured math UI — numbered equations with layout, solution steps, inline symbols alongside prose. For raw LaTeX expressions, use <M expr=\"...\" /> instead — it is simpler. Both approaches can be mixed freely.",
   "whenNotToUse": "Do not use primitives to write raw math expressions — use <M expr=\"\\frac{a}{b}\" /> for that. Primitives are for composing layout-level math components.",
   "example": "<Equation label=\"1\"><Frac num={<>-b <PlusMinus /> <Sqrt>b²-4ac</Sqrt></>} den=\"2a\" /></Equation>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "math-primitives.tsx",

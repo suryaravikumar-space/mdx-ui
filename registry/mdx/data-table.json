@@ -5,13 +5,8 @@
   "whenToUse": "Use for tabular data with more than 10 rows, or when sorting or filtering is needed, or when data comes from a dynamic source.",
   "whenNotToUse": "Do not use for simple static reference tables with fewer than 10 rows — use Table instead.",
   "example": "<DataTable columns={columns} data={rows} />",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "data-table.tsx",

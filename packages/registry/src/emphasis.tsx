@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export type EmphasisProps = React.HTMLAttributes<HTMLElement>
+export type EmphasisProps = React.HTMLAttributes<HTMLElement>;
 
 export const Strong = React.forwardRef<HTMLElement, EmphasisProps>(
   ({ children, className, ...props }, ref) => (

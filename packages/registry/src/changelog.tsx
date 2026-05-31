@@ -93,7 +93,7 @@ ChangelogEntry.displayName = "ChangelogEntry";
 
 // ─── Changelog ───────────────────────────────────────────────────────────────
 
-export type ChangelogProps = React.HTMLAttributes<HTMLDivElement>
+export type ChangelogProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const Changelog = React.forwardRef<HTMLDivElement, ChangelogProps>(
   ({ children, className, ...props }, ref) => (

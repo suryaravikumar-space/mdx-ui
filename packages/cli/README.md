@@ -98,7 +98,7 @@ npx @ravikumarsurya/mdx-ui list --installed
 | `inline-code`     | Inline code snippets                                                |
 | `invariant`       | Formal invariant statement with optional complexity annotation      |
 | `kbd`             | Keyboard shortcut display (`Ctrl+K`, `⌘+S`)                         |
-| `link`            | Styled anchor — auto-detects external URLs, adds open-in-new-tab   |
+| `link`            | Styled anchor — auto-detects external URLs, adds open-in-new-tab    |
 | `list`            | Ordered and unordered lists                                         |
 | `paragraph`       | Paragraph with Lead, Intro, Large, Small, Muted variants            |
 | `preview`         | Tabbed component preview — rendered output + source with copy       |
@@ -110,74 +110,74 @@ npx @ravikumarsurya/mdx-ui list --installed
 
 ### Code & Terminal
 
-| Component    | Description                                                         |
-| ------------ | ------------------------------------------------------------------- |
-| `code-block` | Syntax-highlighted code blocks via rehype-pretty-code               |
-| `code-group` | Tabbed code blocks — npm/pnpm/yarn or multi-language examples       |
-| `diff-block` | Code diff block — highlights `+` additions and `-` removals        |
-| `terminal`   | macOS-style terminal window with traffic lights and typed lines     |
+| Component    | Description                                                     |
+| ------------ | --------------------------------------------------------------- |
+| `code-block` | Syntax-highlighted code blocks via rehype-pretty-code           |
+| `code-group` | Tabbed code blocks — npm/pnpm/yarn or multi-language examples   |
+| `diff-block` | Code diff block — highlights `+` additions and `-` removals     |
+| `terminal`   | macOS-style terminal window with traffic lights and typed lines |
 
 ### Math
 
-| Component         | Description                                                                     |
-| ----------------- | ------------------------------------------------------------------------------- |
-| `math`            | LaTeX math via KaTeX — block and inline                                         |
+| Component         | Description                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| `math`            | LaTeX math via KaTeX — block and inline                                                                     |
 | `math-primitives` | 150+ JSX math primitives — Frac, Pow, Integral, Sum, Greek, trig, logic and more. No LaTeX engine required. |
-| `math-equation`   | Display equation containers — centered block with optional equation number      |
-| `math-solution`   | Step-by-step solution blocks — SolutionStep, SolutionAnswer, SolutionNote       |
+| `math-equation`   | Display equation containers — centered block with optional equation number                                  |
+| `math-solution`   | Step-by-step solution blocks — SolutionStep, SolutionAnswer, SolutionNote                                   |
 
 ### Data & Tables
 
-| Component          | Description                                                          |
-| ------------------ | -------------------------------------------------------------------- |
-| `complexity-table` | Time and space complexity table for algorithm operations             |
-| `data-table`       | Dynamic table — accepts columns and data as props                    |
-| `data-type-table`  | AI/ML numeric data type and tensor specification table               |
-| `hardware-spec`    | Hardware interface spec card — type, version, speed, voltage, pins   |
-| `pin-table`        | Hardware pinout table — signal name, direction, voltage, alt function|
-| `privacy-table`    | Personal data documentation — purpose, legal basis, retention        |
-| `register-map`     | Hardware register/OTP fuse map — address, bits, access type, reset   |
-| `table`            | Table with header, body, footer, caption                             |
+| Component          | Description                                                           |
+| ------------------ | --------------------------------------------------------------------- |
+| `complexity-table` | Time and space complexity table for algorithm operations              |
+| `data-table`       | Dynamic table — accepts columns and data as props                     |
+| `data-type-table`  | AI/ML numeric data type and tensor specification table                |
+| `hardware-spec`    | Hardware interface spec card — type, version, speed, voltage, pins    |
+| `pin-table`        | Hardware pinout table — signal name, direction, voltage, alt function |
+| `privacy-table`    | Personal data documentation — purpose, legal basis, retention         |
+| `register-map`     | Hardware register/OTP fuse map — address, bits, access type, reset    |
+| `table`            | Table with header, body, footer, caption                              |
 
 ### Diagrams & Visualization
 
-| Component  | Description                                                                        |
-| ---------- | ---------------------------------------------------------------------------------- |
-| `ds`       | Data structure visualizations — Array, LinkedList, Stack, Queue, Tree, Graph, etc. |
-| `ds-tree`  | SVG tree visualizer — BST, AVL, Heap, N-ary with traversal animations              |
-| `mermaid`  | Mermaid diagrams — flowcharts, sequences, etc.                                     |
+| Component | Description                                                                        |
+| --------- | ---------------------------------------------------------------------------------- |
+| `ds`      | Data structure visualizations — Array, LinkedList, Stack, Queue, Tree, Graph, etc. |
+| `ds-tree` | SVG tree visualizer — BST, AVL, Heap, N-ary with traversal animations              |
+| `mermaid` | Mermaid diagrams — flowcharts, sequences, etc.                                     |
 
 ### SEO & Metadata
 
-| Component | Description                                                   |
-| --------- | ------------------------------------------------------------- |
-| `json-ld` | JSON-LD structured data — Article, BreadcrumbList, FAQPage    |
+| Component | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| `json-ld` | JSON-LD structured data — Article, BreadcrumbList, FAQPage |
 
 ### Navigation
 
-| Component      | Description                                         |
-| -------------- | --------------------------------------------------- |
-| `file-tree`    | Simple string-based file/folder tree                |
-| `tree`         | Interactive file/folder tree                        |
+| Component   | Description                          |
+| ----------- | ------------------------------------ |
+| `file-tree` | Simple string-based file/folder tree |
+| `tree`      | Interactive file/folder tree         |
 
 ### Certification & Compliance
 
-| Component             | Description                                                        |
-| --------------------- | ------------------------------------------------------------------ |
-| `certification-badge` | ISO, TISAX, SOC 2 certification chips with status indicators       |
+| Component             | Description                                                  |
+| --------------------- | ------------------------------------------------------------ |
+| `certification-badge` | ISO, TISAX, SOC 2 certification chips with status indicators |
 
 ### Media
 
-| Component | Description                                                              |
-| --------- | ------------------------------------------------------------------------ |
-| `video`   | Video embed — auto-detects YouTube, Vimeo, and HTML5 with caption        |
+| Component | Description                                                       |
+| --------- | ----------------------------------------------------------------- |
+| `video`   | Video embed — auto-detects YouTube, Vimeo, and HTML5 with caption |
 
 ### Utilities
 
-| Component        | Description                                    |
-| ---------------- | ---------------------------------------------- |
-| `mdx-components` | Auto-wired MDX component mapper                |
-| `utils`          | `cn()` utility (clsx + tailwind-merge)         |
+| Component        | Description                            |
+| ---------------- | -------------------------------------- |
+| `mdx-components` | Auto-wired MDX component mapper        |
+| `utils`          | `cn()` utility (clsx + tailwind-merge) |
 
 ## Math Primitives
 
@@ -189,14 +189,23 @@ npx @ravikumarsurya/mdx-ui add math-primitives
 
 ```mdx
 {/* Fraction */}
+
 <Frac num="a" den="b" />
 
 {/* Integral with bounds */}
-<Integral from="a" to="b">f(x) dx</Integral>
+
+<Integral from="a" to="b">
+  f(x) dx
+</Integral>
 
 {/* Compose multiple elements */}
+
 <Frac
-  num={<Expr>x <Pow exp="2">dx</Pow></Expr>}
+  num={
+    <Expr>
+      x <Pow exp="2">dx</Pow>
+    </Expr>
+  }
   den={<Pow exp="2">dy</Pow>}
 />
 ```

@@ -1,8 +1,10 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export type ListProps = React.HTMLAttributes<HTMLUListElement | HTMLOListElement>
-export type ListItemProps = React.HTMLAttributes<HTMLLIElement>
+export type ListProps = React.HTMLAttributes<
+  HTMLUListElement | HTMLOListElement
+>;
+export type ListItemProps = React.HTMLAttributes<HTMLLIElement>;
 
 export const UnorderedList = React.forwardRef<
   HTMLUListElement,

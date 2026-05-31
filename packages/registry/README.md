@@ -143,10 +143,10 @@ pnpm --filter=@mdx-ui/registry test --watch
 
 ## Relationship to Root Registry
 
-| Path | Purpose |
-| ---- | ------- |
-| `packages/registry/src/` | Source components — edit here |
-| `registry/mdx/` | Generated JSON — do not edit manually |
-| `registry/registry.json` | Component index — generated |
+| Path                     | Purpose                               |
+| ------------------------ | ------------------------------------- |
+| `packages/registry/src/` | Source components — edit here         |
+| `registry/mdx/`          | Generated JSON — do not edit manually |
+| `registry/registry.json` | Component index — generated           |
 
 The CLI fetches from `/registry/mdx/` when users run `npx @ravikumarsurya/mdx-ui add <component>`.

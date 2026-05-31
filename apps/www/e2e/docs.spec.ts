@@ -40,13 +40,13 @@ test.describe("Docs pages", () => {
     await expect(codeBlock).toBeVisible();
   });
 
-  test("integration/nextjs-mdx page loads", async ({ page }) => {
-    const response = await page.goto("/docs/integration/nextjs-mdx");
+  test("integration/nextjs page loads", async ({ page }) => {
+    const response = await page.goto("/docs/integration/nextjs");
     expect(response?.status()).not.toBe(404);
   });
 
-  test("integration/nextjs-contentlayer page loads", async ({ page }) => {
-    const response = await page.goto("/docs/integration/nextjs-contentlayer");
+  test("integration/astro page loads", async ({ page }) => {
+    const response = await page.goto("/docs/integration/astro");
     expect(response?.status()).not.toBe(404);
   });
 });

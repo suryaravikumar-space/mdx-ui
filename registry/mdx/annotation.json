@@ -5,8 +5,13 @@
   "whenToUse": "Use to explain a specific inline term, symbol, or phrase without interrupting prose flow. Ideal for technical notation like O(n²) or domain-specific terms appearing once.",
   "whenNotToUse": "Do not use for long explanations — use Callout or Definition. Do not annotate every technical term on a page; annotate only where the reader is likely to be unfamiliar.",
   "example": "<Annotation note=\"Quadratic time: for each element we scan all remaining elements.\">O(n²)</Annotation>",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "annotation.tsx",

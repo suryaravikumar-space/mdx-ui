@@ -36,7 +36,7 @@ interface StepsBlock {
 // ─── Regex ───────────────────────────────────────────────────────────────────
 
 /** Matches lines that start a numbered list item: "1. " or "1) " */
-const NUMBERED_ITEM_RE = /^(\d+)[.)]\s+(.*)$/;
+const NUMBERED_ITEM_RE = /^(\d+)[.)]\s+(\S.*)?$/;
 
 /** Matches the opening of a code fence at any indentation */
 const FENCE_OPEN_RE = /^[ \t]*(`{3,}|~{3,})/;

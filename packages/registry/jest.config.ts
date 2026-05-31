@@ -19,6 +19,7 @@ const config: Config = {
     "!src/__tests__/**",
     "!src/__mocks__/**",
     "!src/mdx/**",
+    "!src/webview-entry.ts",
   ],
   coverageThreshold: {
     global: {

@@ -1,8 +1,8 @@
-import * as React from "react"
+import * as React from "react";
 
 export interface JsonLdProps {
   /** JSON-LD structured data object */
-  data: Record<string, unknown>
+  data: Record<string, unknown>;
 }
 
 /**
@@ -17,5 +17,5 @@ export function JsonLd({ data }: JsonLdProps) {
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
-  )
+  );
 }

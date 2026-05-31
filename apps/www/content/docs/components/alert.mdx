@@ -5,6 +5,8 @@ component: alert
 published: true
 ---
 
+<Demo name="alert-default" />
+
 ## Installation
 
 ```bash
@@ -13,7 +15,7 @@ npx @ravikumarsurya/mdx-ui add alert
 
 ## Usage
 
-```mdx
+```mdx title="page.mdx"
 <Alert variant="info">
   <AlertTitle>Heads up</AlertTitle>
   <AlertDescription>
@@ -24,13 +26,51 @@ npx @ravikumarsurya/mdx-ui add alert
 
 ## Examples
 
-### All variants
+### Info
 
-<ComponentPreview name="alert-default" />
+```mdx title="page.mdx"
+<Alert variant="info">
+  <AlertTitle>New version available</AlertTitle>
+  <AlertDescription>
+    Run npm update to get the latest features.
+  </AlertDescription>
+</Alert>
+```
+
+### Warning
+
+```mdx title="page.mdx"
+<Alert variant="warning">
+  <AlertTitle>Deprecation notice</AlertTitle>
+  <AlertDescription>
+    This API will be removed in v3.0. Migrate to the new endpoint.
+  </AlertDescription>
+</Alert>
+```
+
+### Destructive
+
+```mdx title="page.mdx"
+<Alert variant="destructive">
+  <AlertTitle>Build failed</AlertTitle>
+  <AlertDescription>
+    TypeScript errors were found. Check the output for details.
+  </AlertDescription>
+</Alert>
+```
+
+### Success
+
+```mdx title="page.mdx"
+<Alert variant="success">
+  <AlertTitle>Deployment complete</AlertTitle>
+  <AlertDescription>Your changes are live at production.</AlertDescription>
+</Alert>
+```
 
 ### Without title
 
-```tsx
+```mdx title="page.mdx"
 <Alert variant="info">
   <AlertDescription>
     You can omit AlertTitle and use AlertDescription on its own.

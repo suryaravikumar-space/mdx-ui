@@ -8,9 +8,18 @@ import { execa } from "execa";
 import {
   detectProjectStructure,
   type Framework,
+  type MdxPipeline,
 } from "../utils/detect-structure.js";
 import { scanMdxComponents, printScanWarnings } from "../utils/scan-mdx.js";
 import { ping } from "../utils/telemetry.js";
+import {
+  CSS_VARS_BLOCK_V3,
+  CSS_VARS_BLOCK_V4,
+  MDXUI_SEMANTIC_TOKENS,
+  MDXUI_V4_THEME,
+  MDXUI_TAILWIND_COLOR_SCALES,
+  TAILWIND_V3_THEME_EXTENSIONS,
+} from "../lib/css-tokens.js";
 
 const FRAMEWORK_LABELS: Record<Framework, string> = {
   nextjs: "Next.js",
@@ -88,16 +97,18 @@ export const init = new Command()
       }
 
       // Set up CSS variable tokens
+      let cssFile: string | null = null;
+      let tailwindConfig: string | null = null;
       if (config.tailwind) {
         const twVersion = await detectTailwindVersion(cwd);
-        await setupGlobalCSS(
+        cssFile = await setupGlobalCSS(
           structure.framework,
           structure.hasSrc,
           cwd,
           twVersion,
           spinner,
         );
-        await setupTailwindConfig(cwd, twVersion, spinner);
+        tailwindConfig = await setupTailwindConfig(cwd, twVersion, spinner);
       }
 
       // Create mdx-components.tsx with patch markers
@@ -113,9 +124,12 @@ export const init = new Command()
         {
           $schema: "https://mdx-ui.com/schema.json",
           framework: structure.framework,
+          mdxPipeline: structure.mdxPipeline,
           componentsDir: config.componentsDir,
           typescript: config.typescript,
           tailwind: config.tailwind,
+          ...(cssFile && { cssFile }),
+          ...(tailwindConfig && { tailwindConfig }),
         },
         { spaces: 2 },
       );
@@ -144,7 +158,7 @@ export const init = new Command()
         );
       }
 
-      printNextSteps(structure.framework);
+      printNextSteps(structure.framework, structure.mdxPipeline);
 
       // Scan MDX files for unregistered components
       const pm = (await fs.pathExists(path.join(cwd, "pnpm-lock.yaml")))
@@ -295,155 +309,6 @@ async function setupPathAlias(
   }
 }
 
-// Raw CSS variable values (framework/version agnostic)
-const CSS_VARS_ROOT = `
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 47.4% 11.2%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }`;
-
-// Shiki dual-theme CSS — works with rehype-pretty-code defaultColor:false
-const SHIKI_CSS = `
-/* Shiki syntax highlighting — light/dark dual theme */
-[data-code-block] code span {
-  color: var(--shiki-light);
-  font-style: var(--shiki-light-font-style);
-  font-weight: var(--shiki-light-font-weight);
-}
-.dark [data-code-block] code span {
-  color: var(--shiki-dark);
-  font-style: var(--shiki-dark-font-style);
-  font-weight: var(--shiki-dark-font-weight);
-}
-`;
-
-// Tailwind v3 — uses @layer base + @apply
-const CSS_VARS_BLOCK_V3 = `
-@layer base {${CSS_VARS_ROOT}
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-${SHIKI_CSS}`;
-
-// Tailwind v4 — @layer base and @apply not required; use @theme inline for token mapping
-const CSS_VARS_BLOCK_V4 = `
-@theme inline {
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-}
-${CSS_VARS_ROOT}
-
-*, *::before, *::after {
-  border-color: hsl(var(--border));
-}
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
-${SHIKI_CSS}`;
-
-// Tailwind v3 tailwind.config theme.extend patch
-const TAILWIND_V3_THEME_EXTENSIONS = `
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },`;
-
 async function detectTailwindVersion(cwd: string): Promise<4 | 3> {
   try {
     const pkg = await fs.readJSON(path.join(cwd, "package.json"));
@@ -461,7 +326,7 @@ async function setupGlobalCSS(
   cwd: string,
   twVersion: 4 | 3,
   spinner: ReturnType<typeof ora>,
-) {
+): Promise<string | null> {
   // All known CSS entry-point paths across all frameworks
   const candidatePaths = [
     path.join(cwd, "src/app/globals.css"), // Next.js App Router (src)
@@ -494,7 +359,11 @@ async function setupGlobalCSS(
       ? path.join(cwd, "src/index.css")
       : path.join(cwd, "index.css");
     await fs.ensureDir(path.dirname(cssPath));
-    await fs.writeFile(cssPath, twDirectives + cssVarsBlock);
+    const v4Theme = twVersion === 4 ? MDXUI_V4_THEME : "";
+    await fs.writeFile(
+      cssPath,
+      twDirectives + cssVarsBlock + MDXUI_SEMANTIC_TOKENS + v4Theme,
+    );
     spinner.text = `Created ${path.relative(cwd, cssPath)} with CSS variable tokens`;
 
     // Auto-inject import into JS/TS entry files
@@ -521,27 +390,83 @@ async function setupGlobalCSS(
       }
       break;
     }
-    return;
+    return path.relative(cwd, cssPath);
   }
 
+  let content = "";
   try {
-    const content = await fs.readFile(cssPath, "utf-8");
-    if (content.includes("--background:") || content.includes("--foreground:"))
-      return;
-    await fs.appendFile(cssPath, cssVarsBlock);
-    spinner.text = `Added CSS variable tokens to ${path.relative(cwd, cssPath)}`;
+    content = await fs.readFile(cssPath, "utf-8");
   } catch {
-    // non-fatal
+    return path.relative(cwd, cssPath);
   }
+
+  // Inject base shadcn tokens only if not already present
+  if (
+    !content.includes("--background:") &&
+    !content.includes("--foreground:")
+  ) {
+    try {
+      await fs.appendFile(cssPath, cssVarsBlock);
+      content += cssVarsBlock;
+      spinner.text = `Added CSS variable tokens to ${path.relative(cwd, cssPath)}`;
+    } catch {
+      // non-fatal
+    }
+  }
+
+  // Inject mdx-ui semantic tokens independently — even on existing shadcn projects
+  // Use the in-memory content (possibly updated above) to avoid a second disk read
+  if (!content.includes("--mdxui-info-bg")) {
+    try {
+      const v4Theme = twVersion === 4 ? MDXUI_V4_THEME : "";
+      await fs.appendFile(cssPath, MDXUI_SEMANTIC_TOKENS + v4Theme);
+      spinner.text = `Added mdx-ui semantic tokens to ${path.relative(cwd, cssPath)}`;
+    } catch {
+      // non-fatal
+    }
+  }
+
+  return path.relative(cwd, cssPath);
+}
+
+function injectMdxuiColorsIntoConfig(content: string): string {
+  const colorsIdx = content.indexOf("colors:");
+  if (colorsIdx === -1) {
+    return content.includes("extend:")
+      ? content.replace(
+          /extend:\s*\{/,
+          `extend: {\n      colors: {\n${MDXUI_TAILWIND_COLOR_SCALES}\n      },`,
+        )
+      : content;
+  }
+  const openBrace = content.indexOf("{", colorsIdx);
+  if (openBrace === -1) return content;
+  let depth = 0;
+  let closeIdx = -1;
+  for (let i = openBrace; i < content.length; i++) {
+    if (content[i] === "{") depth++;
+    else if (content[i] === "}") {
+      if (--depth === 0) {
+        closeIdx = i;
+        break;
+      }
+    }
+  }
+  if (closeIdx === -1) return content;
+  return (
+    content.slice(0, closeIdx) +
+    `\n${MDXUI_TAILWIND_COLOR_SCALES}\n      ` +
+    content.slice(closeIdx)
+  );
 }
 
 async function setupTailwindConfig(
   cwd: string,
   twVersion: 4 | 3,
   spinner: ReturnType<typeof ora>,
-) {
+): Promise<string | null> {
   // Tailwind v4 stores all config in CSS — no tailwind.config file to patch
-  if (twVersion === 4) return;
+  if (twVersion === 4) return null;
 
   const configPaths = [
     path.join(cwd, "tailwind.config.ts"),
@@ -558,33 +483,40 @@ async function setupTailwindConfig(
     }
   }
 
-  if (!configPath) return;
+  if (!configPath) return null;
 
   try {
     let content = await fs.readFile(configPath, "utf-8");
-    if (
+    const hasShadcn =
       content.includes("hsl(var(--background))") ||
-      content.includes("--background")
-    )
-      return;
+      content.includes('"--background"');
+    const hasMdxui = content.includes("--mdxui-info-border");
 
-    if (content.includes("extend:")) {
-      content = content.replace(
-        /extend:\s*\{/,
-        `extend: {\n${TAILWIND_V3_THEME_EXTENSIONS}`,
-      );
-    } else if (content.includes("theme:")) {
-      content = content.replace(
-        /theme:\s*\{/,
-        `theme: {\n    extend: {\n${TAILWIND_V3_THEME_EXTENSIONS}\n    },`,
-      );
+    if (!hasShadcn) {
+      // Fresh config — inject full shadcn + mdx-ui block
+      if (content.includes("extend:")) {
+        content = content.replace(
+          /extend:\s*\{/,
+          `extend: {\n${TAILWIND_V3_THEME_EXTENSIONS}`,
+        );
+      } else if (content.includes("theme:")) {
+        content = content.replace(
+          /theme:\s*\{/,
+          `theme: {\n    extend: {\n${TAILWIND_V3_THEME_EXTENSIONS}\n    },`,
+        );
+      }
+      await fs.writeFile(configPath, content);
+      spinner.text = `Patched ${path.basename(configPath)} with CSS variable theme colors`;
+    } else if (!hasMdxui) {
+      // Existing shadcn config — inject only the mdx-ui semantic color scales
+      content = injectMdxuiColorsIntoConfig(content);
+      await fs.writeFile(configPath, content);
+      spinner.text = `Added mdx-ui semantic colors to ${path.basename(configPath)}`;
     }
-
-    await fs.writeFile(configPath, content);
-    spinner.text = `Patched ${path.basename(configPath)} with CSS variable theme colors`;
   } catch {
     // non-fatal
   }
+  return path.relative(cwd, configPath);
 }
 
 async function setupMdxComponents(
@@ -607,11 +539,103 @@ async function setupMdxComponents(
   spinner.text = `Created ${path.relative(cwd, mdxPath)}`;
 }
 
-function printNextSteps(framework: Framework) {
+const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
+  contentlayer: `
+  // contentlayer.config.ts
+  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+
+  export default makeSource({
+    mdxOptions: {
+      remarkPlugins: [
+        [remarkMdxUi, { callout: true, table: true, steps: true, mermaid: true }],
+      ],
+    },
+  })`,
+
+  "next-mdx-remote": `
+  // In your compileMdx / serialize call:
+  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+
+  const result = await serialize(source, {
+    mdxOptions: {
+      remarkPlugins: [
+        [remarkMdxUi, { callout: true, table: true, steps: true, mermaid: true }],
+      ],
+    },
+  })`,
+
+  "next-mdx": `
+  // next.config.ts
+  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+
+  const withMDX = createMDX({
+    options: {
+      remarkPlugins: [
+        [remarkMdxUi, { callout: true, table: true, steps: true, mermaid: true }],
+      ],
+    },
+  })`,
+
+  "astro-mdx": `
+  // astro.config.ts
+  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+
+  export default defineConfig({
+    markdown: {
+      remarkPlugins: [
+        [remarkMdxUi, { callout: true, table: true, steps: true, mermaid: true }],
+      ],
+    },
+  })`,
+
+  "mdx-rollup": `
+  // vite.config.ts
+  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+
+  export default defineConfig({
+    plugins: [
+      mdx({
+        remarkPlugins: [
+          [remarkMdxUi, { callout: true, table: true, steps: true, mermaid: true }],
+        ],
+      }),
+    ],
+  })`,
+
+  unknown: null,
+};
+
+function printNextSteps(framework: Framework, mdxPipeline: MdxPipeline) {
   console.log(chalk.bold("\n🎉 You're all set!\n"));
   console.log("Next steps:");
   console.log(chalk.cyan("  npx @ravikumarsurya/mdx-ui add callout"));
   console.log(chalk.cyan("  npx @ravikumarsurya/mdx-ui list"));
+
+  // Remark plugin setup
+  const snippet = REMARK_PLUGIN_SNIPPETS[mdxPipeline];
+  if (snippet) {
+    console.log(
+      chalk.bold(
+        "\n📦 Wire up the remark plugin so markdown auto-upgrades to components:",
+      ),
+    );
+    console.log(
+      chalk.dim("  Install: npm install @ravikumarsurya/remark-mdx-ui"),
+    );
+    console.log(chalk.white(snippet));
+  } else {
+    console.log(
+      chalk.dim(
+        "\n📦 To enable auto-upgrade of markdown → components, add the remark plugin:",
+      ),
+    );
+    console.log(chalk.dim("  npm install @ravikumarsurya/remark-mdx-ui"));
+    console.log(
+      chalk.dim(
+        "  Then add remarkMdxUi to your MDX pipeline's remarkPlugins array.",
+      ),
+    );
+  }
 
   if (framework === "astro") {
     console.log(

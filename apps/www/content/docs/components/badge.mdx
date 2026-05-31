@@ -1,11 +1,13 @@
 ---
 title: Badge
-description: Status labels and category tags with multiple variants
+description: Inline status labels and category tags with muted tinted variants
 component: badge
 published: true
 registryDependencies: ["utils"]
 dependencies: ["class-variance-authority", "clsx", "tailwind-merge"]
 ---
+
+<Demo name="badge-variants" />
 
 ## Installation
 
@@ -15,24 +17,22 @@ npx @ravikumarsurya/mdx-ui add badge
 
 ## Usage
 
-```tsx
+```tsx title="page.mdx"
 import { Badge } from "@/components/mdx/badge"
 
 <Badge>Default</Badge>
 <Badge variant="success">Published</Badge>
+<Badge variant="warning">Beta</Badge>
+<Badge variant="info">New</Badge>
 ```
 
 ## Examples
-
-### All variants
-
-<ComponentPreview name="badge-variants" />
 
 ### In content
 
 Use badges inline to label status, categories, or version numbers.
 
-```mdx
+```mdx title="page.mdx"
 This feature is <Badge variant="info">Beta</Badge> and subject to change.
 
 Release <Badge variant="success">v1.0.0</Badge> is now stable.
@@ -42,7 +42,7 @@ This API is <Badge variant="destructive">Deprecated</Badge>.
 
 ### Version tags
 
-```mdx
+```mdx title="page.mdx"
 ## API Reference <Badge variant="outline">v2</Badge>
 
 ### createUser() <Badge variant="success">Stable</Badge>
@@ -50,10 +50,22 @@ This API is <Badge variant="destructive">Deprecated</Badge>.
 ### legacyAuth() <Badge variant="warning">Deprecated</Badge>
 ```
 
+### All variants
+
+| Variant       | Use for                                |
+| ------------- | -------------------------------------- |
+| `default`     | General labels, primary categorisation |
+| `secondary`   | Secondary or neutral labels            |
+| `outline`     | Subtle, low-emphasis tags              |
+| `success`     | Stable, published, passing             |
+| `warning`     | Beta, deprecated, needs attention      |
+| `info`        | New, preview, informational            |
+| `destructive` | Removed, broken, critical              |
+
 ## Props
 
 | Prop        | Type                                                                                         | Default     | Description               |
 | ----------- | -------------------------------------------------------------------------------------------- | ----------- | ------------------------- |
 | `variant`   | `"default" \| "secondary" \| "outline" \| "destructive" \| "success" \| "warning" \| "info"` | `"default"` | Visual style of the badge |
-| `className` | `string`                                                                                     | -           | Additional CSS classes    |
-| `children`  | `React.ReactNode`                                                                            | -           | Badge label content       |
+| `className` | `string`                                                                                     | —           | Additional CSS classes    |
+| `children`  | `React.ReactNode`                                                                            | —           | Badge label content       |

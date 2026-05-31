@@ -12,6 +12,8 @@ export interface ComponentEntry {
   files: string[];
   /** npm packages required at runtime */
   deps: string[];
+  /** Other mdx-ui components that must be installed alongside this one */
+  registryDependencies?: string[];
   /** Short description shown in list / add picker */
   description: string;
 }
@@ -551,6 +553,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["math-equation.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    registryDependencies: ["math-primitives"],
     description:
       "Semantic equation display blocks: Equation, EqSystem, relation symbols",
   },
@@ -560,6 +563,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     elementMappings: {},
     files: ["math-solution.tsx"],
     deps: ["clsx", "tailwind-merge"],
+    registryDependencies: ["math-equation", "math-primitives"],
     description:
       "Step-by-step mathematical solution blocks: Solution, SolutionStep, SolutionAnswer",
   },

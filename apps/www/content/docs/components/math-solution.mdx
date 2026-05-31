@@ -5,6 +5,25 @@ component: math-solution
 published: true
 ---
 
+<Demo name="math-solution-default" />
+
+## Try it live
+
+<Sandbox
+  code={`<Solution title="Find: ∫(sin x + cos x) dx">
+  <SolutionNote>
+    Use ∫sin x dx = −cos x + C and ∫cos x dx = sin x + C
+  </SolutionNote>
+  <SolutionStep reason="Split the integral">
+    ∫sin x dx + ∫cos x dx
+  </SolutionStep>
+  <SolutionStep reason="Apply standard formulas" highlight>
+    −cos x + sin x
+  </SolutionStep>
+  <SolutionAnswer>−cos x + sin x + C</SolutionAnswer>
+</Solution>`}
+/>
+
 ## Installation
 
 ```bash

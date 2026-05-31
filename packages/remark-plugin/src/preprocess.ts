@@ -24,22 +24,22 @@
 
 interface StepData {
   /** Content lines for this step (list-item prefix already stripped) */
-  lines: string[]
+  lines: string[];
 }
 
 interface StepsBlock {
-  steps: StepData[]
+  steps: StepData[];
   /** Line index in the original array where this block ends (exclusive) */
-  end: number
+  end: number;
 }
 
 // ─── Regex ───────────────────────────────────────────────────────────────────
 
 /** Matches lines that start a numbered list item: "1. " or "1) " */
-const NUMBERED_ITEM_RE = /^(\d+)[.)]\s+(.*)$/
+const NUMBERED_ITEM_RE = /^(\d+)[.)]\s+(.*)$/;
 
 /** Matches the opening of a code fence at any indentation */
-const FENCE_OPEN_RE = /^[ \t]*(`{3,}|~{3,})/
+const FENCE_OPEN_RE = /^[ \t]*(`{3,}|~{3,})/;
 
 // ─── Core ─────────────────────────────────────────────────────────────────────
 
@@ -54,107 +54,116 @@ const FENCE_OPEN_RE = /^[ \t]*(`{3,}|~{3,})/
  */
 function collectStepsBlock(lines: string[], start: number): StepsBlock | null {
   // First line must be a numbered item
-  const firstMatch = NUMBERED_ITEM_RE.exec(lines[start])
-  if (!firstMatch) return null
+  const firstMatch = NUMBERED_ITEM_RE.exec(lines[start]);
+  if (!firstMatch) return null;
 
-  const steps: StepData[] = []
-  let currentLines: string[] = []
-  let i = start
-  let inCodeBlock = false
-  let openFence = ""
+  const steps: StepData[] = [];
+  let currentLines: string[] = [];
+  let i = start;
+  let inCodeBlock = false;
+  let openFence = "";
 
   function flushStep() {
     // Trim trailing blank lines from the step body
-    while (currentLines.length && currentLines[currentLines.length - 1].trim() === "") {
-      currentLines.pop()
+    while (
+      currentLines.length &&
+      currentLines[currentLines.length - 1].trim() === ""
+    ) {
+      currentLines.pop();
     }
-    steps.push({ lines: [...currentLines] })
-    currentLines = []
+    steps.push({ lines: [...currentLines] });
+    currentLines = [];
   }
 
   while (i < lines.length) {
-    const line = lines[i]
-    const trimmed = line.trim()
+    const line = lines[i];
+    const trimmed = line.trim();
 
     // ── Inside a code block ──────────────────────────────────────────────────
     if (inCodeBlock) {
-      currentLines.push(line)
+      currentLines.push(line);
       // Closing fence: starts with the same fence chars (3+ of same type)
-      if (trimmed.startsWith(openFence[0]) && trimmed.replace(/\s/g, "").startsWith(openFence)) {
-        inCodeBlock = false
-        openFence = ""
+      if (
+        trimmed.startsWith(openFence[0]) &&
+        trimmed.replace(/\s/g, "").startsWith(openFence)
+      ) {
+        inCodeBlock = false;
+        openFence = "";
       }
-      i++
-      continue
+      i++;
+      continue;
     }
 
     // ── Opening a code fence ─────────────────────────────────────────────────
-    const fenceMatch = FENCE_OPEN_RE.exec(line)
+    const fenceMatch = FENCE_OPEN_RE.exec(line);
     if (fenceMatch) {
       // Only treat as step content if we already started a step
       if (steps.length > 0 || currentLines.length > 0) {
-        inCodeBlock = true
+        inCodeBlock = true;
         // Normalise fence identifier: first 3 chars of the fence sequence
-        openFence = fenceMatch[1].slice(0, 3)
-        currentLines.push(line)
-        i++
-        continue
+        openFence = fenceMatch[1].slice(0, 3);
+        currentLines.push(line);
+        i++;
+        continue;
       }
       // Code block before any numbered item — not a steps block
-      break
+      break;
     }
 
     // ── New numbered item ────────────────────────────────────────────────────
-    const itemMatch = NUMBERED_ITEM_RE.exec(line)
+    const itemMatch = NUMBERED_ITEM_RE.exec(line);
     if (itemMatch) {
       if (currentLines.length > 0 || steps.length > 0) {
-        flushStep()
+        flushStep();
       }
       // The rest of the "1. " line becomes the first content of the new step
-      const rest = itemMatch[2].trim()
-      if (rest) currentLines.push(rest)
-      i++
-      continue
+      const rest = itemMatch[2].trim();
+      if (rest) currentLines.push(rest);
+      i++;
+      continue;
     }
 
     // ── Blank line ───────────────────────────────────────────────────────────
     if (trimmed === "") {
       // Peek ahead past consecutive blank lines
-      let j = i + 1
-      while (j < lines.length && lines[j].trim() === "") j++
+      let j = i + 1;
+      while (j < lines.length && lines[j].trim() === "") j++;
 
-      const nextLine = j < lines.length ? lines[j] : ""
+      const nextLine = j < lines.length ? lines[j] : "";
 
       if (NUMBERED_ITEM_RE.test(nextLine)) {
         // Another step follows — skip blanks, don't add to step content
-        i = j
-        continue
+        i = j;
+        continue;
       }
 
-      if (FENCE_OPEN_RE.test(nextLine) && (steps.length > 0 || currentLines.length > 0)) {
+      if (
+        FENCE_OPEN_RE.test(nextLine) &&
+        (steps.length > 0 || currentLines.length > 0)
+      ) {
         // A code block follows immediately — it belongs to the current step
         // Preserve one blank line for MDX paragraph separation, then continue
-        currentLines.push("")
-        i = j
-        continue
+        currentLines.push("");
+        i = j;
+        continue;
       }
 
       // Nothing list-related follows — end of steps block
-      break
+      break;
     }
 
     // ── Regular content line (part of current step) ──────────────────────────
-    currentLines.push(line)
-    i++
+    currentLines.push(line);
+    i++;
   }
 
   // Flush whatever is in the buffer
-  if (currentLines.length > 0) flushStep()
+  if (currentLines.length > 0) flushStep();
 
   // Only treat it as a steps block if we have at least 2 steps
-  if (steps.length < 2) return null
+  if (steps.length < 2) return null;
 
-  return { steps, end: i }
+  return { steps, end: i };
 }
 
 /**
@@ -164,16 +173,16 @@ function collectStepsBlock(lines: string[], start: number): StepsBlock | null {
  * block-level markdown (paragraphs, headings, code blocks, etc.).
  */
 function emitSteps(block: StepsBlock): string {
-  const parts: string[] = ["<Steps>"]
+  const parts: string[] = ["<Steps>"];
   for (const step of block.steps) {
-    parts.push("<Step>")
-    parts.push("") // blank line → MDX parses children as blocks
-    parts.push(...step.lines)
-    parts.push("") // blank line
-    parts.push("</Step>")
+    parts.push("<Step>");
+    parts.push(""); // blank line → MDX parses children as blocks
+    parts.push(...step.lines);
+    parts.push(""); // blank line
+    parts.push("</Step>");
   }
-  parts.push("</Steps>")
-  return parts.join("\n")
+  parts.push("</Steps>");
+  return parts.join("\n");
 }
 
 // ─── Public API ───────────────────────────────────────────────────────────────
@@ -200,20 +209,20 @@ function emitSteps(block: StepsBlock): string {
  * ```
  */
 export function preprocessMarkdown(content: string): string {
-  const lines = content.split("\n")
-  const out: string[] = []
-  let i = 0
+  const lines = content.split("\n");
+  const out: string[] = [];
+  let i = 0;
 
   while (i < lines.length) {
-    const block = collectStepsBlock(lines, i)
+    const block = collectStepsBlock(lines, i);
     if (block) {
-      out.push(emitSteps(block))
-      i = block.end
+      out.push(emitSteps(block));
+      i = block.end;
     } else {
-      out.push(lines[i])
-      i++
+      out.push(lines[i]);
+      i++;
     }
   }
 
-  return out.join("\n")
+  return out.join("\n");
 }

@@ -27,6 +27,7 @@ export interface SymbolEntry {
 export type Category =
   | "arithmetic"
   | "calculus"
+  | "composition"
   | "trig"
   | "algebra"
   | "sets"
@@ -47,9 +48,21 @@ export type Category =
   | "definition"
   | "school"
   | "shorthands"
-  | "misc";
+  | "misc"
+  | "cs";
 
 export const SYMBOL_MAP: SymbolEntry[] = [
+  // ── Composition ─────────────────────────────────────────────────────────────
+  {
+    name: "expression / compose / group",
+    category: "composition",
+    symbols: [],
+    latex: [],
+    component: "Expr",
+    usage: '<Expr>x <Pow exp="2">dx</Pow></Expr>',
+    description:
+      "Inline composition wrapper — groups text, symbols, and components into a single node",
+  },
   // ── Arithmetic ──────────────────────────────────────────────────────────────
   {
     name: "fraction",
@@ -1086,6 +1099,15 @@ export const SYMBOL_MAP: SymbolEntry[] = [
 
   // ── Brackets ─────────────────────────────────────────────────────────────────
   {
+    name: "curly brace grouping",
+    category: "brackets",
+    symbols: ["{x}", "{a+b}"],
+    latex: ["\\left\\{ x \\right\\}", "\\{a+b\\}"],
+    component: "Brace",
+    usage: "<Brace>x + y</Brace>",
+    description: "Curly brace grouping — scales to match content height",
+  },
+  {
     name: "angle brackets / inner product",
     category: "brackets",
     symbols: ["⟨u,v⟩", "⟨x⟩"],
@@ -1391,6 +1413,54 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     component: "LDots",
     usage: "<LDots />",
     description: "Baseline ellipsis …",
+  },
+
+  // ── CS / Asymptotic Notation ─────────────────────────────────────────────────
+  {
+    name: "Big-O / worst-case complexity",
+    category: "cs",
+    symbols: ["O", "O(n)", "O(log n)"],
+    latex: ["O(n)", "\\mathcal{O}(n)"],
+    component: "BigO",
+    usage: "<BigO />(n)",
+    description: "Big-O upper bound — worst-case complexity",
+  },
+  {
+    name: "Big-Theta / tight complexity bound",
+    category: "cs",
+    symbols: ["Θ", "Θ(n)"],
+    latex: ["\\Theta(n)"],
+    component: "BigTheta",
+    usage: "<BigTheta />(n)",
+    description: "Big-Theta tight bound — exact asymptotic complexity",
+  },
+  {
+    name: "Big-Omega / best-case complexity",
+    category: "cs",
+    symbols: ["Ω", "Ω(n)"],
+    latex: ["\\Omega(n)"],
+    component: "BigOmega",
+    usage: "<BigOmega />(n)",
+    description: "Big-Omega lower bound — best-case complexity",
+  },
+  {
+    name: "little-o / strict upper bound",
+    category: "cs",
+    symbols: ["𝑜", "o(n)"],
+    latex: ["o(n)"],
+    component: "LittleO",
+    usage: "<LittleO />(n)",
+    description: "little-o strict upper bound — f grows strictly slower than g",
+  },
+  {
+    name: "little-omega / strict lower bound",
+    category: "cs",
+    symbols: ["ω", "ω(n)"],
+    latex: ["\\omega(n)"],
+    component: "LittleOmega",
+    usage: "<LittleOmega />(n)",
+    description:
+      "little-omega strict lower bound — f grows strictly faster than g",
   },
 
   // ── Misc ─────────────────────────────────────────────────────────────────────

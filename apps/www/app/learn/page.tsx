@@ -3,7 +3,9 @@ export default function LearnPage() {
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <div className="space-y-2">
-          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">Quick Start</h1>
+          <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+            Quick Start
+          </h1>
           <p className="text-lg text-muted-foreground">
             Get started with MDX UI in minutes.
           </p>
@@ -15,8 +17,9 @@ export default function LearnPage() {
               What is MDX UI?
             </h2>
             <p className="leading-7">
-              MDX UI is a collection of beautifully designed, accessible, and customizable components
-              for MDX-based documentation sites. Built with React, TypeScript, and Tailwind CSS.
+              MDX UI is a collection of beautifully designed, accessible, and
+              customizable components for MDX-based documentation sites. Built
+              with React, TypeScript, and Tailwind CSS.
             </p>
           </section>
 

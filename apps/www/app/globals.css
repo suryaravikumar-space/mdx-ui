@@ -4,6 +4,52 @@
 
 @layer base {
   :root {
+    /* ── MDX UI semantic component tokens ───────────────────────────────────────
+       Override these to rebrand all components at once.
+       Light mode values use Tailwind palette references as hex.         */
+
+    --mdxui-info-border:    #7dd3fc; /* sky-300   */
+    --mdxui-info-bg:        #f0f9ff; /* sky-50    */
+    --mdxui-info-text:      #0c4a6e; /* sky-900   */
+    --mdxui-info-accent:    #0369a1; /* sky-700   */
+    --mdxui-info-badge-bg:  #e0f2fe; /* sky-100   */
+    --mdxui-info-badge-text:#075985; /* sky-800   */
+
+    --mdxui-note-border:    #cbd5e1; /* slate-300 */
+    --mdxui-note-bg:        #f8fafc; /* slate-50  */
+    --mdxui-note-text:      #0f172a; /* slate-900 */
+    --mdxui-note-accent:    #475569; /* slate-600 */
+    --mdxui-note-badge-bg:  #f1f5f9; /* slate-100 */
+    --mdxui-note-badge-text:#334155; /* slate-700 */
+
+    --mdxui-tip-border:     #6ee7b7; /* emerald-300 */
+    --mdxui-tip-bg:         #ecfdf5; /* emerald-50  */
+    --mdxui-tip-text:       #064e3b; /* emerald-900 */
+    --mdxui-tip-accent:     #059669; /* emerald-600 */
+    --mdxui-tip-badge-bg:   #d1fae5; /* emerald-100 */
+    --mdxui-tip-badge-text: #065f46; /* emerald-800 */
+
+    --mdxui-warning-border:    #fcd34d; /* amber-300 */
+    --mdxui-warning-bg:        #fffbeb; /* amber-50  */
+    --mdxui-warning-text:      #78350f; /* amber-900 */
+    --mdxui-warning-accent:    #d97706; /* amber-600 */
+    --mdxui-warning-badge-bg:  #fef3c7; /* amber-100 */
+    --mdxui-warning-badge-text:#92400e; /* amber-800 */
+
+    --mdxui-danger-border:    #fca5a5; /* red-300 */
+    --mdxui-danger-bg:        #fef2f2; /* red-50  */
+    --mdxui-danger-text:      #7f1d1d; /* red-900 */
+    --mdxui-danger-accent:    #dc2626; /* red-600 */
+    --mdxui-danger-badge-bg:  #fee2e2; /* red-100 */
+    --mdxui-danger-badge-text:#991b1b; /* red-800 */
+
+    --mdxui-success-border:    #6ee7b7; /* emerald-300 */
+    --mdxui-success-bg:        #ecfdf5; /* emerald-50  */
+    --mdxui-success-text:      #064e3b; /* emerald-900 */
+    --mdxui-success-accent:    #059669; /* emerald-600 */
+    --mdxui-success-badge-bg:  #d1fae5; /* emerald-100 */
+    --mdxui-success-badge-text:#065f46; /* emerald-800 */
+
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -27,6 +73,49 @@
   }
 
   .dark {
+    /* Dark mode semantic token overrides */
+    --mdxui-info-border:    #0369a1;              /* sky-700           */
+    --mdxui-info-bg:        rgb(8 47 73 / 0.45);  /* sky-950 @ 45%     */
+    --mdxui-info-text:      #e0f2fe;              /* sky-100           */
+    --mdxui-info-accent:    #7dd3fc;              /* sky-300           */
+    --mdxui-info-badge-bg:  rgb(8 47 73 / 0.5);
+    --mdxui-info-badge-text:#7dd3fc;
+
+    --mdxui-note-border:    #475569;              /* slate-600         */
+    --mdxui-note-bg:        rgb(30 41 59 / 0.45); /* slate-800 @ 45%   */
+    --mdxui-note-text:      #f1f5f9;              /* slate-100         */
+    --mdxui-note-accent:    #cbd5e1;              /* slate-300         */
+    --mdxui-note-badge-bg:  rgb(30 41 59 / 0.5);
+    --mdxui-note-badge-text:#cbd5e1;
+
+    --mdxui-tip-border:    #059669;               /* emerald-600       */
+    --mdxui-tip-bg:        rgb(2 44 34 / 0.45);   /* emerald-950 @ 45% */
+    --mdxui-tip-text:      #d1fae5;               /* emerald-100       */
+    --mdxui-tip-accent:    #6ee7b7;               /* emerald-300       */
+    --mdxui-tip-badge-bg:  rgb(2 44 34 / 0.5);
+    --mdxui-tip-badge-text:#6ee7b7;
+
+    --mdxui-warning-border:    #d97706;             /* amber-600         */
+    --mdxui-warning-bg:        rgb(67 20 7 / 0.45); /* amber-950 @ 45%   */
+    --mdxui-warning-text:      #fef3c7;             /* amber-100         */
+    --mdxui-warning-accent:    #fcd34d;             /* amber-300         */
+    --mdxui-warning-badge-bg:  rgb(67 20 7 / 0.5);
+    --mdxui-warning-badge-text:#fcd34d;
+
+    --mdxui-danger-border:    #dc2626;             /* red-600           */
+    --mdxui-danger-bg:        rgb(69 10 10 / 0.45);/* red-950 @ 45%     */
+    --mdxui-danger-text:      #fee2e2;             /* red-100           */
+    --mdxui-danger-accent:    #fca5a5;             /* red-300           */
+    --mdxui-danger-badge-bg:  rgb(69 10 10 / 0.5);
+    --mdxui-danger-badge-text:#fca5a5;
+
+    --mdxui-success-border:    #059669;              /* emerald-600       */
+    --mdxui-success-bg:        rgb(2 44 34 / 0.45);  /* emerald-950 @ 45% */
+    --mdxui-success-text:      #d1fae5;              /* emerald-100       */
+    --mdxui-success-accent:    #6ee7b7;              /* emerald-300       */
+    --mdxui-success-badge-bg:  rgb(2 44 34 / 0.5);
+    --mdxui-success-badge-text:#6ee7b7;
+
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;

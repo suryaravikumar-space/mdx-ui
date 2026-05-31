@@ -1,5 +1,5 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface EmphasisProps extends React.HTMLAttributes<HTMLElement> {}
 
@@ -12,9 +12,9 @@ export const Strong = React.forwardRef<HTMLElement, EmphasisProps>(
     >
       {children}
     </strong>
-  )
-)
-Strong.displayName = "Strong"
+  ),
+);
+Strong.displayName = "Strong";
 
 export const Em = React.forwardRef<HTMLElement, EmphasisProps>(
   ({ children, className, ...props }, ref) => (
@@ -25,6 +25,6 @@ export const Em = React.forwardRef<HTMLElement, EmphasisProps>(
     >
       {children}
     </em>
-  )
-)
-Em.displayName = "Em"
+  ),
+);
+Em.displayName = "Em";

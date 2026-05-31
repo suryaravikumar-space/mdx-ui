@@ -25,7 +25,9 @@ export const docsNav = sidebarDocs as DocsNavigation;
  * Get all routes flattened (for searching, breadcrumbs, next/prev navigation)
  * Only includes routes with paths (excludes section headers)
  */
-export function getAllRoutes(routes: RouteItem[] = docsNav.routes): RouteItem[] {
+export function getAllRoutes(
+  routes: RouteItem[] = docsNav.routes,
+): RouteItem[] {
   const flatRoutes: RouteItem[] = [];
 
   for (const route of routes) {
@@ -51,7 +53,7 @@ export function getAllRoutes(routes: RouteItem[] = docsNav.routes): RouteItem[] 
  */
 export function findRouteByPath(
   path: string,
-  routes: RouteItem[] = docsNav.routes
+  routes: RouteItem[] = docsNav.routes,
 ): RouteItem | null {
   for (const route of routes) {
     if (route.path === path) {
@@ -71,7 +73,7 @@ export function findRouteByPath(
  */
 export function getBreadcrumbs(
   path: string,
-  routes: RouteItem[] = docsNav.routes
+  routes: RouteItem[] = docsNav.routes,
 ): RouteItem[] {
   const breadcrumbs: RouteItem[] = [];
 
@@ -119,7 +121,8 @@ export function getAdjacentRoutes(path: string): {
 
   return {
     prev: currentIndex > 0 ? allRoutes[currentIndex - 1] : null,
-    next: currentIndex < allRoutes.length - 1 ? allRoutes[currentIndex + 1] : null,
+    next:
+      currentIndex < allRoutes.length - 1 ? allRoutes[currentIndex + 1] : null,
   };
 }
 
@@ -133,7 +136,10 @@ export function isRouteActive(routePath: string, currentPath: string): boolean {
 /**
  * Get the section header that precedes a route
  */
-export function getSectionHeader(path: string, routes: RouteItem[] = docsNav.routes): string | null {
+export function getSectionHeader(
+  path: string,
+  routes: RouteItem[] = docsNav.routes,
+): string | null {
   let lastHeader: string | null = null;
 
   for (const route of routes) {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allDocs } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx-components";
@@ -7,6 +8,7 @@ import { getBreadcrumbs } from "@/lib/docs-nav";
 import { PageNavigation } from "@/components/page-navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 interface IntegrationPageProps {
   params: Promise<{
@@ -26,6 +28,32 @@ async function getDocFromParams(params: { slug: string[] }) {
   }
 
   return doc;
+}
+
+export async function generateMetadata({
+  params,
+}: IntegrationPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const doc = await getDocFromParams(resolvedParams);
+
+  if (!doc) return {};
+
+  return {
+    title: doc.title,
+    description: doc.description,
+    alternates: { canonical: `${siteConfig.url}${doc.slug}` },
+    openGraph: {
+      title: `${doc.title} — MDX UI`,
+      description: doc.description,
+      url: `${siteConfig.url}${doc.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: `${doc.title} — MDX UI`,
+      description: doc.description,
+    },
+  };
 }
 
 export async function generateStaticParams(): Promise<
@@ -54,7 +82,7 @@ export default async function IntegrationPage({
   const breadcrumbs = getBreadcrumbs(doc.slug);
 
   return (
-    <main className="relative px-4 py-6 md:px-8 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px] xl:gap-16">
+    <main className="relative py-8 lg:gap-10 lg:py-12 xl:grid xl:grid-cols-[1fr_300px] xl:gap-20">
       <div className="mx-auto w-full min-w-0 max-w-3xl">
         {/* Breadcrumbs */}
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">

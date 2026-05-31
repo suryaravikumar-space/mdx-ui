@@ -9,7 +9,7 @@ export default function ChangelogDefault() {
     <Changelog>
       <ChangelogEntry version="v1.2.0" date="2025-04-10">
         <ChangelogItem type="added">
-          New ComponentPreview with shiki dual-theme highlighting
+          New Demo with shiki dual-theme highlighting
         </ChangelogItem>
         <ChangelogItem type="added">
           Spoiler and Reveal components

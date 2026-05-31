@@ -1,7 +1,7 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-export interface InlineCodeProps extends React.HTMLAttributes<HTMLElement> {}
+export type InlineCodeProps = React.HTMLAttributes<HTMLElement>
 
 export const Code = React.forwardRef<HTMLElement, InlineCodeProps>(
   ({ children, className, ...props }, ref) => (
@@ -11,12 +11,12 @@ export const Code = React.forwardRef<HTMLElement, InlineCodeProps>(
         "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
         "text-foreground",
         "before:content-[''] after:content-['']",
-        className
+        className,
       )}
       {...props}
     >
       {children}
     </code>
-  )
-)
-Code.displayName = "Code"
+  ),
+);
+Code.displayName = "Code";

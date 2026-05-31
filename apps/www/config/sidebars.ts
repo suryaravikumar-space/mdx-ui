@@ -27,7 +27,13 @@ export interface SidebarConfig {
 }
 
 // Export all sidebars
-export { sidebarDocs, sidebarLearn, sidebarReference, sidebarBlog, sidebarCommunity };
+export {
+  sidebarDocs,
+  sidebarLearn,
+  sidebarReference,
+  sidebarBlog,
+  sidebarCommunity,
+};
 
 // Get sidebar by path
 export function getSidebarByPath(pathname: string): SidebarConfig {
@@ -73,7 +79,10 @@ export function getAllRoutes(routes: RouteItem[] = []): RouteItem[] {
 }
 
 // Helper to find route by path
-export function findRouteByPath(path: string, routes: RouteItem[]): RouteItem | null {
+export function findRouteByPath(
+  path: string,
+  routes: RouteItem[],
+): RouteItem | null {
   for (const route of routes) {
     if (route.path === path) {
       return route;

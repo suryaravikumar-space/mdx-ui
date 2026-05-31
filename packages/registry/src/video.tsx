@@ -1,13 +1,13 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface VideoProps extends React.HTMLAttributes<HTMLElement> {
-  src: string
-  title?: string
-  caption?: string
-  autoPlay?: boolean
-  loop?: boolean
-  muted?: boolean
+  src: string;
+  title?: string;
+  caption?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
 }
 
 function getYouTubeId(url: string): string | null {
@@ -15,24 +15,27 @@ function getYouTubeId(url: string): string | null {
     /youtube\.com\/watch\?(?:.*&)?v=([a-zA-Z0-9_-]+)/,
     /youtu\.be\/([a-zA-Z0-9_-]+)/,
     /youtube\.com\/embed\/([a-zA-Z0-9_-]+)/,
-  ]
+  ];
   for (const p of patterns) {
-    const m = url.match(p)
-    if (m) return m[1]
+    const m = url.match(p);
+    if (m) return m[1];
   }
-  return null
+  return null;
 }
 
 function getVimeoId(url: string): string | null {
-  const m = url.match(/vimeo\.com\/(\d+)/)
-  return m ? m[1] : null
+  const m = url.match(/vimeo\.com\/(\d+)/);
+  return m ? m[1] : null;
 }
 
 export const Video = React.forwardRef<HTMLElement, VideoProps>(
-  ({ src, title, caption, autoPlay, loop, muted, className, ...props }, ref) => {
-    const youtubeId = getYouTubeId(src)
-    const vimeoId = !youtubeId ? getVimeoId(src) : null
-    const isHtml5 = !youtubeId && !vimeoId
+  (
+    { src, title, caption, autoPlay, loop, muted, className, ...props },
+    ref,
+  ) => {
+    const youtubeId = getYouTubeId(src);
+    const vimeoId = !youtubeId ? getVimeoId(src) : null;
+    const _isHtml5 = !youtubeId && !vimeoId;
 
     return (
       <figure ref={ref} className={cn("my-6", className)} {...props}>
@@ -78,7 +81,7 @@ export const Video = React.forwardRef<HTMLElement, VideoProps>(
           </figcaption>
         )}
       </figure>
-    )
-  }
-)
-Video.displayName = "Video"
+    );
+  },
+);
+Video.displayName = "Video";

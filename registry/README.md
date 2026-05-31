@@ -38,11 +38,13 @@ Each JSON file contains:
 ## Source Code Location
 
 The original TypeScript source files are located in:
+
 - `/packages/registry/src/` - Component source code (for development/reference)
 
 ## Usage
 
 The CLI reads from this registry when users run:
+
 ```bash
 npx mdx-ui add component-name
 ```

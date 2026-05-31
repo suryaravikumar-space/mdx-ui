@@ -1,11 +1,11 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface SpoilerProps extends React.HTMLAttributes<HTMLDetailsElement> {
   /** Text shown in the summary / toggle button */
-  summary: string
+  summary: string;
   /** Start open */
-  open?: boolean
+  open?: boolean;
 }
 
 export const Spoiler = React.forwardRef<HTMLDetailsElement, SpoilerProps>(
@@ -13,7 +13,10 @@ export const Spoiler = React.forwardRef<HTMLDetailsElement, SpoilerProps>(
     <details
       ref={ref}
       open={open}
-      className={cn("group my-4 rounded-lg border border-border bg-card", className)}
+      className={cn(
+        "group my-4 rounded-lg border border-border bg-card",
+        className,
+      )}
       {...props}
     >
       <summary className="flex cursor-pointer select-none list-none items-center justify-between px-4 py-3 text-sm font-medium hover:bg-muted/50 rounded-lg [&::-webkit-details-marker]:hidden">
@@ -38,6 +41,6 @@ export const Spoiler = React.forwardRef<HTMLDetailsElement, SpoilerProps>(
         {children}
       </div>
     </details>
-  )
-)
-Spoiler.displayName = "Spoiler"
+  ),
+);
+Spoiler.displayName = "Spoiler";

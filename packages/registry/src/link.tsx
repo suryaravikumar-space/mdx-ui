@@ -1,23 +1,26 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 function isExternalUrl(href: string): boolean {
   try {
-    const url = new URL(href)
-    return url.protocol === "http:" || url.protocol === "https:"
+    const url = new URL(href);
+    return url.protocol === "http:" || url.protocol === "https:";
   } catch {
-    return false
+    return false;
   }
 }
 
 export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Override auto-detection of external URLs */
-  external?: boolean
+  external?: boolean;
 }
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ href = "", children, className, external, target, rel, ...props }, ref) => {
-    const isExternal = external ?? isExternalUrl(href)
+  (
+    { href = "", children, className, external, target, rel, ...props },
+    ref,
+  ) => {
+    const isExternal = external ?? isExternalUrl(href);
 
     return (
       <a
@@ -28,7 +31,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
         className={cn(
           "font-medium underline underline-offset-4 hover:text-foreground transition-colors",
           "inline-flex items-center gap-0.5",
-          className
+          className,
         )}
         {...props}
       >
@@ -53,7 +56,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
           </svg>
         )}
       </a>
-    )
-  }
-)
-Link.displayName = "Link"
+    );
+  },
+);
+Link.displayName = "Link";

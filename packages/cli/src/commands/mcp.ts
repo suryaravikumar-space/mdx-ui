@@ -806,6 +806,12 @@ const ALLOWED_COMPONENTS = new Set([
   "SubZero",
   "SubOne",
   "SubTwo",
+  // math-primitives — CS asymptotic notation
+  "BigO",
+  "BigTheta",
+  "BigOmega",
+  "LittleO",
+  "LittleOmega",
 ]);
 
 const BANNED_HTML =
@@ -1119,7 +1125,13 @@ BEFORE WRITING MATH:
 - Call parse_solution(text) for any worked example or step-by-step derivation
 - Call search_symbols(query) if unsure which component to use for a symbol
 
-Output only the MDX content — no explanation, no code fences wrapping the whole thing.`,
+Output only the MDX content — no explanation, no code fences wrapping the whole thing.
+
+MANDATORY SELF-CHECK BEFORE RESPONDING:
+1. Call validate_mdx on your output.
+2. If validate_mdx reports any dollar-math issues → call convert_mdx_math to fix them.
+3. If validate_mdx reports unknown components → replace them with allowed primitives.
+4. Return the corrected MDX — never return content that fails validate_mdx.`,
             },
           },
         ],

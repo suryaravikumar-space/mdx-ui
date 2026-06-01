@@ -148,6 +148,41 @@ const CATALOG: Entry[] = [
     preview: <P.Times />,
   },
   {
+    component: "Plus",
+    category: "school",
+    usage: "<Plus />",
+    description: "Plus sign +",
+    preview: <P.Plus />,
+  },
+  {
+    component: "Minus",
+    category: "school",
+    usage: "<Minus />",
+    description: "Minus sign −",
+    preview: <P.Minus />,
+  },
+  {
+    component: "Mul",
+    category: "school",
+    usage: "<Mul />",
+    description: "Multiplication ×",
+    preview: <P.Mul />,
+  },
+  {
+    component: "Div",
+    category: "school",
+    usage: "<Div />",
+    description: "Division slash /",
+    preview: <P.Div />,
+  },
+  {
+    component: "Modulus",
+    category: "school",
+    usage: "<Modulus />",
+    description: "Modulus operator % (programming)",
+    preview: <P.Modulus />,
+  },
+  {
     component: "Division",
     category: "school",
     usage: "<Division />",
@@ -1662,8 +1697,8 @@ const CATALOG: Entry[] = [
   {
     component: "CDots",
     category: "dots",
-    usage: "<CDots />",
-    description: "Centered dots ⋯",
+    usage: "<CDots /> or <CDots count={5} />",
+    description: "Centered dots — count prop controls number of dots (default 3)",
     preview: <P.CDots />,
   },
   {

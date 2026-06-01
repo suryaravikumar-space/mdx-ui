@@ -671,6 +671,8 @@ const ALLOWED_COMPONENTS = new Set([
   "AngleBracket",
   "DoubleBracket",
   "Interval",
+  "Brace",
+  "Expr",
   // math-primitives — piecewise
   "Case",
   "Cases",
@@ -812,6 +814,12 @@ const ALLOWED_COMPONENTS = new Set([
   "BigOmega",
   "LittleO",
   "LittleOmega",
+  // math-primitives — basic arithmetic
+  "Plus",
+  "Minus",
+  "Mul",
+  "Div",
+  "Modulus",
 ]);
 
 const BANNED_HTML =

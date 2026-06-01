@@ -107,7 +107,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: ["\\%"],
     component: "Modulus",
     usage: "<Modulus />",
-    description: "Modulus operator % (programming) — use Percent for math percent",
+    description:
+      "Modulus operator % (programming) — use Percent for math percent",
   },
   {
     name: "fraction",
@@ -1430,7 +1431,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: ["\\cdots"],
     component: "CDots",
     usage: "<CDots /> or <CDots count={5} />",
-    description: "Centered horizontal dots — count prop controls number of dots (default 3)",
+    description:
+      "Centered horizontal dots — count prop controls number of dots (default 3)",
   },
   {
     name: "vertical dots",

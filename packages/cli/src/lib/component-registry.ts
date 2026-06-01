@@ -813,7 +813,7 @@ export const REGISTRY: Record<string, ComponentEntry> = {
       "NaturalSymbol",
       "FlatSymbol",
       "SharpSymbol",
-  ],
+    ],
     elementMappings: {},
     files: ["math-primitives.tsx"],
     deps: ["clsx", "tailwind-merge"],

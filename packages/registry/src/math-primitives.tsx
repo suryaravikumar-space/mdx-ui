@@ -1762,7 +1762,13 @@ export const CircleArrowLeft = mkSym(
 // CDots · VDots · DDots · LDots · Therefore dots
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export const CDots = ({ count = 3, className }: { count?: number; className?: string }) => (
+export const CDots = ({
+  count = 3,
+  className,
+}: {
+  count?: number;
+  className?: string;
+}) => (
   <span className={cn("mx-1 font-serif", className)} aria-label="centered dots">
     {"·".repeat(count)}
   </span>

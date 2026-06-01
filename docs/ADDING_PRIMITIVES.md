@@ -5,6 +5,7 @@ When you add a new primitive component (e.g. `<Plus />`), update these 6 files i
 ---
 
 ## 1. `packages/registry/src/math-primitives.tsx`
+
 The source of truth. Add the export using `mkSym`:
 
 ```tsx
@@ -15,6 +16,7 @@ export const Plus = mkSym("+", "plus", "mx-1");
 ---
 
 ## 2. `apps/www/components/mdx/math-primitives.tsx`
+
 Local copy used by the www app. Mirror the exact same export here.
 
 ```tsx
@@ -24,6 +26,7 @@ export const Plus = mkSym("+", "plus", "mx-1");
 ---
 
 ## 3. `apps/www/components/mdx-components.tsx`
+
 Two places in this file — both the import block and the component map:
 
 ```tsx
@@ -43,6 +46,7 @@ export const components = {
 ---
 
 ## 4. `apps/www/components/symbol-browser.tsx`
+
 Add an entry with a live preview:
 
 ```tsx
@@ -58,6 +62,7 @@ Add an entry with a live preview:
 ---
 
 ## 5. `packages/cli/src/commands/mcp.ts`
+
 Add to the `ALLOWED_COMPONENTS` Set so `validate_mdx` accepts it:
 
 ```ts
@@ -71,6 +76,7 @@ const ALLOWED_COMPONENTS = new Set([
 ---
 
 ## 6. `packages/cli/src/symbol-map.ts`
+
 Add an entry to `SYMBOL_MAP` so it appears in `search_symbols`, `get_symbol_cheatsheet`, and the AI output standard:
 
 ```ts

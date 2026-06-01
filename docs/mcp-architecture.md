@@ -8,11 +8,11 @@ When you run `mdx-ui mcp`, it starts an MCP server over **stdio** using `@modelc
 
 The server registers three types of things:
 
-| Type | Examples |
-|------|---------|
-| **Resources** | `registry://components`, `registry://standard`, `registry://symbol-map` |
-| **Prompts** | `generate_mdx`, `review_mdx` |
-| **Tools** | `list_components`, `get_component`, `validate_mdx`, `convert_latex`, `parse_solution`, `search_symbols` |
+| Type          | Examples                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| **Resources** | `registry://components`, `registry://standard`, `registry://symbol-map`                                 |
+| **Prompts**   | `generate_mdx`, `review_mdx`                                                                            |
+| **Tools**     | `list_components`, `get_component`, `validate_mdx`, `convert_latex`, `parse_solution`, `search_symbols` |
 
 ---
 
@@ -23,6 +23,7 @@ The key is `OUTPUT_STANDARD` in `packages/cli/src/commands/mcp.ts`. It's a syste
 > "Write MDX. Use `<Callout>`, `<Steps>`, `<Frac>`, `<Integral>` — never `$...$` LaTeX."
 
 This is returned by:
+
 - The `get_output_standard` tool
 - The `generate_mdx` prompt (prepended automatically)
 - The `review_mdx` prompt
@@ -53,6 +54,7 @@ Tools like `get_component("callout")` and `search_components("math")` let the LL
 ### 4. Validation Loop
 
 `validate_mdx` runs static checks on LLM output against `ALLOWED_COMPONENTS` — a hardcoded Set of all 250+ valid names. Checks:
+
 - No `$...$` or `$$...$$` dollar math
 - No raw HTML like `<div>`, `<span>`
 - No H1 headings
@@ -67,16 +69,20 @@ The `generate_mdx` prompt mandates the LLM **call `validate_mdx` on its own outp
 Once the LLM writes `<Callout variant="info">Note</Callout>`, rendering happens via:
 
 **In Next.js apps** — `mdx-components.tsx` (installed by `mdx-ui add`):
+
 ```ts
 import { Callout } from "@/components/mdx/callout"
 export const components = { Callout, Frac, ... }
 ```
+
 Next.js passes this map to the MDX renderer which resolves `<Callout>` → the React component.
 
 **In VSCode extension** — `webview-bundle.js` (dist artifact):
+
 ```ts
 export const mdxComponents = { Callout, Frac, Integral, ... }
 ```
+
 The webview imports this bundle and passes `mdxComponents` to its MDX renderer.
 
 ---

@@ -35,7 +35,7 @@ export DO_NOT_TRACK=1
 ## Excluded automatically
 
 Your own machine is always excluded — the CLI checks if the current project's
-git remote contains `suryaravikumar-space/mdx-ui` and skips the ping silently.
+git remote contains `suryaravikumar-space/docsui` and skips the ping silently.
 
 ## Implementation
 

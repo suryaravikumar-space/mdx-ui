@@ -270,8 +270,8 @@ The required CSS is automatically injected by `npx docsui-cli@latest init`.
 
 ## Links
 
-- **Documentation**: [GitHub](https://github.com/suryaravikumar-space/mdx-ui)
-- **Issues**: [GitHub Issues](https://github.com/suryaravikumar-space/mdx-ui/issues)
+- **Documentation**: [GitHub](https://github.com/suryaravikumar-space/docsui)
+- **Issues**: [GitHub Issues](https://github.com/suryaravikumar-space/docsui/issues)
 - **npm**: [docsui](https://www.npmjs.com/package/docsui-cli)
 
 ## License

@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/suryaravikumar-space/mdx-ui.git",
+    "url": "https://github.com/suryaravikumar-space/docsui.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://github.com/suryaravikumar-space/mdx-ui#readme",
+  "homepage": "https://github.com/suryaravikumar-space/docsui#readme",
   "bugs": {
-    "url": "https://github.com/suryaravikumar-space/mdx-ui/issues"
+    "url": "https://github.com/suryaravikumar-space/docsui/issues"
   },
   "keywords": [
     "mdx",

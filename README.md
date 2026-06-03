@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/docsui)](https://www.npmjs.com/package/docsui-cli)
 [![Socket](https://socket.dev/api/badge/npm/package/docsui)](https://socket.dev/npm/package/docsui)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/mdx-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/mdx-ui)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/docsui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/docsui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Copy-paste MDX components for documentation sites. Built with React, TypeScript, and Tailwind CSS. Follows the [shadcn/ui](https://ui.shadcn.com) philosophy — components live in your project, not in `node_modules`.
@@ -212,7 +212,7 @@ Commit both the `.tsx` source and the generated `registry/mdx/*.json`.
 **Prerequisites:** Node.js 20.12+, pnpm 9+
 
 ```bash
-git clone https://github.com/suryaravikumar-space/mdx-ui.git
+git clone https://github.com/suryaravikumar-space/docsui.git
 cd mdx-ui
 pnpm install
 

@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before opening a bug report, please check [existing issues](https://github.com/suryaravikumar-space/mdx-ui/issues).
+        Before opening a bug report, please check [existing issues](https://github.com/suryaravikumar-space/docsui/issues).
 
   - type: dropdown
     id: area

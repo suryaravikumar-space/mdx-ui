@@ -100,7 +100,7 @@ LLM calls get_component("steps") → gets example MDX
 LLM generates MDX:
   <Steps>
     ### Step 1: Install
-    Run `npm install @ravikumarsurya/mdx-ui`
+    Run `npm install docsui-cli`
   </Steps>
     │
     ▼

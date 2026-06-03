@@ -15,7 +15,7 @@ Built with React, TypeScript, and Tailwind CSS. Inspired by [shadcn/ui](https://
 **1. Initialize your project**
 
 ```bash
-npx @ravikumarsurya/mdx-ui init
+npx docsui-cli@latest init
 ```
 
 This creates `mdx-ui.json`, injects CSS variables into your `globals.css`, and patches `tailwind.config` if needed. Works with Tailwind v3 and v4.
@@ -23,13 +23,13 @@ This creates `mdx-ui.json`, injects CSS variables into your `globals.css`, and p
 **2. Add components**
 
 ```bash
-npx @ravikumarsurya/mdx-ui add callout tabs code-block accordion
+npx docsui-cli@latest add callout tabs code-block accordion
 ```
 
 Or run with no arguments for an interactive picker:
 
 ```bash
-npx @ravikumarsurya/mdx-ui
+npx docsui-cli@latest
 ```
 
 **3. Use in MDX**
@@ -81,7 +81,7 @@ Components are written to your `componentsDir` and wired into `mdx-components.ts
 
 ## Philosophy
 
-**Copy & paste, not install.** Components live in your project. Run `npx @ravikumarsurya/mdx-ui add callout` and `callout.tsx` appears in your `componentsDir`. Change whatever you want.
+**Copy & paste, not install.** Components live in your project. Run `npx docsui-cli@latest add callout` and `callout.tsx` appears in your `componentsDir`. Change whatever you want.
 
 **CSS variables, not hardcoded colors.** Every component uses `bg-muted`, `border-border`, `text-foreground`, etc. They follow your Tailwind theme and work in light and dark mode without extra config.
 

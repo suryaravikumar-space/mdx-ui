@@ -17,7 +17,7 @@ mdx-ui/
 │   │   │   │   └── list.ts          # npx mdx-ui list
 │   │   │   │
 │   │   │   └── utils/
-│   │   │       ├── get-config.ts    # Read mdx-ui.json
+│   │   │       ├── get-config.ts    # Read docsui.json
 │   │   │       ├── fetch-component.ts  # Fetch from registry
 │   │   │       ├── install-deps.ts  # Install npm packages
 │   │   │       └── write-component.ts  # Write files

@@ -21,7 +21,7 @@ RootLayout (app/layout.tsx)
 
 ### Header Navigation
 
-- **MDX UI Logo** - Links to homepage (/)
+- **DocsUI Logo** - Links to homepage (/)
 - **Documentation** - Links to /docs
 - **Components** - Links to /components
 - **GitHub** - External link

@@ -244,13 +244,11 @@ Add to `src/index.css`:
     <TabsTrigger value="yarn">yarn</TabsTrigger>
   </TabsList>
   <TabsContent value="pnpm">
-    ```bash pnpm dlx @ravikumarsurya/mdx-ui init ```
+    ```bash pnpm dlx docsui-cli@latest init ```
   </TabsContent>
-  <TabsContent value="npm">
-    ```bash npx @ravikumarsurya/mdx-ui init ```
-  </TabsContent>
+  <TabsContent value="npm">```bash npx docsui-cli@latest init ```</TabsContent>
   <TabsContent value="yarn">
-    ```bash yarn dlx @ravikumarsurya/mdx-ui init ```
+    ```bash yarn dlx docsui-cli@latest init ```
   </TabsContent>
 </Tabs>
 
@@ -267,13 +265,13 @@ This creates `mdx-ui.json` and installs the `cn()` utility.
     <TabsTrigger value="yarn">yarn</TabsTrigger>
   </TabsList>
   <TabsContent value="pnpm">
-    ```bash pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block ```
+    ```bash pnpm dlx docsui-cli@latest add callout accordion code-block ```
   </TabsContent>
   <TabsContent value="npm">
-    ```bash npx @ravikumarsurya/mdx-ui add callout accordion code-block ```
+    ```bash npx docsui-cli@latest add callout accordion code-block ```
   </TabsContent>
   <TabsContent value="yarn">
-    ```bash yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block ```
+    ```bash yarn dlx docsui-cli@latest add callout accordion code-block ```
   </TabsContent>
 </Tabs>
 
@@ -375,11 +373,11 @@ Create these three files with some starter content:
       <Accordion>
         <AccordionItem value="step-1">
           <AccordionTrigger>Step 1 — Install</AccordionTrigger>
-          <AccordionContent>Run `npx @ravikumarsurya/mdx-ui init` in your project root.</AccordionContent>
+          <AccordionContent>Run `npx docsui-cli@latest init` in your project root.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="step-2">
           <AccordionTrigger>Step 2 — Add components</AccordionTrigger>
-          <AccordionContent>Run `npx @ravikumarsurya/mdx-ui add callout accordion`.</AccordionContent>
+          <AccordionContent>Run `npx docsui-cli@latest add callout accordion`.</AccordionContent>
         </AccordionItem>
       </Accordion>
       ```
@@ -575,21 +573,21 @@ Math uses pure JSX primitives — no KaTeX or LaTeX required. Install and add to
   <TabsContent value="pnpm">
 
 ```bash
-pnpm dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+pnpm dlx docsui-cli@latest add math-primitives math-solution
 ```
 
   </TabsContent>
   <TabsContent value="npm">
 
 ```bash
-npx @ravikumarsurya/mdx-ui add math-primitives math-solution
+npx docsui-cli@latest add math-primitives math-solution
 ```
 
   </TabsContent>
   <TabsContent value="yarn">
 
 ```bash
-yarn dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+yarn dlx docsui-cli@latest add math-primitives math-solution
 ```
 
   </TabsContent>
@@ -726,7 +724,7 @@ Create `.claude/settings.json` in your project root:
   "mcpServers": {
     "mdx-ui": {
       "command": "pnpm",
-      "args": ["dlx", "@ravikumarsurya/mdx-ui@latest", "mcp"]
+      "args": ["dlx", "docsui@latest", "mcp"]
     }
   }
 }

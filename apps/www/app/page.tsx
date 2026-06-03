@@ -151,7 +151,7 @@ export default function Home() {
 
         {/* Sub-headline */}
         <p className="max-w-[640px] text-lg text-muted-foreground sm:text-xl">
-          MDX UI is a token-efficient bridge between any LLM and React. The AI
+          DocsUI is a token-efficient bridge between any LLM and React. The AI
           writes plain Markdown — your pipeline transforms it into beautiful,
           interactive components automatically.
         </p>
@@ -207,7 +207,7 @@ export default function Home() {
               <tbody>
                 <tr className="border-b bg-green-500/5">
                   <td className="px-4 py-3 font-semibold text-green-600 dark:text-green-400">
-                    Markdown (MDX UI)
+                    Markdown (DocsUI)
                   </td>
                   <td className="px-4 py-3 font-bold text-green-600 dark:text-green-400">
                     1× baseline
@@ -379,11 +379,11 @@ export default function Home() {
               <pre className="overflow-x-auto rounded-xl border border-green-500/15 bg-green-500/5 p-5 font-mono text-xs leading-relaxed text-green-700 dark:text-green-300">
                 {`{
   "mcpServers": {
-    "mdx-ui": {
+    "docsui": {
       "command": "pnpm",
       "args": [
         "dlx",
-        "@ravikumarsurya/mdx-ui",
+        "docsui@latest",
         "mcp"
       ]
     }
@@ -417,7 +417,7 @@ export default function Home() {
                 {
                   Icon: Coins,
                   title: "Output Standard resource",
-                  desc: "Injects the MDX UI output spec into Claude's context automatically — zero copy-paste.",
+                  desc: "Injects the DocsUI output spec into Claude's context automatically — zero copy-paste.",
                 },
               ].map(({ Icon, title, desc }) => (
                 <div key={title} className="flex items-start gap-4">
@@ -470,7 +470,7 @@ export default function Home() {
             Start with one command. Works with Next.js and Vite React.
           </p>
           <code className="rounded-lg border border-green-500/20 bg-green-500/5 px-6 py-3 font-mono text-sm text-green-600 dark:text-green-400">
-            npx @ravikumarsurya/mdx-ui init
+            npx docsui-cli@latest init
           </code>
           <div className="flex flex-wrap justify-center gap-3">
             <Link

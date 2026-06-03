@@ -95,7 +95,7 @@ export async function fetchComponent(name: string): Promise<ComponentData> {
       if (axios.isAxiosError(error) && error.response?.status === 404) {
         if (!isLast) continue; // tag doesn't exist yet — try main
         throw new Error(
-          `Component "${name}" not found. Run: npx @ravikumarsurya/mdx-ui list`,
+          `Component "${name}" not found. Run: npx docsui-cli@latest list`,
         );
       }
       throw new Error(

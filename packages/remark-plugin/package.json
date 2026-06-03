@@ -1,7 +1,7 @@
 {
-  "name": "@ravikumarsurya/remark-mdx-ui",
+  "name": "@docsui-io/remark-plugin",
   "version": "0.0.6",
-  "description": "Remark plugin + string pre-processor — converts AI-generated markdown (blockquotes, tables, mermaid diagrams, numbered lists) to mdx-ui components automatically",
+  "description": "Remark plugin + string pre-processor — converts AI-generated markdown (blockquotes, tables, mermaid diagrams, numbered lists) to docsui components automatically",
   "license": "MIT",
   "type": "module",
   "author": {

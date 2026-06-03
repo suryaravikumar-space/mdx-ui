@@ -16,17 +16,17 @@ export default function TabsDefault() {
       </TabsList>
       <TabsContent value="npm">
         <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-          npm install @mdx-ui/components
+          npm install docsui-cli
         </code>
       </TabsContent>
       <TabsContent value="pnpm">
         <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-          pnpm add @mdx-ui/components
+          pnpm add docsui-cli
         </code>
       </TabsContent>
       <TabsContent value="yarn">
         <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-          yarn add @mdx-ui/components
+          yarn add docsui-cli
         </code>
       </TabsContent>
     </Tabs>

@@ -32,7 +32,7 @@ async function main() {
   }
 
   const program = new Command()
-    .name("mdx-ui")
+    .name("docsui")
     .description("Add beautiful MDX components to your project")
     .version(
       packageJson.version || "0.0.1",
@@ -71,7 +71,7 @@ async function main() {
         {
           title: "Initialize project",
           value: "init",
-          description: "Set up mdx-ui in your project",
+          description: "Set up docsui in your project",
         },
         {
           title: "Remove components",

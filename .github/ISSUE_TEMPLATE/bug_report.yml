@@ -35,7 +35,7 @@ body:
       label: Steps to Reproduce
       description: Minimal steps to reproduce the issue.
       placeholder: |
-        1. Install component: `npx @ravikumarsurya/mdx-ui add callout`
+        1. Install component: `npx docsui-cli@latest add callout`
         2. Use `<Callout variant="info">...</Callout>` in MDX
         3. See error: ...
     validations:
@@ -52,7 +52,7 @@ body:
     id: cli-version
     attributes:
       label: CLI Version
-      placeholder: "e.g. 0.0.51 — run `npx @ravikumarsurya/mdx-ui --version`"
+      placeholder: "e.g. 0.0.51 — run `npx docsui-cli@latest --version`"
 
   - type: dropdown
     id: framework

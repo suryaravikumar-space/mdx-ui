@@ -21,7 +21,7 @@ beforeEach(() => {
 });
 
 const baseConfig: Config = {
-  componentsDir: "src/components/mdx-ui",
+  componentsDir: "src/components/docsui",
   typescript: true,
   tailwind: true,
 };
@@ -41,7 +41,7 @@ describe("writeComponent", () => {
     await writeComponent(baseComponent, baseConfig);
     expect(mockWriteFile).toHaveBeenCalledTimes(1);
     const [filePath] = mockWriteFile.mock.calls[0] as [string, ...unknown[]];
-    expect(filePath).toContain("src/components/mdx-ui");
+    expect(filePath).toContain("src/components/docsui");
     expect(filePath).toContain("callout.tsx");
   });
 

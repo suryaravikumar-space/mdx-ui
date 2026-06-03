@@ -5,7 +5,7 @@ import * as React from "react";
 
 /**
  * MDX component mappings.
- * Components are auto-patched by the CLI when you run `npx @ravikumarsurya/mdx-ui add <component>`.
+ * Components are auto-patched by the CLI when you run `npx docsui-cli@latest add <component>`.
  *
  * @example Re-export from project root (Next.js):
  * ```tsx

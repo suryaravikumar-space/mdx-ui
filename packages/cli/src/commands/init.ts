@@ -30,9 +30,9 @@ const FRAMEWORK_LABELS: Record<Framework, string> = {
 
 export const init = new Command()
   .name("init")
-  .description("Initialize your project for mdx-ui")
+  .description("Initialize your project for docsui")
   .action(async () => {
-    console.log(chalk.bold("\n✨ Welcome to mdx-ui!\n"));
+    console.log(chalk.bold("\n✨ Welcome to docsui!\n"));
 
     const cwd = process.cwd();
     const structure = await detectProjectStructure(cwd);
@@ -120,9 +120,9 @@ export const init = new Command()
       );
 
       await fs.writeJSON(
-        path.join(cwd, "mdx-ui.json"),
+        path.join(cwd, "docsui.json"),
         {
-          $schema: "https://mdx-ui.com/schema.json",
+          $schema: "https://docsui.dev/schema.json",
           framework: structure.framework,
           mdxPipeline: structure.mdxPipeline,
           componentsDir: config.componentsDir,
@@ -137,7 +137,7 @@ export const init = new Command()
       spinner.succeed("Project initialized!");
       ping("init", { framework: structure.framework });
 
-      console.log(chalk.green("\n✓ mdx-ui.json"));
+      console.log(chalk.green("\n✓ docsui.json"));
       console.log(chalk.green(`✓ ${config.componentsDir}/`));
       console.log(chalk.green(`✓ ${structure.libDir}/utils.${ext}`));
       console.log(
@@ -414,13 +414,13 @@ async function setupGlobalCSS(
     }
   }
 
-  // Inject mdx-ui semantic tokens independently — even on existing shadcn projects
+  // Inject docsui semantic tokens independently — even on existing shadcn projects
   // Use the in-memory content (possibly updated above) to avoid a second disk read
   if (!content.includes("--mdxui-info-bg")) {
     try {
       const v4Theme = twVersion === 4 ? MDXUI_V4_THEME : "";
       await fs.appendFile(cssPath, MDXUI_SEMANTIC_TOKENS + v4Theme);
-      spinner.text = `Added mdx-ui semantic tokens to ${path.relative(cwd, cssPath)}`;
+      spinner.text = `Added docsui semantic tokens to ${path.relative(cwd, cssPath)}`;
     } catch {
       // non-fatal
     }
@@ -493,7 +493,7 @@ async function setupTailwindConfig(
     const hasMdxui = content.includes("--mdxui-info-border");
 
     if (!hasShadcn) {
-      // Fresh config — inject full shadcn + mdx-ui block
+      // Fresh config — inject full shadcn + docsui block
       if (content.includes("extend:")) {
         content = content.replace(
           /extend:\s*\{/,
@@ -508,10 +508,10 @@ async function setupTailwindConfig(
       await fs.writeFile(configPath, content);
       spinner.text = `Patched ${path.basename(configPath)} with CSS variable theme colors`;
     } else if (!hasMdxui) {
-      // Existing shadcn config — inject only the mdx-ui semantic color scales
+      // Existing shadcn config — inject only the docsui semantic color scales
       content = injectMdxuiColorsIntoConfig(content);
       await fs.writeFile(configPath, content);
-      spinner.text = `Added mdx-ui semantic colors to ${path.basename(configPath)}`;
+      spinner.text = `Added docsui semantic colors to ${path.basename(configPath)}`;
     }
   } catch {
     // non-fatal
@@ -542,7 +542,7 @@ async function setupMdxComponents(
 const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
   contentlayer: `
   // contentlayer.config.ts
-  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+  import remarkMdxUi from "@docsui-io/remark-plugin"
 
   export default makeSource({
     mdxOptions: {
@@ -554,7 +554,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "next-mdx-remote": `
   // In your compileMdx / serialize call:
-  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+  import remarkMdxUi from "@docsui-io/remark-plugin"
 
   const result = await serialize(source, {
     mdxOptions: {
@@ -566,7 +566,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "next-mdx": `
   // next.config.ts
-  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+  import remarkMdxUi from "@docsui-io/remark-plugin"
 
   const withMDX = createMDX({
     options: {
@@ -578,7 +578,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "astro-mdx": `
   // astro.config.ts
-  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+  import remarkMdxUi from "@docsui-io/remark-plugin"
 
   export default defineConfig({
     markdown: {
@@ -590,7 +590,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "mdx-rollup": `
   // vite.config.ts
-  import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui"
+  import remarkMdxUi from "@docsui-io/remark-plugin"
 
   export default defineConfig({
     plugins: [
@@ -608,8 +608,8 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 function printNextSteps(framework: Framework, mdxPipeline: MdxPipeline) {
   console.log(chalk.bold("\n🎉 You're all set!\n"));
   console.log("Next steps:");
-  console.log(chalk.cyan("  npx @ravikumarsurya/mdx-ui add callout"));
-  console.log(chalk.cyan("  npx @ravikumarsurya/mdx-ui list"));
+  console.log(chalk.cyan("  npx docsui-cli@latest add callout"));
+  console.log(chalk.cyan("  npx docsui-cli@latest list"));
 
   // Remark plugin setup
   const snippet = REMARK_PLUGIN_SNIPPETS[mdxPipeline];
@@ -619,9 +619,7 @@ function printNextSteps(framework: Framework, mdxPipeline: MdxPipeline) {
         "\n📦 Wire up the remark plugin so markdown auto-upgrades to components:",
       ),
     );
-    console.log(
-      chalk.dim("  Install: npm install @ravikumarsurya/remark-mdx-ui"),
-    );
+    console.log(chalk.dim("  Install: npm install @docsui-io/remark-plugin"));
     console.log(chalk.white(snippet));
   } else {
     console.log(
@@ -629,7 +627,7 @@ function printNextSteps(framework: Framework, mdxPipeline: MdxPipeline) {
         "\n📦 To enable auto-upgrade of markdown → components, add the remark plugin:",
       ),
     );
-    console.log(chalk.dim("  npm install @ravikumarsurya/remark-mdx-ui"));
+    console.log(chalk.dim("  npm install @docsui-io/remark-plugin"));
     console.log(
       chalk.dim(
         "  Then add remarkMdxUi to your MDX pipeline's remarkPlugins array.",

@@ -184,8 +184,8 @@ export const update = new Command()
 
     const config = await getConfig();
     if (!config) {
-      console.log(chalk.red("✗ No mdx-ui.json found."));
-      console.log(chalk.yellow("  Run: npx @ravikumarsurya/mdx-ui init\n"));
+      console.log(chalk.red("✗ No docsui.json found."));
+      console.log(chalk.yellow("  Run: npx docsui-cli@latest init\n"));
       process.exit(1);
     }
 
@@ -199,7 +199,7 @@ export const update = new Command()
       if (toUpdate.length === 0) {
         console.log(chalk.yellow("No installed components found."));
         console.log(
-          chalk.dim("  Run: npx @ravikumarsurya/mdx-ui add <component>\n"),
+          chalk.dim("  Run: npx docsui-cli@latest add <component>\n"),
         );
         process.exit(0);
       }

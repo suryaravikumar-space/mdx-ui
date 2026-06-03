@@ -190,7 +190,7 @@ Parent items with children now support both navigation and expansion:
   "title": "Announcing v1.0",
   "path": "/blog/2025/01/announcing-v1",
   "date": "January 31, 2025",
-  "author": "MDX UI Team"
+  "author": "DocsUI Team"
 }
 ```
 

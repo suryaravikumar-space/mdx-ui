@@ -12,7 +12,7 @@ export interface ComponentEntry {
   files: string[];
   /** npm packages required at runtime */
   deps: string[];
-  /** Other mdx-ui components that must be installed alongside this one */
+  /** Other docsui components that must be installed alongside this one */
   registryDependencies?: string[];
   /** Short description shown in list / add picker */
   description: string;

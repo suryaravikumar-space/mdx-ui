@@ -19,9 +19,9 @@ Thank you for your interest in contributing! This guide covers everything you ne
 ```
 mdx-ui/
 ├── packages/
-│   ├── cli/           # @ravikumarsurya/mdx-ui — CLI tool
+│   ├── cli/           # docsui — CLI tool
 │   ├── registry/      # Component source files (.tsx)
-│   └── remark-plugin/ # @ravikumarsurya/remark-mdx-ui — remark plugin
+│   └── remark-plugin/ # @docsui-io/remark-plugin — remark plugin
 ├── apps/
 │   └── www/           # Documentation site (Next.js)
 ├── scripts/
@@ -106,7 +106,7 @@ pnpm lint
 3. Run `pnpm build:registry` to regenerate `registry/registry.json` and `registry/mdx/<component>.json`
 4. Install the component locally to test:
    ```bash
-   npx @ravikumarsurya/mdx-ui add <component-name>
+   npx docsui-cli@latest add <component-name>
    ```
 5. Add a docs page at `apps/www/content/docs/components/<component-name>.mdx`
 6. Add the component to `apps/www/config/sidebar-docs.json`

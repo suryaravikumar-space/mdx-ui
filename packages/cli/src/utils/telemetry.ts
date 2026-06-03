@@ -42,7 +42,7 @@ export function ping(event: string, data?: Record<string, unknown>): void {
         api_key: POSTHOG_API_KEY,
         event,
         distinct_id: getDistinctId(),
-        properties: { ...data, $lib: "mdx-ui-cli" },
+        properties: { ...data, $lib: "docsui-cli" },
       },
       { timeout: 3000 },
     )

@@ -70,9 +70,9 @@ export interface ScanResult {
 export async function scanMdxComponents(cwd: string): Promise<ScanResult[]> {
   // Find the mdx-components.tsx file
   const candidates = [
-    "src/components/mdx-ui/mdx-components.tsx",
+    "src/components/docsui/mdx-components.tsx",
     "src/components/mdx-components.tsx",
-    "components/mdx-ui/mdx-components.tsx",
+    "components/docsui/mdx-components.tsx",
     "components/mdx-components.tsx",
   ];
 
@@ -151,8 +151,6 @@ export function printScanWarnings(results: ScanResult[], pm = "pnpm"): void {
 
   const dlx = pm === "pnpm" ? "pnpm dlx" : pm === "yarn" ? "yarn dlx" : "npx";
   const installNames = [...allMissing.values()].join(" ");
-  console.log(
-    `  ${chalk.green(`${dlx} @ravikumarsurya/mdx-ui add ${installNames}`)}`,
-  );
+  console.log(`  ${chalk.green(`${dlx} docsui add ${installNames}`)}`);
   console.log("");
 }

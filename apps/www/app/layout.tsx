@@ -17,8 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "MDX UI — Copy-paste MDX components for documentation sites",
-    template: "%s — MDX UI",
+    default: "DocsUI — Copy-paste MDX components for documentation sites",
+    template: "%s — DocsUI",
   },
   description: siteConfig.description,
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "MCP server",
     "remark plugin",
     "shadcn",
-    "mdx-ui",
+    "docsui",
   ],
   authors: [{ name: "Surya Ravi Kumar", url: siteConfig.github }],
   creator: "Surya Ravi Kumar",
@@ -40,12 +40,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "MDX UI — Copy-paste MDX components for documentation sites",
+    title: "DocsUI — Copy-paste MDX components for documentation sites",
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "MDX UI — Copy-paste MDX components for documentation sites",
+    title: "DocsUI — Copy-paste MDX components for documentation sites",
     description: siteConfig.description,
     creator: "@ravikumarsurya",
   },

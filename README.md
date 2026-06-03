@@ -1,7 +1,7 @@
 # mdx-ui
 
-[![npm](https://img.shields.io/npm/v/@ravikumarsurya/mdx-ui)](https://www.npmjs.com/package/@ravikumarsurya/mdx-ui)
-[![Socket](https://socket.dev/api/badge/npm/package/@ravikumarsurya/mdx-ui)](https://socket.dev/npm/package/@ravikumarsurya/mdx-ui)
+[![npm](https://img.shields.io/npm/v/docsui)](https://www.npmjs.com/package/docsui-cli)
+[![Socket](https://socket.dev/api/badge/npm/package/docsui)](https://socket.dev/npm/package/docsui)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/mdx-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/mdx-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -11,20 +11,20 @@ Copy-paste MDX components for documentation sites. Built with React, TypeScript,
 
 ```bash
 # 1. Initialize your project
-npx @ravikumarsurya/mdx-ui init
+npx docsui-cli@latest init
 
 # 2. Add components
-npx @ravikumarsurya/mdx-ui add callout tabs code-block
+npx docsui-cli@latest add callout tabs code-block
 
 # 3. Or pick from an interactive menu
-npx @ravikumarsurya/mdx-ui
+npx docsui-cli@latest
 ```
 
 ## CLI Commands
 
 | Command                  | Description                                                         |
 | ------------------------ | ------------------------------------------------------------------- |
-| `init`                   | Set up `mdx-ui.json`, inject CSS variables, patch `tailwind.config` |
+| `init`                   | Set up `docsui.json`, inject CSS variables, patch `tailwind.config` |
 | `add [components...]`    | Add components (interactive picker if no args)                      |
 | `update [components...]` | Re-fetch and overwrite with latest versions                         |
 | `list`                   | Show all available components                                       |
@@ -127,7 +127,7 @@ npx @ravikumarsurya/mdx-ui
 
 ## How It Works
 
-`init` creates `mdx-ui.json`, injects shadcn-compatible CSS variables into your `globals.css`, and patches your `tailwind.config` if needed.
+`init` creates `docsui.json`, injects shadcn-compatible CSS variables into your `globals.css`, and patches your `tailwind.config` if needed.
 
 `add` fetches component JSON from the registry on GitHub, writes the `.tsx` files into your `componentsDir`, installs npm dependencies, and patches your `mdx-components.tsx` with static imports.
 
@@ -187,7 +187,7 @@ mdx-ui/
 ├── apps/
 │   └── www/                  # Documentation site (Next.js 15)
 ├── packages/
-│   ├── cli/                  # npm package (@ravikumarsurya/mdx-ui)
+│   ├── cli/                  # npm package (docsui)
 │   └── registry/
 │       └── src/              # Component source files (.tsx) — source of truth
 ├── registry/

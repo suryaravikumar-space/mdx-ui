@@ -169,7 +169,7 @@ describe("detectProjectStructure", () => {
 
     const result = await detectProjectStructure("/fake/cwd");
     expect(result.hasSrc).toBe(true);
-    expect(result.componentsDir).toBe("src/components/mdx-ui");
+    expect(result.componentsDir).toBe("src/components/docsui");
   });
 
   it("sets correct componentsDir for Next.js without src/", async () => {
@@ -182,7 +182,7 @@ describe("detectProjectStructure", () => {
     } as never);
 
     const result = await detectProjectStructure("/fake/cwd");
-    expect(result.componentsDir).toBe("components/mdx-ui");
+    expect(result.componentsDir).toBe("components/docsui");
     expect(result.framework).toBe("nextjs");
   });
 });

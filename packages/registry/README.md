@@ -149,4 +149,4 @@ pnpm --filter=@mdx-ui/registry test --watch
 | `registry/mdx/`          | Generated JSON — do not edit manually |
 | `registry/registry.json` | Component index — generated           |
 
-The CLI fetches from `/registry/mdx/` when users run `npx @ravikumarsurya/mdx-ui add <component>`.
+The CLI fetches from `/registry/mdx/` when users run `npx docsui-cli@latest add <component>`.

@@ -6,13 +6,13 @@ export default function CodeGroupDefault() {
     <div className="w-full">
       <CodeGroup>
         <pre data-language="npm" data-title="npm">
-          <code>npm install @ravikumarsurya/mdx-ui</code>
+          <code>npm install docsui-cli</code>
         </pre>
         <pre data-language="pnpm" data-title="pnpm">
-          <code>pnpm add @ravikumarsurya/mdx-ui</code>
+          <code>pnpm add docsui-cli</code>
         </pre>
         <pre data-language="yarn" data-title="yarn">
-          <code>yarn add @ravikumarsurya/mdx-ui</code>
+          <code>yarn add docsui-cli</code>
         </pre>
       </CodeGroup>
     </div>

@@ -5,11 +5,10 @@ export default function ListDefault() {
     <div className="w-full space-y-4">
       <UnorderedList>
         <ListItem>
-          Install the CLI with <code>npx @ravikumarsurya/mdx-ui init</code>
+          Install the CLI with <code>npx docsui-cli@latest init</code>
         </ListItem>
         <ListItem>
-          Add components with{" "}
-          <code>npx @ravikumarsurya/mdx-ui add accordion</code>
+          Add components with <code>npx docsui-cli@latest add accordion</code>
         </ListItem>
         <ListItem>Import and use in your MDX files</ListItem>
       </UnorderedList>

@@ -26,7 +26,7 @@ export function SiteHeader() {
             </span>
           </div>
           <span className="font-mono text-sm font-semibold tracking-tight">
-            MDX UI
+            DocsUI
           </span>
         </Link>
 

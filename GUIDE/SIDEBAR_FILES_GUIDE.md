@@ -34,7 +34,7 @@ apps/www/config/
 **Sections:**
 
 - Get Started
-- Learn MDX UI
+- Learn DocsUI
 - Building Your Docs
 - Advanced
 

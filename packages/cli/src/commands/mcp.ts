@@ -83,7 +83,7 @@ async function loadLocalRegistry(): Promise<Registry | null> {
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     process.stderr.write(
-      `[mdx-ui mcp] Failed to load local registry: ${msg}\n`,
+      `[docsui mcp] Failed to load local registry: ${msg}\n`,
     );
   }
   return null;
@@ -384,7 +384,7 @@ interface ValidationIssue {
   text: string;
 }
 
-// All valid mdx-ui component exports — generated from packages/registry/src/math-primitives.tsx
+// All valid docsui component exports — generated from packages/registry/src/math-primitives.tsx
 const ALLOWED_COMPONENTS = new Set([
   // layout & structure
   "Callout",
@@ -992,7 +992,7 @@ function validateMdxContent(content: string): ValidationIssue[] {
       issues.push({
         line: lineNo,
         rule: "no-raw-html",
-        text: `Raw HTML tag not allowed — use Markdown or mdx-ui components`,
+        text: `Raw HTML tag not allowed — use Markdown or docsui components`,
       });
     }
 
@@ -1017,7 +1017,7 @@ function validateMdxContent(content: string): ValidationIssue[] {
 
 export async function startMcpServer() {
   const server = new McpServer({
-    name: "mdx-ui",
+    name: "docsui",
     version: getCliVersion(),
   });
 
@@ -1028,9 +1028,9 @@ export async function startMcpServer() {
     "component-registry",
     "registry://components",
     {
-      title: "mdx-ui Component Registry",
+      title: "docsui Component Registry",
       description:
-        "Full list of all mdx-ui components with metadata — name, description, whenToUse, whenNotToUse, example",
+        "Full list of all docsui components with metadata — name, description, whenToUse, whenNotToUse, example",
       mimeType: "application/json",
     },
     async () => {
@@ -1082,8 +1082,8 @@ export async function startMcpServer() {
       },
     }),
     {
-      title: "mdx-ui Component",
-      description: "Full schema for a single mdx-ui component",
+      title: "docsui Component",
+      description: "Full schema for a single docsui component",
       mimeType: "text/plain",
     },
     async (uri, { name }) => {
@@ -1153,7 +1153,7 @@ export async function startMcpServer() {
     {
       title: "Generate MDX Content",
       description:
-        "Generate valid mdx-ui MDX content for a topic — injects the output standard and relevant components automatically",
+        "Generate valid docsui MDX content for a topic — injects the output standard and relevant components automatically",
       argsSchema: {
         topic: z
           .string()
@@ -1272,7 +1272,7 @@ MANDATORY SELF-CHECK BEFORE RESPONDING:
             role: "user" as const,
             content: {
               type: "text" as const,
-              text: `You are reviewing MDX content against the mdx-ui AI Output Standard.
+              text: `You are reviewing MDX content against the docsui AI Output Standard.
 
 OUTPUT STANDARD:
 ${OUTPUT_STANDARD}
@@ -1309,7 +1309,7 @@ Then provide the fully corrected MDX at the end.`,
     "list_components",
     {
       description:
-        "List all available mdx-ui components with descriptions. For a grouped view by category, use list_categories instead.",
+        "List all available docsui components with descriptions. For a grouped view by category, use list_categories instead.",
     },
     async () => {
       let registry: Registry;
@@ -1456,7 +1456,7 @@ Then provide the fully corrected MDX at the end.`,
     "get_output_standard",
     {
       description:
-        "Get the MDX AI Output Standard — the system prompt block to inject so an LLM generates valid MDX that renders correctly with mdx-ui components",
+        "Get the MDX AI Output Standard — the system prompt block to inject so an LLM generates valid MDX that renders correctly with docsui components",
     },
     async () => ({
       content: [{ type: "text", text: OUTPUT_STANDARD }],
@@ -1468,7 +1468,7 @@ Then provide the fully corrected MDX at the end.`,
     "list_categories",
     {
       description:
-        "List mdx-ui components grouped by category — use this to discover components before calling get_component",
+        "List docsui components grouped by category — use this to discover components before calling get_component",
     },
     async () => {
       let registry: Registry;
@@ -1544,9 +1544,9 @@ Then provide the fully corrected MDX at the end.`,
     "symbol-map",
     "registry://symbol-map",
     {
-      title: "mdx-ui Symbol Map",
+      title: "docsui Symbol Map",
       description:
-        "Complete mapping of mathematical symbols / LaTeX names to mdx-ui primitive components — use this to find the right component for any symbol",
+        "Complete mapping of mathematical symbols / LaTeX names to docsui primitive components — use this to find the right component for any symbol",
       mimeType: "application/json",
     },
     async () => ({
@@ -1565,7 +1565,7 @@ Then provide the fully corrected MDX at the end.`,
     "search_symbols",
     {
       description:
-        "Search the symbol map by concept name, LaTeX command, Unicode symbol, or category — returns the mdx-ui primitive component and MDX usage example",
+        "Search the symbol map by concept name, LaTeX command, Unicode symbol, or category — returns the docsui primitive component and MDX usage example",
       inputSchema: {
         query: z
           .string()
@@ -1669,7 +1669,7 @@ Then provide the fully corrected MDX at the end.`,
     "convert_latex",
     {
       description:
-        "Convert a LaTeX math expression to mdx-ui primitive components deterministically. Use this whenever you need to write a complex math expression — pass the LaTeX and get back ready-to-paste MDX primitives.",
+        "Convert a LaTeX math expression to docsui primitive components deterministically. Use this whenever you need to write a complex math expression — pass the LaTeX and get back ready-to-paste MDX primitives.",
       inputSchema: {
         latex: z
           .string()
@@ -1704,7 +1704,7 @@ Then provide the fully corrected MDX at the end.`,
     "convert_mdx_math",
     {
       description:
-        "Convert all $...$ and $$...$$ LaTeX math in an MDX string to mdx-ui primitives. Use this to fix AI-generated content that used dollar-sign math instead of components.",
+        "Convert all $...$ and $$...$$ LaTeX math in an MDX string to docsui primitives. Use this to fix AI-generated content that used dollar-sign math instead of components.",
       inputSchema: {
         content: z
           .string()

@@ -49,7 +49,7 @@ describe("extractComponentNames", () => {
 describe("extractRegistered", () => {
   it("parses named imports from mdx-components.tsx source", () => {
     const registered = extractRegistered(
-      'import { Callout, Chart } from "./mdx-ui";',
+      'import { Callout, Chart } from "./docsui";',
     );
 
     expect([...registered].sort()).toEqual(["Callout", "Chart"]);
@@ -61,7 +61,7 @@ describe("extractRegistered", () => {
         "import {",
         "  Callout,",
         "  Chart as DataChart,",
-        "} from './mdx-ui';",
+        "} from './docsui';",
       ].join("\n"),
     );
 
@@ -88,7 +88,7 @@ describe("scanMdxComponents", () => {
   const createProject = async (): Promise<string> => {
     const cwd = await mkdtemp(path.join(os.tmpdir(), "mdx-ui-scan-"));
     tempDirs.push(cwd);
-    await mkdir(path.join(cwd, "src", "components", "mdx-ui"), {
+    await mkdir(path.join(cwd, "src", "components", "docsui"), {
       recursive: true,
     });
     await mkdir(path.join(cwd, "content"), { recursive: true });
@@ -98,7 +98,7 @@ describe("scanMdxComponents", () => {
   it("returns an empty array when all components are registered", async () => {
     const cwd = await createProject();
     await writeFile(
-      path.join(cwd, "src", "components", "mdx-ui", "mdx-components.tsx"),
+      path.join(cwd, "src", "components", "docsui", "mdx-components.tsx"),
       'import { Callout } from "./callout";\nexport const components = { callout: Callout };',
     );
     await writeFile(
@@ -112,7 +112,7 @@ describe("scanMdxComponents", () => {
   it("returns warnings for unregistered components", async () => {
     const cwd = await createProject();
     await writeFile(
-      path.join(cwd, "src", "components", "mdx-ui", "mdx-components.tsx"),
+      path.join(cwd, "src", "components", "docsui", "mdx-components.tsx"),
       'import { Callout } from "./callout";',
     );
     await writeFile(

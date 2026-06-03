@@ -35,4 +35,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.0.51] — CLI / [0.0.5] — remark-plugin
 
-Initial public release of `@ravikumarsurya/mdx-ui` and `@ravikumarsurya/remark-mdx-ui`.
+Initial public release of `docsui` and `@docsui-io/remark-plugin`.

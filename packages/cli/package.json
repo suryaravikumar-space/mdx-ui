@@ -1,5 +1,5 @@
 {
-  "name": "@ravikumarsurya/mdx-ui",
+  "name": "docsui-cli",
   "version": "0.0.59",
   "description": "Transform LLM Markdown into rich, interactive UI components. Token-efficient bridge between any LLM and React — 50+ copy-paste MDX components, CLI, MCP server, and a remark plugin.",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "./save-mdx-page": "./dist/utils/save-mdx-page.js"
   },
   "bin": {
-    "mdx-ui": "./dist/index.js"
+    "docsui": "./dist/index.js"
   },
   "engines": {
     "node": ">=20.12.0"

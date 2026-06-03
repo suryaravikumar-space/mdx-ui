@@ -2,7 +2,10 @@
 // Run `tsx scripts/build-previews.ts` to regenerate.
 // NOTE: This file is generated but committed to the repository.
 
-export const DEMO_SOURCES: Record<string, { source: string; highlighted: string }> = {
+export const DEMO_SOURCES: Record<
+  string,
+  { source: string; highlighted: string }
+> = {
   "accordion-default": {
     source: `"use client";
 import {
@@ -16,16 +19,16 @@ export default function AccordionDefault() {
   return (
     <Accordion defaultValue="item-1" className="w-full max-w-lg">
       <AccordionItem value="item-1">
-        <AccordionTrigger>What is mdx-ui?</AccordionTrigger>
+        <AccordionTrigger>What is DocsUI?</AccordionTrigger>
         <AccordionContent>
-          mdx-ui is a collection of copy-paste MDX components built with
+          DocsUI is a collection of copy-paste MDX components built with
           Tailwind CSS. Add only what you need.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>Does it work with Next.js?</AccordionTrigger>
         <AccordionContent>
-          Yes. mdx-ui works with Next.js, Astro, Vite React, and any framework
+          Yes. DocsUI works with Next.js, Astro, Vite React, and any framework
           that supports MDX.
         </AccordionContent>
       </AccordionItem>
@@ -52,16 +55,16 @@ export default function AccordionDefault() {
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Accordion</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> defaultValue</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"item-1"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"w-full max-w-lg"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionItem</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> value</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"item-1"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionTrigger</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>What is mdx-ui?&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionTrigger</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionTrigger</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>What is DocsUI?&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionTrigger</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          mdx-ui is a collection of copy-paste MDX components built with</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          DocsUI is a collection of copy-paste MDX components built with</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Tailwind CSS. Add only what you need.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionItem</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> value</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"item-2"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionTrigger</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Does it work with Next.js?&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionTrigger</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Yes. mdx-ui works with Next.js, Astro, Vite React, and any framework</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Yes. DocsUI works with Next.js, Astro, Vite React, and any framework</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          that supports MDX.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">AccordionItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -319,7 +322,7 @@ export default function CardDefault() {
       <CardHeader>
         <CardTitle>Getting started</CardTitle>
         <CardDescription>
-          Install and configure mdx-ui in minutes.
+          Install and configure DocsUI in minutes.
         </CardDescription>
       </CardHeader>
       <CardContent>Run the CLI and pick your components.</CardContent>
@@ -345,7 +348,7 @@ export default function CardDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardHeader</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardTitle</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Getting started&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardTitle</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardDescription</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Install and configure mdx-ui in minutes.</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Install and configure DocsUI in minutes.</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardDescription</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardHeader</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Run the CLI and pick your components.&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CardContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -526,13 +529,13 @@ export default function CodeGroupDefault() {
     <div className="w-full">
       <CodeGroup>
         <pre data-language="npm" data-title="npm">
-          <code>npm install @ravikumarsurya/mdx-ui</code>
+          <code>npm install docsui-cli</code>
         </pre>
         <pre data-language="pnpm" data-title="pnpm">
-          <code>pnpm add @ravikumarsurya/mdx-ui</code>
+          <code>pnpm add docsui-cli</code>
         </pre>
         <pre data-language="yarn" data-title="yarn">
-          <code>yarn add @ravikumarsurya/mdx-ui</code>
+          <code>yarn add docsui-cli</code>
         </pre>
       </CodeGroup>
     </div>
@@ -547,13 +550,13 @@ export default function CodeGroupDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"w-full"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CodeGroup</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">pre</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> data-language</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"npm"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> data-title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"npm"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npm install @ravikumarsurya/mdx-ui&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npm install docsui-cli&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">pre</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">pre</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> data-language</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"pnpm"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> data-title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"pnpm"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>pnpm add @ravikumarsurya/mdx-ui&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>pnpm add docsui-cli&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">pre</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">pre</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> data-language</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"yarn"</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> data-title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"yarn"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>yarn add @ravikumarsurya/mdx-ui&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>yarn add docsui-cli&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">pre</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">CodeGroup</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -662,7 +665,7 @@ export default function DataTableDefault() {
         ["Steps", "Display", "0.0.35"],
         ["Tabs", "Interactive", "0.0.35"],
       ]}
-      caption="mdx-ui component registry"
+      caption="docsui component registry"
     />
   );
 }
@@ -685,7 +688,7 @@ export default function DataTableDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        [</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Steps"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">, </span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Display"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">, </span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"0.0.35"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">],</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        [</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Tabs"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">, </span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Interactive"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">, </span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"0.0.35"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">],</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      ]}</span></span>
-<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">      caption</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"mdx-ui component registry"</span></span>
+<span class="line"><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1">      caption</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"docsui component registry"</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    /></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">  );</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
@@ -1202,7 +1205,7 @@ export default function InlineCodeDefault() {
         </Code>
       </p>
       <p>
-        Run the CLI: <Code>npx @ravikumarsurya/mdx-ui add accordion</Code>
+        Run the CLI: <Code>npx docsui-cli@latest add accordion</Code>
       </p>
       <p>
         Use the <Code>variant</Code> prop to switch between{" "}
@@ -1225,7 +1228,7 @@ export default function InlineCodeDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Run the CLI: &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx @ravikumarsurya/mdx-ui add accordion&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Run the CLI: &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx docsui-cli@latest add accordion&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Use the &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>variant&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">> prop to switch between{</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
@@ -1363,11 +1366,11 @@ export default function ListDefault() {
     <div className="w-full space-y-4">
       <UnorderedList>
         <ListItem>
-          Install the CLI with <code>npx @ravikumarsurya/mdx-ui init</code>
+          Install the CLI with <code>npx docsui-cli@latest init</code>
         </ListItem>
         <ListItem>
           Add components with{" "}
-          <code>npx @ravikumarsurya/mdx-ui add accordion</code>
+          <code>npx docsui-cli@latest add accordion</code>
         </ListItem>
         <ListItem>Import and use in your MDX files</ListItem>
       </UnorderedList>
@@ -1391,11 +1394,11 @@ export default function ListDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"w-full space-y-4"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">UnorderedList</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Install the CLI with &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx @ravikumarsurya/mdx-ui init&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Install the CLI with &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx docsui-cli@latest init&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Add components with{</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx @ravikumarsurya/mdx-ui add accordion&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx docsui-cli@latest add accordion&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Import and use in your MDX files&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">UnorderedList</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -2034,7 +2037,7 @@ export default function TableDefault() {
   return (
     <div className="w-full overflow-x-auto">
       <Table>
-        <TableCaption>mdx-ui component install sizes</TableCaption>
+        <TableCaption>docsui component install sizes</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Component</TableHead>
@@ -2078,7 +2081,7 @@ export default function TableDefault() {
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">div</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"w-full overflow-x-auto"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Table</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableCaption</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>mdx-ui component install sizes&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableCaption</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableCaption</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>docsui component install sizes&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableCaption</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableHeader</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableRow</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">            &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableHead</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Component&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TableHead</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -2128,17 +2131,17 @@ export default function TabsDefault() {
       </TabsList>
       <TabsContent value="npm">
         <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-          npm install @mdx-ui/components
+          npm install docsui-cli
         </code>
       </TabsContent>
       <TabsContent value="pnpm">
         <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-          pnpm add @mdx-ui/components
+          pnpm add docsui-cli
         </code>
       </TabsContent>
       <TabsContent value="yarn">
         <code className="block rounded bg-muted px-4 py-2 font-mono text-sm">
-          yarn add @mdx-ui/components
+          yarn add docsui-cli
         </code>
       </TabsContent>
     </Tabs>
@@ -2163,17 +2166,17 @@ export default function TabsDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TabsList</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TabsContent</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> value</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"npm"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"block rounded bg-muted px-4 py-2 font-mono text-sm"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          npm install @mdx-ui/components</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          npm install docsui-cli</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TabsContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TabsContent</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> value</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"pnpm"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"block rounded bg-muted px-4 py-2 font-mono text-sm"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          pnpm add @mdx-ui/components</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          pnpm add docsui-cli</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TabsContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TabsContent</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> value</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"yarn"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> className</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"block rounded bg-muted px-4 py-2 font-mono text-sm"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          yarn add @mdx-ui/components</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          yarn add docsui-cli</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TabsContent</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Tabs</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -2186,11 +2189,11 @@ export default function TabsDefault() {
 
 export default function TerminalDefault() {
   return (
-    <Terminal title="Installing mdx-ui">
-      <TerminalLine cmd>npx @ravikumarsurya/mdx-ui init</TerminalLine>
-      <TerminalLine>✔ Created mdx-ui.json</TerminalLine>
+    <Terminal title="Installing DocsUI">
+      <TerminalLine cmd>npx docsui-cli@latest init</TerminalLine>
+      <TerminalLine>✔ Created docsui.json</TerminalLine>
       <TerminalLine cmd>
-        npx @ravikumarsurya/mdx-ui add accordion badge callout
+        npx docsui-cli@latest add accordion badge callout
       </TerminalLine>
       <TerminalLine>✔ accordion</TerminalLine>
       <TerminalLine>✔ badge</TerminalLine>
@@ -2204,11 +2207,11 @@ export default function TerminalDefault() {
 <span class="line"></span>
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">export</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> default</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49"> function</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> TerminalDefault</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">() {</span></span>
 <span class="line"><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">  return</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E"> (</span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Terminal</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Installing mdx-ui"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> cmd</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx @ravikumarsurya/mdx-ui init&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>✔ Created mdx-ui.json&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">    &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Terminal</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> title</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"Installing DocsUI"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> cmd</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx docsui-cli@latest init&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>✔ Created docsui.json&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> cmd</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        npx @ravikumarsurya/mdx-ui add accordion badge callout</span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        npx docsui-cli@latest add accordion badge callout</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>✔ accordion&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>✔ badge&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">TerminalLine</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
@@ -2379,4 +2382,4 @@ export default function VideoDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"></span></code></pre>`,
   },
-}
+};

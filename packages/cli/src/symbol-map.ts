@@ -1,6 +1,6 @@
 // ─── Symbol Map — single source of truth ─────────────────────────────────────
 //
-// Each entry maps a mathematical concept to its mdx-ui primitive component.
+// Each entry maps a mathematical concept to its docsui primitive component.
 // Consumed by:
 //   - MCP OUTPUT_STANDARD (built dynamically from this data)
 //   - MCP tool: search_symbols

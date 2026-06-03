@@ -177,8 +177,8 @@ export const add = new Command()
       const config = await getConfig();
 
       if (!config) {
-        console.log(chalk.red("✗ No mdx-ui.json found"));
-        console.log(chalk.yellow("Run 'npx mdx-ui init' first"));
+        console.log(chalk.red("✗ No docsui.json found"));
+        console.log(chalk.yellow("Run 'npx docsui-cli@latest init' first"));
         process.exit(1);
       }
 

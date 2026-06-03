@@ -2,12 +2,12 @@
 
 ## 🎉 Project Status: FULLY FUNCTIONAL!
 
-Your mdx-ui project is now complete with both a working CLI tool and documentation website!
+Your DocsUI project is now complete with both a working CLI tool and documentation website!
 
 ## 📊 Project Overview
 
 ```
-mdx-ui/                           # Root
+docsui/                           # Root
 ├── apps/
 │   └── www/                      # 🌐 Documentation Website (NEW!)
 │       ├── app/                  # Next.js 15 App Router
@@ -42,14 +42,14 @@ mdx-ui/                           # Root
 
 ```bash
 # List all components
-npx mdx-ui list
+npx docsui-cli@latest list
 
 # Add components to a project
-npx mdx-ui add blockquote
-npx mdx-ui add callout headings
+npx docsui-cli@latest add blockquote
+npx docsui-cli@latest add callout headings
 
 # Initialize configuration
-npx mdx-ui init
+npx docsui-cli@latest init
 ```
 
 **Features**:
@@ -157,8 +157,8 @@ pnpm dev
   "build": "turbo run build", // Build all packages
   "www:dev": "pnpm --filter=@docsui/www dev",
   "www:build": "pnpm --filter=@docsui/www build",
-  "cli:dev": "pnpm --filter=@mdx-ui/cli dev",
-  "cli:build": "pnpm --filter=@mdx-ui/cli build",
+  "cli:dev": "pnpm --filter=docsui-cli dev",
+  "cli:build": "pnpm --filter=docsui-cli build",
   "lint": "turbo run lint",
   "typecheck": "turbo run typecheck",
   "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",
@@ -443,7 +443,7 @@ NEXT_PUBLIC_ANALYTICS_ID=
 
 ```bash
 # See all components
-npx mdx-ui list
+npx docsui-cli@latest list
 
 # Start website
 pnpm www:dev
@@ -483,7 +483,7 @@ Your project now has:
 **You can now**:
 
 1. Run `pnpm www:dev` to see the website
-2. Run `npx mdx-ui list` to see all components
+2. Run `npx docsui-cli@latest list` to see all components
 3. Start building documentation pages
 4. Add component previews
 5. Publish to npm when ready!

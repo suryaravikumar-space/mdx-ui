@@ -54,7 +54,7 @@ export function SiteHeader() {
         {/* Right — actions */}
         <div className="flex items-center justify-end gap-1.5">
           <Link
-            href="https://github.com/suryaravikumar-space/mdx-ui"
+            href="https://github.com/suryaravikumar-space/docsui"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"

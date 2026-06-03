@@ -41,7 +41,7 @@ function getCliVersion(): string {
 // ─── Registry ─────────────────────────────────────────────────────────────────
 
 const REGISTRY_URL =
-  "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui/main/registry/registry.json";
+  "https://raw.githubusercontent.com/suryaravikumar-space/docsui/main/registry/registry.json";
 
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 

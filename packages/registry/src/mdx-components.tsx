@@ -10,7 +10,7 @@ import * as React from "react";
  * @example Re-export from project root (Next.js):
  * ```tsx
  * // mdx-components.tsx (root)
- * export { useMDXComponents } from './components/mdx-ui/mdx-components'
+ * export { useMDXComponents } from './components/docsui/mdx-components'
  * ```
  */
 export function useMDXComponents(

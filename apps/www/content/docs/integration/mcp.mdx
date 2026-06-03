@@ -4,7 +4,7 @@ description: Give Claude a live connection to your component registry — so it 
 published: true
 ---
 
-The mdx-ui MCP server plugs directly into Claude Code (or any MCP-compatible AI client). Once connected, Claude can browse your component registry, look up math symbols, convert LaTeX expressions, and generate rich MDX content that renders correctly the first time — no post-editing.
+The DocsUI MCP server plugs directly into Claude Code (or any MCP-compatible AI client). Once connected, Claude can browse your component registry, look up math symbols, convert LaTeX expressions, and generate rich MDX content that renders correctly the first time — no post-editing.
 
 ---
 
@@ -28,7 +28,7 @@ Create `.claude/settings.json` in your project root:
 ```json
 {
   "mcpServers": {
-    "mdx-ui": {
+    "docsui": {
       "command": "pnpm",
       "args": ["dlx", "docsui@latest", "mcp"]
     }
@@ -42,14 +42,14 @@ Create `.claude/settings.json` in your project root:
 
 ### 2. Open the project in VS Code with Claude Code
 
-The server starts automatically when you open a chat in Claude Code. You should see `mdx-ui` listed under active MCP servers in the sidebar.
+The server starts automatically when you open a chat in Claude Code. You should see `docsui` listed under active MCP servers in the sidebar.
 
 ### 3. Verify it is connected
 
 In the Claude Code chat, type:
 
 ```
-What components does mdx-ui have?
+What components does DocsUI have?
 ```
 
 Claude will call `list_components` and return the full registry — if it does, the server is live.

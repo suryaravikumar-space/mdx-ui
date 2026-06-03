@@ -207,7 +207,7 @@ const componentsMetadata: Record<
     whenNotToUse:
       "Do not use for unrelated code blocks — use separate CodeBlocks. Do not use for non-code content.",
     example:
-      '<CodeGroup>\n  <CodeBlock title="npm">npm install @mdx-ui/cli</CodeBlock>\n  <CodeBlock title="pnpm">pnpm add @mdx-ui/cli</CodeBlock>\n  <CodeBlock title="yarn">yarn add @mdx-ui/cli</CodeBlock>\n</CodeGroup>',
+      '<CodeGroup>\n  <CodeBlock title="npm">npm install docsui-cli</CodeBlock>\n  <CodeBlock title="pnpm">pnpm add docsui-cli</CodeBlock>\n  <CodeBlock title="yarn">yarn add docsui-cli</CodeBlock>\n</CodeGroup>',
     dependencies: [],
     registryDependencies: ["utils"],
   },
@@ -431,9 +431,9 @@ const componentsMetadata: Record<
   },
   "mdx-components": {
     description:
-      "Auto-discovering MDX component mapper - automatically uses all installed mdx-ui components",
+      "Auto-discovering MDX component mapper - automatically uses all installed DocsUI components",
     whenToUse:
-      "Use as the central MDX component map for your docs site. Import and register all mdx-ui components here.",
+      "Use as the central MDX component map for your docs site. Import and register all DocsUI components here.",
     whenNotToUse:
       "Do not import this file directly in MDX — it is a configuration file for your MDX renderer.",
     example:
@@ -506,7 +506,7 @@ const componentsMetadata: Record<
     whenNotToUse:
       "Do not use for unordered tips — use a list. Do not use when steps can be performed in any order.",
     example:
-      '<Steps>\n  <Step title="Install">`pnpm add @mdx-ui/cli`</Step>\n  <Step title="Run">`npx mdx-ui add callout`</Step>\n</Steps>',
+      '<Steps>\n  <Step title="Install">`pnpm add docsui-cli`</Step>\n  <Step title="Run">`npx docsui-cli@latest add callout`</Step>\n</Steps>',
     dependencies: [],
     registryDependencies: ["utils"],
   },
@@ -542,7 +542,7 @@ const componentsMetadata: Record<
     whenNotToUse:
       "Do not use for code files — use CodeBlock. Use for interactive shell sessions only.",
     example:
-      '<Terminal>\n  <TerminalLine type="input">pnpm add @mdx-ui/cli</TerminalLine>\n  <TerminalLine type="output">+ @mdx-ui/cli 0.0.33</TerminalLine>\n</Terminal>',
+      '<Terminal>\n  <TerminalLine type="input">pnpm add docsui-cli</TerminalLine>\n  <TerminalLine type="output">+ docsui-cli 0.0.33</TerminalLine>\n</Terminal>',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },

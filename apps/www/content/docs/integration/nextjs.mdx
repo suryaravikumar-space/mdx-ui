@@ -64,7 +64,7 @@ Skip this step if you already have a project.
   </TabsContent>
 </Tabs>
 
-This creates `mdx-ui.json` and copies the `cn()` utility into your project.
+This creates `docsui.json` and copies the `cn()` utility into your project.
 
 ---
 
@@ -89,7 +89,7 @@ This creates `mdx-ui.json` and copies the `cn()` utility into your project.
 
 <Callout variant="info" title="Auto-updated for you">
   The CLI copies the component file **and** patches
-  `components/mdx-ui/mdx-components.tsx` with the correct imports and mappings
+  `components/docsui/mdx-components.tsx` with the correct imports and mappings
   automatically.
 </Callout>
 
@@ -167,7 +167,7 @@ Create `mdx-components.tsx` in the **project root** (required by Next.js):
 
 ```tsx title="mdx-components.tsx"
 import type { MDXComponents } from "mdx/types";
-import { mdxComponents } from "@/components/mdx-ui/mdx-components";
+import { mdxComponents } from "@/components/docsui/mdx-components";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return { ...mdxComponents, ...components };
@@ -213,7 +213,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { mdxComponents } from "@/components/mdx-ui/mdx-components";
+import { mdxComponents } from "@/components/docsui/mdx-components";
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), "content/blog"));
@@ -320,7 +320,7 @@ export default function AboutPage() {
         </TreeItem>
       </TreeItem>
       <TreeItem name="components" isFolder defaultOpen>
-        <TreeItem name="mdx-ui" isFolder>
+        <TreeItem name="docsui" isFolder>
           <TreeItem name="callout.tsx" />
           <TreeItem name="accordion.tsx" />
           <TreeItem name="mdx-components.tsx" />
@@ -330,7 +330,7 @@ export default function AboutPage() {
         </TreeItem>
       </TreeItem>
       <TreeItem name="next.config.ts" />
-      <TreeItem name="mdx-ui.json" />
+      <TreeItem name="docsui.json" />
       <TreeItem name="package.json" />
     </TreeItem>
   </Tree>
@@ -348,7 +348,7 @@ export default function AboutPage() {
           <TreeItem name="layout.tsx" />
         </TreeItem>
         <TreeItem name="components" isFolder defaultOpen>
-          <TreeItem name="mdx-ui" isFolder>
+          <TreeItem name="docsui" isFolder>
             <TreeItem name="callout.tsx" />
             <TreeItem name="accordion.tsx" />
             <TreeItem name="mdx-components.tsx" />
@@ -359,7 +359,7 @@ export default function AboutPage() {
         </TreeItem>
         <TreeItem name="mdx-components.tsx" />
         <TreeItem name="next.config.ts" />
-        <TreeItem name="mdx-ui.json" />
+        <TreeItem name="docsui.json" />
         <TreeItem name="package.json" />
       </TreeItem>
     </Tree>
@@ -402,7 +402,7 @@ Make sure `mdxComponents` is passed to your renderer:
 - **next-mdx-remote:** `<MDXRemote source={content} components={mdxComponents} />`
 - **@next/mdx:** The root `mdx-components.tsx` with `useMDXComponents` wires this up automatically.
 
-### Cannot find module `@/components/mdx-ui/...`
+### Cannot find module `@/components/docsui/...`
 
 Add the `@/` path alias to `tsconfig.json`:
 

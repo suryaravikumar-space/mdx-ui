@@ -1328,7 +1328,7 @@ export default function LinkDefault() {
       </p>
       <p>
         Source code is available on{" "}
-        <Link href="https://github.com/suryaravikumar-space/mdx-ui">
+        <Link href="https://github.com/suryaravikumar-space/docsui">
           GitHub
         </Link>
         .
@@ -1348,7 +1348,7 @@ export default function LinkDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">p</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        Source code is available on{</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Link</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> href</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"https://github.com/suryaravikumar-space/mdx-ui"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Link</span><span style="--shiki-dark:#B392F0;--shiki-light:#6F42C1"> href</span><span style="--shiki-dark:#F97583;--shiki-light:#D73A49">=</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">"https://github.com/suryaravikumar-space/docsui"</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          GitHub</span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">Link</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        .</span></span>

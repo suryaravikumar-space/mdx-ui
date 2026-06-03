@@ -1,4 +1,4 @@
-# Contributing to mdx-ui
+# Contributing to DocsUI
 
 Thank you for your interest in contributing! This guide covers everything you need to get started.
 
@@ -17,7 +17,7 @@ Thank you for your interest in contributing! This guide covers everything you ne
 ## Project Structure
 
 ```
-mdx-ui/
+docsui/
 ├── packages/
 │   ├── cli/           # docsui — CLI tool
 │   ├── registry/      # Component source files (.tsx)
@@ -39,8 +39,8 @@ mdx-ui/
 
 ```bash
 # 1. Fork and clone
-git clone https://github.com/<your-username>/mdx-ui.git
-cd mdx-ui
+git clone https://github.com/<your-username>/docsui.git
+cd docsui
 
 # 2. Install dependencies
 pnpm install

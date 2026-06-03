@@ -5,14 +5,14 @@ Anonymous usage tracking via PostHog. Fires on `init` and `add` commands.
 ## Checking metrics
 
 1. Go to [app.posthog.com](https://app.posthog.com)
-2. Select your **mdx-ui** project
+2. Select your **DocsUI** project
 
 ### Events to look for
 
 | Event  | When fired              | Key properties                       |
 | ------ | ----------------------- | ------------------------------------ |
-| `init` | User runs `mdx-ui init` | `framework` (react / nextjs / astro) |
-| `add`  | User runs `mdx-ui add`  | `components` (array of names added)  |
+| `init` | User runs `docsui-cli init` | `framework` (react / nextjs / astro) |
+| `add`  | User runs `docsui-cli add`  | `components` (array of names added)  |
 
 ### Useful views
 

@@ -14,7 +14,7 @@ Paste any LLM-generated Markdown here — the remark plugin transforms it into
 rich UI automatically. **No JSX required.**
 
 > [!NOTE]
-> This blockquote was written in plain Markdown. mdx-ui turned it into this styled callout.
+> This blockquote was written in plain Markdown. DocsUI turned it into this styled callout.
 
 ## Requirements
 
@@ -130,7 +130,7 @@ Evaluate <ME>int(1, 2) (3x^2 + 2x) dx</ME>
   </Card>
 </div>
 
-<LinkCard href="/docs" title="Read the docs" description="Everything you need to get started with mdx-ui." />
+<LinkCard href="/docs" title="Read the docs" description="Everything you need to get started with DocsUI." />
 `,
   },
   {

@@ -62,7 +62,7 @@ export default function ComponentsPage() {
           </p>
           <div className="mt-4 rounded-md bg-background p-4">
             <code className="text-sm">
-              npx mdx-ui add blockquote callout steps
+              npx docsui-cli@latest add blockquote callout steps
             </code>
           </div>
         </div>

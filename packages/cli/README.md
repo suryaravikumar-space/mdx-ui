@@ -21,7 +21,7 @@ npx docsui-cli@latest
 
 ### `init`
 
-Sets up mdx-ui in your project:
+Sets up DocsUI in your project:
 
 - Creates `docsui.json` config
 - Injects shadcn-compatible CSS variables into your `globals.css`
@@ -181,7 +181,7 @@ npx docsui-cli@latest list --installed
 
 ## Math Primitives
 
-`math-primitives` is the single math system in mdx-ui — 150+ JSX components with no LaTeX engine required:
+`math-primitives` is the single math system in DocsUI — 150+ JSX components with no LaTeX engine required:
 
 ```bash
 npx docsui-cli@latest add math-primitives

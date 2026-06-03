@@ -67,7 +67,7 @@ This component gives you **full programmatic control** over each tree item. If y
       <TreeItem name="layout.tsx" />
     </TreeItem>
     <TreeItem name="components" isFolder defaultOpen>
-      <TreeItem name="mdx-ui" isFolder defaultOpen>
+      <TreeItem name="docsui" isFolder defaultOpen>
         <TreeItem name="tree.tsx" />
         <TreeItem name="callout.tsx" />
       </TreeItem>
@@ -98,7 +98,7 @@ This component gives you **full programmatic control** over each tree item. If y
       <TreeItem name="layout.tsx" />
     </TreeItem>
     <TreeItem name="components" isFolder defaultOpen>
-      <TreeItem name="mdx-ui" isFolder>
+      <TreeItem name="docsui" isFolder>
         <TreeItem name="tree.tsx" />
         <TreeItem name="callout.tsx" />
       </TreeItem>
@@ -191,7 +191,7 @@ Display component organization:
       <TreeItem name="input.tsx" />
       <TreeItem name="card.tsx" />
     </TreeItem>
-    <TreeItem name="mdx-ui" isFolder defaultOpen>
+    <TreeItem name="docsui" isFolder defaultOpen>
       <TreeItem name="callout.tsx" />
       <TreeItem name="steps.tsx" />
       <TreeItem name="tree.tsx" />
@@ -211,7 +211,7 @@ Display component organization:
 Add to your `mdx-components.tsx`:
 
 ```tsx
-import { Tree, TreeItem } from "@/components/mdx-ui/tree";
+import { Tree, TreeItem } from "@/components/docsui/tree";
 
 export const mdxComponents = {
   // ... other components

@@ -1,4 +1,4 @@
-# mdx-ui Component Roadmap
+# DocsUI Component Roadmap
 
 Inspired by react.dev but with unique names and our own implementation.
 
@@ -74,7 +74,7 @@ Console output display
 Terminal command display
 
 ```mdx
-<Terminal>npm install @mdx-ui/components</Terminal>
+<Terminal>npm install docsui-cli</Terminal>
 ```
 
 **Use case**: CLI commands, bash scripts
@@ -256,7 +256,7 @@ Smart documentation links
 
 ## Naming Philosophy
 
-- **react.dev** → **mdx-ui** (our unique names)
+- **react.dev** → **DocsUI** (our unique names)
 - Intro → Lead (more descriptive)
 - SimpleCallout → Note (clearer purpose)
 - Recap → Summary (more universal)

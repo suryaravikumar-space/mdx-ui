@@ -46,7 +46,7 @@ apps/www/config/
 **Purpose:** API reference documentation
 **Sections:**
 
-- mdx-ui CLI
+- DocsUI CLI
 - Typography Components
 - Code Components
 - Interactive Components

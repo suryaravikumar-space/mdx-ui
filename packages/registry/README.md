@@ -1,6 +1,6 @@
 # Component Registry Package
 
-This package contains the **source TypeScript components** for mdx-ui.
+This package contains the **source TypeScript components** for DocsUI.
 
 ## Purpose
 

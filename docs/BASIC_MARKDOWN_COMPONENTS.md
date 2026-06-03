@@ -1,4 +1,4 @@
-# Basic Markdown Components for mdx-ui
+# Basic Markdown Components for DocsUI
 
 Implementation plan for basic Markdown syntax components. These will be implemented BEFORE the advanced MDX components from COMPONENT_NAMES_REFERENCE.md.
 
@@ -583,6 +583,6 @@ Once all basic Markdown components are complete, we'll move to advanced MDX comp
 
 **Basic Markdown**: ~12 components
 **Advanced MDX**: ~20 components
-**Total**: ~32 components for complete mdx-ui v1.0
+**Total**: ~32 components for complete DocsUI v1.0
 
 This covers both basic Markdown syntax AND advanced documentation features inspired by react.dev.

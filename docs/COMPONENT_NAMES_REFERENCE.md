@@ -1,12 +1,12 @@
-# Component Names Reference: react.dev → mdx-ui
+# Component Names Reference: react.dev → DocsUI
 
-Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
+Complete mapping of all react.dev MDX components to our DocsUI equivalents.
 
 ---
 
 ## ✅ IMPLEMENTED COMPONENTS (4)
 
-| react.dev   | mdx-ui                       | Status  | Notes                    |
+| react.dev   | DocsUI                       | Status  | Notes                    |
 | ----------- | ---------------------------- | ------- | ------------------------ |
 | `<Pitfall>` | `<Callout variant="danger">` | ✅ Done | Variant approach         |
 | -           | `<CodeBlock>`                | ✅ Done | Our own implementation   |
@@ -19,7 +19,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Priority 1 - Essential ⭐⭐⭐
 
-| react.dev      | mdx-ui        | Priority | Purpose               |
+| react.dev      | DocsUI        | Priority | Purpose               |
 | -------------- | ------------- | -------- | --------------------- |
 | `<Intro>`      | `<Lead>`      | ⭐⭐⭐   | Large intro paragraph |
 | `<Recap>`      | `<Summary>`   | ⭐⭐⭐   | Section summary       |
@@ -28,7 +28,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Heading Components
 
-| react.dev        | mdx-ui              | Priority | Purpose           |
+| react.dev        | DocsUI              | Priority | Purpose           |
 | ---------------- | ------------------- | -------- | ----------------- |
 | `<H1>` to `<H5>` | Auto-handled by MDX | -        | Auto anchor links |
 
@@ -38,7 +38,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Single Component with Variants Approach
 
-| react.dev        | mdx-ui                        | Priority | Purpose                 |
+| react.dev        | DocsUI                        | Priority | Purpose                 |
 | ---------------- | ----------------------------- | -------- | ----------------------- |
 | `<Note>`         | `<Callout variant="info">`    | ✅ Done  | Information callouts    |
 | `<Pitfall>`      | `<Callout variant="danger">`  | ✅ Done  | Warnings/gotchas        |
@@ -51,7 +51,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Standalone Components
 
-| react.dev         | mdx-ui    | Priority | Purpose                 |
+| react.dev         | DocsUI    | Priority | Purpose                 |
 | ----------------- | --------- | -------- | ----------------------- |
 | `<Note>`          | `<Note>`  | ⭐⭐⭐   | Simple highlighted note |
 | `<DeepDive>`      | `<Aside>` | ⭐⭐⭐   | Expandable deep content |
@@ -59,7 +59,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Badges
 
-| react.dev             | mdx-ui                           | Priority | Purpose       |
+| react.dev             | DocsUI                           | Priority | Purpose       |
 | --------------------- | -------------------------------- | -------- | ------------- |
 | `<CanaryBadge>`       | `<Badge variant="canary">`       | ⭐       | Inline badges |
 | `<ExperimentalBadge>` | `<Badge variant="experimental">` | ⭐       | Inline badges |
@@ -72,7 +72,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Priority 2 - Code Display ⭐⭐
 
-| react.dev         | mdx-ui              | Priority | Purpose                   |
+| react.dev         | DocsUI              | Priority | Purpose                   |
 | ----------------- | ------------------- | -------- | ------------------------- |
 | `<CodeBlock>`     | `<CodeBlock>`       | ✅ Done  | Syntax highlighting       |
 | `<ConsoleBlock>`  | `<Console>`         | ⭐⭐⭐   | Console output            |
@@ -83,7 +83,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Advanced Interactive
 
-| react.dev                  | mdx-ui                     | Priority | Purpose                    |
+| react.dev                  | DocsUI                     | Priority | Purpose                    |
 | -------------------------- | -------------------------- | -------- | -------------------------- |
 | `<Sandpack>`               | `<Sandbox>`                | ⭐       | Live code editor (complex) |
 | `<SandpackWithHTMLOutput>` | `<Sandbox variant="html">` | ⭐       | HTML output preview        |
@@ -94,7 +94,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Priority 4 - Advanced ⭐
 
-| react.dev      | mdx-ui                 | Priority | Purpose                  |
+| react.dev      | DocsUI                 | Priority | Purpose                  |
 | -------------- | ---------------------- | -------- | ------------------------ |
 | `<Challenges>` | `<Challenge>`          | ⭐       | Exercise container       |
 | `<Challenge>`  | `<Challenge.Problem>`  | ⭐       | Individual challenge     |
@@ -108,7 +108,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Priority 3 - Visual ⭐⭐
 
-| react.dev             | mdx-ui            | Priority | Purpose              |
+| react.dev             | DocsUI            | Priority | Purpose              |
 | --------------------- | ----------------- | -------- | -------------------- |
 | `<Diagram>`           | `<Diagram>`       | ⭐⭐     | Visual diagrams      |
 | `<DiagramGroup>`      | `<Diagram.Group>` | ⭐⭐     | Grouped diagrams     |
@@ -122,7 +122,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ## 📐 LAYOUT COMPONENTS
 
-| react.dev     | mdx-ui     | Priority | Purpose            |
+| react.dev     | DocsUI     | Priority | Purpose            |
 | ------------- | ---------- | -------- | ------------------ |
 | `<FullWidth>` | Not needed | -        | MDX handles layout |
 | `<MaxWidth>`  | Not needed | -        | MDX handles layout |
@@ -133,7 +133,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Priority 2 - Navigation ⭐⭐
 
-| react.dev            | mdx-ui                       | Priority | Purpose                 |
+| react.dev            | DocsUI                       | Priority | Purpose                 |
 | -------------------- | ---------------------------- | -------- | ----------------------- |
 | `<YouWillLearn>`     | `<LearnCard>`                | ⭐⭐⭐   | Learning objectives     |
 | `<YouWillLearnCard>` | `<LearnCard>`                | ⭐⭐⭐   | Link cards with preview |
@@ -147,14 +147,14 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Content Cards
 
-| react.dev      | mdx-ui                     | Priority | Purpose            |
+| react.dev      | DocsUI                     | Priority | Purpose            |
 | -------------- | -------------------------- | -------- | ------------------ |
 | `<BlogCard>`   | `<Card variant="blog">`    | ⭐       | Blog post previews |
 | `<TeamMember>` | `<Card variant="profile">` | ⭐       | Team profiles      |
 
 ### Utility Components
 
-| react.dev            | mdx-ui     | Priority | Purpose        |
+| react.dev            | DocsUI     | Priority | Purpose        |
 | -------------------- | ---------- | -------- | -------------- |
 | `<ErrorDecoder>`     | Not needed | -        | React-specific |
 | `<LanguageList>`     | Not needed | -        | React-specific |
@@ -164,7 +164,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ## 📦 FILE STRUCTURE COMPONENTS (NEW!)
 
-| react.dev | mdx-ui              | Priority | Purpose             |
+| react.dev | DocsUI              | Priority | Purpose             |
 | --------- | ------------------- | -------- | ------------------- |
 | -         | `<FileTree>`        | ⭐⭐⭐   | Directory structure |
 | -         | `<FileTree.Folder>` | ⭐⭐⭐   | Folder in tree      |
@@ -174,7 +174,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ## 🎭 EXPANDABLE COMPONENTS
 
-| react.dev             | mdx-ui                | Priority | Purpose             |
+| react.dev             | DocsUI                | Priority | Purpose             |
 | --------------------- | --------------------- | -------- | ------------------- |
 | `<ExpandableCallout>` | `<Aside>`             | ⭐⭐⭐   | Expandable sections |
 | `<ExpandableExample>` | `<ExpandableSection>` | ⭐⭐     | Collapsible content |
@@ -224,7 +224,7 @@ Complete mapping of all react.dev MDX components to our mdx-ui equivalents.
 
 ### Why We Changed Names
 
-| react.dev     | mdx-ui             | Reason                           |
+| react.dev     | DocsUI             | Reason                           |
 | ------------- | ------------------ | -------------------------------- |
 | Intro         | **Lead**           | More universal term (journalism) |
 | DeepDive      | **Aside**          | Semantic HTML term               |
@@ -297,7 +297,7 @@ variant: "learn" | "more";
 
 ### Complete Alphabetical List
 
-| A-E | react.dev         | mdx-ui                       |
+| A-E | react.dev         | DocsUI                       |
 | --- | ----------------- | ---------------------------- |
 | ✓   | Canary            | Callout variant="default"    |
 | ✓   | CanaryBadge       | Badge variant="canary"       |
@@ -315,7 +315,7 @@ variant: "learn" | "more";
 | ✓   | Experimental      | Callout variant="success"    |
 | ✓   | ExperimentalBadge | Badge variant="experimental" |
 
-| F-N | react.dev         | mdx-ui                         |
+| F-N | react.dev         | DocsUI                         |
 | --- | ----------------- | ------------------------------ |
 | -   | -                 | FileTree (NEW)                 |
 | ✓   | FullWidth         | Not needed                     |
@@ -335,7 +335,7 @@ variant: "learn" | "more";
 | ✓   | NextMajorBadge    | Badge variant="major"          |
 | ✓   | Note              | Note or Callout variant="info" |
 
-| P-Z | react.dev        | mdx-ui                      |
+| P-Z | react.dev        | DocsUI                      |
 | --- | ---------------- | --------------------------- |
 | ✓   | PackageImport    | PackageInstall              |
 | ✓   | Pitfall          | Callout variant="danger" ✅ |
@@ -360,7 +360,7 @@ variant: "learn" | "more";
 
 ## 🎯 TOTAL COMPONENT COUNT
 
-| Category        | react.dev | mdx-ui | Strategy                             |
+| Category        | react.dev | DocsUI | Strategy                             |
 | --------------- | --------- | ------ | ------------------------------------ |
 | **Text**        | 7         | 4      | Simpler                              |
 | **Callouts**    | 12        | 3      | Variants                             |

@@ -1,4 +1,4 @@
-# mdx-ui — v0.1.0 · Foundation Release
+# DocsUI — v0.1.0 · Foundation Release
 
 > **Release name:** Foundation
 > **Version:** v0.1.0

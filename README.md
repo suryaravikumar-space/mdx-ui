@@ -1,4 +1,4 @@
-# mdx-ui
+# DocsUI
 
 [![npm](https://img.shields.io/npm/v/docsui)](https://www.npmjs.com/package/docsui-cli)
 [![Socket](https://socket.dev/api/badge/npm/package/docsui)](https://socket.dev/npm/package/docsui)
@@ -167,7 +167,7 @@ import { CodeBlock } from "@/components/mdx/code-block";
 const components = { pre: CodeBlock };
 ```
 
-Shiki CSS variables are automatically injected by `mdx-ui init`.
+Shiki CSS variables are automatically injected by `docsui-cli init`.
 
 ## Supported Frameworks
 
@@ -183,7 +183,7 @@ Supports both **Tailwind v3** (`@layer base`) and **Tailwind v4** (`@theme inlin
 ## Project Structure
 
 ```
-mdx-ui/
+docsui/
 ├── apps/
 │   └── www/                  # Documentation site (Next.js 15)
 ├── packages/
@@ -213,7 +213,7 @@ Commit both the `.tsx` source and the generated `registry/mdx/*.json`.
 
 ```bash
 git clone https://github.com/suryaravikumar-space/docsui.git
-cd mdx-ui
+cd docsui
 pnpm install
 
 pnpm www:dev        # docs site at localhost:3000

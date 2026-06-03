@@ -3,7 +3,7 @@
 ## Overview
 
 ```
-mdx-ui/
+docsui/
 ├── registry/              # Runtime component registry (JSON files)
 ├── packages/              # Source code packages
 │   ├── cli/              # CLI tool for installing components
@@ -16,7 +16,7 @@ mdx-ui/
 
 ### `/registry/` - Runtime Registry
 
-**Purpose**: JSON files that the CLI fetches when users run `npx mdx-ui add <component>`
+**Purpose**: JSON files that the CLI fetches when users run `npx docsui-cli@latest add <component>`
 
 ```
 registry/
@@ -67,9 +67,9 @@ packages/cli/
 **Usage**:
 
 ```bash
-npx mdx-ui init           # Initialize project
-npx mdx-ui list           # Show all components
-npx mdx-ui add callout    # Add a component
+npx docsui-cli@latest init           # Initialize project
+npx docsui-cli@latest list           # Show all components
+npx docsui-cli@latest add callout    # Add a component
 ```
 
 ### `/packages/registry/src/` - Component Source
@@ -146,7 +146,7 @@ npm publish       # Publish to npm (when ready)
 ### 5. User Installation
 
 ```bash
-npx mdx-ui add blockquote
+npx docsui-cli@latest add blockquote
 ```
 
 ## Key Files

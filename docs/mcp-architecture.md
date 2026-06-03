@@ -1,10 +1,10 @@
-# MCP Architecture in mdx-ui
+# MCP Architecture in DocsUI
 
-## How MCP Works in mdx-ui
+## How MCP Works in DocsUI
 
-### 1. The Server (`mdx-ui mcp` command)
+### 1. The Server (`docsui mcp` command)
 
-When you run `mdx-ui mcp`, it starts an MCP server over **stdio** using `@modelcontextprotocol/sdk`. Any MCP-compatible client (Claude Desktop, Cursor, etc.) connects to it.
+When you run `docsui mcp`, it starts an MCP server over **stdio** using `@modelcontextprotocol/sdk`. Any MCP-compatible client (Claude Desktop, Cursor, etc.) connects to it.
 
 The server registers three types of things:
 
@@ -68,7 +68,7 @@ The `generate_mdx` prompt mandates the LLM **call `validate_mdx` on its own outp
 
 Once the LLM writes `<Callout variant="info">Note</Callout>`, rendering happens via:
 
-**In Next.js apps** — `mdx-components.tsx` (installed by `mdx-ui add`):
+**In Next.js apps** — `mdx-components.tsx` (installed by `docsui-cli add`):
 
 ```ts
 import { Callout } from "@/components/mdx/callout"

@@ -68,5 +68,5 @@ Previously missing source files extracted from JSON:
 2. Update JSON       → registry/mdx/component.json
 3. Update CLI list   → packages/cli/src/commands/list.ts
 4. Rebuild CLI       → pnpm cli:build
-5. Test install      → npx mdx-ui add component
+5. Test install      → npx docsui-cli@latest add component
 ```

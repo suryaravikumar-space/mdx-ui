@@ -6,7 +6,7 @@ import { createHash } from "crypto";
 import { fileURLToPath } from "url";
 
 const REGISTRY_BASE =
-  "https://raw.githubusercontent.com/suryaravikumar-space/mdx-ui";
+  "https://raw.githubusercontent.com/suryaravikumar-space/docsui";
 
 const SEMVER_RE = /^\d+\.\d+\.\d+$/;
 

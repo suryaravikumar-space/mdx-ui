@@ -86,7 +86,7 @@ describe("scanMdxComponents", () => {
   });
 
   const createProject = async (): Promise<string> => {
-    const cwd = await mkdtemp(path.join(os.tmpdir(), "mdx-ui-scan-"));
+    const cwd = await mkdtemp(path.join(os.tmpdir(), "docsui-scan-"));
     tempDirs.push(cwd);
     await mkdir(path.join(cwd, "src", "components", "docsui"), {
       recursive: true,

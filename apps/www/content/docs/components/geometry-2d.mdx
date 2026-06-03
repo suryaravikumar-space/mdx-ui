@@ -20,7 +20,13 @@ coordinate transform, grid, and axes. Children use world coordinates — no pixe
 
 ```tsx
 import {
-  FigScene, FigPoint, FigVector, FigCircle, FigAngle, FigPolygon, FigLabel,
+  FigScene,
+  FigPoint,
+  FigVector,
+  FigCircle,
+  FigAngle,
+  FigPolygon,
+  FigLabel,
 } from "@/components/mdx/geometry-2d";
 ```
 
@@ -31,11 +37,25 @@ import {
 A right triangle with labelled sides and the angle θ.
 
 <FigScene width={380} height={280} xRange={[-1, 6]} yRange={[-1, 5]}>
-  <FigPolygon points={[[0,0],[4,0],[0,3]]} fill="currentColor" opacity={0.08} />
+  <FigPolygon
+    points={[
+      [0, 0],
+      [4, 0],
+      [0, 3],
+    ]}
+    fill="currentColor"
+    opacity={0.08}
+  />
   <FigSegment x1={0} y1={0} x2={4} y2={0} label="a" />
   <FigSegment x1={0} y1={0} x2={0} y2={3} label="b" />
   <FigSegment x1={4} y1={0} x2={0} y2={3} label="c" />
-  <FigAngle vertex={{x:0,y:0}} from={{x:1,y:0}} to={{x:0,y:1}} label="θ" radius={0.6} />
+  <FigAngle
+    vertex={{ x: 0, y: 0 }}
+    from={{ x: 1, y: 0 }}
+    to={{ x: 0, y: 1 }}
+    label="θ"
+    radius={0.6}
+  />
   <FigPoint x={0} y={0} label="O" labelDir="sw" />
   <FigPoint x={4} y={0} label="A" labelDir="se" />
   <FigPoint x={0} y={3} label="B" labelDir="nw" />
@@ -65,62 +85,72 @@ The unit circle with a point at angle θ and its x/y projections.
   <FigVector toX={0.866} toY={0.5} label="r=1" />
   <FigLine x1={0.866} y1={0} x2={0.866} y2={0.5} dashed />
   <FigLine x1={0} y1={0} x2={0.866} y2={0} dashed />
-  <FigAngle vertex={{x:0,y:0}} from={{x:1,y:0}} to={{x:0.866,y:0.5}} label="θ" radius={0.3} />
+  <FigAngle
+    vertex={{ x: 0, y: 0 }}
+    from={{ x: 1, y: 0 }}
+    to={{ x: 0.866, y: 0.5 }}
+    label="θ"
+    radius={0.3}
+  />
   <FigPoint x={0.866} y={0.5} label="(cosθ, sinθ)" labelDir="ne" />
-  <FigLabel x={0.45} y={-0.12}>cosθ</FigLabel>
-  <FigLabel x={0.97} y={0.25} dx={4}>sinθ</FigLabel>
+  <FigLabel x={0.45} y={-0.12}>
+    cosθ
+  </FigLabel>
+  <FigLabel x={0.97} y={0.25} dx={4}>
+    sinθ
+  </FigLabel>
 </FigScene>
 
 ## Props
 
 ### FigScene
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `width` | `number` | `400` | SVG pixel width |
-| `height` | `number` | `300` | SVG pixel height |
-| `xRange` | `[number, number]` | `[-5, 5]` | World x axis range |
-| `yRange` | `[number, number]` | `[-5, 5]` | World y axis range |
-| `showGrid` | `boolean` | `true` | Show background grid |
-| `showAxes` | `boolean` | `true` | Show x/y axes with ticks |
-| `label` | `string` | `"Geometry diagram"` | Accessible SVG label |
+| Prop       | Type               | Default              | Description              |
+| ---------- | ------------------ | -------------------- | ------------------------ |
+| `width`    | `number`           | `400`                | SVG pixel width          |
+| `height`   | `number`           | `300`                | SVG pixel height         |
+| `xRange`   | `[number, number]` | `[-5, 5]`            | World x axis range       |
+| `yRange`   | `[number, number]` | `[-5, 5]`            | World y axis range       |
+| `showGrid` | `boolean`          | `true`               | Show background grid     |
+| `showAxes` | `boolean`          | `true`               | Show x/y axes with ticks |
+| `label`    | `string`           | `"Geometry diagram"` | Accessible SVG label     |
 
 ### FigPoint
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `x` | `number` | — | World x |
-| `y` | `number` | — | World y |
-| `label` | `string` | — | Text label |
-| `labelDir` | `"ne" \| "nw" \| "se" \| "sw"` | `"ne"` | Label placement |
-| `r` | `number` | `4` | Dot radius (px) |
+| Prop       | Type                           | Default | Description     |
+| ---------- | ------------------------------ | ------- | --------------- |
+| `x`        | `number`                       | —       | World x         |
+| `y`        | `number`                       | —       | World y         |
+| `label`    | `string`                       | —       | Text label      |
+| `labelDir` | `"ne" \| "nw" \| "se" \| "sw"` | `"ne"`  | Label placement |
+| `r`        | `number`                       | `4`     | Dot radius (px) |
 
 ### FigVector
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `fromX` | `number` | `0` | Tail x |
-| `fromY` | `number` | `0` | Tail y |
-| `toX` | `number` | — | Head x |
-| `toY` | `number` | — | Head y |
-| `label` | `string` | — | Midpoint label |
+| Prop    | Type     | Default | Description    |
+| ------- | -------- | ------- | -------------- |
+| `fromX` | `number` | `0`     | Tail x         |
+| `fromY` | `number` | `0`     | Tail y         |
+| `toX`   | `number` | —       | Head x         |
+| `toY`   | `number` | —       | Head y         |
+| `label` | `string` | —       | Midpoint label |
 
 ### FigCircle
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `cx` | `number` | — | Center x |
-| `cy` | `number` | — | Center y |
-| `r` | `number` | — | World-unit radius |
-| `fill` | `string` | `"none"` | Fill color |
-| `dashed` | `boolean` | `false` | Dashed stroke |
+| Prop     | Type      | Default  | Description       |
+| -------- | --------- | -------- | ----------------- |
+| `cx`     | `number`  | —        | Center x          |
+| `cy`     | `number`  | —        | Center y          |
+| `r`      | `number`  | —        | World-unit radius |
+| `fill`   | `string`  | `"none"` | Fill color        |
+| `dashed` | `boolean` | `false`  | Dashed stroke     |
 
 ### FigAngle
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `vertex` | `{x,y}` | — | Angle vertex |
-| `from` | `{x,y}` | — | Point on first ray |
-| `to` | `{x,y}` | — | Point on second ray |
-| `label` | `string` | — | Arc label |
-| `radius` | `number` | `0.5` | Arc radius (world units) |
+| Prop     | Type     | Default | Description              |
+| -------- | -------- | ------- | ------------------------ |
+| `vertex` | `{x,y}`  | —       | Angle vertex             |
+| `from`   | `{x,y}`  | —       | Point on first ray       |
+| `to`     | `{x,y}`  | —       | Point on second ray      |
+| `label`  | `string` | —       | Arc label                |
+| `radius` | `number` | `0.5`   | Arc radius (world units) |

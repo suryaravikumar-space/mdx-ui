@@ -1529,7 +1529,7 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: [],
     component: "FigScene",
     usage:
-      '<FigScene width={400} height={300} xRange={[-5,5]} yRange={[-5,5]} showGrid showAxes>\n  {/* FigPoint, FigVector, FigCircle … */}\n</FigScene>',
+      "<FigScene width={400} height={300} xRange={[-5,5]} yRange={[-5,5]} showGrid showAxes>\n  {/* FigPoint, FigVector, FigCircle … */}\n</FigScene>",
     description:
       "SVG coordinate plane that wraps all Fig* visual primitives. Provides grid lines, axes, and a coordinate transform.",
   },
@@ -1549,7 +1549,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: ["\\vec{v}"],
     component: "FigVector",
     usage: '<FigVector fromX={0} fromY={0} toX={3} toY={4} label="v" />',
-    description: "Directed arrow from one world point to another with an arrowhead.",
+    description:
+      "Directed arrow from one world point to another with an arrowhead.",
   },
   {
     name: "geometry line",
@@ -1558,7 +1559,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: [],
     component: "FigLine",
     usage: "<FigLine x1={-2} y1={-1} x2={2} y2={1} dashed />",
-    description: "Straight line segment between two world points. Supports dashed style.",
+    description:
+      "Straight line segment between two world points. Supports dashed style.",
   },
   {
     name: "geometry segment with ticks",
@@ -1567,7 +1569,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: [],
     component: "FigSegment",
     usage: '<FigSegment x1={0} y1={0} x2={3} y2={0} label="c" tickMarks />',
-    description: "Line segment with optional midpoint label and equal-length tick marks.",
+    description:
+      "Line segment with optional midpoint label and equal-length tick marks.",
   },
   {
     name: "geometry circle",
@@ -1585,7 +1588,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: ["\\overset{\\frown}{AB}"],
     component: "FigArc",
     usage: "<FigArc cx={0} cy={0} r={2} startDeg={0} endDeg={90} />",
-    description: "Partial arc between two degree angles (counter-clockwise from positive x-axis).",
+    description:
+      "Partial arc between two degree angles (counter-clockwise from positive x-axis).",
   },
   {
     name: "geometry angle arc",
@@ -1595,7 +1599,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     component: "FigAngle",
     usage:
       '<FigAngle vertex={{x:0,y:0}} from={{x:1,y:0}} to={{x:0,y:1}} label="θ" />',
-    description: "Arc sweep showing the angle at a vertex between two direction rays.",
+    description:
+      "Arc sweep showing the angle at a vertex between two direction rays.",
   },
   {
     name: "geometry polygon",
@@ -1605,7 +1610,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     component: "FigPolygon",
     usage:
       '<FigPolygon points={[[0,0],[3,0],[1.5,2]]} fill="currentColor" opacity={0.15} />',
-    description: "Closed polygon from an array of world-coordinate [x,y] vertices.",
+    description:
+      "Closed polygon from an array of world-coordinate [x,y] vertices.",
   },
   {
     name: "geometry label / text",
@@ -1614,7 +1620,8 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     latex: [],
     component: "FigLabel",
     usage: "<FigLabel x={1} y={2}>A</FigLabel>",
-    description: "Arbitrary text positioned at a world coordinate inside FigScene.",
+    description:
+      "Arbitrary text positioned at a world coordinate inside FigScene.",
   },
 ];
 

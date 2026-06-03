@@ -20,26 +20,38 @@ import { useFigScene } from "./geometry-2d";
 type Pt = { px: number; py: number };
 
 interface BodyGeom {
-  a: Pt; b: Pt;
-  dx: number; dy: number; len: number;
-  ux: number; uy: number;   // unit direction
-  nx: number; ny: number;   // unit perpendicular (left)
-  bs: Pt; be: Pt;           // body start / end
-  mid: Pt;                  // body midpoint
+  a: Pt;
+  b: Pt;
+  dx: number;
+  dy: number;
+  len: number;
+  ux: number;
+  uy: number; // unit direction
+  nx: number;
+  ny: number; // unit perpendicular (left)
+  bs: Pt;
+  be: Pt; // body start / end
+  mid: Pt; // body midpoint
 }
 
 function bodyGeom(
   toPixel: (x: number, y: number) => Pt,
-  x1: number, y1: number,
-  x2: number, y2: number,
-  f0 = 0.25, f1 = 0.75,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  f0 = 0.25,
+  f1 = 0.75,
 ): BodyGeom {
   const a = toPixel(x1, y1);
   const b = toPixel(x2, y2);
-  const dx = b.px - a.px, dy = b.py - a.py;
+  const dx = b.px - a.px,
+    dy = b.py - a.py;
   const len = Math.sqrt(dx * dx + dy * dy) || 1;
-  const ux = dx / len, uy = dy / len;
-  const nx = -uy, ny = ux;
+  const ux = dx / len,
+    uy = dy / len;
+  const nx = -uy,
+    ny = ux;
   const bs: Pt = { px: a.px + f0 * dx, py: a.py + f0 * dy };
   const be: Pt = { px: a.px + f1 * dx, py: a.py + f1 * dy };
   const mid: Pt = { px: (bs.px + be.px) / 2, py: (bs.py + be.py) / 2 };
@@ -47,20 +59,58 @@ function bodyGeom(
 }
 
 /** Lead wires from both terminals to the component body. */
-function Leads({ a, b, bs, be, color, sw }: {
-  a: Pt; b: Pt; bs: Pt; be: Pt; color: string; sw: number;
+function Leads({
+  a,
+  b,
+  bs,
+  be,
+  color,
+  sw,
+}: {
+  a: Pt;
+  b: Pt;
+  bs: Pt;
+  be: Pt;
+  color: string;
+  sw: number;
 }) {
   return (
     <>
-      <line x1={a.px} y1={a.py} x2={bs.px} y2={bs.py} stroke={color} strokeWidth={sw} />
-      <line x1={be.px} y1={be.py} x2={b.px} y2={b.py} stroke={color} strokeWidth={sw} />
+      <line
+        x1={a.px}
+        y1={a.py}
+        x2={bs.px}
+        y2={bs.py}
+        stroke={color}
+        strokeWidth={sw}
+      />
+      <line
+        x1={be.px}
+        y1={be.py}
+        x2={b.px}
+        y2={b.py}
+        stroke={color}
+        strokeWidth={sw}
+      />
     </>
   );
 }
 
 /** Value label centered above the component body. */
-function ValLabel({ mid, nx, ny, text, color, side = -1 }: {
-  mid: Pt; nx: number; ny: number; text: string; color: string; side?: number;
+function ValLabel({
+  mid,
+  nx,
+  ny,
+  text,
+  color,
+  side = -1,
+}: {
+  mid: Pt;
+  nx: number;
+  ny: number;
+  text: string;
+  color: string;
+  side?: number;
 }) {
   return (
     <text
@@ -79,8 +129,10 @@ function ValLabel({ mid, nx, ny, text, color, side = -1 }: {
 // ─── Two-terminal base props ───────────────────────────────────────────────────
 
 interface TwoTermProps {
-  x1: number; y1: number;
-  x2: number; y2: number;
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
   label?: string;
   color?: string;
   strokeWidth?: number;
@@ -91,16 +143,44 @@ interface TwoTermProps {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /** Plain conductor wire between two world points. */
-export function ElecWire({ x1, y1, x2, y2, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecWire({
+  x1,
+  y1,
+  x2,
+  y2,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
-  const a = toPixel(x1, y1), b = toPixel(x2, y2);
-  return <line x1={a.px} y1={a.py} x2={b.px} y2={b.py} stroke={color} strokeWidth={strokeWidth} />;
+  const a = toPixel(x1, y1),
+    b = toPixel(x2, y2);
+  return (
+    <line
+      x1={a.px}
+      y1={a.py}
+      x2={b.px}
+      y2={b.py}
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  );
 }
 ElecWire.displayName = "ElecWire";
 
 /** Junction dot — marks a connected node between wires. */
-export function ElecNode({ x, y, r = 4, color = "currentColor", label, labelDir = "ne" }: {
-  x: number; y: number; r?: number; color?: string; label?: string;
+export function ElecNode({
+  x,
+  y,
+  r = 4,
+  color = "currentColor",
+  label,
+  labelDir = "ne",
+}: {
+  x: number;
+  y: number;
+  r?: number;
+  color?: string;
+  label?: string;
   labelDir?: "ne" | "nw" | "se" | "sw";
 }) {
   const { toPixel } = useFigScene();
@@ -112,9 +192,15 @@ export function ElecNode({ x, y, r = 4, color = "currentColor", label, labelDir 
     <g>
       <circle cx={px} cy={py} r={r} fill={color} />
       {label && (
-        <text x={px + dx} y={py + dy} fill={color} fontSize={12}
+        <text
+          x={px + dx}
+          y={py + dy}
+          fill={color}
+          fontSize={12}
           textAnchor={labelDir === "ne" || labelDir === "se" ? "start" : "end"}
-          dominantBaseline="central" fontWeight="bold">
+          dominantBaseline="central"
+          fontWeight="bold"
+        >
           {label}
         </text>
       )}
@@ -124,8 +210,16 @@ export function ElecNode({ x, y, r = 4, color = "currentColor", label, labelDir 
 ElecNode.displayName = "ElecNode";
 
 /** Ground symbol — 3 descending horizontal lines. */
-export function ElecGround({ x, y, color = "currentColor", strokeWidth = 1.5 }: {
-  x: number; y: number; color?: string; strokeWidth?: number;
+export function ElecGround({
+  x,
+  y,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: {
+  x: number;
+  y: number;
+  color?: string;
+  strokeWidth?: number;
 }) {
   const { toPixel, scaleLen } = useFigScene();
   const { px, py } = toPixel(x, y);
@@ -146,11 +240,20 @@ ElecGround.displayName = "ElecGround";
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /** Resistor — American zigzag symbol. */
-export function ElecResistor({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecResistor({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2);
   const { a, b, bs, be, mid, nx, ny } = g;
-  const bDx = be.px - bs.px, bDy = be.py - bs.py;
+  const bDx = be.px - bs.px,
+    bDy = be.py - bs.py;
   const teeth = 8;
   const amp = 6;
 
@@ -167,16 +270,31 @@ export function ElecResistor({ x1, y1, x2, y2, label, color = "currentColor", st
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <polyline points={pts.join(" ")} fill="none" stroke={color} strokeWidth={strokeWidth}
-        strokeLinejoin="miter" />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <polyline
+        points={pts.join(" ")}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinejoin="miter"
+      />
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecResistor.displayName = "ElecResistor";
 
 /** Capacitor — two parallel plates. */
-export function ElecCapacitor({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecCapacitor({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2, 0.42, 0.58);
   const { a, b, bs, be, mid, nx, ny } = g;
@@ -186,27 +304,49 @@ export function ElecCapacitor({ x1, y1, x2, y2, label, color = "currentColor", s
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
       {/* Plate 1 */}
-      <line x1={bs.px - pl * nx} y1={bs.py - pl * ny}
-        x2={bs.px + pl * nx} y2={bs.py + pl * ny}
-        stroke={color} strokeWidth={strokeWidth + 0.5} />
+      <line
+        x1={bs.px - pl * nx}
+        y1={bs.py - pl * ny}
+        x2={bs.px + pl * nx}
+        y2={bs.py + pl * ny}
+        stroke={color}
+        strokeWidth={strokeWidth + 0.5}
+      />
       {/* Plate 2 */}
-      <line x1={be.px - pl * nx} y1={be.py - pl * ny}
-        x2={be.px + pl * nx} y2={be.py + pl * ny}
-        stroke={color} strokeWidth={strokeWidth + 0.5} />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <line
+        x1={be.px - pl * nx}
+        y1={be.py - pl * ny}
+        x2={be.px + pl * nx}
+        y2={be.py + pl * ny}
+        stroke={color}
+        strokeWidth={strokeWidth + 0.5}
+      />
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecCapacitor.displayName = "ElecCapacitor";
 
 /** Inductor — series of semicircular arcs (coil). */
-export function ElecInductor({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecInductor({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2);
   const { a, b, bs, be, mid, nx, ny } = g;
   const loops = 4;
-  const bDx = be.px - bs.px, bDy = be.py - bs.py;
-  const loopW = bDx / loops, loopH = bDy / loops;
+  const bDx = be.px - bs.px,
+    bDy = be.py - bs.py;
+  const loopW = bDx / loops,
+    loopH = bDy / loops;
   const r = Math.sqrt(loopW * loopW + loopH * loopH) / 2;
 
   // Each loop: arc from start of loop to end of loop
@@ -221,14 +361,24 @@ export function ElecInductor({ x1, y1, x2, y2, label, color = "currentColor", st
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
       <path d={d} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecInductor.displayName = "ElecInductor";
 
 /** Fuse — small rectangle across the wire. */
-export function ElecFuse({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecFuse({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2);
   const { a, b, bs, be, mid, nx, ny } = g;
@@ -238,13 +388,22 @@ export function ElecFuse({ x1, y1, x2, y2, label, color = "currentColor", stroke
     [be.px - hw * nx, be.py - hw * ny],
     [be.px + hw * nx, be.py + hw * ny],
     [bs.px + hw * nx, bs.py + hw * ny],
-  ].map(([x, y]) => `${x!.toFixed(1)},${y!.toFixed(1)}`).join(" ");
+  ]
+    .map(([x, y]) => `${x!.toFixed(1)},${y!.toFixed(1)}`)
+    .join(" ");
 
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <polygon points={corners} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <polygon
+        points={corners}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
@@ -255,25 +414,51 @@ ElecFuse.displayName = "ElecFuse";
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /** Battery — alternating long/short lines. Positive terminal at (x2,y2). */
-export function ElecBattery({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5, cells = 2 }: TwoTermProps & { cells?: number }) {
+export function ElecBattery({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+  cells = 2,
+}: TwoTermProps & { cells?: number }) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2);
   const { a, b, bs, be, mid, nx, ny } = g;
-  const bDx = be.px - bs.px, bDy = be.py - bs.py;
+  const bDx = be.px - bs.px,
+    bDy = be.py - bs.py;
   const lines: React.ReactNode[] = [];
 
   for (let i = 0; i < cells; i++) {
     const t = i / cells;
     const t2 = (i + 0.5) / cells;
     // Short line (negative)
-    const cx = bs.px + t * bDx, cy = bs.py + t * bDy;
+    const cx = bs.px + t * bDx,
+      cy = bs.py + t * bDy;
     // Long line (positive)
-    const cx2 = bs.px + t2 * bDx, cy2 = bs.py + t2 * bDy;
+    const cx2 = bs.px + t2 * bDx,
+      cy2 = bs.py + t2 * bDy;
     lines.push(
-      <line key={`s${i}`} x1={cx - 5 * nx} y1={cy - 5 * ny} x2={cx + 5 * nx} y2={cy + 5 * ny}
-        stroke={color} strokeWidth={strokeWidth + 1} />,
-      <line key={`l${i}`} x1={cx2 - 9 * nx} y1={cy2 - 9 * ny} x2={cx2 + 9 * nx} y2={cy2 + 9 * ny}
-        stroke={color} strokeWidth={strokeWidth - 0.5} />,
+      <line
+        key={`s${i}`}
+        x1={cx - 5 * nx}
+        y1={cy - 5 * ny}
+        x2={cx + 5 * nx}
+        y2={cy + 5 * ny}
+        stroke={color}
+        strokeWidth={strokeWidth + 1}
+      />,
+      <line
+        key={`l${i}`}
+        x1={cx2 - 9 * nx}
+        y1={cy2 - 9 * ny}
+        x2={cx2 + 9 * nx}
+        y2={cy2 + 9 * ny}
+        stroke={color}
+        strokeWidth={strokeWidth - 0.5}
+      />,
     );
   }
 
@@ -282,16 +467,42 @@ export function ElecBattery({ x1, y1, x2, y2, label, color = "currentColor", str
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
       {lines}
       {/* + / - labels */}
-      <text x={be.px + 6 * nx} y={be.py + 6 * ny} fill={color} fontSize={10} textAnchor="middle">+</text>
-      <text x={bs.px - 6 * nx} y={bs.py - 6 * ny} fill={color} fontSize={10} textAnchor="middle">−</text>
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <text
+        x={be.px + 6 * nx}
+        y={be.py + 6 * ny}
+        fill={color}
+        fontSize={10}
+        textAnchor="middle"
+      >
+        +
+      </text>
+      <text
+        x={bs.px - 6 * nx}
+        y={bs.py - 6 * ny}
+        fill={color}
+        fontSize={10}
+        textAnchor="middle"
+      >
+        −
+      </text>
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecBattery.displayName = "ElecBattery";
 
 /** DC Voltage Source — circle with ± inside. */
-export function ElecVoltageSource({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecVoltageSource({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2, 0.3, 0.7);
   const { a, b, bs, be, mid, nx, ny, ux, uy } = g;
@@ -299,17 +510,50 @@ export function ElecVoltageSource({ x1, y1, x2, y2, label, color = "currentColor
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <circle cx={mid.px} cy={mid.py} r={r} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      <text x={mid.px + ux * r * 0.45} y={mid.py + uy * r * 0.45} fill={color} fontSize={10} textAnchor="middle">+</text>
-      <text x={mid.px - ux * r * 0.45} y={mid.py - uy * r * 0.45} fill={color} fontSize={10} textAnchor="middle">−</text>
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <circle
+        cx={mid.px}
+        cy={mid.py}
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      <text
+        x={mid.px + ux * r * 0.45}
+        y={mid.py + uy * r * 0.45}
+        fill={color}
+        fontSize={10}
+        textAnchor="middle"
+      >
+        +
+      </text>
+      <text
+        x={mid.px - ux * r * 0.45}
+        y={mid.py - uy * r * 0.45}
+        fill={color}
+        fontSize={10}
+        textAnchor="middle"
+      >
+        −
+      </text>
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecVoltageSource.displayName = "ElecVoltageSource";
 
 /** AC Voltage Source — circle with ~ inside. */
-export function ElecACSource({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecACSource({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2, 0.3, 0.7);
   const { a, b, bs, be, mid, nx, ny } = g;
@@ -317,34 +561,78 @@ export function ElecACSource({ x1, y1, x2, y2, label, color = "currentColor", st
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <circle cx={mid.px} cy={mid.py} r={r} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      <text x={mid.px} y={mid.py} fill={color} fontSize={13} textAnchor="middle" dominantBaseline="central">~</text>
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <circle
+        cx={mid.px}
+        cy={mid.py}
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      <text
+        x={mid.px}
+        y={mid.py}
+        fill={color}
+        fontSize={13}
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        ~
+      </text>
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecACSource.displayName = "ElecACSource";
 
 /** Current Source — circle with arrow inside. */
-export function ElecCurrentSource({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecCurrentSource({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2, 0.3, 0.7);
   const { a, b, bs, be, mid, nx, ny, ux, uy } = g;
   const r = Math.sqrt((be.px - bs.px) ** 2 + (be.py - bs.py) ** 2) / 2;
   // Arrow inside circle pointing in direction of current
-  const ax1 = mid.px - ux * r * 0.5, ay1 = mid.py - uy * r * 0.5;
-  const ax2 = mid.px + ux * r * 0.5, ay2 = mid.py + uy * r * 0.5;
+  const ax1 = mid.px - ux * r * 0.5,
+    ay1 = mid.py - uy * r * 0.5;
+  const ax2 = mid.px + ux * r * 0.5,
+    ay2 = mid.py + uy * r * 0.5;
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <circle cx={mid.px} cy={mid.py} r={r} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      <line x1={ax1} y1={ay1} x2={ax2} y2={ay2} stroke={color} strokeWidth={strokeWidth} />
+      <circle
+        cx={mid.px}
+        cy={mid.py}
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      <line
+        x1={ax1}
+        y1={ay1}
+        x2={ax2}
+        y2={ay2}
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
       {/* Simple arrowhead */}
       <polygon
         points={`${ax2},${ay2} ${ax2 - 5 * ux + 4 * nx},${ay2 - 5 * uy + 4 * ny} ${ax2 - 5 * ux - 4 * nx},${ay2 - 5 * uy - 4 * ny}`}
         fill={color}
       />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
@@ -355,7 +643,16 @@ ElecCurrentSource.displayName = "ElecCurrentSource";
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /** Switch — open (default) or closed. */
-export function ElecSwitch({ x1, y1, x2, y2, closed = false, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps & { closed?: boolean }) {
+export function ElecSwitch({
+  x1,
+  y1,
+  x2,
+  y2,
+  closed = false,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps & { closed?: boolean }) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2);
   const { a, b, bs, be, mid, nx, ny } = g;
@@ -368,15 +665,28 @@ export function ElecSwitch({ x1, y1, x2, y2, closed = false, label, color = "cur
       <circle cx={be.px} cy={be.py} r={dotR} fill={color} />
       {closed ? (
         // Closed: straight line between contacts
-        <line x1={bs.px} y1={bs.py} x2={be.px} y2={be.py} stroke={color} strokeWidth={strokeWidth} />
+        <line
+          x1={bs.px}
+          y1={bs.py}
+          x2={be.px}
+          y2={be.py}
+          stroke={color}
+          strokeWidth={strokeWidth}
+        />
       ) : (
         // Open: angled line up from bs toward be but not reaching
-        <line x1={bs.px} y1={bs.py}
+        <line
+          x1={bs.px}
+          y1={bs.py}
           x2={bs.px + (be.px - bs.px) * 0.7 + nx * 8}
           y2={bs.py + (be.py - bs.py) * 0.7 + ny * 8}
-          stroke={color} strokeWidth={strokeWidth} />
+          stroke={color}
+          strokeWidth={strokeWidth}
+        />
       )}
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
@@ -387,7 +697,15 @@ ElecSwitch.displayName = "ElecSwitch";
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /** Diode — triangle + bar. Current flows from (x1,y1) to (x2,y2). */
-export function ElecDiode({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecDiode({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2);
   const { a, b, bs, be, mid, nx, ny } = g;
@@ -407,17 +725,32 @@ export function ElecDiode({ x1, y1, x2, y2, label, color = "currentColor", strok
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
       <polygon points={tri} fill={color} stroke={color} strokeWidth={1} />
       {/* Bar at be */}
-      <line x1={be.px - barH * nx} y1={be.py - barH * ny}
-        x2={be.px + barH * nx} y2={be.py + barH * ny}
-        stroke={color} strokeWidth={strokeWidth + 1} />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <line
+        x1={be.px - barH * nx}
+        y1={be.py - barH * ny}
+        x2={be.px + barH * nx}
+        y2={be.py + barH * ny}
+        stroke={color}
+        strokeWidth={strokeWidth + 1}
+      />
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecDiode.displayName = "ElecDiode";
 
 /** LED — diode with two emission arrows. */
-export function ElecLED({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecLED({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2);
   const { a, b, bs, be, mid, nx, ny, ux, uy } = g;
@@ -435,25 +768,50 @@ export function ElecLED({ x1, y1, x2, y2, label, color = "currentColor", strokeW
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
       <polygon points={tri} fill={color} stroke={color} strokeWidth={1} />
-      <line x1={be.px - barH * nx} y1={be.py - barH * ny}
-        x2={be.px + barH * nx} y2={be.py + barH * ny}
-        stroke={color} strokeWidth={strokeWidth + 1} />
+      <line
+        x1={be.px - barH * nx}
+        y1={be.py - barH * ny}
+        x2={be.px + barH * nx}
+        y2={be.py + barH * ny}
+        stroke={color}
+        strokeWidth={strokeWidth + 1}
+      />
       {/* Arrow 1 */}
-      <line x1={arrowBase.px} y1={arrowBase.py}
-        x2={arrowBase.px + (nx + ux) * 10} y2={arrowBase.py + (ny + uy) * 10}
-        stroke={color} strokeWidth={1} />
+      <line
+        x1={arrowBase.px}
+        y1={arrowBase.py}
+        x2={arrowBase.px + (nx + ux) * 10}
+        y2={arrowBase.py + (ny + uy) * 10}
+        stroke={color}
+        strokeWidth={1}
+      />
       {/* Arrow 2 */}
-      <line x1={arrowBase.px + nx * 5} y1={arrowBase.py + ny * 5}
-        x2={arrowBase.px + nx * 5 + (nx + ux) * 10} y2={arrowBase.py + ny * 5 + (ny + uy) * 10}
-        stroke={color} strokeWidth={1} />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <line
+        x1={arrowBase.px + nx * 5}
+        y1={arrowBase.py + ny * 5}
+        x2={arrowBase.px + nx * 5 + (nx + ux) * 10}
+        y2={arrowBase.py + ny * 5 + (ny + uy) * 10}
+        stroke={color}
+        strokeWidth={1}
+      />
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
 ElecLED.displayName = "ElecLED";
 
 /** Lamp — circle with X cross inside. */
-export function ElecLamp({ x1, y1, x2, y2, label, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecLamp({
+  x1,
+  y1,
+  x2,
+  y2,
+  label,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2, 0.3, 0.7);
   const { a, b, bs, be, mid, nx, ny } = g;
@@ -462,10 +820,33 @@ export function ElecLamp({ x1, y1, x2, y2, label, color = "currentColor", stroke
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <circle cx={mid.px} cy={mid.py} r={r} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      <line x1={mid.px - xr} y1={mid.py - xr} x2={mid.px + xr} y2={mid.py + xr} stroke={color} strokeWidth={strokeWidth} />
-      <line x1={mid.px + xr} y1={mid.py - xr} x2={mid.px - xr} y2={mid.py + xr} stroke={color} strokeWidth={strokeWidth} />
-      {label && <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />}
+      <circle
+        cx={mid.px}
+        cy={mid.py}
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      <line
+        x1={mid.px - xr}
+        y1={mid.py - xr}
+        x2={mid.px + xr}
+        y2={mid.py + xr}
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      <line
+        x1={mid.px + xr}
+        y1={mid.py - xr}
+        x2={mid.px - xr}
+        y2={mid.py + xr}
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      {label && (
+        <ValLabel mid={mid} nx={nx} ny={ny} text={label} color={color} />
+      )}
     </g>
   );
 }
@@ -476,7 +857,14 @@ ElecLamp.displayName = "ElecLamp";
 // ═══════════════════════════════════════════════════════════════════════════════
 
 /** Voltmeter — circle with V. Connect in parallel. */
-export function ElecVoltmeter({ x1, y1, x2, y2, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecVoltmeter({
+  x1,
+  y1,
+  x2,
+  y2,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2, 0.3, 0.7);
   const { a, b, bs, be, mid } = g;
@@ -484,16 +872,39 @@ export function ElecVoltmeter({ x1, y1, x2, y2, color = "currentColor", strokeWi
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <circle cx={mid.px} cy={mid.py} r={r} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      <text x={mid.px} y={mid.py} fill={color} fontSize={r * 0.9} fontWeight="bold"
-        textAnchor="middle" dominantBaseline="central">V</text>
+      <circle
+        cx={mid.px}
+        cy={mid.py}
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      <text
+        x={mid.px}
+        y={mid.py}
+        fill={color}
+        fontSize={r * 0.9}
+        fontWeight="bold"
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        V
+      </text>
     </g>
   );
 }
 ElecVoltmeter.displayName = "ElecVoltmeter";
 
 /** Ammeter — circle with A. Connect in series. */
-export function ElecAmmeter({ x1, y1, x2, y2, color = "currentColor", strokeWidth = 1.5 }: TwoTermProps) {
+export function ElecAmmeter({
+  x1,
+  y1,
+  x2,
+  y2,
+  color = "currentColor",
+  strokeWidth = 1.5,
+}: TwoTermProps) {
   const { toPixel } = useFigScene();
   const g = bodyGeom(toPixel, x1, y1, x2, y2, 0.3, 0.7);
   const { a, b, bs, be, mid } = g;
@@ -501,24 +912,57 @@ export function ElecAmmeter({ x1, y1, x2, y2, color = "currentColor", strokeWidt
   return (
     <g>
       <Leads a={a} b={b} bs={bs} be={be} color={color} sw={strokeWidth} />
-      <circle cx={mid.px} cy={mid.py} r={r} fill="none" stroke={color} strokeWidth={strokeWidth} />
-      <text x={mid.px} y={mid.py} fill={color} fontSize={r * 0.9} fontWeight="bold"
-        textAnchor="middle" dominantBaseline="central">A</text>
+      <circle
+        cx={mid.px}
+        cy={mid.py}
+        r={r}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+      />
+      <text
+        x={mid.px}
+        y={mid.py}
+        fill={color}
+        fontSize={r * 0.9}
+        fontWeight="bold"
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        A
+      </text>
     </g>
   );
 }
 ElecAmmeter.displayName = "ElecAmmeter";
 
 /** Standalone value or node label at a world coordinate. */
-export function ElecLabel({ x, y, children, color = "currentColor", fontSize = 12 }: {
-  x: number; y: number; children: React.ReactNode;
-  color?: string; fontSize?: number;
+export function ElecLabel({
+  x,
+  y,
+  children,
+  color = "currentColor",
+  fontSize = 12,
+}: {
+  x: number;
+  y: number;
+  children: React.ReactNode;
+  color?: string;
+  fontSize?: number;
 }) {
   const { toPixel } = useFigScene();
   const { px, py } = toPixel(x, y);
   return (
-    <text x={px} y={py} fill={color} fontSize={fontSize}
-      textAnchor="middle" dominantBaseline="central">{children}</text>
+    <text
+      x={px}
+      y={py}
+      fill={color}
+      fontSize={fontSize}
+      textAnchor="middle"
+      dominantBaseline="central"
+    >
+      {children}
+    </text>
   );
 }
 ElecLabel.displayName = "ElecLabel";

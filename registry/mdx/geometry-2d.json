@@ -5,13 +5,8 @@
   "whenToUse": "Use to draw math geometry diagrams in MDX — coordinate planes, vectors, triangles, angle sweeps, circles. Compose Fig* children inside FigScene. No extra dependencies.",
   "whenNotToUse": "Do not use for abstract flow diagrams or data structure visualizations — use Mermaid or ds components. Do not use for inline math symbols — use math-primitives.",
   "example": "<FigScene width={400} height={300} xRange={[-5,5]} yRange={[-5,5]}>\n  <FigVector toX={3} toY={4} label=\"v\" />\n  <FigPoint x={3} y={4} label=\"A\" />\n  <FigCircle cx={0} cy={0} r={5} dashed />\n</FigScene>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils"],
   "files": [
     {
       "path": "geometry-2d.tsx",

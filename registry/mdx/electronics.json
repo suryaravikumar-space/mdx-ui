@@ -5,14 +5,8 @@
   "whenToUse": "Use to draw electrical circuit schematics in MDX — resistors, capacitors, batteries, switches, diodes, sources. Place inside FigScene with world coordinates.",
   "whenNotToUse": "Do not use for logic gate diagrams — use Mermaid. Do not use outside FigScene. Requires geometry-2d as a peer dependency.",
   "example": "<FigScene width={500} height={300} xRange={[-1,10]} yRange={[-3,3]} showGrid={false} showAxes={false}>\n  <ElecWire x1={0} y1={0} x2={2} y2={0} />\n  <ElecResistor x1={2} y1={0} x2={5} y2={0} label=\"1Ω\" />\n  <ElecWire x1={5} y1={0} x2={7} y2={0} />\n  <ElecNode x={0} y={0} label=\"A\" />\n  <ElecNode x={7} y={0} label=\"B\" />\n</FigScene>",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
-  "registryDependencies": [
-    "utils",
-    "geometry-2d"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
+  "registryDependencies": ["utils", "geometry-2d"],
   "files": [
     {
       "path": "electronics.tsx",

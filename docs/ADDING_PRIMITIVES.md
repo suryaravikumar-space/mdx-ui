@@ -45,7 +45,22 @@ export const components = {
 
 ---
 
-## 4. `apps/www/components/symbol-browser.tsx`
+## 4. `apps/www/lib/playground-components.tsx`
+
+Same pattern as mdx-components — add to the import block and the `PLAYGROUND_COMPONENTS` map so the live playground can render it:
+
+```tsx
+import { Plus, ... } from "@/components/mdx/math-primitives";
+
+export const PLAYGROUND_COMPONENTS = {
+  Plus,
+  ...
+};
+```
+
+---
+
+## 5. `apps/www/components/symbol-browser.tsx`
 
 Add an entry with a live preview:
 
@@ -61,7 +76,7 @@ Add an entry with a live preview:
 
 ---
 
-## 5. `packages/cli/src/commands/mcp.ts`
+## 6. `packages/cli/src/commands/mcp.ts`
 
 Add to the `ALLOWED_COMPONENTS` Set so `validate_mdx` accepts it:
 
@@ -75,7 +90,7 @@ const ALLOWED_COMPONENTS = new Set([
 
 ---
 
-## 6. `packages/cli/src/symbol-map.ts`
+## 7. `packages/cli/src/symbol-map.ts`
 
 Add an entry to `SYMBOL_MAP` so it appears in `search_symbols`, `get_symbol_cheatsheet`, and the AI output standard:
 
@@ -93,7 +108,7 @@ Add an entry to `SYMBOL_MAP` so it appears in `search_symbols`, `get_symbol_chea
 
 ---
 
-## 7. Rebuild the registry
+## 8. Rebuild the registry
 
 Run this from the repo root after all changes:
 
@@ -110,6 +125,7 @@ This regenerates `registry/mdx/math-primitives.json` (and `registry.json`) from 
 - [ ] `packages/registry/src/math-primitives.tsx` — add `mkSym` export
 - [ ] `apps/www/components/mdx/math-primitives.tsx` — mirror export
 - [ ] `apps/www/components/mdx-components.tsx` — import + component map
+- [ ] `apps/www/lib/playground-components.tsx` — import + PLAYGROUND_COMPONENTS map
 - [ ] `apps/www/components/symbol-browser.tsx` — browser entry with preview
 - [ ] `packages/cli/src/commands/mcp.ts` — `ALLOWED_COMPONENTS`
 - [ ] `packages/cli/src/symbol-map.ts` — `SYMBOL_MAP` entry

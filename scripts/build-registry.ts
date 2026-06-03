@@ -593,6 +593,30 @@ const componentsMetadata: Record<
     dependencies: ["mermaid", "clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
+  electronics: {
+    description:
+      "Electrical circuit symbol components — ElecWire, ElecNode, ElecGround, ElecResistor, ElecCapacitor, ElecInductor, ElecFuse, ElecBattery, ElecVoltageSource, ElecACSource, ElecCurrentSource, ElecSwitch, ElecDiode, ElecLED, ElecLamp, ElecVoltmeter, ElecAmmeter, ElecLabel. All must be used inside <FigScene>.",
+    whenToUse:
+      "Use to draw electrical circuit schematics in MDX — resistors, capacitors, batteries, switches, diodes, sources. Place inside FigScene with world coordinates.",
+    whenNotToUse:
+      "Do not use for logic gate diagrams — use Mermaid. Do not use outside FigScene. Requires geometry-2d as a peer dependency.",
+    example:
+      '<FigScene width={500} height={300} xRange={[-1,10]} yRange={[-3,3]} showGrid={false} showAxes={false}>\n  <ElecWire x1={0} y1={0} x2={2} y2={0} />\n  <ElecResistor x1={2} y1={0} x2={5} y2={0} label="1Ω" />\n  <ElecWire x1={5} y1={0} x2={7} y2={0} />\n  <ElecNode x={0} y={0} label="A" />\n  <ElecNode x={7} y={0} label="B" />\n</FigScene>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils", "geometry-2d"],
+  },
+  "geometry-2d": {
+    description:
+      "2D geometry visualization components — FigScene (SVG coordinate plane with grid/axes), FigPoint, FigVector, FigLine, FigSegment, FigCircle, FigArc, FigAngle, FigPolygon, FigLabel. All primitives use world coordinates; FigScene handles the pixel transform.",
+    whenToUse:
+      "Use to draw math geometry diagrams in MDX — coordinate planes, vectors, triangles, angle sweeps, circles. Compose Fig* children inside FigScene. No extra dependencies.",
+    whenNotToUse:
+      "Do not use for abstract flow diagrams or data structure visualizations — use Mermaid or ds components. Do not use for inline math symbols — use math-primitives.",
+    example:
+      '<FigScene width={400} height={300} xRange={[-5,5]} yRange={[-5,5]}>\n  <FigVector toX={3} toY={4} label="v" />\n  <FigPoint x={3} y={4} label="A" />\n  <FigCircle cx={0} cy={0} r={5} dashed />\n</FigScene>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
   "math-primitives": {
     description:
       "150+ JSX math primitive components across 11 sections: Basic (Frac, Pow, Sub, Sqrt, Abs, Paren, Deg, Inf), Calculus (Integral, Sum, Prod, Lim, Limsup, Liminf, Deriv, PDeriv, Nabla, Laplacian), Trig (Sin–Csc, ArcSin–ArcTan, Sinh/Cosh/Tanh, Log/Ln/Exp), Algebra (Factorial, Choose, Perm, Mod, GCD, LCM), Set Theory (Floor, Ceil, SetOf, Cardinality, PowerSet, In, Subset, Union, Intersect…), Number Systems (NN ℕ, ZZ ℤ, QQ ℚ, RR ℝ, CC ℂ, PP ℙ, FF 𝔽, Complex, Conj), Logic (And, Or, Not, ForAll, Exists, Implies ⟹, Iff ⟺, Therefore, QED), Linear Algebra (Vec, Norm, Dot, Cross, Transpose, Det, Matrix, Rank, Dim, Trace), Statistics (Prob, CondProb, Expected, Variance, StdDev, Cov, Corr, Dist), Greek (full set), Relations/Arrows (Neq, Approx, Equiv, Cong, Leq, Geq, Ll, Gg, Propto, Sim, PlusMinus, MinusPlus, Divides, NotDivides, Arrow, MapsTo, Compose, OTimes).",

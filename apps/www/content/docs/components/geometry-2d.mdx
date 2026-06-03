@@ -1,0 +1,126 @@
+---
+title: Geometry 2D
+description: SVG coordinate plane and geometry primitives for math diagrams
+component: geometry-2d
+published: true
+registryDependencies: ["utils"]
+dependencies: ["clsx", "tailwind-merge"]
+---
+
+## Installation
+
+```bash
+npx mdx-ui add geometry-2d
+```
+
+## Usage
+
+Wrap all `Fig*` primitives inside `<FigScene>`. The scene owns the SVG root,
+coordinate transform, grid, and axes. Children use world coordinates — no pixel math.
+
+```tsx
+import {
+  FigScene, FigPoint, FigVector, FigCircle, FigAngle, FigPolygon, FigLabel,
+} from "@/components/mdx/geometry-2d";
+```
+
+## Examples
+
+### Pythagorean theorem
+
+A right triangle with labelled sides and the angle θ.
+
+<FigScene width={380} height={280} xRange={[-1, 6]} yRange={[-1, 5]}>
+  <FigPolygon points={[[0,0],[4,0],[0,3]]} fill="currentColor" opacity={0.08} />
+  <FigSegment x1={0} y1={0} x2={4} y2={0} label="a" />
+  <FigSegment x1={0} y1={0} x2={0} y2={3} label="b" />
+  <FigSegment x1={4} y1={0} x2={0} y2={3} label="c" />
+  <FigAngle vertex={{x:0,y:0}} from={{x:1,y:0}} to={{x:0,y:1}} label="θ" radius={0.6} />
+  <FigPoint x={0} y={0} label="O" labelDir="sw" />
+  <FigPoint x={4} y={0} label="A" labelDir="se" />
+  <FigPoint x={0} y={3} label="B" labelDir="nw" />
+</FigScene>
+
+### Vectors in 2D
+
+Adding two vectors **u** and **v** to get **u + v**.
+
+<FigScene width={380} height={300} xRange={[-1, 6]} yRange={[-1, 5]}>
+  <FigVector toX={3} toY={1} label="u" color="currentColor" />
+  <FigVector fromX={3} fromY={1} toX={5} toY={4} label="v" />
+  <FigVector toX={5} toY={4} label="u+v" />
+  <FigLine x1={0} y1={0} x2={2} y2={3} dashed />
+  <FigLine x1={2} y1={3} x2={5} y2={4} dashed />
+  <FigPoint x={0} y={0} label="O" labelDir="sw" />
+  <FigPoint x={3} y={1} r={3} />
+  <FigPoint x={5} y={4} label="P" labelDir="ne" />
+</FigScene>
+
+### Unit circle
+
+The unit circle with a point at angle θ and its x/y projections.
+
+<FigScene width={340} height={340} xRange={[-1.6, 1.6]} yRange={[-1.6, 1.6]}>
+  <FigCircle cx={0} cy={0} r={1} />
+  <FigVector toX={0.866} toY={0.5} label="r=1" />
+  <FigLine x1={0.866} y1={0} x2={0.866} y2={0.5} dashed />
+  <FigLine x1={0} y1={0} x2={0.866} y2={0} dashed />
+  <FigAngle vertex={{x:0,y:0}} from={{x:1,y:0}} to={{x:0.866,y:0.5}} label="θ" radius={0.3} />
+  <FigPoint x={0.866} y={0.5} label="(cosθ, sinθ)" labelDir="ne" />
+  <FigLabel x={0.45} y={-0.12}>cosθ</FigLabel>
+  <FigLabel x={0.97} y={0.25} dx={4}>sinθ</FigLabel>
+</FigScene>
+
+## Props
+
+### FigScene
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `number` | `400` | SVG pixel width |
+| `height` | `number` | `300` | SVG pixel height |
+| `xRange` | `[number, number]` | `[-5, 5]` | World x axis range |
+| `yRange` | `[number, number]` | `[-5, 5]` | World y axis range |
+| `showGrid` | `boolean` | `true` | Show background grid |
+| `showAxes` | `boolean` | `true` | Show x/y axes with ticks |
+| `label` | `string` | `"Geometry diagram"` | Accessible SVG label |
+
+### FigPoint
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `x` | `number` | — | World x |
+| `y` | `number` | — | World y |
+| `label` | `string` | — | Text label |
+| `labelDir` | `"ne" \| "nw" \| "se" \| "sw"` | `"ne"` | Label placement |
+| `r` | `number` | `4` | Dot radius (px) |
+
+### FigVector
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `fromX` | `number` | `0` | Tail x |
+| `fromY` | `number` | `0` | Tail y |
+| `toX` | `number` | — | Head x |
+| `toY` | `number` | — | Head y |
+| `label` | `string` | — | Midpoint label |
+
+### FigCircle
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `cx` | `number` | — | Center x |
+| `cy` | `number` | — | Center y |
+| `r` | `number` | — | World-unit radius |
+| `fill` | `string` | `"none"` | Fill color |
+| `dashed` | `boolean` | `false` | Dashed stroke |
+
+### FigAngle
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `vertex` | `{x,y}` | — | Angle vertex |
+| `from` | `{x,y}` | — | Point on first ray |
+| `to` | `{x,y}` | — | Point on second ray |
+| `label` | `string` | — | Arc label |
+| `radius` | `number` | `0.5` | Arc radius (world units) |

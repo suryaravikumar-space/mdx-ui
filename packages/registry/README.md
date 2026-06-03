@@ -99,7 +99,7 @@ packages/registry/
 ## Workflow
 
 1. **Develop** components in `src/`
-2. **Test** with `pnpm --filter=@mdx-ui/registry test`
+2. **Test** with `pnpm --filter=@docsui/registry test`
 3. **Build registry** from repo root — `pnpm build:registry`
 4. **Distribute** — CLI fetches from `/registry/mdx/*.json`
 
@@ -117,10 +117,10 @@ Tests use Jest + React Testing Library + jsdom:
 
 ```bash
 # Run all registry tests
-pnpm --filter=@mdx-ui/registry test
+pnpm --filter=@docsui/registry test
 
 # Watch mode
-pnpm --filter=@mdx-ui/registry test --watch
+pnpm --filter=@docsui/registry test --watch
 ```
 
 26 components have test coverage. Tests verify rendering, prop variants, accessibility attributes, and interactive behavior.

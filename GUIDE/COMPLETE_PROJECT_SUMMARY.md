@@ -155,8 +155,8 @@ pnpm dev
 {
   "dev": "turbo run dev", // Run all dev servers
   "build": "turbo run build", // Build all packages
-  "www:dev": "pnpm --filter=@mdx-ui/www dev",
-  "www:build": "pnpm --filter=@mdx-ui/www build",
+  "www:dev": "pnpm --filter=@docsui/www dev",
+  "www:build": "pnpm --filter=@docsui/www build",
   "cli:dev": "pnpm --filter=@mdx-ui/cli dev",
   "cli:build": "pnpm --filter=@mdx-ui/cli build",
   "lint": "turbo run lint",

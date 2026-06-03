@@ -260,7 +260,7 @@ export const MDXUI_TAILWIND_COLOR_SCALES = `        /* MDX UI semantic tokens */
         danger:  { border: "var(--mdxui-danger-border)", bg: "var(--mdxui-danger-bg)", text: "var(--mdxui-danger-text)", accent: "var(--mdxui-danger-accent)", "badge-bg": "var(--mdxui-danger-badge-bg)", "badge-text": "var(--mdxui-danger-badge-text)" },
         success: { border: "var(--mdxui-success-border)", bg: "var(--mdxui-success-bg)", text: "var(--mdxui-success-text)", accent: "var(--mdxui-success-accent)", "badge-bg": "var(--mdxui-success-badge-bg)", "badge-text": "var(--mdxui-success-badge-text)" },`;
 
-// Full theme.extend patch for a fresh tailwind.config (shadcn base + mdx-ui scales)
+// Full theme.extend patch for a fresh tailwind.config (shadcn base + docsui scales)
 export const TAILWIND_V3_THEME_EXTENSIONS = `
       colors: {
         border: "hsl(var(--border))",

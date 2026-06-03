@@ -12,7 +12,7 @@ export default function TableDefault() {
   return (
     <div className="w-full overflow-x-auto">
       <Table>
-        <TableCaption>mdx-ui component install sizes</TableCaption>
+        <TableCaption>docsui component install sizes</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Component</TableHead>

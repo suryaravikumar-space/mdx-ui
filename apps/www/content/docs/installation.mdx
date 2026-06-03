@@ -17,23 +17,23 @@ published: true
 Run the CLI in your project root:
 
 ```bash
-npx @ravikumarsurya/mdx-ui init
+npx docsui-cli@latest init
 ```
 
-This creates `mdx-ui.json` with your project configuration and installs the `cn()` utility.
+This creates `docsui.json` with your project configuration and installs the `cn()` utility.
 
 ### 2. Add Components
 
 Add the components you need:
 
 ```bash
-npx @ravikumarsurya/mdx-ui add callout accordion code-block
+npx docsui-cli@latest add callout accordion code-block
 ```
 
 Or run without arguments to pick interactively:
 
 ```bash
-npx @ravikumarsurya/mdx-ui add
+npx docsui-cli@latest add
 ```
 
 ### 3. Register Components
@@ -68,11 +68,11 @@ export const components = {
 
 | Command                      | Description                           |
 | ---------------------------- | ------------------------------------- |
-| `mdx-ui init`                | Set up mdx-ui in your project         |
-| `mdx-ui add [components]`    | Add components                        |
-| `mdx-ui update [components]` | Update to latest                      |
-| `mdx-ui remove [components]` | Remove components                     |
-| `mdx-ui list`                | List all available components         |
-| `mdx-ui doctor`              | Check project health                  |
-| `mdx-ui new [title]`         | Scaffold a new .mdx page              |
-| `mdx-ui save`                | Save MDX content to a structured path |
+| `docsui-cli init`                | Set up DocsUI in your project         |
+| `docsui add [components]`    | Add components                        |
+| `docsui update [components]` | Update to latest                      |
+| `docsui remove [components]` | Remove components                     |
+| `docsui-cli list`                | List all available components         |
+| `docsui doctor`              | Check project health                  |
+| `docsui new [title]`         | Scaffold a new .mdx page              |
+| `docsui save`                | Save MDX content to a structured path |

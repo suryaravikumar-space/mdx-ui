@@ -1,6 +1,6 @@
-// ─── LaTeX → mdx-ui Primitives Transpiler ────────────────────────────────────
+// ─── LaTeX → docsui Primitives Transpiler ────────────────────────────────────
 //
-// Converts LaTeX math strings to mdx-ui primitive component JSX deterministically.
+// Converts LaTeX math strings to docsui primitive component JSX deterministically.
 // Pipeline: tokenize → parse (AST) → emit (JSX string)
 //
 // Handles:
@@ -1022,7 +1022,7 @@ function extractAfterPartial(nodes: ASTNode[]): ASTNode[] {
 // ─── Public API ───────────────────────────────────────────────────────────────
 
 /**
- * Convert a LaTeX math string to mdx-ui primitive component JSX.
+ * Convert a LaTeX math string to docsui primitive component JSX.
  *
  * @param latex - Raw LaTeX string (without $ delimiters)
  * @param block - If true, wraps in <Equation>; if false, emits inline

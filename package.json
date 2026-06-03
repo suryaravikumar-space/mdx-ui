@@ -1,5 +1,5 @@
 {
-  "name": "mdx-ui",
+  "name": "docsui",
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/suryaravikumar-space/mdx-ui.git"
+    "url": "https://github.com/suryaravikumar-space/docsui.git"
   },
   "workspaces": [
     "apps/*",
@@ -21,11 +21,11 @@
     "build": "turbo run build",
     "start": "turbo run start",
     "build:registry": "tsx scripts/build-registry.ts",
-    "www:dev": "pnpm --filter=@mdx-ui/www dev",
-    "www:build": "pnpm --filter=@mdx-ui/www build",
-    "www:start": "pnpm --filter=@mdx-ui/www start",
-    "cli:dev": "pnpm --filter=@ravikumarsurya/mdx-ui dev",
-    "cli:build": "pnpm --filter=@ravikumarsurya/mdx-ui build",
+    "www:dev": "pnpm --filter=@docsui/www dev",
+    "www:build": "pnpm --filter=@docsui/www build",
+    "www:start": "pnpm --filter=@docsui/www start",
+    "cli:dev": "pnpm --filter=docsui-cli dev",
+    "cli:build": "pnpm --filter=docsui-cli build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",

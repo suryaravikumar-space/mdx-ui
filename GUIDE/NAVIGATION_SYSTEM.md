@@ -491,7 +491,7 @@ console.log(
 
 Our implementation follows react.dev's pattern:
 
-| Feature         | react.dev                | mdx-ui              |
+| Feature         | react.dev                | DocsUI              |
 | --------------- | ------------------------ | ------------------- |
 | JSON config     | ✅ sidebarReference.json | ✅ docs-nav.json    |
 | Section headers | ✅ hasSectionHeader      | ✅ hasSectionHeader |

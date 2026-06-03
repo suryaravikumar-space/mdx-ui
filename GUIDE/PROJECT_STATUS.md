@@ -2,22 +2,22 @@
 
 ## ✅ Completed Setup
 
-Your mdx-ui CLI tool is now fully functional with a shadcn-like structure!
+Your DocsUI CLI tool is now fully functional with a shadcn-like structure!
 
 ### Current Project Structure
 
 ```
-mdx-ui/
+docsui/
 ├── packages/
-│   ├── cli/                          # CLI tool (npx mdx-ui)
+│   ├── cli/                          # CLI tool (npx DocsUI)
 │   │   ├── src/
 │   │   │   ├── commands/
-│   │   │   │   ├── init.ts          # npx mdx-ui init
-│   │   │   │   ├── add.ts           # npx mdx-ui add [component]
-│   │   │   │   └── list.ts          # npx mdx-ui list
+│   │   │   │   ├── init.ts          # npx docsui-cli@latest init
+│   │   │   │   ├── add.ts           # npx docsui-cli@latest add [component]
+│   │   │   │   └── list.ts          # npx docsui-cli@latest list
 │   │   │   │
 │   │   │   └── utils/
-│   │   │       ├── get-config.ts    # Read mdx-ui.json
+│   │   │       ├── get-config.ts    # Read docsui.json
 │   │   │       ├── fetch-component.ts  # Fetch from registry
 │   │   │       ├── install-deps.ts  # Install npm packages
 │   │   │       └── write-component.ts  # Write files
@@ -100,9 +100,9 @@ mdx-ui/
 
 ### 3. CLI Features
 
-- `npx mdx-ui init` - Initialize configuration
-- `npx mdx-ui list` - List all components grouped by type with dependencies shown
-- `npx mdx-ui add <component>` - Add components with automatic dependency resolution
+- `npx docsui-cli@latest init` - Initialize configuration
+- `npx docsui-cli@latest list` - List all components grouped by type with dependencies shown
+- `npx docsui-cli@latest add <component>` - Add components with automatic dependency resolution
 
 ### 4. Component System
 
@@ -168,7 +168,7 @@ apps/www/                              # Documentation site
 
 ### Publishing
 
-- Publish to npm as `@mdx-ui/cli`
+- Publish to npm as `docsui-cli`
 - Set up GitHub repository
 - Add CI/CD with GitHub Actions
 
@@ -189,14 +189,14 @@ apps/www/                              # Documentation site
 
 ```bash
 # Initialize in a Next.js project
-npx mdx-ui init
+npx docsui-cli@latest init
 
 # Add components
-npx mdx-ui add blockquote
-npx mdx-ui add callout headings
+npx docsui-cli@latest add blockquote
+npx docsui-cli@latest add callout headings
 
 # List all available components
-npx mdx-ui list
+npx docsui-cli@latest list
 ```
 
 ### Development

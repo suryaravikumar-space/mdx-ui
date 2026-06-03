@@ -1,6 +1,6 @@
 # MDX Component Registry
 
-This directory contains the JSON registry files for all mdx-ui components.
+This directory contains the JSON registry files for all DocsUI components.
 
 ## Structure
 
@@ -46,7 +46,7 @@ The original TypeScript source files are located in:
 The CLI reads from this registry when users run:
 
 ```bash
-npx mdx-ui add component-name
+npx docsui-cli@latest add component-name
 ```
 
 ## Adding New Components

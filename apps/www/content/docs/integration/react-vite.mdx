@@ -244,17 +244,15 @@ Add to `src/index.css`:
     <TabsTrigger value="yarn">yarn</TabsTrigger>
   </TabsList>
   <TabsContent value="pnpm">
-    ```bash pnpm dlx @ravikumarsurya/mdx-ui init ```
+    ```bash pnpm dlx docsui-cli@latest init ```
   </TabsContent>
-  <TabsContent value="npm">
-    ```bash npx @ravikumarsurya/mdx-ui init ```
-  </TabsContent>
+  <TabsContent value="npm">```bash npx docsui-cli@latest init ```</TabsContent>
   <TabsContent value="yarn">
-    ```bash yarn dlx @ravikumarsurya/mdx-ui init ```
+    ```bash yarn dlx docsui-cli@latest init ```
   </TabsContent>
 </Tabs>
 
-This creates `mdx-ui.json` and installs the `cn()` utility.
+This creates `docsui.json` and installs the `cn()` utility.
 
 ---
 
@@ -267,13 +265,13 @@ This creates `mdx-ui.json` and installs the `cn()` utility.
     <TabsTrigger value="yarn">yarn</TabsTrigger>
   </TabsList>
   <TabsContent value="pnpm">
-    ```bash pnpm dlx @ravikumarsurya/mdx-ui add callout accordion code-block ```
+    ```bash pnpm dlx docsui-cli@latest add callout accordion code-block ```
   </TabsContent>
   <TabsContent value="npm">
-    ```bash npx @ravikumarsurya/mdx-ui add callout accordion code-block ```
+    ```bash npx docsui-cli@latest add callout accordion code-block ```
   </TabsContent>
   <TabsContent value="yarn">
-    ```bash yarn dlx @ravikumarsurya/mdx-ui add callout accordion code-block ```
+    ```bash yarn dlx docsui-cli@latest add callout accordion code-block ```
   </TabsContent>
 </Tabs>
 
@@ -295,7 +293,7 @@ Wrap your app with `MDXProvider` in `src/main.tsx`:
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { MDXProvider } from "@mdx-js/react";
-import { mdxComponents } from "./components/mdx-ui/mdx-components";
+import { mdxComponents } from "./components/docsui/mdx-components";
 import App from "./App";
 import "./index.css";
 
@@ -375,11 +373,11 @@ Create these three files with some starter content:
       <Accordion>
         <AccordionItem value="step-1">
           <AccordionTrigger>Step 1 — Install</AccordionTrigger>
-          <AccordionContent>Run `npx @ravikumarsurya/mdx-ui init` in your project root.</AccordionContent>
+          <AccordionContent>Run `npx docsui-cli@latest init` in your project root.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="step-2">
           <AccordionTrigger>Step 2 — Add components</AccordionTrigger>
-          <AccordionContent>Run `npx @ravikumarsurya/mdx-ui add callout accordion`.</AccordionContent>
+          <AccordionContent>Run `npx docsui-cli@latest add callout accordion`.</AccordionContent>
         </AccordionItem>
       </Accordion>
       ```
@@ -457,7 +455,7 @@ Add `<Navbar />` to the `src/App.tsx` from the previous step:
 ```diff title="src/App.tsx"
   import { BrowserRouter, Routes, Route } from "react-router-dom";
   import { MDXProvider } from "@mdx-js/react";
-  import { mdxComponents } from "./components/mdx-ui/mdx-components";
+  import { mdxComponents } from "./components/docsui/mdx-components";
 + import { Navbar } from "./components/Navbar";
   import Index from "./content/index.mdx";
   import About from "./content/about.mdx";
@@ -535,7 +533,7 @@ For production, configure your host (Vercel, Netlify, Nginx) to redirect all pat
   <TreeItem name="my-app" isFolder defaultOpen>
     <TreeItem name="src" isFolder defaultOpen>
       <TreeItem name="components" isFolder defaultOpen>
-        <TreeItem name="mdx-ui" isFolder>
+        <TreeItem name="docsui" isFolder>
           <TreeItem name="callout.tsx" />
           <TreeItem name="accordion.tsx" />
           <TreeItem name="lib" isFolder>
@@ -555,7 +553,7 @@ For production, configure your host (Vercel, Netlify, Nginx) to redirect all pat
     </TreeItem>
     <TreeItem name="vite.config.ts" />
     <TreeItem name="tailwind.config.ts" />
-    <TreeItem name="mdx-ui.json" />
+    <TreeItem name="docsui.json" />
     <TreeItem name="package.json" />
   </TreeItem>
 </Tree>
@@ -575,21 +573,21 @@ Math uses pure JSX primitives — no KaTeX or LaTeX required. Install and add to
   <TabsContent value="pnpm">
 
 ```bash
-pnpm dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+pnpm dlx docsui-cli@latest add math-primitives math-solution
 ```
 
   </TabsContent>
   <TabsContent value="npm">
 
 ```bash
-npx @ravikumarsurya/mdx-ui add math-primitives math-solution
+npx docsui-cli@latest add math-primitives math-solution
 ```
 
   </TabsContent>
   <TabsContent value="yarn">
 
 ```bash
-yarn dlx @ravikumarsurya/mdx-ui add math-primitives math-solution
+yarn dlx docsui-cli@latest add math-primitives math-solution
 ```
 
   </TabsContent>
@@ -603,13 +601,13 @@ import {
   Integral,
   Sum,
   Alpha /* ...all primitives */,
-} from "./mdx-ui/math-primitives";
+} from "./docsui/math-primitives";
 import {
   Solution,
   SolutionStep,
   SolutionAnswer,
   SolutionNote,
-} from "./mdx-ui/math-solution";
+} from "./docsui/math-solution";
 
 export const mdxComponents = {
   // ...existing
@@ -717,16 +715,16 @@ Ensure `src/**/*.mdx` is in your Tailwind `content` array so component class nam
 
 ## Use with Claude Code (MCP)
 
-Once your React + Vite project is set up, you can connect the mdx-ui MCP server so Claude knows exactly which components are available — no system prompt needed.
+Once your React + Vite project is set up, you can connect the DocsUI MCP server so Claude knows exactly which components are available — no system prompt needed.
 
 Create `.claude/settings.json` in your project root:
 
 ```json
 {
   "mcpServers": {
-    "mdx-ui": {
+    "docsui": {
       "command": "pnpm",
-      "args": ["dlx", "@ravikumarsurya/mdx-ui@latest", "mcp"]
+      "args": ["dlx", "docsui@latest", "mcp"]
     }
   }
 }

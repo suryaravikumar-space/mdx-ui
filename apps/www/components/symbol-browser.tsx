@@ -3,6 +3,8 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import * as P from "@/components/mdx/math-primitives";
+import * as Fig from "@/components/mdx/geometry-2d";
+import * as Elec from "@/components/mdx/electronics";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -33,6 +35,8 @@ const CAT_LABEL: Record<string, string> = {
   arrows: "Arrows",
   brackets: "Brackets",
   geometry: "Geometry",
+  "geometry-2d": "Geometry 2D (Visual)",
+  electronics: "Electronics & Circuits",
   physics: "Physics",
   chemistry: "Chemistry",
   script: "Script",
@@ -146,6 +150,41 @@ const CATALOG: Entry[] = [
     usage: "<Times />",
     description: "Multiplication cross ×",
     preview: <P.Times />,
+  },
+  {
+    component: "Plus",
+    category: "school",
+    usage: "<Plus />",
+    description: "Plus sign +",
+    preview: <P.Plus />,
+  },
+  {
+    component: "Minus",
+    category: "school",
+    usage: "<Minus />",
+    description: "Minus sign −",
+    preview: <P.Minus />,
+  },
+  {
+    component: "Mul",
+    category: "school",
+    usage: "<Mul />",
+    description: "Multiplication ×",
+    preview: <P.Mul />,
+  },
+  {
+    component: "Div",
+    category: "school",
+    usage: "<Div />",
+    description: "Division slash /",
+    preview: <P.Div />,
+  },
+  {
+    component: "Modulus",
+    category: "school",
+    usage: "<Modulus />",
+    description: "Modulus operator % (programming)",
+    preview: <P.Modulus />,
   },
   {
     component: "Division",
@@ -1662,8 +1701,9 @@ const CATALOG: Entry[] = [
   {
     component: "CDots",
     category: "dots",
-    usage: "<CDots />",
-    description: "Centered dots ⋯",
+    usage: "<CDots /> or <CDots count={5} />",
+    description:
+      "Centered dots — count prop controls number of dots (default 3)",
     preview: <P.CDots />,
   },
   {
@@ -1778,6 +1818,1249 @@ const CATALOG: Entry[] = [
     usage: "<SubZero>x</SubZero>",
     description: "x₀ subscript zero",
     preview: <P.SubZero>x</P.SubZero>,
+  },
+
+  // ── Geometry 2D (Visual) ──────────────────────────────────────────────────
+  {
+    component: "FigScene",
+    category: "geometry-2d",
+    usage:
+      "<FigScene width={200} height={150} xRange={[-3,3]} yRange={[-3,3]}>\n  {/* Fig* children */}\n</FigScene>",
+    description:
+      "SVG coordinate plane — wraps all Fig* primitives and provides grid + axes",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]} />
+    ),
+  },
+  {
+    component: "FigPoint",
+    category: "geometry-2d",
+    usage: '<FigPoint x={2} y={1} label="A" />',
+    description: "Labeled dot at a world coordinate",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigPoint x={1} y={1} label="A" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigVector",
+    category: "geometry-2d",
+    usage: '<FigVector fromX={0} fromY={0} toX={2} toY={2} label="v" />',
+    description:
+      "Directed arrow with arrowhead from one world point to another",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigVector toX={2} toY={1.5} label="v" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigLine",
+    category: "geometry-2d",
+    usage: "<FigLine x1={-2} y1={-1} x2={2} y2={1} />",
+    description: "Straight line segment between two world points",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigLine x1={-2} y1={-1} x2={2} y2={1} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigSegment",
+    category: "geometry-2d",
+    usage: '<FigSegment x1={-1} y1={0} x2={1} y2={2} label="c" tickMarks />',
+    description: "Line segment with optional midpoint label and tick marks",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigSegment x1={-1} y1={-1} x2={1} y2={1} label="c" tickMarks />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCircle",
+    category: "geometry-2d",
+    usage: "<FigCircle cx={0} cy={0} r={2} />",
+    description: "Circle at world center with world-unit radius",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigCircle cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigArc",
+    category: "geometry-2d",
+    usage: "<FigArc cx={0} cy={0} r={1.5} startDeg={0} endDeg={120} />",
+    description: "Partial arc — angles in degrees, counter-clockwise",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigArc cx={0} cy={0} r={2} startDeg={0} endDeg={90} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigAngle",
+    category: "geometry-2d",
+    usage:
+      '<FigAngle vertex={{x:0,y:0}} from={{x:1,y:0}} to={{x:0,y:1}} label="θ" />',
+    description: "Arc sweep showing the angle at a vertex between two rays",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigVector toX={2} toY={0} />
+        <Fig.FigVector toX={0} toY={2} />
+        <Fig.FigAngle
+          vertex={{ x: 0, y: 0 }}
+          from={{ x: 1, y: 0 }}
+          to={{ x: 0, y: 1 }}
+          label="θ"
+        />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigPolygon",
+    category: "geometry-2d",
+    usage:
+      '<FigPolygon points={[[0,0],[2,0],[1,2]]} fill="currentColor" opacity={0.15} label="△" />',
+    description: "Closed polygon from world-coordinate vertices",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigPolygon
+          points={[
+            [0, 0],
+            [2, 0],
+            [1, 2],
+          ]}
+          fill="currentColor"
+          opacity={0.15}
+        />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigLabel",
+    category: "geometry-2d",
+    usage: "<FigLabel x={1} y={1}>A</FigLabel>",
+    description: "Arbitrary text at a world coordinate",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigLabel x={0} y={0} fontSize={14}>
+          O
+        </Fig.FigLabel>
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Engineering Lines ─────────────────────────────────────────────────────
+  {
+    component: "FigVisibleLine",
+    category: "geometry-2d",
+    usage: "<FigVisibleLine x1={-2} y1={0} x2={2} y2={0} />",
+    description: "Continuous thick line — visible outer edges",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigVisibleLine x1={-2} y1={0} x2={2} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigHiddenLine",
+    category: "geometry-2d",
+    usage: "<FigHiddenLine x1={-2} y1={0} x2={2} y2={0} />",
+    description: "Dashed medium line — hidden / obscured features",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigHiddenLine x1={-2} y1={0} x2={2} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCenterLine",
+    category: "geometry-2d",
+    usage: "<FigCenterLine x1={-2} y1={0} x2={2} y2={0} />",
+    description: "Alternating long/short dashes — symmetry axes",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigCenterLine x1={-2} y1={0} x2={2} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigPhantomLine",
+    category: "geometry-2d",
+    usage: "<FigPhantomLine x1={-2} y1={0} x2={2} y2={0} />",
+    description: "One long, two short dashes — phantom / moving parts",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigPhantomLine x1={-2} y1={0} x2={2} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigDimensionLine",
+    category: "geometry-2d",
+    usage: '<FigDimensionLine x1={-2} y1={0} x2={2} y2={0} label="4" />',
+    description: "Thin line with double arrowheads — dimension measurement",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigDimensionLine x1={-2} y1={0} x2={2} y2={0} label="4" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigExtensionLine",
+    category: "geometry-2d",
+    usage: "<FigExtensionLine x1={0} y1={-1} x2={0} y2={1} />",
+    description: "Very thin boundary line alongside dimension lines",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigExtensionLine x1={-2} y1={0} x2={2} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigLeaderLine",
+    category: "geometry-2d",
+    usage: '<FigLeaderLine x1={2} y1={1} x2={0} y2={0} note="R5" />',
+    description: "Thin pointer line with arrowhead and note",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={90}
+        xRange={[-3, 3]}
+        yRange={[-2, 2]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigLeaderLine x1={2} y1={1} x2={0} y2={0} note="R5" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCuttingPlane",
+    category: "geometry-2d",
+    usage: "<FigCuttingPlane x1={-2} y1={0} x2={2} y2={0} />",
+    description: "Heavy dashed line — section cut path",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigCuttingPlane x1={-2} y1={0} x2={2} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigBreakLine",
+    category: "geometry-2d",
+    usage: "<FigBreakLine x1={-2} y1={0} x2={2} y2={0} />",
+    description: "Wavy line — shortened view break",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={60}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigBreakLine x1={-2} y1={0} x2={2} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigSectionHatch",
+    category: "geometry-2d",
+    usage: "<FigSectionHatch x={-1} y={-1} w={2} h={2} />",
+    description: "Diagonal hatching over a rectangular region — cross-section",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={90}
+        xRange={[-3, 3]}
+        yRange={[-2, 2]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigSectionHatch x={-1} y={-1} w={2} h={2} />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Curves & Conics ───────────────────────────────────────────────────────
+  {
+    component: "FigEllipse",
+    category: "geometry-2d",
+    usage: "<FigEllipse cx={0} cy={0} rx={2} ry={1} />",
+    description: "Ellipse with separate x/y radii",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigEllipse cx={0} cy={0} rx={2} ry={1} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigSemicircle",
+    category: "geometry-2d",
+    usage: '<FigSemicircle cx={0} cy={0} r={2} orientation="top" />',
+    description: "Half circle — top / bottom / left / right",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigSemicircle cx={0} cy={0} r={2} orientation="top" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigOval",
+    category: "geometry-2d",
+    usage: "<FigOval cx={0} cy={0} rx={2} ry={1.2} asymmetry={0.3} />",
+    description: "Egg-shaped oval with adjustable asymmetry",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigOval cx={0} cy={0} rx={2} ry={1.2} asymmetry={0.3} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCrescent",
+    category: "geometry-2d",
+    usage: "<FigCrescent cx={0} cy={0} r={2} innerR={1.5} offsetX={0.8} />",
+    description: "Crescent — outer circle with inner-circle bite removed",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigCrescent
+          cx={0}
+          cy={0}
+          r={2}
+          innerR={1.5}
+          offsetX={0.8}
+          opacity={0.4}
+        />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigLens",
+    category: "geometry-2d",
+    usage: "<FigLens cx={0} cy={0} spread={1} r={2} />",
+    description: "Lens — intersection of two equal overlapping circles",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigLens cx={0} cy={0} spread={1} r={2} opacity={0.3} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigLune",
+    category: "geometry-2d",
+    usage: "<FigLune cx={0} cy={0} r={2} innerR={1.6} offsetX={0.7} />",
+    description:
+      "Lune — region inside outer circle, outside offset inner circle",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigLune
+          cx={0}
+          cy={0}
+          r={2}
+          innerR={1.6}
+          offsetX={0.7}
+          opacity={0.4}
+        />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigParabola",
+    category: "geometry-2d",
+    usage: "<FigParabola h={0} k={-2} a={0.5} />",
+    description: "Parabola — vertex form y = a(x−h)² + k",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigParabola h={0} k={-2} a={0.5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigHyperbola",
+    category: "geometry-2d",
+    usage: "<FigHyperbola h={0} k={0} a={1} b={1} />",
+    description: "Hyperbola — both branches, standard form",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-3, 3]}>
+        <Fig.FigHyperbola h={0} k={0} a={0.8} b={0.8} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCardioid",
+    category: "geometry-2d",
+    usage: "<FigCardioid cx={0} cy={0} a={1.5} />",
+    description: "Cardioid — heart-shaped polar curve r = a(1 + cosθ)",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-4, 2]} yRange={[-2, 2]}>
+        <Fig.FigCardioid cx={-1} cy={0} a={1.5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigLimacon",
+    category: "geometry-2d",
+    usage: "<FigLimacon cx={0} cy={0} a={1} b={1.5} />",
+    description:
+      "Limaçon — polar curve r = a + b·cosθ, shows inner loop when b > a",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigLimacon cx={0} cy={0} a={0.8} b={1.5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigLemniscate",
+    category: "geometry-2d",
+    usage: "<FigLemniscate cx={0} cy={0} a={2} />",
+    description: "Lemniscate — figure-eight, r² = a²·cos(2θ)",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigLemniscate cx={0} cy={0} a={2} />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Triangles ─────────────────────────────────────────────────────────────
+  {
+    component: "FigRightAngleMarker",
+    category: "geometry-2d",
+    usage:
+      "<FigRightAngleMarker vertex={{x:0,y:0}} leg1={{x:1,y:0}} leg2={{x:0,y:1}} />",
+    description: "Small square marker at a 90° corner",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-1, 4]} yRange={[-1, 3]}>
+        <Fig.FigLine x1={0} y1={0} x2={3} y2={0} />
+        <Fig.FigLine x1={0} y1={0} x2={0} y2={2} />
+        <Fig.FigRightAngleMarker
+          vertex={{ x: 0, y: 0 }}
+          leg1={{ x: 1, y: 0 }}
+          leg2={{ x: 0, y: 1 }}
+        />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigEquilateralTriangle",
+    category: "geometry-2d",
+    usage: "<FigEquilateralTriangle cx={0} cy={0} r={2} />",
+    description: "Equilateral triangle — all sides equal",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigEquilateralTriangle cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigIsoscelesTriangle",
+    category: "geometry-2d",
+    usage: "<FigIsoscelesTriangle cx={0} baseY={-1} base={3} height={3} />",
+    description: "Isosceles triangle — two equal sides with tick marks",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigIsoscelesTriangle cx={0} baseY={-1} base={3} height={3} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigScaleneTriangle",
+    category: "geometry-2d",
+    usage:
+      "<FigScaleneTriangle x1={-2} y1={-1} x2={2} y2={-1} x3={0.5} y3={1.5} />",
+    description: "Scalene triangle — all sides different",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigScaleneTriangle
+          x1={-2}
+          y1={-1}
+          x2={2}
+          y2={-1}
+          x3={0.5}
+          y3={1.5}
+        />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigRightTriangle",
+    category: "geometry-2d",
+    usage:
+      '<FigRightTriangle x={-2} y={-1} base={3} height={2.5} labelA="a" labelB="b" labelC="c" />',
+    description:
+      "Right triangle — auto right-angle marker, optional side labels",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigRightTriangle x={-2} y={-1} base={3} height={2.5} />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Quadrilaterals ────────────────────────────────────────────────────────
+  {
+    component: "FigRect",
+    category: "geometry-2d",
+    usage: "<FigRect x={-2} y={-1} w={4} h={2} />",
+    description: "Rectangle — bottom-left corner + width + height",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigRect x={-2} y={-1} w={4} h={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigSquare",
+    category: "geometry-2d",
+    usage: "<FigSquare cx={0} cy={0} side={3} />",
+    description: "Square — centre + side length",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigSquare cx={0} cy={0} side={3} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigRhombus",
+    category: "geometry-2d",
+    usage: "<FigRhombus cx={0} cy={0} dx={2} dy={1.5} />",
+    description: "Rhombus — centre + half-diagonals",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigRhombus cx={0} cy={0} dx={2} dy={1.5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigParallelogram",
+    category: "geometry-2d",
+    usage: "<FigParallelogram x={-2} y={-1} w={3} h={2} skew={1} />",
+    description: "Parallelogram — rectangle with horizontal skew",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigParallelogram x={-2} y={-1} w={3} h={2} skew={0.8} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigTrapezoid",
+    category: "geometry-2d",
+    usage: "<FigTrapezoid cx={0} y={-1} topW={2} bottomW={4} h={2} />",
+    description: "Trapezoid — symmetric, different top and bottom widths",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigTrapezoid cx={0} y={-1} topW={2} bottomW={4} h={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigKite",
+    category: "geometry-2d",
+    usage: "<FigKite cx={0} cy={0} topH={2} bottomH={1} halfW={1.5} />",
+    description: "Kite — two pairs of adjacent equal sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigKite cx={0} cy={0} topH={2} bottomH={1} halfW={1.5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigDart",
+    category: "geometry-2d",
+    usage: "<FigDart cx={0} cy={0} topH={2} concaveDepth={0.5} halfW={1.5} />",
+    description: "Dart / chevron — concave arrowhead shape",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigDart cx={0} cy={0} topH={2} concaveDepth={0.5} halfW={1.5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCrossQuad",
+    category: "geometry-2d",
+    usage:
+      "<FigCrossQuad x1={-2} y1={-1} x2={2} y2={-1} x3={-1} y3={1} x4={1} y4={1} />",
+    description: "Cross-quadrilateral — self-intersecting butterfly shape",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigCrossQuad
+          x1={-2}
+          y1={-1}
+          x2={2}
+          y2={-1}
+          x3={-1}
+          y3={1}
+          x4={1}
+          y4={1}
+        />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigAntiparallelogram",
+    category: "geometry-2d",
+    usage: "<FigAntiparallelogram x={-2} y={-1} w={3} h={2} skew={1} />",
+    description: "Antiparallelogram — opposite sides cross",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigAntiparallelogram x={-2} y={-1} w={3} h={2} skew={0.8} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCyclicQuad",
+    category: "geometry-2d",
+    usage: "<FigCyclicQuad cx={0} cy={0} r={2} angles={[20, 110, 200, 310]} />",
+    description: "Cyclic quadrilateral — 4 vertices on a circle",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigCyclicQuad cx={0} cy={0} r={2} angles={[20, 110, 200, 310]} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigTangentialQuad",
+    category: "geometry-2d",
+    usage:
+      "<FigTangentialQuad points={[[-2,-1],[2,-1],[1.5,1],[-1.5,1]]} inCx={0} inCy={0} inR={1} />",
+    description: "Tangential quadrilateral — inscribed circle shown",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigTangentialQuad
+          points={[
+            [-2, -1],
+            [2, -1],
+            [1.5, 1],
+            [-1.5, 1],
+          ]}
+          inCx={0}
+          inCy={0}
+          inR={0.9}
+        />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Regular Polygons ──────────────────────────────────────────────────────
+  {
+    component: "FigRegularPolygon",
+    category: "geometry-2d",
+    usage: "<FigRegularPolygon cx={0} cy={0} r={2} sides={6} />",
+    description: "Regular n-gon — set sides to any number",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigRegularPolygon cx={0} cy={0} r={2} sides={6} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigPentagon",
+    category: "geometry-2d",
+    usage: "<FigPentagon cx={0} cy={0} r={2} />",
+    description: "Regular pentagon — 5 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigPentagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigHexagon",
+    category: "geometry-2d",
+    usage: "<FigHexagon cx={0} cy={0} r={2} />",
+    description: "Regular hexagon — 6 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigHexagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigHeptagon",
+    category: "geometry-2d",
+    usage: "<FigHeptagon cx={0} cy={0} r={2} />",
+    description: "Regular heptagon — 7 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigHeptagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigOctagon",
+    category: "geometry-2d",
+    usage: "<FigOctagon cx={0} cy={0} r={2} />",
+    description: "Regular octagon — 8 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigOctagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigNonagon",
+    category: "geometry-2d",
+    usage: "<FigNonagon cx={0} cy={0} r={2} />",
+    description: "Regular nonagon — 9 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigNonagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigDecagon",
+    category: "geometry-2d",
+    usage: "<FigDecagon cx={0} cy={0} r={2} />",
+    description: "Regular decagon — 10 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigDecagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigHendecagon",
+    category: "geometry-2d",
+    usage: "<FigHendecagon cx={0} cy={0} r={2} />",
+    description: "Regular hendecagon — 11 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigHendecagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigDodecagon",
+    category: "geometry-2d",
+    usage: "<FigDodecagon cx={0} cy={0} r={2} />",
+    description: "Regular dodecagon — 12 sides",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigDodecagon cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Star Polygons ─────────────────────────────────────────────────────────
+  {
+    component: "FigStarPolygon",
+    category: "geometry-2d",
+    usage: "<FigStarPolygon cx={0} cy={0} r={2} points={5} />",
+    description: "Star polygon — set points (outer tips) and innerRatio",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigStarPolygon cx={0} cy={0} r={2} points={5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigPentagram",
+    category: "geometry-2d",
+    usage: "<FigPentagram cx={0} cy={0} r={2} />",
+    description: "Five-pointed star (pentagram)",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigPentagram cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigHexagram",
+    category: "geometry-2d",
+    usage: "<FigHexagram cx={0} cy={0} r={2} />",
+    description: "Six-pointed star (Star of David)",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigHexagram cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigOctagram",
+    category: "geometry-2d",
+    usage: "<FigOctagram cx={0} cy={0} r={2} />",
+    description: "Eight-pointed star (octagram)",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigOctagram cx={0} cy={0} r={2} />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Fractals ──────────────────────────────────────────────────────────────
+  {
+    component: "FigKochSnowflake",
+    category: "geometry-2d",
+    usage: "<FigKochSnowflake cx={0} cy={0} r={2} iterations={3} />",
+    description: "Koch snowflake fractal — iterations 1–5",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigKochSnowflake cx={0} cy={0} r={2} iterations={3} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigSierpinskiTriangle",
+    category: "geometry-2d",
+    usage: "<FigSierpinskiTriangle cx={0} cy={0} r={2} iterations={4} />",
+    description: "Sierpiński triangle fractal — iterations 1–6",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigSierpinskiTriangle cx={0} cy={0} r={2} iterations={4} />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Special / Annotations ─────────────────────────────────────────────────
+  {
+    component: "FigMeasure",
+    category: "geometry-2d",
+    usage: '<FigMeasure x1={-2} y1={0} x2={2} y2={0} label="4 units" />',
+    description: "Double-headed measurement arrow between two points",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={90}
+        xRange={[-3, 3]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Fig.FigMeasure x1={-2} y1={0} x2={2} y2={0} label="4" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCirclePi",
+    category: "geometry-2d",
+    usage: "<FigCirclePi cx={0} cy={0} r={1.5} />",
+    description:
+      "Circle with π annotations — radius, diameter, C = 2πr ≈ 22/7·d",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={120}
+        xRange={[-2.5, 2.5]}
+        yRange={[-2.5, 2.5]}
+      >
+        <Fig.FigCirclePi cx={0} cy={0} r={1.5} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigContour",
+    category: "geometry-2d",
+    usage: "<FigContour cx={0} cy={0} levels={[0.5, 1, 1.5, 2]} />",
+    description: "Concentric contour / level curves",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigContour cx={0} cy={0} levels={[0.5, 1, 1.5, 2]} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigFunnel",
+    category: "geometry-2d",
+    usage: "<FigFunnel cx={0} topY={-1} topW={4} bottomW={1} h={2} />",
+    description: "Funnel / trapezoid — wide at top, narrow at bottom",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigFunnel cx={0} topY={-1} topW={4} bottomW={1} h={2} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "FigCuboid",
+    category: "geometry-2d",
+    usage: "<FigCuboid x={-2} y={-1} w={3} h={2} d={1} />",
+    description: "Cuboid — isometric 3D box drawn in 2D (3 visible faces)",
+    preview: (
+      <Fig.FigScene width={120} height={90} xRange={[-3, 3]} yRange={[-2, 2]}>
+        <Fig.FigCuboid x={-1.5} y={-1} w={2.5} h={1.5} d={0.8} />
+      </Fig.FigScene>
+    ),
+  },
+
+  // ── Electronics & Circuits ────────────────────────────────────────────────
+  {
+    component: "ElecWire",
+    category: "electronics",
+    usage: "<ElecWire x1={0} y1={0} x2={3} y2={0} />",
+    description: "Plain conductor wire between two world points",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={60}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecWire x1={0} y1={0} x2={5} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecResistor",
+    category: "electronics",
+    usage: '<ElecResistor x1={0} y1={0} x2={4} y2={0} label="10Ω" />',
+    description: "American zigzag resistor symbol with optional value label",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecResistor x1={0} y1={0} x2={5} y2={0} label="10Ω" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecCapacitor",
+    category: "electronics",
+    usage: '<ElecCapacitor x1={0} y1={0} x2={4} y2={0} label="10µF" />',
+    description: "Capacitor — two parallel plates",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecCapacitor x1={0} y1={0} x2={5} y2={0} label="10µF" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecInductor",
+    category: "electronics",
+    usage: '<ElecInductor x1={0} y1={0} x2={4} y2={0} label="2mH" />',
+    description: "Inductor — series of semicircular coil arcs",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecInductor x1={0} y1={0} x2={5} y2={0} label="2mH" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecFuse",
+    category: "electronics",
+    usage: '<ElecFuse x1={0} y1={0} x2={4} y2={0} label="2A" />',
+    description: "Fuse — small rectangle across the wire",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecFuse x1={0} y1={0} x2={5} y2={0} label="2A" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecBattery",
+    category: "electronics",
+    usage: '<ElecBattery x1={0} y1={-2} x2={0} y2={2} label="9V" />',
+    description: "Battery — alternating long/short lines, + at x2,y2",
+    preview: (
+      <Fig.FigScene
+        width={80}
+        height={160}
+        xRange={[-2, 2]}
+        yRange={[-0.5, 5.5]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecBattery x1={0} y1={0} x2={0} y2={5} label="9V" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecVoltageSource",
+    category: "electronics",
+    usage: '<ElecVoltageSource x1={0} y1={-2} x2={0} y2={2} label="Vs" />',
+    description: "DC voltage source — circle with ± inside",
+    preview: (
+      <Fig.FigScene
+        width={80}
+        height={160}
+        xRange={[-2, 2]}
+        yRange={[-0.5, 5.5]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecVoltageSource x1={0} y1={0} x2={0} y2={5} label="Vs" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecACSource",
+    category: "electronics",
+    usage: '<ElecACSource x1={0} y1={-2} x2={0} y2={2} label="AC" />',
+    description: "AC voltage source — circle with ~ inside",
+    preview: (
+      <Fig.FigScene
+        width={80}
+        height={160}
+        xRange={[-2, 2]}
+        yRange={[-0.5, 5.5]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecACSource x1={0} y1={0} x2={0} y2={5} label="AC" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecCurrentSource",
+    category: "electronics",
+    usage: '<ElecCurrentSource x1={0} y1={0} x2={4} y2={0} label="Is" />',
+    description: "Current source — circle with directional arrow inside",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecCurrentSource x1={0} y1={0} x2={5} y2={0} label="Is" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecSwitch",
+    category: "electronics",
+    usage: "<ElecSwitch x1={0} y1={0} x2={4} y2={0} />",
+    description: "Switch — open (default) or closed with `closed` prop",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecSwitch x1={0} y1={0} x2={5} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecDiode",
+    category: "electronics",
+    usage: '<ElecDiode x1={0} y1={0} x2={4} y2={0} label="D1" />',
+    description: "Diode — filled triangle + bar, current flows x1→x2",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecDiode x1={0} y1={0} x2={5} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecLED",
+    category: "electronics",
+    usage: '<ElecLED x1={0} y1={0} x2={4} y2={0} label="LED" />',
+    description: "LED — diode with two emission arrows",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecLED x1={0} y1={0} x2={5} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecLamp",
+    category: "electronics",
+    usage: '<ElecLamp x1={0} y1={0} x2={4} y2={0} label="L1" />',
+    description: "Lamp — circle with X cross inside",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecLamp x1={0} y1={0} x2={5} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecVoltmeter",
+    category: "electronics",
+    usage: "<ElecVoltmeter x1={0} y1={0} x2={4} y2={0} />",
+    description: "Voltmeter — circle with V, connect in parallel",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecVoltmeter x1={0} y1={0} x2={5} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecAmmeter",
+    category: "electronics",
+    usage: "<ElecAmmeter x1={0} y1={0} x2={4} y2={0} />",
+    description: "Ammeter — circle with A, connect in series",
+    preview: (
+      <Fig.FigScene
+        width={160}
+        height={80}
+        xRange={[-0.5, 5.5]}
+        yRange={[-1, 1]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecAmmeter x1={0} y1={0} x2={5} y2={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecNode",
+    category: "electronics",
+    usage: '<ElecNode x={0} y={0} label="A" />',
+    description: "Junction dot — marks a connected node between wires",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={90}
+        xRange={[-2, 2]}
+        yRange={[-2, 2]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecWire x1={-2} y1={0} x2={2} y2={0} />
+        <Elec.ElecWire x1={0} y1={0} x2={0} y2={2} />
+        <Elec.ElecNode x={0} y={0} label="A" />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecGround",
+    category: "electronics",
+    usage: "<ElecGround x={0} y={0} />",
+    description: "Ground symbol — 3 descending horizontal lines",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={90}
+        xRange={[-2, 2]}
+        yRange={[-2, 2]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecWire x1={0} y1={2} x2={0} y2={0} />
+        <Elec.ElecGround x={0} y={0} />
+      </Fig.FigScene>
+    ),
+  },
+  {
+    component: "ElecLabel",
+    category: "electronics",
+    usage: "<ElecLabel x={0} y={0}>V₁</ElecLabel>",
+    description: "Standalone text label at a world coordinate inside FigScene",
+    preview: (
+      <Fig.FigScene
+        width={120}
+        height={90}
+        xRange={[-2, 2]}
+        yRange={[-2, 2]}
+        showGrid={false}
+        showAxes={false}
+      >
+        <Elec.ElecLabel x={0} y={0} fontSize={16}>
+          V₁
+        </Elec.ElecLabel>
+      </Fig.FigScene>
+    ),
   },
 ];
 

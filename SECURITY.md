@@ -12,7 +12,7 @@ Only the latest published version of each package receives security fixes.
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Please report security issues by emailing the maintainer directly or using [GitHub's private vulnerability reporting](https://github.com/suryaravikumar-space/mdx-ui/security/advisories/new).
+Please report security issues by emailing the maintainer directly or using [GitHub's private vulnerability reporting](https://github.com/suryaravikumar-space/docsui/security/advisories/new).
 
 Include as much detail as possible:
 
@@ -27,7 +27,7 @@ You will receive a response within **72 hours**. Once the issue is confirmed, a 
 
 This policy covers the following published packages:
 
-- `@ravikumarsurya/mdx-ui` (CLI)
-- `@ravikumarsurya/remark-mdx-ui` (remark plugin)
+- `docsui` (CLI)
+- `@docsui-io/remark-plugin` (remark plugin)
 
 The `apps/www` documentation site is out of scope for vulnerability reports.

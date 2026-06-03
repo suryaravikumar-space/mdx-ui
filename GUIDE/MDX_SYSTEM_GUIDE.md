@@ -72,7 +72,7 @@ import { Blockquote } from "@/components/mdx/blockquote";
 Install the component using the CLI:
 
 \`\`\`bash
-npx mdx-ui add blockquote
+npx docsui-cli@latest add blockquote
 \`\`\`
 
 ## Examples
@@ -183,7 +183,7 @@ import { MyComponent } from "@/components/mdx/my-component";
 ## Installation
 
 \`\`\`bash
-npx mdx-ui add my-component
+npx docsui-cli@latest add my-component
 \`\`\`
 
 ## Usage

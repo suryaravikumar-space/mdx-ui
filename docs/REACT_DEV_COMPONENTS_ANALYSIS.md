@@ -36,9 +36,9 @@
 21. **`<Image>`** - Enhanced images
 22. **`<VideoPlayer>`** - Video embeds
 
-## Our mdx-ui Component Mapping
+## Our DocsUI Component Mapping
 
-| react.dev Component | mdx-ui Component             | Priority | Status            |
+| react.dev Component | DocsUI Component             | Priority | Status            |
 | ------------------- | ---------------------------- | -------- | ----------------- |
 | `<Intro>`           | `<Lead>`                     | ⭐⭐⭐   | Planned           |
 | `<YouWillLearn>`    | `<LearnCard>`                | ⭐⭐⭐   | Planned           |
@@ -80,7 +80,7 @@ Detailed content that goes deeper into the topic...
 </Aside>
 ```
 
-## Updated Priority List for mdx-ui
+## Updated Priority List for DocsUI
 
 ### Phase 1: Essential (8 Components Total)
 
@@ -188,11 +188,11 @@ Many components are education-specific:
 
 ## Differentiation Strategy
 
-### What Makes mdx-ui Different?
+### What Makes DocsUI Different?
 
 1. **Universal vs React-Specific**
    - react.dev: React docs only
-   - mdx-ui: Any documentation site
+   - DocsUI: Any documentation site
 
 2. **Simpler API**
    - Fewer specialized components
@@ -211,7 +211,7 @@ Many components are education-specific:
 
 ## Component Naming Rationale
 
-| react.dev     | mdx-ui    | Reason                 |
+| react.dev     | DocsUI    | Reason                 |
 | ------------- | --------- | ---------------------- |
 | Intro         | Lead      | More universal term    |
 | DeepDive      | Aside     | Standard HTML semantic |

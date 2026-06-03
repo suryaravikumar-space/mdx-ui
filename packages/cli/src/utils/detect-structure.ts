@@ -35,7 +35,7 @@ export async function detectProjectStructure(
   if (framework === "astro" || srcExists) {
     return {
       hasSrc: true,
-      componentsDir: "src/components/mdx-ui",
+      componentsDir: "src/components/docsui",
       libDir: "src/lib",
       framework,
       mdxPipeline,
@@ -46,7 +46,7 @@ export async function detectProjectStructure(
 
   return {
     hasSrc: false,
-    componentsDir: "components/mdx-ui",
+    componentsDir: "components/docsui",
     libDir: "lib",
     framework,
     mdxPipeline,

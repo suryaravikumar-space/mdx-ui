@@ -16,7 +16,7 @@ export default function DataTableDefault() {
         ["Steps", "Display", "0.0.35"],
         ["Tabs", "Interactive", "0.0.35"],
       ]}
-      caption="mdx-ui component registry"
+      caption="docsui component registry"
     />
   );
 }

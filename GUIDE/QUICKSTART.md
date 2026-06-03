@@ -37,7 +37,7 @@ pnpm typecheck        # Check types
 ## File Structure
 
 ```
-mdx-ui/
+docsui/
 ├── apps/www/          # Documentation website (Next.js)
 ├── packages/cli/      # CLI tool
 ├── packages/registry/ # Component source

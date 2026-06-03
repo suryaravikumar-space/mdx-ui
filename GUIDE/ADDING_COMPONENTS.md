@@ -52,7 +52,7 @@ import {
 ## Installation
 
 \`\`\`bash
-npx mdx-ui add tabs
+npx docsui-cli@latest add tabs
 \`\`\`
 
 ## Usage

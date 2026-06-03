@@ -1,6 +1,6 @@
 # Component API Conventions
 
-> This document is a binding decision record. Every component in mdx-ui must follow these conventions. New components that violate these rules require an explicit justification and a docs update.
+> This document is a binding decision record. Every component in DocsUI must follow these conventions. New components that violate these rules require an explicit justification and a docs update.
 >
 > **Why this exists:** AI agents generate MDX using these components. Inconsistent APIs cause generation errors. Consistent APIs mean an AI that learns one component can correctly infer the API of any other.
 

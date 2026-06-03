@@ -1,7 +1,7 @@
 /**
- * remark-mdx-ui
+ * @docsui-io/remark-plugin
  *
- * Upgrades standard markdown patterns to mdx-ui components.
+ * Upgrades standard markdown patterns to docsui components.
  * Works with any AI-generated markdown (OpenAI, Claude, Gemini, etc.)
  * and any MDX pipeline (contentlayer, next-mdx-remote, @next/mdx).
  *

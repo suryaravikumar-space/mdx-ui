@@ -42,7 +42,7 @@ export default function CommunityPage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2">
               <a
-                href="https://github.com/suryaravikumar-space/mdx-ui"
+                href="https://github.com/suryaravikumar-space/docsui"
                 className="rounded-lg border p-4 transition-colors hover:bg-accent"
               >
                 <h3 className="mb-2 font-semibold">GitHub Discussions</h3>

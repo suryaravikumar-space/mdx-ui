@@ -34,7 +34,7 @@ apps/www/config/
 **Sections:**
 
 - Get Started
-- Learn MDX UI
+- Learn DocsUI
 - Building Your Docs
 - Advanced
 
@@ -46,7 +46,7 @@ apps/www/config/
 **Purpose:** API reference documentation
 **Sections:**
 
-- mdx-ui CLI
+- DocsUI CLI
 - Typography Components
 - Code Components
 - Interactive Components

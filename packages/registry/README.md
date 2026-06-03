@@ -1,6 +1,6 @@
 # Component Registry Package
 
-This package contains the **source TypeScript components** for mdx-ui.
+This package contains the **source TypeScript components** for DocsUI.
 
 ## Purpose
 
@@ -99,7 +99,7 @@ packages/registry/
 ## Workflow
 
 1. **Develop** components in `src/`
-2. **Test** with `pnpm --filter=@mdx-ui/registry test`
+2. **Test** with `pnpm --filter=@docsui/registry test`
 3. **Build registry** from repo root — `pnpm build:registry`
 4. **Distribute** — CLI fetches from `/registry/mdx/*.json`
 
@@ -117,10 +117,10 @@ Tests use Jest + React Testing Library + jsdom:
 
 ```bash
 # Run all registry tests
-pnpm --filter=@mdx-ui/registry test
+pnpm --filter=@docsui/registry test
 
 # Watch mode
-pnpm --filter=@mdx-ui/registry test --watch
+pnpm --filter=@docsui/registry test --watch
 ```
 
 26 components have test coverage. Tests verify rendering, prop variants, accessibility attributes, and interactive behavior.
@@ -149,4 +149,4 @@ pnpm --filter=@mdx-ui/registry test --watch
 | `registry/mdx/`          | Generated JSON — do not edit manually |
 | `registry/registry.json` | Component index — generated           |
 
-The CLI fetches from `/registry/mdx/` when users run `npx @ravikumarsurya/mdx-ui add <component>`.
+The CLI fetches from `/registry/mdx/` when users run `npx docsui-cli@latest add <component>`.

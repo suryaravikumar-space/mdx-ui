@@ -8,7 +8,7 @@ published: true
 ## Installation
 
 ```bash
-npx @ravikumarsurya/mdx-ui add list
+npx docsui-cli@latest add list
 ```
 
 ## Usage
@@ -74,7 +74,7 @@ Project structure:
 
 - src/
   - components/
-    - mdx-ui/
+    - DocsUI/
       - callout.tsx
       - headings.tsx
   - app/
@@ -124,7 +124,7 @@ Lists have:
 Customize through component mappings:
 
 ```tsx
-import { Ul, Ol, Li } from "@/components/mdx-ui/list";
+import { Ul, Ol, Li } from "@/components/docsui/list";
 
 export const mdxComponents = {
   ul: Ul,

@@ -85,8 +85,8 @@ export const remove = new Command()
 
     const config = await getConfig();
     if (!config) {
-      console.log(chalk.red("✗ No mdx-ui.json found."));
-      console.log(chalk.yellow("  Run: npx @ravikumarsurya/mdx-ui init\n"));
+      console.log(chalk.red("✗ No docsui.json found."));
+      console.log(chalk.yellow("  Run: npx docsui-cli@latest init\n"));
       process.exit(1);
     }
 

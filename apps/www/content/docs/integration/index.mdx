@@ -39,8 +39,8 @@ Regardless of which renderer you choose, the integration follows the same patter
 ### 1. Install Components
 
 ```bash
-npx @ravikumarsurya/mdx-ui@latest init
-npx @ravikumarsurya/mdx-ui@latest add callout headings paragraph
+npx docsui-cli@latest init
+npx docsui-cli@latest add callout headings paragraph
 ```
 
 **Available Components:**
@@ -64,9 +64,9 @@ npx @ravikumarsurya/mdx-ui@latest add callout headings paragraph
 
 ```tsx
 // components/mdx-components.tsx
-import { H1, H2, H3 } from "@/components/mdx-ui/headings";
-import { P } from "@/components/mdx-ui/paragraph";
-import { Callout } from "@/components/mdx-ui/callout";
+import { H1, H2, H3 } from "@/components/docsui/headings";
+import { P } from "@/components/docsui/paragraph";
+import { Callout } from "@/components/docsui/callout";
 
 export const mdxComponents = {
   h1: H1,

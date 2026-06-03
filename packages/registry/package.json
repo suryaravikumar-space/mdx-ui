@@ -1,5 +1,5 @@
 {
-  "name": "@mdx-ui/registry",
+  "name": "@docsui/registry",
   "version": "0.0.1",
   "private": true,
   "description": "Component registry source files",

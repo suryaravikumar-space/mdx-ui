@@ -4,7 +4,7 @@
   "vitest.enable": true,
 
   // Jest — covers packages/registry (uses jest-environment-jsdom)
-  "jest.jestCommandLine": "pnpm --filter @mdx-ui/registry exec jest",
+  "jest.jestCommandLine": "pnpm --filter @docsui/registry exec jest",
   "jest.rootPath": "${workspaceFolder}/packages/registry",
   "jest.autoRun": {
     "watch": false,

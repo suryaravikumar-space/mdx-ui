@@ -50,7 +50,7 @@ Your content goes here.
 let tmpDir: string;
 
 beforeEach(async () => {
-  tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "mdx-ui-new-"));
+  tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "docsui-new-"));
 });
 
 afterEach(async () => {

@@ -16,7 +16,7 @@
  *
  * @example
  * ```ts
- * import { extractContent, preprocessMarkdown } from "@ravikumarsurya/remark-mdx-ui"
+ * import { extractContent, preprocessMarkdown } from "@docsui-io/remark-plugin"
  *
  * const raw = extractContent(apiResponse)   // works with any provider
  * const mdx = preprocessMarkdown(raw)        // fix numbered lists + code blocks

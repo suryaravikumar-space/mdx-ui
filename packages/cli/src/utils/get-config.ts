@@ -14,7 +14,7 @@ export interface Config {
 
 export async function getConfig(): Promise<Config | null> {
   const cwd = process.cwd();
-  const configPath = path.join(cwd, "mdx-ui.json");
+  const configPath = path.join(cwd, "docsui.json");
 
   try {
     const exists = await fs.pathExists(configPath);

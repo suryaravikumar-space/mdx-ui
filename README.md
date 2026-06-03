@@ -1,8 +1,8 @@
-# mdx-ui
+# DocsUI
 
-[![npm](https://img.shields.io/npm/v/@ravikumarsurya/mdx-ui)](https://www.npmjs.com/package/@ravikumarsurya/mdx-ui)
-[![Socket](https://socket.dev/api/badge/npm/package/@ravikumarsurya/mdx-ui)](https://socket.dev/npm/package/@ravikumarsurya/mdx-ui)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/mdx-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/mdx-ui)
+[![npm](https://img.shields.io/npm/v/docsui)](https://www.npmjs.com/package/docsui-cli)
+[![Socket](https://socket.dev/api/badge/npm/package/docsui)](https://socket.dev/npm/package/docsui)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/docsui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/docsui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Copy-paste MDX components for documentation sites. Built with React, TypeScript, and Tailwind CSS. Follows the [shadcn/ui](https://ui.shadcn.com) philosophy — components live in your project, not in `node_modules`.
@@ -11,20 +11,20 @@ Copy-paste MDX components for documentation sites. Built with React, TypeScript,
 
 ```bash
 # 1. Initialize your project
-npx @ravikumarsurya/mdx-ui init
+npx docsui-cli@latest init
 
 # 2. Add components
-npx @ravikumarsurya/mdx-ui add callout tabs code-block
+npx docsui-cli@latest add callout tabs code-block
 
 # 3. Or pick from an interactive menu
-npx @ravikumarsurya/mdx-ui
+npx docsui-cli@latest
 ```
 
 ## CLI Commands
 
 | Command                  | Description                                                         |
 | ------------------------ | ------------------------------------------------------------------- |
-| `init`                   | Set up `mdx-ui.json`, inject CSS variables, patch `tailwind.config` |
+| `init`                   | Set up `docsui.json`, inject CSS variables, patch `tailwind.config` |
 | `add [components...]`    | Add components (interactive picker if no args)                      |
 | `update [components...]` | Re-fetch and overwrite with latest versions                         |
 | `list`                   | Show all available components                                       |
@@ -127,7 +127,7 @@ npx @ravikumarsurya/mdx-ui
 
 ## How It Works
 
-`init` creates `mdx-ui.json`, injects shadcn-compatible CSS variables into your `globals.css`, and patches your `tailwind.config` if needed.
+`init` creates `docsui.json`, injects shadcn-compatible CSS variables into your `globals.css`, and patches your `tailwind.config` if needed.
 
 `add` fetches component JSON from the registry on GitHub, writes the `.tsx` files into your `componentsDir`, installs npm dependencies, and patches your `mdx-components.tsx` with static imports.
 
@@ -167,7 +167,7 @@ import { CodeBlock } from "@/components/mdx/code-block";
 const components = { pre: CodeBlock };
 ```
 
-Shiki CSS variables are automatically injected by `mdx-ui init`.
+Shiki CSS variables are automatically injected by `docsui-cli init`.
 
 ## Supported Frameworks
 
@@ -183,11 +183,11 @@ Supports both **Tailwind v3** (`@layer base`) and **Tailwind v4** (`@theme inlin
 ## Project Structure
 
 ```
-mdx-ui/
+docsui/
 ├── apps/
 │   └── www/                  # Documentation site (Next.js 15)
 ├── packages/
-│   ├── cli/                  # npm package (@ravikumarsurya/mdx-ui)
+│   ├── cli/                  # npm package (docsui)
 │   └── registry/
 │       └── src/              # Component source files (.tsx) — source of truth
 ├── registry/
@@ -212,8 +212,8 @@ Commit both the `.tsx` source and the generated `registry/mdx/*.json`.
 **Prerequisites:** Node.js 20.12+, pnpm 9+
 
 ```bash
-git clone https://github.com/suryaravikumar-space/mdx-ui.git
-cd mdx-ui
+git clone https://github.com/suryaravikumar-space/docsui.git
+cd docsui
 pnpm install
 
 pnpm www:dev        # docs site at localhost:3000

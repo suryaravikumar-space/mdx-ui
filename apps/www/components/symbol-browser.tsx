@@ -1825,9 +1825,9 @@ const CATALOG: Entry[] = [
   {
     component: "Complex",
     category: "math-2",
-    usage: "<Complex />",
-    description: "ℂ — complex number field",
-    preview: <P.Complex />,
+    usage: '<Complex re="a" im="b" />',
+    description: "a+bi — complex number expression",
+    preview: <P.Complex re="a" im="b" />,
   },
   {
     component: "ImagUnit",

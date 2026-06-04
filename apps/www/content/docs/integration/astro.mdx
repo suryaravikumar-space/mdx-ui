@@ -1,12 +1,12 @@
 ---
 title: Astro
-description: Integrate MDX UI with an Astro project using @astrojs/react and @astrojs/mdx
+description: Integrate DocsUI with an Astro project using @astrojs/react and @astrojs/mdx
 published: true
 ---
 
 ## Overview
 
-Astro has first-class MDX support via `@astrojs/mdx`. MDX UI components are React-based, so you also need the React integration. Components are injected per-page through Astro's `components` prop — no global provider needed.
+Astro has first-class MDX support via `@astrojs/mdx`. DocsUI components are React-based, so you also need the React integration. Components are injected per-page through Astro's `components` prop — no global provider needed.
 
 **Best for:** Content-heavy sites, documentation, blogs, and static sites that want interactive islands.
 
@@ -55,7 +55,7 @@ yarn
 
 ## 2. Add React Integration
 
-MDX UI components are built with React. Add the Astro React integration:
+DocsUI components are built with React. Add the Astro React integration:
 
 <Tabs defaultValue="pnpm">
   <TabsList>
@@ -125,7 +125,7 @@ yarn astro add mdx
 
 ## 4. Add Tailwind CSS
 
-MDX UI components use Tailwind CSS for styling.
+DocsUI components use Tailwind CSS for styling.
 
 <Tabs defaultValue="pnpm">
   <TabsList>
@@ -156,14 +156,14 @@ yarn astro add tailwind
   </TabsContent>
 </Tabs>
 
-After this, update `tailwind.config.mjs` to include your MDX UI component files so Tailwind doesn't purge their classes in production:
+After this, update `tailwind.config.mjs` to include your DocsUI component files so Tailwind doesn't purge their classes in production:
 
 ```js title="tailwind.config.mjs"
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./src/**/*.{astro,html,js,jsx,ts,tsx,mdx}",
-    "./src/components/docsui/**/*.{ts,tsx}", // required for MDX UI
+    "./src/components/docsui/**/*.{ts,tsx}", // required for DocsUI
   ],
   theme: {
     extend: {},
@@ -174,7 +174,7 @@ export default {
 
 ---
 
-## 5. Initialize MDX UI
+## 5. Initialize DocsUI
 
 <Tabs defaultValue="pnpm">
   <TabsList>
@@ -391,7 +391,7 @@ Make sure you are passing `components={mdxComponents}` to `<Content />` in your 
 
 ### TypeScript error: Cannot find module `@/lib/utils`
 
-MDX UI uses the `@/` path alias. Add it to `tsconfig.json`:
+DocsUI uses the `@/` path alias. Add it to `tsconfig.json`:
 
 ```json title="tsconfig.json"
 {

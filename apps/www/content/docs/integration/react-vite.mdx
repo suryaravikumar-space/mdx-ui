@@ -1,6 +1,6 @@
 ---
 title: React + Vite
-description: Integrate MDX UI with a React + Vite project using @mdx-js/rollup and MDXProvider
+description: Integrate DocsUI with a React + Vite project using @mdx-js/rollup and MDXProvider
 published: true
 ---
 
@@ -125,7 +125,7 @@ declare module "*.mdx" {
 
 ## 4. Install Tailwind CSS
 
-MDX UI components use Tailwind CSS for styling.
+DocsUI components use Tailwind CSS for styling.
 
 <Tabs defaultValue="v4">
   <TabsList>
@@ -235,7 +235,7 @@ Add to `src/index.css`:
 
 ---
 
-## 5. Initialize MDX UI
+## 5. Initialize DocsUI
 
 <Tabs defaultValue="pnpm">
   <TabsList>
@@ -355,8 +355,8 @@ Create these three files with some starter content:
 
       Learn more about this project.
 
-      <Callout variant="note" title="Built with MDX UI">
-        This page is a plain `.mdx` file. The LLM writes Markdown — MDX UI renders the components.
+      <Callout variant="note" title="Built with DocsUI">
+        This page is a plain `.mdx` file. The LLM writes Markdown — DocsUI renders the components.
       </Callout>
       ```
     </AccordionContent>
@@ -631,7 +631,7 @@ See [Math Primitives](/docs/components/math-primitives) for the full list of 370
 
 ### Cannot find module `@/lib/primitives` or `@/lib/motion`
 
-MDX UI components use the `@/` path alias. You need to configure it in `vite.config.ts` and in **every** `tsconfig` that TypeScript compiles directly.
+DocsUI components use the `@/` path alias. You need to configure it in `vite.config.ts` and in **every** `tsconfig` that TypeScript compiles directly.
 
 **1. Install the Node path helper:**
 

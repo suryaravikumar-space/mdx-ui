@@ -7,7 +7,7 @@ test.describe("Home page", () => {
 
   test("renders the main heading", async ({ page }) => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Beautiful MDX Components",
+      "Transform LLM Markdown",
     );
   });
 
@@ -23,10 +23,11 @@ test.describe("Home page", () => {
     await expect(link).toHaveAttribute("href", "/components");
   });
 
-  test("renders the three feature cards", async ({ page }) => {
-    await expect(page.getByText("Beautiful by Default")).toBeVisible();
-    await expect(page.getByText("Copy & Paste")).toBeVisible();
-    await expect(page.getByText("Fully Customizable")).toBeVisible();
+  test("renders the four feature cards", async ({ page }) => {
+    await expect(page.getByText("Token-Efficient by Design")).toBeVisible();
+    await expect(page.getByText("Model Agnostic")).toBeVisible();
+    await expect(page.getByText("You Own the Code")).toBeVisible();
+    await expect(page.getByText("MCP Server Included")).toBeVisible();
   });
 
   test("Installation Guide link points to correct path", async ({ page }) => {

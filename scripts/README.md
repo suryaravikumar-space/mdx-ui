@@ -1,6 +1,6 @@
 # Scripts
 
-This directory contains build scripts that automate code generation for mdx-ui.
+This directory contains build scripts that automate code generation for DocsUI.
 
 ## Scripts Overview
 
@@ -39,7 +39,7 @@ Each component entry in `build-registry.ts` has:
   whenNotToUse: "What to avoid",
   example: "<Component ... />",
   dependencies: ["npm-package"],        // optional
-  registryDependencies: ["utils"],      // other mdx-ui components needed
+  registryDependencies: ["utils"],      // other DocsUI components needed
 }
 ```
 
@@ -81,7 +81,7 @@ cd apps/www && pnpm tsx scripts/build-previews.ts
 ## File Structure
 
 ```
-mdx-ui/
+docsui/
 ├── scripts/
 │   ├── build-registry.ts      ← Generates registry JSON from source
 │   └── README.md

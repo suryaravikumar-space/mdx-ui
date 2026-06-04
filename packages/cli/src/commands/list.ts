@@ -33,8 +33,8 @@ export const list = new Command()
     if (opts.installed) {
       const config = await getConfig();
       if (!config) {
-        console.log(chalk.red("✗ No mdx-ui.json found."));
-        console.log(chalk.yellow("  Run: npx @ravikumarsurya/mdx-ui init\n"));
+        console.log(chalk.red("✗ No docsui.json found."));
+        console.log(chalk.yellow("  Run: npx docsui-cli@latest init\n"));
         process.exit(1);
       }
 
@@ -43,7 +43,7 @@ export const list = new Command()
 
       if (!(await fs.pathExists(dir))) {
         console.log(chalk.yellow("No components installed yet."));
-        console.log(chalk.dim("  Run: npx @ravikumarsurya/mdx-ui add\n"));
+        console.log(chalk.dim("  Run: npx docsui-cli@latest add\n"));
         process.exit(0);
       }
 
@@ -54,7 +54,7 @@ export const list = new Command()
 
       if (installed.length === 0) {
         console.log(chalk.yellow("No components installed yet."));
-        console.log(chalk.dim("  Run: npx @ravikumarsurya/mdx-ui add\n"));
+        console.log(chalk.dim("  Run: npx docsui-cli@latest add\n"));
         process.exit(0);
       }
 
@@ -99,6 +99,6 @@ export const list = new Command()
     }
 
     console.log(chalk.dim("Usage:"));
-    console.log(chalk.dim("  npx mdx-ui add <component>"));
+    console.log(chalk.dim("  npx docsui-cli@latest add <component>"));
     console.log();
   });

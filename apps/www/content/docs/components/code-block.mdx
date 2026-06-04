@@ -10,7 +10,7 @@ dependencies: []
 ## Installation
 
 ```bash
-npx @ravikumarsurya/mdx-ui add code-block
+npx docsui-cli@latest add code-block
 ```
 
 Then set up syntax highlighting with `rehype-pretty-code`:
@@ -169,10 +169,10 @@ The `CodeBlock` component renders as the `<pre>` element in MDX. When `rehype-pr
 3. Passes `data-language` and `data-title` to the `<pre>` element
 4. `CodeBlock` reads those attributes to show the language badge and title
 
-The CSS for Shiki token colors is automatically injected into your `globals.css` by `npx @ravikumarsurya/mdx-ui init`:
+The CSS for Shiki token colors is automatically injected into your `globals.css` by `npx docsui-cli@latest init`:
 
 ```css
-/* Shiki dual-theme — injected by mdx-ui init */
+/* Shiki dual-theme — injected by docsui-cli init */
 [data-code-block] code span {
   color: var(--shiki-light);
   font-style: var(--shiki-light-font-style);

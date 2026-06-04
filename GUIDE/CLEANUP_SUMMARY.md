@@ -26,7 +26,7 @@
 ## Final Clean Structure
 
 ```
-mdx-ui/
+docsui/
 ├── docs/                      # Planning & reference docs
 │   ├── BASIC_MARKDOWN_COMPONENTS.md
 │   ├── COMPONENT_NAMES_REFERENCE.md

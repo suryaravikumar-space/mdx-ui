@@ -1,4 +1,4 @@
-# @ravikumarsurya/mdx-ui
+# docsui
 
 Copy-paste MDX components for documentation sites. 52+ components including 150+ math primitives, data structures, tables, diagrams, and more — built with React, TypeScript, and Tailwind CSS. CLI, MCP server, and remark plugin included.
 
@@ -8,29 +8,29 @@ Follows the [shadcn/ui](https://ui.shadcn.com) philosophy — components are add
 
 ```bash
 # Initialize your project
-npx @ravikumarsurya/mdx-ui init
+npx docsui-cli@latest init
 
 # Add components
-npx @ravikumarsurya/mdx-ui add callout tabs code-block
+npx docsui-cli@latest add callout tabs code-block
 
 # Or use the interactive menu
-npx @ravikumarsurya/mdx-ui
+npx docsui-cli@latest
 ```
 
 ## Commands
 
 ### `init`
 
-Sets up mdx-ui in your project:
+Sets up DocsUI in your project:
 
-- Creates `mdx-ui.json` config
+- Creates `docsui.json` config
 - Injects shadcn-compatible CSS variables into your `globals.css`
 - Patches `tailwind.config` with color tokens (Tailwind v3) or adds `@theme inline` block (Tailwind v4)
 - Injects Shiki dual-theme CSS for syntax highlighting
 - Works with Next.js, Vite React, Astro, and any other framework
 
 ```bash
-npx @ravikumarsurya/mdx-ui init
+npx docsui-cli@latest init
 ```
 
 ### `add`
@@ -39,13 +39,13 @@ Adds one or more components to your project:
 
 ```bash
 # Add specific components
-npx @ravikumarsurya/mdx-ui add callout
+npx docsui-cli@latest add callout
 
 # Add multiple at once
-npx @ravikumarsurya/mdx-ui add tabs steps accordion
+npx docsui-cli@latest add tabs steps accordion
 
 # Interactive picker (no args)
-npx @ravikumarsurya/mdx-ui add
+npx docsui-cli@latest add
 ```
 
 Each component is written to your `componentsDir`, its npm dependencies are installed, and your `mdx-components.tsx` is patched with the correct static imports.
@@ -56,20 +56,20 @@ Re-fetches and overwrites installed components with the latest versions:
 
 ```bash
 # Update all installed components
-npx @ravikumarsurya/mdx-ui update
+npx docsui-cli@latest update
 
 # Update specific components
-npx @ravikumarsurya/mdx-ui update callout tabs
+npx docsui-cli@latest update callout tabs
 ```
 
 ### `list`
 
 ```bash
 # Show all available components
-npx @ravikumarsurya/mdx-ui list
+npx docsui-cli@latest list
 
 # Show only installed components
-npx @ravikumarsurya/mdx-ui list --installed
+npx docsui-cli@latest list --installed
 ```
 
 ## Available Components (52)
@@ -181,10 +181,10 @@ npx @ravikumarsurya/mdx-ui list --installed
 
 ## Math Primitives
 
-`math-primitives` is the single math system in mdx-ui — 150+ JSX components with no LaTeX engine required:
+`math-primitives` is the single math system in DocsUI — 150+ JSX components with no LaTeX engine required:
 
 ```bash
-npx @ravikumarsurya/mdx-ui add math-primitives
+npx docsui-cli@latest add math-primitives
 ```
 
 ```mdx
@@ -246,7 +246,7 @@ import { CodeBlock } from "@/components/mdx/code-block";
 const components = { pre: CodeBlock };
 ```
 
-The required CSS is automatically injected by `npx @ravikumarsurya/mdx-ui init`.
+The required CSS is automatically injected by `npx docsui-cli@latest init`.
 
 ## Framework Support
 
@@ -259,7 +259,7 @@ The required CSS is automatically injected by `npx @ravikumarsurya/mdx-ui init`.
 | Tailwind v3            | ✓      |
 | Tailwind v4            | ✓      |
 
-## Example `mdx-ui.json`
+## Example `docsui.json`
 
 ```json
 {
@@ -270,9 +270,9 @@ The required CSS is automatically injected by `npx @ravikumarsurya/mdx-ui init`.
 
 ## Links
 
-- **Documentation**: [GitHub](https://github.com/suryaravikumar-space/mdx-ui)
-- **Issues**: [GitHub Issues](https://github.com/suryaravikumar-space/mdx-ui/issues)
-- **npm**: [@ravikumarsurya/mdx-ui](https://www.npmjs.com/package/@ravikumarsurya/mdx-ui)
+- **Documentation**: [GitHub](https://github.com/suryaravikumar-space/docsui)
+- **Issues**: [GitHub Issues](https://github.com/suryaravikumar-space/docsui/issues)
+- **npm**: [docsui](https://www.npmjs.com/package/docsui-cli)
 
 ## License
 

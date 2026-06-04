@@ -1,11 +1,11 @@
-# mdx-ui
+# DocsUI
 
 Beautiful MDX components for documentation and content.
 
 ## Installation
 
 ```bash
-npx mdx-ui@latest add callout
+npx DocsUI@latest add callout
 ```
 
 ## Components

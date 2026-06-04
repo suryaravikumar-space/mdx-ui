@@ -10,16 +10,16 @@ export default function AccordionDefault() {
   return (
     <Accordion defaultValue="item-1" className="w-full max-w-lg">
       <AccordionItem value="item-1">
-        <AccordionTrigger>What is mdx-ui?</AccordionTrigger>
+        <AccordionTrigger>What is DocsUI?</AccordionTrigger>
         <AccordionContent>
-          mdx-ui is a collection of copy-paste MDX components built with
+          DocsUI is a collection of copy-paste MDX components built with
           Tailwind CSS. Add only what you need.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>Does it work with Next.js?</AccordionTrigger>
         <AccordionContent>
-          Yes. mdx-ui works with Next.js, Astro, Vite React, and any framework
+          Yes. DocsUI works with Next.js, Astro, Vite React, and any framework
           that supports MDX.
         </AccordionContent>
       </AccordionItem>

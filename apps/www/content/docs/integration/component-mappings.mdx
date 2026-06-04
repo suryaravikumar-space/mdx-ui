@@ -22,18 +22,18 @@ Create a file at `components/mdx-components.tsx`:
 
 ```tsx
 // components/mdx-components.tsx
-import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings";
-import { P } from "@/components/mdx-ui/paragraph";
-import { Callout } from "@/components/mdx-ui/callout";
-import { Steps } from "@/components/mdx-ui/steps";
-import { InlineCode } from "@/components/mdx-ui/inline-code";
-import { CodeBlock } from "@/components/mdx-ui/code-block";
-import { Blockquote } from "@/components/mdx-ui/blockquote";
-import { List, ListItem } from "@/components/mdx-ui/list";
-import { Tabs } from "@/components/mdx-ui/tabs";
-import { Image } from "@/components/mdx-ui/image";
-import { HorizontalRule } from "@/components/mdx-ui/horizontal-rule";
-import { Emphasis } from "@/components/mdx-ui/emphasis";
+import { H1, H2, H3, H4, H5, H6 } from "@/components/docsui/headings";
+import { P } from "@/components/docsui/paragraph";
+import { Callout } from "@/components/docsui/callout";
+import { Steps } from "@/components/docsui/steps";
+import { InlineCode } from "@/components/docsui/inline-code";
+import { CodeBlock } from "@/components/docsui/code-block";
+import { Blockquote } from "@/components/docsui/blockquote";
+import { List, ListItem } from "@/components/docsui/list";
+import { Tabs } from "@/components/docsui/tabs";
+import { Image } from "@/components/docsui/image";
+import { HorizontalRule } from "@/components/docsui/horizontal-rule";
+import { Emphasis } from "@/components/docsui/emphasis";
 
 export const mdxComponents = {
   // Headings
@@ -75,8 +75,8 @@ export const mdxComponents = {
 You only need to import and map components you've actually installed. If you only installed `callout` and `headings`:
 
 ```tsx
-import { H1, H2, H3, H4, H5, H6 } from "@/components/mdx-ui/headings";
-import { Callout } from "@/components/mdx-ui/callout";
+import { H1, H2, H3, H4, H5, H6 } from "@/components/docsui/headings";
+import { Callout } from "@/components/docsui/callout";
 
 export const mdxComponents = {
   h1: H1,

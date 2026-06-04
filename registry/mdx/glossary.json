@@ -5,8 +5,13 @@
   "whenToUse": "Use when a document introduces multiple domain-specific terms. Wrap the page in GlossaryProvider and mark first occurrences with Term.",
   "whenNotToUse": "Do not use for a single term — use Annotation instead. Do not use GlossaryProvider when fewer than three terms need defining.",
   "example": "<GlossaryProvider terms={{ bfs: { label: 'BFS', definition: 'Breadth-First Search: explores nodes level by level.' } }}>\n  <Term id=\"bfs\" /> is optimal for shortest-path problems.\n</GlossaryProvider>",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "glossary.tsx",

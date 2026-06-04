@@ -5,7 +5,7 @@ import axios from "axios";
 
 const POSTHOG_API_KEY = "phc_zNLMNdcFKJwLJqD6NK8uQwqSwXYYQfm6oAnga7sLQt6b";
 const POSTHOG_ENDPOINT = "https://app.posthog.com/capture/";
-const OWN_REPO = "suryaravikumar-space/mdx-ui";
+const OWN_REPO = "suryaravikumar-space/docsui";
 
 function getDistinctId(): string {
   const raw = `${os.hostname()}:${os.userInfo().username}`;
@@ -42,7 +42,7 @@ export function ping(event: string, data?: Record<string, unknown>): void {
         api_key: POSTHOG_API_KEY,
         event,
         distinct_id: getDistinctId(),
-        properties: { ...data, $lib: "mdx-ui-cli" },
+        properties: { ...data, $lib: "docsui-cli" },
       },
       { timeout: 3000 },
     )

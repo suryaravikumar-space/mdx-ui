@@ -17,22 +17,22 @@ beforeEach(() => {
 });
 
 describe("getConfig", () => {
-  it("returns null when mdx-ui.json does not exist", async () => {
+  it("returns null when docsui.json does not exist", async () => {
     mockPathExists.mockResolvedValue(false as never);
     expect(await getConfig()).toBeNull();
   });
 
-  it("returns the parsed config when mdx-ui.json exists", async () => {
+  it("returns the parsed config when docsui.json exists", async () => {
     mockPathExists.mockResolvedValue(true as never);
     mockReadJSON.mockResolvedValue({
-      componentsDir: "src/components/mdx-ui",
+      componentsDir: "src/components/docsui",
       typescript: true,
       tailwind: true,
     } as never);
 
     const config = await getConfig();
     expect(config).toEqual({
-      componentsDir: "src/components/mdx-ui",
+      componentsDir: "src/components/docsui",
       typescript: true,
       tailwind: true,
     });
@@ -48,7 +48,7 @@ describe("getConfig", () => {
   it("returns config with typescript=false", async () => {
     mockPathExists.mockResolvedValue(true as never);
     mockReadJSON.mockResolvedValue({
-      componentsDir: "components/mdx-ui",
+      componentsDir: "components/docsui",
       typescript: false,
       tailwind: false,
     } as never);

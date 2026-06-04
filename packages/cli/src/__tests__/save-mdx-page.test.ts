@@ -9,7 +9,7 @@ const MDX = "# Hello\n\n<Callout>Test</Callout>\n";
 let tmpDir: string;
 
 beforeEach(async () => {
-  tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "mdx-ui-test-"));
+  tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "docsui-test-"));
 });
 
 afterEach(async () => {

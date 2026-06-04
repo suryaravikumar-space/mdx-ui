@@ -36,7 +36,7 @@ export const doctor = new Command()
   )
   .action(async () => {
     console.log();
-    console.log(chalk.bold("Running mdx-ui doctor...\n"));
+    console.log(chalk.bold("Running docsui doctor...\n"));
 
     const issues: Issue[] = [];
     const cwd = process.cwd();
@@ -46,13 +46,13 @@ export const doctor = new Command()
     if (!config) {
       issues.push({
         level: "error",
-        message: "No mdx-ui.json found — run: npx @ravikumarsurya/mdx-ui init",
+        message: "No docsui.json found — run: npx docsui-cli@latest init",
       });
       printReport(issues);
       return;
     }
     console.log(
-      `  ${chalk.green("✓")}  mdx-ui.json found  ${chalk.dim(`(componentsDir: ${config.componentsDir})`)}`,
+      `  ${chalk.green("✓")}  docsui.json found  ${chalk.dim(`(componentsDir: ${config.componentsDir})`)}`,
     );
 
     // ── 2. Components dir ──────────────────────────────────────────────────
@@ -78,7 +78,7 @@ export const doctor = new Command()
 
     if (installed.length === 0) {
       console.log(
-        chalk.yellow("  No mdx-ui components found in components directory."),
+        chalk.yellow("  No docsui components found in components directory."),
       );
       printReport(issues);
       return;
@@ -93,7 +93,7 @@ export const doctor = new Command()
     if (!(await fs.pathExists(utilsPath))) {
       issues.push({
         level: "error",
-        message: `lib/utils.ts not found — run: npx @ravikumarsurya/mdx-ui add utils`,
+        message: `lib/utils.ts not found — run: npx docsui-cli@latest add utils`,
       });
     } else {
       console.log(`  ${chalk.green("✓")}  ${libDir}/utils.ts`);
@@ -138,20 +138,20 @@ export const doctor = new Command()
         if (!cssContent.includes("--mdxui-info-bg")) {
           issues.push({
             level: "warn",
-            message: `Missing mdx-ui semantic tokens in ${config.cssFile} — re-run: npx mdx-ui init`,
+            message: `Missing docsui semantic tokens in ${config.cssFile} — re-run: npx docsui-cli@latest init`,
           });
           console.log(
             `  ${chalk.yellow("~")}  --mdxui-* tokens missing from ${config.cssFile}`,
           );
         } else {
           console.log(
-            `  ${chalk.green("✓")}  mdx-ui CSS tokens in ${config.cssFile}`,
+            `  ${chalk.green("✓")}  docsui CSS tokens in ${config.cssFile}`,
           );
         }
       }
     }
 
-    // ── 7. Tailwind config mdx-ui color scales ─────────────────────────────
+    // ── 7. Tailwind config docsui color scales ─────────────────────────────
     if (config.tailwindConfig) {
       const twPath = path.join(cwd, config.tailwindConfig);
       if (await fs.pathExists(twPath)) {
@@ -159,14 +159,14 @@ export const doctor = new Command()
         if (!twContent.includes("--mdxui-info-border")) {
           issues.push({
             level: "warn",
-            message: `mdx-ui semantic colors missing from ${config.tailwindConfig} — re-run: npx mdx-ui init`,
+            message: `docsui semantic colors missing from ${config.tailwindConfig} — re-run: npx docsui-cli@latest init`,
           });
           console.log(
-            `  ${chalk.yellow("~")}  mdx-ui colors missing from ${config.tailwindConfig}`,
+            `  ${chalk.yellow("~")}  docsui colors missing from ${config.tailwindConfig}`,
           );
         } else {
           console.log(
-            `  ${chalk.green("✓")}  mdx-ui colors in ${config.tailwindConfig}`,
+            `  ${chalk.green("✓")}  docsui colors in ${config.tailwindConfig}`,
           );
         }
       }
@@ -201,7 +201,7 @@ export const doctor = new Command()
     }
 
     // ── 9. Remark plugin ──────────────────────────────────────────────────────
-    const remarkPkg = "@ravikumarsurya/remark-mdx-ui";
+    const remarkPkg = "@docsui-io/remark-plugin";
     if (!installedDeps.has(remarkPkg)) {
       issues.push({
         level: "warn",
@@ -263,7 +263,7 @@ async function checkRemarkPluginWired(
       .join("\n");
     return (
       uncommented.includes("remarkMdxUi") ||
-      uncommented.includes("remark-mdx-ui")
+      uncommented.includes("@docsui-io/remark-plugin")
     );
   }
   return false; // config file not found — plugin definitely not wired

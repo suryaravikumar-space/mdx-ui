@@ -13,7 +13,7 @@ export default function CardDefault() {
       <CardHeader>
         <CardTitle>Getting started</CardTitle>
         <CardDescription>
-          Install and configure mdx-ui in minutes.
+          Install and configure DocsUI in minutes.
         </CardDescription>
       </CardHeader>
       <CardContent>Run the CLI and pick your components.</CardContent>

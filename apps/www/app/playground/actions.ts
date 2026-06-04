@@ -2,7 +2,7 @@
 
 import { serialize } from "next-mdx-remote/serialize";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import remarkMdxUi from "@ravikumarsurya/remark-mdx-ui";
+import remarkMdxUi from "@docsui-io/remark-plugin";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 

@@ -44,13 +44,13 @@ jobs:
         run: pnpm turbo run build
 
       - name: Install Playwright browsers
-        run: pnpm --filter=@mdx-ui/www exec playwright install --with-deps chromium firefox
+        run: pnpm --filter=@docsui/www exec playwright install --with-deps chromium firefox
 
       - name: Build www
-        run: pnpm --filter=@mdx-ui/www build
+        run: pnpm --filter=@docsui/www build
 
       - name: Run E2E tests
-        run: pnpm --filter=@mdx-ui/www exec playwright test
+        run: pnpm --filter=@docsui/www exec playwright test
 
       - name: Upload Playwright report
         if: always()

@@ -16,16 +16,8 @@ await esbuild.build({
     "@/lib/primitives": path.resolve(registrySrc, "lib/primitives.ts"),
     "@/lib/motion": path.resolve(registrySrc, "lib/motion.tsx"),
   },
-  external: [
-    "react",
-    "react/jsx-runtime",
-    "react-dom",
-    "clsx",
-    "tailwind-merge",
-    "class-variance-authority",
-    "mermaid",
-    "katex",
-  ],
+  // Bundle everything — webview runs in an isolated context with no node_modules
+  external: [],
   minify: true,
 });
 

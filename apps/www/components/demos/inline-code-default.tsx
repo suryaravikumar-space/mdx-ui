@@ -10,7 +10,7 @@ export default function InlineCodeDefault() {
         </Code>
       </p>
       <p>
-        Run the CLI: <Code>npx @ravikumarsurya/mdx-ui add accordion</Code>
+        Run the CLI: <Code>npx docsui-cli@latest add accordion</Code>
       </p>
       <p>
         Use the <Code>variant</Code> prop to switch between{" "}

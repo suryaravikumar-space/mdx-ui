@@ -4,7 +4,7 @@
   "description": "Tabbed code block group — show npm/pnpm/yarn or multi-language examples side by side",
   "whenToUse": "Use to show the same content in multiple formats — npm/pnpm/yarn install commands, or the same snippet in TypeScript and JavaScript.",
   "whenNotToUse": "Do not use for unrelated code blocks — use separate CodeBlocks. Do not use for non-code content.",
-  "example": "<CodeGroup>\n  <CodeBlock title=\"npm\">npm install @mdx-ui/cli</CodeBlock>\n  <CodeBlock title=\"pnpm\">pnpm add @mdx-ui/cli</CodeBlock>\n  <CodeBlock title=\"yarn\">yarn add @mdx-ui/cli</CodeBlock>\n</CodeGroup>",
+  "example": "<CodeGroup>\n  <CodeBlock title=\"npm\">npm install docsui-cli</CodeBlock>\n  <CodeBlock title=\"pnpm\">pnpm add docsui-cli</CodeBlock>\n  <CodeBlock title=\"yarn\">yarn add docsui-cli</CodeBlock>\n</CodeGroup>",
   "dependencies": [],
   "registryDependencies": [
     "utils"

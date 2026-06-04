@@ -71,15 +71,15 @@ jobs:
 
       - name: Install Playwright browsers
         if: github.event_name == 'workflow_dispatch' || steps.paths.outputs.changed == 'true'
-        run: pnpm --filter=@mdx-ui/www exec playwright install --with-deps chromium firefox
+        run: pnpm --filter=@docsui/www exec playwright install --with-deps chromium firefox
 
       - name: Build www
         if: github.event_name == 'workflow_dispatch' || steps.paths.outputs.changed == 'true'
-        run: pnpm --filter=@mdx-ui/www build
+        run: pnpm --filter=@docsui/www build
 
       - name: Run E2E tests
         if: github.event_name == 'workflow_dispatch' || steps.paths.outputs.changed == 'true'
-        run: pnpm --filter=@mdx-ui/www exec playwright test
+        run: pnpm --filter=@docsui/www exec playwright test
 
       - name: Upload Playwright report
         if: always() && (github.event_name == 'workflow_dispatch' || steps.paths.outputs.changed == 'true')
@@ -120,7 +120,7 @@ jobs:
         run: pnpm run build:registry
 
       - name: Build docs
-        run: pnpm turbo run build --filter=@mdx-ui/www
+        run: pnpm turbo run build --filter=@docsui/www
 
       - name: Deploy to Vercel
         run: npx vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}

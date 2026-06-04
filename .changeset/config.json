@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@mdx-ui/www", "@mdx-ui/registry"]
+  "ignore": ["@docsui/www", "@docsui/registry"]
 }

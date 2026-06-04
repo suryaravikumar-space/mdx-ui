@@ -5,8 +5,13 @@
   "whenToUse": "Use to show a rendered component alongside its source code. Best for component documentation pages.",
   "whenNotToUse": "Do not use for non-visual components or when source code alone is sufficient. Do not use for interactive demos requiring live editing — that needs a sandbox.",
   "example": "<Preview lang=\"tsx\" code={`<Badge variant=\"success\">Stable</Badge>`}>\n  <Badge variant=\"success\">Stable</Badge>\n</Preview>",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "preview.tsx",

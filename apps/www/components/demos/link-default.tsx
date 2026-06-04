@@ -9,7 +9,7 @@ export default function LinkDefault() {
       </p>
       <p>
         Source code is available on{" "}
-        <Link href="https://github.com/suryaravikumar-space/mdx-ui">
+        <Link href="https://github.com/suryaravikumar-space/docsui">
           GitHub
         </Link>
         .

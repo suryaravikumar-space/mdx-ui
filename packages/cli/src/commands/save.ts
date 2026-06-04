@@ -37,12 +37,12 @@ export const save = new Command()
       console.log(chalk.dim("Examples:"));
       console.log(
         chalk.dim(
-          "  mdx-ui save --out content --path 2025 ds bst intro --file page.mdx",
+          "  docsui save --out content --path 2025 ds bst intro --file page.mdx",
         ),
       );
       console.log(
         chalk.dim(
-          "  echo '<Callout>Hello</Callout>' | mdx-ui save --out content --path 2025 ds bst intro",
+          "  echo '<Callout>Hello</Callout>' | docsui save --out content --path 2025 ds bst intro",
         ),
       );
       process.exit(1);

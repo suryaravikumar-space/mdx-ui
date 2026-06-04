@@ -1,6 +1,6 @@
 // ─── Symbol Map — single source of truth ─────────────────────────────────────
 //
-// Each entry maps a mathematical concept to its mdx-ui primitive component.
+// Each entry maps a mathematical concept to its docsui primitive component.
 // Consumed by:
 //   - MCP OUTPUT_STANDARD (built dynamically from this data)
 //   - MCP tool: search_symbols
@@ -64,6 +64,52 @@ export const SYMBOL_MAP: SymbolEntry[] = [
       "Inline composition wrapper — groups text, symbols, and components into a single node",
   },
   // ── Arithmetic ──────────────────────────────────────────────────────────────
+  {
+    name: "plus / addition / unary plus",
+    category: "arithmetic",
+    symbols: ["+"],
+    latex: ["+"],
+    component: "Plus",
+    usage: "<Plus />",
+    description: "Plus sign +",
+  },
+  {
+    name: "minus / subtraction / unary minus",
+    category: "arithmetic",
+    symbols: ["−", "-"],
+    latex: ["-"],
+    component: "Minus",
+    usage: "<Minus />",
+    description: "Minus sign − (U+2212, not a hyphen)",
+  },
+  {
+    name: "multiply / multiplication",
+    category: "arithmetic",
+    symbols: ["×"],
+    latex: ["\\times"],
+    component: "Mul",
+    usage: "<Mul />",
+    description: "Multiplication sign × (inline)",
+  },
+  {
+    name: "divide / division slash / inline division",
+    category: "arithmetic",
+    symbols: ["/"],
+    latex: ["/"],
+    component: "Div",
+    usage: "<Div />",
+    description: "Division slash / (inline a/b context)",
+  },
+  {
+    name: "modulus / remainder / programming modulus",
+    category: "arithmetic",
+    symbols: ["%"],
+    latex: ["\\%"],
+    component: "Modulus",
+    usage: "<Modulus />",
+    description:
+      "Modulus operator % (programming) — use Percent for math percent",
+  },
   {
     name: "fraction",
     category: "arithmetic",
@@ -1384,8 +1430,9 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     symbols: ["⋯", "1 + 2 + ⋯ + n"],
     latex: ["\\cdots"],
     component: "CDots",
-    usage: "<CDots />",
-    description: "Centered horizontal dots ⋯",
+    usage: "<CDots /> or <CDots count={5} />",
+    description:
+      "Centered horizontal dots — count prop controls number of dots (default 3)",
   },
   {
     name: "vertical dots",
@@ -1472,6 +1519,109 @@ export const SYMBOL_MAP: SymbolEntry[] = [
     component: "Aleph",
     usage: "<Aleph />",
     description: "Aleph ℵ (infinite cardinal)",
+  },
+
+  // ── Geometry 2D (Visual SVG) ─────────────────────────────────────────────────
+  {
+    name: "geometry scene / coordinate plane",
+    category: "geometry",
+    symbols: [],
+    latex: [],
+    component: "FigScene",
+    usage:
+      "<FigScene width={400} height={300} xRange={[-5,5]} yRange={[-5,5]} showGrid showAxes>\n  {/* FigPoint, FigVector, FigCircle … */}\n</FigScene>",
+    description:
+      "SVG coordinate plane that wraps all Fig* visual primitives. Provides grid lines, axes, and a coordinate transform.",
+  },
+  {
+    name: "geometry point",
+    category: "geometry",
+    symbols: [],
+    latex: [],
+    component: "FigPoint",
+    usage: '<FigPoint x={2} y={1} label="A" />',
+    description: "Filled dot at world coordinates with an optional label.",
+  },
+  {
+    name: "geometry vector / arrow",
+    category: "geometry",
+    symbols: ["→"],
+    latex: ["\\vec{v}"],
+    component: "FigVector",
+    usage: '<FigVector fromX={0} fromY={0} toX={3} toY={4} label="v" />',
+    description:
+      "Directed arrow from one world point to another with an arrowhead.",
+  },
+  {
+    name: "geometry line",
+    category: "geometry",
+    symbols: [],
+    latex: [],
+    component: "FigLine",
+    usage: "<FigLine x1={-2} y1={-1} x2={2} y2={1} dashed />",
+    description:
+      "Straight line segment between two world points. Supports dashed style.",
+  },
+  {
+    name: "geometry segment with ticks",
+    category: "geometry",
+    symbols: [],
+    latex: [],
+    component: "FigSegment",
+    usage: '<FigSegment x1={0} y1={0} x2={3} y2={0} label="c" tickMarks />',
+    description:
+      "Line segment with optional midpoint label and equal-length tick marks.",
+  },
+  {
+    name: "geometry circle",
+    category: "geometry",
+    symbols: ["○"],
+    latex: ["\\bigcirc"],
+    component: "FigCircle",
+    usage: "<FigCircle cx={0} cy={0} r={2} />",
+    description: "Circle at a world center with a world-unit radius.",
+  },
+  {
+    name: "geometry arc",
+    category: "geometry",
+    symbols: ["⌒"],
+    latex: ["\\overset{\\frown}{AB}"],
+    component: "FigArc",
+    usage: "<FigArc cx={0} cy={0} r={2} startDeg={0} endDeg={90} />",
+    description:
+      "Partial arc between two degree angles (counter-clockwise from positive x-axis).",
+  },
+  {
+    name: "geometry angle arc",
+    category: "geometry",
+    symbols: ["∠"],
+    latex: ["\\angle"],
+    component: "FigAngle",
+    usage:
+      '<FigAngle vertex={{x:0,y:0}} from={{x:1,y:0}} to={{x:0,y:1}} label="θ" />',
+    description:
+      "Arc sweep showing the angle at a vertex between two direction rays.",
+  },
+  {
+    name: "geometry polygon",
+    category: "geometry",
+    symbols: [],
+    latex: [],
+    component: "FigPolygon",
+    usage:
+      '<FigPolygon points={[[0,0],[3,0],[1.5,2]]} fill="currentColor" opacity={0.15} />',
+    description:
+      "Closed polygon from an array of world-coordinate [x,y] vertices.",
+  },
+  {
+    name: "geometry label / text",
+    category: "geometry",
+    symbols: [],
+    latex: [],
+    component: "FigLabel",
+    usage: "<FigLabel x={1} y={2}>A</FigLabel>",
+    description:
+      "Arbitrary text positioned at a world coordinate inside FigScene.",
   },
 ];
 

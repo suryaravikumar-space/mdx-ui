@@ -1,4 +1,4 @@
-# Graphify — Knowledge Graph for mdx-ui
+# Graphify — Knowledge Graph for DocsUI
 
 Graphify builds a knowledge graph of the codebase so AI assistants (Claude Code, Cursor, etc.) navigate by structure instead of scanning raw files. This reduces token usage by ~20× per query.
 
@@ -64,17 +64,17 @@ graphify hook install
 
 - **2,002 nodes** · **3,030 edges** · **195 communities**
 - **19.6× token reduction** vs naive full-corpus scanning
-- **God nodes** (most connected): `cn()` (106 edges), `mdx-ui CLI` (22), `clsx`/`tailwind-merge` (19 each)
+- **God nodes** (most connected): `cn()` (106 edges), `DocsUI CLI` (22), `clsx`/`tailwind-merge` (19 each)
 
 ## Key communities detected
 
-| Community                 | What it covers                                           |
-| ------------------------- | -------------------------------------------------------- |
-| Docs Site MDX Wrappers    | `apps/www/components/mdx/` — all component wrappers      |
-| Math Primitives           | `packages/registry/src/math-primitives.tsx`              |
-| Data Structures           | `ds.tsx`, `ds-tree.tsx` source and docs                  |
-| Mermaid Diagrams          | `mermaid.tsx` source and docs                            |
-| Remark MDX Plugin         | `packages/remark-plugin/`                                |
-| CLI Commands              | `add`, `init`, `update`, `doctor`, `mcp`, `new`          |
-| Project Design Principles | API conventions, naming philosophy, rationale docs       |
-| AI Content Pipeline       | `preprocessMarkdown`, `remark-mdx-ui`, LLM system prompt |
+| Community                 | What it covers                                                      |
+| ------------------------- | ------------------------------------------------------------------- |
+| Docs Site MDX Wrappers    | `apps/www/components/mdx/` — all component wrappers                 |
+| Math Primitives           | `packages/registry/src/math-primitives.tsx`                         |
+| Data Structures           | `ds.tsx`, `ds-tree.tsx` source and docs                             |
+| Mermaid Diagrams          | `mermaid.tsx` source and docs                                       |
+| Remark MDX Plugin         | `packages/remark-plugin/`                                           |
+| CLI Commands              | `add`, `init`, `update`, `doctor`, `mcp`, `new`                     |
+| Project Design Principles | API conventions, naming philosophy, rationale docs                  |
+| AI Content Pipeline       | `preprocessMarkdown`, `@docsui-io/remark-plugin`, LLM system prompt |

@@ -31,7 +31,7 @@ export default function LearnPage() {
               Install MDX UI components with a single command:
             </p>
             <div className="my-4 rounded-lg border bg-muted p-4">
-              <code className="text-sm">npx mdx-ui add [component-name]</code>
+              <code className="text-sm">npx docsui-cli@latest add [component-name]</code>
             </div>
           </section>
 

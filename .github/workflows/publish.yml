@@ -32,9 +32,9 @@ jobs:
         run: npm run build:registry
 
       - name: Build CLI
-        run: pnpm run build --filter=@ravikumarsurya/mdx-ui
+        run: pnpm run build --filter=docsui
 
       - name: Publish to npm
-        run: pnpm publish --filter=@ravikumarsurya/mdx-ui --access public --no-git-checks
+        run: pnpm publish --filter=docsui --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

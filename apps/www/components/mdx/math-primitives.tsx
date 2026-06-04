@@ -1790,7 +1790,17 @@ export const CircleArrowLeft = mkSym(
 // CDots · VDots · DDots · LDots · Therefore dots
 // ═══════════════════════════════════════════════════════════════════════════════
 
-export const CDots = mkSym("⋯", "centered dots"); // horizontal middle dots
+export const CDots = ({
+  count = 3,
+  className,
+}: {
+  count?: number;
+  className?: string;
+}) => (
+  <span className={cn("mx-1 font-serif", className)} aria-label="centered dots">
+    {"·".repeat(count)}
+  </span>
+);
 export const VDots = mkSym("⋮", "vertical dots"); // vertical dots
 export const DDots = mkSym("⋱", "diagonal dots"); // diagonal dots (down-right)
 export const LDots = mkSym("…", "lower dots"); // baseline ellipsis
@@ -2288,6 +2298,16 @@ Inverse.displayName = "Inverse";
 // Division · Times · Percent · Permille · Proportion · PlusMinus already above
 // ═══════════════════════════════════════════════════════════════════════════════
 
+/** + — addition / unary plus. */
+export const Plus = mkSym("+", "plus", "mx-1");
+/** − — subtraction / unary minus (U+2212, not a hyphen). */
+export const Minus = mkSym("−", "minus", "mx-1");
+/** × — multiplication (inline). */
+export const Mul = mkSym("×", "multiply", "mx-1");
+/** / — inline division. */
+export const Div = mkSym("/", "division slash", "mx-0.5");
+/** % — modulus operator (programming). Distinct from Percent (math). */
+export const Modulus = mkSym("%", "modulus", "mx-0.5");
 /** ÷ — division / obelus. Used in elementary school arithmetic. */
 export const Division = mkSym("÷", "division", "mx-1");
 /** × — multiplication cross. General multiplication (vs Cross which is vector). */

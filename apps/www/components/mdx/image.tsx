@@ -12,7 +12,13 @@ type ImageRenderer = (
   props: React.ImgHTMLAttributes<HTMLImageElement>,
 ) => React.ReactNode;
 
-const defaultRenderer: ImageRenderer = ({ src, alt, width, height, className }) => (
+const defaultRenderer: ImageRenderer = ({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}) => (
   <NextImage
     src={src ?? ""}
     alt={alt ?? ""}

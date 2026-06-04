@@ -542,7 +542,7 @@ async function setupMdxComponents(
 const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
   contentlayer: `
   // contentlayer.config.ts
-  import remarkMdxUi from "@docsui-io/remark-plugin"
+  import remarkMdxUi from "@docsui-cli/remark-plugin"
 
   export default makeSource({
     mdxOptions: {
@@ -554,7 +554,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "next-mdx-remote": `
   // In your compileMdx / serialize call:
-  import remarkMdxUi from "@docsui-io/remark-plugin"
+  import remarkMdxUi from "@docsui-cli/remark-plugin"
 
   const result = await serialize(source, {
     mdxOptions: {
@@ -566,7 +566,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "next-mdx": `
   // next.config.ts
-  import remarkMdxUi from "@docsui-io/remark-plugin"
+  import remarkMdxUi from "@docsui-cli/remark-plugin"
 
   const withMDX = createMDX({
     options: {
@@ -578,7 +578,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "astro-mdx": `
   // astro.config.ts
-  import remarkMdxUi from "@docsui-io/remark-plugin"
+  import remarkMdxUi from "@docsui-cli/remark-plugin"
 
   export default defineConfig({
     markdown: {
@@ -590,7 +590,7 @@ const REMARK_PLUGIN_SNIPPETS: Record<MdxPipeline, string | null> = {
 
   "mdx-rollup": `
   // vite.config.ts
-  import remarkMdxUi from "@docsui-io/remark-plugin"
+  import remarkMdxUi from "@docsui-cli/remark-plugin"
 
   export default defineConfig({
     plugins: [
@@ -619,7 +619,7 @@ function printNextSteps(framework: Framework, mdxPipeline: MdxPipeline) {
         "\n📦 Wire up the remark plugin so markdown auto-upgrades to components:",
       ),
     );
-    console.log(chalk.dim("  Install: npm install @docsui-io/remark-plugin"));
+    console.log(chalk.dim("  Install: npm install @docsui-cli/remark-plugin"));
     console.log(chalk.white(snippet));
   } else {
     console.log(
@@ -627,7 +627,7 @@ function printNextSteps(framework: Framework, mdxPipeline: MdxPipeline) {
         "\n📦 To enable auto-upgrade of markdown → components, add the remark plugin:",
       ),
     );
-    console.log(chalk.dim("  npm install @docsui-io/remark-plugin"));
+    console.log(chalk.dim("  npm install @docsui-cli/remark-plugin"));
     console.log(
       chalk.dim(
         "  Then add remarkMdxUi to your MDX pipeline's remarkPlugins array.",

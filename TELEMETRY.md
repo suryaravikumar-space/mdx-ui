@@ -11,8 +11,8 @@ Anonymous usage tracking via PostHog. Fires on `init` and `add` commands.
 
 | Event  | When fired              | Key properties                       |
 | ------ | ----------------------- | ------------------------------------ |
-| `init` | User runs `docsui-cli init` | `framework` (react / nextjs / astro) |
-| `add`  | User runs `docsui-cli add`  | `components` (array of names added)  |
+| `init` | User runs `docsui init` | `framework` (react / nextjs / astro) |
+| `add`  | User runs `docsui add`  | `components` (array of names added)  |
 
 ### Useful views
 

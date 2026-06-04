@@ -542,7 +542,7 @@ const componentsMetadata: Record<
     whenNotToUse:
       "Do not use for code files — use CodeBlock. Use for interactive shell sessions only.",
     example:
-      '<Terminal>\n  <TerminalLine type="input">pnpm add docsui-cli</TerminalLine>\n  <TerminalLine type="output">+ docsui-cli 0.0.33</TerminalLine>\n</Terminal>',
+      '<Terminal>\n  <TerminalLine type="input">pnpm add docsui-cli</TerminalLine>\n  <TerminalLine type="output">+ @docsui-cli/cli 0.0.33</TerminalLine>\n</Terminal>',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },

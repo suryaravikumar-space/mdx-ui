@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import NextImage from "next/image";
 import { cn } from "@/lib/utils";
 
 // ─── ImageRenderer context ────────────────────────────────────────────────────
@@ -11,9 +12,15 @@ type ImageRenderer = (
   props: React.ImgHTMLAttributes<HTMLImageElement>,
 ) => React.ReactNode;
 
-const defaultRenderer: ImageRenderer = (props) => (
-  // sensible defaults that work in every framework
-  <img loading="lazy" decoding="async" {...props} />
+const defaultRenderer: ImageRenderer = ({ src, alt, width, height, className }) => (
+  <NextImage
+    src={src ?? ""}
+    alt={alt ?? ""}
+    width={typeof width === "number" ? width : 800}
+    height={typeof height === "number" ? height : 600}
+    className={className}
+    loading="lazy"
+  />
 );
 
 const ImageRendererContext =

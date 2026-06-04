@@ -77,4 +77,4 @@ graphify hook install
 | Remark MDX Plugin         | `packages/remark-plugin/`                                           |
 | CLI Commands              | `add`, `init`, `update`, `doctor`, `mcp`, `new`                     |
 | Project Design Principles | API conventions, naming philosophy, rationale docs                  |
-| AI Content Pipeline       | `preprocessMarkdown`, `@docsui-io/remark-plugin`, LLM system prompt |
+| AI Content Pipeline       | `preprocessMarkdown`, `@docsui-cli/remark-plugin`, LLM system prompt |

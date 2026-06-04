@@ -168,7 +168,7 @@ apps/www/                              # Documentation site
 
 ### Publishing
 
-- Publish to npm as `docsui-cli`
+- Publish to npm as `@docsui-cli/cli`
 - Set up GitHub repository
 - Add CI/CD with GitHub Actions
 

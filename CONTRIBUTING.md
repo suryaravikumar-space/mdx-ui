@@ -21,7 +21,7 @@ docsui/
 ├── packages/
 │   ├── cli/           # docsui — CLI tool
 │   ├── registry/      # Component source files (.tsx)
-│   └── remark-plugin/ # @docsui-io/remark-plugin — remark plugin
+│   └── remark-plugin/ # @docsui-cli/remark-plugin — remark plugin
 ├── apps/
 │   └── www/           # Documentation site (Next.js)
 ├── scripts/

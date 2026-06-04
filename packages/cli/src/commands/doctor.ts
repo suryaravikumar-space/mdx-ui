@@ -201,7 +201,7 @@ export const doctor = new Command()
     }
 
     // ── 9. Remark plugin ──────────────────────────────────────────────────────
-    const remarkPkg = "@docsui-io/remark-plugin";
+    const remarkPkg = "@docsui-cli/remark-plugin";
     if (!installedDeps.has(remarkPkg)) {
       issues.push({
         level: "warn",
@@ -263,7 +263,7 @@ async function checkRemarkPluginWired(
       .join("\n");
     return (
       uncommented.includes("remarkMdxUi") ||
-      uncommented.includes("@docsui-io/remark-plugin")
+      uncommented.includes("@docsui-cli/remark-plugin")
     );
   }
   return false; // config file not found — plugin definitely not wired

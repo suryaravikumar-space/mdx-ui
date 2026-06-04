@@ -167,7 +167,7 @@ import { CodeBlock } from "@/components/mdx/code-block";
 const components = { pre: CodeBlock };
 ```
 
-Shiki CSS variables are automatically injected by `docsui-cli init`.
+Shiki CSS variables are automatically injected by `docsui init`.
 
 ## Supported Frameworks
 

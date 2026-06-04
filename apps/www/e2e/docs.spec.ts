@@ -55,9 +55,7 @@ test.describe("Components page", () => {
   test("components index page loads", async ({ page }) => {
     await page.goto("/components");
     await expect(page).toHaveURL(/\/components/);
-    await expect(
-      page.locator("main, [role=main], article").first(),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   });
 
   test("components page has a heading", async ({ page }) => {

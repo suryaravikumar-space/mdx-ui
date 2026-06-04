@@ -14,7 +14,7 @@
  * as <Steps><Step>...</Step></Steps> MDX — which renders correctly every time.
  *
  * Usage:
- *   import { preprocessMarkdown } from "@docsui-io/remark-plugin"
+ *   import { preprocessMarkdown } from "@docsui-cli/remark-plugin"
  *
  *   const processed = preprocessMarkdown(aiGeneratedContent)
  *   // pass `processed` to MDXRemote, compileMDX, etc.
@@ -196,7 +196,7 @@ function emitSteps(block: StepsBlock): string {
  *
  * @example
  * ```ts
- * import { preprocessMarkdown } from "@docsui-io/remark-plugin"
+ * import { preprocessMarkdown } from "@docsui-cli/remark-plugin"
  *
  * // AI chatbot output — numbered list + code blocks (breaks standard parser)
  * const raw = aiResponse.content

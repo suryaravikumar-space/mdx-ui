@@ -1369,8 +1369,7 @@ export default function ListDefault() {
           Install the CLI with <code>npx docsui-cli@latest init</code>
         </ListItem>
         <ListItem>
-          Add components with{" "}
-          <code>npx docsui-cli@latest add accordion</code>
+          Add components with <code>npx docsui-cli@latest add accordion</code>
         </ListItem>
         <ListItem>Import and use in your MDX files</ListItem>
       </UnorderedList>
@@ -1397,8 +1396,7 @@ export default function ListDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Install the CLI with &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx docsui-cli@latest init&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Add components with{</span><span style="--shiki-dark:#9ECBFF;--shiki-light:#032F62">" "</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
-<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx docsui-cli@latest add accordion&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
+<span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">          Add components with &#x3C;</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>npx docsui-cli@latest add accordion&#x3C;/</span><span style="--shiki-dark:#85E89D;--shiki-light:#22863A">code</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">        &#x3C;</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">>Import and use in your MDX files&#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">ListItem</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">      &#x3C;/</span><span style="--shiki-dark:#79B8FF;--shiki-light:#005CC5">UnorderedList</span><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">></span></span>

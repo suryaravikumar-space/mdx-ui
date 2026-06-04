@@ -28,6 +28,6 @@ You will receive a response within **72 hours**. Once the issue is confirmed, a 
 This policy covers the following published packages:
 
 - `docsui` (CLI)
-- `@docsui-io/remark-plugin` (remark plugin)
+- `@docsui-cli/remark-plugin` (remark plugin)
 
 The `apps/www` documentation site is out of scope for vulnerability reports.

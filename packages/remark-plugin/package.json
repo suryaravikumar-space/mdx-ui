@@ -1,8 +1,11 @@
 {
-  "name": "@docsui-io/remark-plugin",
+  "name": "@docsui-cli/remark-plugin",
   "version": "0.0.6",
   "description": "Remark plugin + string pre-processor — converts AI-generated markdown (blockquotes, tables, mermaid diagrams, numbered lists) to docsui components automatically",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "author": {
     "name": "suryaravikumar-space",

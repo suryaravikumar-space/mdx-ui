@@ -1,5 +1,5 @@
 /**
- * @docsui-io/remark-plugin
+ * @docsui-cli/remark-plugin
  *
  * Upgrades standard markdown patterns to docsui components.
  * Works with any AI-generated markdown (OpenAI, Claude, Gemini, etc.)

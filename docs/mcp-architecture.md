@@ -68,7 +68,7 @@ The `generate_mdx` prompt mandates the LLM **call `validate_mdx` on its own outp
 
 Once the LLM writes `<Callout variant="info">Note</Callout>`, rendering happens via:
 
-**In Next.js apps** — `mdx-components.tsx` (installed by `docsui-cli add`):
+**In Next.js apps** — `mdx-components.tsx` (installed by `docsui add`):
 
 ```ts
 import { Callout } from "@/components/mdx/callout"

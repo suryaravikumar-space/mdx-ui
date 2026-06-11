@@ -4,7 +4,7 @@
   "private": true,
   "description": "Component registry source files",
   "dependencies": {
-    "@types/mdx": "^2.0.13",
+    "@types/mdx": "^2.0.14",
     "@types/react": "^18.2.65",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -58,7 +58,7 @@
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.3",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.0.0",

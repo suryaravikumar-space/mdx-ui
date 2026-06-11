@@ -25,7 +25,7 @@
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "jest-junit": "^17.0.0",
-    "react-dom": "18",
+    "react-dom": "19",
     "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2"
   }

@@ -642,14 +642,5 @@ function printNextSteps(framework: Framework, mdxPipeline: MdxPipeline) {
     console.log(chalk.white("  <Callout client:load>Hello</Callout>"));
   }
 
-  if (framework !== "unknown") {
-    console.log(
-      chalk.dim(
-        "\nFor math/chemistry support, import KaTeX CSS in your root layout:",
-      ),
-    );
-    console.log(chalk.white('  import "katex/dist/katex.min.css"'));
-  }
-
   console.log();
 }

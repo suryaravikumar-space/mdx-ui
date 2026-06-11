@@ -294,6 +294,18 @@ const componentsMetadata: Record<
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
+  grid: {
+    description:
+      "Generic CSS grid layout primitives (Grid, GridCell, GridLine) for tabular/stepwise content like long division or annotated diagrams",
+    whenToUse:
+      "Use for free-form grid layouts where content needs explicit row/column placement and divider lines — e.g. polynomial long division, step-by-step tables.",
+    whenNotToUse:
+      "Use Table for simple static reference tables with header/body rows.",
+    example:
+      '<Grid cols="auto auto" rows="auto auto">\n  <GridCell col={1} row={1}>a</GridCell>\n  <GridCell col={2} row={1}>b</GridCell>\n  <GridLine col="1 / 3" row={2} />\n</Grid>',
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: ["utils"],
+  },
   heading: {
     description: "Flexible and reusable heading component with variant support",
     whenToUse:
@@ -416,18 +428,6 @@ const componentsMetadata: Record<
     example:
       "<UnorderedList>\n  <ListItem>O(1) average case lookup</ListItem>\n  <ListItem>O(n) worst case with hash collision</ListItem>\n</UnorderedList>",
     dependencies: [],
-  },
-  math: {
-    description:
-      "LaTeX math rendering via KaTeX — M (inline) and BM (block) for clean authoring with no JS string escaping, plus InlineMath/BlockMath longform aliases. Built-in macros: \\R \\N \\Z \\C \\Q \\E \\PP \\F \\d \\eps \\norm \\abs \\inner \\set \\floor \\ceil.",
-    whenToUse:
-      'Use <M expr="\\frac{a}{b}" /> for inline LaTeX and <BM expr="..." /> for block/display equations. The expr prop accepts literal backslashes — no JS string escaping needed. Use InlineMath/BlockMath when you need to embed a dynamic JS value.',
-    whenNotToUse:
-      "Do not use for code — use CodeBlock. Do not use for simple expressions that read clearly as plain text.",
-    example:
-      'The formula <M expr="\\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}" /> gives the roots. <BM expr="e^{i\\pi} + 1 = 0" />',
-    dependencies: ["katex", "clsx", "tailwind-merge"],
-    registryDependencies: ["utils"],
   },
   "mdx-components": {
     description:
@@ -619,11 +619,11 @@ const componentsMetadata: Record<
   },
   "math-primitives": {
     description:
-      "150+ JSX math primitive components across 11 sections: Basic (Frac, Pow, Sub, Sqrt, Abs, Paren, Deg, Inf), Calculus (Integral, Sum, Prod, Lim, Limsup, Liminf, Deriv, PDeriv, Nabla, Laplacian), Trig (Sin–Csc, ArcSin–ArcTan, Sinh/Cosh/Tanh, Log/Ln/Exp), Algebra (Factorial, Choose, Perm, Mod, GCD, LCM), Set Theory (Floor, Ceil, SetOf, Cardinality, PowerSet, In, Subset, Union, Intersect…), Number Systems (NN ℕ, ZZ ℤ, QQ ℚ, RR ℝ, CC ℂ, PP ℙ, FF 𝔽, Complex, Conj), Logic (And, Or, Not, ForAll, Exists, Implies ⟹, Iff ⟺, Therefore, QED), Linear Algebra (Vec, Norm, Dot, Cross, Transpose, Det, Matrix, Rank, Dim, Trace), Statistics (Prob, CondProb, Expected, Variance, StdDev, Cov, Corr, Dist), Greek (full set), Relations/Arrows (Neq, Approx, Equiv, Cong, Leq, Geq, Ll, Gg, Propto, Sim, PlusMinus, MinusPlus, Divides, NotDivides, Arrow, MapsTo, Compose, OTimes).",
+      "150+ JSX math primitive components across 11 sections: Basic (Frac, Pow, Sub, Sqrt, Abs, Paren, Deg, Inf), Calculus (Integral, Sum, Prod, Lim, Limsup, Liminf, Deriv, PDeriv, Nabla, Laplacian), Trig (Sin–Csc, ArcSin–ArcTan, Sinh/Cosh/Tanh, Log/Ln/Exp), Algebra (Factorial, Choose, Perm, Mod, GCD, LCM), Set Theory (Floor, Ceil, SetOf, Cardinality, PowerSet, In, Subset, Union, Intersect…), Number Systems (NN ℕ, ZZ ℤ, QQ ℚ, RR ℝ, CC ℂ, PP ℙ, FF 𝔽, Complex, Conj), Logic (And, Or, Not, ForAll, Exists, Implies ⟹, Iff ⟺, Therefore, QED), Linear Algebra (Vec, Norm, Dot, Cross, Transpose, Det, Matrix, Rank, Dim, Trace), Statistics (Prob, CondProb, Expected, Variance, StdDev, Cov, Corr, Dist), Greek (full set), Relations/Arrows (Eq, Neq, Approx, Equiv, Cong, Leq, Geq, Ll, Gg, Propto, Sim, Plus, Minus, PlusMinus, MinusPlus, Divides, NotDivides, Arrow, MapsTo, Compose, OTimes).",
     whenToUse:
-      'Use for structured math UI — numbered equations with layout, solution steps, inline symbols alongside prose. For raw LaTeX expressions, use <M expr="..." /> instead — it is simpler. Both approaches can be mixed freely.',
+      "Use for structured math UI — numbered equations with layout, solution steps, inline symbols alongside prose. Compose primitives like <Frac>, <Pow>, <Sqrt>, and Greek letters directly as JSX instead of writing LaTeX strings.",
     whenNotToUse:
-      'Do not use primitives to write raw math expressions — use <M expr="\\frac{a}{b}" /> for that. Primitives are for composing layout-level math components.',
+      "Do not reach for primitives for a single plain-text variable in prose (e.g. just \"x\" or \"n\") — plain text is fine there. Use primitives once the expression needs visual structure (fractions, exponents, roots, special symbols).",
     example:
       '<Equation label="1"><Frac num={<>-b <PlusMinus /> <Sqrt>b²-4ac</Sqrt></>} den="2a" /></Equation>',
     dependencies: ["clsx", "tailwind-merge"],
@@ -633,11 +633,11 @@ const componentsMetadata: Record<
     description:
       "Display equation containers: Equation (centered block with optional equation number label) and EqSystem (system of simultaneous equations with SVG left brace). Relation symbols (Approx, Neq, Leq, Geq, Arrow, Implies, Iff, etc.) live in math-primitives.",
     whenToUse:
-      'Use Equation to display a formula prominently with an optional reference number — pair with <M expr="..." /> for LaTeX content or math-primitives for JSX layout. Use EqSystem for systems of simultaneous equations.',
+      "Use Equation to display a formula prominently with an optional reference number — compose the formula from math-primitives (Frac, Pow, Sqrt, Greek, etc.). Use EqSystem for systems of simultaneous equations.",
     whenNotToUse:
-      "Do not use for prose paragraphs that mention variables — use M or InlineMath. Do not use for code listings.",
+      "Do not use for prose paragraphs that mention variables — use math-primitives inline instead. Do not use for code listings.",
     example:
-      '<Equation label="1"><M expr="E = mc^2" /></Equation>\n<EqSystem><div><M expr="x + y = 5" /></div><div><M expr="2x - y = 1" /></div></EqSystem>',
+      '<Equation label="1">E <Eq /> mc<Pow exp="2" /></Equation>\n<EqSystem><div>x <Plus /> y <Eq /> 5</div><div>2x <Minus /> y <Eq /> 1</div></EqSystem>',
     dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
@@ -651,18 +651,6 @@ const componentsMetadata: Record<
     example:
       '<Solution title="Solve: 2x + 4 = 10">\n  <SolutionStep reason="Given">2x + 4 = 10</SolutionStep>\n  <SolutionStep reason="Subtract 4">2x = 6</SolutionStep>\n  <SolutionAnswer>x = 3</SolutionAnswer>\n</Solution>',
     dependencies: ["clsx", "tailwind-merge"],
-    registryDependencies: ["utils"],
-  },
-  "math-easy": {
-    description:
-      "Human-readable math DSL compiled to KaTeX — write math without LaTeX backslashes. ME (inline) and BME (block) accept natural words: theta, sqrt(x), (a+b)/c, 90deg, sum(i=0,n), int(a,b), lim(x->0), forall, in, union, and more.",
-    whenToUse:
-      'Use <ME>theta in {90deg, 120deg}</ME> for inline math and <BME>x = (-b pm sqrt(b^2-4ac))/(2a)</BME> for block/display. Prefer over <M expr="..."> when the author or LLM does not know LaTeX — the DSL maps directly to natural language.',
-    whenNotToUse:
-      'Do not use when you already know LaTeX — <M expr="..."> is simpler for power users. Do not mix JSX inside <ME> children — it accepts a plain string only.',
-    example:
-      "<ME>theta in {90deg, 120deg, 210deg, 330deg}</ME>\n<BME>x = (-b pm sqrt(b^2 - 4ac)) / (2a)</BME>\n<ME>forall x in RR, x^2 >= 0</ME>",
-    dependencies: ["katex", "clsx", "tailwind-merge"],
     registryDependencies: ["utils"],
   },
   "pin-table": {

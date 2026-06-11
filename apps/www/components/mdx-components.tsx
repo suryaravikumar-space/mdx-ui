@@ -27,7 +27,6 @@ import {
   Small,
   Muted,
 } from "@/components/mdx/paragraph";
-import { Math, BlockMath, InlineMath, M, BM } from "@/components/mdx/math";
 import {
   Mermaid,
   MermaidBST,
@@ -482,7 +481,6 @@ import {
   SolutionAnswer,
   SolutionNote,
 } from "@/components/mdx/math-solution";
-import { ME, BME } from "@/components/mdx/math-easy";
 import {
   DSArray,
   DSMatrix,
@@ -632,11 +630,6 @@ const components = {
   Large,
   Small,
   Muted,
-  Math,
-  BlockMath,
-  InlineMath,
-  M,
-  BM,
   Mermaid,
   MermaidBST,
   MermaidTree,
@@ -1166,9 +1159,6 @@ const components = {
   Xor,
   Zeta,
   ZZ,
-  // math-easy
-  ME,
-  BME,
   // math-equation
   Equation,
   EqSystem,

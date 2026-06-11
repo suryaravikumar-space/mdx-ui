@@ -2,9 +2,9 @@
   "name": "math-equation",
   "type": "component",
   "description": "Display equation containers: Equation (centered block with optional equation number label) and EqSystem (system of simultaneous equations with SVG left brace). Relation symbols (Approx, Neq, Leq, Geq, Arrow, Implies, Iff, etc.) live in math-primitives.",
-  "whenToUse": "Use Equation to display a formula prominently with an optional reference number — pair with <M expr=\"...\" /> for LaTeX content or math-primitives for JSX layout. Use EqSystem for systems of simultaneous equations.",
-  "whenNotToUse": "Do not use for prose paragraphs that mention variables — use M or InlineMath. Do not use for code listings.",
-  "example": "<Equation label=\"1\"><M expr=\"E = mc^2\" /></Equation>\n<EqSystem><div><M expr=\"x + y = 5\" /></div><div><M expr=\"2x - y = 1\" /></div></EqSystem>",
+  "whenToUse": "Use Equation to display a formula prominently with an optional reference number — compose the formula from math-primitives (Frac, Pow, Sqrt, Greek, etc.). Use EqSystem for systems of simultaneous equations.",
+  "whenNotToUse": "Do not use for prose paragraphs that mention variables — use math-primitives inline instead. Do not use for code listings.",
+  "example": "<Equation label=\"1\">E <Eq /> mc<Pow exp=\"2\" /></Equation>\n<EqSystem><div>x <Plus /> y <Eq /> 5</div><div>2x <Minus /> y <Eq /> 1</div></EqSystem>",
   "dependencies": [
     "clsx",
     "tailwind-merge"

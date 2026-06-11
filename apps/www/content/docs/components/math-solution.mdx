@@ -50,45 +50,45 @@ A bordered container for a worked mathematical solution. The optional `title` sh
   <SolutionAnswer>x = 3</SolutionAnswer>
 </Solution>
 
-## With LaTeX expressions
+## Composing with primitives
 
-Use `M` for inline LaTeX inside steps:
+Use math primitives directly inside steps — no LaTeX engine required.
 
 ```mdx
 <Solution title="Quadratic formula derivation">
   <SolutionStep reason="Standard form">
-    <M expr="ax^2 + bx + c = 0" />
+    a<Pow exp="2">x</Pow> <Plus /> bx <Plus /> c <Eq /> 0
   </SolutionStep>
   <SolutionStep reason="Divide by a">
-    <M expr="x^2 + \frac{b}{a}x = -\frac{c}{a}" />
+    <Pow exp="2">x</Pow> <Plus /> <Frac num="b" den="a" />x <Eq /> <Minus /><Frac num="c" den="a" />
   </SolutionStep>
   <SolutionStep reason="Complete the square" highlight>
-    <M expr="\left(x + \frac{b}{2a}\right)^2 = \frac{b^2 - 4ac}{4a^2}" />
+    <Pow exp="2"><Paren>x <Plus /> <Frac num="b" den="2a" /></Paren></Pow> <Eq /> <Frac num={<Expr><Pow exp="2">b</Pow> <Minus /> 4ac</Expr>} den={<Expr>4<Pow exp="2">a</Pow></Expr>} />
   </SolutionStep>
   <SolutionStep reason="Take square root">
-    <M expr="x + \frac{b}{2a} = \pm\frac{\sqrt{b^2-4ac}}{2a}" />
+    x <Plus /> <Frac num="b" den="2a" /> <Eq /> <PlusMinus /><Frac num={<Sqrt><Expr><Pow exp="2">b</Pow> <Minus /> 4ac</Expr></Sqrt>} den="2a" />
   </SolutionStep>
   <SolutionAnswer>
-    <M expr="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
+    x <Eq /> <Frac num={<Expr><Minus />b <PlusMinus /> <Sqrt><Expr><Pow exp="2">b</Pow> <Minus /> 4ac</Expr></Sqrt></Expr>} den="2a" />
   </SolutionAnswer>
 </Solution>
 ```
 
 <Solution title="Quadratic formula derivation">
   <SolutionStep reason="Standard form">
-    <M expr="ax^2 + bx + c = 0" />
+    a<Pow exp="2">x</Pow> <Plus /> bx <Plus /> c <Eq /> 0
   </SolutionStep>
   <SolutionStep reason="Divide by a">
-    <M expr="x^2 + \frac{b}{a}x = -\frac{c}{a}" />
+    <Pow exp="2">x</Pow> <Plus /> <Frac num="b" den="a" />x <Eq /> <Minus /><Frac num="c" den="a" />
   </SolutionStep>
   <SolutionStep reason="Complete the square" highlight>
-    <M expr="\left(x + \frac{b}{2a}\right)^2 = \frac{b^2 - 4ac}{4a^2}" />
+    <Pow exp="2"><Paren>x <Plus /> <Frac num="b" den="2a" /></Paren></Pow> <Eq /> <Frac num={<Expr><Pow exp="2">b</Pow> <Minus /> 4ac</Expr>} den={<Expr>4<Pow exp="2">a</Pow></Expr>} />
   </SolutionStep>
   <SolutionStep reason="Take square root">
-    <M expr="x + \frac{b}{2a} = \pm\frac{\sqrt{b^2-4ac}}{2a}" />
+    x <Plus /> <Frac num="b" den="2a" /> <Eq /> <PlusMinus /><Frac num={<Sqrt><Expr><Pow exp="2">b</Pow> <Minus /> 4ac</Expr></Sqrt>} den="2a" />
   </SolutionStep>
   <SolutionAnswer>
-    <M expr="x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}" />
+    x <Eq /> <Frac num={<Expr><Minus />b <PlusMinus /> <Sqrt><Expr><Pow exp="2">b</Pow> <Minus /> 4ac</Expr></Sqrt></Expr>} den="2a" />
   </SolutionAnswer>
 </Solution>
 
@@ -102,13 +102,13 @@ Use `SolutionNote` for commentary that is not an algebraic step — identities u
     Start from the Pythagorean theorem on the unit circle.
   </SolutionNote>
   <SolutionStep reason="Unit circle definition">
-    <M expr="x^2 + y^2 = 1" />
+    <Pow exp="2">x</Pow> <Plus /> <Pow exp="2">y</Pow> <Eq /> 1
   </SolutionStep>
   <SolutionStep reason="Substitute trig definitions">
-    <M expr="\cos^2\theta + \sin^2\theta = 1" />
+    <Pow exp="2"><Cos /></Pow><Theta /> <Plus /> <Pow exp="2"><Sin /></Pow><Theta /> <Eq /> 1
   </SolutionStep>
   <SolutionAnswer>
-    <M expr="\sin^2\theta + \cos^2\theta = 1" /> <QED />
+    <Pow exp="2"><Sin /></Pow><Theta /> <Plus /> <Pow exp="2"><Cos /></Pow><Theta /> <Eq /> 1 <QED />
   </SolutionAnswer>
 </Solution>
 ```
@@ -118,13 +118,13 @@ Use `SolutionNote` for commentary that is not an algebraic step — identities u
     Start from the Pythagorean theorem on the unit circle.
   </SolutionNote>
   <SolutionStep reason="Unit circle definition">
-    <M expr="x^2 + y^2 = 1" />
+    <Pow exp="2">x</Pow> <Plus /> <Pow exp="2">y</Pow> <Eq /> 1
   </SolutionStep>
   <SolutionStep reason="Substitute trig definitions">
-    <M expr="\cos^2\theta + \sin^2\theta = 1" />
+    <Pow exp="2"><Cos /></Pow><Theta /> <Plus /> <Pow exp="2"><Sin /></Pow><Theta /> <Eq /> 1
   </SolutionStep>
   <SolutionAnswer>
-    <M expr="\sin^2\theta + \cos^2\theta = 1" /> <QED />
+    <Pow exp="2"><Sin /></Pow><Theta /> <Plus /> <Pow exp="2"><Cos /></Pow><Theta /> <Eq /> 1 <QED />
   </SolutionAnswer>
 </Solution>
 

@@ -6,6 +6,7 @@
   "type": "module",
   "author": {
     "name": "suryaravikumar-space",
+    "email": "suryaravikumar@docsui.io",
     "url": "https://github.com/suryaravikumar-space"
   },
   "repository": {
@@ -37,7 +38,6 @@
     "code-block",
     "syntax-highlighting",
     "math",
-    "katex",
     "mermaid",
     "data-structures",
     "nextjs",

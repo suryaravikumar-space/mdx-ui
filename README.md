@@ -4,6 +4,7 @@
 [![Socket](https://socket.dev/api/badge/npm/package/docsui)](https://socket.dev/npm/package/docsui)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/suryaravikumar-space/docsui/badge)](https://scorecard.dev/viewer/?uri=github.com/suryaravikumar-space/docsui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/suryaravikumar-space?label=Sponsor&logo=githubsponsors)](https://github.com/sponsors/suryaravikumar-space)
 
 Copy-paste MDX components for documentation sites. Built with React, TypeScript, and Tailwind CSS. Follows the [shadcn/ui](https://ui.shadcn.com) philosophy — components live in your project, not in `node_modules`.
 

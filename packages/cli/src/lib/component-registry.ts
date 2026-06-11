@@ -307,6 +307,15 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     deps: [],
     description: "Simple string-based file/folder tree display",
   },
+  grid: {
+    importFile: "./grid",
+    imports: ["Grid", "GridCell", "GridLine"],
+    elementMappings: {},
+    files: ["grid.tsx"],
+    deps: ["clsx", "tailwind-merge"],
+    description:
+      "Generic CSS grid layout primitives for div-free tabular/stepwise content",
+  },
   heading: {
     importFile: "./heading",
     imports: ["H1", "H2", "H3", "H4", "H5", "H6"],
@@ -394,14 +403,6 @@ export const REGISTRY: Record<string, ComponentEntry> = {
     files: ["list.tsx"],
     deps: [],
     description: "Styled ordered and unordered lists",
-  },
-  math: {
-    importFile: "./math",
-    imports: ["Math", "BlockMath", "InlineMath"],
-    elementMappings: {},
-    files: ["math.tsx"],
-    deps: ["katex", "clsx", "tailwind-merge"],
-    description: "LaTeX math rendering with KaTeX (block and inline)",
   },
   mermaid: {
     importFile: "./mermaid",

@@ -85,10 +85,10 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/prompts": "^2.4.9",
-    "@vitest/coverage-v8": "^4.1.7",
+    "@vitest/coverage-v8": "^4.1.8",
     "esbuild": "^0.25.0",
     "tsup": "^8.0.2",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.8"
   }
 }

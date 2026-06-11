@@ -49,17 +49,21 @@ flowchart TD
 
 ## Math Snippets
 
-Inline derivative: $f(x) = x^3$ gives $f'(x) = 3x^2$.
+Inline derivative: f(x) <Eq /> <Pow exp="3">x</Pow> gives f'(x) <Eq /> 3<Pow exp="2">x</Pow>.
 
 Power rule for integration:
 
-$$\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$$
+<Equation>
+  <Integral><Pow exp="n">x</Pow> dx</Integral> <Eq /> <Frac num={<Expr><Pow exp="n+1">x</Pow></Expr>} den="n+1" /> <Plus /> C
+</Equation>
 
 Fundamental theorem of calculus:
 
-$$\int_a^b f(x) \, dx = F(b) - F(a)$$
+<Equation>
+  <Integral from="a" to="b">f(x) dx</Integral> <Eq /> F(b) <Minus /> F(a)
+</Equation>
 
-Chain rule — if $h(x) = f(g(x))$ then $h'(x) = f'(g(x)) \cdot g'(x)$.
+Chain rule — if h(x) <Eq /> f(g(x)) then h'(x) <Eq /> f'(g(x)) <Dot /> g'(x).
 `;
 
 const EXAMPLES = [
@@ -71,11 +75,11 @@ const EXAMPLES = [
     label: "Math",
     mdx: `# Math — Step-by-Step Solutions
 
-KaTeX-powered. \`<ME>\` for inline, \`<BME>\` for display — no backslashes needed.
+Built with JSX math primitives — \`<Pow>\`, \`<Frac>\`, \`<Eq>\`, \`<Integral>\`, and friends. No LaTeX needed.
 
 ## Problem 1: Quadratic Equation
 
-Solve <ME>2x^2 - 4x - 6 = 0</ME>
+Solve 2<Pow exp="2">x</Pow> <Minus /> 4x <Minus /> 6 <Eq /> 0
 
 <Solution title="Solve 2x² − 4x − 6 = 0">
   <SolutionStep reason="Divide all terms by 2">x² − 2x − 3 = 0</SolutionStep>
@@ -86,24 +90,24 @@ Solve <ME>2x^2 - 4x - 6 = 0</ME>
 
 ## Problem 2: Differentiation
 
-Find f′(x) for <ME>f(x) = x^3 - 3x^2 + 2</ME>
+Find f′(x) for f(x) <Eq /> <Pow exp="3">x</Pow> <Minus /> 3<Pow exp="2">x</Pow> <Plus /> 2
 
 <Solution title="Differentiate f(x) = x³ − 3x² + 2">
   <SolutionNote>Power rule: d/dx[xⁿ] = nxⁿ⁻¹. Apply term by term.</SolutionNote>
-  <SolutionStep reason="Differentiate x³"><ME>3x^2</ME></SolutionStep>
-  <SolutionStep reason="Differentiate −3x²"><ME>-6x</ME></SolutionStep>
+  <SolutionStep reason="Differentiate x³">3<Pow exp="2">x</Pow></SolutionStep>
+  <SolutionStep reason="Differentiate −3x²"><Minus />6x</SolutionStep>
   <SolutionStep reason="Constant term drops to 0">0</SolutionStep>
-  <SolutionAnswer><BME>f'(x) = 3x^2 - 6x</BME></SolutionAnswer>
+  <SolutionAnswer>f'(x) <Eq /> 3<Pow exp="2">x</Pow> <Minus /> 6x</SolutionAnswer>
 </Solution>
 
 ## Problem 3: Definite Integral
 
-Evaluate <ME>int(1, 2) (3x^2 + 2x) dx</ME>
+Evaluate <Integral from="1" to="2">(3<Pow exp="2">x</Pow> <Plus /> 2x) dx</Integral>
 
 <Solution title="∫₁² (3x² + 2x) dx">
   <SolutionNote>Integrate term by term, then apply the Fundamental Theorem of Calculus.</SolutionNote>
-  <SolutionStep reason="Antiderivative"><ME>x^3 + x^2</ME></SolutionStep>
-  <SolutionStep highlight reason="Evaluate at bounds [1, 2]"><ME>(2^3 + 2^2) - (1^3 + 1^2)</ME></SolutionStep>
+  <SolutionStep reason="Antiderivative"><Pow exp="3">x</Pow> <Plus /> <Pow exp="2">x</Pow></SolutionStep>
+  <SolutionStep highlight reason="Evaluate at bounds [1, 2]">(<Pow exp="3">2</Pow> <Plus /> <Pow exp="2">2</Pow>) <Minus /> (<Pow exp="3">1</Pow> <Plus /> <Pow exp="2">1</Pow>)</SolutionStep>
   <SolutionStep reason="Simplify">(8 + 4) − (1 + 1) = 12 − 2</SolutionStep>
   <SolutionAnswer>10</SolutionAnswer>
 </Solution>

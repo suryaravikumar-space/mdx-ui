@@ -5,6 +5,12 @@ export function SiteFooter() {
         <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
           Built with ❤️ using Next.js and Tailwind CSS
         </p>
+        <a
+          href="mailto:suryaravikumar@docsui.io"
+          className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+        >
+          suryaravikumar@docsui.io
+        </a>
       </div>
     </footer>
   );

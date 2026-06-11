@@ -1,0 +1,22 @@
+{
+  "name": "grid",
+  "type": "component",
+  "description": "Generic CSS grid layout primitives (Grid, GridCell, GridLine) for tabular/stepwise content like long division or annotated diagrams",
+  "whenToUse": "Use for free-form grid layouts where content needs explicit row/column placement and divider lines — e.g. polynomial long division, step-by-step tables.",
+  "whenNotToUse": "Use Table for simple static reference tables with header/body rows.",
+  "example": "<Grid cols=\"auto auto\" rows=\"auto auto\">\n  <GridCell col={1} row={1}>a</GridCell>\n  <GridCell col={2} row={1}>b</GridCell>\n  <GridLine col=\"1 / 3\" row={2} />\n</Grid>",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "grid.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface GridProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** CSS grid-template-columns, e.g. \"70px 70px 70px 70px 2px 1fr\" */\n  cols: string;\n  /** CSS grid-template-rows */\n  rows?: string;\n  /** column-gap, default \"1rem\" */\n  gapX?: string;\n  /** row-gap, default \"0.25rem\" */\n  gapY?: string;\n}\n\n/** Generic CSS grid container for tabular/stepwise layouts (long division, step tables, annotated diagrams). */\nexport const Grid = React.forwardRef<HTMLDivElement, GridProps>(\n  ({ cols, rows, gapX, gapY, className, style, children, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\"inline-grid items-center\", className)}\n      style={{\n        gridTemplateColumns: cols,\n        gridTemplateRows: rows,\n        columnGap: gapX ?? \"1rem\",\n        rowGap: gapY ?? \"0.25rem\",\n        ...style,\n      }}\n      {...props}\n    >\n      {children}\n    </div>\n  ),\n);\nGrid.displayName = \"Grid\";\n\ninterface GridCellProps extends React.HTMLAttributes<HTMLDivElement> {\n  /** grid-column, e.g. 1 or \"1 / 5\" */\n  col?: string | number;\n  /** grid-row, e.g. 2 or \"1 / 11\" */\n  row?: string | number;\n  align?: \"start\" | \"center\" | \"end\" | \"stretch\";\n}\n\n/** Placed cell inside a `Grid` — set `col`/`row` to position content. */\nexport const GridCell = React.forwardRef<HTMLDivElement, GridCellProps>(\n  ({ col, row, align = \"end\", className, style, children, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(\"flex items-center\", className)}\n      style={{ gridColumn: col, gridRow: row, justifySelf: align, ...style }}\n      {...props}\n    >\n      {children}\n    </div>\n  ),\n);\nGridCell.displayName = \"GridCell\";\n\ninterface GridLineProps extends React.HTMLAttributes<HTMLDivElement> {\n  col?: string | number;\n  row?: string | number;\n  orientation?: \"horizontal\" | \"vertical\";\n}\n\n/** Divider line placed inside a `Grid` (subtraction rules, vertical separators). */\nexport const GridLine = React.forwardRef<HTMLDivElement, GridLineProps>(\n  ({ col, row, orientation = \"horizontal\", className, style, ...props }, ref) => (\n    <div\n      ref={ref}\n      aria-hidden=\"true\"\n      className={cn(\n        orientation === \"horizontal\"\n          ? \"border-t border-current w-full\"\n          : \"border-l border-current h-full justify-self-center\",\n        className,\n      )}\n      style={{ gridColumn: col, gridRow: row, ...style }}\n      {...props}\n    />\n  ),\n);\nGridLine.displayName = \"GridLine\";\n",
+      "integrity": "sha256-s0Qssku/8KC8QnZyjnwu+KnzuICTOaCu0ClZhFpZJks="
+    }
+  ]
+}

@@ -11,14 +11,6 @@
       "path": "/community"
     },
     {
-      "title": "Contributing",
-      "path": "/community/contributing"
-    },
-    {
-      "title": "Code of Conduct",
-      "path": "/community/code-of-conduct"
-    },
-    {
       "hasSectionHeader": true,
       "sectionHeader": "Community Resources"
     },
@@ -36,22 +28,6 @@
       "title": "Twitter",
       "path": "https://twitter.com/mdxui",
       "external": true
-    },
-    {
-      "hasSectionHeader": true,
-      "sectionHeader": "Acknowledgements"
-    },
-    {
-      "title": "Team",
-      "path": "/community/team"
-    },
-    {
-      "title": "Sponsors",
-      "path": "/community/sponsors"
-    },
-    {
-      "title": "Changelog",
-      "path": "/community/changelog"
     }
   ]
 }

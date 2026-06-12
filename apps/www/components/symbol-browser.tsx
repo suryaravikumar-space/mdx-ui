@@ -96,7 +96,12 @@ const CATALOG: Entry[] = [
       "Placed cell inside a Grid — position content with col/row and alignment",
     preview: (
       <Grid cols="2rem" rows="2rem">
-        <GridCell col={1} row={1} align="center" className="border border-current">
+        <GridCell
+          col={1}
+          row={1}
+          align="center"
+          className="border border-current"
+        >
           x
         </GridCell>
       </Grid>
@@ -3429,6 +3434,11 @@ export function SymbolBrowser() {
   const [search, setSearch] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("all");
   const [copied, setCopied] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) setSearch(q);
+  }, []);
 
   const categories = React.useMemo(() => {
     const seen = new Set<string>();

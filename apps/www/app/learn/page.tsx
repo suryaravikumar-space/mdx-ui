@@ -7,17 +7,17 @@ export default function LearnPage() {
             Quick Start
           </h1>
           <p className="text-lg text-muted-foreground">
-            Get started with MDX UI in minutes.
+            Get started with DocsUI in minutes.
           </p>
         </div>
 
         <div className="mt-8 space-y-6">
           <section>
             <h2 className="mb-4 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight">
-              What is MDX UI?
+              What is DocsUI?
             </h2>
             <p className="leading-7">
-              MDX UI is a collection of beautifully designed, accessible, and
+              DocsUI is a collection of beautifully designed, accessible, and
               customizable components for MDX-based documentation sites. Built
               with React, TypeScript, and Tailwind CSS.
             </p>
@@ -28,10 +28,12 @@ export default function LearnPage() {
               Installation
             </h2>
             <p className="leading-7">
-              Install MDX UI components with a single command:
+              Install DocsUI components with a single command:
             </p>
             <div className="my-4 rounded-lg border bg-muted p-4">
-              <code className="text-sm">npx docsui-cli@latest add [component-name]</code>
+              <code className="text-sm">
+                npx docsui-cli@latest add [component-name]
+              </code>
             </div>
           </section>
 

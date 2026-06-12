@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Github } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileNav } from "@/components/mobile-nav";
+import { Logo } from "@/components/logo";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -22,15 +23,8 @@ export function SiteHeader() {
         {/* Left — mobile menu + logo */}
         <div className="flex items-center gap-1">
           <MobileNav />
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-green-400 to-green-600 shadow-sm shadow-green-500/30">
-              <span className="font-mono text-[11px] font-bold leading-none text-green-950">
-                /&gt;
-              </span>
-            </div>
-            <span className="font-mono text-sm font-semibold tracking-tight">
-              DocsUI
-            </span>
+          <Link href="/" className="flex items-center">
+            <Logo height={22} />
           </Link>
         </div>
 

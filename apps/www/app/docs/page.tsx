@@ -13,7 +13,7 @@ export function generateMetadata(): Metadata {
       "Copy-paste MDX components for documentation sites. 50+ components built with React, TypeScript, and Tailwind CSS.",
     alternates: { canonical: `${siteConfig.url}/docs` },
     openGraph: {
-      title: "Introduction — MDX UI",
+      title: "Introduction — DocsUI",
       description:
         "Copy-paste MDX components for documentation sites. 50+ components built with React, TypeScript, and Tailwind CSS.",
       url: `${siteConfig.url}/docs`,

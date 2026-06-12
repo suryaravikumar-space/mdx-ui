@@ -7,7 +7,7 @@ export default function CommunityPage() {
             Community
           </h1>
           <p className="text-lg text-muted-foreground">
-            Join our growing community of developers building with MDX UI.
+            Join our growing community of developers building with DocsUI.
           </p>
         </div>
 
@@ -17,7 +17,7 @@ export default function CommunityPage() {
               Get Involved
             </h2>
             <p className="leading-7">
-              MDX UI is an open source project that welcomes contributions from
+              DocsUI is an open source project that welcomes contributions from
               everyone. Whether you want to fix a bug, add a feature, or improve
               documentation, we&rsquo;d love your help.
             </p>
@@ -32,7 +32,7 @@ export default function CommunityPage() {
               <li>Contribute code through pull requests</li>
               <li>Improve documentation and examples</li>
               <li>Help others in GitHub Discussions</li>
-              <li>Share your projects built with MDX UI</li>
+              <li>Share your projects built with DocsUI</li>
             </ul>
           </section>
 

@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* ── MDX UI semantic component tokens ───────────────────────────────────────
+    /* ── DocsUI semantic component tokens ───────────────────────────────────────
        Override these to rebrand all components at once.
        Light mode values use Tailwind palette references as hex.         */
 

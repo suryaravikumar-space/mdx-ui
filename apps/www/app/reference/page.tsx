@@ -7,7 +7,7 @@ export default function ReferencePage() {
             API Reference
           </h1>
           <p className="text-lg text-muted-foreground">
-            Complete API documentation for MDX UI components and utilities.
+            Complete API documentation for DocsUI components and utilities.
           </p>
         </div>
 
@@ -18,7 +18,7 @@ export default function ReferencePage() {
             </h2>
             <p className="leading-7">
               This reference covers all components, CLI commands, and utilities
-              available in MDX UI. Each component includes detailed prop
+              available in DocsUI. Each component includes detailed prop
               documentation, usage examples, and accessibility notes.
             </p>
           </section>

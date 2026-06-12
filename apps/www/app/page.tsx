@@ -139,9 +139,9 @@ export default function Home() {
 
           {/* Sub-headline */}
           <p className="max-w-[560px] text-sm text-muted-foreground sm:text-base">
-            DocsUI is a token-efficient bridge between any LLM and React. The
-            AI writes plain Markdown — your pipeline transforms it into
-            beautiful, interactive components automatically.
+            DocsUI is a token-efficient bridge between any LLM and React. The AI
+            writes plain Markdown — your pipeline transforms it into beautiful,
+            interactive components automatically.
           </p>
 
           {/* CTAs */}

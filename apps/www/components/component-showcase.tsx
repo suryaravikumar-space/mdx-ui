@@ -270,7 +270,14 @@ export function ComponentShowcase() {
             showGrid={false}
             className="h-full w-full"
           >
-            <FigEllipse cx={0} cy={0} rx={3} ry={1.5} fill="currentColor" opacity={0.1} />
+            <FigEllipse
+              cx={0}
+              cy={0}
+              rx={3}
+              ry={1.5}
+              fill="currentColor"
+              opacity={0.1}
+            />
           </FigScene>
         </ShowcaseCard>
 
@@ -296,7 +303,14 @@ export function ComponentShowcase() {
             showGrid={false}
             className="h-full w-full"
           >
-            <FigRect x={-1.5} y={-1} w={3} h={2} fill="currentColor" opacity={0.1} />
+            <FigRect
+              x={-1.5}
+              y={-1}
+              w={3}
+              h={2}
+              fill="currentColor"
+              opacity={0.1}
+            />
           </FigScene>
         </ShowcaseCard>
 
@@ -341,11 +355,7 @@ export function ComponentShowcase() {
           </FigScene>
         </ShowcaseCard>
 
-        <ShowcaseCard
-          title="ElecCapacitor"
-          category="electronics"
-          size="wide"
-        >
+        <ShowcaseCard title="ElecCapacitor" category="electronics" size="wide">
           <FigScene
             width={260}
             height={120}

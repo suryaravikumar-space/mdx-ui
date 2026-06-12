@@ -96,7 +96,12 @@ const CATALOG: Entry[] = [
       "Placed cell inside a Grid — position content with col/row and alignment",
     preview: (
       <Grid cols="2rem" rows="2rem">
-        <GridCell col={1} row={1} align="center" className="border border-current">
+        <GridCell
+          col={1}
+          row={1}
+          align="center"
+          className="border border-current"
+        >
           x
         </GridCell>
       </Grid>

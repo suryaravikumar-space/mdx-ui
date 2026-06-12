@@ -9,7 +9,7 @@ const footerLinks = [
     links: [
       { label: "Introduction", href: "/docs" },
       { label: "Installation", href: "/docs/installation" },
-      { label: "Components", href: "/docs/components" },
+      { label: "Components", href: "/docs/components/symbol-browser" },
       { label: "Integration", href: "/docs/integration" },
     ],
   },

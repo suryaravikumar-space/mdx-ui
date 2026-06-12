@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Github, Twitter, Package, Mail, Heart } from "lucide-react";
+import { Logo } from "@/components/logo";
 import { siteConfig, authors } from "@/lib/site";
 
 const footerLinks = [
@@ -54,15 +55,8 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-green-400 to-green-600 shadow-sm shadow-green-500/30">
-                <span className="font-mono text-[11px] font-bold leading-none text-green-950">
-                  /&gt;
-                </span>
-              </div>
-              <span className="font-mono text-sm font-semibold tracking-tight">
-                DocsUI
-              </span>
+            <Link href="/" className="flex items-center">
+              <Logo height={24} />
             </Link>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
               {siteConfig.description}

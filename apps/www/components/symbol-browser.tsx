@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import * as P from "@/components/mdx/math-primitives";
 import * as Fig from "@/components/mdx/geometry-2d";
 import * as Elec from "@/components/mdx/electronics";
+import { Grid, GridCell, GridLine } from "@/components/mdx/grid";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -63,6 +64,60 @@ const CATALOG: Entry[] = [
       <P.Expr>
         x <P.Pow exp="2">dx</P.Pow>
       </P.Expr>
+    ),
+  },
+  {
+    component: "Grid",
+    category: "composition",
+    usage:
+      '<Grid cols="auto auto" rows="auto auto">\n  <GridCell col={1} row={1}>a</GridCell>\n  <GridCell col={2} row={1}>b</GridCell>\n  <GridLine col="1 / 3" row={2} />\n</Grid>',
+    description:
+      "Generic CSS grid container for div-free tabular/stepwise layouts (long division, step tables)",
+    preview: (
+      <Grid cols="2rem 2rem" rows="auto auto" gapX="0.5rem" gapY="0.25rem">
+        <GridCell col={1} row={1}>
+          a
+        </GridCell>
+        <GridCell col={2} row={1}>
+          b
+        </GridCell>
+        <GridLine col="1 / 3" row={2} />
+        <GridCell col={2} row={2}>
+          c
+        </GridCell>
+      </Grid>
+    ),
+  },
+  {
+    component: "GridCell",
+    category: "composition",
+    usage: '<GridCell col={1} row={1} align="center">x</GridCell>',
+    description:
+      "Placed cell inside a Grid — position content with col/row and alignment",
+    preview: (
+      <Grid cols="2rem" rows="2rem">
+        <GridCell col={1} row={1} align="center" className="border border-current">
+          x
+        </GridCell>
+      </Grid>
+    ),
+  },
+  {
+    component: "GridLine",
+    category: "composition",
+    usage: '<GridLine col="1 / 3" row={2} />',
+    description:
+      "Horizontal or vertical divider line placed inside a Grid (subtraction rules, separators)",
+    preview: (
+      <Grid cols="2rem 2rem" rows="1rem 1rem">
+        <GridCell col={1} row={1}>
+          a
+        </GridCell>
+        <GridCell col={2} row={1}>
+          b
+        </GridCell>
+        <GridLine col="1 / 3" row={2} />
+      </Grid>
     ),
   },
   // ── Arithmetic ────────────────────────────────────────────────────────────

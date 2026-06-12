@@ -27,7 +27,6 @@ import {
   Small,
   Muted,
 } from "@/components/mdx/paragraph";
-import { Math, BlockMath, InlineMath, M, BM } from "@/components/mdx/math";
 import {
   Mermaid,
   MermaidBST,
@@ -45,6 +44,7 @@ import {
   TableCell,
   TableCaption,
 } from "@/components/mdx/table";
+import { Grid, GridCell, GridLine } from "@/components/mdx/grid";
 import { CodeGroup } from "@/components/mdx/code-group";
 import { Alert, AlertTitle, AlertDescription } from "@/components/mdx/alert";
 import {
@@ -88,7 +88,6 @@ import {
   SolutionAnswer,
   SolutionNote,
 } from "@/components/mdx/math-solution";
-import { ME, BME } from "@/components/mdx/math-easy";
 import {
   DSArray,
   DSMatrix,
@@ -238,11 +237,6 @@ export const PLAYGROUND_COMPONENTS: Record<string, React.ComponentType<any>> = {
   Large,
   Small,
   Muted,
-  Math,
-  BlockMath,
-  InlineMath,
-  M,
-  BM,
   Mermaid,
   MermaidBST,
   MermaidTree,
@@ -256,6 +250,9 @@ export const PLAYGROUND_COMPONENTS: Record<string, React.ComponentType<any>> = {
   TableHead,
   TableCell,
   TableCaption,
+  Grid,
+  GridCell,
+  GridLine,
   CodeGroup,
   Alert,
   AlertTitle,
@@ -391,8 +388,6 @@ export const PLAYGROUND_COMPONENTS: Record<string, React.ComponentType<any>> = {
   SolutionStep,
   SolutionAnswer,
   SolutionNote,
-  ME,
-  BME,
   DSArray,
   DSMatrix,
   DSLinkedList,

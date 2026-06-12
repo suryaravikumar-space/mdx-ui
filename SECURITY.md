@@ -12,7 +12,7 @@ Only the latest published version of each package receives security fixes.
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Please report security issues by emailing the maintainer directly or using [GitHub's private vulnerability reporting](https://github.com/suryaravikumar-space/docsui/security/advisories/new).
+Please report security issues by emailing [suryaravikumar@docsui.io](mailto:suryaravikumar@docsui.io) or using [GitHub's private vulnerability reporting](https://github.com/suryaravikumar-space/docsui/security/advisories/new).
 
 Include as much detail as possible:
 

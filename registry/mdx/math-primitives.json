@@ -1,12 +1,17 @@
 {
   "name": "math-primitives",
   "type": "component",
-  "description": "150+ JSX math primitive components across 11 sections: Basic (Frac, Pow, Sub, Sqrt, Abs, Paren, Deg, Inf), Calculus (Integral, Sum, Prod, Lim, Limsup, Liminf, Deriv, PDeriv, Nabla, Laplacian), Trig (Sin–Csc, ArcSin–ArcTan, Sinh/Cosh/Tanh, Log/Ln/Exp), Algebra (Factorial, Choose, Perm, Mod, GCD, LCM), Set Theory (Floor, Ceil, SetOf, Cardinality, PowerSet, In, Subset, Union, Intersect…), Number Systems (NN ℕ, ZZ ℤ, QQ ℚ, RR ℝ, CC ℂ, PP ℙ, FF 𝔽, Complex, Conj), Logic (And, Or, Not, ForAll, Exists, Implies ⟹, Iff ⟺, Therefore, QED), Linear Algebra (Vec, Norm, Dot, Cross, Transpose, Det, Matrix, Rank, Dim, Trace), Statistics (Prob, CondProb, Expected, Variance, StdDev, Cov, Corr, Dist), Greek (full set), Relations/Arrows (Neq, Approx, Equiv, Cong, Leq, Geq, Ll, Gg, Propto, Sim, PlusMinus, MinusPlus, Divides, NotDivides, Arrow, MapsTo, Compose, OTimes).",
-  "whenToUse": "Use for structured math UI — numbered equations with layout, solution steps, inline symbols alongside prose. For raw LaTeX expressions, use <M expr=\"...\" /> instead — it is simpler. Both approaches can be mixed freely.",
-  "whenNotToUse": "Do not use primitives to write raw math expressions — use <M expr=\"\\frac{a}{b}\" /> for that. Primitives are for composing layout-level math components.",
+  "description": "150+ JSX math primitive components across 11 sections: Basic (Frac, Pow, Sub, Sqrt, Abs, Paren, Deg, Inf), Calculus (Integral, Sum, Prod, Lim, Limsup, Liminf, Deriv, PDeriv, Nabla, Laplacian), Trig (Sin–Csc, ArcSin–ArcTan, Sinh/Cosh/Tanh, Log/Ln/Exp), Algebra (Factorial, Choose, Perm, Mod, GCD, LCM), Set Theory (Floor, Ceil, SetOf, Cardinality, PowerSet, In, Subset, Union, Intersect…), Number Systems (NN ℕ, ZZ ℤ, QQ ℚ, RR ℝ, CC ℂ, PP ℙ, FF 𝔽, Complex, Conj), Logic (And, Or, Not, ForAll, Exists, Implies ⟹, Iff ⟺, Therefore, QED), Linear Algebra (Vec, Norm, Dot, Cross, Transpose, Det, Matrix, Rank, Dim, Trace), Statistics (Prob, CondProb, Expected, Variance, StdDev, Cov, Corr, Dist), Greek (full set), Relations/Arrows (Eq, Neq, Approx, Equiv, Cong, Leq, Geq, Ll, Gg, Propto, Sim, Plus, Minus, PlusMinus, MinusPlus, Divides, NotDivides, Arrow, MapsTo, Compose, OTimes).",
+  "whenToUse": "Use for structured math UI — numbered equations with layout, solution steps, inline symbols alongside prose. Compose primitives like <Frac>, <Pow>, <Sqrt>, and Greek letters directly as JSX instead of writing LaTeX strings.",
+  "whenNotToUse": "Do not reach for primitives for a single plain-text variable in prose (e.g. just \"x\" or \"n\") — plain text is fine there. Use primitives once the expression needs visual structure (fractions, exponents, roots, special symbols).",
   "example": "<Equation label=\"1\"><Frac num={<>-b <PlusMinus /> <Sqrt>b²-4ac</Sqrt></>} den=\"2a\" /></Equation>",
-  "dependencies": ["clsx", "tailwind-merge"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "files": [
     {
       "path": "math-primitives.tsx",

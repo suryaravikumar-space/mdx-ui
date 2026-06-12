@@ -14,12 +14,12 @@ export function generateMetadata(): Metadata {
   return {
     title: "Integration",
     description:
-      "Integrate MDX UI with Next.js, Astro, Remix, and other frameworks using next-mdx-remote or the remark plugin.",
+      "Integrate DocsUI with Next.js, Astro, Remix, and other frameworks using next-mdx-remote or the remark plugin.",
     alternates: { canonical: `${siteConfig.url}/docs/integration` },
     openGraph: {
-      title: "Integration — MDX UI",
+      title: "Integration — DocsUI",
       description:
-        "Integrate MDX UI with Next.js, Astro, Remix, and other frameworks using next-mdx-remote or the remark plugin.",
+        "Integrate DocsUI with Next.js, Astro, Remix, and other frameworks using next-mdx-remote or the remark plugin.",
       url: `${siteConfig.url}/docs/integration`,
     },
   };

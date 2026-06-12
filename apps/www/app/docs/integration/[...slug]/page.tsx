@@ -43,14 +43,14 @@ export async function generateMetadata({
     description: doc.description,
     alternates: { canonical: `${siteConfig.url}${doc.slug}` },
     openGraph: {
-      title: `${doc.title} — MDX UI`,
+      title: `${doc.title} — DocsUI`,
       description: doc.description,
       url: `${siteConfig.url}${doc.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary",
-      title: `${doc.title} — MDX UI`,
+      title: `${doc.title} — DocsUI`,
       description: doc.description,
     },
   };

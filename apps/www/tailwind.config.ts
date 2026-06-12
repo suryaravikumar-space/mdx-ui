@@ -24,7 +24,7 @@ const config: Config = {
     },
     extend: {
       colors: {
-        /* ── MDX UI semantic tokens ── */
+        /* ── DocsUI semantic tokens ── */
         info: {
           border: "var(--mdxui-info-border)",
           bg: "var(--mdxui-info-bg)",

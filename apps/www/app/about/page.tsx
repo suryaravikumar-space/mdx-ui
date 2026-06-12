@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { Github, Twitter, ArrowRight } from "lucide-react";
+import { Github, Twitter, Linkedin, ArrowRight } from "lucide-react";
 import { siteConfig, authors } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -82,33 +83,57 @@ export default function AboutPage() {
             {authors.map((author) => (
               <div
                 key={author.name}
-                className="flex flex-col gap-2 rounded-lg border p-4"
+                className="group flex overflow-hidden rounded-lg border"
               >
-                <div>
-                  <h3 className="font-semibold">{author.name}</h3>
-                  <p className="text-sm text-muted-foreground">{author.role}</p>
+                <div className="relative w-1/3 shrink-0">
+                  <Image
+                    src={author.avatar}
+                    alt={author.name}
+                    fill
+                    sizes="128px"
+                    className="object-cover"
+                  />
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Link
-                    href={author.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${author.name} on GitHub`}
-                    className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-                  >
-                    <Github className="h-4 w-4" />
-                  </Link>
-                  {author.twitter && (
+                <div className="flex flex-1 flex-col justify-between gap-3 p-4">
+                  <div>
+                    <h3 className="font-semibold">{author.name}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {author.role}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1.5">
                     <Link
-                      href={author.twitter}
+                      href={author.github}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={`${author.name} on Twitter`}
+                      aria-label={`${author.name} on GitHub`}
                       className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                     >
-                      <Twitter className="h-4 w-4" />
+                      <Github className="h-4 w-4" />
                     </Link>
-                  )}
+                    {author.twitter && (
+                      <Link
+                        href={author.twitter}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${author.name} on Twitter`}
+                        className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                      >
+                        <Twitter className="h-4 w-4" />
+                      </Link>
+                    )}
+                    {author.linkedin && (
+                      <Link
+                        href={author.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${author.name} on LinkedIn`}
+                        className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

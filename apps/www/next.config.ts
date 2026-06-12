@@ -4,6 +4,15 @@ import { withContentlayer } from "next-contentlayer2";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "github.com",
+        pathname: "/**.png",
+      },
+    ],
+  },
 };
 
 export default withContentlayer(nextConfig);

@@ -36,7 +36,7 @@ const socialLinks = [
   { label: "GitHub", href: siteConfig.github, icon: Github },
   {
     label: "Twitter",
-    href: "https://twitter.com/ravikumarsurya",
+    href: "https://twitter.com/suryaravi_kumar",
     icon: Twitter,
   },
   { label: "npm", href: siteConfig.npm, icon: Package },

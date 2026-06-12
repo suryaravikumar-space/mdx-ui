@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Github } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { MobileNav } from "@/components/mobile-nav";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -17,21 +18,24 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 backdrop-blur-xl">
-      <div className="container grid h-14 grid-cols-3 items-center">
-        {/* Left — logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-green-400 to-green-600 shadow-sm shadow-green-500/30">
-            <span className="font-mono text-[11px] font-bold leading-none text-green-950">
-              /&gt;
+      <div className="container flex h-14 items-center justify-between gap-2 md:grid md:grid-cols-3">
+        {/* Left — mobile menu + logo */}
+        <div className="flex items-center gap-1">
+          <MobileNav />
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-green-400 to-green-600 shadow-sm shadow-green-500/30">
+              <span className="font-mono text-[11px] font-bold leading-none text-green-950">
+                /&gt;
+              </span>
+            </div>
+            <span className="font-mono text-sm font-semibold tracking-tight">
+              DocsUI
             </span>
-          </div>
-          <span className="font-mono text-sm font-semibold tracking-tight">
-            DocsUI
-          </span>
-        </Link>
+          </Link>
+        </div>
 
         {/* Center — nav links */}
-        <nav className="flex items-center justify-center gap-1">
+        <nav className="hidden items-center justify-center gap-1 md:flex">
           {navLinks.map(({ label, href }) => {
             const isActive = pathname.startsWith(href);
             return (

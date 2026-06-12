@@ -3430,6 +3430,11 @@ export function SymbolBrowser() {
   const [activeCategory, setActiveCategory] = React.useState("all");
   const [copied, setCopied] = React.useState<string | null>(null);
 
+  React.useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) setSearch(q);
+  }, []);
+
   const categories = React.useMemo(() => {
     const seen = new Set<string>();
     CATALOG.forEach((e) => seen.add(e.category));

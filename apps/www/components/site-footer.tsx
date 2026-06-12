@@ -17,8 +17,6 @@ const footerLinks = [
     title: "Resources",
     links: [
       { label: "Playground", href: "/playground" },
-      { label: "Learn", href: "/learn" },
-      { label: "Reference", href: "/reference" },
       { label: "Blog", href: "/blog" },
     ],
   },
@@ -58,9 +56,9 @@ export function SiteFooter() {
             <Link href="/" className="flex items-center">
               <Logo height={24} />
             </Link>
-            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+            {/* <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
               {siteConfig.description}
-            </p>
+            </p> */}
             <div className="flex items-center gap-1.5">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <Link

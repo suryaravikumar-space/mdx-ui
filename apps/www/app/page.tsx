@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Coins, Code2, Bot, ShieldCheck } from "lucide-react";
 import type { CSSProperties } from "react";
+import { ComponentShowcase } from "@/components/component-showcase";
 
 const floatingSymbols = [
   { symbol: "∑", x: "8%", y: "18%", size: "2.2rem", delay: "0s", dur: "18s" },
@@ -66,26 +67,11 @@ const floatingSymbols = [
   },
 ];
 
-const glyphStrip = [
-  "∑",
-  "∇",
-  "∂",
-  "∫",
-  "λ",
-  "π",
-  "θ",
-  "α",
-  "ℏ",
-  "</>",
-  "mdx",
-  "⟺",
-];
-
 export default function Home() {
   return (
     <main className="flex-1 overflow-x-hidden">
       {/* ── Hero ──────────────────────────────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center gap-6 px-4 py-28 text-center md:py-40">
+      <section className="relative flex min-h-[33vh] flex-col items-center justify-center gap-4 px-4 py-10 text-center md:min-h-[33vh] md:py-12">
         {/* Grid background */}
         <div className="hero-grid-bg" aria-hidden />
 
@@ -120,7 +106,7 @@ export default function Home() {
                   left: s.x,
                   top: s.y,
                   fontSize: s.size,
-                  color: "rgba(134,239,172,0.12)",
+                  color: "var(--mdx-symbol-color)",
                   animationName: "mdx-drift",
                   animationDuration: s.dur,
                   animationDelay: s.delay,
@@ -134,58 +120,50 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Pulse pill badge */}
-        <div className="inline-flex items-center gap-2.5 rounded-full border border-green-500/25 bg-green-500/5 px-4 py-1.5 text-sm text-green-600 backdrop-blur-sm dark:text-green-400">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-          </span>
-          LLM writes Markdown. You get components.
-        </div>
-
-        {/* Headline */}
-        <h1 className="max-w-[900px] text-4xl font-bold leading-tight tracking-[-0.03em] md:text-6xl lg:leading-[1.05]">
-          Transform LLM Markdown into <br className="hidden sm:inline" />
-          <span className="gradient-text">Rich, Interactive UI</span>
-        </h1>
-
-        {/* Sub-headline */}
-        <p className="max-w-[640px] text-lg text-muted-foreground sm:text-xl">
-          DocsUI is a token-efficient bridge between any LLM and React. The AI
-          writes plain Markdown — your pipeline transforms it into beautiful,
-          interactive components automatically.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-wrap justify-center gap-3">
-          <Link
-            href="/docs"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-gradient-to-br from-green-400 to-green-600 px-7 font-mono text-sm font-semibold text-green-950 shadow-[0_8px_32px_-8px_rgba(34,197,94,0.55)] transition-all hover:brightness-110"
-          >
-            Get Started <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link
-            href="/components"
-            className="inline-flex h-11 items-center justify-center rounded-lg border border-green-500/20 bg-green-500/5 px-7 font-mono text-sm font-semibold text-green-600 backdrop-blur-sm transition-all hover:border-green-500/40 hover:bg-green-500/10 dark:text-green-400"
-          >
-            Browse Components
-          </Link>
-        </div>
-
-        {/* Glyph strip */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4 font-mono text-xl tracking-widest text-green-300/30">
-          {glyphStrip.map((g, i) => (
-            <span
-              key={i}
-              className={
-                i % 2 === 0 ? "text-green-400/60" : "text-green-300/25"
-              }
-            >
-              {g}
+        {/* Fixed-width content column */}
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-4">
+          {/* Pulse pill badge */}
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-green-500/25 bg-green-500/5 px-4 py-1.5 text-sm text-green-600 backdrop-blur-sm dark:text-green-400">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
             </span>
-          ))}
+            LLM writes Markdown. You get components.
+          </div>
+
+          {/* Headline */}
+          <h1 className="max-w-[640px] text-2xl font-bold leading-tight tracking-[-0.03em] md:text-4xl lg:leading-[1.05]">
+            Transform LLM Markdown into{" "}
+            <span className="gradient-text">Rich, Interactive UI</span>
+          </h1>
+
+          {/* Sub-headline */}
+          <p className="max-w-[560px] text-sm text-muted-foreground sm:text-base">
+            DocsUI is a token-efficient bridge between any LLM and React. The
+            AI writes plain Markdown — your pipeline transforms it into
+            beautiful, interactive components automatically.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/docs"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-gradient-to-br from-green-400 to-green-600 px-6 font-mono text-sm font-semibold text-green-950 shadow-[0_8px_32px_-8px_rgba(34,197,94,0.55)] transition-all hover:brightness-110"
+            >
+              Get Started <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/components"
+              className="inline-flex h-10 items-center justify-center rounded-lg border border-green-500/20 bg-green-500/5 px-6 font-mono text-sm font-semibold text-green-600 backdrop-blur-sm transition-all hover:border-green-500/40 hover:bg-green-500/10 dark:text-green-400"
+            >
+              Browse Components
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* ── Component showcase ───────────────────────────────────────────────── */}
+      <ComponentShowcase />
 
       {/* ── Token cost table ──────────────────────────────────────────────────── */}
       <section className="container py-12 md:py-16">

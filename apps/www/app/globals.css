@@ -70,6 +70,7 @@
     --input: 240 5.9% 90%;
     --ring: 142 71% 45%;
     --radius: 0.5rem;
+    --mdx-symbol-color: rgba(22, 163, 74, 0.22);
   }
 
   .dark {
@@ -135,6 +136,7 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 142 71% 45%;
+    --mdx-symbol-color: rgba(134, 239, 172, 0.12);
   }
 }
 
@@ -216,29 +218,62 @@
 /* ── Grid background (hero) ─────────────────────────────────────────────────── */
 .hero-grid-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 130vh;
+  background-image: linear-gradient(
+      rgba(22, 163, 74, 0.18) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(22, 163, 74, 0.18) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 80% at 50% 15%,
+    black 0%,
+    transparent 90%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 80% at 50% 15%,
+    black 0%,
+    transparent 90%
+  );
+  pointer-events: none;
+}
+
+.dark .hero-grid-bg {
   background-image: linear-gradient(
       rgba(134, 239, 172, 0.05) 1px,
       transparent 1px
     ),
     linear-gradient(90deg, rgba(134, 239, 172, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 30%,
-    black 0%,
-    transparent 80%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 30%,
-    black 0%,
-    transparent 80%
-  );
-  pointer-events: none;
+}
+
+/* ── Scroll reveal (component showcase grid) ────────────────────────────────── */
+.showcase-card {
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcase-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ── Brand gradient utilities ───────────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #dcfce7 35%, #4ade80 100%);
+  background: linear-gradient(135deg, #166534 0%, #22c55e 50%, #86efac 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

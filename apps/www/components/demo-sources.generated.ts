@@ -2,10 +2,7 @@
 // Run `tsx scripts/build-previews.ts` to regenerate.
 // NOTE: This file is generated but committed to the repository.
 
-export const DEMO_SOURCES: Record<
-  string,
-  { source: string; highlighted: string }
-> = {
+export const DEMO_SOURCES: Record<string, { source: string; highlighted: string }> = {
   "accordion-default": {
     source: `"use client";
 import {
@@ -2380,4 +2377,4 @@ export default function VideoDefault() {
 <span class="line"><span style="--shiki-dark:#E1E4E8;--shiki-light:#24292E">}</span></span>
 <span class="line"></span></code></pre>`,
   },
-};
+}
